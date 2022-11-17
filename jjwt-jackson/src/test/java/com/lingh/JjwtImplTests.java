@@ -10,7 +10,6 @@ import io.jsonwebtoken.security.Keys;
 import org.junit.jupiter.api.Test;
 
 import javax.crypto.SecretKey;
-import java.security.KeyPair;
 import java.util.Date;
 import java.util.UUID;
 import java.util.stream.Stream;
@@ -76,28 +75,21 @@ public class JjwtImplTests {
 
     @Test
     void testSignatureAlgorithms() {
-        SecretKey firstKey = Keys.secretKeyFor(SignatureAlgorithm.HS256);
-        SecretKey secondKey = Keys.secretKeyFor(SignatureAlgorithm.HS384);
-        SecretKey thirdKey = Keys.secretKeyFor(SignatureAlgorithm.HS512);
-        KeyPair firstKeyPair = Keys.keyPairFor(SignatureAlgorithm.ES256);
-        KeyPair secondKeyPair = Keys.keyPairFor(SignatureAlgorithm.ES384);
-        KeyPair thirdKeyPair = Keys.keyPairFor(SignatureAlgorithm.ES512);
-        KeyPair fourthKeyPair = Keys.keyPairFor(SignatureAlgorithm.RS256);
-        KeyPair fifthKeyPair = Keys.keyPairFor(SignatureAlgorithm.RS384);
-        KeyPair sixthKeyPair = Keys.keyPairFor(SignatureAlgorithm.RS512);
-        KeyPair seventhKeyPair = Keys.keyPairFor(SignatureAlgorithm.PS256);
-        KeyPair eighthKeyPair = Keys.keyPairFor(SignatureAlgorithm.PS384);
-        KeyPair ninthKeyPair = Keys.keyPairFor(SignatureAlgorithm.PS512);
-        Stream.of(firstKey, secondKey, thirdKey).forEach(secretKey -> {
-            assert Jwts.parserBuilder().setSigningKey(secretKey).build().parseClaimsJws(
-                    Jwts.builder().setSubject("Joe").signWith(secretKey).compact()
-            ).getBody().getSubject().equals("Joe");
-        });
-        Stream.of(firstKeyPair, secondKeyPair, thirdKeyPair, fourthKeyPair, fifthKeyPair,
-                sixthKeyPair, seventhKeyPair, eighthKeyPair, ninthKeyPair).forEach(keyPair -> {
-            assert Jwts.parserBuilder().setSigningKey(keyPair.getPublic()).build().parseClaimsJws(
-                    Jwts.builder().setSubject("Joe").signWith(keyPair.getPrivate()).compact()
-            ).getBody().getSubject().equals("Joe");
-        });
+        Stream.of(SignatureAlgorithm.HS256, SignatureAlgorithm.HS384, SignatureAlgorithm.HS512)
+                .map(Keys::secretKeyFor)
+                .forEach(secretKey -> {
+                    assert Jwts.parserBuilder().setSigningKey(secretKey).build().parseClaimsJws(
+                            Jwts.builder().setSubject("Joe").signWith(secretKey).compact()
+                    ).getBody().getSubject().equals("Joe");
+                });
+        Stream.of(SignatureAlgorithm.ES256, SignatureAlgorithm.ES384, SignatureAlgorithm.ES512,
+                        SignatureAlgorithm.RS256, SignatureAlgorithm.RS384, SignatureAlgorithm.RS512,
+                        SignatureAlgorithm.PS256, SignatureAlgorithm.PS384, SignatureAlgorithm.PS512)
+                .map(Keys::keyPairFor)
+                .forEach(keyPair -> {
+                    assert Jwts.parserBuilder().setSigningKey(keyPair.getPublic()).build().parseClaimsJws(
+                            Jwts.builder().setSubject("Joe").signWith(keyPair.getPrivate()).compact()
+                    ).getBody().getSubject().equals("Joe");
+                });
     }
 }

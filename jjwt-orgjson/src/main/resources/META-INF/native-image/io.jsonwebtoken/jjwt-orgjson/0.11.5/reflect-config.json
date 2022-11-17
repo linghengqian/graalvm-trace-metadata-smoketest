@@ -69,6 +69,10 @@
   "name":"java.security.AlgorithmParametersSpi"
 },
 {
+  "condition":{"typeReachable":"io.jsonwebtoken.impl.crypto.EllipticCurveSigner"},
+  "name":"java.security.SecureRandomParameters"
+},
+{
   "condition":{"typeReachable":"io.jsonwebtoken.impl.crypto.MacProvider"},
   "name":"java.security.SecureRandomParameters"
 },
@@ -99,6 +103,11 @@
 {
   "condition":{"typeReachable":"io.jsonwebtoken.orgjson.io.OrgJsonSerializer"},
   "name":"org.json.JSONString"
+},
+{
+  "condition":{"typeReachable":"io.jsonwebtoken.impl.crypto.EllipticCurveSigner"},
+  "name":"sun.security.provider.NativePRNG",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
   "condition":{"typeReachable":"io.jsonwebtoken.impl.crypto.MacProvider"},
