@@ -5,7 +5,6 @@ import com.lingh.http.simpleform.SimpleFormServer;
 import com.lingh.http.simpleformupload.SimpleFormUploadServer;
 import io.vertx.core.Vertx;
 import io.vertx.core.VertxOptions;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 public class VertxCoreTests {
@@ -83,6 +82,29 @@ public class VertxCoreTests {
     void testHttpInWebSocketsEcho() {
         Runner.runExample(com.lingh.http.websockets.Server.class, null);
         Runner.runExample(com.lingh.http.websockets.Client.class, null);
+    }
+
+    @Test
+    void testHttp2InSimple() {
+        Runner.runExample(com.lingh.http2.simple.Server.class, null);
+        Runner.runExample(com.lingh.http2.simple.Client.class, null);
+    }
+
+    @Test
+    void testHttp2InPush() {
+        Runner.runExample(com.lingh.http2.push.Server.class, null);
+    }
+
+    @Test
+    void testHttp2InH2C() {
+        Runner.runExample(com.lingh.http2.h2c.Server.class, null);
+        Runner.runExample(com.lingh.http2.h2c.Client.class, null);
+    }
+
+    @Test
+    void testHttp2InCustomFrames() {
+        Runner.runExample(com.lingh.http2.customframes.Server.class, null);
+        Runner.runExample(com.lingh.http2.customframes.Client.class, null);
     }
 
 }

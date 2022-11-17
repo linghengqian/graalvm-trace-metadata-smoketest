@@ -10,8 +10,6 @@ public class Client extends AbstractVerticle {
 
     @Override
     public void start() {
-
-
         HttpClientOptions options = new HttpClientOptions().
                 setSsl(true).
                 setUseAlpn(true).

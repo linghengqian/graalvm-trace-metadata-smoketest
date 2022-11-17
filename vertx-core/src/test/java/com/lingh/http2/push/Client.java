@@ -17,9 +17,7 @@ public class Client extends AbstractVerticle {
                 setUseAlpn(true).
                 setProtocolVersion(HttpVersion.HTTP_2).
                 setTrustAll(true);
-
         HttpClient client = vertx.createHttpClient(options);
-
         client.request(HttpMethod.GET, 8080, "localhost", "/").compose(request -> {
             request.pushHandler(pushedReq -> {
                 System.out.println("Receiving pushed content");
