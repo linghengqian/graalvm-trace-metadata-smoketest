@@ -1,10 +1,13 @@
 package com.lingh;
 
+import com.lingh.eventbus.ssl.Receiver;
 import com.lingh.http.sendfile.SendFile;
 import com.lingh.http.simpleform.SimpleFormServer;
 import com.lingh.http.simpleformupload.SimpleFormUploadServer;
 import io.vertx.core.Vertx;
 import io.vertx.core.VertxOptions;
+import io.vertx.core.eventbus.EventBusOptions;
+import io.vertx.core.net.JksOptions;
 import org.junit.jupiter.api.Test;
 
 public class VertxCoreTests {
@@ -105,6 +108,34 @@ public class VertxCoreTests {
     void testHttp2InCustomFrames() {
         Runner.runExample(com.lingh.http2.customframes.Server.class, null);
         Runner.runExample(com.lingh.http2.customframes.Client.class, null);
+    }
+
+    @Test
+    void testEventBusByPointToPoint() {
+        Runner.runClusteredExample(com.lingh.eventbus.pointtopoint.Receiver.class);
+        Runner.runClusteredExample(com.lingh.eventbus.pointtopoint.Sender.class);
+    }
+
+    @Test
+    void testEventBusByMessageCodec() {
+        Runner.runClusteredExample(com.lingh.eventbus.messagecodec.ClusterReceiver.class);
+        Runner.runClusteredExample(com.lingh.eventbus.messagecodec.Sender.class);
+    }
+
+    @Test
+    void testEventBusBySSL() {
+        Runner.runClusteredExample(com.lingh.eventbus.ssl.Receiver.class, new VertxOptions().setEventBusOptions(
+                        new EventBusOptions().setSsl(true)
+                                .setKeyStoreOptions(new JksOptions().setPath("keystore.jks").setPassword("wibble"))
+                                .setTrustStoreOptions(new JksOptions().setPath("keystore.jks").setPassword("wibble"))
+                )
+        );
+        Runner.runClusteredExample(com.lingh.eventbus.ssl.Sender.class);
+    }
+
+    @Test
+    void testFuture() {
+        Runner.runExample(com.lingh.future.ComposeExample.class, null);
     }
 
 }
