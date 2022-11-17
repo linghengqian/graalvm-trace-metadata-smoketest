@@ -16,9 +16,6 @@ public class SimpleFormUploadServer extends AbstractVerticle {
             } else if (req.uri().startsWith("/form")) {
                 req.setExpectMultipart(true);
                 req.uploadHandler(upload -> {
-                    // FIXME - Potential security exploit! In a real system you must check this filename
-                    // to make sure you're not saving to a place where you don't want!
-                    // Or better still, just use Vert.x-Web which controls the upload area.
                     upload.streamToFileSystem(upload.filename())
                             .onSuccess(v -> req.response().end("Successfully uploaded to " + upload.filename()))
                             .onFailure(err -> req.response().end("Upload failed"));

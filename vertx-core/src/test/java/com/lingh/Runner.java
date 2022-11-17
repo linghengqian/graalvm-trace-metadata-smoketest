@@ -13,6 +13,10 @@ public class Runner {
     private static final String CORE_EXAMPLES_DIR = "core-examples";
     private static final String CORE_EXAMPLES_JAVA_DIR = CORE_EXAMPLES_DIR + "/src/main/java/";
 
+    public static String getCORE_EXAMPLES_JAVA_DIR(){
+        return CORE_EXAMPLES_JAVA_DIR;
+    }
+
     public static void runClusteredExample(Class clazz) {
         runExample(CORE_EXAMPLES_JAVA_DIR, clazz, new VertxOptions(), null, true);
     }

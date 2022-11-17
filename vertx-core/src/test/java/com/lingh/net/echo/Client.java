@@ -8,7 +8,7 @@ import io.vertx.core.net.NetSocket;
 public class Client extends AbstractVerticle {
 
     public static void main(String[] args) {
-        Runner.runExample(Server.class, null);
+        Runner.runExample(Client.class, null);
     }
 
     @Override
