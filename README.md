@@ -16,5 +16,12 @@
 ```shell
 cd ./jjwt-impl/
 ./gradlew -Pagent clean test
-./gradlew metadataCopy --task test --dir src/main/resources/META-INF/native-image/io.jsonwebtoken/jjwt-impl
+./gradlew metadataCopy --task test --dir src/main/resources/META-INF/native-image/io.jsonwebtoken/jjwt-impl/0.11.5
+
+cd /zstd-jni/
+sdk install scala 2.13.10
+./gradlew -Pagent clean test
+./gradlew metadataCopy --task test --dir src/main/resources/META-INF/native-image/com.github.luben/zstd-jni/1.5.2-5
 ```
+
+- According to https://central.sonatype.dev/artifact/com.github.luben/zstd-jni/1.5.2-5/dependencies, `com.github.luben:zstd-jni:1.5.2-5` uses scala 2.13.
