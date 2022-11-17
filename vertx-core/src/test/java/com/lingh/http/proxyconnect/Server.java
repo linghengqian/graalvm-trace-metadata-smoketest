@@ -13,7 +13,7 @@ public class Server extends AbstractVerticle {
     }
 
     @Override
-    public void start() throws Exception {
+    public void start() {
         SelfSignedCertificate certificate = SelfSignedCertificate.create();
         HttpServerOptions serverOptions = new HttpServerOptions()
                 .setSsl(true)

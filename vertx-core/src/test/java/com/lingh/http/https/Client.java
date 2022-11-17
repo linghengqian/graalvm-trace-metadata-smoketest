@@ -13,7 +13,7 @@ public class Client extends AbstractVerticle {
     }
 
     @Override
-    public void start() throws Exception {
+    public void start() {
         HttpClientOptions options = new HttpClientOptions().setSsl(true).setTrustAll(true);
         HttpClient client = vertx.createHttpClient(options);
         client.request(HttpMethod.GET, 4443, "localhost", "/")
@@ -21,8 +21,6 @@ public class Client extends AbstractVerticle {
                         .compose(resp -> {
                             System.out.println("Got response " + resp.statusCode());
                             return resp.body();
-                        })).onSuccess(body -> {
-                    System.out.println("Got data " + body.toString("ISO-8859-1"));
-                }).onFailure(Throwable::printStackTrace);
+                        })).onSuccess(body -> System.out.println("Got data " + body.toString("ISO-8859-1"))).onFailure(Throwable::printStackTrace);
     }
 }

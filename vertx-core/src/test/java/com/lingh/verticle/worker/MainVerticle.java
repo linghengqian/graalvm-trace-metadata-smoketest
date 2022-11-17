@@ -11,17 +11,15 @@ public class MainVerticle extends AbstractVerticle {
     }
 
     @Override
-    public void start() throws Exception {
+    public void start() {
         System.out.println("[Main] Running in " + Thread.currentThread().getName());
         vertx.deployVerticle("io.vertx.example.core.verticle.worker.WorkerVerticle",
                 new DeploymentOptions().setWorker(true));
         vertx.eventBus().request(
                 "sample.data",
                 "hello vert.x",
-                r -> {
-                    System.out.println("[Main] Receiving reply ' " + r.result().body()
-                            + "' in " + Thread.currentThread().getName());
-                }
+                r -> System.out.println("[Main] Receiving reply ' " + r.result().body()
+                        + "' in " + Thread.currentThread().getName())
         );
     }
 }

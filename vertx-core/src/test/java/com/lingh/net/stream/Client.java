@@ -17,16 +17,14 @@ public class Client extends AbstractVerticle {
     }
 
     @Override
-    public void start() throws Exception {
+    public void start() {
         vertx.createNetClient().connect(1234, "localhost", ar -> {
             if (ar.succeeded()) {
                 NetSocket socket = ar.result();
                 BatchStream batchStream = new BatchStream(socket, socket);
                 batchStream.pause();
 
-                batchStream.handler(batch -> {
-                            System.out.println("Client Received : " + batch.getRaw().toString());
-                        }).endHandler(v -> batchStream.end())
+                batchStream.handler(batch -> System.out.println("Client Received : " + batch.getRaw().toString())).endHandler(v -> batchStream.end())
                         .exceptionHandler(t -> {
                             t.printStackTrace();
                             batchStream.end();

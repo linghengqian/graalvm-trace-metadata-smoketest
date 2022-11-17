@@ -12,14 +12,12 @@ public class Client extends AbstractVerticle {
     }
 
     @Override
-    public void start() throws Exception {
+    public void start() {
         vertx.createNetClient().connect(1234, "localhost", res -> {
 
             if (res.succeeded()) {
                 NetSocket socket = res.result();
-                socket.handler(buffer -> {
-                    System.out.println("Net client receiving: " + buffer.toString("UTF-8"));
-                });
+                socket.handler(buffer -> System.out.println("Net client receiving: " + buffer.toString("UTF-8")));
                 for (int i = 0; i < 10; i++) {
                     String str = "hello " + i + "\n";
                     System.out.println("Net client sending: " + str);

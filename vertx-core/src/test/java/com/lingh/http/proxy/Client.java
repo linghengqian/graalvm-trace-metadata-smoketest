@@ -14,7 +14,7 @@ public class Client extends AbstractVerticle {
     }
 
     @Override
-    public void start() throws Exception {
+    public void start() {
         HttpClient client = vertx.createHttpClient();
         client.request(HttpMethod.GET, 8080, "localhost", "/")
                 .compose(request -> {

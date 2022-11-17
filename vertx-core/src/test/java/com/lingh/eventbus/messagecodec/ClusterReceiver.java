@@ -13,12 +13,12 @@ public class ClusterReceiver extends AbstractVerticle {
     }
 
     @Override
-    public void start() throws Exception {
+    public void start() {
         EventBus eventBus = getVertx().eventBus();
         eventBus.registerDefaultCodec(CustomMessage.class, new CustomMessageCodec());
         eventBus.consumer("cluster-message-receiver", message -> {
             CustomMessage customMessage = (CustomMessage) message.body();
-            System.out.println("Custom message received: " + customMessage.getSummary());
+            System.out.println("Custom message received: " + customMessage.summary());
             CustomMessage replyMessage = new CustomMessage(200, "a00000002", "Message sent from cluster receiver!");
             message.reply(replyMessage);
         });

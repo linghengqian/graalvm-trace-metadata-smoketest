@@ -10,7 +10,7 @@ public class Server extends AbstractVerticle {
     }
 
     @Override
-    public void start() throws Exception {
+    public void start() {
         vertx.createHttpServer().webSocketHandler(ws -> ws.handler(ws::writeBinaryMessage)).requestHandler(req -> {
             if (req.uri().equals("/")) req.response().sendFile("ws.html");
         }).listen(8080);

@@ -12,15 +12,13 @@ public class Client extends AbstractVerticle {
     }
 
     @Override
-    public void start() throws Exception {
+    public void start() {
         HttpClient client = vertx.createHttpClient();
         client.request(HttpMethod.GET, 8080, "localhost", "/")
                 .compose(req -> req.send()
                         .compose(resp -> {
                             System.out.println("Got response " + resp.statusCode());
                             return resp.body();
-                        })).onSuccess(body -> {
-                    System.out.println("Got data " + body.toString("ISO-8859-1"));
-                }).onFailure(Throwable::printStackTrace);
+                        })).onSuccess(body -> System.out.println("Got data " + body.toString("ISO-8859-1"))).onFailure(Throwable::printStackTrace);
     }
 }

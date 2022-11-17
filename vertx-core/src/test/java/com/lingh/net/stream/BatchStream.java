@@ -120,19 +120,10 @@ public class BatchStream implements ReadStream<Batch>, WriteStream<Batch> {
                     final char type = (char) buffer.getByte(0);
                     final Buffer payload = buffer.getBuffer(1, buffer.length());
                     switch (type) {
-                        case 'O': {
-                            handler.handle(new Batch(payload.toJsonObject()));
-                            break;
-                        }
-                        case 'A': {
-                            handler.handle(new Batch(payload.toJsonArray()));
-                            break;
-                        }
-                        case 'B': {
-                            handler.handle(new Batch(payload));
-                            break;
-                        }
-                        default: {
+                        case 'O' -> handler.handle(new Batch(payload.toJsonObject()));
+                        case 'A' -> handler.handle(new Batch(payload.toJsonArray()));
+                        case 'B' -> handler.handle(new Batch(payload));
+                        default -> {
                             if (exceptionHandler != null) {
                                 exceptionHandler.handle(new IllegalStateException("Invalid message " + type));
                             }

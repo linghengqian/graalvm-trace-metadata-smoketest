@@ -9,7 +9,7 @@ public class Server extends AbstractVerticle {
     }
 
     @Override
-    public void start() throws Exception {
+    public void start() {
         vertx.createNetServer().connectHandler(socket -> {
             BatchStream batchStream = new BatchStream(socket, socket);
             batchStream.pause();
@@ -18,9 +18,7 @@ public class Server extends AbstractVerticle {
                         batchStream.write(batch);
                         if (batchStream.writeQueueFull()) {
                             batchStream.pause();
-                            batchStream.drainHandler(done -> {
-                                batchStream.resume();
-                            });
+                            batchStream.drainHandler(done -> batchStream.resume());
                         }
                     }).endHandler(v -> batchStream.end())
                     .exceptionHandler(t -> {

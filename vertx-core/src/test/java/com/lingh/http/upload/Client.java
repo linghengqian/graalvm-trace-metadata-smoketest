@@ -15,7 +15,7 @@ public class Client extends AbstractVerticle {
     }
 
     @Override
-    public void start() throws Exception {
+    public void start() {
         HttpClient client = vertx.createHttpClient(new HttpClientOptions());
         client.request(HttpMethod.PUT, 8080, "localhost", "/someurl")
                 .compose(req -> {
@@ -28,8 +28,6 @@ public class Client extends AbstractVerticle {
                         return fs.open(filename, new OpenOptions());
                     }).compose(file -> req.send(file)
                             .map(HttpClientResponse::statusCode));
-                }).onSuccess(statusCode -> {
-                    System.out.println("Response " + statusCode);
-                }).onFailure(Throwable::printStackTrace);
+                }).onSuccess(statusCode -> System.out.println("Response " + statusCode)).onFailure(Throwable::printStackTrace);
     }
 }

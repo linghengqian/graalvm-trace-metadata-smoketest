@@ -26,7 +26,7 @@ public class Server extends AbstractVerticle {
     }
 
     @Override
-    public void start() throws Exception {
+    public void start() {
         vertx.createNetServer().connectHandler(sock -> {
             RecordParser parser = RecordParser.newDelimited("\n", sock);
             parser.endHandler(v -> sock.close())

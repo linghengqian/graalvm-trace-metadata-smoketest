@@ -11,7 +11,7 @@ public class SendFile extends AbstractVerticle {
     }
 
     @Override
-    public void start() throws Exception {
+    public void start() {
         vertx.createHttpServer().requestHandler(req -> {
             String filename = null;
             if (req.path().equals("/")) {

@@ -10,7 +10,7 @@ public class DeployPolyglotExample extends AbstractVerticle {
     }
 
     @Override
-    public void start() throws Exception {
+    public void start() {
         System.out.println("Main verticle has started, let's deploy A JS one...");
         vertx.deployVerticle("jsverticle.js");
     }

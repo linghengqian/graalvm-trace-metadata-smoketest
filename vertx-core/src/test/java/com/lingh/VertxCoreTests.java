@@ -8,9 +8,4 @@ public class VertxCoreTests {
     void test1() {
         Vertx.vertx().createHttpServer().requestHandler(req -> req.response().end("Hello World!")).listen(8080);
     }
-
-    @Test
-    void test2(){
-
-    }
 }

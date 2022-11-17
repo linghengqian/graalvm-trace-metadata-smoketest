@@ -10,7 +10,7 @@ public class DeployExample extends AbstractVerticle {
     }
 
     @Override
-    public void start() throws Exception {
+    public void start() {
         System.out.println("Main verticle has started, let's deploy some others...");
         vertx.deployVerticle("io.vertx.example.core.verticle.asyncstart.OtherVerticle", res -> {
             if (res.succeeded()) {

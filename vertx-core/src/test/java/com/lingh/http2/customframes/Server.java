@@ -16,7 +16,7 @@ public class Server extends AbstractVerticle {
     }
 
     @Override
-    public void start() throws Exception {
+    public void start() {
         HttpServer server = vertx.createHttpServer(new HttpServerOptions().
                         setUseAlpn(true).
                         setSsl(true).

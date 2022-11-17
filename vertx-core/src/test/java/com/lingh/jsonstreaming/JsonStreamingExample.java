@@ -18,7 +18,7 @@ public class JsonStreamingExample extends AbstractVerticle {
     }
 
     @Override
-    public void start() throws Exception {
+    public void start() {
         vertx.fileSystem().open("large.json", new OpenOptions(), ar -> {
             if (ar.succeeded()) {
                 AsyncFile asyncFile = ar.result();

@@ -13,7 +13,7 @@ public class Client extends AbstractVerticle {
     }
 
     @Override
-    public void start() throws Exception {
+    public void start() {
         vertx.setPeriodic(1000, l -> {
             HttpClient client = vertx.createHttpClient();
             client.request(HttpMethod.GET, 8080, "localhost", "/")

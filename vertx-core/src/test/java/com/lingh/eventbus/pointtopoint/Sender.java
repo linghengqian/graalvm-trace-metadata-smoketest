@@ -12,16 +12,14 @@ public class Sender extends AbstractVerticle {
     }
 
     @Override
-    public void start() throws Exception {
+    public void start() {
         EventBus eb = vertx.eventBus();
-        vertx.setPeriodic(1000, v -> {
-            eb.request("ping-address", "ping!", reply -> {
-                if (reply.succeeded()) {
-                    System.out.println("Received reply " + reply.result().body());
-                } else {
-                    System.out.println("No reply");
-                }
-            });
-        });
+        vertx.setPeriodic(1000, v -> eb.request("ping-address", "ping!", reply -> {
+            if (reply.succeeded()) {
+                System.out.println("Received reply " + reply.result().body());
+            } else {
+                System.out.println("No reply");
+            }
+        }));
     }
 }

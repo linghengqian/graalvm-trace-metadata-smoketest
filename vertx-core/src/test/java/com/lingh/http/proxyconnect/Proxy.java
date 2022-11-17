@@ -14,7 +14,7 @@ public class Proxy extends AbstractVerticle {
     }
 
     @Override
-    public void start() throws Exception {
+    public void start() {
         NetClient client = vertx.createNetClient(new NetClientOptions());
         vertx.createHttpServer().requestHandler(req -> {
             if (req.method() == HttpMethod.CONNECT) {

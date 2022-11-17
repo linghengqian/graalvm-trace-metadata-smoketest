@@ -14,18 +14,16 @@ public class Server extends AbstractVerticle {
     }
 
     @Override
-    public void start() throws Exception {
+    public void start() {
         HttpServer server =
                 vertx.createHttpServer(new HttpServerOptions().
                         setUseAlpn(true).
                         setSsl(true).
                         setPemKeyCertOptions(new PemKeyCertOptions().setKeyPath("server-key.pem").setCertPath("server-cert.pem")
                         ));
-        server.requestHandler(req -> {
-            req.response().putHeader("content-type", "text/html").end("<html><body>" +
-                    "<h1>Hello from vert.x!</h1>" +
-                    "<p>version = " + req.version() + "</p>" +
-                    "</body></html>");
-        }).listen(8443);
+        server.requestHandler(req -> req.response().putHeader("content-type", "text/html").end("<html><body>" +
+                "<h1>Hello from vert.x!</h1>" +
+                "<p>version = " + req.version() + "</p>" +
+                "</body></html>")).listen(8443);
     }
 }

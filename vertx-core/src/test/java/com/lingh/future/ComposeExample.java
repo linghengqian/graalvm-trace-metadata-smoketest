@@ -5,15 +5,13 @@ import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Future;
 import io.vertx.core.Promise;
 
-import java.util.function.Function;
-
 public class ComposeExample extends AbstractVerticle {
     public static void main(String[] args) {
         Runner.runExample(ComposeExample.class);
     }
 
     @Override
-    public void start() throws Exception {
+    public void start() {
         Future<String> future = anAsyncAction();
         future.compose(this::anotherAsyncAction)
                 .onComplete(ar -> {

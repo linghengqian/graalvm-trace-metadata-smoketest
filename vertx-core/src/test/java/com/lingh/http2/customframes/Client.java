@@ -15,7 +15,7 @@ public class Client extends AbstractVerticle {
     }
 
     @Override
-    public void start() throws Exception {
+    public void start() {
         HttpClientOptions options = new HttpClientOptions().
                 setSsl(true).
                 setUseAlpn(true).
@@ -24,17 +24,11 @@ public class Client extends AbstractVerticle {
         HttpClient client = vertx.createHttpClient(options);
         client.request(HttpMethod.GET, 8443, "localhost", "/")
                 .onSuccess(request -> {
-                    request.response().onSuccess(resp -> {
-                        resp.customFrameHandler(frame -> {
-                            System.out.println("Got frame from server " + frame.payload().toString("UTF-8"));
-                        });
-                    });
-                    request.sendHead().onSuccess(v -> {
-                        vertx.setPeriodic(1000, timerID -> {
-                            System.out.println("Sending ping frame to server");
-                            request.writeCustomFrame(10, 0, Buffer.buffer("ping"));
-                        });
-                    });
+                    request.response().onSuccess(resp -> resp.customFrameHandler(frame -> System.out.println("Got frame from server " + frame.payload().toString("UTF-8"))));
+                    request.sendHead().onSuccess(v -> vertx.setPeriodic(1000, timerID -> {
+                        System.out.println("Sending ping frame to server");
+                        request.writeCustomFrame(10, 0, Buffer.buffer("ping"));
+                    }));
                 });
     }
 }

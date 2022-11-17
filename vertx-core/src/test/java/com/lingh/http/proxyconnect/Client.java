@@ -15,7 +15,7 @@ public class Client extends AbstractVerticle {
     }
 
     @Override
-    public void start() throws Exception {
+    public void start() {
         HttpClientOptions options = new HttpClientOptions()
                 .setSsl(true)
                 .setTrustAll(true)

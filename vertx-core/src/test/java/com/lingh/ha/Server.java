@@ -12,7 +12,7 @@ public class Server extends AbstractVerticle {
     }
 
     @Override
-    public void start() throws Exception {
+    public void start() {
         vertx.createHttpServer().requestHandler(req -> {
             final String name = ManagementFactory.getRuntimeMXBean().getName();
             req.response().end("Happily served by " + name);

@@ -13,7 +13,7 @@ public class Proxy extends AbstractVerticle {
     }
 
     @Override
-    public void start() throws Exception {
+    public void start() {
         HttpClient client = vertx.createHttpClient(new HttpClientOptions());
         vertx.createHttpServer().requestHandler(serverRequest -> {
             System.out.println("Proxying request: " + serverRequest.uri());

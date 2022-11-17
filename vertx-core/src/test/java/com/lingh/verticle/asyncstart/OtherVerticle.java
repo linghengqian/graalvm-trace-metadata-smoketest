@@ -6,7 +6,7 @@ import io.vertx.core.Promise;
 public class OtherVerticle extends AbstractVerticle {
 
     @Override
-    public void start(Promise<Void> startPromise) throws Exception {
+    public void start(Promise<Void> startPromise) {
         System.out.println("In OtherVerticle.start (async)");
         vertx.setTimer(2000, tid -> {
             System.out.println("Startup tasks are now complete, OtherVerticle is now started!");
@@ -15,7 +15,7 @@ public class OtherVerticle extends AbstractVerticle {
     }
 
     @Override
-    public void stop(Promise<Void> stopPromise) throws Exception {
+    public void stop(Promise<Void> stopPromise) {
         vertx.setTimer(2000, tid -> {
             System.out.println("Cleanup tasks are now complete, OtherVerticle is now stopped!");
             stopPromise.complete();

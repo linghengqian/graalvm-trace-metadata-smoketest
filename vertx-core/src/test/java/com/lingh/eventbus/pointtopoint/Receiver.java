@@ -12,7 +12,7 @@ public class Receiver extends AbstractVerticle {
     }
 
     @Override
-    public void start() throws Exception {
+    public void start() {
         EventBus eb = vertx.eventBus();
         eb.consumer("ping-address", message -> {
             System.out.println("Received message: " + message.body());

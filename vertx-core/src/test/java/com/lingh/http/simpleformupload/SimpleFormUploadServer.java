@@ -9,7 +9,7 @@ public class SimpleFormUploadServer extends AbstractVerticle {
     }
 
     @Override
-    public void start() throws Exception {
+    public void start() {
         vertx.createHttpServer().requestHandler(req -> {
             if (req.uri().equals("/")) {
                 req.response().sendFile("index.html");

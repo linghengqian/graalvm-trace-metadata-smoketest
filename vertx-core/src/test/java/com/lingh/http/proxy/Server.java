@@ -10,7 +10,7 @@ public class Server extends AbstractVerticle {
     }
 
     @Override
-    public void start() throws Exception {
+    public void start() {
 
         vertx.createHttpServer().requestHandler(req -> {
             System.out.println("Got request " + req.uri());

@@ -8,7 +8,7 @@ import io.vertx.core.AbstractVerticle;
 public class WorkerVerticle extends AbstractVerticle {
 
     @Override
-    public void start() throws Exception {
+    public void start() {
         System.out.println("[Worker] Starting in " + Thread.currentThread().getName());
         vertx.eventBus().<String>consumer("sample.data", message -> {
             System.out.println("[Worker] Consuming data in " + Thread.currentThread().getName());

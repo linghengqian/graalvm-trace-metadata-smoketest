@@ -11,7 +11,7 @@ public class Receiver extends AbstractVerticle {
     }
 
     @Override
-    public void start() throws Exception {
+    public void start() {
         EventBus eb = vertx.eventBus();
         eb.consumer("news-feed", message -> System.out.println("Received news on consumer 1: " + message.body()));
         eb.consumer("news-feed", message -> System.out.println("Received news on consumer 2: " + message.body()));

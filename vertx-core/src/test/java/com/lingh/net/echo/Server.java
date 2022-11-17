@@ -12,10 +12,8 @@ public class Server extends AbstractVerticle {
     }
 
     @Override
-    public void start() throws Exception {
-        vertx.createNetServer().connectHandler(sock -> {
-            Pump.pump(sock, sock).start();
-        }).listen(1234);
+    public void start() {
+        vertx.createNetServer().connectHandler(sock -> Pump.pump(sock, sock).start()).listen(1234);
         System.out.println("Echo server is now listening");
 
     }

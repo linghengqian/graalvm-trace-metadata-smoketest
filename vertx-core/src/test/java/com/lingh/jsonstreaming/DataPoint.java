@@ -3,10 +3,7 @@ package com.lingh.jsonstreaming;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class DataPoint {
-
-    private final long timestamp;
-    private final double value;
+public record DataPoint(long timestamp, double value) {
 
     @JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
     public DataPoint(@JsonProperty("ts") long timestamp, @JsonProperty("val") double value) {
@@ -14,13 +11,15 @@ public class DataPoint {
         this.value = value;
     }
 
+    @Override
     @JsonProperty("ts")
-    public long getTimestamp() {
+    public long timestamp() {
         return timestamp;
     }
 
+    @Override
     @JsonProperty("val")
-    public double getValue() {
+    public double value() {
         return value;
     }
 

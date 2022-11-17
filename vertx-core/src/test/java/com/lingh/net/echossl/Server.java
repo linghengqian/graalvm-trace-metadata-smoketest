@@ -13,15 +13,10 @@ public class Server extends AbstractVerticle {
     }
 
     @Override
-    public void start() throws Exception {
-
+    public void start() {
         NetServerOptions options = new NetServerOptions()
                 .setSsl(true).setKeyStoreOptions(new JksOptions().setPath("server-keystore.jks").setPassword("wibble"));
-
-        vertx.createNetServer(options).connectHandler(sock -> {
-            Pump.pump(sock, sock).start();
-        }).listen(1234);
-
+        vertx.createNetServer(options).connectHandler(sock -> Pump.pump(sock, sock).start()).listen(1234);
         System.out.println("Echo server is now listening");
     }
 }
