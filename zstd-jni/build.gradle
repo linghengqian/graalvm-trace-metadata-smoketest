@@ -1,5 +1,6 @@
 plugins {
     id 'scala'
+    id 'org.graalvm.buildtools.native' version '0.9.17'
 }
 
 group 'com.lingh'
@@ -19,4 +20,20 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+graalvmNative {
+    agent {
+        defaultMode = "conditional"
+        modes {
+            conditional {
+                userCodeFilterPath = "user-code-filter.json"
+            }
+        }
+        metadataCopy {
+            mergeWithExisting = true
+            inputTaskNames.add("test")
+            outputDirectories.add("src/main/resources/META-INF/native-image/com.github.luben/zstd-jni/1.5.2-5")
+        }
+    }
 }
