@@ -5,7 +5,7 @@ import io.vertx.core.AbstractVerticle;
 
 public class SimpleFormUploadServer extends AbstractVerticle {
     public static void main(String[] args) {
-        Runner.runExample(SimpleFormUploadServer.class);
+        Runner.runExample(SimpleFormUploadServer.class, null);
     }
 
     @Override

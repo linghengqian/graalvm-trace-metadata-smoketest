@@ -10,7 +10,7 @@ import io.vertx.core.net.NetSocket;
 public class Proxy extends AbstractVerticle {
 
     public static void main(String[] args) {
-        Runner.runExample(Proxy.class);
+        Runner.runExample(Proxy.class, null);
     }
 
     @Override

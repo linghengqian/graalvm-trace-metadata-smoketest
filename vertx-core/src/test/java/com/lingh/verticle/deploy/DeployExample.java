@@ -10,7 +10,7 @@ public class DeployExample extends AbstractVerticle {
 
 
     public static void main(String[] args) {
-        Runner.runExample(DeployExample.class);
+        Runner.runExample(DeployExample.class, null);
     }
 
     @Override

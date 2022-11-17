@@ -12,16 +12,16 @@ import io.vertx.core.net.PemKeyCertOptions;
 public class Server extends AbstractVerticle {
 
     public static void main(String[] args) {
-        Runner.runExample(Server.class);
+        Runner.runExample(Server.class, null);
     }
 
     @Override
     public void start() {
         HttpServer server = vertx.createHttpServer(new HttpServerOptions().
-                        setUseAlpn(true).
-                        setSsl(true).
-                        setPemKeyCertOptions(new PemKeyCertOptions().setKeyPath("server-key.pem").setCertPath("server-cert.pem")
-                        ));
+                setUseAlpn(true).
+                setSsl(true).
+                setPemKeyCertOptions(new PemKeyCertOptions().setKeyPath("server-key.pem").setCertPath("server-cert.pem")
+                ));
         server.requestHandler(req -> {
             HttpServerResponse resp = req.response();
             req.customFrameHandler(frame -> {

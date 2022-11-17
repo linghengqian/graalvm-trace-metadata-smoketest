@@ -8,22 +8,22 @@ import io.vertx.core.http.HttpVersion;
 
 public class Client extends AbstractVerticle {
 
-  @Override
-  public void start() {
+    @Override
+    public void start() {
 
 
-    HttpClientOptions options = new HttpClientOptions().
-      setSsl(true).
-      setUseAlpn(true).
-      setProtocolVersion(HttpVersion.HTTP_2).
-      setTrustAll(true);
+        HttpClientOptions options = new HttpClientOptions().
+                setSsl(true).
+                setUseAlpn(true).
+                setProtocolVersion(HttpVersion.HTTP_2).
+                setTrustAll(true);
 
-    HttpClient client = vertx.createHttpClient(options);
-    client.request(HttpMethod.GET, 8080, "localhost", "/")
-      .compose(req -> req.send()
-        .compose(resp -> {
-          System.out.println("Got response " + resp.statusCode());
-          return resp.body();
-        })).onSuccess(body -> System.out.println("Got data " + body.toString("ISO-8859-1"))).onFailure(Throwable::printStackTrace);
-  }
+        HttpClient client = vertx.createHttpClient(options);
+        client.request(HttpMethod.GET, 8080, "localhost", "/")
+                .compose(req -> req.send()
+                        .compose(resp -> {
+                            System.out.println("Got response " + resp.statusCode());
+                            return resp.body();
+                        })).onSuccess(body -> System.out.println("Got data " + body.toString("ISO-8859-1"))).onFailure(Throwable::printStackTrace);
+    }
 }

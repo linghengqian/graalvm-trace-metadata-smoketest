@@ -12,7 +12,7 @@ public class Server extends AbstractVerticle {
 
 
     public static void main(String[] args) {
-        Runner.runExample(Server.class);
+        Runner.runExample(Server.class, null);
     }
 
     @Override

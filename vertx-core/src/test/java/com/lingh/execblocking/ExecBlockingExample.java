@@ -6,7 +6,7 @@ import io.vertx.core.AbstractVerticle;
 public class ExecBlockingExample extends AbstractVerticle {
 
     public static void main(String[] args) {
-        Runner.runExample(ExecBlockingExample.class);
+        Runner.runExample(ExecBlockingExample.class, null);
     }
 
     @Override

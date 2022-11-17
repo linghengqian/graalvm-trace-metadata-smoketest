@@ -26,7 +26,7 @@ import java.util.stream.Stream;
 public class Client extends AbstractVerticle {
 
     public static void main(String[] args) {
-        Runner.runExample(Client.class);
+        Runner.runExample(Server.class, null);
     }
 
     @Override

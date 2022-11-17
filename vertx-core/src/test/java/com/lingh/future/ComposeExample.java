@@ -7,7 +7,7 @@ import io.vertx.core.Promise;
 
 public class ComposeExample extends AbstractVerticle {
     public static void main(String[] args) {
-        Runner.runExample(ComposeExample.class);
+        Runner.runExample(ComposeExample.class, null);
     }
 
     @Override

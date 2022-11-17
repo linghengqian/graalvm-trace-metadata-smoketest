@@ -6,7 +6,7 @@ import io.vertx.core.AbstractVerticle;
 public class SimpleFormServer extends AbstractVerticle {
 
     public static void main(String[] args) {
-        Runner.runExample(SimpleFormServer.class);
+        Runner.runExample(SimpleFormServer.class, null);
     }
 
     @Override

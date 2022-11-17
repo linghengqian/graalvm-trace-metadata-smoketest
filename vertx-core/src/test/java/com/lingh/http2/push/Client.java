@@ -7,7 +7,7 @@ import io.vertx.core.http.*;
 public class Client extends AbstractVerticle {
 
     public static void main(String[] args) {
-        Runner.runExample(Client.class);
+        Runner.runExample(Server.class, null);
     }
 
     @Override

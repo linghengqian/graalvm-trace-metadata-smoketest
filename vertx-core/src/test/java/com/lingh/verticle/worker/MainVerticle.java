@@ -7,7 +7,7 @@ import io.vertx.core.DeploymentOptions;
 public class MainVerticle extends AbstractVerticle {
 
     public static void main(String[] args) {
-        Runner.runExample(MainVerticle.class);
+        Runner.runExample(MainVerticle.class, null);
     }
 
     @Override

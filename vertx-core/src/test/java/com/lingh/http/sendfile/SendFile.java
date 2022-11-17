@@ -7,7 +7,7 @@ import io.vertx.core.AbstractVerticle;
 public class SendFile extends AbstractVerticle {
 
     public static void main(String[] args) {
-        Runner.runExample(SendFile.class);
+        Runner.runExample(SendFile.class, null);
     }
 
     @Override

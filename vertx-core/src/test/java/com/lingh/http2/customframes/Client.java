@@ -11,7 +11,7 @@ import io.vertx.core.http.HttpVersion;
 public class Client extends AbstractVerticle {
 
     public static void main(String[] args) {
-        Runner.runExample(Client.class);
+        Runner.runExample(Client.class, null);
     }
 
     @Override

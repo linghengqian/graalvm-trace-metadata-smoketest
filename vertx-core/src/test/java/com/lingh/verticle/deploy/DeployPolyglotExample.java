@@ -6,7 +6,7 @@ import io.vertx.core.AbstractVerticle;
 public class DeployPolyglotExample extends AbstractVerticle {
 
     public static void main(String[] args) {
-        Runner.runExample(DeployPolyglotExample.class);
+        Runner.runExample(DeployPolyglotExample.class, null);
     }
 
     @Override

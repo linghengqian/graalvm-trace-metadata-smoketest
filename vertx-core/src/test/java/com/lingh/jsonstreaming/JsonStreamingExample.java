@@ -14,7 +14,7 @@ import static io.vertx.core.parsetools.JsonEventType.VALUE;
 public class JsonStreamingExample extends AbstractVerticle {
 
     public static void main(String[] args) {
-        Runner.runExample(JsonStreamingExample.class);
+        Runner.runExample(JsonStreamingExample.class, null);
     }
 
     @Override
