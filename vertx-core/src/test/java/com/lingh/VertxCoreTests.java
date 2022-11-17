@@ -1,6 +1,5 @@
 package com.lingh;
 
-import com.lingh.eventbus.ssl.Receiver;
 import com.lingh.http.sendfile.SendFile;
 import com.lingh.http.simpleform.SimpleFormServer;
 import com.lingh.http.simpleformupload.SimpleFormUploadServer;
