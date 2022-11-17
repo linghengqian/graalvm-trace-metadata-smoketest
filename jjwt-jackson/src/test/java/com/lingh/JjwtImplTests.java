@@ -48,16 +48,16 @@ public class JjwtImplTests {
                 .signWith(firstKey, SignatureAlgorithm.HS256)
                 .compressWith(CompressionCodecs.GZIP)
                 .compact();
-        JwtParserBuilder jwtParserBuilder = Jwts.parserBuilder().setAllowedClockSkewSeconds(3 * 60);
-        assert jwtParserBuilder.setSigningKey(firstKey).build().parseClaimsJws(firstCompactJws).getBody().getSubject().equals("Joe");
-        jwtParserBuilder.requireSubject("Joe").setSigningKey(firstKey).build().parseClaimsJws(firstCompactJws);
-        jwtParserBuilder.requireIssuer("Aaron").setSigningKey(firstKey).build().parseClaimsJws(firstCompactJws);
-        jwtParserBuilder.requireAudience("Abel").setSigningKey(firstKey).build().parseClaimsJws(firstCompactJws);
-        jwtParserBuilder.requireExpiration(secondDate).setSigningKey(firstKey).build().parseClaimsJws(firstCompactJws);
-        jwtParserBuilder.requireNotBefore(firstDate).setSigningKey(firstKey).build().parseClaimsJws(firstCompactJws);
-        jwtParserBuilder.requireIssuedAt(firstDate).setSigningKey(firstKey).build().parseClaimsJws(firstCompactJws);
-        jwtParserBuilder.requireId(uuidString).setSigningKey(firstKey).build().parseClaimsJws(firstCompactJws);
-        jwtParserBuilder.require("exampleClaim", "Adam").setSigningKey(firstKey).build().parseClaimsJws(firstCompactJws);
+        JwtParserBuilder jwtParserBuilder = Jwts.parserBuilder().setAllowedClockSkewSeconds(3 * 60).setSigningKey(firstKey);
+        assert jwtParserBuilder.build().parseClaimsJws(firstCompactJws).getBody().getSubject().equals("Joe");
+        jwtParserBuilder.requireSubject("Joe").build().parseClaimsJws(firstCompactJws);
+        jwtParserBuilder.requireIssuer("Aaron").build().parseClaimsJws(firstCompactJws);
+        jwtParserBuilder.requireAudience("Abel").build().parseClaimsJws(firstCompactJws);
+        jwtParserBuilder.requireExpiration(secondDate).build().parseClaimsJws(firstCompactJws);
+        jwtParserBuilder.requireNotBefore(firstDate).build().parseClaimsJws(firstCompactJws);
+        jwtParserBuilder.requireIssuedAt(firstDate).build().parseClaimsJws(firstCompactJws);
+        jwtParserBuilder.requireId(uuidString).build().parseClaimsJws(firstCompactJws);
+        jwtParserBuilder.require("exampleClaim", "Adam").build().parseClaimsJws(firstCompactJws);
     }
 
     @Test
