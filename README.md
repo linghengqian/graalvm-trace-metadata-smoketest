@@ -11,3 +11,10 @@
 - `org.apache.skywalking:java-agent:8.13.0`, at https://github.com/apache/skywalking/discussions/7640 .
 - `org.ehcache:ehcache:3.10.4`, at https://github.com/ehcache/ehcache3/issues/2992 .
 - `io.vertx:vertx-core:4.3.3`( Or `io.vertx:vertx-core:4.3.4` ?) ,at https://github.com/netty/netty/issues/11369 .
+
+# start demo
+```shell
+cd ./jjwt-impl/
+./gradlew -Pagent clean test
+./gradlew metadataCopy --task test --dir src/main/resources/META-INF/native-image/io.jsonwebtoken/jjwt-impl
+```

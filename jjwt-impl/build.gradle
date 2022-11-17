@@ -25,14 +25,6 @@ test {
 }
 
 graalvmNative {
-    binaries {
-        main {
-            javaLauncher = javaToolchains.launcherFor {
-                languageVersion = JavaLanguageVersion.of(17)
-                vendor = JvmVendorSpec.matching("GraalVM Community")
-            }
-        }
-    }
     agent {
         defaultMode = "conditional"
         modes {

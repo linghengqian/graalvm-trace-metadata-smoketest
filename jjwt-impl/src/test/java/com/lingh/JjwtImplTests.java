@@ -61,7 +61,7 @@ public class JjwtImplTests {
     }
 
     @Test
-    void testCompression(){
+    void testCompression() {
         SecretKey firstKey = Keys.secretKeyFor(SignatureAlgorithm.HS256);
         String firstCompactJws = Jwts.builder().setSubject("Joe").signWith(firstKey).compressWith(CompressionCodecs.DEFLATE).compact();
         assert Jwts.parserBuilder().setSigningKey(firstKey).build().parseClaimsJws(firstCompactJws).getBody().getSubject().equals("Joe");
@@ -69,6 +69,4 @@ public class JjwtImplTests {
         String secondCompactJws = Jwts.builder().setSubject("Joe").signWith(secondKey).compressWith(CompressionCodecs.GZIP).compact();
         assert Jwts.parserBuilder().setSigningKey(secondKey).build().parseClaimsJws(secondCompactJws).getBody().getSubject().equals("Joe");
     }
-
-
 }
