@@ -27,6 +27,18 @@ cd ./jjwt-jackson/
 ```
 
 ```shell
+cd ./jjwt-gson/
+./gradlew -Pagent clean test
+./gradlew metadataCopy --task test --dir src/main/resources/META-INF/native-image/io.jsonwebtoken/jjwt-gson/0.11.5
+```
+
+```shell
+cd ./jjwt-orgjson/
+./gradlew -Pagent clean test
+./gradlew metadataCopy --task test --dir src/main/resources/META-INF/native-image/io.jsonwebtoken/jjwt-orgjson/0.11.5
+```
+
+```shell
 cd ./zstd-jni/
 sdk install scala 2.13.10
 ./gradlew -Pagent clean test
