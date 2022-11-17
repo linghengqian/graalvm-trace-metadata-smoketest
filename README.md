@@ -10,6 +10,7 @@
 - `io.jsonwebtoken:jjwt-impl:0.11.5`, at https://github.com/jwtk/jjwt/issues/637 .
 - `io.jsonwebtoken:jjwt-jackson:0.11.5`, at https://github.com/jwtk/jjwt/issues/637 .
 - `io.jsonwebtoken:jjwt-gson:0.11.5`, at https://github.com/jwtk/jjwt/issues/637 .
+- `io.jsonwebtoken:jjwt-orgjson:0.11.5`, at https://github.com/jwtk/jjwt/issues/637 .
 - `org.apache.skywalking:java-agent:8.13.0`, at https://github.com/apache/skywalking/discussions/7640 .
 - `org.ehcache:ehcache:3.10.4`, at https://github.com/ehcache/ehcache3/issues/2992 .
 - `io.vertx:vertx-core:4.3.3`( Or `io.vertx:vertx-core:4.3.4` ?) ,at https://github.com/netty/netty/issues/11369 .
