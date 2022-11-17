@@ -51,3 +51,9 @@ sdk install scala 2.13.10
 - According to https://central.sonatype.dev/artifact/com.github.luben/zstd-jni/1.5.2-5/dependencies
   , `com.github.luben:zstd-jni:1.5.2-5` uses scala 2.13.
 - A weird test issue with `ZstdSpec.scala` I added a TODO.
+
+```shell
+cd ./vertx-core/
+./gradlew -Pagent clean test
+./gradlew metadataCopy --task test --dir src/main/resources/META-INF/native-image/io.vertx/vertx-core/4.3.4
+```
