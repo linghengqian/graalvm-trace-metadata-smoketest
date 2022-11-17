@@ -15,6 +15,9 @@ import java.util.Date;
 import java.util.UUID;
 import java.util.stream.Stream;
 
+/**
+ * @author linghengqian
+ */
 public class JjwtImplTests {
     @Test
     void testSignedJWTs() {
