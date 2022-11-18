@@ -1,9 +1,6 @@
 package com.lingh;
 
-import io.jsonwebtoken.CompressionCodecs;
-import io.jsonwebtoken.JwtParserBuilder;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.io.Encoders;
 import io.jsonwebtoken.security.Keys;
@@ -14,21 +11,23 @@ import java.util.Date;
 import java.util.UUID;
 import java.util.stream.Stream;
 
-/**
- * @author linghengqian
- */
-public class JjwtImplTests {
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+
+public class JjwtGsonTest {
     @Test
     void testSignedJWTs() {
         SecretKey firstKey = Keys.secretKeyFor(SignatureAlgorithm.HS256);
-        assert Jwts.parserBuilder().setSigningKey(firstKey).build().parseClaimsJws(
-                Jwts.builder().setSubject("Joe").signWith(firstKey).compact()
-        ).getBody().getSubject().equals("Joe");
         String secretString = Encoders.BASE64.encode(firstKey.getEncoded());
         SecretKey secondKey = Keys.hmacShaKeyFor(Decoders.BASE64.decode(secretString));
-        assert Jwts.parserBuilder().setSigningKey(secondKey).build().parseClaimsJws(
+        assertThat(Jwts.parserBuilder().setSigningKey(firstKey).build().parseClaimsJws(
+                Jwts.builder().setSubject("Joe").signWith(firstKey).compact()
+        ).getBody().getSubject()).isEqualTo("Joe");
+        assertThat(Jwts.parserBuilder().setSigningKey(secondKey).build().parseClaimsJws(
                 Jwts.builder().setSubject("Joe").signWith(secondKey).compact()
-        ).getBody().getSubject().equals("Joe");
+        ).getBody().getSubject()).isEqualTo("Joe");
     }
 
     @Test
@@ -51,15 +50,16 @@ public class JjwtImplTests {
                 .compressWith(CompressionCodecs.GZIP)
                 .compact();
         JwtParserBuilder jwtParserBuilder = Jwts.parserBuilder().setAllowedClockSkewSeconds(3 * 60).setSigningKey(firstKey);
-        assert jwtParserBuilder.build().parseClaimsJws(firstCompactJws).getBody().getSubject().equals("Joe");
-        jwtParserBuilder.requireSubject("Joe").build().parseClaimsJws(firstCompactJws);
-        jwtParserBuilder.requireIssuer("Aaron").build().parseClaimsJws(firstCompactJws);
-        jwtParserBuilder.requireAudience("Abel").build().parseClaimsJws(firstCompactJws);
-        jwtParserBuilder.requireExpiration(secondDate).build().parseClaimsJws(firstCompactJws);
-        jwtParserBuilder.requireNotBefore(firstDate).build().parseClaimsJws(firstCompactJws);
-        jwtParserBuilder.requireIssuedAt(firstDate).build().parseClaimsJws(firstCompactJws);
-        jwtParserBuilder.requireId(uuidString).build().parseClaimsJws(firstCompactJws);
-        jwtParserBuilder.require("exampleClaim", "Adam").build().parseClaimsJws(firstCompactJws);
+        assertThat(jwtParserBuilder.build().parseClaimsJws(firstCompactJws).getBody().getSubject()).isEqualTo("Joe");
+        assertDoesNotThrow(() -> jwtParserBuilder.requireSubject("Joe").build().parseClaimsJws(firstCompactJws));
+        assertDoesNotThrow(() -> jwtParserBuilder.requireIssuer("Aaron").build().parseClaimsJws(firstCompactJws));
+        assertDoesNotThrow(() -> jwtParserBuilder.requireAudience("Abel").build().parseClaimsJws(firstCompactJws));
+        // This is an error caused by GSON's own parsing
+        assertThrows(IncorrectClaimException.class, () -> jwtParserBuilder.requireExpiration(secondDate).build().parseClaimsJws(firstCompactJws));
+        assertThrows(IncorrectClaimException.class, () -> jwtParserBuilder.requireNotBefore(firstDate).build().parseClaimsJws(firstCompactJws));
+        assertThrows(IncorrectClaimException.class, () -> jwtParserBuilder.requireIssuedAt(firstDate).build().parseClaimsJws(firstCompactJws));
+        assertThrows(IncorrectClaimException.class, () -> jwtParserBuilder.requireId(uuidString).build().parseClaimsJws(firstCompactJws));
+        assertThrows(IncorrectClaimException.class, () -> jwtParserBuilder.require("exampleClaim", "Adam").build().parseClaimsJws(firstCompactJws));
     }
 
     @Test
@@ -77,19 +77,15 @@ public class JjwtImplTests {
     void testSignatureAlgorithms() {
         Stream.of(SignatureAlgorithm.HS256, SignatureAlgorithm.HS384, SignatureAlgorithm.HS512)
                 .map(Keys::secretKeyFor)
-                .forEach(secretKey -> {
-                    assert Jwts.parserBuilder().setSigningKey(secretKey).build().parseClaimsJws(
-                            Jwts.builder().setSubject("Joe").signWith(secretKey).compact()
-                    ).getBody().getSubject().equals("Joe");
-                });
+                .forEach(secretKey -> assertThat(Jwts.parserBuilder().setSigningKey(secretKey).build().parseClaimsJws(
+                        Jwts.builder().setSubject("Joe").signWith(secretKey).compact()
+                ).getBody().getSubject()).isEqualTo("Joe"));
         Stream.of(SignatureAlgorithm.ES256, SignatureAlgorithm.ES384, SignatureAlgorithm.ES512,
                         SignatureAlgorithm.RS256, SignatureAlgorithm.RS384, SignatureAlgorithm.RS512,
                         SignatureAlgorithm.PS256, SignatureAlgorithm.PS384, SignatureAlgorithm.PS512)
                 .map(Keys::keyPairFor)
-                .forEach(keyPair -> {
-                    assert Jwts.parserBuilder().setSigningKey(keyPair.getPublic()).build().parseClaimsJws(
-                            Jwts.builder().setSubject("Joe").signWith(keyPair.getPrivate()).compact()
-                    ).getBody().getSubject().equals("Joe");
-                });
+                .forEach(keyPair -> assertThat(Jwts.parserBuilder().setSigningKey(keyPair.getPublic()).build().parseClaimsJws(
+                        Jwts.builder().setSubject("Joe").signWith(keyPair.getPrivate()).compact()
+                ).getBody().getSubject()).isEqualTo("Joe"));
     }
 }

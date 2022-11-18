@@ -17,6 +17,7 @@ dependencies {
     testImplementation 'com.fasterxml.jackson.core:jackson-annotations:2.11.3'
     testImplementation 'io.netty:netty-tcnative-boringssl-static:2.0.34.Final'
     testImplementation 'io.vertx:vertx-hazelcast:4.3.4'
+    testImplementation 'org.assertj:assertj-core:3.22.0'
 }
 
 test {
