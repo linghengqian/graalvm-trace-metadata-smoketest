@@ -17,6 +17,8 @@
 
 # start demo
 
+- In Windows 11, IntelliJ IDEA Snapcraft Version under WSLg.
+
 ```shell
 sdk use java 22.3.r17-grl
 gu install native-image
@@ -26,7 +28,7 @@ sudo apt-get install build-essential libz-dev zlib1g-dev -y
 ```shell
 cd ./jjwt-impl/
 ./gradlew -Pagent clean test
-./gradlew metadataCopy --task test --dir src/main/resources/META-INF/native-image/io.jsonwebtoken/jjwt-impl/0.11.5
+./gradlew metadataCopy --task test --dir src/test/resources/META-INF/native-image/io.jsonwebtoken/jjwt-impl
 ```
 
 ```shell
@@ -38,7 +40,7 @@ cd ./jjwt-jackson/
 ```shell
 cd ./jjwt-gson/
 ./gradlew -Pagent clean test
-./gradlew metadataCopy --task test --dir src/main/resources/META-INF/native-image/io.jsonwebtoken/jjwt-gson/0.11.5
+./gradlew metadataCopy --task test --dir src/test/resources/META-INF/native-image/io.jsonwebtoken/jjwt-gson
 ```
 
 ```shell

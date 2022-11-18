@@ -30,16 +30,6 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "condition":{"typeReachable":"io.jsonwebtoken.gson.io.GsonSerializer"},
-  "name":"io.jsonwebtoken.impl.DefaultClaims",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"io.jsonwebtoken.gson.io.GsonSerializer"},
-  "name":"io.jsonwebtoken.impl.DefaultJwsHeader",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
   "condition":{"typeReachable":"io.jsonwebtoken.impl.DefaultJwtBuilder"},
   "name":"io.jsonwebtoken.impl.DefaultJwsHeader",
   "methods":[{"name":"<init>","parameterTypes":[] }]
