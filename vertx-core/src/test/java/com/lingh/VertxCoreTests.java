@@ -10,6 +10,7 @@ import io.vertx.core.net.JksOptions;
 import org.junit.jupiter.api.Test;
 
 public class VertxCoreTests {
+
     @Test
     void testEmbedding() {
         Vertx.vertx().createHttpServer().requestHandler(req -> req.response().end("Hello World!")).listen(8080);
