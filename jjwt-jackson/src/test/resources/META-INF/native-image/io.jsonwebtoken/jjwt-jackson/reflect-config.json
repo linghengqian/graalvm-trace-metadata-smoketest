@@ -35,22 +35,7 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "condition":{"typeReachable":"io.jsonwebtoken.jackson.io.JacksonSerializer"},
-  "name":"io.jsonwebtoken.Claims",
-  "queryAllDeclaredMethods":true
-},
-{
-  "condition":{"typeReachable":"io.jsonwebtoken.jackson.io.JacksonSerializer"},
-  "name":"io.jsonwebtoken.ClaimsMutator",
-  "queryAllDeclaredMethods":true
-},
-{
   "condition":{"typeReachable":"io.jsonwebtoken.impl.DefaultJwtBuilder"},
-  "name":"io.jsonwebtoken.Header",
-  "queryAllDeclaredMethods":true
-},
-{
-  "condition":{"typeReachable":"io.jsonwebtoken.jackson.io.JacksonSerializer"},
   "name":"io.jsonwebtoken.Header",
   "queryAllDeclaredMethods":true
 },
@@ -60,38 +45,13 @@
   "queryAllDeclaredMethods":true
 },
 {
-  "condition":{"typeReachable":"io.jsonwebtoken.jackson.io.JacksonSerializer"},
-  "name":"io.jsonwebtoken.JwsHeader",
-  "queryAllDeclaredMethods":true
-},
-{
-  "condition":{"typeReachable":"io.jsonwebtoken.jackson.io.JacksonSerializer"},
-  "name":"io.jsonwebtoken.impl.DefaultClaims",
-  "allDeclaredFields":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllDeclaredConstructors":true
-},
-{
   "condition":{"typeReachable":"io.jsonwebtoken.impl.DefaultJwtBuilder"},
   "name":"io.jsonwebtoken.impl.DefaultHeader",
   "allDeclaredFields":true,
   "queryAllDeclaredMethods":true
 },
 {
-  "condition":{"typeReachable":"io.jsonwebtoken.jackson.io.JacksonSerializer"},
-  "name":"io.jsonwebtoken.impl.DefaultHeader",
-  "allDeclaredFields":true,
-  "queryAllDeclaredMethods":true
-},
-{
   "condition":{"typeReachable":"io.jsonwebtoken.impl.DefaultJwtBuilder"},
-  "name":"io.jsonwebtoken.impl.DefaultJwsHeader",
-  "allDeclaredFields":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllDeclaredConstructors":true
-},
-{
-  "condition":{"typeReachable":"io.jsonwebtoken.jackson.io.JacksonSerializer"},
   "name":"io.jsonwebtoken.impl.DefaultJwsHeader",
   "allDeclaredFields":true,
   "queryAllDeclaredMethods":true,
@@ -115,8 +75,7 @@
 {
   "condition":{"typeReachable":"io.jsonwebtoken.jackson.io.JacksonSerializer"},
   "name":"io.jsonwebtoken.impl.JwtMap",
-  "allDeclaredFields":true,
-  "queryAllDeclaredMethods":true
+  "allDeclaredFields":true
 },
 {
   "condition":{"typeReachable":"io.jsonwebtoken.CompressionCodecs"},
@@ -182,8 +141,7 @@
 },
 {
   "condition":{"typeReachable":"io.jsonwebtoken.jackson.io.JacksonSerializer"},
-  "name":"java.util.Map",
-  "queryAllDeclaredMethods":true
+  "name":"java.util.Map"
 },
 {
   "condition":{"typeReachable":"io.jsonwebtoken.impl.crypto.EllipticCurveSigner"},

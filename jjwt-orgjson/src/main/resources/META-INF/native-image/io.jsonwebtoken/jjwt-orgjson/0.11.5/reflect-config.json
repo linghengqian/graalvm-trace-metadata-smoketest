@@ -1,6 +1,0 @@
-[
-{
-  "condition":{"typeReachable":"io.jsonwebtoken.orgjson.io.OrgJsonSerializer"},
-  "name":"org.json.JSONString"
-}
-]

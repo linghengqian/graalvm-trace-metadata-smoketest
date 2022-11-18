@@ -33,7 +33,7 @@ graalvmNative {
         metadataCopy {
             mergeWithExisting = true
             inputTaskNames.add("test")
-            outputDirectories.add("src/main/resources/META-INF/native-image/io.jsonwebtoken/jjwt-orgjson/0.11.5")
+            outputDirectories.add("src/test/resources/META-INF/native-image/io.jsonwebtoken/jjwt-orgjson")
         }
     }
 }
