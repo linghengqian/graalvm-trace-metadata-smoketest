@@ -34,14 +34,14 @@ public class Server extends AbstractVerticle {
                     if (ar.succeeded()) {
                         System.out.println("sending push");
                         HttpServerResponse pushedResp = ar.result();
-                        pushedResp.sendFile("script.js");
+                        pushedResp.sendFile("src/test/java/com/lingh/http2/push/script.js");
                     } else {
                     }
                 });
 
-                resp.sendFile("index.html");
+                resp.sendFile("src/test/java/com/lingh/http2/push/index.html");
             } else if ("/script.js".equals(path)) {
-                resp.sendFile("script.js");
+                resp.sendFile("src/test/java/com/lingh/http2/push/script.js");
             } else {
                 System.out.println("Not found " + path);
                 resp.setStatusCode(404).end();

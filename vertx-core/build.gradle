@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'org.graalvm.buildtools.native' version '0.9.17'
+    id 'application'
 }
 
 group 'com.lingh'
@@ -24,6 +25,13 @@ test {
     useJUnitPlatform()
 }
 
+application {
+    applicationDefaultJvmArgs = ["--add-modules", "java.se", "--add-exports", "java.base/jdk.internal.ref=ALL-UNNAMED",
+                                 "--add-opens", "java.base/java.lang=ALL-UNNAMED", "--add-opens", "java.base/java.nio=ALL-UNNAMED",
+                                 "--add-opens", "java.base/sun.nio.ch=ALL-UNNAMED", "--add-opens", "java.management/sun.management=ALL-UNNAMED",
+                                 "--add-opens", "jdk.management/com.sun.management.internal=ALL-UNNAMED"]
+}
+
 graalvmNative {
     agent {
         defaultMode = "conditional"
@@ -35,7 +43,7 @@ graalvmNative {
         metadataCopy {
             mergeWithExisting = true
             inputTaskNames.add("test")
-            outputDirectories.add("src/main/resources/META-INF/native-image/io.vertx/vertx-core/4.3.4")
+            outputDirectories.add("src/test/resources/META-INF/native-image/io.vertx/vertx-core")
         }
     }
 }

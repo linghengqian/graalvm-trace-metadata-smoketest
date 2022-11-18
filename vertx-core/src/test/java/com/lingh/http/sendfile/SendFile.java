@@ -15,11 +15,11 @@ public class SendFile extends AbstractVerticle {
         vertx.createHttpServer().requestHandler(req -> {
             String filename = null;
             if (req.path().equals("/")) {
-                filename = "index.html";
+                filename = "src/test/java/com/lingh/http/sendfile/index.html";
             } else if (req.path().equals("/page1.html")) {
-                filename = "page1.html";
+                filename = "src/test/java/com/lingh/http/sendfile/page1.html";
             } else if (req.path().equals("/page2.html")) {
-                filename = "page2.html";
+                filename = "src/test/java/com/lingh/http/sendfile/page2.html";
             } else {
                 req.response().setStatusCode(404).end();
             }

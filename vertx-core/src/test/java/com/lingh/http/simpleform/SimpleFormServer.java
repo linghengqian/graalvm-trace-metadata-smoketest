@@ -13,7 +13,7 @@ public class SimpleFormServer extends AbstractVerticle {
     public void start() {
         vertx.createHttpServer().requestHandler(req -> {
             if (req.uri().equals("/")) {
-                req.response().sendFile("index.html");
+                req.response().sendFile("src/test/java/com/lingh/http/simpleform/index.html");
             } else if (req.uri().startsWith("/form")) {
                 req.response().setChunked(true);
                 req.setExpectMultipart(true);

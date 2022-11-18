@@ -12,7 +12,7 @@ public class SimpleFormUploadServer extends AbstractVerticle {
     public void start() {
         vertx.createHttpServer().requestHandler(req -> {
             if (req.uri().equals("/")) {
-                req.response().sendFile("index.html");
+                req.response().sendFile("src/test/java/com/lingh/http/simpleformupload/index.html");
             } else if (req.uri().startsWith("/form")) {
                 req.setExpectMultipart(true);
                 req.uploadHandler(upload -> {

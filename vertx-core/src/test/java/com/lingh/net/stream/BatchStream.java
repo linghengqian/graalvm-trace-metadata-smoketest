@@ -22,7 +22,6 @@ public class BatchStream implements ReadStream<Batch>, WriteStream<Batch> {
         Objects.requireNonNull(ws, "WriteStream");
         recordParser = RecordParser.newFixed(4, rs);
         writeStream = ws;
-        // Propagate exceptions to the current stream
         recordParser.exceptionHandler(throwable -> {
             if (exceptionHandler != null) {
                 exceptionHandler.handle(throwable);

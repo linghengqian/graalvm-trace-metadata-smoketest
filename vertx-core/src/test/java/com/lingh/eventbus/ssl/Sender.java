@@ -12,8 +12,8 @@ public class Sender extends AbstractVerticle {
         Runner.runClusteredExample(Sender.class,
                 new VertxOptions().setEventBusOptions(new EventBusOptions()
                         .setSsl(true)
-                        .setKeyStoreOptions(new JksOptions().setPath("keystore.jks").setPassword("wibble"))
-                        .setTrustStoreOptions(new JksOptions().setPath("keystore.jks").setPassword("wibble"))
+                        .setKeyStoreOptions(new JksOptions().setPath("src/test/java/com/lingh/eventbus/ssl/keystore.jks").setPassword("wibble"))
+                        .setTrustStoreOptions(new JksOptions().setPath("src/test/java/com/lingh/eventbus/ssl/keystore.jks").setPassword("wibble"))
                 )
         );
     }

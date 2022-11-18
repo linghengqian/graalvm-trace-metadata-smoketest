@@ -19,7 +19,7 @@ public class JsonStreamingExample extends AbstractVerticle {
 
     @Override
     public void start() {
-        vertx.fileSystem().open("large.json", new OpenOptions(), ar -> {
+        vertx.fileSystem().open("src/test/resources/large.json", new OpenOptions(), ar -> {
             if (ar.succeeded()) {
                 AsyncFile asyncFile = ar.result();
                 AtomicInteger counter = new AtomicInteger();
