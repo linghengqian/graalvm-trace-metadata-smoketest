@@ -23,12 +23,12 @@ public class JjwtOrgjsonTests {
         SecretKey firstKey = Keys.secretKeyFor(SignatureAlgorithm.HS256);
         String secretString = Encoders.BASE64.encode(firstKey.getEncoded());
         SecretKey secondKey = Keys.hmacShaKeyFor(Decoders.BASE64.decode(secretString));
-        assertThat(Jwts.parserBuilder().setSigningKey(firstKey).build().parseClaimsJws(
-                Jwts.builder().setSubject("Joe").signWith(firstKey).compact()
-        ).getBody().getSubject()).isEqualTo("Joe");
-        assertThat(Jwts.parserBuilder().setSigningKey(secondKey).build().parseClaimsJws(
-                Jwts.builder().setSubject("Joe").signWith(secondKey).compact()
-        ).getBody().getSubject()).isEqualTo("Joe");
+        assertThat(Jwts.parserBuilder().setSigningKey(firstKey).build()
+                .parseClaimsJws(Jwts.builder().setSubject("Joe").signWith(firstKey).compact()).getBody().getSubject())
+                .isEqualTo("Joe");
+        assertThat(Jwts.parserBuilder().setSigningKey(secondKey).build()
+                .parseClaimsJws(Jwts.builder().setSubject("Joe").signWith(secondKey).compact()).getBody().getSubject())
+                .isEqualTo("Joe");
     }
 
     @Test
@@ -65,12 +65,12 @@ public class JjwtOrgjsonTests {
     @Test
     void testCompression() {
         SecretKey firstKey = Keys.secretKeyFor(SignatureAlgorithm.HS256);
-        assert Jwts.parserBuilder().setSigningKey(firstKey).build().parseClaimsJws(
+        assertThat(Jwts.parserBuilder().setSigningKey(firstKey).build().parseClaimsJws(
                 Jwts.builder().setSubject("Joe").signWith(firstKey).compressWith(CompressionCodecs.DEFLATE).compact()
-        ).getBody().getSubject().equals("Joe");
-        assert Jwts.parserBuilder().setSigningKey(firstKey).build().parseClaimsJws(
+        ).getBody().getSubject()).isEqualTo("Joe");
+        assertThat(Jwts.parserBuilder().setSigningKey(firstKey).build().parseClaimsJws(
                 Jwts.builder().setSubject("Joe").signWith(firstKey).compressWith(CompressionCodecs.GZIP).compact()
-        ).getBody().getSubject().equals("Joe");
+        ).getBody().getSubject()).isEqualTo("Joe");
     }
 
     @Test

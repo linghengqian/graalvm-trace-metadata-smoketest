@@ -65,12 +65,12 @@ public class JjwtGsonTest {
     @Test
     void testCompression() {
         SecretKey firstKey = Keys.secretKeyFor(SignatureAlgorithm.HS256);
-        assert Jwts.parserBuilder().setSigningKey(firstKey).build().parseClaimsJws(
+        assertThat(Jwts.parserBuilder().setSigningKey(firstKey).build().parseClaimsJws(
                 Jwts.builder().setSubject("Joe").signWith(firstKey).compressWith(CompressionCodecs.DEFLATE).compact()
-        ).getBody().getSubject().equals("Joe");
-        assert Jwts.parserBuilder().setSigningKey(firstKey).build().parseClaimsJws(
+        ).getBody().getSubject()).isEqualTo("Joe");
+        assertThat(Jwts.parserBuilder().setSigningKey(firstKey).build().parseClaimsJws(
                 Jwts.builder().setSubject("Joe").signWith(firstKey).compressWith(CompressionCodecs.GZIP).compact()
-        ).getBody().getSubject().equals("Joe");
+        ).getBody().getSubject()).isEqualTo("Joe");
     }
 
     @Test
