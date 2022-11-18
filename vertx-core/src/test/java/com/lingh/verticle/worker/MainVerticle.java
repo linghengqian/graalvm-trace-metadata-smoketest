@@ -18,8 +18,11 @@ public class MainVerticle extends AbstractVerticle {
         vertx.eventBus().request(
                 "sample.data",
                 "hello vert.x",
-                r -> System.out.println("[Main] Receiving reply ' " + r.result().body()
-                        + "' in " + Thread.currentThread().getName())
+                r -> {
+                    if (r.result()!= null){ // TODO Temporary if judgment, waiting for repair
+                        System.out.printf("[Main] Receiving reply ' %s' in %s%n", r.result().body(), Thread.currentThread().getName());
+                    }
+                }
         );
     }
 }

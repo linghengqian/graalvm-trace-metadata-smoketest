@@ -1,28 +1,5 @@
 [
 {
-  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
-  "name":"[Lcom.sun.management.internal.DiagnosticCommandArgumentInfo;"
-},
-{
-  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
-  "name":"[Lcom.sun.management.internal.DiagnosticCommandInfo;"
-},
-{
-  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
-  "name":"com.sun.management.internal.DiagnosticCommandArgumentInfo",
-  "methods":[{"name":"<init>","parameterTypes":["java.lang.String","java.lang.String","java.lang.String","java.lang.String","boolean","boolean","boolean","int"] }]
-},
-{
-  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
-  "name":"com.sun.management.internal.DiagnosticCommandInfo",
-  "methods":[{"name":"<init>","parameterTypes":["java.lang.String","java.lang.String","java.lang.String","java.lang.String","java.lang.String","java.lang.String","boolean","java.util.List"] }]
-},
-{
-  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
-  "name":"java.util.Arrays",
-  "methods":[{"name":"asList","parameterTypes":["java.lang.Object[]"] }]
-},
-{
   "condition":{"typeReachable":"io.vertx.core.impl.Utils"},
   "name":"sun.management.VMManagementImpl",
   "fields":[

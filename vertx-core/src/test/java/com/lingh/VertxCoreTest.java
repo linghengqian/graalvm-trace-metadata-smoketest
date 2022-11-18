@@ -1,12 +1,5 @@
 package com.lingh;
 
-import com.lingh.execblocking.ExecBlockingExample;
-import com.lingh.http.sendfile.SendFile;
-import com.lingh.http.sharing.HttpServerVerticle;
-import com.lingh.http.simpleform.SimpleFormServer;
-import com.lingh.http.simpleformupload.SimpleFormUploadServer;
-import com.lingh.jsonstreaming.JsonStreamingExample;
-import com.lingh.verticle.worker.MainVerticle;
 import io.vertx.core.DeploymentOptions;
 import io.vertx.core.Launcher;
 import io.vertx.core.Vertx;
@@ -15,26 +8,12 @@ import io.vertx.core.eventbus.EventBusOptions;
 import io.vertx.core.net.JksOptions;
 import io.vertx.junit5.VertxExtension;
 import io.vertx.junit5.VertxTestContext;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(VertxExtension.class)
 public class VertxCoreTest {
-    @SuppressWarnings("JUnitMalformedDeclaration")
-    @BeforeEach
-    @DisplayName("Deploy a verticle")
-    void prepare(Vertx vertx, VertxTestContext testContext) {
-        vertx.deployVerticle(new HttpServerVerticle(), testContext.succeedingThenComplete());
-    }
-
-    @AfterEach
-    @DisplayName("Check that the verticle is still there")
-    void lastChecks(Vertx vertx) {
-        assertThat(vertx.deploymentIDs()).isNotEmpty().hasSize(1);
-    }
-
     @Test
     void testEmbedding(VertxTestContext testContext) {
         Vertx.vertx().createHttpServer().requestHandler(req -> req.response().end("Hello World!")).listen(8080);
@@ -89,19 +68,19 @@ public class VertxCoreTest {
 
     @Test
     void testHttpInSendfile(VertxTestContext testContext) {
-        Runner.runExample(SendFile.class, null);
+        Runner.runExample(com.lingh.http.sendfile.SendFile.class, null);
         testContext.completeNow();
     }
 
     @Test
     void testHttpInSimpleForm(VertxTestContext testContext) {
-        Runner.runExample(SimpleFormServer.class, null);
+        Runner.runExample(com.lingh.http.simpleform.SimpleFormServer.class, null);
         testContext.completeNow();
     }
 
     @Test
     void testHttpInSimpleFormFileUpload(VertxTestContext testContext) {
-        Runner.runExample(SimpleFormUploadServer.class, null);
+        Runner.runExample(com.lingh.http.simpleformupload.SimpleFormUploadServer.class, null);
         testContext.completeNow();
     }
 
@@ -130,7 +109,6 @@ public class VertxCoreTest {
     @Test
     void testHttp2InSimple(VertxTestContext testContext) {
         Runner.runExample(com.lingh.http2.simple.Server.class, null);
-        Runner.runExample(com.lingh.http2.simple.Client.class, null);
         testContext.completeNow();
     }
 
@@ -205,16 +183,15 @@ public class VertxCoreTest {
     }
 
     @Test
-    @Disabled
-    void testVerticleInWorkerVerticle(VertxTestContext testContext) { // todo
-        Runner.runExample(MainVerticle.class, null);
+    void testVerticleInWorkerVerticle(VertxTestContext testContext) {
+        Runner.runExample(com.lingh.verticle.worker.MainVerticle.class, null);
         testContext.completeNow();
     }
 
     @Test
     void testExecuteBlocking(VertxTestContext testContext) {
-        Runner.runExample(ExecBlockingExample.class, null);
-        Runner.runExample(ExecBlockingExample.class, new DeploymentOptions()
+        Runner.runExample(com.lingh.execblocking.ExecBlockingExample.class, null);
+        Runner.runExample(com.lingh.execblocking.ExecBlockingExample.class, new DeploymentOptions()
                 .setWorkerPoolName("dedicated-pool")
                 .setMaxWorkerExecuteTime(120000)
                 .setWorkerPoolSize(5));
@@ -231,7 +208,7 @@ public class VertxCoreTest {
 
     @Test
     void testJSONStreamingParser(VertxTestContext testContext) {
-        Runner.runExample(JsonStreamingExample.class, null);
+        Runner.runExample(com.lingh.jsonstreaming.JsonStreamingExample.class, null);
         testContext.completeNow();
     }
 
@@ -241,5 +218,4 @@ public class VertxCoreTest {
         Runner.runExample(com.lingh.net.stream.Client.class, null);
         testContext.completeNow();
     }
-
 }
