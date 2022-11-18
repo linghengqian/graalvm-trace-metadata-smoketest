@@ -11,8 +11,12 @@ public class Server extends AbstractVerticle {
 
     @Override
     public void start() {
-        vertx.createHttpServer().webSocketHandler(ws -> ws.handler(ws::writeBinaryMessage)).requestHandler(req -> {
-            if (req.uri().equals("/")) req.response().sendFile("src/test/java/com/lingh/http/websockets/ws.html");
-        }).listen(8080);
+        vertx.createHttpServer()
+                .webSocketHandler(ws -> ws.handler(ws::writeBinaryMessage))
+                .requestHandler(req -> {
+                    if (req.uri().equals("/"))
+                        req.response().sendFile("src/test/java/com/lingh/http/websockets/ws.html");
+                })
+                .listen(8080);
     }
 }
