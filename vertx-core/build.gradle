@@ -1,7 +1,6 @@
 plugins {
     id 'java'
     id 'org.graalvm.buildtools.native' version '0.9.17'
-    id 'application'
 }
 
 group 'com.lingh'
@@ -18,18 +17,18 @@ dependencies {
     testImplementation 'com.fasterxml.jackson.core:jackson-annotations:2.14.0'
     testImplementation 'io.netty:netty-tcnative-boringssl-static:2.0.34.Final'
     testImplementation 'io.vertx:vertx-hazelcast:4.3.5'
+    testImplementation 'io.vertx:vertx-junit5:4.3.5'
     testImplementation 'org.assertj:assertj-core:3.22.0'
+    testImplementation 'com.fasterxml.jackson.core:jackson-databind:2.14.0'
 }
 
 test {
     useJUnitPlatform()
-}
-
-application {
-    applicationDefaultJvmArgs = ["--add-modules", "java.se", "--add-exports", "java.base/jdk.internal.ref=ALL-UNNAMED",
-                                 "--add-opens", "java.base/java.lang=ALL-UNNAMED", "--add-opens", "java.base/java.nio=ALL-UNNAMED",
-                                 "--add-opens", "java.base/sun.nio.ch=ALL-UNNAMED", "--add-opens", "java.management/sun.management=ALL-UNNAMED",
-                                 "--add-opens", "jdk.management/com.sun.management.internal=ALL-UNNAMED"]
+    def strings = new ArrayList<String>(["--add-modules", "java.se", "--add-exports", "java.base/jdk.internal.ref=ALL-UNNAMED",
+                                         "--add-opens", "java.base/java.lang=ALL-UNNAMED", "--add-opens", "java.base/java.nio=ALL-UNNAMED",
+                                         "--add-opens", "java.base/sun.nio.ch=ALL-UNNAMED", "--add-opens", "java.management/sun.management=ALL-UNNAMED",
+                                         "--add-opens", "jdk.management/com.sun.management.internal=ALL-UNNAMED", "-Dhazelcast.diagnostics.enabled=true"]);
+    setJvmArgs(strings)
 }
 
 graalvmNative {

@@ -16,8 +16,8 @@ public class DeployExample extends AbstractVerticle {
     @Override
     public void start() {
         System.out.println("Main verticle has started, let's deploy some others...");
-        vertx.deployVerticle("io.vertx.example.core.verticle.deploy.OtherVerticle");
-        vertx.deployVerticle("io.vertx.example.core.verticle.deploy.OtherVerticle", res -> {
+        vertx.deployVerticle(com.lingh.verticle.deploy.OtherVerticle.class.getName());
+        vertx.deployVerticle(com.lingh.verticle.deploy.OtherVerticle.class.getName(), res -> {
             if (res.succeeded()) {
                 String deploymentID = res.result();
                 System.out.println("Other verticle deployed ok, deploymentID = " + deploymentID);
@@ -34,8 +34,8 @@ public class DeployExample extends AbstractVerticle {
         });
 
         JsonObject config = new JsonObject().put("foo", "bar");
-        vertx.deployVerticle("io.vertx.example.core.verticle.deploy.OtherVerticle", new DeploymentOptions().setConfig(config));
-        vertx.deployVerticle("io.vertx.example.core.verticle.deploy.OtherVerticle", new DeploymentOptions().setInstances(10));
-        vertx.deployVerticle("io.vertx.example.core.verticle.deploy.OtherVerticle", new DeploymentOptions().setWorker(true));
+        vertx.deployVerticle(com.lingh.verticle.deploy.OtherVerticle.class.getName(), new DeploymentOptions().setConfig(config));
+        vertx.deployVerticle(com.lingh.verticle.deploy.OtherVerticle.class.getName(), new DeploymentOptions().setInstances(10));
+        vertx.deployVerticle(com.lingh.verticle.deploy.OtherVerticle.class.getName(), new DeploymentOptions().setWorker(true));
     }
 }

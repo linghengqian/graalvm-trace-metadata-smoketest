@@ -12,7 +12,7 @@ public class DeployExample extends AbstractVerticle {
     @Override
     public void start() {
         System.out.println("Main verticle has started, let's deploy some others...");
-        vertx.deployVerticle("io.vertx.example.core.verticle.asyncstart.OtherVerticle", res -> {
+        vertx.deployVerticle(com.lingh.verticle.asyncstart.OtherVerticle.class.getName(), res -> {
             if (res.succeeded()) {
                 String deploymentID = res.result();
                 System.out.println("Other verticle deployed ok, deploymentID = " + deploymentID);

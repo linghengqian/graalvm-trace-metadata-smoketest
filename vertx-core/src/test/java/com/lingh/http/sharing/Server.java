@@ -14,7 +14,7 @@ public class Server extends AbstractVerticle {
     @Override
     public void start() {
         vertx.deployVerticle(
-                "io.vertx.example.core.http.sharing.HttpServerVerticle",
+                com.lingh.http.sharing.HttpServerVerticle.class.getName(),
                 new DeploymentOptions().setInstances(2));
     }
 }

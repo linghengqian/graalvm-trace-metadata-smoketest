@@ -13,7 +13,7 @@ public class MainVerticle extends AbstractVerticle {
     @Override
     public void start() {
         System.out.println("[Main] Running in " + Thread.currentThread().getName());
-        vertx.deployVerticle("io.vertx.example.core.verticle.worker.WorkerVerticle",
+        vertx.deployVerticle(com.lingh.verticle.worker.WorkerVerticle.class.getName(),
                 new DeploymentOptions().setWorker(true));
         vertx.eventBus().request(
                 "sample.data",
