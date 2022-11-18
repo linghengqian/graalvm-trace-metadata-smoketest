@@ -14,10 +14,10 @@ repositories {
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
-    testImplementation 'io.vertx:vertx-core:4.3.4'
-    testImplementation 'com.fasterxml.jackson.core:jackson-annotations:2.11.3'
+    testImplementation 'io.vertx:vertx-core:4.3.5'
+    testImplementation 'com.fasterxml.jackson.core:jackson-annotations:2.14.0'
     testImplementation 'io.netty:netty-tcnative-boringssl-static:2.0.34.Final'
-    testImplementation 'io.vertx:vertx-hazelcast:4.3.4'
+    testImplementation 'io.vertx:vertx-hazelcast:4.3.5'
     testImplementation 'org.assertj:assertj-core:3.22.0'
 }
 

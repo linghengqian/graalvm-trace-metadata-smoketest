@@ -28,32 +28,32 @@ sudo apt-get install build-essential libz-dev zlib1g-dev -y
 ```shell
 cd ./jjwt-impl/
 ./gradlew -Pagent clean test
-./gradlew metadataCopy --task test
+./gradlew metadataCopy
 ```
 
 ```shell
 cd ./jjwt-jackson/
 ./gradlew -Pagent clean test
-./gradlew metadataCopy --task test
+./gradlew metadataCopy
 ```
 
 ```shell
 cd ./jjwt-gson/
 ./gradlew -Pagent clean test
-./gradlew metadataCopy --task test
+./gradlew metadataCopy
 ```
 
 ```shell
 cd ./jjwt-orgjson/
 ./gradlew -Pagent clean test
-./gradlew metadataCopy --task test
+./gradlew metadataCopy
 ```
 
 ```shell
 cd ./zstd-jni/
 sdk install scala 2.13.10
 ./gradlew -Pagent clean test
-./gradlew metadataCopy --task test
+./gradlew metadataCopy
 ```
 
 - According to https://central.sonatype.dev/artifact/com.github.luben/zstd-jni/1.5.2-5/dependencies

@@ -46,6 +46,7 @@ public class VertxCoreTests {
     void testHttpInProxyConnect() {
         Runner.runExample(Runner.getCORE_EXAMPLES_JAVA_DIR(), com.lingh.http.proxyconnect.Server.class, new VertxOptions(), null, false);
         Runner.runExample(Runner.getCORE_EXAMPLES_JAVA_DIR(), com.lingh.http.proxyconnect.Proxy.class, new VertxOptions(), null, false);
+        // TODO It seems that no matter what, only using vertx-core for proxy connect, the client will throw strange exception information.
         Runner.runExample(Runner.getCORE_EXAMPLES_JAVA_DIR(), com.lingh.http.proxyconnect.Client.class, new VertxOptions(), null, false);
     }
 
