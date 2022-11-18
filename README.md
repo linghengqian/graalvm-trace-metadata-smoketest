@@ -24,6 +24,12 @@ sudo apt-get install build-essential libz-dev zlib1g-dev -y
 ```
 
 ```shell
+cd ./jjwt-impl/
+./gradlew -Pagent clean test
+./gradlew metadataCopy --task test --dir src/main/resources/META-INF/native-image/io.jsonwebtoken/jjwt-impl/0.11.5
+```
+
+```shell
 cd ./jjwt-jackson/
 ./gradlew -Pagent clean test
 ./gradlew metadataCopy --task test --dir src/main/resources/META-INF/native-image/io.jsonwebtoken/jjwt-jackson/0.11.5

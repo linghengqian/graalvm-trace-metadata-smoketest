@@ -1,0 +1,8 @@
+{
+  "rules": [
+    {"excludeClasses": "**"},
+    {"includeClasses": "io.jsonwebtoken.**"},
+    {"excludeClasses": "io.jsonwebtoken.jackson.**"},
+    {"excludeClasses": "io.jsonwebtoken.orgjson.**"}
+  ]
+}
