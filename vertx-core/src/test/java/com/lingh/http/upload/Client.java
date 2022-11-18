@@ -19,7 +19,7 @@ public class Client extends AbstractVerticle {
         HttpClient client = vertx.createHttpClient(new HttpClientOptions());
         client.request(HttpMethod.PUT, 8080, "localhost", "/someurl")
                 .compose(req -> {
-                    String filename = "upload.txt";
+                    String filename = "src/test/java/com/lingh/http/upload/upload.txt";
                     FileSystem fs = vertx.fileSystem();
                     return fs.props(filename).compose(props -> {
                         System.out.println("props is " + props);
