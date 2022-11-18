@@ -8,6 +8,8 @@ import io.vertx.core.http.HttpClientOptions;
 import io.vertx.core.http.HttpMethod;
 import io.vertx.core.http.HttpVersion;
 
+import java.nio.charset.StandardCharsets;
+
 public class Client extends AbstractVerticle {
 
     public static void main(String[] args) {
@@ -15,16 +17,18 @@ public class Client extends AbstractVerticle {
     }
 
     @Override
-    public void start() {
-        HttpClientOptions options = new HttpClientOptions().
+    public void start() throws Exception {
+        HttpClient client = vertx.createHttpClient(new HttpClientOptions().
                 setSsl(true).
                 setUseAlpn(true).
                 setProtocolVersion(HttpVersion.HTTP_2).
-                setTrustAll(true);
-        HttpClient client = vertx.createHttpClient(options);
+                setTrustAll(true));
+
         client.request(HttpMethod.GET, 8443, "localhost", "/")
                 .onSuccess(request -> {
-                    request.response().onSuccess(resp -> resp.customFrameHandler(frame -> System.out.println("Got frame from server " + frame.payload().toString("UTF-8"))));
+                    request.response().onSuccess(resp -> resp.customFrameHandler(
+                            frame -> System.out.println("Got frame from server " + frame.payload().toString(StandardCharsets.UTF_8))
+                    ));
                     request.sendHead().onSuccess(v -> vertx.setPeriodic(1000, timerID -> {
                         System.out.println("Sending ping frame to server");
                         request.writeCustomFrame(10, 0, Buffer.buffer("ping"));

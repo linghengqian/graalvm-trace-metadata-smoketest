@@ -3,10 +3,11 @@ package com.lingh.http2.customframes;
 import com.lingh.Runner;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.buffer.Buffer;
-import io.vertx.core.http.HttpServer;
 import io.vertx.core.http.HttpServerOptions;
 import io.vertx.core.http.HttpServerResponse;
 import io.vertx.core.net.PemKeyCertOptions;
+
+import java.nio.charset.StandardCharsets;
 
 
 public class Server extends AbstractVerticle {
@@ -16,17 +17,16 @@ public class Server extends AbstractVerticle {
     }
 
     @Override
-    public void start() {
-        HttpServer server = vertx.createHttpServer(new HttpServerOptions().
+    public void start() throws Exception {
+        vertx.createHttpServer(new HttpServerOptions().
                 setUseAlpn(true).
                 setSsl(true).
                 setPemKeyCertOptions(new PemKeyCertOptions().setKeyPath("src/test/java/com/lingh/http2/customframes/server-key.pem")
                         .setCertPath("src/test/java/com/lingh/http2/customframes/server-cert.pem")
-                ));
-        server.requestHandler(req -> {
+                )).requestHandler(req -> {
             HttpServerResponse resp = req.response();
             req.customFrameHandler(frame -> {
-                System.out.println("Received client frame " + frame.payload().toString("UTF-8"));
+                System.out.printf("Received client frame %s%n", frame.payload().toString(StandardCharsets.UTF_8));
                 resp.writeCustomFrame(10, 0, Buffer.buffer("pong"));
             });
         }).listen(8443);

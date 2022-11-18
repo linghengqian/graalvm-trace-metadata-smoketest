@@ -6,7 +6,6 @@ import io.vertx.core.json.JsonObject;
 
 
 public class Batch {
-
     private final char type;
     private final Buffer buffer;
 
