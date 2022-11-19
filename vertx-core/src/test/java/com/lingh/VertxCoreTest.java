@@ -850,11 +850,9 @@ public class VertxCoreTest {
                 });
     }
 
-    @SuppressWarnings("unused")
     @Test
-    void testExecuteBlocking(VertxTestContext testContext) throws Throwable {   // todo Test writing is unreasonable
-        int firstPort = 8080;
-        int secondPort = 8081;
+    void testExecuteBlocking(VertxTestContext testContext) throws Throwable {   // todo need change
+        int firstPort = 8081;
         Vertx firstVertx = Vertx.vertx(new VertxOptions());
         firstVertx.createHttpServer()
                 .requestHandler(request -> firstVertx.<String>executeBlocking(promise -> {
@@ -870,14 +868,13 @@ public class VertxCoreTest {
                         res.cause().printStackTrace();
                     }
                 }))
-                .listen(secondPort)
-                .onComplete(testContext.succeedingThenComplete());
-
+                .listen(firstPort);
         Vertx secondVertx = Vertx.vertx(new VertxOptions());
-        secondVertx.deployVerticle(com.lingh.execblocking.ExecBlockingExample.class, new DeploymentOptions()
-                .setWorkerPoolName("dedicated-pool")
-                .setMaxWorkerExecuteTime(120000)
-                .setWorkerPoolSize(5));
+        secondVertx.deployVerticle(com.lingh.execblocking.ExecBlockingExample.class.getName(), new DeploymentOptions()
+                        .setWorkerPoolName("dedicated-pool")
+                        .setMaxWorkerExecuteTime(120000)
+                        .setWorkerPoolSize(5))
+                .onComplete(testContext.succeedingThenComplete());
 
         assertThat(testContext.awaitCompletion(5, TimeUnit.SECONDS)).isTrue();
         if (testContext.failed()) {
