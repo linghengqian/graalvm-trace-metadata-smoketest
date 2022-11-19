@@ -50,7 +50,6 @@ public class VertxCoreTest {
     }
 
     @Test
-    @Timeout(value = 5, timeUnit = TimeUnit.SECONDS)
     void testNetInEcho(VertxTestContext testContext) {
         int firstPort = 8283;
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
@@ -70,7 +69,6 @@ public class VertxCoreTest {
     }
 
     @Test
-    @Timeout(value = 5, timeUnit = TimeUnit.SECONDS)
     void testNetInEchoSSL(VertxTestContext testContext) {
         int firstPort = 8284;
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
@@ -95,7 +93,6 @@ public class VertxCoreTest {
     }
 
     @Test
-    @Timeout(value = 5, timeUnit = TimeUnit.SECONDS)
     void testHttpInSimple(VertxTestContext testContext) {
         int firstPort = 8285;
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
@@ -118,7 +115,6 @@ public class VertxCoreTest {
     }
 
     @Test
-    @Timeout(value = 5, timeUnit = TimeUnit.SECONDS)
     void testHttpInHttps(VertxTestContext testContext) {
         int firstPort = 8286;
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
@@ -280,7 +276,6 @@ public class VertxCoreTest {
     }
 
     @Test
-    @Timeout(value = 5, timeUnit = TimeUnit.SECONDS)
     void testHttpInHttpRequestBodyUpload(VertxTestContext testContext) {
         int firstPort = 8292;
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
@@ -341,7 +336,6 @@ public class VertxCoreTest {
     }
 
     @Test
-    @Timeout(value = 10, timeUnit = TimeUnit.SECONDS)
     void testHttpInWebSocketsEcho(VertxTestContext testContext) {
         int firstPort = 8294;
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
@@ -398,7 +392,6 @@ public class VertxCoreTest {
     }
 
     @Test
-    @Timeout(value = 5, timeUnit = TimeUnit.SECONDS)
     void testHttp2InPush(VertxTestContext testContext) {
         int firstPort = 8296;
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
@@ -468,7 +461,6 @@ public class VertxCoreTest {
     }
 
     @Test
-    @Timeout(value = 10, timeUnit = TimeUnit.SECONDS)
     void testHttp2InH2C(VertxTestContext testContext) {
         int firstPort = 8297;
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
@@ -492,7 +484,6 @@ public class VertxCoreTest {
     }
 
     @Test
-    @Timeout(value = 5, timeUnit = TimeUnit.SECONDS)
     void testHttp2InCustomFrames(VertxTestContext testContext) {
         int firstPort = 8298;
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
@@ -529,7 +520,6 @@ public class VertxCoreTest {
     }
 
     @Test
-    @Timeout(value = 15, timeUnit = TimeUnit.SECONDS)
     void testEventBusByPointToPoint(VertxTestContext testContext) {
         Vertx.clusteredVertx(new VertxOptions(), deployResult -> {
             if (deployResult.succeeded()) {
@@ -570,7 +560,6 @@ public class VertxCoreTest {
     }
 
     @Test
-    @Timeout(value = 15, timeUnit = TimeUnit.SECONDS)
     void testEventBusByPublishSubscribe(VertxTestContext testContext) {
         Vertx.clusteredVertx(new VertxOptions(), deployResult -> {
             if (deployResult.succeeded()) {
@@ -605,7 +594,6 @@ public class VertxCoreTest {
     }
 
     @Test
-    @Timeout(value = 15, timeUnit = TimeUnit.SECONDS)
     void testEventBusByMessageCodec(VertxTestContext testContext) {
         Vertx.clusteredVertx(new VertxOptions(), deployResult -> {
             if (deployResult.succeeded()) {
@@ -668,7 +656,6 @@ public class VertxCoreTest {
     }
 
     @Test
-    @Timeout(value = 15, timeUnit = TimeUnit.SECONDS)
     void testEventBusBySSL(VertxTestContext testContext) {
         Vertx.clusteredVertx(new VertxOptions().setEventBusOptions(
                 new EventBusOptions().setSsl(true)
@@ -718,7 +705,6 @@ public class VertxCoreTest {
     }
 
     @Test
-    @Timeout(value = 5, timeUnit = TimeUnit.SECONDS)
     void testFuture(VertxTestContext testContext) {
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
         Promise<String> promise = Promise.promise();
@@ -736,7 +722,6 @@ public class VertxCoreTest {
     }
 
     @Test
-    @Timeout(value = 5, timeUnit = TimeUnit.SECONDS)
     void testVerticleInDeploy(VertxTestContext testContext) {
         Vertx firstVertx = Vertx.vertx(new VertxOptions());
         System.out.println("Main verticle has started, let's deploy some others...");
@@ -768,7 +753,6 @@ public class VertxCoreTest {
     }
 
     @Test
-    @Timeout(value = 5, timeUnit = TimeUnit.SECONDS)
     void testVerticleInAsynchronousDeployment(VertxTestContext testContext) {
         Vertx firstVertx = Vertx.vertx(new VertxOptions());
         System.out.println("Main verticle has started, let's deploy some others...");
@@ -791,7 +775,6 @@ public class VertxCoreTest {
     }
 
     @Test
-    @Timeout(value = 5, timeUnit = TimeUnit.SECONDS)
     void testVerticleInWorkerVerticle(VertxTestContext testContext) {
         Vertx firstVertx = Vertx.vertx(new VertxOptions());
         System.out.println("[Main] Running in " + Thread.currentThread().getName());
@@ -834,7 +817,6 @@ public class VertxCoreTest {
     }
 
     @Test
-    @Timeout(value = 10, timeUnit = TimeUnit.SECONDS)
     void testJSONStreamingParser(VertxTestContext testContext) {
         Vertx firstVertx = Vertx.vertx(new VertxOptions());
         firstVertx.fileSystem().open("src/test/resources/large.json", new OpenOptions(), ar -> {
