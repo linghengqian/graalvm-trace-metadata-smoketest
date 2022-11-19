@@ -16,6 +16,7 @@ import io.vertx.core.http.*;
 import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
 import io.vertx.core.net.*;
+import io.vertx.core.parsetools.JsonEventType;
 import io.vertx.core.parsetools.JsonParser;
 import io.vertx.core.streams.Pump;
 import io.vertx.junit5.Checkpoint;
@@ -33,7 +34,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
 
-import static io.vertx.core.parsetools.JsonEventType.VALUE;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
@@ -521,14 +521,10 @@ public class VertxCoreTest {
                     testContext.completeNow();
                 }).onFailure(Throwable::printStackTrace);
     }
-
+    
     @Test
     @Timeout(value = 5, timeUnit = TimeUnit.SECONDS)
-    @Disabled
-    void testHttp2InCustomFrames(VertxTestContext testContext) { // todo
-//        Runner.runExample(com.lingh.http2.customframes.Server.class, null);
-//        Runner.runExample(com.lingh.http2.customframes.Client.class, null);
-
+    void testHttp2InCustomFrames(VertxTestContext testContext) {
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
         Vertx clientVertx = Vertx.vertx(new VertxOptions());
         serverVertx.createHttpServer(new HttpServerOptions().
@@ -543,21 +539,22 @@ public class VertxCoreTest {
                 resp.writeCustomFrame(10, 0, Buffer.buffer("pong"));
             });
         }).listen(8443);
-        HttpClient client = clientVertx.createHttpClient(new HttpClientOptions().
-                setSsl(true).
-                setUseAlpn(true).
-                setProtocolVersion(HttpVersion.HTTP_2).
-                setTrustAll(true));
-        client.request(HttpMethod.GET, 8443, "localhost", "/")
+        clientVertx.createHttpClient(new HttpClientOptions().
+                        setSsl(true).
+                        setUseAlpn(true).
+                        setProtocolVersion(HttpVersion.HTTP_2).setTrustAll(true)
+                        .setPemKeyCertOptions(new PemKeyCertOptions().setKeyPath("src/test/java/com/lingh/http2/customframes/server-key.pem")
+                                .setCertPath("src/test/java/com/lingh/http2/customframes/server-cert.pem")))    // todo fix master branch
+                .request(HttpMethod.GET, 8443, "localhost", "/")
                 .onSuccess(request -> {
-                    request.response().onSuccess(resp -> resp.customFrameHandler(
-                            frame -> System.out.println("Got frame from server " + frame.payload().toString(StandardCharsets.UTF_8))
-                    ));
+                    request.response().onSuccess(resp -> {
+                        resp.customFrameHandler(frame -> System.out.println("Got frame from server " + frame.payload().toString(StandardCharsets.UTF_8)));
+                        testContext.completeNow();
+                    });
                     request.sendHead().onSuccess(v -> clientVertx.setPeriodic(1000, timerID -> {
                         System.out.println("Sending ping frame to server");
                         request.writeCustomFrame(10, 0, Buffer.buffer("ping"));
                     }));
-                    testContext.completeNow();
                 });// todo onFailure ????
     }
 
@@ -697,21 +694,76 @@ public class VertxCoreTest {
     }
 
     @Test
+    @Timeout(value = 5, timeUnit = TimeUnit.SECONDS)
     void testVerticleInDeploy(VertxTestContext testContext) {
-        Runner.runExample(com.lingh.verticle.deploy.DeployExample.class, null);
-        testContext.completeNow();
+        Vertx firstVertx = Vertx.vertx(new VertxOptions());
+        System.out.println("Main verticle has started, let's deploy some others...");
+        firstVertx.deployVerticle(com.lingh.verticle.deploy.OtherVerticle.class.getName());
+        firstVertx.deployVerticle(com.lingh.verticle.deploy.OtherVerticle.class.getName(), res -> {
+            if (res.succeeded()) {
+                String deploymentID = res.result();
+                System.out.println("Other verticle deployed ok, deploymentID = " + deploymentID);
+                firstVertx.undeploy(deploymentID, res2 -> {
+                    if (res2.succeeded()) {
+                        System.out.println("Undeployed ok!");
+                    } else {
+                        res2.cause().printStackTrace();
+                    }
+                });
+            } else {
+                res.cause().printStackTrace();
+            }
+        });
+        JsonObject config = new JsonObject().put("foo", "bar");
+        firstVertx.deployVerticle(com.lingh.verticle.deploy.OtherVerticle.class.getName(), new DeploymentOptions().setConfig(config));
+        firstVertx.deployVerticle(com.lingh.verticle.deploy.OtherVerticle.class.getName(), new DeploymentOptions().setInstances(10));
+        firstVertx.deployVerticle(com.lingh.verticle.deploy.OtherVerticle.class.getName(), new DeploymentOptions().setWorker(true),
+                res -> {
+                    if (res.succeeded()) {
+                        testContext.completeNow();
+                    }
+                });
+    }
+
+    /**
+     * @see com.lingh.verticle.deploy.DeployPolyglotExample
+     */
+    @Test
+    @Timeout(value = 20, timeUnit = TimeUnit.SECONDS)
+    @Disabled
+    void testVerticleInPolyglotDeploy(VertxTestContext testContext) {   // todo fail
+        Vertx firstVertx = Vertx.vertx(new VertxOptions());
+        System.out.println("Main verticle has started, let's deploy A JS one...");
+        firstVertx.deployVerticle("src/test/resources/jsverticle.js", deployResult -> {
+            if (deployResult.succeeded()) {
+                testContext.completeNow();
+            } else {
+                deployResult.cause().printStackTrace();
+            }
+        });
     }
 
     @Test
-    void testVerticleInPolyglotDeploy(VertxTestContext testContext) {
-        Runner.runExample(com.lingh.verticle.deploy.DeployPolyglotExample.class, null);
-        testContext.completeNow();
-    }
-
-    @Test
+    @Timeout(value = 5, timeUnit = TimeUnit.SECONDS)
     void testVerticleInAsynchronousDeployment(VertxTestContext testContext) {
-        Runner.runExample(com.lingh.verticle.asyncstart.DeployExample.class, null);
-        testContext.completeNow();
+        Vertx firstVertx = Vertx.vertx(new VertxOptions());
+        System.out.println("Main verticle has started, let's deploy some others...");
+        firstVertx.deployVerticle(com.lingh.verticle.asyncstart.OtherVerticle.class.getName(), res -> {
+            if (res.succeeded()) {
+                String deploymentID = res.result();
+                System.out.println("Other verticle deployed ok, deploymentID = " + deploymentID);
+                firstVertx.undeploy(deploymentID, res2 -> {
+                    if (res2.succeeded()) {
+                        System.out.println("Undeployed ok!");
+                        testContext.completeNow();
+                    } else {
+                        res2.cause().printStackTrace();
+                    }
+                });
+            } else {
+                res.cause().printStackTrace();
+            }
+        });
     }
 
     @Test
@@ -781,7 +833,7 @@ public class VertxCoreTest {
                             asyncFile.close();
                             testContext.completeNow();
                         }).handler(event -> {
-                            if (event.type() == VALUE) {
+                            if (event.type() == JsonEventType.VALUE) {
                                 DataPoint dataPoint = event.mapTo(DataPoint.class);
                                 if (counter.incrementAndGet() % 100 == 0) {
                                     System.out.printf("DataPoint = %s%n", dataPoint);
