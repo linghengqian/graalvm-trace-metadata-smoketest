@@ -766,10 +766,27 @@ public class VertxCoreTest {
         });
     }
 
+    /**
+     * @see com.lingh.verticle.worker.MainVerticle
+     */
     @Test
+    @Timeout(value = 5, timeUnit = TimeUnit.SECONDS)
     void testVerticleInWorkerVerticle(VertxTestContext testContext) {
-        Runner.runExample(com.lingh.verticle.worker.MainVerticle.class, null);
-        testContext.completeNow();
+        Vertx firstVertx = Vertx.vertx(new VertxOptions());
+        System.out.println("[Main] Running in " + Thread.currentThread().getName());
+        firstVertx.deployVerticle(com.lingh.verticle.worker.WorkerVerticle.class.getName(),
+                new DeploymentOptions().setWorker(true), res -> {
+                    if (res.succeeded()) {
+                        firstVertx.eventBus().request(
+                                "sample.data",
+                                "hello vert.x",
+                                r -> {
+                                    System.out.printf("[Main] Receiving reply ' %s' in %s%n", r.result().body(), Thread.currentThread().getName());
+                                    testContext.completeNow();
+                                }
+                        );
+                    }
+                });
     }
 
     @SuppressWarnings("unused")
