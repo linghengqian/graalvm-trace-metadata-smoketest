@@ -492,10 +492,75 @@ public class VertxCoreTest {
                 }).onFailure(Throwable::printStackTrace);
     }
 
+    /**
+     * @see com.lingh.http2.push.Server
+     * @see com.lingh.http2.push.Client
+     */
     @Test
-    void testHttp2InPush(VertxTestContext testContext) {  // todo
-        Runner.runExample(com.lingh.http2.push.Server.class, null);
-        testContext.completeNow();
+    @Disabled
+    void testHttp2InPush(VertxTestContext testContext) {  // todo fail
+//        Runner.runExample(com.lingh.http2.push.Server.class, null);
+        Vertx serverVertx = Vertx.vertx(new VertxOptions());
+        Vertx clientVertx = Vertx.vertx(new VertxOptions());
+        HttpServer server = serverVertx.createHttpServer(new HttpServerOptions().
+                setUseAlpn(true).
+                setSsl(true).
+                setPemKeyCertOptions(new PemKeyCertOptions().setKeyPath("src/test/java/com/lingh/http2/push/server-key.pem")
+                        .setCertPath("src/test/java/com/lingh/http2/push/server-cert.pem")
+                ));
+        server.requestHandler(req -> {
+            String path = req.path();
+            HttpServerResponse resp = req.response();
+            if ("/".equals(path)) {
+                resp.push(HttpMethod.GET, "/script.js", ar -> {
+                    if (ar.succeeded()) {
+                        System.out.println("sending push");
+                        HttpServerResponse pushedResp = ar.result();
+                        pushedResp.sendFile("src/test/java/com/lingh/http2/push/script.js");
+                    } else {
+                    }
+                });
+
+                resp.sendFile("src/test/java/com/lingh/http2/push/index.html");
+            } else if ("/script.js".equals(path)) {
+                resp.sendFile("src/test/java/com/lingh/http2/push/script.js");
+            } else {
+                System.out.println("Not found " + path);
+                resp.setStatusCode(404).end();
+            }
+        });
+        server.listen(8443, "localhost", ar -> {
+            if (ar.succeeded()) {
+                System.out.println("Server started");
+            } else {
+                ar.cause().printStackTrace();
+            }
+        });
+
+        clientVertx.createHttpClient(new HttpClientOptions().
+                        setSsl(true).
+                        setUseAlpn(true).
+                        setProtocolVersion(HttpVersion.HTTP_2).
+                        setTrustAll(true)
+                )
+                .request(HttpMethod.GET, 8080, "localhost", "/")
+                .compose(request -> {
+                    request.pushHandler(pushedReq -> {
+                        System.out.println("Receiving pushed content");
+                        pushedReq.response().compose(HttpClientResponse::body).onSuccess(body -> System.out.println("Got pushed data " + body.toString("ISO-8859-1")));
+                    });
+                    return request.send().compose(resp -> {
+                        System.out.println("Got response " + resp.statusCode() + " with protocol " + resp.version());
+                        return resp.body();
+                    });
+                })
+                .onSuccess(body -> {
+                    System.out.println("Got data " + body.toString("ISO-8859-1"));
+                    testContext.completeNow();
+                })
+                .onFailure(Throwable::printStackTrace);
+
+
     }
 
     @Test
@@ -632,7 +697,6 @@ public class VertxCoreTest {
                                 if (reply.succeeded()) {
                                     assertThat(((CustomMessage) reply.result().body()).summary())
                                             .isEqualTo("Message sent from cluster receiver!");
-
                                 } else {
                                     System.out.println("No reply from cluster receiver");
                                 }
