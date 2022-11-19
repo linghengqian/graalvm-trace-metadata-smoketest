@@ -521,7 +521,7 @@ public class VertxCoreTest {
                     testContext.completeNow();
                 }).onFailure(Throwable::printStackTrace);
     }
-    
+
     @Test
     @Timeout(value = 5, timeUnit = TimeUnit.SECONDS)
     void testHttp2InCustomFrames(VertxTestContext testContext) {
