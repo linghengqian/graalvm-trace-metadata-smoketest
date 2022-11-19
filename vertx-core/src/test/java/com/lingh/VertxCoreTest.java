@@ -385,7 +385,7 @@ public class VertxCoreTest {
                             return resp.body();
                         }))
                 .onSuccess(body -> {
-                    System.out.println("Got data " + body.toString("ISO-8859-1"));
+                    System.out.println("Got data " + body.toString(StandardCharsets.ISO_8859_1));
                     testContext.completeNow();
                 })
                 .onFailure(Throwable::printStackTrace);
@@ -444,7 +444,7 @@ public class VertxCoreTest {
                 .compose(request -> {
                     request.pushHandler(pushedReq -> {
                         System.out.println("Receiving pushed content");
-                        pushedReq.response().compose(HttpClientResponse::body).onSuccess(body -> System.out.println("Got pushed data " + body.toString("ISO-8859-1")));
+                        pushedReq.response().compose(HttpClientResponse::body).onSuccess(body -> System.out.println("Got pushed data " + body.toString(StandardCharsets.ISO_8859_1)));
                     });
                     return request.send().compose(resp -> {
                         System.out.println("Got response " + resp.statusCode() + " with protocol " + resp.version());
@@ -452,7 +452,7 @@ public class VertxCoreTest {
                     });
                 })
                 .onSuccess(body -> {
-                    System.out.println("Got data " + body.toString("ISO-8859-1"));
+                    System.out.println("Got data " + body.toString(StandardCharsets.ISO_8859_1));
                     testContext.completeNow();
                 })
                 .onFailure(Throwable::printStackTrace);
