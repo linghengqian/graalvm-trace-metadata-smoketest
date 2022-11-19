@@ -328,6 +328,7 @@ public class VertxCoreTest {
                         assertThat(body.toString(StandardCharsets.ISO_8859_1).startsWith("<html><body><h1>Hello from %s@"
                                 .formatted(com.lingh.http.sharing.HttpServerVerticle.class.getName())))
                                 .isTrue();
+                        System.out.println("test： " + body.toString(StandardCharsets.ISO_8859_1));
                         assertThat(body.toString(StandardCharsets.ISO_8859_1).endsWith("</h1></body></html>")).isTrue();
                         testContext.completeNow();
                     })
@@ -595,6 +596,18 @@ public class VertxCoreTest {
 
     @Test
     void testEventBusByMessageCodec(VertxTestContext testContext) {
+        Verticle localReceiver = new AbstractVerticle() {
+            @Override
+            public void start() {
+                EventBus eventBus = getVertx().eventBus();
+                eventBus.consumer("local-message-receiver", message -> {
+                    CustomMessage customMessage = (CustomMessage) message.body();
+                    System.out.println("Custom message received: " + customMessage.summary());
+                    CustomMessage replyMessage = new CustomMessage(200, "a00000002", "Message sent from local receiver!");
+                    message.reply(replyMessage);
+                });
+            }
+        };
         Vertx.clusteredVertx(new VertxOptions(), deployResult -> {
             if (deployResult.succeeded()) {
                 Vertx vertx = deployResult.result();
@@ -629,7 +642,7 @@ public class VertxCoreTest {
                                     System.out.println("No reply from cluster receiver");
                                 }
                             }));
-                    vertx.deployVerticle(com.lingh.eventbus.messagecodec.LocalReceiver.class.getName(), deployResult -> {
+                    vertx.deployVerticle(localReceiver, deployResult -> {
                         if (deployResult.succeeded()) {
                             vertx.setPeriodic(2000, _id -> senderEventBus.request("local-message-receiver",
                                     new CustomMessage(200, "a0000001", "Local message!"),
@@ -723,10 +736,22 @@ public class VertxCoreTest {
 
     @Test
     void testVerticleInDeploy(VertxTestContext testContext) {
+        Verticle otherVerticle = new AbstractVerticle() {
+            @Override
+            public void start() {
+                System.out.println("In OtherVerticle.start");
+                System.out.println("Config is " + config());
+            }
+
+            @Override
+            public void stop() {
+                System.out.println("In OtherVerticle.stop");
+            }
+        };
         Vertx firstVertx = Vertx.vertx(new VertxOptions());
         System.out.println("Main verticle has started, let's deploy some others...");
-        firstVertx.deployVerticle(com.lingh.verticle.deploy.OtherVerticle.class.getName());
-        firstVertx.deployVerticle(com.lingh.verticle.deploy.OtherVerticle.class.getName(), deployResult -> {
+        firstVertx.deployVerticle(otherVerticle);
+        firstVertx.deployVerticle(otherVerticle, deployResult -> {
             if (deployResult.succeeded()) {
                 String deploymentID = deployResult.result();
                 System.out.println("Other verticle deployed ok, deploymentID = " + deploymentID);
@@ -742,9 +767,9 @@ public class VertxCoreTest {
             }
         });
         JsonObject config = new JsonObject().put("foo", "bar");
-        firstVertx.deployVerticle(com.lingh.verticle.deploy.OtherVerticle.class.getName(), new DeploymentOptions().setConfig(config));
+        firstVertx.deployVerticle(otherVerticle, new DeploymentOptions().setConfig(config));
         firstVertx.deployVerticle(com.lingh.verticle.deploy.OtherVerticle.class.getName(), new DeploymentOptions().setInstances(10));
-        firstVertx.deployVerticle(com.lingh.verticle.deploy.OtherVerticle.class.getName(), new DeploymentOptions().setWorker(true),
+        firstVertx.deployVerticle(otherVerticle, new DeploymentOptions().setWorker(true),
                 deployResult -> {
                     if (deployResult.succeeded()) {
                         testContext.completeNow();
@@ -754,9 +779,27 @@ public class VertxCoreTest {
 
     @Test
     void testVerticleInAsynchronousDeployment(VertxTestContext testContext) {
+        Verticle otherVerticle = new AbstractVerticle() {
+            @Override
+            public void start(Promise<Void> startPromise) {
+                System.out.println("In OtherVerticle.start (async)");
+                vertx.setTimer(2000, tid -> {
+                    System.out.println("Startup tasks are now complete, OtherVerticle is now started!");
+                    startPromise.complete();
+                });
+            }
+
+            @Override
+            public void stop(Promise<Void> stopPromise) {
+                vertx.setTimer(2000, tid -> {
+                    System.out.println("Cleanup tasks are now complete, OtherVerticle is now stopped!");
+                    stopPromise.complete();
+                });
+            }
+        };
         Vertx firstVertx = Vertx.vertx(new VertxOptions());
         System.out.println("Main verticle has started, let's deploy some others...");
-        firstVertx.deployVerticle(com.lingh.verticle.asyncstart.OtherVerticle.class.getName(), deployResult -> {
+        firstVertx.deployVerticle(otherVerticle, deployResult -> {
             if (deployResult.succeeded()) {
                 String deploymentID = deployResult.result();
                 System.out.println("Other verticle deployed ok, deploymentID = " + deploymentID);
@@ -776,31 +819,59 @@ public class VertxCoreTest {
 
     @Test
     void testVerticleInWorkerVerticle(VertxTestContext testContext) {
+        Verticle workerVerticle = new AbstractVerticle() {
+            @Override
+            public void start() {
+                System.out.println("[Worker] Starting in " + Thread.currentThread().getName());
+                vertx.eventBus().<String>consumer("sample.data", message -> {
+                    System.out.println("[Worker] Consuming data in " + Thread.currentThread().getName());
+                    String body = message.body();
+                    message.reply(body.toUpperCase());
+                });
+            }
+        };
         Vertx firstVertx = Vertx.vertx(new VertxOptions());
         System.out.println("[Main] Running in " + Thread.currentThread().getName());
-        firstVertx.deployVerticle(com.lingh.verticle.worker.WorkerVerticle.class.getName(),
-                new DeploymentOptions().setWorker(true), deployResult -> {
-                    if (deployResult.succeeded()) {
-                        firstVertx.eventBus().request(
-                                "sample.data",
-                                "hello vert.x",
-                                r -> {
-                                    System.out.printf("[Main] Receiving reply ' %s' in %s%n", r.result().body(), Thread.currentThread().getName());
-                                    testContext.completeNow();
-                                }
-                        );
-                    }
-                });
+        firstVertx.deployVerticle(workerVerticle, new DeploymentOptions().setWorker(true), deployResult -> {
+            if (deployResult.succeeded()) {
+                firstVertx.eventBus().request(
+                        "sample.data",
+                        "hello vert.x",
+                        r -> {
+                            System.out.printf("[Main] Receiving reply ' %s' in %s%n", r.result().body(), Thread.currentThread().getName());
+                            testContext.completeNow();
+                        }
+                );
+            }
+        });
     }
 
     @Test
     void testExecuteBlocking(VertxTestContext testContext) throws Throwable {
+        Verticle execBlockingExample = new AbstractVerticle() {
+            @Override
+            public void start() {
+                vertx.createHttpServer().requestHandler(request -> vertx.<String>executeBlocking(promise -> {
+                    try {
+                        Thread.sleep(500);
+                    } catch (Exception ignore) {
+                    }
+                    String result = "armadillos!";
+                    promise.complete(result);
+                }, res -> {
+                    if (res.succeeded()) {
+                        request.response().putHeader("content-type", "text/plain").end(res.result());
+                    } else {
+                        res.cause().printStackTrace();
+                    }
+                })).listen(8080);
+
+            }
+        };
         Vertx firstVertx = Vertx.vertx(new VertxOptions());
-        firstVertx.deployVerticle(com.lingh.execblocking.ExecBlockingExample.class.getName());
+        firstVertx.deployVerticle(execBlockingExample);
         Vertx secondVertx = Vertx.vertx(new VertxOptions());
-        secondVertx.deployVerticle(com.lingh.execblocking.ExecBlockingExample.class.getName(), new DeploymentOptions()
-                        .setWorkerPoolName("dedicated-pool")
-                        .setMaxWorkerExecuteTime(120000)
+        secondVertx.deployVerticle(execBlockingExample, new DeploymentOptions().setWorkerPoolName("dedicated-pool").setMaxWorkerExecuteTime(120000)
                         .setWorkerPoolSize(5))
                 .onComplete(testContext.succeedingThenComplete());
         assertThat(testContext.awaitCompletion(5, TimeUnit.SECONDS)).isTrue();
