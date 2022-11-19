@@ -1968,6 +1968,11 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager$$Lambda$2530/0x00000008013ff1c8"},
+  "name":"io.vertx.spi.cluster.hazelcast.impl.HazelcastNodeInfo",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
   "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager$$Lambda$2543/0x00000008013f9248"},
   "name":"io.vertx.spi.cluster.hazelcast.impl.HazelcastNodeInfo",
   "methods":[{"name":"<init>","parameterTypes":[] }]

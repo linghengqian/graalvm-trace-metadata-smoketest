@@ -61,12 +61,10 @@ public class UnSupportedVertxCoreTest {
             if (req.method() == HttpMethod.CONNECT) {
                 String proxyAddress = req.uri();
                 int idx = proxyAddress.indexOf(':');
-                String host = proxyAddress.substring(0, idx);
-                int port = Integer.parseInt(proxyAddress.substring(idx + 1));
                 System.out.println("Connecting to proxy " + proxyAddress);
                 proxyVertx.createNetClient(new NetClientOptions()
                         .setKeyCertOptions(certificate.keyCertOptions())
-                ).connect(port, host, ar -> {
+                ).connect(Integer.parseInt(proxyAddress.substring(idx + 1)), proxyAddress.substring(0, idx), ar -> {
                     if (ar.succeeded()) {
                         System.out.println("Connected to proxy");
                         NetSocket serverSocket = ar.result();
@@ -77,16 +75,14 @@ public class UnSupportedVertxCoreTest {
                                 serverSocket.handler(buff -> {
                                     System.out.println("Forwarding server packet to the client");
                                     clientSocket.write(buff);
-                                });
-                                serverSocket.closeHandler(v -> {
+                                }).closeHandler(v -> {
                                     System.out.println("Server socket closed");
                                     clientSocket.close();
                                 });
                                 clientSocket.handler(buff -> {
                                     System.out.println("Forwarding client packet to the server");
                                     serverSocket.write(buff);
-                                });
-                                clientSocket.closeHandler(v -> {
+                                }).closeHandler(v -> {
                                     System.out.println("Client socket closed");
                                     serverSocket.close();
                                 });

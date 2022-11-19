@@ -81,8 +81,8 @@ public class VertxCoreTest {
                                 .setPassword("wibble"))
         ).connectHandler(sock -> Pump.pump(sock, sock).start()).listen(firstPort);
         clientVertx.createNetClient(new NetClientOptions().setSsl(true).setTrustAll(true)
-                .setKeyStoreOptions(new JksOptions().setPath("src/test/java/com/lingh/net/echossl/server-keystore.jks")
-                        .setPassword("wibble")))
+                        .setKeyStoreOptions(new JksOptions().setPath("src/test/java/com/lingh/net/echossl/server-keystore.jks")
+                                .setPassword("wibble")))
                 .connect(firstPort, "localhost", res -> {
                     if (res.succeeded()) {
                         NetSocket socket = res.result();
@@ -147,7 +147,6 @@ public class VertxCoreTest {
     }
 
     @Test
-    @Timeout(value = 10, timeUnit = TimeUnit.SECONDS)
     void testHttpInProxy(VertxTestContext testContext) {
         int firstPort = 8287;
         int secondPort = 8288;
@@ -319,7 +318,6 @@ public class VertxCoreTest {
     }
 
     @Test
-    @Timeout(value = 5, timeUnit = TimeUnit.SECONDS)
     void testHttpInHTTPServerSharing(VertxTestContext testContext) {
         int firstPort = 8293;
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
@@ -369,12 +367,10 @@ public class VertxCoreTest {
     }
 
     @Test
-    @Timeout(value = 5, timeUnit = TimeUnit.SECONDS)
     void testHttp2InSimple(VertxTestContext testContext) {
         int firstPort = 8295;
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
         Vertx clientVertx = Vertx.vertx(new VertxOptions());
-
         serverVertx.createHttpServer(new HttpServerOptions().setUseAlpn(true).setSsl(true).
                         setPemKeyCertOptions(
                                 new PemKeyCertOptions().setKeyPath("src/test/java/com/lingh/http2/simple/server-key.pem")
@@ -535,9 +531,9 @@ public class VertxCoreTest {
     @Test
     @Timeout(value = 15, timeUnit = TimeUnit.SECONDS)
     void testEventBusByPointToPoint(VertxTestContext testContext) {
-        Vertx.clusteredVertx(new VertxOptions(), res -> {
-            if (res.succeeded()) {
-                Vertx vertx = res.result();
+        Vertx.clusteredVertx(new VertxOptions(), deployResult -> {
+            if (deployResult.succeeded()) {
+                Vertx vertx = deployResult.result();
                 try {
                     EventBus receiverEb = vertx.eventBus();
                     receiverEb.consumer("ping-address", message -> {
@@ -548,12 +544,12 @@ public class VertxCoreTest {
                     t.printStackTrace();
                 }
             } else {
-                res.cause().printStackTrace();
+                deployResult.cause().printStackTrace();
             }
         });
-        Vertx.clusteredVertx(new VertxOptions(), res -> {
-            if (res.succeeded()) {
-                Vertx vertx = res.result();
+        Vertx.clusteredVertx(new VertxOptions(), deployResult -> {
+            if (deployResult.succeeded()) {
+                Vertx vertx = deployResult.result();
                 try {
                     EventBus senderEb = vertx.eventBus();
                     vertx.setPeriodic(1000, v -> senderEb.request("ping-address", "ping!", reply -> {
@@ -568,7 +564,7 @@ public class VertxCoreTest {
                     t.printStackTrace();
                 }
             } else {
-                res.cause().printStackTrace();
+                deployResult.cause().printStackTrace();
             }
         });
     }
@@ -576,9 +572,9 @@ public class VertxCoreTest {
     @Test
     @Timeout(value = 15, timeUnit = TimeUnit.SECONDS)
     void testEventBusByPublishSubscribe(VertxTestContext testContext) {
-        Vertx.clusteredVertx(new VertxOptions(), res -> {
-            if (res.succeeded()) {
-                Vertx vertx = res.result();
+        Vertx.clusteredVertx(new VertxOptions(), deployResult -> {
+            if (deployResult.succeeded()) {
+                Vertx vertx = deployResult.result();
                 try {
                     EventBus eb = vertx.eventBus();
                     eb.consumer("news-feed", message -> System.out.println("Received news on consumer 1: " + message.body()));
@@ -590,12 +586,12 @@ public class VertxCoreTest {
                     t.printStackTrace();
                 }
             } else {
-                res.cause().printStackTrace();
+                deployResult.cause().printStackTrace();
             }
         });
-        Vertx.clusteredVertx(new VertxOptions(), res -> {
-            if (res.succeeded()) {
-                Vertx vertx = res.result();
+        Vertx.clusteredVertx(new VertxOptions(), deployResult -> {
+            if (deployResult.succeeded()) {
+                Vertx vertx = deployResult.result();
                 try {
                     EventBus eb = vertx.eventBus();
                     vertx.setPeriodic(1000, v -> eb.publish("news-feed", "Some news!"));
@@ -603,7 +599,7 @@ public class VertxCoreTest {
                     t.printStackTrace();
                 }
             } else {
-                res.cause().printStackTrace();
+                deployResult.cause().printStackTrace();
             }
         });
     }
@@ -611,9 +607,9 @@ public class VertxCoreTest {
     @Test
     @Timeout(value = 15, timeUnit = TimeUnit.SECONDS)
     void testEventBusByMessageCodec(VertxTestContext testContext) {
-        Vertx.clusteredVertx(new VertxOptions(), res -> {
-            if (res.succeeded()) {
-                Vertx vertx = res.result();
+        Vertx.clusteredVertx(new VertxOptions(), deployResult -> {
+            if (deployResult.succeeded()) {
+                Vertx vertx = deployResult.result();
                 try {
                     EventBus clusterReceiverEventBus = vertx.eventBus();
                     clusterReceiverEventBus.registerDefaultCodec(CustomMessage.class, new CustomMessageCodec());
@@ -626,7 +622,7 @@ public class VertxCoreTest {
                     t.printStackTrace();
                 }
             } else {
-                res.cause().printStackTrace();
+                deployResult.cause().printStackTrace();
             }
         });
         Vertx.clusteredVertx(new VertxOptions(), res -> {
@@ -678,9 +674,9 @@ public class VertxCoreTest {
                 new EventBusOptions().setSsl(true)
                         .setKeyStoreOptions(new JksOptions().setPath("src/test/java/com/lingh/eventbus/ssl/keystore.jks").setPassword("wibble"))
                         .setTrustStoreOptions(new JksOptions().setPath("src/test/java/com/lingh/eventbus/ssl/keystore.jks").setPassword("wibble"))
-        ), res -> {
-            if (res.succeeded()) {
-                Vertx vertx = res.result();
+        ), deployResult -> {
+            if (deployResult.succeeded()) {
+                Vertx vertx = deployResult.result();
                 try {
                     EventBus eb = vertx.eventBus();
                     eb.consumer("ping-address", message -> {
@@ -692,16 +688,16 @@ public class VertxCoreTest {
                     t.printStackTrace();
                 }
             } else {
-                res.cause().printStackTrace();
+                deployResult.cause().printStackTrace();
             }
         });
         Vertx.clusteredVertx(new VertxOptions().setEventBusOptions(new EventBusOptions()
                 .setSsl(true)
                 .setKeyStoreOptions(new JksOptions().setPath("src/test/java/com/lingh/eventbus/ssl/keystore.jks").setPassword("wibble"))
                 .setTrustStoreOptions(new JksOptions().setPath("src/test/java/com/lingh/eventbus/ssl/keystore.jks").setPassword("wibble"))
-        ), res -> {
-            if (res.succeeded()) {
-                Vertx vertx = res.result();
+        ), deployResult -> {
+            if (deployResult.succeeded()) {
+                Vertx vertx = deployResult.result();
                 try {
                     EventBus eb = vertx.eventBus();
                     vertx.setPeriodic(1000, v -> eb.request("ping-address", "ping!", ar -> {
@@ -716,7 +712,7 @@ public class VertxCoreTest {
                     t.printStackTrace();
                 }
             } else {
-                res.cause().printStackTrace();
+                deployResult.cause().printStackTrace();
             }
         });
     }
@@ -745,9 +741,9 @@ public class VertxCoreTest {
         Vertx firstVertx = Vertx.vertx(new VertxOptions());
         System.out.println("Main verticle has started, let's deploy some others...");
         firstVertx.deployVerticle(com.lingh.verticle.deploy.OtherVerticle.class.getName());
-        firstVertx.deployVerticle(com.lingh.verticle.deploy.OtherVerticle.class.getName(), res -> {
-            if (res.succeeded()) {
-                String deploymentID = res.result();
+        firstVertx.deployVerticle(com.lingh.verticle.deploy.OtherVerticle.class.getName(), deployResult -> {
+            if (deployResult.succeeded()) {
+                String deploymentID = deployResult.result();
                 System.out.println("Other verticle deployed ok, deploymentID = " + deploymentID);
                 firstVertx.undeploy(deploymentID, res2 -> {
                     if (res2.succeeded()) {
@@ -757,15 +753,15 @@ public class VertxCoreTest {
                     }
                 });
             } else {
-                res.cause().printStackTrace();
+                deployResult.cause().printStackTrace();
             }
         });
         JsonObject config = new JsonObject().put("foo", "bar");
         firstVertx.deployVerticle(com.lingh.verticle.deploy.OtherVerticle.class.getName(), new DeploymentOptions().setConfig(config));
         firstVertx.deployVerticle(com.lingh.verticle.deploy.OtherVerticle.class.getName(), new DeploymentOptions().setInstances(10));
         firstVertx.deployVerticle(com.lingh.verticle.deploy.OtherVerticle.class.getName(), new DeploymentOptions().setWorker(true),
-                res -> {
-                    if (res.succeeded()) {
+                deployResult -> {
+                    if (deployResult.succeeded()) {
                         testContext.completeNow();
                     }
                 });
@@ -776,9 +772,9 @@ public class VertxCoreTest {
     void testVerticleInAsynchronousDeployment(VertxTestContext testContext) {
         Vertx firstVertx = Vertx.vertx(new VertxOptions());
         System.out.println("Main verticle has started, let's deploy some others...");
-        firstVertx.deployVerticle(com.lingh.verticle.asyncstart.OtherVerticle.class.getName(), res -> {
-            if (res.succeeded()) {
-                String deploymentID = res.result();
+        firstVertx.deployVerticle(com.lingh.verticle.asyncstart.OtherVerticle.class.getName(), deployResult -> {
+            if (deployResult.succeeded()) {
+                String deploymentID = deployResult.result();
                 System.out.println("Other verticle deployed ok, deploymentID = " + deploymentID);
                 firstVertx.undeploy(deploymentID, res2 -> {
                     if (res2.succeeded()) {
@@ -789,7 +785,7 @@ public class VertxCoreTest {
                     }
                 });
             } else {
-                res.cause().printStackTrace();
+                deployResult.cause().printStackTrace();
             }
         });
     }
@@ -800,8 +796,8 @@ public class VertxCoreTest {
         Vertx firstVertx = Vertx.vertx(new VertxOptions());
         System.out.println("[Main] Running in " + Thread.currentThread().getName());
         firstVertx.deployVerticle(com.lingh.verticle.worker.WorkerVerticle.class.getName(),
-                new DeploymentOptions().setWorker(true), res -> {
-                    if (res.succeeded()) {
+                new DeploymentOptions().setWorker(true), deployResult -> {
+                    if (deployResult.succeeded()) {
                         firstVertx.eventBus().request(
                                 "sample.data",
                                 "hello vert.x",
@@ -896,7 +892,7 @@ public class VertxCoreTest {
                     });
             batchStream.resume();
         }).listen(firstPort);
-        System.out.println("Batch server is now listening to port : 1234");
+        System.out.println("Batch server is now listening to port : " + firstPort);
         clientVertx.createNetClient()
                 .connect(firstPort, "localhost", ar -> {
                     if (ar.succeeded()) {
