@@ -517,10 +517,8 @@ public class VertxCoreTest {
                         System.out.println("sending push");
                         HttpServerResponse pushedResp = ar.result();
                         pushedResp.sendFile("src/test/java/com/lingh/http2/push/script.js");
-                    } else {
                     }
                 });
-
                 resp.sendFile("src/test/java/com/lingh/http2/push/index.html");
             } else if ("/script.js".equals(path)) {
                 resp.sendFile("src/test/java/com/lingh/http2/push/script.js");
@@ -851,31 +849,15 @@ public class VertxCoreTest {
     }
 
     @Test
-    void testExecuteBlocking(VertxTestContext testContext) throws Throwable {   // todo need change
-        int firstPort = 8081;
+    void testExecuteBlocking(VertxTestContext testContext) throws Throwable {
         Vertx firstVertx = Vertx.vertx(new VertxOptions());
-        firstVertx.createHttpServer()
-                .requestHandler(request -> firstVertx.<String>executeBlocking(promise -> {
-                    try {
-                        Thread.sleep(500);
-                    } catch (Exception ignore) {
-                    }
-                    promise.complete("armadillos!");
-                }, res -> {
-                    if (res.succeeded()) {
-                        request.response().putHeader("content-type", "text/plain").end(res.result());
-                    } else {
-                        res.cause().printStackTrace();
-                    }
-                }))
-                .listen(firstPort);
+        firstVertx.deployVerticle(com.lingh.execblocking.ExecBlockingExample.class.getName());
         Vertx secondVertx = Vertx.vertx(new VertxOptions());
         secondVertx.deployVerticle(com.lingh.execblocking.ExecBlockingExample.class.getName(), new DeploymentOptions()
                         .setWorkerPoolName("dedicated-pool")
                         .setMaxWorkerExecuteTime(120000)
                         .setWorkerPoolSize(5))
                 .onComplete(testContext.succeedingThenComplete());
-
         assertThat(testContext.awaitCompletion(5, TimeUnit.SECONDS)).isTrue();
         if (testContext.failed()) {
             throw testContext.causeOfFailure();
