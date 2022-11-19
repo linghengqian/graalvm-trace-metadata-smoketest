@@ -2,6 +2,10 @@
   "resources":{
   "includes":[
     {
+      "condition":{"typeReachable":"io.vertx.core.impl.launcher.VertxCommandLauncher"},
+      "pattern":"\\QMETA-INF/MANIFEST.MF\\E"
+    }, 
+    {
       "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
       "pattern":"\\QMETA-INF/services/com.hazelcast.DataSerializerHook\\E"
     }, 
@@ -18,8 +22,16 @@
       "pattern":"\\QMETA-INF/services/com.hazelcast.spi.discovery.DiscoveryStrategyFactory\\E"
     }, 
     {
+      "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+      "pattern":"\\QMETA-INF/services/com.hazelcast.spi.impl.servicemanager.ServiceDescriptorProvider\\E"
+    }, 
+    {
       "condition":{"typeReachable":"io.vertx.core.impl.VertxBuilder"},
       "pattern":"\\QMETA-INF/services/io.vertx.core.spi.VertxServiceProvider\\E"
+    }, 
+    {
+      "condition":{"typeReachable":"io.vertx.core.impl.launcher.ServiceCommandFactoryLoader"},
+      "pattern":"\\QMETA-INF/services/io.vertx.core.spi.launcher.CommandFactory\\E"
     }, 
     {
       "condition":{"typeReachable":"io.vertx.junit5.VertxExtension"},

@@ -4,6 +4,30 @@
   "name":"[B"
 },
 {
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"[B"
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"[C"
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"[D"
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"[F"
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"[I"
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"[J"
+},
+{
   "condition":{"typeReachable":"io.vertx.core.json.jackson.DatabindCodec"},
   "name":"[Lcom.fasterxml.jackson.databind.deser.Deserializers;"
 },
@@ -16,8 +40,24 @@
   "name":"[Ljava.lang.String;"
 },
 {
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"[Ljava.lang.String;"
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"[Ljavax.management.openmbean.CompositeData;"
+},
+{
   "condition":{"typeReachable":"io.vertx.core.net.PemKeyCertOptions"},
   "name":"[Lsun.security.pkcs.SignerInfo;"
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"[S"
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"[Z"
 },
 {
   "condition":{"typeReachable":"io.vertx.core.json.jackson.DatabindCodec"},
@@ -82,6 +122,14 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"com.hazelcast.config.ExecutorConfig",
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"<init>","parameterTypes":["com.hazelcast.config.ExecutorConfig"] }
+  ]
+},
+{
   "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.ConfigUtil"},
   "name":"com.hazelcast.config.MapConfig",
   "methods":[{"name":"<init>","parameterTypes":[] }]
@@ -98,12 +146,40 @@
 },
 {
   "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"com.hazelcast.cp.internal.MetadataRaftGroupManager",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"com.hazelcast.cp.internal.RaftNodeLifecycleAwareService",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"com.hazelcast.cp.internal.RaftService",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
   "name":"com.hazelcast.cp.internal.RaftServiceDataSerializerHook",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
   "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"com.hazelcast.cp.internal.RaftServiceDescriptorProvider",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
   "name":"com.hazelcast.cp.internal.datastructures.RaftDataServiceDataSerializerHook",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"com.hazelcast.cp.internal.datastructures.RaftDataServiceDescriptorProvider",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
@@ -130,6 +206,12 @@
   "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
   "name":"com.hazelcast.cp.internal.datastructures.semaphore.SemaphoreDataSerializerHook",
   "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"com.hazelcast.cp.internal.raft.SnapshotAwareService",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true
 },
 {
   "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
@@ -246,6 +328,11 @@
 },
 {
   "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"com.hazelcast.internal.longregister.LongRegisterServiceDescriptorProvider",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
   "name":"com.hazelcast.internal.management.ManagementDataSerializerHook",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
@@ -304,6 +391,12 @@
 {
   "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
   "name":"com.hazelcast.internal.partition.InternalPartitionService",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"com.hazelcast.internal.partition.MigrationAwareService",
   "allDeclaredFields":true,
   "queryAllDeclaredMethods":true
 },
@@ -501,6 +594,12 @@
 },
 {
   "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"com.hazelcast.spi.impl.eventservice.impl.EventServiceSegment",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
   "name":"com.hazelcast.spi.impl.merge.SplitBrainDataSerializerHook",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
@@ -619,6 +718,10 @@
 },
 {
   "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"com.hazelcast.sql.impl.calcite.CalciteSqlOptimizer"
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
   "name":"com.hazelcast.topic.impl.TopicDataSerializerHook",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
@@ -645,6 +748,14 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "condition":{"typeReachable":"io.vertx.core.Vertx"},
+  "name":"com.lingh.execblocking.ExecBlockingExample"
+},
+{
+  "condition":{"typeReachable":"io.vertx.core.impl.HAManager"},
+  "name":"com.lingh.ha.Server"
+},
+{
   "condition":{"typeReachable":"io.vertx.core.json.jackson.DatabindCodec"},
   "name":"com.lingh.jsonstreaming.DataPoint",
   "allDeclaredFields":true,
@@ -653,14 +764,8 @@
   "methods":[{"name":"<init>","parameterTypes":["long","double"] }]
 },
 {
-  "condition":{"typeReachable":"io.vertx.core.impl.VertxImpl"},
-  "name":"com.lingh.verticle.asyncstart.OtherVerticle",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"io.vertx.core.impl.VertxImpl"},
-  "name":"com.lingh.verticle.deploy.OtherVerticle",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
+  "condition":{"typeReachable":"io.vertx.core.Vertx"},
+  "name":"com.lingh.verticle.deploy.OtherVerticle"
 },
 {
   "condition":{"typeReachable":"io.vertx.core.spi.tls.DefaultJDKCipherSuite"},
@@ -744,6 +849,21 @@
 },
 {
   "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"com.sun.management.GarbageCollectorMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"com.sun.management.GcInfo",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"com.sun.management.HotSpotDiagnosticMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
   "name":"com.sun.management.OperatingSystemMXBean",
   "methods":[
     {"name":"getFreePhysicalMemorySize","parameterTypes":[] }, 
@@ -753,7 +873,38 @@
 },
 {
   "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"com.sun.management.ThreadMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"com.sun.management.UnixOperatingSystemMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"com.sun.management.VMOption",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"com.sun.management.internal.GarbageCollectorExtImpl",
+  "queryAllPublicConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"com.sun.management.internal.HotSpotDiagnostic",
+  "queryAllPublicConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"com.sun.management.internal.HotSpotThreadImpl",
+  "queryAllPublicConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
   "name":"com.sun.management.internal.OperatingSystemImpl",
+  "queryAllPublicConstructors":true,
   "methods":[
     {"name":"getCommittedVirtualMemorySize","parameterTypes":[] }, 
     {"name":"getFreeSwapSpaceSize","parameterTypes":[] }, 
@@ -821,6 +972,7 @@
   "name":"io.netty.channel.ChannelDuplexHandler",
   "methods":[
     {"name":"bind","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.net.SocketAddress","io.netty.channel.ChannelPromise"] }, 
+    {"name":"close","parameterTypes":["io.netty.channel.ChannelHandlerContext","io.netty.channel.ChannelPromise"] }, 
     {"name":"connect","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.net.SocketAddress","java.net.SocketAddress","io.netty.channel.ChannelPromise"] }, 
     {"name":"deregister","parameterTypes":["io.netty.channel.ChannelHandlerContext","io.netty.channel.ChannelPromise"] }, 
     {"name":"disconnect","parameterTypes":["io.netty.channel.ChannelHandlerContext","io.netty.channel.ChannelPromise"] }, 
@@ -869,7 +1021,17 @@
   ]
 },
 {
+  "condition":{"typeReachable":"io.vertx.core.http.impl.Http1xClientConnection"},
+  "name":"io.netty.channel.ChannelHandlerAdapter",
+  "methods":[{"name":"exceptionCaught","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Throwable"] }]
+},
+{
   "condition":{"typeReachable":"io.vertx.core.http.impl.HttpServerWorker"},
+  "name":"io.netty.channel.ChannelHandlerAdapter",
+  "methods":[{"name":"exceptionCaught","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Throwable"] }]
+},
+{
+  "condition":{"typeReachable":"io.vertx.core.http.impl.ServerWebSocketImpl"},
   "name":"io.netty.channel.ChannelHandlerAdapter",
   "methods":[{"name":"exceptionCaught","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Throwable"] }]
 },
@@ -879,9 +1041,17 @@
   "methods":[{"name":"exceptionCaught","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Throwable"] }]
 },
 {
-  "condition":{"typeReachable":"io.vertx.core.net.impl.ChannelProvider"},
-  "name":"io.netty.channel.ChannelHandlerAdapter",
-  "methods":[{"name":"exceptionCaught","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Throwable"] }]
+  "condition":{"typeReachable":"io.vertx.core.http.impl.Http1xClientConnection"},
+  "name":"io.netty.channel.ChannelInboundHandlerAdapter",
+  "methods":[
+    {"name":"channelActive","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"channelReadComplete","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"channelRegistered","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"channelUnregistered","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"channelWritabilityChanged","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"exceptionCaught","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Throwable"] }, 
+    {"name":"userEventTriggered","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object"] }
+  ]
 },
 {
   "condition":{"typeReachable":"io.vertx.core.http.impl.Http1xUpgradeToH2CHandler"},
@@ -945,6 +1115,29 @@
     {"name":"channelRegistered","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
     {"name":"channelUnregistered","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
     {"name":"channelWritabilityChanged","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"exceptionCaught","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Throwable"] }, 
+    {"name":"userEventTriggered","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"io.vertx.core.http.impl.ServerWebSocketImpl"},
+  "name":"io.netty.channel.ChannelInboundHandlerAdapter",
+  "methods":[
+    {"name":"channelActive","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"channelRegistered","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"channelUnregistered","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"channelWritabilityChanged","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"exceptionCaught","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Throwable"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"io.vertx.core.http.impl.WebSocketHandshakeInboundHandler"},
+  "name":"io.netty.channel.ChannelInboundHandlerAdapter",
+  "methods":[
+    {"name":"channelActive","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"channelRegistered","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"channelUnregistered","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"channelWritabilityChanged","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
     {"name":"exceptionCaught","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Throwable"] }
   ]
 },
@@ -986,9 +1179,7 @@
     {"name":"channelReadComplete","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
     {"name":"channelRegistered","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
     {"name":"channelUnregistered","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
-    {"name":"channelWritabilityChanged","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
-    {"name":"exceptionCaught","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Throwable"] }, 
-    {"name":"userEventTriggered","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object"] }
+    {"name":"channelWritabilityChanged","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }
   ]
 },
 {
@@ -1047,11 +1238,16 @@
   ]
 },
 {
-  "condition":{"typeReachable":"io.vertx.core.net.impl.ChannelProvider"},
-  "name":"io.netty.channel.ChannelInitializer",
+  "condition":{"typeReachable":"io.vertx.core.http.impl.Http1xClientConnection"},
+  "name":"io.netty.channel.ChannelOutboundHandlerAdapter",
   "methods":[
-    {"name":"channelRegistered","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
-    {"name":"exceptionCaught","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Throwable"] }
+    {"name":"bind","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.net.SocketAddress","io.netty.channel.ChannelPromise"] }, 
+    {"name":"close","parameterTypes":["io.netty.channel.ChannelHandlerContext","io.netty.channel.ChannelPromise"] }, 
+    {"name":"connect","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.net.SocketAddress","java.net.SocketAddress","io.netty.channel.ChannelPromise"] }, 
+    {"name":"deregister","parameterTypes":["io.netty.channel.ChannelHandlerContext","io.netty.channel.ChannelPromise"] }, 
+    {"name":"disconnect","parameterTypes":["io.netty.channel.ChannelHandlerContext","io.netty.channel.ChannelPromise"] }, 
+    {"name":"flush","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"read","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }
   ]
 },
 {
@@ -1068,7 +1264,7 @@
   ]
 },
 {
-  "condition":{"typeReachable":"io.vertx.core.impl.AddressResolver"},
+  "condition":{"typeReachable":"io.vertx.core.http.impl.ServerWebSocketImpl"},
   "name":"io.netty.channel.ChannelOutboundHandlerAdapter",
   "methods":[
     {"name":"bind","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.net.SocketAddress","io.netty.channel.ChannelPromise"] }, 
@@ -1081,7 +1277,7 @@
   ]
 },
 {
-  "condition":{"typeReachable":"io.vertx.core.net.impl.ChannelProvider"},
+  "condition":{"typeReachable":"io.vertx.core.impl.AddressResolver"},
   "name":"io.netty.channel.ChannelOutboundHandlerAdapter",
   "methods":[
     {"name":"bind","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.net.SocketAddress","io.netty.channel.ChannelPromise"] }, 
@@ -1117,7 +1313,7 @@
   ]
 },
 {
-  "condition":{"typeReachable":"io.vertx.core.net.impl.transport.Transport$$Lambda$581/0x0000000800f16c00"},
+  "condition":{"typeReachable":"io.vertx.core.net.impl.transport.Transport$$Lambda$514/0x0000000800e0f218"},
   "name":"io.netty.channel.DefaultChannelPipeline$HeadContext",
   "methods":[
     {"name":"bind","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.net.SocketAddress","io.netty.channel.ChannelPromise"] }, 
@@ -1140,83 +1336,7 @@
   ]
 },
 {
-  "condition":{"typeReachable":"io.vertx.core.net.impl.transport.Transport$$Lambda$582/0x0000000800f57830"},
-  "name":"io.netty.channel.DefaultChannelPipeline$HeadContext",
-  "methods":[
-    {"name":"bind","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.net.SocketAddress","io.netty.channel.ChannelPromise"] }, 
-    {"name":"channelActive","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
-    {"name":"channelInactive","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
-    {"name":"channelRead","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object"] }, 
-    {"name":"channelReadComplete","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
-    {"name":"channelRegistered","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
-    {"name":"channelUnregistered","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
-    {"name":"channelWritabilityChanged","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
-    {"name":"close","parameterTypes":["io.netty.channel.ChannelHandlerContext","io.netty.channel.ChannelPromise"] }, 
-    {"name":"connect","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.net.SocketAddress","java.net.SocketAddress","io.netty.channel.ChannelPromise"] }, 
-    {"name":"deregister","parameterTypes":["io.netty.channel.ChannelHandlerContext","io.netty.channel.ChannelPromise"] }, 
-    {"name":"disconnect","parameterTypes":["io.netty.channel.ChannelHandlerContext","io.netty.channel.ChannelPromise"] }, 
-    {"name":"exceptionCaught","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Throwable"] }, 
-    {"name":"flush","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
-    {"name":"read","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
-    {"name":"userEventTriggered","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object"] }, 
-    {"name":"write","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object","io.netty.channel.ChannelPromise"] }
-  ]
-},
-{
-  "condition":{"typeReachable":"io.vertx.core.net.impl.transport.Transport$$Lambda$583/0x0000000800f5d438"},
-  "name":"io.netty.channel.DefaultChannelPipeline$HeadContext",
-  "methods":[
-    {"name":"bind","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.net.SocketAddress","io.netty.channel.ChannelPromise"] }, 
-    {"name":"channelActive","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
-    {"name":"channelInactive","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
-    {"name":"channelRead","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object"] }, 
-    {"name":"channelReadComplete","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
-    {"name":"channelRegistered","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
-    {"name":"channelUnregistered","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
-    {"name":"channelWritabilityChanged","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
-    {"name":"close","parameterTypes":["io.netty.channel.ChannelHandlerContext","io.netty.channel.ChannelPromise"] }, 
-    {"name":"connect","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.net.SocketAddress","java.net.SocketAddress","io.netty.channel.ChannelPromise"] }, 
-    {"name":"deregister","parameterTypes":["io.netty.channel.ChannelHandlerContext","io.netty.channel.ChannelPromise"] }, 
-    {"name":"disconnect","parameterTypes":["io.netty.channel.ChannelHandlerContext","io.netty.channel.ChannelPromise"] }, 
-    {"name":"exceptionCaught","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Throwable"] }, 
-    {"name":"flush","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
-    {"name":"read","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
-    {"name":"userEventTriggered","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object"] }, 
-    {"name":"write","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object","io.netty.channel.ChannelPromise"] }
-  ]
-},
-{
-  "condition":{"typeReachable":"io.vertx.core.net.impl.transport.Transport$$Lambda$581/0x0000000800f16c00"},
-  "name":"io.netty.channel.DefaultChannelPipeline$TailContext",
-  "methods":[
-    {"name":"channelActive","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
-    {"name":"channelInactive","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
-    {"name":"channelRead","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object"] }, 
-    {"name":"channelReadComplete","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
-    {"name":"channelRegistered","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
-    {"name":"channelUnregistered","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
-    {"name":"channelWritabilityChanged","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
-    {"name":"exceptionCaught","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Throwable"] }, 
-    {"name":"userEventTriggered","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object"] }
-  ]
-},
-{
-  "condition":{"typeReachable":"io.vertx.core.net.impl.transport.Transport$$Lambda$582/0x0000000800f57830"},
-  "name":"io.netty.channel.DefaultChannelPipeline$TailContext",
-  "methods":[
-    {"name":"channelActive","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
-    {"name":"channelInactive","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
-    {"name":"channelRead","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object"] }, 
-    {"name":"channelReadComplete","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
-    {"name":"channelRegistered","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
-    {"name":"channelUnregistered","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
-    {"name":"channelWritabilityChanged","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
-    {"name":"exceptionCaught","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Throwable"] }, 
-    {"name":"userEventTriggered","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object"] }
-  ]
-},
-{
-  "condition":{"typeReachable":"io.vertx.core.net.impl.transport.Transport$$Lambda$583/0x0000000800f5d438"},
+  "condition":{"typeReachable":"io.vertx.core.net.impl.transport.Transport$$Lambda$514/0x0000000800e0f218"},
   "name":"io.netty.channel.DefaultChannelPipeline$TailContext",
   "methods":[
     {"name":"channelActive","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
@@ -1232,6 +1352,26 @@
 },
 {
   "condition":{"typeReachable":"io.vertx.core.http.impl.HttpServerWorker"},
+  "name":"io.netty.handler.codec.ByteToMessageDecoder",
+  "methods":[
+    {"name":"channelInactive","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"channelRead","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object"] }, 
+    {"name":"channelReadComplete","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"userEventTriggered","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"io.vertx.core.http.impl.ServerWebSocketImpl"},
+  "name":"io.netty.handler.codec.ByteToMessageDecoder",
+  "methods":[
+    {"name":"channelInactive","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"channelRead","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object"] }, 
+    {"name":"channelReadComplete","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"userEventTriggered","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"io.vertx.core.http.impl.WebSocketHandshakeInboundHandler"},
   "name":"io.netty.handler.codec.ByteToMessageDecoder",
   "methods":[
     {"name":"channelInactive","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
@@ -1270,9 +1410,14 @@
   "methods":[{"name":"channelRead","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object"] }]
 },
 {
-  "condition":{"typeReachable":"io.vertx.core.net.impl.ChannelProvider"},
-  "name":"io.netty.handler.codec.MessageToMessageDecoder",
-  "methods":[{"name":"channelRead","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object"] }]
+  "condition":{"typeReachable":"io.vertx.core.http.impl.Http1xClientConnection"},
+  "name":"io.netty.handler.codec.MessageToMessageEncoder",
+  "methods":[{"name":"write","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object","io.netty.channel.ChannelPromise"] }]
+},
+{
+  "condition":{"typeReachable":"io.vertx.core.http.impl.ServerWebSocketImpl"},
+  "name":"io.netty.handler.codec.MessageToMessageEncoder",
+  "methods":[{"name":"write","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object","io.netty.channel.ChannelPromise"] }]
 },
 {
   "condition":{"typeReachable":"io.vertx.core.impl.AddressResolver"},
@@ -1280,16 +1425,7 @@
   "methods":[{"name":"write","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object","io.netty.channel.ChannelPromise"] }]
 },
 {
-  "condition":{"typeReachable":"io.vertx.core.net.impl.ChannelProvider"},
-  "name":"io.netty.handler.codec.MessageToMessageEncoder",
-  "methods":[{"name":"write","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object","io.netty.channel.ChannelPromise"] }]
-},
-{
   "condition":{"typeReachable":"io.vertx.core.impl.AddressResolver"},
-  "name":"io.netty.handler.codec.dns.DatagramDnsQueryEncoder"
-},
-{
-  "condition":{"typeReachable":"io.vertx.core.net.impl.ChannelProvider"},
   "name":"io.netty.handler.codec.dns.DatagramDnsQueryEncoder"
 },
 {
@@ -1323,6 +1459,22 @@
   "condition":{"typeReachable":"io.vertx.core.http.impl.HttpServerWorker"},
   "name":"io.netty.handler.codec.http.HttpObjectEncoder",
   "methods":[{"name":"write","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object","io.netty.channel.ChannelPromise"] }]
+},
+{
+  "condition":{"typeReachable":"io.vertx.core.http.impl.ServerWebSocketImpl"},
+  "name":"io.netty.handler.codec.http.websocketx.WebSocket13FrameDecoder"
+},
+{
+  "condition":{"typeReachable":"io.vertx.core.http.impl.WebSocketHandshakeInboundHandler"},
+  "name":"io.netty.handler.codec.http.websocketx.WebSocket13FrameDecoder"
+},
+{
+  "condition":{"typeReachable":"io.vertx.core.http.impl.Http1xClientConnection"},
+  "name":"io.netty.handler.codec.http.websocketx.WebSocket13FrameEncoder"
+},
+{
+  "condition":{"typeReachable":"io.vertx.core.http.impl.ServerWebSocketImpl"},
+  "name":"io.netty.handler.codec.http.websocketx.WebSocket13FrameEncoder"
 },
 {
   "condition":{"typeReachable":"io.vertx.core.http.impl.HttpServerConnectionHandler"},
@@ -1455,6 +1607,16 @@
   ]
 },
 {
+  "condition":{"typeReachable":"io.vertx.core.http.impl.HttpServerWorker"},
+  "name":"io.netty.handler.stream.ChunkedWriteHandler",
+  "methods":[
+    {"name":"channelInactive","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"channelWritabilityChanged","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"flush","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"write","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object","io.netty.channel.ChannelPromise"] }
+  ]
+},
+{
   "condition":{"typeReachable":"io.vertx.core.net.impl.NetClientImpl"},
   "name":"io.netty.handler.stream.ChunkedWriteHandler",
   "methods":[
@@ -1479,15 +1641,7 @@
   "name":"io.netty.resolver.dns.DnsNameResolver$1"
 },
 {
-  "condition":{"typeReachable":"io.vertx.core.net.impl.ChannelProvider"},
-  "name":"io.netty.resolver.dns.DnsNameResolver$1"
-},
-{
   "condition":{"typeReachable":"io.vertx.core.impl.AddressResolver"},
-  "name":"io.netty.resolver.dns.DnsNameResolver$3"
-},
-{
-  "condition":{"typeReachable":"io.vertx.core.net.impl.ChannelProvider"},
   "name":"io.netty.resolver.dns.DnsNameResolver$3"
 },
 {
@@ -1498,25 +1652,6 @@
     {"name":"channelRead","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object"] }, 
     {"name":"exceptionCaught","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Throwable"] }
   ]
-},
-{
-  "condition":{"typeReachable":"io.vertx.core.net.impl.ChannelProvider"},
-  "name":"io.netty.resolver.dns.DnsNameResolver$DnsResponseHandler",
-  "methods":[
-    {"name":"channelActive","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
-    {"name":"channelRead","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object"] }, 
-    {"name":"exceptionCaught","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Throwable"] }
-  ]
-},
-{
-  "condition":{"typeReachable":"io.vertx.core.net.impl.ConnectionBase"},
-  "name":"io.netty.util.AbstractReferenceCounted",
-  "fields":[{"name":"refCnt"}]
-},
-{
-  "condition":{"typeReachable":"io.vertx.core.http.impl.Http2UpgradeClientConnection$UpgradingStream"},
-  "name":"io.netty.util.ReferenceCountUtil",
-  "queryAllDeclaredMethods":true
 },
 {
   "condition":{"typeReachable":"io.vertx.core.http.impl.HttpServerWorker"},
@@ -1604,6 +1739,77 @@
   "name":"io.vertx.core.http.impl.VertxHttpResponseEncoder"
 },
 {
+  "condition":{"typeReachable":"io.vertx.core.http.impl.Http1xClientConnection"},
+  "name":"io.vertx.core.http.impl.WebSocketHandshakeInboundHandler",
+  "methods":[
+    {"name":"channelInactive","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"channelRead","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"io.vertx.core.cli.annotations.CLIConfigurator"},
+  "name":"io.vertx.core.impl.launcher.commands.BareCommand",
+  "queryAllPublicMethods":true,
+  "methods":[
+    {"name":"setClusterPort","parameterTypes":["int"] }, 
+    {"name":"setClusterPublicPort","parameterTypes":["int"] }, 
+    {"name":"setHAGroup","parameterTypes":["java.lang.String"] }, 
+    {"name":"setQuorum","parameterTypes":["int"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"io.vertx.core.cli.impl.ReflectionUtils"},
+  "name":"io.vertx.core.impl.launcher.commands.BareCommand"
+},
+{
+  "condition":{"typeReachable":"io.vertx.core.cli.annotations.CLIConfigurator"},
+  "name":"io.vertx.core.impl.launcher.commands.ListCommand",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"io.vertx.core.cli.annotations.CLIConfigurator"},
+  "name":"io.vertx.core.impl.launcher.commands.RunCommand",
+  "queryAllPublicMethods":true,
+  "methods":[
+    {"name":"setCluster","parameterTypes":["boolean"] }, 
+    {"name":"setHighAvailability","parameterTypes":["boolean"] }, 
+    {"name":"setInstances","parameterTypes":["int"] }, 
+    {"name":"setMainVerticle","parameterTypes":["java.lang.String"] }, 
+    {"name":"setRedeploy","parameterTypes":["java.util.List"] }, 
+    {"name":"setRedeployGracePeriod","parameterTypes":["long"] }, 
+    {"name":"setRedeployScanPeriod","parameterTypes":["long"] }, 
+    {"name":"setRedeployStopWaitingTime","parameterTypes":["long"] }, 
+    {"name":"setWorker","parameterTypes":["boolean"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"io.vertx.core.cli.impl.ReflectionUtils"},
+  "name":"io.vertx.core.impl.launcher.commands.RunCommand"
+},
+{
+  "condition":{"typeReachable":"io.vertx.core.cli.annotations.CLIConfigurator"},
+  "name":"io.vertx.core.impl.launcher.commands.StartCommand",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"io.vertx.core.cli.annotations.CLIConfigurator"},
+  "name":"io.vertx.core.impl.launcher.commands.StopCommand",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"io.vertx.core.cli.annotations.CLIConfigurator"},
+  "name":"io.vertx.core.impl.launcher.commands.VersionCommand",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"io.vertx.core.impl.launcher.commands.ClasspathHandler"},
+  "name":"io.vertx.core.impl.launcher.commands.VertxIsolatedDeployer",
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"deploy","parameterTypes":["java.lang.String","io.vertx.core.Vertx","io.vertx.core.DeploymentOptions","io.vertx.core.Handler"] }
+  ]
+},
+{
   "condition":{"typeReachable":"io.vertx.core.logging.LoggerFactory"},
   "name":"io.vertx.core.logging.Log4j2LogDelegateFactory",
   "methods":[{"name":"<init>","parameterTypes":[] }]
@@ -1619,10 +1825,6 @@
     {"name":"exceptionCaught","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Throwable"] }, 
     {"name":"userEventTriggered","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object"] }
   ]
-},
-{
-  "condition":{"typeReachable":"io.vertx.core.net.impl.ChannelProvider"},
-  "name":"io.vertx.core.net.impl.ChannelProvider$2"
 },
 {
   "condition":{"typeReachable":"io.vertx.core.http.impl.HttpServerWorker"},
@@ -1680,6 +1882,36 @@
   ]
 },
 {
+  "condition":{"typeReachable":"io.vertx.core.cli.annotations.CLIConfigurator"},
+  "name":"io.vertx.core.spi.launcher.DefaultCommand",
+  "methods":[{"name":"setSystemProps","parameterTypes":["java.util.List"] }]
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"io.vertx.spi.cluster.hazelcast.impl.HazelcastNodeInfo",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.impl.SubsMapHelper"},
+  "name":"io.vertx.spi.cluster.hazelcast.impl.HazelcastRegistrationInfo",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"java.lang.Boolean",
+  "fields":[{"name":"TYPE"}]
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"java.lang.Byte",
+  "fields":[{"name":"TYPE"}]
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"java.lang.Character",
+  "fields":[{"name":"TYPE"}]
+},
+{
   "condition":{"typeReachable":"io.vertx.core.json.jackson.DatabindCodec"},
   "name":"java.lang.Class",
   "methods":[{"name":"getRecordComponents","parameterTypes":[] }]
@@ -1691,9 +1923,34 @@
 },
 {
   "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"java.lang.Deprecated",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"java.lang.Double",
+  "fields":[{"name":"TYPE"}]
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"java.lang.Float",
+  "fields":[{"name":"TYPE"}]
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"java.lang.Integer",
+  "fields":[{"name":"TYPE"}]
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
   "name":"java.lang.Iterable",
   "allDeclaredFields":true,
   "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"java.lang.Long",
+  "fields":[{"name":"TYPE"}]
 },
 {
   "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
@@ -1741,7 +1998,21 @@
   "methods":[{"name":"major","parameterTypes":[] }]
 },
 {
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"java.lang.Short",
+  "fields":[{"name":"TYPE"}]
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"java.lang.StackTraceElement",
+  "queryAllPublicMethods":true
+},
+{
   "condition":{"typeReachable":"io.vertx.core.net.PemKeyCertOptions"},
+  "name":"java.lang.String"
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
   "name":"java.lang.String"
 },
 {
@@ -1751,14 +2022,90 @@
   "queryAllDeclaredMethods":true
 },
 {
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"java.lang.Void",
+  "fields":[{"name":"TYPE"}]
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"java.lang.management.BufferPoolMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"java.lang.management.ClassLoadingMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"java.lang.management.CompilationMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"java.lang.management.LockInfo",
+  "queryAllPublicMethods":true
+},
+{
   "condition":{"typeReachable":"io.vertx.core.impl.Utils"},
   "name":"java.lang.management.ManagementFactory",
   "methods":[{"name":"getRuntimeMXBean","parameterTypes":[] }]
 },
 {
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"java.lang.management.ManagementPermission",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.String"] }]
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"java.lang.management.MemoryMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"java.lang.management.MemoryManagerMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"java.lang.management.MemoryPoolMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"java.lang.management.MemoryUsage",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"java.lang.management.MonitorInfo",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"java.lang.management.PlatformLoggingMXBean",
+  "queryAllPublicMethods":true,
+  "methods":[
+    {"name":"getLoggerLevel","parameterTypes":["java.lang.String"] }, 
+    {"name":"getLoggerNames","parameterTypes":[] }, 
+    {"name":"getParentLoggerName","parameterTypes":["java.lang.String"] }, 
+    {"name":"setLoggerLevel","parameterTypes":["java.lang.String","java.lang.String"] }
+  ]
+},
+{
   "condition":{"typeReachable":"io.vertx.core.impl.Utils"},
   "name":"java.lang.management.RuntimeMXBean",
   "methods":[{"name":"getInputArguments","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"java.lang.management.RuntimeMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"java.lang.management.ThreadInfo",
+  "queryAllPublicMethods":true
 },
 {
   "condition":{"typeReachable":"io.vertx.core.json.jackson.DatabindCodec"},
@@ -1767,6 +2114,14 @@
     {"name":"getName","parameterTypes":[] }, 
     {"name":"getType","parameterTypes":[] }
   ]
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"java.math.BigDecimal"
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"java.math.BigInteger"
 },
 {
   "condition":{"typeReachable":"io.vertx.core.impl.Utils"},
@@ -1789,17 +2144,12 @@
   "methods":[{"name":"<init>","parameterTypes":["long","int"] }]
 },
 {
-  "condition":{"typeReachable":"io.vertx.core.http.impl.Http2UpgradeClientConnection$UpgradingStream$1"},
+  "condition":{"typeReachable":"io.vertx.core.http.impl.HttpServerWorker"},
   "name":"java.nio.DirectByteBuffer",
   "methods":[{"name":"<init>","parameterTypes":["long","int"] }]
 },
 {
-  "condition":{"typeReachable":"io.vertx.core.http.impl.HttpChannelConnector"},
-  "name":"java.nio.DirectByteBuffer",
-  "methods":[{"name":"<init>","parameterTypes":["long","int"] }]
-},
-{
-  "condition":{"typeReachable":"io.vertx.core.http.impl.VertxHttp2ClientUpgradeCodec"},
+  "condition":{"typeReachable":"io.vertx.core.http.impl.VertxHttp2ConnectionHandlerBuilder"},
   "name":"java.nio.DirectByteBuffer",
   "methods":[{"name":"<init>","parameterTypes":["long","int"] }]
 },
@@ -1838,6 +2188,15 @@
 },
 {
   "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"java.util.Date"
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"java.util.PropertyPermission",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.String","java.lang.String"] }]
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
   "name":"java.util.function.Consumer",
   "allDeclaredFields":true,
   "queryAllDeclaredMethods":true
@@ -1847,6 +2206,43 @@
   "name":"java.util.function.Supplier",
   "allDeclaredFields":true,
   "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"java.util.logging.LogManager",
+  "methods":[{"name":"getLoggingMXBean","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"java.util.logging.LoggingMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"javax.management.MBeanOperationInfo",
+  "queryAllPublicMethods":true,
+  "methods":[{"name":"getSignature","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"javax.management.MBeanServerBuilder",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"javax.management.ObjectName"
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"javax.management.openmbean.CompositeData"
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"javax.management.openmbean.OpenMBeanOperationInfoSupport"
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"javax.management.openmbean.TabularData"
 },
 {
   "condition":{"typeReachable":"io.vertx.core.http.impl.HttpServerWorker"},
@@ -1882,6 +2278,11 @@
   "methods":[{"name":"setApplicationProtocols","parameterTypes":["java.lang.String[]"] }]
 },
 {
+  "condition":{"typeReachable":"io.vertx.core.net.PemKeyCertOptions"},
+  "name":"javax.security.auth.x500.X500Principal",
+  "methods":[{"name":"<init>","parameterTypes":["sun.security.x509.X500Name"] }]
+},
+{
   "condition":{"typeReachable":"io.vertx.core.net.impl.KeyStoreHelper"},
   "name":"javax.security.auth.x500.X500Principal",
   "fields":[{"name":"thisX500Name"}],
@@ -1898,8 +2299,78 @@
   "methods":[{"name":"getUnsafe","parameterTypes":[] }]
 },
 {
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"jdk.management.jfr.ConfigurationInfo",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"jdk.management.jfr.EventTypeInfo",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"jdk.management.jfr.FlightRecorderMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"jdk.management.jfr.FlightRecorderMXBeanImpl",
+  "queryAllPublicConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"jdk.management.jfr.RecordingInfo",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"jdk.management.jfr.SettingDescriptorInfo",
+  "queryAllPublicMethods":true
+},
+{
   "condition":{"typeReachable":"io.vertx.core.net.impl.ChannelProvider"},
   "name":"org.bouncycastle.jsse.provider.BouncyCastleJsseProvider"
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"sun.management.ClassLoadingImpl",
+  "queryAllPublicConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"sun.management.CompilationImpl",
+  "queryAllPublicConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"sun.management.ManagementFactoryHelper$1",
+  "queryAllPublicConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"sun.management.ManagementFactoryHelper$PlatformLoggingImpl",
+  "queryAllPublicConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"sun.management.MemoryImpl",
+  "queryAllPublicConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"sun.management.MemoryManagerImpl",
+  "queryAllPublicConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"sun.management.MemoryPoolImpl",
+  "queryAllPublicConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"sun.management.RuntimeImpl",
+  "queryAllPublicConstructors":true
 },
 {
   "condition":{"typeReachable":"io.vertx.core.impl.Utils"},
@@ -1929,6 +2400,19 @@
   ]
 },
 {
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"sun.nio.ch.SelectorImpl",
+  "fields":[
+    {"name":"publicSelectedKeys"}, 
+    {"name":"selectedKeys"}
+  ]
+},
+{
+  "condition":{"typeReachable":"io.vertx.core.http.impl.HttpServerWorker"},
+  "name":"sun.security.pkcs12.PKCS12KeyStore",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
   "condition":{"typeReachable":"io.vertx.core.net.impl.KeyStoreHelper"},
   "name":"sun.security.pkcs12.PKCS12KeyStore",
   "methods":[{"name":"<init>","parameterTypes":[] }]
@@ -1936,6 +2420,11 @@
 {
   "condition":{"typeReachable":"io.vertx.core.spi.tls.DefaultJDKCipherSuite"},
   "name":"sun.security.pkcs12.PKCS12KeyStore",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.vertx.core.http.impl.HttpServerWorker"},
+  "name":"sun.security.pkcs12.PKCS12KeyStore$DualFormatPKCS12",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
@@ -1961,6 +2450,11 @@
 {
   "condition":{"typeReachable":"io.vertx.core.net.impl.KeyStoreHelper"},
   "name":"sun.security.provider.JavaKeyStore$DualFormatJKS",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.vertx.core.http.impl.HttpServerWorker"},
+  "name":"sun.security.provider.JavaKeyStore$JKS",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
@@ -1995,6 +2489,16 @@
 },
 {
   "condition":{"typeReachable":"io.vertx.core.file.impl.FileCache"},
+  "name":"sun.security.provider.SHA",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.vertx.core.http.impl.Http1xClientConnection$1"},
+  "name":"sun.security.provider.SHA",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.vertx.core.http.impl.ServerWebSocketImpl"},
   "name":"sun.security.provider.SHA",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
@@ -2044,6 +2548,11 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "condition":{"typeReachable":"io.vertx.core.http.impl.HttpServerWorker"},
+  "name":"sun.security.provider.X509Factory",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
   "condition":{"typeReachable":"io.vertx.core.net.impl.ChannelProvider"},
   "name":"sun.security.provider.X509Factory",
   "methods":[{"name":"<init>","parameterTypes":[] }]
@@ -2065,6 +2574,11 @@
 },
 {
   "condition":{"typeReachable":"io.vertx.core.net.impl.KeyStoreHelper"},
+  "name":"sun.security.rsa.RSAKeyFactory$Legacy",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.vertx.core.net.impl.SSLHelper"},
   "name":"sun.security.rsa.RSAKeyFactory$Legacy",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
@@ -2096,6 +2610,11 @@
 {
   "condition":{"typeReachable":"io.vertx.core.spi.tls.DefaultSslContextFactory"},
   "name":"sun.security.ssl.SSLContextImpl$TLSContext",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.vertx.core.net.impl.KeyStoreHelper"},
+  "name":"sun.security.ssl.TrustManagerFactoryImpl$PKIXFactory",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
@@ -2173,6 +2692,11 @@
 },
 {
   "condition":{"typeReachable":"io.vertx.core.net.impl.KeyStoreHelper"},
+  "name":"sun.security.x509.SubjectKeyIdentifierExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+},
+{
+  "condition":{"typeReachable":"io.vertx.core.net.impl.SSLHelper"},
   "name":"sun.security.x509.SubjectKeyIdentifierExtension",
   "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
 },

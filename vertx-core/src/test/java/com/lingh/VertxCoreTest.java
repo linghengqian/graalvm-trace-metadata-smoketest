@@ -836,7 +836,7 @@ public class VertxCoreTest {
     }
 
     @Test
-    @Timeout(value = 5, timeUnit = TimeUnit.SECONDS)
+    @Timeout(value = 10, timeUnit = TimeUnit.SECONDS)
     void testJSONStreamingParser(VertxTestContext testContext) {
         Vertx firstVertx = Vertx.vertx(new VertxOptions());
         firstVertx.fileSystem().open("src/test/resources/large.json", new OpenOptions(), ar -> {
