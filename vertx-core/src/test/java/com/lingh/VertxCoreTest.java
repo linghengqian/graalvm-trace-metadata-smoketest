@@ -40,7 +40,8 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 public class VertxCoreTest {
     @Test
     void testEmbedding(VertxTestContext testContext) throws Throwable {
-        Vertx.vertx().createHttpServer().requestHandler(req -> req.response().end("Hello World!")).listen(8080)
+        int firstPort = 8282;
+        Vertx.vertx().createHttpServer().requestHandler(req -> req.response().end("Hello World!")).listen(firstPort)
                 .onComplete(testContext.succeedingThenComplete());
         assertThat(testContext.awaitCompletion(5, TimeUnit.SECONDS)).isTrue();
         if (testContext.failed()) {
@@ -51,7 +52,7 @@ public class VertxCoreTest {
     @Test
     @Timeout(value = 5, timeUnit = TimeUnit.SECONDS)
     void testNetInEcho(VertxTestContext testContext) {
-        int firstPort = 1234;
+        int firstPort = 8283;
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
         Vertx clientVertx = Vertx.vertx(new VertxOptions());
         serverVertx.createNetServer()
@@ -59,31 +60,34 @@ public class VertxCoreTest {
                 .listen(firstPort);
         clientVertx.createNetClient()
                 .connect(firstPort, "localhost", res -> {
-                    assertThat(res.succeeded()).isTrue();
-                    NetSocket socket = res.result();
-                    socket.handler(buffer -> assertThat(buffer.toString(StandardCharsets.UTF_8)).isEqualTo("hello 0"));
-                    IntStream.range(0, 10).mapToObj("hello %d\n"::formatted).forEach(socket::write);
-                    testContext.completeNow();
+                    if (res.succeeded()) {
+                        NetSocket socket = res.result();
+                        socket.handler(buffer -> assertThat(buffer.toString(StandardCharsets.UTF_8).startsWith("hello ")).isTrue());
+                        IntStream.range(0, 10).mapToObj("hello %d\n"::formatted).forEach(socket::write);
+                        testContext.completeNow();
+                    }
                 });
     }
 
     @Test
-    @Timeout(value = 5, timeUnit = TimeUnit.SECONDS)
+    @Timeout(value = 10, timeUnit = TimeUnit.SECONDS)
     void testNetInEchoSSL(VertxTestContext testContext) {
-        int firstPort = 1234;
+        int firstPort = 8284;
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
         Vertx clientVertx = Vertx.vertx(new VertxOptions());
         serverVertx.createNetServer(
                 new NetServerOptions().setSsl(true)
-                        .setKeyStoreOptions(new JksOptions().setPath("src/test/java/com/lingh/net/echossl/server-keystore.jks").setPassword("wibble"))
+                        .setKeyStoreOptions(new JksOptions().setPath("src/test/java/com/lingh/net/echossl/server-keystore.jks")
+                                .setPassword("wibble"))
         ).connectHandler(sock -> Pump.pump(sock, sock).start()).listen(firstPort);
         clientVertx.createNetClient(new NetClientOptions().setSsl(true).setTrustAll(true))
                 .connect(firstPort, "localhost", res -> {
-                    assertThat(res.succeeded()).isTrue();
-                    NetSocket socket = res.result();
-                    socket.handler(buffer -> assertThat(buffer.toString(StandardCharsets.UTF_8)).isEqualTo("hello 0"));
-                    IntStream.range(0, 10).mapToObj("hello %d\n"::formatted).forEach(socket::write);
-                    testContext.completeNow();
+                    if (res.succeeded()) {
+                        NetSocket socket = res.result();
+                        socket.handler(buffer -> assertThat(buffer.toString(StandardCharsets.UTF_8).startsWith("hello ")).isTrue());
+                        IntStream.range(0, 10).mapToObj("hello %d\n"::formatted).forEach(socket::write);
+                        testContext.completeNow();
+                    }
                 });
 
     }
@@ -91,7 +95,7 @@ public class VertxCoreTest {
     @Test
     @Timeout(value = 5, timeUnit = TimeUnit.SECONDS)
     void testHttpInSimple(VertxTestContext testContext) {
-        int firstPort = 8080;
+        int firstPort = 8285;
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
         Vertx clientVertx = Vertx.vertx(new VertxOptions());
         serverVertx.createHttpServer()
@@ -114,7 +118,7 @@ public class VertxCoreTest {
     @Test
     @Timeout(value = 5, timeUnit = TimeUnit.SECONDS)
     void testHttpInHttps(VertxTestContext testContext) {
-        int firstPort = 4443;
+        int firstPort = 8286;
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
         Vertx clientVertx = Vertx.vertx(new VertxOptions());
         serverVertx.createHttpServer(new HttpServerOptions().setSsl(true).setKeyStoreOptions(
@@ -124,7 +128,10 @@ public class VertxCoreTest {
                         .putHeader("content-type", "text/html")
                         .end("<html><body><h1>Hello from vert.x!</h1></body></html>"))
                 .listen(firstPort);
-        clientVertx.createHttpClient(new HttpClientOptions().setSsl(true).setTrustAll(true))
+        clientVertx.createHttpClient(new HttpClientOptions().setSsl(true).setTrustAll(true)
+                        .setKeyStoreOptions(
+                                new JksOptions().setPath("src/test/java/com/lingh/http/https/server-keystore.jks").setPassword("wibble")
+                        ))
                 .request(HttpMethod.GET, firstPort, "localhost", "/")
                 .compose(req -> req.send()
                         .compose(resp -> {
@@ -140,8 +147,8 @@ public class VertxCoreTest {
     @Test
     @Timeout(value = 5, timeUnit = TimeUnit.SECONDS)
     void testHttpInProxy(VertxTestContext testContext) {
-        int firstPort = 8282;
-        int secondPort = 8080;
+        int firstPort = 8287;
+        int secondPort = 8288;
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
         Vertx proxyVertx = Vertx.vertx(new VertxOptions());
         Vertx clientVertx = Vertx.vertx(new VertxOptions());
@@ -200,7 +207,7 @@ public class VertxCoreTest {
 
     @Test
     void testHttpInSendfile(VertxTestContext testContext) throws Throwable {
-        int firstPort = 8080;
+        int firstPort = 8289;
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
         serverVertx.createHttpServer().requestHandler(req -> {
                     String filename = null;
@@ -223,7 +230,7 @@ public class VertxCoreTest {
 
     @Test
     void testHttpInSimpleForm(VertxTestContext testContext) throws Throwable {
-        int firstPort = 8080;
+        int firstPort = 8290;
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
         serverVertx.createHttpServer().requestHandler(req -> {
                     if (req.uri().equals("/")) {
@@ -249,7 +256,7 @@ public class VertxCoreTest {
 
     @Test
     void testHttpInSimpleFormFileUpload(VertxTestContext testContext) throws Throwable {
-        int firstPort = 8080;
+        int firstPort = 8291;
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
         serverVertx.createHttpServer().requestHandler(req -> {
                     if (req.uri().equals("/")) {
@@ -274,7 +281,7 @@ public class VertxCoreTest {
     @Test
     @Timeout(value = 5, timeUnit = TimeUnit.SECONDS)
     void testHttpInHttpRequestBodyUpload(VertxTestContext testContext) {
-        int firstPort = 8080;
+        int firstPort = 8292;
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
         Vertx clientVertx = Vertx.vertx(new VertxOptions());
         serverVertx.createHttpServer().requestHandler(req -> {
@@ -312,7 +319,7 @@ public class VertxCoreTest {
     @Test
     @Timeout(value = 5, timeUnit = TimeUnit.SECONDS)
     void testHttpInHTTPServerSharing(VertxTestContext testContext) {
-        int firstPort = 8080;
+        int firstPort = 8293;
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
         Vertx clientVertx = Vertx.vertx(new VertxOptions());
         assertDoesNotThrow(() -> serverVertx.deployVerticle(
@@ -336,7 +343,7 @@ public class VertxCoreTest {
     @Test
     @Timeout(value = 5, timeUnit = TimeUnit.SECONDS)
     void testHttpInWebSocketsEcho(VertxTestContext testContext) {
-        int firstPort = 8080;
+        int firstPort = 8294;
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
         Vertx clientVertx = Vertx.vertx(new VertxOptions());
         serverVertx.createHttpServer()
@@ -362,7 +369,7 @@ public class VertxCoreTest {
     @Test
     @Timeout(value = 5, timeUnit = TimeUnit.SECONDS)
     void testHttp2InSimple(VertxTestContext testContext) {
-        int firstPort = 8443;
+        int firstPort = 8295;
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
         Vertx clientVertx = Vertx.vertx(new VertxOptions());
 
@@ -395,7 +402,7 @@ public class VertxCoreTest {
     @Test
     @Timeout(value = 5, timeUnit = TimeUnit.SECONDS)
     void testHttp2InPush(VertxTestContext testContext) {
-        int firstPort = 8443;
+        int firstPort = 8296;
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
         Vertx clientVertx = Vertx.vertx(new VertxOptions());
         HttpServer server = serverVertx.createHttpServer(new HttpServerOptions().
@@ -465,7 +472,7 @@ public class VertxCoreTest {
     @Test
     @Timeout(value = 5, timeUnit = TimeUnit.SECONDS)
     void testHttp2InH2C(VertxTestContext testContext) {
-        int firstPort = 8080;
+        int firstPort = 8297;
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
         Vertx clientVertx = Vertx.vertx(new VertxOptions());
         serverVertx.createHttpServer(new HttpServerOptions())
@@ -489,6 +496,7 @@ public class VertxCoreTest {
     @Test
     @Timeout(value = 5, timeUnit = TimeUnit.SECONDS)
     void testHttp2InCustomFrames(VertxTestContext testContext) {
+        int firstPort = 8298;
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
         Vertx clientVertx = Vertx.vertx(new VertxOptions());
         serverVertx.createHttpServer(new HttpServerOptions().
@@ -502,14 +510,14 @@ public class VertxCoreTest {
                 System.out.printf("Received client frame %s%n", frame.payload().toString(StandardCharsets.UTF_8));
                 resp.writeCustomFrame(10, 0, Buffer.buffer("pong"));
             });
-        }).listen(8443);
+        }).listen(firstPort);
         clientVertx.createHttpClient(new HttpClientOptions().
                         setSsl(true).
                         setUseAlpn(true).
                         setProtocolVersion(HttpVersion.HTTP_2).setTrustAll(true)
                         .setPemKeyCertOptions(new PemKeyCertOptions().setKeyPath("src/test/java/com/lingh/http2/customframes/server-key.pem")
                                 .setCertPath("src/test/java/com/lingh/http2/customframes/server-cert.pem")))
-                .request(HttpMethod.GET, 8443, "localhost", "/")
+                .request(HttpMethod.GET, firstPort, "localhost", "/")
                 .onSuccess(request -> {
                     request.response().onSuccess(resp -> {
                         resp.customFrameHandler(frame -> System.out.println("Got frame from server " + frame.payload().toString(StandardCharsets.UTF_8)));
@@ -588,9 +596,7 @@ public class VertxCoreTest {
                 Vertx vertx = res.result();
                 try {
                     EventBus eb = vertx.eventBus();
-                    vertx.setPeriodic(1000, v -> {
-                        eb.publish("news-feed", "Some news!");
-                    });
+                    vertx.setPeriodic(1000, v -> eb.publish("news-feed", "Some news!"));
                 } catch (Throwable t) {
                     t.printStackTrace();
                 }
@@ -865,7 +871,7 @@ public class VertxCoreTest {
     @Test
     @Timeout(value = 20, timeUnit = TimeUnit.SECONDS)
     void testCustomReadStreamAndWriteStreamImplementation(VertxTestContext testContext) {
-        int firstPort = 1234;
+        int firstPort = 8299;
         Checkpoint requestsServed = testContext.checkpoint(3);
         Checkpoint responsesReceived = testContext.checkpoint(3);
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
@@ -891,26 +897,27 @@ public class VertxCoreTest {
         System.out.println("Batch server is now listening to port : 1234");
         clientVertx.createNetClient()
                 .connect(firstPort, "localhost", ar -> {
-                    assertThat(ar.succeeded()).isTrue();
-                    NetSocket socket = ar.result();
-                    BatchStream batchStream = new BatchStream(socket, socket);
-                    batchStream.pause();
-                    batchStream.handler(batch -> {
-                                System.out.println("Client Received : " + batch.getRaw().toString());
-                                responsesReceived.flag();
-                            })
-                            .endHandler(v -> batchStream.end())
-                            .exceptionHandler(t -> {
-                                t.printStackTrace();
-                                batchStream.end();
-                            });
-                    batchStream.resume();
-                    JsonObject jsonObject = new JsonObject().put("id", UUID.randomUUID().toString()).put("name", "Vert.x").put("timestamp", Instant.now());
-                    JsonArray jsonArray = new JsonArray().add(UUID.randomUUID().toString()).add("Vert.x").add(Instant.now());
-                    Buffer buffer = Buffer.buffer("Vert.x is awesome!");
-                    batchStream.write(new Batch(jsonObject));
-                    batchStream.write(new Batch(jsonArray));
-                    batchStream.write(new Batch(buffer));
+                    if (ar.succeeded()) {
+                        NetSocket socket = ar.result();
+                        BatchStream batchStream = new BatchStream(socket, socket);
+                        batchStream.pause();
+                        batchStream.handler(batch -> {
+                                    System.out.println("Client Received : " + batch.getRaw().toString());
+                                    responsesReceived.flag();
+                                })
+                                .endHandler(v -> batchStream.end())
+                                .exceptionHandler(t -> {
+                                    t.printStackTrace();
+                                    batchStream.end();
+                                });
+                        batchStream.resume();
+                        JsonObject jsonObject = new JsonObject().put("id", UUID.randomUUID().toString()).put("name", "Vert.x").put("timestamp", Instant.now());
+                        JsonArray jsonArray = new JsonArray().add(UUID.randomUUID().toString()).add("Vert.x").add(Instant.now());
+                        Buffer buffer = Buffer.buffer("Vert.x is awesome!");
+                        batchStream.write(new Batch(jsonObject));
+                        batchStream.write(new Batch(jsonArray));
+                        batchStream.write(new Batch(buffer));
+                    }
                 });
     }
 }
