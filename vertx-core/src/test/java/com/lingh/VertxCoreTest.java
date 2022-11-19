@@ -70,7 +70,7 @@ public class VertxCoreTest {
     }
 
     @Test
-    @Timeout(value = 10, timeUnit = TimeUnit.SECONDS)
+    @Timeout(value = 5, timeUnit = TimeUnit.SECONDS)
     void testNetInEchoSSL(VertxTestContext testContext) {
         int firstPort = 8284;
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
@@ -80,7 +80,9 @@ public class VertxCoreTest {
                         .setKeyStoreOptions(new JksOptions().setPath("src/test/java/com/lingh/net/echossl/server-keystore.jks")
                                 .setPassword("wibble"))
         ).connectHandler(sock -> Pump.pump(sock, sock).start()).listen(firstPort);
-        clientVertx.createNetClient(new NetClientOptions().setSsl(true).setTrustAll(true))
+        clientVertx.createNetClient(new NetClientOptions().setSsl(true).setTrustAll(true)
+                .setKeyStoreOptions(new JksOptions().setPath("src/test/java/com/lingh/net/echossl/server-keystore.jks")
+                        .setPassword("wibble")))
                 .connect(firstPort, "localhost", res -> {
                     if (res.succeeded()) {
                         NetSocket socket = res.result();
@@ -145,7 +147,7 @@ public class VertxCoreTest {
     }
 
     @Test
-    @Timeout(value = 5, timeUnit = TimeUnit.SECONDS)
+    @Timeout(value = 10, timeUnit = TimeUnit.SECONDS)
     void testHttpInProxy(VertxTestContext testContext) {
         int firstPort = 8287;
         int secondPort = 8288;
@@ -341,7 +343,7 @@ public class VertxCoreTest {
     }
 
     @Test
-    @Timeout(value = 5, timeUnit = TimeUnit.SECONDS)
+    @Timeout(value = 10, timeUnit = TimeUnit.SECONDS)
     void testHttpInWebSocketsEcho(VertxTestContext testContext) {
         int firstPort = 8294;
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
@@ -470,7 +472,7 @@ public class VertxCoreTest {
     }
 
     @Test
-    @Timeout(value = 5, timeUnit = TimeUnit.SECONDS)
+    @Timeout(value = 10, timeUnit = TimeUnit.SECONDS)
     void testHttp2InH2C(VertxTestContext testContext) {
         int firstPort = 8297;
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
@@ -869,7 +871,7 @@ public class VertxCoreTest {
     }
 
     @Test
-    @Timeout(value = 20, timeUnit = TimeUnit.SECONDS)
+    @Timeout(value = 30, timeUnit = TimeUnit.SECONDS)
     void testCustomReadStreamAndWriteStreamImplementation(VertxTestContext testContext) {
         int firstPort = 8299;
         Checkpoint requestsServed = testContext.checkpoint(3);
