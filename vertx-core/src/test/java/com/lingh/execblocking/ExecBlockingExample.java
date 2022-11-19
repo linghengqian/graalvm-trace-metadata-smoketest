@@ -1,14 +1,8 @@
 package com.lingh.execblocking;
 
-import com.lingh.Runner;
 import io.vertx.core.AbstractVerticle;
 
 public class ExecBlockingExample extends AbstractVerticle {
-
-    public static void main(String[] args) {
-        Runner.runExample(ExecBlockingExample.class, null);
-    }
-
     @Override
     public void start() {
         vertx.createHttpServer().requestHandler(request -> vertx.<String>executeBlocking(promise -> {

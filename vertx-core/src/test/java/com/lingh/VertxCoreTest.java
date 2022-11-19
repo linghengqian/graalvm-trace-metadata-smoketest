@@ -138,13 +138,18 @@ public class VertxCoreTest {
                 }).onFailure(Throwable::printStackTrace);
     }
 
+    /**
+     * @see com.lingh.http.proxyconnect.Server
+     * @see com.lingh.http.proxyconnect.Proxy
+     * @see com.lingh.http.proxyconnect.Client
+     */
     @Test
-    @Disabled
+//    @Disabled
     @Timeout(value = 20, timeUnit = TimeUnit.SECONDS)
-    void testHttpInProxyConnect(VertxTestContext testContext) { // todo too many timeout and fail
+    void testHttpInProxyConnect(VertxTestContext testContext) { // todo need to fix in master branch
 //        Runner.runExample(Runner.getCORE_EXAMPLES_JAVA_DIR(), com.lingh.http.proxyconnect.Server.class, new VertxOptions(), null, false);
 //        Runner.runExample(Runner.getCORE_EXAMPLES_JAVA_DIR(), com.lingh.http.proxyconnect.Proxy.class, new VertxOptions(), null, false);
-//        // TODO It seems that no matter what, only using vertx-core for proxy connect, the client will throw strange exception information.
+        // TODO It seems that no matter what, only using vertx-core for proxy connect, the client will throw strange exception information.
 //        Runner.runExample(Runner.getCORE_EXAMPLES_JAVA_DIR(), com.lingh.http.proxyconnect.Client.class, new VertxOptions(), null, false);
 
         int firstPort = 8282;
@@ -178,7 +183,9 @@ public class VertxCoreTest {
                 String host = proxyAddress.substring(0, idx);
                 int port = Integer.parseInt(proxyAddress.substring(idx + 1));
                 System.out.println("Connecting to proxy " + proxyAddress);
-                proxyVertx.createNetClient(new NetClientOptions()).connect(port, host, ar -> {
+                proxyVertx.createNetClient(new NetClientOptions()
+                        .setKeyCertOptions(certificate.keyCertOptions())
+                ).connect(port, host, ar -> {
                     if (ar.succeeded()) {
                         System.out.println("Connected to proxy");
                         NetSocket serverSocket = ar.result();
@@ -222,7 +229,8 @@ public class VertxCoreTest {
                         .setTrustAll(true)
                         .setVerifyHost(false)
                         .setProxyOptions(new ProxyOptions().setType(ProxyType.HTTP).setHost("localhost").setPort(secondPort))
-                ).request(HttpMethod.GET, secondPort, "localhost", "/")
+                )
+                .request(HttpMethod.GET, secondPort, "localhost", "/")
                 .compose(request -> {
                             request.setChunked(true);
                             for (int i = 0; i < 10; i++) {
@@ -282,7 +290,8 @@ public class VertxCoreTest {
                                     serverResponse.send(clientResponse);
                                 }).onFailure(err -> serverResponse.setStatusCode(500).end());
                             }).onFailure(err -> serverResponse.setStatusCode(500).end());
-                }).listen(secondPort);
+                })
+                .listen(secondPort);
         clientVertx.createHttpClient()
                 .request(HttpMethod.GET, secondPort, "localhost", "/")
                 .compose(request -> {
@@ -465,7 +474,7 @@ public class VertxCoreTest {
 
     @Test
     @Timeout(value = 5, timeUnit = TimeUnit.SECONDS)
-    void testHttp2InSimple(VertxTestContext testContext) { // TODO need to fix master branch
+    void testHttp2InSimple(VertxTestContext testContext) {
         int firstPort = 8443;
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
         Vertx clientVertx = Vertx.vertx(new VertxOptions());
@@ -479,7 +488,7 @@ public class VertxCoreTest {
                         .end("<html><body><h1>Hello from vert.x!</h1><p>version = %s</p></body></html>".formatted(req.version())))
                 .listen(firstPort);
         clientVertx.createHttpClient(new HttpClientOptions().setSsl(true).setUseAlpn(true).setProtocolVersion(HttpVersion.HTTP_2).setTrustAll(true)
-                                .setPemKeyCertOptions(
+                        .setPemKeyCertOptions(
                                 new PemKeyCertOptions().setKeyPath("src/test/java/com/lingh/http2/simple/server-key.pem")
                                         .setCertPath("src/test/java/com/lingh/http2/simple/server-cert.pem"))
                 )
@@ -496,20 +505,17 @@ public class VertxCoreTest {
                 .onFailure(Throwable::printStackTrace);
     }
 
-    /**
-     * @see com.lingh.http2.push.Server
-     * @see com.lingh.http2.push.Client
-     */
     @Test
-    @Disabled
-    void testHttp2InPush(VertxTestContext testContext) {  // todo fail
-//        Runner.runExample(com.lingh.http2.push.Server.class, null);
+    @Timeout(value = 5, timeUnit = TimeUnit.SECONDS)
+    void testHttp2InPush(VertxTestContext testContext) {
+        int firstPort = 8443;
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
         Vertx clientVertx = Vertx.vertx(new VertxOptions());
         HttpServer server = serverVertx.createHttpServer(new HttpServerOptions().
                 setUseAlpn(true).
                 setSsl(true).
-                setPemKeyCertOptions(new PemKeyCertOptions().setKeyPath("src/test/java/com/lingh/http2/push/server-key.pem")
+                setPemKeyCertOptions(new PemKeyCertOptions()
+                        .setKeyPath("src/test/java/com/lingh/http2/push/server-key.pem")
                         .setCertPath("src/test/java/com/lingh/http2/push/server-cert.pem")
                 ));
         server.requestHandler(req -> {
@@ -531,7 +537,8 @@ public class VertxCoreTest {
                 resp.setStatusCode(404).end();
             }
         });
-        server.listen(8443, "localhost", ar -> {
+
+        server.listen(firstPort, "localhost", ar -> {
             if (ar.succeeded()) {
                 System.out.println("Server started");
             } else {
@@ -539,13 +546,16 @@ public class VertxCoreTest {
             }
         });
 
-        clientVertx.createHttpClient(new HttpClientOptions().
-                        setSsl(true).
-                        setUseAlpn(true).
-                        setProtocolVersion(HttpVersion.HTTP_2).
+        clientVertx.createHttpClient(new HttpClientOptions().setSsl(true)
+                        .setUseAlpn(true)
+                        .setProtocolVersion(HttpVersion.HTTP_2).
                         setTrustAll(true)
+                        .setKeyCertOptions(
+                                new PemKeyCertOptions().setKeyPath("src/test/java/com/lingh/http2/push/server-key.pem")
+                                        .setCertPath("src/test/java/com/lingh/http2/push/server-cert.pem")
+                        )
                 )
-                .request(HttpMethod.GET, 8080, "localhost", "/")
+                .request(HttpMethod.GET, firstPort, "localhost", "/")
                 .compose(request -> {
                     request.pushHandler(pushedReq -> {
                         System.out.println("Receiving pushed content");
@@ -611,7 +621,7 @@ public class VertxCoreTest {
                         setUseAlpn(true).
                         setProtocolVersion(HttpVersion.HTTP_2).setTrustAll(true)
                         .setPemKeyCertOptions(new PemKeyCertOptions().setKeyPath("src/test/java/com/lingh/http2/customframes/server-key.pem")
-                                .setCertPath("src/test/java/com/lingh/http2/customframes/server-cert.pem")))    // todo fix master branch
+                                .setCertPath("src/test/java/com/lingh/http2/customframes/server-cert.pem")))
                 .request(HttpMethod.GET, 8443, "localhost", "/")
                 .onSuccess(request -> {
                     request.response().onSuccess(resp -> {
@@ -622,7 +632,7 @@ public class VertxCoreTest {
                         System.out.println("Sending ping frame to server");
                         request.writeCustomFrame(10, 0, Buffer.buffer("ping"));
                     }));
-                });// todo onFailure ????
+                });
     }
 
     @Test
@@ -657,6 +667,43 @@ public class VertxCoreTest {
                             System.out.println("No reply");
                         }
                     }));
+                } catch (Throwable t) {
+                    t.printStackTrace();
+                }
+            } else {
+                res.cause().printStackTrace();
+            }
+        });
+    }
+
+    @Test
+    @Timeout(value = 15, timeUnit = TimeUnit.SECONDS)
+    void testEventBusByPublishSubscribe(VertxTestContext testContext) {
+        Vertx.clusteredVertx(new VertxOptions(), res -> {
+            if (res.succeeded()) {
+                Vertx vertx = res.result();
+                try {
+                    EventBus eb = vertx.eventBus();
+                    eb.consumer("news-feed", message -> System.out.println("Received news on consumer 1: " + message.body()));
+                    eb.consumer("news-feed", message -> System.out.println("Received news on consumer 2: " + message.body()));
+                    eb.consumer("news-feed", message -> System.out.println("Received news on consumer 3: " + message.body()));
+                    System.out.println("Ready!");
+                    testContext.completeNow();
+                } catch (Throwable t) {
+                    t.printStackTrace();
+                }
+            } else {
+                res.cause().printStackTrace();
+            }
+        });
+        Vertx.clusteredVertx(new VertxOptions(), res -> {
+            if (res.succeeded()) {
+                Vertx vertx = res.result();
+                try {
+                    EventBus eb = vertx.eventBus();
+                    vertx.setPeriodic(1000, v -> {
+                        eb.publish("news-feed", "Some news!");
+                    });
                 } catch (Throwable t) {
                     t.printStackTrace();
                 }
@@ -730,15 +777,53 @@ public class VertxCoreTest {
     }
 
     @Test
+    @Timeout(value = 15, timeUnit = TimeUnit.SECONDS)
     void testEventBusBySSL(VertxTestContext testContext) {
-        Runner.runClusteredExample(com.lingh.eventbus.ssl.Receiver.class, new VertxOptions().setEventBusOptions(
-                        new EventBusOptions().setSsl(true)
-                                .setKeyStoreOptions(new JksOptions().setPath("src/test/java/com/lingh/eventbus/ssl/keystore.jks").setPassword("wibble"))
-                                .setTrustStoreOptions(new JksOptions().setPath("src/test/java/com/lingh/eventbus/ssl/keystore.jks").setPassword("wibble"))
-                )
-        );
-        Runner.runClusteredExample(com.lingh.eventbus.ssl.Sender.class);
-        testContext.completeNow();
+        Vertx.clusteredVertx(new VertxOptions().setEventBusOptions(
+                new EventBusOptions().setSsl(true)
+                        .setKeyStoreOptions(new JksOptions().setPath("src/test/java/com/lingh/eventbus/ssl/keystore.jks").setPassword("wibble"))
+                        .setTrustStoreOptions(new JksOptions().setPath("src/test/java/com/lingh/eventbus/ssl/keystore.jks").setPassword("wibble"))
+        ), res -> {
+            if (res.succeeded()) {
+                Vertx vertx = res.result();
+                try {
+                    EventBus eb = vertx.eventBus();
+                    eb.consumer("ping-address", message -> {
+                        System.out.println("Received message: " + message.body());
+                        message.reply("pong!");
+                    });
+                    System.out.println("Receiver ready!");
+                } catch (Throwable t) {
+                    t.printStackTrace();
+                }
+            } else {
+                res.cause().printStackTrace();
+            }
+        });
+        Vertx.clusteredVertx(new VertxOptions().setEventBusOptions(new EventBusOptions()
+                .setSsl(true)
+                .setKeyStoreOptions(new JksOptions().setPath("src/test/java/com/lingh/eventbus/ssl/keystore.jks").setPassword("wibble"))
+                .setTrustStoreOptions(new JksOptions().setPath("src/test/java/com/lingh/eventbus/ssl/keystore.jks").setPassword("wibble"))
+        ), res -> {
+            if (res.succeeded()) {
+                Vertx vertx = res.result();
+                try {
+                    EventBus eb = vertx.eventBus();
+                    vertx.setPeriodic(1000, v -> eb.request("ping-address", "ping!", ar -> {
+                        if (ar.succeeded()) {
+                            System.out.println("Received reply " + ar.result().body());
+                            testContext.completeNow();
+                        } else {
+                            System.out.println("No reply");
+                        }
+                    }));
+                } catch (Throwable t) {
+                    t.printStackTrace();
+                }
+            } else {
+                res.cause().printStackTrace();
+            }
+        });
     }
 
     @Test
@@ -796,7 +881,7 @@ public class VertxCoreTest {
      */
     @Test
     @Timeout(value = 20, timeUnit = TimeUnit.SECONDS)
-    @Disabled
+//    @Disabled
     void testVerticleInPolyglotDeploy(VertxTestContext testContext) {   // todo fail
         Vertx firstVertx = Vertx.vertx(new VertxOptions());
         System.out.println("Main verticle has started, let's deploy A JS one...");
