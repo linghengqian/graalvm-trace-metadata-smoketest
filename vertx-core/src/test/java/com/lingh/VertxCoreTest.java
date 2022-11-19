@@ -465,22 +465,25 @@ public class VertxCoreTest {
 
     @Test
     @Timeout(value = 5, timeUnit = TimeUnit.SECONDS)
-    @Disabled
-    void testHttp2InSimple(VertxTestContext testContext) { // TODO fail
-//        Runner.runExample(com.lingh.http2.simple.Server.class, null);
-
+    void testHttp2InSimple(VertxTestContext testContext) { // TODO need to fix master branch
         int firstPort = 8443;
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
         Vertx clientVertx = Vertx.vertx(new VertxOptions());
 
         serverVertx.createHttpServer(new HttpServerOptions().setUseAlpn(true).setSsl(true).
-                setPemKeyCertOptions(new PemKeyCertOptions().setKeyPath("src/test/java/com/lingh/http2/simple/server-key.pem")
-                        .setCertPath("src/test/java/com/lingh/http2/simple/server-cert.pem")
-                )).requestHandler(req -> req.response().putHeader("content-type", "text/html")
-                .end("<html><body><h1>Hello from vert.x!</h1><p>version = %s</p></body></html>".formatted(req.version()))
-        ).listen(firstPort);
-        clientVertx.createHttpClient(new HttpClientOptions().setSsl(true).setUseAlpn(true).setProtocolVersion(HttpVersion.HTTP_2).setTrustAll(true))
-                .request(HttpMethod.GET, 8080, "localhost", "/")
+                        setPemKeyCertOptions(
+                                new PemKeyCertOptions().setKeyPath("src/test/java/com/lingh/http2/simple/server-key.pem")
+                                        .setCertPath("src/test/java/com/lingh/http2/simple/server-cert.pem")
+                        ))
+                .requestHandler(req -> req.response().putHeader("content-type", "text/html")
+                        .end("<html><body><h1>Hello from vert.x!</h1><p>version = %s</p></body></html>".formatted(req.version())))
+                .listen(firstPort);
+        clientVertx.createHttpClient(new HttpClientOptions().setSsl(true).setUseAlpn(true).setProtocolVersion(HttpVersion.HTTP_2).setTrustAll(true)
+                                .setPemKeyCertOptions(
+                                new PemKeyCertOptions().setKeyPath("src/test/java/com/lingh/http2/simple/server-key.pem")
+                                        .setCertPath("src/test/java/com/lingh/http2/simple/server-cert.pem"))
+                )
+                .request(HttpMethod.GET, firstPort, "localhost", "/")
                 .compose(req -> req.send()
                         .compose(resp -> {
                             System.out.println("Got response " + resp.statusCode());
@@ -489,7 +492,8 @@ public class VertxCoreTest {
                 .onSuccess(body -> {
                     System.out.println("Got data " + body.toString("ISO-8859-1"));
                     testContext.completeNow();
-                }).onFailure(Throwable::printStackTrace);
+                })
+                .onFailure(Throwable::printStackTrace);
     }
 
     /**
