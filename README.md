@@ -49,3 +49,9 @@ cd ./vertx-core/
 ./gradlew -Pagent clean test
 ./gradlew metadataCopy --task test
 ```
+
+```shell
+cd ./groovy/
+./gradlew -Pagent clean test
+./gradlew metadataCopy --task test
+```
