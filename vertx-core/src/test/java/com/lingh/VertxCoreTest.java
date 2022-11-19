@@ -766,9 +766,6 @@ public class VertxCoreTest {
         });
     }
 
-    /**
-     * @see com.lingh.verticle.worker.MainVerticle
-     */
     @Test
     @Timeout(value = 5, timeUnit = TimeUnit.SECONDS)
     void testVerticleInWorkerVerticle(VertxTestContext testContext) {
