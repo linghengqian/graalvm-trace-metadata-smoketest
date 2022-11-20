@@ -12,6 +12,7 @@ import java.util.Objects;
 
 
 public class BatchStream implements ReadStream<Batch>, WriteStream<Batch> {
+
     private final RecordParser recordParser;
     private final WriteStream<Buffer> writeStream;
     private int size = -1;
@@ -119,10 +120,19 @@ public class BatchStream implements ReadStream<Batch>, WriteStream<Batch> {
                     final char type = (char) buffer.getByte(0);
                     final Buffer payload = buffer.getBuffer(1, buffer.length());
                     switch (type) {
-                        case 'O' -> handler.handle(new Batch(payload.toJsonObject()));
-                        case 'A' -> handler.handle(new Batch(payload.toJsonArray()));
-                        case 'B' -> handler.handle(new Batch(payload));
-                        default -> {
+                        case 'O': {
+                            handler.handle(new Batch(payload.toJsonObject()));
+                            break;
+                        }
+                        case 'A': {
+                            handler.handle(new Batch(payload.toJsonArray()));
+                            break;
+                        }
+                        case 'B': {
+                            handler.handle(new Batch(payload));
+                            break;
+                        }
+                        default: {
                             if (exceptionHandler != null) {
                                 exceptionHandler.handle(new IllegalStateException("Invalid message " + type));
                             }
