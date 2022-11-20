@@ -298,7 +298,7 @@ public class VertxCoreTest {
                         assertThat(body.toString(StandardCharsets.ISO_8859_1)).startsWith("<html><body><h1>Hello from " + HttpServerVerticle.class.getName() + "@");
                         assertThat(body.toString(StandardCharsets.ISO_8859_1)).endsWith("</h1></body></html>");
                         testContext.completeNow();
-                    }).onFailure(Throwable::printStackTrace);
+                    });
         });
     }
 
