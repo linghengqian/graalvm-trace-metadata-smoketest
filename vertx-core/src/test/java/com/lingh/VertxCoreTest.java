@@ -44,7 +44,8 @@ public class VertxCoreTest {
     @Test
     void testEmbedding(VertxTestContext testContext) throws Throwable {
         int firstPort = 8282;
-        Vertx.vertx().createHttpServer().requestHandler(req -> req.response().end("Hello World!")).listen(firstPort).onComplete(testContext.succeedingThenComplete());
+        Vertx.vertx().createHttpServer().requestHandler(req -> req.response().end("Hello World!"))
+                .listen(firstPort).onComplete(testContext.succeedingThenComplete());
         assertThat(testContext.awaitCompletion(5, TimeUnit.SECONDS)).isTrue();
         if (testContext.failed()) {
             throw testContext.causeOfFailure();
@@ -72,15 +73,19 @@ public class VertxCoreTest {
         int firstPort = 8284;
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
         Vertx clientVertx = Vertx.vertx(new VertxOptions());
-        serverVertx.createNetServer(new NetServerOptions().setSsl(true).setKeyStoreOptions(new JksOptions().setPath("src/test/resources/net/echossl/server-keystore.jks").setPassword("wibble"))).connectHandler(sock -> Pump.pump(sock, sock).start()).listen(firstPort);
-        clientVertx.createNetClient(new NetClientOptions().setSsl(true).setTrustAll(true).setKeyStoreOptions(new JksOptions().setPath("src/test/resources/net/echossl/server-keystore.jks").setPassword("wibble"))).connect(firstPort, "localhost", res -> {
-            if (res.succeeded()) {
-                NetSocket socket = res.result();
-                socket.handler(buffer -> assertThat(buffer.toString(StandardCharsets.UTF_8)).startsWith("hello "));
-                IntStream.range(0, 10).mapToObj(args -> "hello " + args + "\n").forEach(socket::write);
-                testContext.completeNow();
-            }
-        });
+        serverVertx.createNetServer(new NetServerOptions().setSsl(true)
+                .setKeyStoreOptions(new JksOptions().setPath("src/test/resources/net/echossl/server-keystore.jks")
+                        .setPassword("wibble"))).connectHandler(sock -> Pump.pump(sock, sock).start()).listen(firstPort);
+        clientVertx.createNetClient(new NetClientOptions().setSsl(true)
+                        .setTrustAll(true).setKeyStoreOptions(new JksOptions().setPath("src/test/resources/net/echossl/server-keystore.jks").setPassword("wibble")))
+                .connect(firstPort, "localhost", res -> {
+                    if (res.succeeded()) {
+                        NetSocket socket = res.result();
+                        socket.handler(buffer -> assertThat(buffer.toString(StandardCharsets.UTF_8)).startsWith("hello "));
+                        IntStream.range(0, 10).mapToObj(args -> "hello " + args + "\n").forEach(socket::write);
+                        testContext.completeNow();
+                    }
+                });
 
     }
 
@@ -89,7 +94,8 @@ public class VertxCoreTest {
         int firstPort = 8285;
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
         Vertx clientVertx = Vertx.vertx(new VertxOptions());
-        serverVertx.createHttpServer().requestHandler(req -> req.response().putHeader("content-type", "text/html").end("<html><body><h1>Hello from vert.x!</h1></body></html>")).listen(firstPort);
+        serverVertx.createHttpServer().requestHandler(req -> req.response().putHeader("content-type", "text/html")
+                .end("<html><body><h1>Hello from vert.x!</h1></body></html>")).listen(firstPort);
         clientVertx.createHttpClient().request(HttpMethod.GET, firstPort, "localhost", "/").compose(req -> req.send().compose(resp -> {
             assertThat(resp.statusCode()).isEqualTo(200);
             return resp.body();
@@ -104,8 +110,13 @@ public class VertxCoreTest {
         int firstPort = 8286;
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
         Vertx clientVertx = Vertx.vertx(new VertxOptions());
-        serverVertx.createHttpServer(new HttpServerOptions().setSsl(true).setKeyStoreOptions(new JksOptions().setPath("src/test/resources/http/https/server-keystore.jks").setPassword("wibble"))).requestHandler(req -> req.response().putHeader("content-type", "text/html").end("<html><body><h1>Hello from vert.x!</h1></body></html>")).listen(firstPort);
-        clientVertx.createHttpClient(new HttpClientOptions().setSsl(true).setTrustAll(true).setKeyStoreOptions(new JksOptions().setPath("src/test/resources/http/https/server-keystore.jks").setPassword("wibble"))).request(HttpMethod.GET, firstPort, "localhost", "/").compose(req -> req.send().compose(resp -> {
+        serverVertx.createHttpServer(new HttpServerOptions().setSsl(true)
+                .setKeyStoreOptions(new JksOptions().setPath("src/test/resources/http/https/server-keystore.jks")
+                        .setPassword("wibble"))).requestHandler(req -> req.response().putHeader("content-type", "text/html")
+                .end("<html><body><h1>Hello from vert.x!</h1></body></html>")).listen(firstPort);
+        clientVertx.createHttpClient(new HttpClientOptions().setSsl(true).setTrustAll(true)
+                .setKeyStoreOptions(new JksOptions().setPath("src/test/resources/http/https/server-keystore.jks").
+                        setPassword("wibble"))).request(HttpMethod.GET, firstPort, "localhost", "/").compose(req -> req.send().compose(resp -> {
             assertThat(resp.statusCode()).isEqualTo(200);
             return resp.body();
         })).onSuccess(body -> {
@@ -163,7 +174,8 @@ public class VertxCoreTest {
                 return resp.body();
             });
         }).onSuccess(body -> {
-            assertThat(body.toString(StandardCharsets.ISO_8859_1)).isEqualTo("server-data-chunk-0server-data-chunk-1server-data-chunk-2server-data-chunk-3server-data-chunk-4server-data-chunk-5server-data-chunk-6server-data-chunk-7server-data-chunk-8server-data-chunk-9");
+            assertThat(body.toString(StandardCharsets.ISO_8859_1))
+                    .isEqualTo("server-data-chunk-0server-data-chunk-1server-data-chunk-2server-data-chunk-3server-data-chunk-4server-data-chunk-5server-data-chunk-6server-data-chunk-7server-data-chunk-8server-data-chunk-9");
             testContext.completeNow();
         });
     }
@@ -204,7 +216,8 @@ public class VertxCoreTest {
                 req.response().setChunked(true);
                 req.setExpectMultipart(true);
                 req.endHandler((v) -> {
-                    req.formAttributes().names().forEach(attr -> req.response().write("Got attr " + attr + " : " + req.formAttributes().get(attr) + "\n"));
+                    req.formAttributes().names().forEach(attr -> req.response()
+                            .write("Got attr " + attr + " : " + req.formAttributes().get(attr) + "\n"));
                     req.response().end();
                 });
             } else {
@@ -226,7 +239,9 @@ public class VertxCoreTest {
                 req.response().sendFile("src/test/resources/http/simpleformupload/index.html");
             } else if (req.uri().startsWith("/form")) {
                 req.setExpectMultipart(true);
-                req.uploadHandler(upload -> upload.streamToFileSystem(upload.filename()).onSuccess(v -> req.response().end("Successfully uploaded to " + upload.filename())).onFailure(err -> req.response().end("Upload failed")));
+                req.uploadHandler(upload -> upload.streamToFileSystem(upload.filename())
+                        .onSuccess(v -> req.response().end("Successfully uploaded to " + upload.filename()))
+                        .onFailure(err -> req.response().end("Upload failed")));
             } else {
                 req.response().setStatusCode(404).end();
             }
@@ -278,11 +293,12 @@ public class VertxCoreTest {
         assertDoesNotThrow(() -> serverVertx.deployVerticle(HttpServerVerticle.class.getName(), new DeploymentOptions().setInstances(2)));
         clientVertx.setPeriodic(1000, l -> {
             HttpClient client = clientVertx.createHttpClient();
-            client.request(HttpMethod.GET, firstPort, "localhost", "/").compose(req -> req.send().compose(HttpClientResponse::body)).onSuccess(body -> {
-                assertThat(body.toString(StandardCharsets.ISO_8859_1)).startsWith("<html><body><h1>Hello from " + HttpServerVerticle.class.getName() + "@");
-                assertThat(body.toString(StandardCharsets.ISO_8859_1)).endsWith("</h1></body></html>");
-                testContext.completeNow();
-            }).onFailure(Throwable::printStackTrace);
+            client.request(HttpMethod.GET, firstPort, "localhost", "/")
+                    .compose(req -> req.send().compose(HttpClientResponse::body)).onSuccess(body -> {
+                        assertThat(body.toString(StandardCharsets.ISO_8859_1)).startsWith("<html><body><h1>Hello from " + HttpServerVerticle.class.getName() + "@");
+                        assertThat(body.toString(StandardCharsets.ISO_8859_1)).endsWith("</h1></body></html>");
+                        testContext.completeNow();
+                    }).onFailure(Throwable::printStackTrace);
         });
     }
 
@@ -313,14 +329,23 @@ public class VertxCoreTest {
         int firstPort = 8295;
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
         Vertx clientVertx = Vertx.vertx(new VertxOptions());
-        serverVertx.createHttpServer(new HttpServerOptions().setUseAlpn(true).setSsl(true).setPemKeyCertOptions(new PemKeyCertOptions().setKeyPath("src/test/resources/http2/simple/server-key.pem").setCertPath("src/test/resources/http2/simple/server-cert.pem"))).requestHandler(req -> req.response().putHeader("content-type", "text/html").end("<html><body>" + "<h1>Hello from vert.x!</h1>" + "<p>version = " + req.version() + "</p>" + "</body></html>")).listen(firstPort);
-        clientVertx.createHttpClient(new HttpClientOptions().setSsl(true).setUseAlpn(true).setProtocolVersion(HttpVersion.HTTP_2).setTrustAll(true).setPemKeyCertOptions(new PemKeyCertOptions().setKeyPath("src/test/resources/http2/simple/server-key.pem").setCertPath("src/test/resources/http2/simple/server-cert.pem"))).request(HttpMethod.GET, firstPort, "localhost", "/").compose(req -> req.send().compose(resp -> {
-            assertThat(resp.statusCode()).isEqualTo(200);
-            return resp.body();
-        })).onSuccess(body -> {
-            assertThat(body.toString(StandardCharsets.ISO_8859_1)).isEqualTo("<html><body><h1>Hello from vert.x!</h1><p>version = HTTP_2</p></body></html>");
-            testContext.completeNow();
-        });
+        serverVertx.createHttpServer(new HttpServerOptions().setUseAlpn(true).setSsl(true)
+                        .setPemKeyCertOptions(new PemKeyCertOptions().setKeyPath("src/test/resources/http2/simple/server-key.pem")
+                                .setCertPath("src/test/resources/http2/simple/server-cert.pem"))).requestHandler(req -> req.response()
+                        .putHeader("content-type", "text/html")
+                        .end("<html><body>" + "<h1>Hello from vert.x!</h1>" + "<p>version = " + req.version() + "</p>" + "</body></html>"))
+                .listen(firstPort);
+        clientVertx.createHttpClient(new HttpClientOptions().setSsl(true).setUseAlpn(true)
+                        .setProtocolVersion(HttpVersion.HTTP_2).setTrustAll(true).setPemKeyCertOptions(new PemKeyCertOptions()
+                                .setKeyPath("src/test/resources/http2/simple/server-key.pem").setCertPath("src/test/resources/http2/simple/server-cert.pem")))
+                .request(HttpMethod.GET, firstPort, "localhost", "/").compose(req -> req.send().compose(resp -> {
+                    assertThat(resp.statusCode()).isEqualTo(200);
+                    return resp.body();
+                })).onSuccess(body -> {
+                    assertThat(body.toString(StandardCharsets.ISO_8859_1))
+                            .isEqualTo("<html><body><h1>Hello from vert.x!</h1><p>version = HTTP_2</p></body></html>");
+                    testContext.completeNow();
+                });
     }
 
     @Test
@@ -329,7 +354,9 @@ public class VertxCoreTest {
         Checkpoint responsesReceived = testContext.checkpoint(2);
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
         Vertx clientVertx = Vertx.vertx(new VertxOptions());
-        serverVertx.createHttpServer(new HttpServerOptions().setUseAlpn(true).setSsl(true).setPemKeyCertOptions(new PemKeyCertOptions().setKeyPath("src/test/resources/http2/push/server-key.pem").setCertPath("src/test/resources/http2/push/server-cert.pem"))).requestHandler(req -> {
+        serverVertx.createHttpServer(new HttpServerOptions().setUseAlpn(true).setSsl(true)
+                .setPemKeyCertOptions(new PemKeyCertOptions().setKeyPath("src/test/resources/http2/push/server-key.pem")
+                        .setCertPath("src/test/resources/http2/push/server-cert.pem"))).requestHandler(req -> {
             String path = req.path();
             HttpServerResponse resp = req.response();
             if ("/".equals(path)) {
@@ -353,17 +380,26 @@ public class VertxCoreTest {
             }
         });
 
-        clientVertx.createHttpClient(new HttpClientOptions().setSsl(true).setUseAlpn(true).setProtocolVersion(HttpVersion.HTTP_2).setTrustAll(true).setKeyCertOptions(new PemKeyCertOptions().setKeyPath("src/test/resources/http2/push/server-key.pem").setCertPath("src/test/resources/http2/push/server-cert.pem"))).request(HttpMethod.GET, firstPort, "localhost", "/").compose(request -> {
-            request.pushHandler(pushedReq -> pushedReq.response().compose(HttpClientResponse::body).onSuccess(body -> assertThat(body.toString(StandardCharsets.ISO_8859_1)).isEqualTo("alert(\"hello world\");")));
-            return request.send().compose(resp -> {
-                assertThat(resp.statusCode()).isEqualTo(200);
-                assertThat(resp.version()).isEqualTo(HttpVersion.HTTP_2);
-                return resp.body();
-            });
-        }).onSuccess(body -> {
-            assertThat(body.toString(StandardCharsets.ISO_8859_1)).isEqualTo("<!DOCTYPE html>\n" + "<html lang=\"en\">\n" + "<head>\n" + "    <meta charset=\"UTF-8\">\n" + "    <title>Hello world</title>\n" + "    <script src=\"script.js\"></script>\n" + "</head>\n" + "<body>\n" + "<h1>Hello World</h1>\n" + "\n" + "</body>\n" + "</html>");
-            responsesReceived.flag();
-        });
+        clientVertx.createHttpClient(new HttpClientOptions().setSsl(true).setUseAlpn(true)
+                        .setProtocolVersion(HttpVersion.HTTP_2).setTrustAll(true)
+                        .setKeyCertOptions(new PemKeyCertOptions().setKeyPath("src/test/resources/http2/push/server-key.pem")
+                                .setCertPath("src/test/resources/http2/push/server-cert.pem"))).request(HttpMethod.GET, firstPort, "localhost", "/")
+                .compose(request -> {
+                    request.pushHandler(pushedReq -> pushedReq.response().compose(HttpClientResponse::body)
+                            .onSuccess(body -> assertThat(body.toString(StandardCharsets.ISO_8859_1)).isEqualTo("alert(\"hello world\");")));
+                    return request.send().compose(resp -> {
+                        assertThat(resp.statusCode()).isEqualTo(200);
+                        assertThat(resp.version()).isEqualTo(HttpVersion.HTTP_2);
+                        return resp.body();
+                    });
+                }).onSuccess(body -> {
+                    assertThat(body.toString(StandardCharsets.ISO_8859_1))
+                            .isEqualTo("<!DOCTYPE html>\n" + "<html lang=\"en\">\n" + "<head>\n" +
+                                       "    <meta charset=\"UTF-8\">\n" + "    <title>Hello world</title>\n" +
+                                       "    <script src=\"script.js\"></script>\n" + "</head>\n" + "<body>\n" +
+                                       "<h1>Hello World</h1>\n" + "\n" + "</body>\n" + "</html>");
+                    responsesReceived.flag();
+                });
     }
 
     @Test
@@ -371,14 +407,19 @@ public class VertxCoreTest {
         int firstPort = 8297;
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
         Vertx clientVertx = Vertx.vertx(new VertxOptions());
-        serverVertx.createHttpServer(new HttpServerOptions()).requestHandler(req -> req.response().putHeader("content-type", "text/html").end("<html><body>" + "<h1>Hello from vert.x!</h1>" + "<p>version = " + req.version() + "</p>" + "</body></html>")).listen(firstPort);
-        clientVertx.createHttpClient(new HttpClientOptions().setProtocolVersion(HttpVersion.HTTP_2)).request(HttpMethod.GET, firstPort, "localhost", "/").compose(req -> req.send().compose(resp -> {
-            assertThat(resp.statusCode()).isEqualTo(200);
-            return resp.body();
-        })).onSuccess(body -> {
-            assertThat(body.toString(StandardCharsets.ISO_8859_1)).isEqualTo("<html><body><h1>Hello from vert.x!</h1><p>version = HTTP_2</p></body></html>");
-            testContext.completeNow();
-        });
+        serverVertx.createHttpServer(new HttpServerOptions()).requestHandler(req -> req.response()
+                        .putHeader("content-type", "text/html")
+                        .end("<html><body>" + "<h1>Hello from vert.x!</h1>" + "<p>version = " + req.version() + "</p>" + "</body></html>"))
+                .listen(firstPort);
+        clientVertx.createHttpClient(new HttpClientOptions().setProtocolVersion(HttpVersion.HTTP_2))
+                .request(HttpMethod.GET, firstPort, "localhost", "/").compose(req -> req.send().compose(resp -> {
+                    assertThat(resp.statusCode()).isEqualTo(200);
+                    return resp.body();
+                })).onSuccess(body -> {
+                    assertThat(body.toString(StandardCharsets.ISO_8859_1))
+                            .isEqualTo("<html><body><h1>Hello from vert.x!</h1><p>version = HTTP_2</p></body></html>");
+                    testContext.completeNow();
+                });
     }
 
     @Test
@@ -386,20 +427,27 @@ public class VertxCoreTest {
         int firstPort = 8298;
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
         Vertx clientVertx = Vertx.vertx(new VertxOptions());
-        serverVertx.createHttpServer(new HttpServerOptions().setUseAlpn(true).setSsl(true).setPemKeyCertOptions(new PemKeyCertOptions().setKeyPath("src/test/resources/http2/customframes/server-key.pem").setCertPath("src/test/resources/http2/customframes/server-cert.pem"))).requestHandler(req -> {
+        serverVertx.createHttpServer(new HttpServerOptions().setUseAlpn(true).setSsl(true)
+                .setPemKeyCertOptions(new PemKeyCertOptions().setKeyPath("src/test/resources/http2/customframes/server-key.pem")
+                        .setCertPath("src/test/resources/http2/customframes/server-cert.pem"))).requestHandler(req -> {
             HttpServerResponse resp = req.response();
             req.customFrameHandler(frame -> {
                 assertThat(frame.payload().toString(StandardCharsets.UTF_8)).isEqualTo("ping");
                 resp.writeCustomFrame(10, 0, Buffer.buffer("pong"));
             });
         }).listen(firstPort);
-        clientVertx.createHttpClient(new HttpClientOptions().setSsl(true).setUseAlpn(true).setProtocolVersion(HttpVersion.HTTP_2).setTrustAll(true).setPemKeyCertOptions(new PemKeyCertOptions().setKeyPath("src/test/resources/http2/customframes/server-key.pem").setCertPath("src/test/resources/http2/customframes/server-cert.pem"))).request(HttpMethod.GET, firstPort, "localhost", "/").onSuccess(request -> {
-            request.response().onSuccess(resp -> resp.customFrameHandler(frame -> assertThat(frame.payload().toString(StandardCharsets.UTF_8)).isEqualTo("pong")));
-            request.sendHead().onSuccess(v -> clientVertx.setPeriodic(1000, timerID -> {
-                request.writeCustomFrame(10, 0, Buffer.buffer("ping"));
-                testContext.completeNow();
-            }));
-        });
+        clientVertx.createHttpClient(new HttpClientOptions().setSsl(true).setUseAlpn(true)
+                        .setProtocolVersion(HttpVersion.HTTP_2).setTrustAll(true).setPemKeyCertOptions(new PemKeyCertOptions()
+                                .setKeyPath("src/test/resources/http2/customframes/server-key.pem").setCertPath("src/test/resources/http2/customframes/server-cert.pem")))
+                .request(HttpMethod.GET, firstPort, "localhost", "/").onSuccess(request -> {
+                    request.response().onSuccess(resp -> resp.customFrameHandler(frame ->
+                            assertThat(frame.payload().toString(StandardCharsets.UTF_8))
+                                    .isEqualTo("pong")));
+                    request.sendHead().onSuccess(v -> clientVertx.setPeriodic(1000, timerID -> {
+                        request.writeCustomFrame(10, 0, Buffer.buffer("ping"));
+                        testContext.completeNow();
+                    }));
+                });
     }
 
     @Test
@@ -520,22 +568,28 @@ public class VertxCoreTest {
                 try {
                     EventBus senderEventBus = vertx.eventBus();
                     senderEventBus.registerDefaultCodec(CustomMessage.class, new CustomMessageCodec());
-                    vertx.setPeriodic(1000, _id -> senderEventBus.request("cluster-message-receiver", new CustomMessage(200, "a00000001", "Message sent from publisher!"), reply -> {
-                        if (reply.succeeded()) {
-                            assertThat(((CustomMessage) reply.result().body()).getSummary()).isEqualTo("Message sent from cluster receiver!");
-                        } else {
-                            System.out.println("No reply from cluster receiver");
-                        }
-                    }));
+                    vertx.setPeriodic(1000, _id -> senderEventBus
+                            .request("cluster-message-receiver", new CustomMessage(200, "a00000001",
+                                            "Message sent from publisher!"),
+                                    reply -> {
+                                        if (reply.succeeded()) {
+                                            assertThat(((CustomMessage) reply.result().body()).getSummary()).isEqualTo("Message sent from cluster receiver!");
+                                        } else {
+                                            System.out.println("No reply from cluster receiver");
+                                        }
+                                    }));
                     vertx.deployVerticle(localReceiver, deployResult -> {
                         if (deployResult.succeeded()) {
-                            vertx.setPeriodic(2000, _id -> senderEventBus.request("local-message-receiver", new CustomMessage(200, "a0000001", "Local message!"), reply -> {
-                                if (reply.succeeded()) {
-                                    assertThat(((CustomMessage) reply.result().body()).getSummary()).isEqualTo("Message sent from local receiver!");
-                                } else {
-                                    System.out.println("No reply from local receiver");
-                                }
-                            }));
+                            vertx.setPeriodic(2000, _id -> senderEventBus
+                                    .request("local-message-receiver",
+                                            new CustomMessage(200, "a0000001", "Local message!"), reply -> {
+                                                if (reply.succeeded()) {
+                                                    assertThat(((CustomMessage) reply.result().body()).getSummary())
+                                                            .isEqualTo("Message sent from local receiver!");
+                                                } else {
+                                                    System.out.println("No reply from local receiver");
+                                                }
+                                            }));
                         } else {
                             deployResult.cause().printStackTrace();
                         }
@@ -551,40 +605,47 @@ public class VertxCoreTest {
 
     @Test
     void testEventBusBySSL(VertxTestContext testContext) {
-        Vertx.clusteredVertx(new VertxOptions().setEventBusOptions(new EventBusOptions().setSsl(true).setKeyStoreOptions(new JksOptions().setPath("src/test/resources/eventbus/ssl/keystore.jks").setPassword("wibble")).setTrustStoreOptions(new JksOptions().setPath("src/test/resources/eventbus/ssl/keystore.jks").setPassword("wibble"))), deployResult -> {
-            if (deployResult.succeeded()) {
-                Vertx vertx = deployResult.result();
-                try {
-                    vertx.eventBus().consumer("ping-address", message -> {
-                        assertThat(message.body()).isEqualTo("ping!");
-                        message.reply("pong!");
-                    });
-                } catch (Throwable t) {
-                    t.printStackTrace();
-                }
-            } else {
-                deployResult.cause().printStackTrace();
-            }
-        });
-        Vertx.clusteredVertx(new VertxOptions().setEventBusOptions(new EventBusOptions().setSsl(true).setKeyStoreOptions(new JksOptions().setPath("src/test/resources/eventbus/ssl/keystore.jks").setPassword("wibble")).setTrustStoreOptions(new JksOptions().setPath("src/test/resources/eventbus/ssl/keystore.jks").setPassword("wibble"))), deployResult -> {
-            if (deployResult.succeeded()) {
-                Vertx vertx = deployResult.result();
-                try {
-                    vertx.setPeriodic(1000, v -> vertx.eventBus().request("ping-address", "ping!", ar -> {
-                        if (ar.succeeded()) {
-                            assertThat(ar.result().body()).isEqualTo("pong!");
-                            testContext.completeNow();
-                        } else {
-                            System.out.println("No reply");
+        Vertx.clusteredVertx(new VertxOptions().setEventBusOptions(new EventBusOptions().setSsl(true)
+                        .setKeyStoreOptions(new JksOptions().setPath("src/test/resources/eventbus/ssl/keystore.jks").setPassword("wibble"))
+                        .setTrustStoreOptions(new JksOptions().setPath("src/test/resources/eventbus/ssl/keystore.jks").setPassword("wibble"))),
+                deployResult -> {
+                    if (deployResult.succeeded()) {
+                        Vertx vertx = deployResult.result();
+                        try {
+                            vertx.eventBus().consumer("ping-address", message -> {
+                                assertThat(message.body()).isEqualTo("ping!");
+                                message.reply("pong!");
+                            });
+                        } catch (Throwable t) {
+                            t.printStackTrace();
                         }
-                    }));
-                } catch (Throwable t) {
-                    t.printStackTrace();
-                }
-            } else {
-                deployResult.cause().printStackTrace();
-            }
-        });
+                    } else {
+                        deployResult.cause().printStackTrace();
+                    }
+                });
+        Vertx.clusteredVertx(new VertxOptions().setEventBusOptions(new EventBusOptions().setSsl(true)
+                        .setKeyStoreOptions(new JksOptions().setPath("src/test/resources/eventbus/ssl/keystore.jks").setPassword("wibble"))
+                        .setTrustStoreOptions(new JksOptions().setPath("src/test/resources/eventbus/ssl/keystore.jks").setPassword("wibble"))),
+                deployResult -> {
+                    if (deployResult.succeeded()) {
+                        Vertx vertx = deployResult.result();
+                        try {
+                            vertx.setPeriodic(1000, v -> vertx.eventBus().request("ping-address", "ping!",
+                                    ar -> {
+                                        if (ar.succeeded()) {
+                                            assertThat(ar.result().body()).isEqualTo("pong!");
+                                            testContext.completeNow();
+                                        } else {
+                                            System.out.println("No reply");
+                                        }
+                                    }));
+                        } catch (Throwable t) {
+                            t.printStackTrace();
+                        }
+                    } else {
+                        deployResult.cause().printStackTrace();
+                    }
+                });
     }
 
     @Test
@@ -730,7 +791,8 @@ public class VertxCoreTest {
         Vertx firstVertx = Vertx.vertx(new VertxOptions());
         firstVertx.deployVerticle(execBlockingExample).onSuccess(h -> serverStarted.flag());
         Vertx secondVertx = Vertx.vertx(new VertxOptions());
-        secondVertx.deployVerticle(execBlockingExample, new DeploymentOptions().setWorkerPoolName("dedicated-pool").setMaxWorkerExecuteTime(120000).setWorkerPoolSize(5)).onSuccess(h -> serverStarted.flag());
+        secondVertx.deployVerticle(execBlockingExample, new DeploymentOptions().setWorkerPoolName("dedicated-pool")
+                .setMaxWorkerExecuteTime(120000).setWorkerPoolSize(5)).onSuccess(h -> serverStarted.flag());
     }
 
     @Test
@@ -803,7 +865,9 @@ public class VertxCoreTest {
                     batchStream.end();
                 });
                 batchStream.resume();
-                JsonObject jsonObject = new JsonObject().put("id", UUID.randomUUID().toString()).put("name", "Vert.x").put("timestamp", Instant.now());
+                JsonObject jsonObject = new JsonObject().put("id", UUID.randomUUID().toString())
+                        .put("name", "Vert.x")
+                        .put("timestamp", Instant.now());
                 JsonArray jsonArray = new JsonArray().add(UUID.randomUUID().toString()).add("Vert.x").add(Instant.now());
                 Buffer buffer = Buffer.buffer("Vert.x is awesome!");
                 batchStream.write(new Batch(jsonObject));

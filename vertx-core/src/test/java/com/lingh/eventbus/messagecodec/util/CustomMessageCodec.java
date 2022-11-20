@@ -19,9 +19,9 @@ public class CustomMessageCodec implements MessageCodec<CustomMessage, CustomMes
 
     @Override
     public CustomMessage decodeFromWire(int position, Buffer buffer) {
-        int _pos = position;
-        int length = buffer.getInt(_pos);
-        String jsonStr = buffer.getString(_pos += 4, _pos += length);
+        int pos = position;
+        int length = buffer.getInt(pos);
+        String jsonStr = buffer.getString(pos += 4, pos += length);
         JsonObject contentJson = new JsonObject(jsonStr);
         int statusCode = contentJson.getInteger("statusCode");
         String resultCode = contentJson.getString("resultCode");
