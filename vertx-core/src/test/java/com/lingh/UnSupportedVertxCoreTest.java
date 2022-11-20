@@ -16,6 +16,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 
 import java.util.concurrent.TimeUnit;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @ExtendWith(VertxExtension.class)
 public class UnSupportedVertxCoreTest {
     /**
@@ -132,18 +134,14 @@ public class UnSupportedVertxCoreTest {
      */
     @Test
     @DisabledInNativeImage
-    @Timeout(value = 20, timeUnit = TimeUnit.SECONDS)
     @Disabled
-    void testVerticleInPolyglotDeploy(VertxTestContext testContext) {   // todo fail
+    void testVerticleInPolyglotDeploy(VertxTestContext testContext) throws Throwable {   // todo fail
         Vertx firstVertx = Vertx.vertx(new VertxOptions());
         System.out.println("Main verticle has started, let's deploy A JS one...");
-        firstVertx.deployVerticle("src/test/resources/jsverticle.js", deployResult -> {
-            if (deployResult.succeeded()) {
-                testContext.completeNow();
-            } else {
-                deployResult.cause().printStackTrace();
-            }
-        });
+        firstVertx.deployVerticle("src/test/resources/jsverticle.js").onComplete(testContext.succeedingThenComplete());
+        assertThat(testContext.awaitCompletion(30, TimeUnit.SECONDS)).isTrue();
+        if (testContext.failed()) {
+            throw testContext.causeOfFailure();
+        }
     }
-
 }

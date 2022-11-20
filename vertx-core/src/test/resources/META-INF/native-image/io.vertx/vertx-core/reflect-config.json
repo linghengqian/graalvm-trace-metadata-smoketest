@@ -752,12 +752,12 @@
   "name":"com.lingh.ha.Server"
 },
 {
-  "condition":{"typeReachable":"io.vertx.core.impl.JavaVerticleFactory$$Lambda$1995/0x0000000801306780"},
+  "condition":{"typeReachable":"io.vertx.core.impl.JavaVerticleFactory$$Lambda$1995/0x0000000801303150"},
   "name":"com.lingh.ha.Server",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "condition":{"typeReachable":"io.vertx.core.impl.JavaVerticleFactory$$Lambda$1995/0x0000000801306780"},
+  "condition":{"typeReachable":"io.vertx.core.impl.JavaVerticleFactory$$Lambda$1995/0x0000000801303150"},
   "name":"com.lingh.http.sharing.HttpServerVerticle",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
@@ -770,7 +770,7 @@
   "methods":[{"name":"<init>","parameterTypes":["long","double"] }]
 },
 {
-  "condition":{"typeReachable":"io.vertx.core.impl.JavaVerticleFactory$$Lambda$1995/0x0000000801306780"},
+  "condition":{"typeReachable":"io.vertx.core.impl.JavaVerticleFactory$$Lambda$1995/0x0000000801303150"},
   "name":"com.lingh.verticle.deploy.OtherVerticle",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
@@ -1320,7 +1320,7 @@
   ]
 },
 {
-  "condition":{"typeReachable":"io.vertx.core.net.impl.transport.Transport$$Lambda$516/0x0000000800e4bb70"},
+  "condition":{"typeReachable":"io.vertx.core.net.impl.transport.Transport$$Lambda$516/0x0000000800e0e2f8"},
   "name":"io.netty.channel.DefaultChannelPipeline$HeadContext",
   "methods":[
     {"name":"bind","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.net.SocketAddress","io.netty.channel.ChannelPromise"] }, 
@@ -1343,7 +1343,7 @@
   ]
 },
 {
-  "condition":{"typeReachable":"io.vertx.core.net.impl.transport.Transport$$Lambda$516/0x0000000800e4bb70"},
+  "condition":{"typeReachable":"io.vertx.core.net.impl.transport.Transport$$Lambda$516/0x0000000800e0e2f8"},
   "name":"io.netty.channel.DefaultChannelPipeline$TailContext",
   "methods":[
     {"name":"channelActive","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
@@ -1900,6 +1900,11 @@
 },
 {
   "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager"},
+  "name":"io.vertx.spi.cluster.hazelcast.impl.HazelcastNodeInfo",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.vertx.spi.cluster.hazelcast.HazelcastClusterManager$$Lambda$2536/0x00000008013e4a38"},
   "name":"io.vertx.spi.cluster.hazelcast.impl.HazelcastNodeInfo",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },

@@ -1,6 +1,7 @@
 {
   "rules": [
     {"excludeClasses": "**"},
-    {"includeClasses": "io.vertx.**"}
+    {"includeClasses": "io.vertx.**"},
+    {"excludeClasses": "com.lingh.**"}
   ]
 }
