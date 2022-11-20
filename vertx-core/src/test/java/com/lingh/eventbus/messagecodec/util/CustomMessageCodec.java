@@ -8,9 +8,9 @@ public class CustomMessageCodec implements MessageCodec<CustomMessage, CustomMes
     @Override
     public void encodeToWire(Buffer buffer, CustomMessage customMessage) {
         JsonObject jsonToEncode = new JsonObject();
-        jsonToEncode.put("statusCode", customMessage.statusCode());
-        jsonToEncode.put("resultCode", customMessage.resultCode());
-        jsonToEncode.put("summary", customMessage.summary());
+        jsonToEncode.put("statusCode", customMessage.getStatusCode());
+        jsonToEncode.put("resultCode", customMessage.getResultCode());
+        jsonToEncode.put("summary", customMessage.getSummary());
         String jsonToStr = jsonToEncode.encode();
         int length = jsonToStr.getBytes().length;
         buffer.appendInt(length);

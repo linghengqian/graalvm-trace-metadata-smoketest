@@ -61,7 +61,7 @@ public class VertxCoreTest {
             if (res.succeeded()) {
                 NetSocket socket = res.result();
                 socket.handler(buffer -> assertThat(buffer.toString(StandardCharsets.UTF_8)).startsWith("hello "));
-                IntStream.range(0, 10).mapToObj("hello %d\n"::formatted).forEach(socket::write);
+                IntStream.range(0, 10).mapToObj(args -> "hello " + args + "\n").forEach(socket::write);
                 testContext.completeNow();
             }
         });
@@ -77,7 +77,7 @@ public class VertxCoreTest {
             if (res.succeeded()) {
                 NetSocket socket = res.result();
                 socket.handler(buffer -> assertThat(buffer.toString(StandardCharsets.UTF_8)).startsWith("hello "));
-                IntStream.range(0, 10).mapToObj("hello %d\n"::formatted).forEach(socket::write);
+                IntStream.range(0, 10).mapToObj(args -> "hello " + args + "\n").forEach(socket::write);
                 testContext.completeNow();
             }
         });
@@ -125,14 +125,18 @@ public class VertxCoreTest {
             assertThat(req.uri()).isEqualTo("/");
             req.headers().names().forEach(name -> {
                 switch (name) {
-                    case "host" -> assertThat(req.headers().get(name)).isEqualTo("localhost:" + secondPort);
-                    case "transfer-encoding" -> assertThat(req.headers().get(name)).isEqualTo("chunked");
+                    case "host":
+                        assertThat(req.headers().get(name)).isEqualTo("localhost:" + secondPort);
+                        break;
+                    case "transfer-encoding":
+                        assertThat(req.headers().get(name)).isEqualTo("chunked");
+                        break;
                 }
             });
             req.handler(data -> assertThat(data.toString(StandardCharsets.ISO_8859_1)).startsWith("client-chunk-"));
             req.endHandler(v -> {
                 req.response().setChunked(true);
-                IntStream.range(0, 10).forEach(i -> req.response().write("server-data-chunk-%d".formatted(i)));
+                IntStream.range(0, 10).forEach(i -> req.response().write("server-data-chunk-" + i));
                 req.response().end();
             });
         }).listen(firstPort);
@@ -152,7 +156,7 @@ public class VertxCoreTest {
         }).listen(secondPort);
         clientVertx.createHttpClient().request(HttpMethod.GET, secondPort, "localhost", "/").compose(request -> {
             request.setChunked(true);
-            IntStream.range(0, 10).mapToObj("client-chunk-%d"::formatted).forEach(request::write);
+            IntStream.range(0, 10).mapToObj(i -> "client-chunk-" + i).forEach(request::write);
             request.end();
             return request.response().compose(resp -> {
                 assertThat(resp.statusCode()).isEqualTo(200);
@@ -170,11 +174,14 @@ public class VertxCoreTest {
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
         serverVertx.createHttpServer().requestHandler(req -> {
             String filename = null;
-            switch (req.path()) {
-                case "/" -> filename = "src/test/resources/http/sendfile/index.html";
-                case "/page1.html" -> filename = "src/test/resources/http/sendfile/page1.html";
-                case "/page2.html" -> filename = "src/test/resources/http/sendfile/page2.html";
-                default -> req.response().setStatusCode(404).end();
+            if (req.path().equals("/")) {
+                filename = "src/test/resources/http/sendfile/index.html";
+            } else if (req.path().equals("/page1.html")) {
+                filename = "src/test/resources/http/sendfile/page1.html";
+            } else if (req.path().equals("/page2.html")) {
+                filename = "src/test/resources/http/sendfile/page2.html";
+            } else {
+                req.response().setStatusCode(404).end();
             }
             if (filename != null) {
                 req.response().sendFile(filename);
@@ -197,7 +204,7 @@ public class VertxCoreTest {
                 req.response().setChunked(true);
                 req.setExpectMultipart(true);
                 req.endHandler((v) -> {
-                    req.formAttributes().names().forEach(attr -> req.response().write("Got attr %s : %s\n".formatted(attr, req.formAttributes().get(attr))));
+                    req.formAttributes().names().forEach(attr -> req.response().write("Got attr " + attr + " : " + req.formAttributes().get(attr) + "\n"));
                     req.response().end();
                 });
             } else {
@@ -219,7 +226,7 @@ public class VertxCoreTest {
                 req.response().sendFile("src/test/resources/http/simpleformupload/index.html");
             } else if (req.uri().startsWith("/form")) {
                 req.setExpectMultipart(true);
-                req.uploadHandler(upload -> upload.streamToFileSystem(upload.filename()).onSuccess(v -> req.response().end("Successfully uploaded to %s".formatted(upload.filename()))).onFailure(err -> req.response().end("Upload failed")));
+                req.uploadHandler(upload -> upload.streamToFileSystem(upload.filename()).onSuccess(v -> req.response().end("Successfully uploaded to " + upload.filename())).onFailure(err -> req.response().end("Upload failed")));
             } else {
                 req.response().setStatusCode(404).end();
             }
@@ -235,7 +242,7 @@ public class VertxCoreTest {
         int firstPort = 8292;
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
         Vertx clientVertx = Vertx.vertx(new VertxOptions());
-        String uploadedFilename = "%s.uploaded".formatted(UUID.randomUUID());
+        String uploadedFilename = UUID.randomUUID() + ".uploaded";
         serverVertx.createHttpServer().requestHandler(req -> {
             req.pause();
             serverVertx.fileSystem().open(uploadedFilename, new OpenOptions(), ares -> {
@@ -254,7 +261,7 @@ public class VertxCoreTest {
             FileSystem fs = clientVertx.fileSystem();
             return fs.props(filename).compose(props -> {
                 assertThat(props.getClass().getName()).isEqualTo(io.vertx.core.file.impl.FilePropsImpl.class.getName());
-                req.headers().set("content-length", "%d".formatted(props.size()));
+                req.headers().set("content-length", String.valueOf(props.size()));
                 return fs.open(filename, new OpenOptions());
             }).compose(file -> req.send(file).map(HttpClientResponse::statusCode));
         }).onSuccess(statusCode -> {
@@ -272,7 +279,7 @@ public class VertxCoreTest {
         clientVertx.setPeriodic(1000, l -> {
             HttpClient client = clientVertx.createHttpClient();
             client.request(HttpMethod.GET, firstPort, "localhost", "/").compose(req -> req.send().compose(HttpClientResponse::body)).onSuccess(body -> {
-                assertThat(body.toString(StandardCharsets.ISO_8859_1)).startsWith("<html><body><h1>Hello from %s@".formatted(HttpServerVerticle.class.getName()));
+                assertThat(body.toString(StandardCharsets.ISO_8859_1)).startsWith("<html><body><h1>Hello from " + HttpServerVerticle.class.getName() + "@");
                 assertThat(body.toString(StandardCharsets.ISO_8859_1)).endsWith("</h1></body></html>");
                 testContext.completeNow();
             }).onFailure(Throwable::printStackTrace);
@@ -280,6 +287,7 @@ public class VertxCoreTest {
     }
 
     @Test
+    @Timeout(value = 2, timeUnit = TimeUnit.MINUTES)
     void testHttpInWebSocketsEcho(VertxTestContext testContext) {
         int firstPort = 8294;
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
@@ -297,7 +305,7 @@ public class VertxCoreTest {
             });
             webSocket.writeBinaryMessage(Buffer.buffer("Hello world"));
             testContext.completeNow();
-        }).onFailure(Throwable::printStackTrace);
+        });
     }
 
     @Test
@@ -305,7 +313,7 @@ public class VertxCoreTest {
         int firstPort = 8295;
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
         Vertx clientVertx = Vertx.vertx(new VertxOptions());
-        serverVertx.createHttpServer(new HttpServerOptions().setUseAlpn(true).setSsl(true).setPemKeyCertOptions(new PemKeyCertOptions().setKeyPath("src/test/resources/http2/simple/server-key.pem").setCertPath("src/test/resources/http2/simple/server-cert.pem"))).requestHandler(req -> req.response().putHeader("content-type", "text/html").end("<html><body><h1>Hello from vert.x!</h1><p>version = %s</p></body></html>".formatted(req.version()))).listen(firstPort);
+        serverVertx.createHttpServer(new HttpServerOptions().setUseAlpn(true).setSsl(true).setPemKeyCertOptions(new PemKeyCertOptions().setKeyPath("src/test/resources/http2/simple/server-key.pem").setCertPath("src/test/resources/http2/simple/server-cert.pem"))).requestHandler(req -> req.response().putHeader("content-type", "text/html").end("<html><body>" + "<h1>Hello from vert.x!</h1>" + "<p>version = " + req.version() + "</p>" + "</body></html>")).listen(firstPort);
         clientVertx.createHttpClient(new HttpClientOptions().setSsl(true).setUseAlpn(true).setProtocolVersion(HttpVersion.HTTP_2).setTrustAll(true).setPemKeyCertOptions(new PemKeyCertOptions().setKeyPath("src/test/resources/http2/simple/server-key.pem").setCertPath("src/test/resources/http2/simple/server-cert.pem"))).request(HttpMethod.GET, firstPort, "localhost", "/").compose(req -> req.send().compose(resp -> {
             assertThat(resp.statusCode()).isEqualTo(200);
             return resp.body();
@@ -353,19 +361,7 @@ public class VertxCoreTest {
                 return resp.body();
             });
         }).onSuccess(body -> {
-            assertThat(body.toString(StandardCharsets.ISO_8859_1)).isEqualTo("""
-                    <!DOCTYPE html>
-                    <html lang="en">
-                    <head>
-                        <meta charset="UTF-8">
-                        <title>Hello world</title>
-                        <script src="script.js"></script>
-                    </head>
-                    <body>
-                    <h1>Hello World</h1>
-                                                        
-                    </body>
-                    </html>""");
+            assertThat(body.toString(StandardCharsets.ISO_8859_1)).isEqualTo("<!DOCTYPE html>\n" + "<html lang=\"en\">\n" + "<head>\n" + "    <meta charset=\"UTF-8\">\n" + "    <title>Hello world</title>\n" + "    <script src=\"script.js\"></script>\n" + "</head>\n" + "<body>\n" + "<h1>Hello World</h1>\n" + "\n" + "</body>\n" + "</html>");
             responsesReceived.flag();
         });
     }
@@ -375,7 +371,7 @@ public class VertxCoreTest {
         int firstPort = 8297;
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
         Vertx clientVertx = Vertx.vertx(new VertxOptions());
-        serverVertx.createHttpServer(new HttpServerOptions()).requestHandler(req -> req.response().putHeader("content-type", "text/html").end("<html><body><h1>Hello from vert.x!</h1><p>version = %s</p></body></html>".formatted(req.version()))).listen(firstPort);
+        serverVertx.createHttpServer(new HttpServerOptions()).requestHandler(req -> req.response().putHeader("content-type", "text/html").end("<html><body>" + "<h1>Hello from vert.x!</h1>" + "<p>version = " + req.version() + "</p>" + "</body></html>")).listen(firstPort);
         clientVertx.createHttpClient(new HttpClientOptions().setProtocolVersion(HttpVersion.HTTP_2)).request(HttpMethod.GET, firstPort, "localhost", "/").compose(req -> req.send().compose(resp -> {
             assertThat(resp.statusCode()).isEqualTo(200);
             return resp.body();
@@ -495,7 +491,7 @@ public class VertxCoreTest {
             @Override
             public void start() {
                 getVertx().eventBus().consumer("local-message-receiver", message -> {
-                    assertThat(((CustomMessage) message.body()).summary()).isIn("Message sent from publisher!", "Local message!");
+                    assertThat(((CustomMessage) message.body()).getSummary()).isIn("Message sent from publisher!", "Local message!");
                     message.reply(new CustomMessage(200, "a00000002", "Message sent from local receiver!"));
                 });
             }
@@ -507,7 +503,7 @@ public class VertxCoreTest {
                     EventBus clusterReceiverEventBus = vertx.eventBus();
                     clusterReceiverEventBus.registerDefaultCodec(CustomMessage.class, new CustomMessageCodec());
                     clusterReceiverEventBus.consumer("cluster-message-receiver", message -> {
-                        assertThat(((CustomMessage) message.body()).summary()).isEqualTo("Message sent from publisher!");
+                        assertThat(((CustomMessage) message.body()).getSummary()).isEqualTo("Message sent from publisher!");
                         message.reply(new CustomMessage(200, "a00000002", "Message sent from cluster receiver!"));
                         testContext.completeNow();
                     });
@@ -526,7 +522,7 @@ public class VertxCoreTest {
                     senderEventBus.registerDefaultCodec(CustomMessage.class, new CustomMessageCodec());
                     vertx.setPeriodic(1000, _id -> senderEventBus.request("cluster-message-receiver", new CustomMessage(200, "a00000001", "Message sent from publisher!"), reply -> {
                         if (reply.succeeded()) {
-                            assertThat(((CustomMessage) reply.result().body()).summary()).isEqualTo("Message sent from cluster receiver!");
+                            assertThat(((CustomMessage) reply.result().body()).getSummary()).isEqualTo("Message sent from cluster receiver!");
                         } else {
                             System.out.println("No reply from cluster receiver");
                         }
@@ -535,7 +531,7 @@ public class VertxCoreTest {
                         if (deployResult.succeeded()) {
                             vertx.setPeriodic(2000, _id -> senderEventBus.request("local-message-receiver", new CustomMessage(200, "a0000001", "Local message!"), reply -> {
                                 if (reply.succeeded()) {
-                                    assertThat(((CustomMessage) reply.result().body()).summary()).isEqualTo("Message sent from local receiver!");
+                                    assertThat(((CustomMessage) reply.result().body()).getSummary()).isEqualTo("Message sent from local receiver!");
                                 } else {
                                     System.out.println("No reply from local receiver");
                                 }
