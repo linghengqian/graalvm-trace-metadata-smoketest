@@ -4,7 +4,7 @@ import io.vertx.core.AbstractVerticle;
 
 public class HttpServerVerticle extends AbstractVerticle {
     @Override
-    public void start() throws Exception {
+    public void start() {
         vertx.createHttpServer().requestHandler(req -> {
             req.response()
                     .putHeader("content-type", "text/html")
