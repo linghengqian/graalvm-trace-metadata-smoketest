@@ -2,9 +2,12 @@ package com.lingh;
 
 import com.lingh.eventbus.messagecodec.util.CustomMessage;
 import com.lingh.eventbus.messagecodec.util.CustomMessageCodec;
+import com.lingh.ha.Server;
+import com.lingh.http.sharing.HttpServerVerticle;
 import com.lingh.jsonstreaming.DataPoint;
 import com.lingh.net.stream.Batch;
 import com.lingh.net.stream.BatchStream;
+import com.lingh.verticle.deploy.OtherVerticle;
 import io.vertx.core.*;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.eventbus.EventBus;
@@ -265,11 +268,11 @@ public class VertxCoreTest {
         int firstPort = 8293;
         Vertx serverVertx = Vertx.vertx(new VertxOptions());
         Vertx clientVertx = Vertx.vertx(new VertxOptions());
-        assertDoesNotThrow(() -> serverVertx.deployVerticle(com.lingh.http.sharing.HttpServerVerticle.class.getName(), new DeploymentOptions().setInstances(2)));
+        assertDoesNotThrow(() -> serverVertx.deployVerticle(HttpServerVerticle.class.getName(), new DeploymentOptions().setInstances(2)));
         clientVertx.setPeriodic(1000, l -> {
             HttpClient client = clientVertx.createHttpClient();
             client.request(HttpMethod.GET, firstPort, "localhost", "/").compose(req -> req.send().compose(HttpClientResponse::body)).onSuccess(body -> {
-                assertThat(body.toString(StandardCharsets.ISO_8859_1)).startsWith("<html><body><h1>Hello from %s@".formatted(com.lingh.http.sharing.HttpServerVerticle.class.getName()));
+                assertThat(body.toString(StandardCharsets.ISO_8859_1)).startsWith("<html><body><h1>Hello from %s@".formatted(HttpServerVerticle.class.getName()));
                 assertThat(body.toString(StandardCharsets.ISO_8859_1)).endsWith("</h1></body></html>");
                 testContext.completeNow();
             }).onFailure(Throwable::printStackTrace);
@@ -637,7 +640,7 @@ public class VertxCoreTest {
             }
         });
         firstVertx.deployVerticle(otherVerticle, new DeploymentOptions().setConfig(new JsonObject().put("foo", "bar")));
-        firstVertx.deployVerticle(com.lingh.verticle.deploy.OtherVerticle.class.getName(), new DeploymentOptions().setInstances(10));
+        firstVertx.deployVerticle(OtherVerticle.class.getName(), new DeploymentOptions().setInstances(10));
         firstVertx.deployVerticle(otherVerticle, new DeploymentOptions().setWorker(true));
     }
 
@@ -736,7 +739,7 @@ public class VertxCoreTest {
 
     @Test
     void testHighAvailability(VertxTestContext testContext) {
-        Launcher.main(new String[]{"run", com.lingh.ha.Server.class.getName(), "-ha"});
+        Launcher.main(new String[]{"run", Server.class.getName(), "-ha"});
         Launcher.main(new String[]{"bare"});
         testContext.completeNow();
     }
