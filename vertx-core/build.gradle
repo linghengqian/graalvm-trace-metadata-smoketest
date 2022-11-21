@@ -14,11 +14,10 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.1'
     testImplementation 'io.vertx:vertx-core:4.3.5'
-    testImplementation 'io.vertx:vertx-hazelcast:4.3.5'
     testImplementation 'io.vertx:vertx-junit5:4.3.5'
     testImplementation 'org.assertj:assertj-core:3.22.0'
-    testImplementation 'com.fasterxml.jackson.core:jackson-databind:2.14.0'
-    testImplementation 'org.bouncycastle:bctls-jdk15on:1.70'
+//    testImplementation 'org.bouncycastle:bctls-jdk15on:1.70'
+    testImplementation 'io.vertx:vertx-hazelcast:4.3.5'
 }
 
 test {
