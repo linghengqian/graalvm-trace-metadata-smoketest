@@ -23,7 +23,6 @@ cd ./jjwt-orgjson/
 cd ./zstd-jni/
 cd ./vertx-core/
 cd ./groovy/
-cd ./netty-handler/
 ```
 - exec.
 ```shell

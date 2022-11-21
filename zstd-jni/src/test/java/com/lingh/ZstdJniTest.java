@@ -37,7 +37,7 @@ public class ZstdJniTest {
         long numBytes = 0L;
         ByteBuffer inBuffer = ByteBuffer.allocateDirect(8 * 1024 * 1024);
         ByteBuffer compressedBuffer = ByteBuffer.allocateDirect(8 * 1024 * 1024);
-        try (RandomAccessFile inRaFile = new RandomAccessFile(file, "r");//读取文件
+        try (RandomAccessFile inRaFile = new RandomAccessFile(file, "r");
              RandomAccessFile outRaFile = new RandomAccessFile(outFile, "rw");
              FileChannel inChannel = inRaFile.getChannel();
              FileChannel outChannel = outRaFile.getChannel()) {
