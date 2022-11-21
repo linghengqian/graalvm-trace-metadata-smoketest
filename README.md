@@ -23,6 +23,7 @@ cd ./jjwt-orgjson/
 cd ./zstd-jni/
 cd ./vertx-core/
 cd ./groovy/
+cd ./hazelcast/
 ```
 - exec.
 ```shell
