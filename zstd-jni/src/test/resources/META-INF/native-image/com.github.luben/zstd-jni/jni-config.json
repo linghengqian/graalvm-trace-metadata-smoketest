@@ -20,6 +20,30 @@
   "fields":[{"name":"nativePtr"}]
 },
 {
+  "condition":{"typeReachable":"com.github.luben.zstd.ZstdDirectBufferCompressingStreamNoFinalizer"},
+  "name":"com.github.luben.zstd.ZstdDirectBufferCompressingStream$1"
+},
+{
+  "condition":{"typeReachable":"com.github.luben.zstd.ZstdDirectBufferCompressingStreamNoFinalizer"},
+  "name":"com.github.luben.zstd.ZstdDirectBufferCompressingStreamNoFinalizer",
+  "fields":[
+    {"name":"consumed"}, 
+    {"name":"produced"}
+  ]
+},
+{
+  "condition":{"typeReachable":"com.github.luben.zstd.ZstdDirectBufferDecompressingStreamNoFinalizer"},
+  "name":"com.github.luben.zstd.ZstdDirectBufferDecompressingStream$1"
+},
+{
+  "condition":{"typeReachable":"com.github.luben.zstd.ZstdDirectBufferDecompressingStreamNoFinalizer"},
+  "name":"com.github.luben.zstd.ZstdDirectBufferDecompressingStreamNoFinalizer",
+  "fields":[
+    {"name":"consumed"}, 
+    {"name":"produced"}
+  ]
+},
+{
   "condition":{"typeReachable":"com.github.luben.zstd.ZstdInputStreamNoFinalizer"},
   "name":"com.github.luben.zstd.ZstdInputStreamNoFinalizer",
   "fields":[

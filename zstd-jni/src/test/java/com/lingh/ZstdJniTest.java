@@ -10,6 +10,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
@@ -31,7 +32,7 @@ public class ZstdJniTest {
     }
 
     @Test
-    void testCompress() throws IOException {
+    void testCompressFile() throws IOException {
         File file = new File("src/test/resources/originTest.txt");
         File outFile = new File("src/test/resources/originTest.txt.zs");
         long numBytes = 0L;
@@ -58,7 +59,7 @@ public class ZstdJniTest {
     }
 
     @Test
-    void testDecompress() {
+    void testDecompressFileByZstdIOStream() {
         File file = new File("src/test/resources/compressTest.zs");
         File out = new File("src/test/resources/DecompressTest.txt");
         byte[] buffer = new byte[1024 * 1024 * 8];
@@ -77,5 +78,36 @@ public class ZstdJniTest {
         } catch (IOException ignore) {
         }
         assertDoesNotThrow(out::delete);
+    }
+
+    @Test
+    void testDirectBufferDecompressingStream() throws IOException {
+        byte[] input = Files.readAllBytes(Paths.get("src/test/resources/originTest.txt"));
+        final int size = input.length;
+        ByteBuffer os = ByteBuffer.allocateDirect((int) Zstd.compressBound(size));
+        final ByteBuffer ib = ByteBuffer.allocateDirect(size);
+        ib.put(input);
+        final ZstdDirectBufferCompressingStream osw = new ZstdDirectBufferCompressingStream(os, 9);
+        ib.flip();
+        osw.compress(ib);
+        osw.close();
+        os.flip();
+        final byte[] bytes = new byte[os.limit()];
+        os.get(bytes);
+        os.rewind();
+        final ZstdDirectBufferDecompressingStream zis = new ZstdDirectBufferDecompressingStream(os);
+        final byte[] output = new byte[size];
+        final ByteBuffer block = ByteBuffer.allocateDirect(128 * 1024);
+        int offset = 0;
+        while (zis.hasRemaining()) {
+            block.clear();
+            final int read = zis.read(block);
+            block.flip();
+            block.get(output, offset, read);
+            offset = offset + read;
+        }
+        zis.close();
+        assertThat(Arrays.toString(input)).isEqualTo("[97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122]");
+        assertThat(Arrays.toString(input)).isEqualTo("[97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122]");
     }
 }
