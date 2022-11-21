@@ -18,5 +18,21 @@
   "condition":{"typeReachable":"com.github.luben.zstd.ZstdDictDecompress"},
   "name":"com.github.luben.zstd.ZstdDictDecompress",
   "fields":[{"name":"nativePtr"}]
+},
+{
+  "condition":{"typeReachable":"com.github.luben.zstd.ZstdInputStreamNoFinalizer"},
+  "name":"com.github.luben.zstd.ZstdInputStreamNoFinalizer",
+  "fields":[
+    {"name":"dstPos"}, 
+    {"name":"srcPos"}
+  ]
+},
+{
+  "condition":{"typeReachable":"com.github.luben.zstd.ZstdOutputStreamNoFinalizer"},
+  "name":"com.github.luben.zstd.ZstdOutputStreamNoFinalizer",
+  "fields":[
+    {"name":"dstPos"}, 
+    {"name":"srcPos"}
+  ]
 }
 ]
