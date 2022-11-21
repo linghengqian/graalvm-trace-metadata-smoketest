@@ -18,15 +18,16 @@ dependencies {
     testImplementation 'io.vertx:vertx-junit5:4.3.5'
     testImplementation 'org.assertj:assertj-core:3.22.0'
     testImplementation 'com.fasterxml.jackson.core:jackson-databind:2.14.0'
+    testImplementation 'org.bouncycastle:bctls-jdk15on:1.70'
 }
 
 test {
     useJUnitPlatform()
-    def strings = new ArrayList<String>(["--add-modules", "java.se", "--add-exports", "java.base/jdk.internal.ref=ALL-UNNAMED",
-                                         "--add-opens", "java.base/java.lang=ALL-UNNAMED", "--add-opens", "java.base/java.nio=ALL-UNNAMED",
-                                         "--add-opens", "java.base/sun.nio.ch=ALL-UNNAMED", "--add-opens", "java.management/sun.management=ALL-UNNAMED",
-                                         "--add-opens", "jdk.management/com.sun.management.internal=ALL-UNNAMED",
-                                         "--add-opens", "java.base/sun.security.x509=ALL-UNNAMED"])
+    def strings = Arrays.asList("--add-modules", "java.se", "--add-exports", "java.base/jdk.internal.ref=ALL-UNNAMED",
+            "--add-opens", "java.base/java.lang=ALL-UNNAMED", "--add-opens", "java.base/java.nio=ALL-UNNAMED",
+            "--add-opens", "java.base/sun.nio.ch=ALL-UNNAMED", "--add-opens", "java.management/sun.management=ALL-UNNAMED",
+            "--add-opens", "jdk.management/com.sun.management.internal=ALL-UNNAMED",
+            "--add-opens", "java.base/sun.security.x509=ALL-UNNAMED")
     setJvmArgs(strings)
 }
 
@@ -42,6 +43,10 @@ graalvmNative {
             mergeWithExisting = true
             inputTaskNames.add("test")
             outputDirectories.add("src/test/resources/META-INF/native-image/io.vertx/vertx-core")
+        }
+        metadataRepository {
+            enabled = true
+            version = "0.2.5"
         }
     }
 }

@@ -13,45 +13,25 @@
 sdk use java 22.3.r17-grl
 gu install native-image
 sudo apt-get install build-essential libz-dev zlib1g-dev -y
+sdk install scala 2.13.10
 ```
-
+- select one.
 ```shell
 cd ./jjwt-jackson/
-./gradlew -Pagent clean test
-./gradlew metadataCopy --task test
-```
-
-```shell
 cd ./jjwt-gson/
-./gradlew -Pagent clean test
-./gradlew metadataCopy --task test
-```
-
-```shell
 cd ./jjwt-orgjson/
-./gradlew -Pagent clean test
-./gradlew metadataCopy --task test
-```
-
-```shell
 cd ./zstd-jni/
-sdk install scala 2.13.10
+cd ./vertx-core/
+cd ./groovy/
+cd ./netty-handler/
+```
+- exec.
+```shell
 ./gradlew -Pagent clean test
 ./gradlew metadataCopy --task test
+./gradlew -Pagent nativeTest
 ```
 
 - According to https://central.sonatype.dev/artifact/com.github.luben/zstd-jni/1.5.2-5/dependencies
   , `com.github.luben:zstd-jni:1.5.2-5` uses scala 2.13.
 - A weird test issue with `ZstdSpec.scala` I added a TODO.
-
-```shell
-cd ./vertx-core/
-./gradlew -Pagent clean test
-./gradlew metadataCopy --task test
-```
-
-```shell
-cd ./groovy/
-./gradlew -Pagent clean test
-./gradlew metadataCopy --task test
-```

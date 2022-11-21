@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(VertxExtension.class)
-public class UnSupportedVertxCoreTest {
+public class UnFixesVertxCoreTest {
     /**
      * @see com.lingh.http.proxyconnect.Server
      * @see com.lingh.http.proxyconnect.Proxy
