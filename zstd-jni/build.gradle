@@ -34,7 +34,7 @@ graalvmNative {
         metadataCopy {
             mergeWithExisting = true
             inputTaskNames.add("test")
-            outputDirectories.add("src/main/resources/META-INF/native-image/com.github.luben/zstd-jni/1.5.2-5")
+            outputDirectories.add("src/test/resources/META-INF/native-image/com.github.luben/zstd-jni")
         }
     }
 }
