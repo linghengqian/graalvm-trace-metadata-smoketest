@@ -31,7 +31,3 @@ cd ./hazelcast/
 ./gradlew metadataCopy --task test
 ./gradlew -Pagent nativeTest
 ```
-
-- According to https://central.sonatype.dev/artifact/com.github.luben/zstd-jni/1.5.2-5/dependencies
-  , `com.github.luben:zstd-jni:1.5.2-5` uses scala 2.13.
-- A weird test issue with `ZstdSpec.scala` I added a TODO.
