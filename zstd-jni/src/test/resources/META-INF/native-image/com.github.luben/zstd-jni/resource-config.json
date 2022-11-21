@@ -1,0 +1,8 @@
+{
+  "resources":{
+  "includes":[{
+      "condition":{"typeReachable":"com.github.luben.zstd.util.Native"},
+      "pattern":"\\Qlinux/amd64/libzstd-jni-1.5.2-5.so\\E"
+    }]},
+  "bundles":[]
+}

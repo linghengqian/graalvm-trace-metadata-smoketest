@@ -1,5 +1,5 @@
 plugins {
-    id 'scala'
+    id 'java'
     id 'org.graalvm.buildtools.native' version '0.9.17'
 }
 
@@ -11,11 +11,9 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.1'
     testImplementation 'com.github.luben:zstd-jni:1.5.2-5'
-    testImplementation 'org.scalatest:scalatest_2.13:3.2.13'
-    testImplementation 'org.scalatestplus:scalacheck-1-16_2.13:3.2.13.0'
     testImplementation 'org.assertj:assertj-core:3.22.0'
 }
 

@@ -1,0 +1,22 @@
+[
+{
+  "condition":{"typeReachable":"com.github.luben.zstd.ZstdCompressCtx"},
+  "name":"com.github.luben.zstd.ZstdCompressCtx",
+  "fields":[{"name":"nativePtr"}]
+},
+{
+  "condition":{"typeReachable":"com.github.luben.zstd.ZstdDecompressCtx"},
+  "name":"com.github.luben.zstd.ZstdDecompressCtx",
+  "fields":[{"name":"nativePtr"}]
+},
+{
+  "condition":{"typeReachable":"com.github.luben.zstd.ZstdDictCompress"},
+  "name":"com.github.luben.zstd.ZstdDictCompress",
+  "fields":[{"name":"nativePtr"}]
+},
+{
+  "condition":{"typeReachable":"com.github.luben.zstd.ZstdDictDecompress"},
+  "name":"com.github.luben.zstd.ZstdDictDecompress",
+  "fields":[{"name":"nativePtr"}]
+}
+]
