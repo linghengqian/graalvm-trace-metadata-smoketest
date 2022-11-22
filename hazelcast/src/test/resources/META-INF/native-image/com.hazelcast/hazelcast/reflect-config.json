@@ -1205,6 +1205,12 @@
 },
 {
   "condition":{"typeReachable":"com.hazelcast.internal.server.tcp.TcpServerConnectionManager"},
+  "name":"com.hazelcast.internal.nio.Connection",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"com.hazelcast.internal.server.tcp.TcpServerConnectionManager"},
   "name":"com.hazelcast.internal.nio.ConnectionListenable",
   "allDeclaredFields":true,
   "queryAllDeclaredMethods":true
@@ -1327,6 +1333,12 @@
 },
 {
   "condition":{"typeReachable":"com.hazelcast.internal.server.tcp.TcpServerConnectionManager"},
+  "name":"com.hazelcast.internal.server.ServerConnection",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"com.hazelcast.internal.server.tcp.TcpServerConnectionManager"},
   "name":"com.hazelcast.internal.server.ServerConnectionManager",
   "allDeclaredFields":true,
   "queryAllDeclaredMethods":true
@@ -1340,6 +1352,12 @@
 {
   "condition":{"typeReachable":"com.hazelcast.internal.server.tcp.TcpServerAcceptor"},
   "name":"com.hazelcast.internal.server.tcp.TcpServerAcceptor",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"com.hazelcast.internal.server.tcp.TcpServerConnectionManager"},
+  "name":"com.hazelcast.internal.server.tcp.TcpServerConnection",
   "allDeclaredFields":true,
   "queryAllDeclaredMethods":true
 },
