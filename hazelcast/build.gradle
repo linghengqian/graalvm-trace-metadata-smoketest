@@ -32,6 +32,8 @@ graalvmNative {
     agent {
         defaultMode = "conditional"
         modes {
+            standard {
+            }
             conditional {
                 userCodeFilterPath = "user-code-filter.json"
             }
@@ -39,7 +41,7 @@ graalvmNative {
         metadataCopy {
             mergeWithExisting = true
             inputTaskNames.add("test")
-            outputDirectories.add("src/test/resources/META-INF/native-image/com.hazelcast/hazelcast")
+            outputDirectories.add("src/test/resources/META-INF/native-image/test")
         }
     }
 }

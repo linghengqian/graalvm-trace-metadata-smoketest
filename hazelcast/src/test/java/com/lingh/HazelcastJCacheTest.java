@@ -1,7 +1,6 @@
 package com.lingh;
 
 import com.hazelcast.cache.HazelcastCachingProvider;
-import com.hazelcast.cache.ICache;
 import com.hazelcast.config.Config;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
@@ -14,8 +13,6 @@ import javax.cache.CacheManager;
 import javax.cache.Caching;
 import javax.cache.configuration.CompleteConfiguration;
 import javax.cache.configuration.MutableConfiguration;
-import javax.cache.expiry.AccessedExpiryPolicy;
-import javax.cache.expiry.Duration;
 import javax.cache.spi.CachingProvider;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -31,24 +28,6 @@ public class HazelcastJCacheTest {
     @AfterAll
     static void after() {
         hazelcastInstance.shutdown();
-    }
-
-    @SuppressWarnings("unchecked")
-    @Test
-    void testJCache() {
-        System.setProperty("hazelcast.jcache.provider.type", "client");
-        CacheManager manager = Caching.getCachingProvider(HazelcastCachingProvider.class.getName()).getCacheManager();
-        MutableConfiguration<String, String> configuration = new MutableConfiguration<>();
-        configuration.setExpiryPolicyFactory(AccessedExpiryPolicy.factoryOf(Duration.ONE_MINUTE));
-        Cache<String, String> myCache = manager.createCache("myCache", configuration);
-        myCache.put("key", "value");
-        assertThat(myCache.get("key")).isEqualTo("value");
-        ICache<String, String> cacheAsI = myCache.unwrap(ICache.class);
-        cacheAsI.getAsync("key");
-        cacheAsI.putAsync("key", "value");
-        cacheAsI.put("key", "newValue", AccessedExpiryPolicy.factoryOf(Duration.TEN_MINUTES).create());
-        assertThat(cacheAsI.size()).isEqualTo(1);
-        manager.getCachingProvider().close();
     }
 
     @Test
