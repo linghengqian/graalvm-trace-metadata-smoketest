@@ -2,6 +2,7 @@ package com.lingh;
 
 import com.hazelcast.cache.ICache;
 import com.hazelcast.client.HazelcastClient;
+import com.hazelcast.client.config.ClientConfig;
 import com.hazelcast.config.Config;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
@@ -9,7 +10,6 @@ import com.hazelcast.map.IMap;
 import com.hazelcast.multimap.MultiMap;
 import com.hazelcast.replicatedmap.ReplicatedMap;
 import com.hazelcast.topic.ITopic;
-import com.hazelcast.topic.MessageListener;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -25,7 +25,10 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.Lock;
+import java.util.stream.IntStream;
 
+import static com.hazelcast.query.Predicates.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class HazelcastTest {
@@ -47,8 +50,10 @@ public class HazelcastTest {
         IMap<String, String> map = client.getMap("my-distributed-map");
         map.put("key", "value");
         map.get("key");
-        map.putIfAbsent("somekey", "somevalue");
-        map.replace("key", "value", "newvalue");
+        map.putIfAbsent("someKey", "someValue");
+        map.replace("key", "value", "newValue");
+        assertThat(map.get("someKey")).isEqualTo("someValue");
+        assertThat(map.get("key")).isEqualTo("newValue");
         client.shutdown();
     }
 
@@ -62,11 +67,11 @@ public class HazelcastTest {
         Cache<String, String> myCache = manager.createCache("myCache", configuration);
         myCache.put("key", "value");
         assertThat(myCache.get("key")).isEqualTo("value");
-        ICache<String, String> icache = myCache.unwrap(ICache.class);
-        icache.getAsync("key");
-        icache.putAsync("key", "value");
-        icache.put("key", "newValue", AccessedExpiryPolicy.factoryOf(Duration.TEN_MINUTES).create());
-        icache.size();
+        ICache<String, String> CacheAsI = myCache.unwrap(ICache.class);
+        CacheAsI.getAsync("key");
+        CacheAsI.putAsync("key", "value");
+        CacheAsI.put("key", "newValue", AccessedExpiryPolicy.factoryOf(Duration.TEN_MINUTES).create());
+        assertThat(CacheAsI.size()).isEqualTo(1);
         manager.getCachingProvider().close();
     }
 
@@ -74,10 +79,8 @@ public class HazelcastTest {
     void testReplicatedMap() {
         HazelcastInstance client = HazelcastClient.newHazelcastClient();
         ReplicatedMap<String, String> map = client.getReplicatedMap("my-replicated-map");
-        String replacedValue = map.put("key", "value");
-        assertThat(replacedValue).isNull();
-        String value = map.get("key");
-        assertThat(value).isEqualTo("value");
+        assertThat(map.put("key", "value")).isNull();
+        assertThat(map.get("key")).isEqualTo("value");
         client.shutdown();
     }
 
@@ -88,9 +91,9 @@ public class HazelcastTest {
         multiMap.put("my-key", "value1");
         multiMap.put("my-key", "value2");
         multiMap.put("my-key", "value3");
-        Collection<String> values = multiMap.get("my-key");
-        assertThat(values.toString()).contains("value2", "value1", "value3");
+        assertThat(multiMap.get("my-key").toString()).contains("value2", "value1", "value3");
         multiMap.remove("my-key", "value2");
+        assertThat(multiMap.get("my-key").toString()).contains("value1", "value3");
         client.shutdown();
     }
 
@@ -106,6 +109,7 @@ public class HazelcastTest {
         set.add("item2");
         set.add("item3");
         assertThat(set).contains("item1", "item2", "item3");
+        assertThat(set.size()).isEqualTo(3);
         client.shutdown();
     }
 
@@ -123,25 +127,59 @@ public class HazelcastTest {
 
     @Test
     void testQueue() throws InterruptedException {
-        HazelcastInstance hz = HazelcastClient.newHazelcastClient();
-        BlockingQueue<String> queue = hz.getQueue("my-distributed-queue");
+        HazelcastInstance client = HazelcastClient.newHazelcastClient();
+        BlockingQueue<String> queue = client.getQueue("my-distributed-queue");
         assertThat(queue.offer("item")).isTrue();
         queue.poll();
-        assertThat(queue.offer("anotheritem", 500, TimeUnit.MILLISECONDS)).isTrue();
+        assertThat(queue.offer("anotherItem", 500, TimeUnit.MILLISECONDS)).isTrue();
         queue.poll(5, TimeUnit.SECONDS);
-        queue.put("yetanotheritem");
-        assertThat(queue.take()).isEqualTo("yetanotheritem");
-        hz.shutdown();
+        queue.put("yetAnotherItem");
+        assertThat(queue.take()).isEqualTo("yetAnotherItem");
+        client.shutdown();
     }
 
-    @SuppressWarnings("rawtypes")
     @Test
     void testTopic() {
-        HazelcastInstance hz = HazelcastClient.newHazelcastClient();
-        ITopic<Object> topic = hz.getTopic("my-distributed-topic");
-        MessageListener topicSample = message -> System.out.println("Got message " + message.getMessageObject());
-        topic.addMessageListener(topicSample);
-        topic.publish("Hello to distributed world");
-        hz.shutdown();
+        HazelcastInstance client = HazelcastClient.newHazelcastClient();
+        ITopic<Object> topic = client.getTopic("my-distributed-topic");
+        topic.addMessageListener(message -> assertThat(message.getMessageObject()).isEqualTo("Hello to distributed world"));
+        IntStream.range(0, 3).mapToObj(i -> "Hello to distributed world").forEach(topic::publish);
+        client.shutdown();
     }
+
+    @Test
+    void testQuery() {
+        ClientConfig clientConfig = new ClientConfig();
+        clientConfig.getSerializationConfig().addPortableFactory(ThePortableFactory.FACTORY_ID, new ThePortableFactory());
+        HazelcastInstance client = HazelcastClient.newHazelcastClient(clientConfig);
+        IMap<String, User> users = client.getMap("users");
+        User rod = new User("Rod", 19, true);
+        User jane = new User("Jane", 20, true);
+        users.put("Rod", rod);
+        users.put("Jane", jane);
+        users.put("Freddy", new User("Freddy", 23, true));
+        Collection<User> result1 = users.values(sql("active AND age BETWEEN 18 AND 21)"));
+        Collection<User> result2 = users.values(and(equal("active", true), between("age", 18, 21)));
+        assertThat(result1).contains(rod, jane);
+        assertThat(result2).contains(rod, jane);
+        client.shutdown();
+    }
+
+    @Test
+    void testLock() {
+        HazelcastInstance client = HazelcastClient.newHazelcastClient();
+        Lock lock = client.getCPSubsystem().getLock("my-distributed-lock");
+        lock.lock();
+        try {
+            IMap<String, String> map = client.getMap("lock-distributed-map");
+            map.put("key", "value");
+            map.get("key");
+            map.putIfAbsent("someKey", "someValue");
+            map.replace("key", "value", "newValue");
+        } finally {
+            lock.unlock();
+        }
+        client.shutdown();
+    }
+
 }
