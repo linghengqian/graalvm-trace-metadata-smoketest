@@ -270,8 +270,20 @@
   "queryAllDeclaredMethods":true
 },
 {
+  "condition":{"typeReachable":"com.hazelcast.collection.impl.list.ListService"},
+  "name":"com.hazelcast.collection.LocalCollectionStats",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true
+},
+{
   "condition":{"typeReachable":"com.hazelcast.collection.impl.set.SetService"},
   "name":"com.hazelcast.collection.LocalCollectionStats",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"com.hazelcast.collection.impl.list.ListService"},
+  "name":"com.hazelcast.collection.LocalListStats",
   "allDeclaredFields":true,
   "queryAllDeclaredMethods":true
 },
@@ -356,10 +368,12 @@
 {
   "condition":{"typeReachable":"com.hazelcast.config.Config"},
   "name":"com.hazelcast.config.TopicConfig",
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"<init>","parameterTypes":["com.hazelcast.config.TopicConfig"] }
-  ]
+  "methods":[{"name":"<init>","parameterTypes":["com.hazelcast.config.TopicConfig"] }]
+},
+{
+  "condition":{"typeReachable":"com.hazelcast.internal.dynamicconfig.DynamicConfigurationAwareConfig"},
+  "name":"com.hazelcast.config.TopicConfig",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
   "condition":{"typeReachable":"com.hazelcast.internal.serialization.impl.DataSerializableSerializer"},
@@ -478,6 +492,11 @@
   ]
 },
 {
+  "condition":{"typeReachable":"com.hazelcast.collection.impl.list.ListService"},
+  "name":"com.hazelcast.instance.LocalInstanceStats",
+  "queryAllDeclaredMethods":true
+},
+{
   "condition":{"typeReachable":"com.hazelcast.collection.impl.queue.QueueService"},
   "name":"com.hazelcast.instance.LocalInstanceStats",
   "queryAllDeclaredMethods":true
@@ -500,6 +519,11 @@
 },
 {
   "condition":{"typeReachable":"com.hazelcast.replicatedmap.impl.ReplicatedMapService"},
+  "name":"com.hazelcast.instance.LocalInstanceStats",
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"com.hazelcast.topic.impl.TopicService"},
   "name":"com.hazelcast.instance.LocalInstanceStats",
   "queryAllDeclaredMethods":true
 },
@@ -829,8 +853,20 @@
   "queryAllDeclaredMethods":true
 },
 {
+  "condition":{"typeReachable":"com.hazelcast.collection.impl.list.ListService"},
+  "name":"com.hazelcast.internal.monitor.impl.AbstractLocalCollectionStats",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true
+},
+{
   "condition":{"typeReachable":"com.hazelcast.collection.impl.set.SetService"},
   "name":"com.hazelcast.internal.monitor.impl.AbstractLocalCollectionStats",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"com.hazelcast.collection.impl.list.ListService"},
+  "name":"com.hazelcast.internal.monitor.impl.LocalListStatsImpl",
   "allDeclaredFields":true,
   "queryAllDeclaredMethods":true
 },
@@ -878,6 +914,12 @@
 {
   "condition":{"typeReachable":"com.hazelcast.collection.impl.set.SetService"},
   "name":"com.hazelcast.internal.monitor.impl.LocalSetStatsImpl",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"com.hazelcast.topic.impl.TopicService"},
+  "name":"com.hazelcast.internal.monitor.impl.LocalTopicStatsImpl",
   "allDeclaredFields":true,
   "queryAllDeclaredMethods":true
 },
@@ -1882,6 +1924,12 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "condition":{"typeReachable":"com.hazelcast.topic.impl.TopicService"},
+  "name":"com.hazelcast.topic.LocalTopicStats",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true
+},
+{
   "condition":{"typeReachable":"com.hazelcast.internal.serialization.impl.DataSerializableSerializer"},
   "name":"com.hazelcast.topic.impl.TopicDataSerializerHook",
   "methods":[{"name":"<init>","parameterTypes":[] }]
@@ -2208,6 +2256,11 @@
   "queryAllDeclaredMethods":true
 },
 {
+  "condition":{"typeReachable":"com.hazelcast.collection.impl.list.ListService"},
+  "name":"java.lang.Object",
+  "queryAllDeclaredMethods":true
+},
+{
   "condition":{"typeReachable":"com.hazelcast.collection.impl.queue.QueueService"},
   "name":"java.lang.Object",
   "queryAllDeclaredMethods":true
@@ -2357,6 +2410,11 @@
 },
 {
   "condition":{"typeReachable":"com.hazelcast.spi.impl.proxyservice.impl.ProxyServiceImpl"},
+  "name":"java.lang.Object",
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"com.hazelcast.topic.impl.TopicService"},
   "name":"java.lang.Object",
   "queryAllDeclaredMethods":true
 },
