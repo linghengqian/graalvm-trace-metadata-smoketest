@@ -2371,6 +2371,11 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "condition":{"typeReachable":"com.hazelcast.client.cache.impl.HazelcastClientCachingProvider"},
+  "name":"com.sun.org.apache.xerces.internal.impl.dv.xs.ExtendedSchemaDVFactoryImpl",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
   "condition":{"typeReachable":"com.hazelcast.client.config.ClientConfig"},
   "name":"com.sun.org.apache.xerces.internal.impl.dv.xs.ExtendedSchemaDVFactoryImpl",
   "methods":[{"name":"<init>","parameterTypes":[] }]
@@ -3050,6 +3055,10 @@
 {
   "condition":{"typeReachable":"com.hazelcast.internal.nio.IOUtil$ClassLoaderAwareObjectInputStream"},
   "name":"javax.cache.expiry.Duration"
+},
+{
+  "condition":{"typeReachable":"com.hazelcast.internal.nio.IOUtil$ClassLoaderAwareObjectInputStream"},
+  "name":"javax.cache.expiry.EternalExpiryPolicy"
 },
 {
   "condition":{"typeReachable":"com.hazelcast.internal.nio.ClassLoaderUtil"},
