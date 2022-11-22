@@ -2,7 +2,7 @@
   "resources":{
   "includes":[{
       "condition":{"typeReachable":"com.github.luben.zstd.util.Native"},
-      "pattern":"\\Qlinux/amd64/libzstd-jni-1.5.2-5.so\\E"
+      "pattern":"[a-z]+/[a-z0-9]+/libzstd-jni-[0-9.-]+(so|dll|dylyb)"
     }]},
   "bundles":[]
 }
