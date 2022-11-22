@@ -7,9 +7,7 @@ import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.condition.DisabledInNativeImage;
 
 import javax.cache.Cache;
 import javax.cache.CacheManager;
@@ -37,8 +35,6 @@ public class HazelcastJCacheTest {
 
     @SuppressWarnings("unchecked")
     @Test
-    @Disabled
-    @DisabledInNativeImage
     void testJCache() {
         System.setProperty("hazelcast.jcache.provider.type", "client");
         CacheManager manager = Caching.getCachingProvider(HazelcastCachingProvider.class.getName()).getCacheManager();

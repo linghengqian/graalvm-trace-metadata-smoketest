@@ -368,7 +368,10 @@
 {
   "condition":{"typeReachable":"com.hazelcast.config.Config"},
   "name":"com.hazelcast.config.TopicConfig",
-  "methods":[{"name":"<init>","parameterTypes":["com.hazelcast.config.TopicConfig"] }]
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"<init>","parameterTypes":["com.hazelcast.config.TopicConfig"] }
+  ]
 },
 {
   "condition":{"typeReachable":"com.hazelcast.internal.dynamicconfig.DynamicConfigurationAwareConfig"},
