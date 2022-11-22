@@ -14,13 +14,13 @@ class User implements Portable {
     public int age;
     public boolean active;
 
-    public User(String username, int age, boolean active) {
+    User(String username, int age, boolean active) {
         this.username = username;
         this.age = age;
         this.active = active;
     }
 
-    public User() {
+    User() {
     }
 
     @Override
@@ -58,8 +58,12 @@ class User implements Portable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         User user = (User) o;
         return age == user.age && active == user.active && Objects.equals(username, user.username);
     }

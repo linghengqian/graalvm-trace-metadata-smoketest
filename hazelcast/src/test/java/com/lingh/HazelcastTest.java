@@ -67,11 +67,11 @@ public class HazelcastTest {
         Cache<String, String> myCache = manager.createCache("myCache", configuration);
         myCache.put("key", "value");
         assertThat(myCache.get("key")).isEqualTo("value");
-        ICache<String, String> CacheAsI = myCache.unwrap(ICache.class);
-        CacheAsI.getAsync("key");
-        CacheAsI.putAsync("key", "value");
-        CacheAsI.put("key", "newValue", AccessedExpiryPolicy.factoryOf(Duration.TEN_MINUTES).create());
-        assertThat(CacheAsI.size()).isEqualTo(1);
+        ICache<String, String> cacheAsI = myCache.unwrap(ICache.class);
+        cacheAsI.getAsync("key");
+        cacheAsI.putAsync("key", "value");
+        cacheAsI.put("key", "newValue", AccessedExpiryPolicy.factoryOf(Duration.TEN_MINUTES).create());
+        assertThat(cacheAsI.size()).isEqualTo(1);
         manager.getCachingProvider().close();
     }
 
