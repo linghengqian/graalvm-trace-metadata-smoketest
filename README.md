@@ -15,7 +15,9 @@ gu install native-image
 sudo apt-get install build-essential libz-dev zlib1g-dev -y
 sdk install scala 2.13.10
 ```
+
 - select one.
+
 ```shell
 cd ./jjwt-jackson/
 cd ./jjwt-gson/
@@ -25,9 +27,14 @@ cd ./vertx-core/
 cd ./groovy/
 cd ./hazelcast/
 ```
+
 - exec.
+
 ```shell
 ./gradlew -Pagent clean test
 ./gradlew metadataCopy --task test
 ./gradlew -Pagent nativeTest
 ```
+
+- According to https://github.com/oracle/graalvm-reachability-metadata/pull/122#discussion_r1030139343, we need to
+  remove `com.sun.management.**`, `sun.management.**`, `java. management.**` related reachability metadata.
