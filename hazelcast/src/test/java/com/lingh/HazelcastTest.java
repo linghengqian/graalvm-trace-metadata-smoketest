@@ -177,6 +177,8 @@ public class HazelcastTest {
             map.get("key");
             map.putIfAbsent("someKey", "someValue");
             map.replace("key", "value", "newValue");
+            assertThat(map.get("someKey")).isEqualTo("someValue");
+            assertThat(map.get("key")).isEqualTo("newValue");
         } finally {
             lock.unlock();
         }
