@@ -52,6 +52,10 @@
         "und", 
         "zh-CN"
       ]
+    }, 
+    {
+      "name":"com.sun.org.apache.xml.internal.serializer.XMLEntities",
+      "locales":["und"]
     }
   ]
 }
