@@ -41,7 +41,7 @@ graalvmNative {
         metadataCopy {
             mergeWithExisting = true
             inputTaskNames.add("test")
-            outputDirectories.add("src/test/resources/META-INF/native-image/test")
+            outputDirectories.add("src/test/resources/META-INF/native-image/com.hazelcast/hazelcast")
         }
     }
 }
