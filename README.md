@@ -26,6 +26,7 @@ cd ./zstd-jni/
 cd ./vertx-core/
 cd ./groovy/
 cd ./hazelcast/
+cd ./ehcache/
 ```
 
 - exec.
