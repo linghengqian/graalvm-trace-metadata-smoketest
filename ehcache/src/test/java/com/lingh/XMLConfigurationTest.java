@@ -7,6 +7,7 @@ import org.ehcache.config.builders.CacheConfigurationBuilder;
 import org.ehcache.config.builders.CacheManagerBuilder;
 import org.ehcache.config.builders.ResourcePoolsBuilder;
 import org.ehcache.xml.XmlConfiguration;
+import org.ehcache.xml.multi.XmlMultiConfiguration;
 import org.junit.jupiter.api.Test;
 
 import java.net.URL;
@@ -21,13 +22,22 @@ public class XMLConfigurationTest {
         CacheConfigurationBuilder<Long, String> configurationBuilder = new XmlConfiguration(resource)
                 .newCacheConfigurationBuilderFromTemplate("example", Long.class, String.class)
                 .withResourcePools(ResourcePoolsBuilder.heap(1000L));
-        try (CacheManager cacheManager = CacheManagerBuilder.newCacheManagerBuilder().build(true)) {
-            Cache<Long, String> myCache = cacheManager.createCache("myCache", configurationBuilder);
+        try (CacheManager cacheManager = CacheManagerBuilder.newCacheManagerBuilder()
+                .withCache("myCache", configurationBuilder)
+                .build(true)) {
+            Cache<Long, String> myCache = cacheManager.getCache("myCache", Long.class, String.class);
             myCache.put(1L, "da one!");
             assertThat(myCache.get(1L)).isEqualTo("da one!");
             assertThat(myCache.getRuntimeConfiguration().getResourcePools().getPoolForResource(ResourceType.Core.HEAP).getSize()).isEqualTo(1000L);
             assertThat(new XmlConfiguration(cacheManager.getRuntimeConfiguration()).toString())
                     .startsWith("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>");
         }
+    }
+
+    @Test
+    void testMultipleXMLConfigurationsInOneDocument() {
+        URL resource = getClass().getResource("/multiple-ehcache-manager-configurations.xml");
+        assertThat(resource).isNotNull();
+        assertThat(XmlMultiConfiguration.from(resource).build().configuration("foo-manager")).isNotNull();
     }
 }

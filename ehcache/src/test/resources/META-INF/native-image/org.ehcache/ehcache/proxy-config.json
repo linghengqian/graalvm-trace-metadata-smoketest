@@ -8,11 +8,19 @@
     "interfaces":["jakarta.xml.bind.annotation.XmlAccessorType","org.glassfish.jaxb.core.v2.model.annotation.Locatable"]
   },
   {
+    "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration"},
+    "interfaces":["jakarta.xml.bind.annotation.XmlAccessorType","org.glassfish.jaxb.core.v2.model.annotation.Locatable"]
+  },
+  {
     "condition":{"typeReachable":"org.ehcache.xml.ConfigurationParser"},
     "interfaces":["jakarta.xml.bind.annotation.XmlAnyElement","org.glassfish.jaxb.core.v2.model.annotation.Locatable"]
   },
   {
     "condition":{"typeReachable":"org.ehcache.xml.ResourceConfigurationParser"},
+    "interfaces":["jakarta.xml.bind.annotation.XmlAnyElement","org.glassfish.jaxb.core.v2.model.annotation.Locatable"]
+  },
+  {
+    "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration"},
     "interfaces":["jakarta.xml.bind.annotation.XmlAnyElement","org.glassfish.jaxb.core.v2.model.annotation.Locatable"]
   },
   {
