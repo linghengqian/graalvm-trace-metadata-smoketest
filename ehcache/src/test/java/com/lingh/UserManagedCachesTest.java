@@ -13,8 +13,9 @@ import org.ehcache.impl.persistence.DefaultLocalPersistenceService;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.io.IOException;
+import java.nio.file.*;
+import java.nio.file.attribute.BasicFileAttributes;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
@@ -42,7 +43,20 @@ public class UserManagedCachesTest {
         cache.close();
         assertDoesNotThrow(cache::destroy);
         persistenceService.stop();
-        assertDoesNotThrow(() -> Files.delete(Paths.get(dirPathString + "file/")));
-        assertDoesNotThrow(() -> Files.delete(Paths.get(dirPathString)));
+        assertDoesNotThrow(() -> {
+            Files.walkFileTree(Paths.get(dirPathString), new SimpleFileVisitor<>() {
+                @Override
+                public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+                    Files.delete(file);
+                    return FileVisitResult.CONTINUE;
+                }
+
+                @Override
+                public FileVisitResult postVisitDirectory(Path dir, IOException exc) throws IOException {
+                    Files.delete(dir);
+                    return FileVisitResult.CONTINUE;
+                }
+            });
+        });
     }
 }
