@@ -62,7 +62,7 @@ public class TieringOptionsTest {
 
     @Test
     void testSegmentsAndDestroyPersistentTiers() {
-        String dirPathString = "src/test/resources/testSegmentsInDiskTierData/";
+        String dirPathString = "src/test/resources/testSegmentsAndDestroyPersistentTiersData/";
         PersistentCacheManager persistentCacheManager = CacheManagerBuilder.newCacheManagerBuilder()
                 .with(CacheManagerBuilder.persistence(dirPathString))
                 .withCache("less-segments", CacheConfigurationBuilder.newCacheConfigurationBuilder(Long.class, String.class,

@@ -17,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class XMLConfigurationTest {
     @Test
     void testXMLProgrammaticParsingAndProgrammaticConfigurationToXML() throws ClassNotFoundException, InstantiationException, IllegalAccessException {
-        URL resource = getClass().getResource("/xml-programmatic-parsing.xml");
+        URL resource = getClass().getResource("/template-sample.xml");
         assertThat(resource).isNotNull();
         CacheConfigurationBuilder<Long, String> configurationBuilder = new XmlConfiguration(resource)
                 .newCacheConfigurationBuilderFromTemplate("example", Long.class, String.class)
@@ -36,8 +36,15 @@ public class XMLConfigurationTest {
 
     @Test
     void testMultipleXMLConfigurationsInOneDocument() {
-        URL resource = getClass().getResource("/multiple-ehcache-manager-configurations.xml");
+        URL resource = getClass().getResource("/multiple-managers.xml");
         assertThat(resource).isNotNull();
         assertThat(XmlMultiConfiguration.from(resource).build().configuration("foo-manager")).isNotNull();
+    }
+
+    @Test
+    void testMultipleEhcacheManagerConfigurations() {
+        URL resource = getClass().getResource("/multiple-variants.xml");
+        assertThat(resource).isNotNull();
+        assertThat(XmlMultiConfiguration.from(resource).build().configuration("foo-manager", "offheap")).isNotNull();
     }
 }
