@@ -1,86 +1,190 @@
 [
   {
-    "condition":{"typeReachable":"org.ehcache.xml.ConfigurationParser"},
-    "interfaces":["jakarta.xml.bind.annotation.XmlAccessorType","org.glassfish.jaxb.core.v2.model.annotation.Locatable"]
+    "condition": {
+      "typeReachable": "org.ehcache.xml.ConfigurationParser"
+    },
+    "interfaces": [
+      "jakarta.xml.bind.annotation.XmlAccessorType",
+      "org.glassfish.jaxb.core.v2.model.annotation.Locatable"
+    ]
   },
   {
-    "condition":{"typeReachable":"org.ehcache.xml.ResourceConfigurationParser"},
-    "interfaces":["jakarta.xml.bind.annotation.XmlAccessorType","org.glassfish.jaxb.core.v2.model.annotation.Locatable"]
+    "condition": {
+      "typeReachable": "org.ehcache.xml.ResourceConfigurationParser"
+    },
+    "interfaces": [
+      "jakarta.xml.bind.annotation.XmlAccessorType",
+      "org.glassfish.jaxb.core.v2.model.annotation.Locatable"
+    ]
   },
   {
-    "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration"},
-    "interfaces":["jakarta.xml.bind.annotation.XmlAccessorType","org.glassfish.jaxb.core.v2.model.annotation.Locatable"]
+    "condition": {
+      "typeReachable": "org.ehcache.xml.multi.XmlMultiConfiguration"
+    },
+    "interfaces": [
+      "jakarta.xml.bind.annotation.XmlAccessorType",
+      "org.glassfish.jaxb.core.v2.model.annotation.Locatable"
+    ]
   },
   {
-    "condition":{"typeReachable":"org.ehcache.xml.ConfigurationParser"},
-    "interfaces":["jakarta.xml.bind.annotation.XmlAnyElement","org.glassfish.jaxb.core.v2.model.annotation.Locatable"]
+    "condition": {
+      "typeReachable": "org.ehcache.xml.ConfigurationParser"
+    },
+    "interfaces": [
+      "jakarta.xml.bind.annotation.XmlAnyElement",
+      "org.glassfish.jaxb.core.v2.model.annotation.Locatable"
+    ]
   },
   {
-    "condition":{"typeReachable":"org.ehcache.xml.ResourceConfigurationParser"},
-    "interfaces":["jakarta.xml.bind.annotation.XmlAnyElement","org.glassfish.jaxb.core.v2.model.annotation.Locatable"]
+    "condition": {
+      "typeReachable": "org.ehcache.xml.ResourceConfigurationParser"
+    },
+    "interfaces": [
+      "jakarta.xml.bind.annotation.XmlAnyElement",
+      "org.glassfish.jaxb.core.v2.model.annotation.Locatable"
+    ]
   },
   {
-    "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration"},
-    "interfaces":["jakarta.xml.bind.annotation.XmlAnyElement","org.glassfish.jaxb.core.v2.model.annotation.Locatable"]
+    "condition": {
+      "typeReachable": "org.ehcache.xml.multi.XmlMultiConfiguration"
+    },
+    "interfaces": [
+      "jakarta.xml.bind.annotation.XmlAnyElement",
+      "org.glassfish.jaxb.core.v2.model.annotation.Locatable"
+    ]
   },
   {
-    "condition":{"typeReachable":"org.ehcache.xml.ConfigurationParser"},
-    "interfaces":["jakarta.xml.bind.annotation.XmlElements","org.glassfish.jaxb.core.v2.model.annotation.Locatable"]
+    "condition": {
+      "typeReachable": "org.ehcache.xml.ConfigurationParser"
+    },
+    "interfaces": [
+      "jakarta.xml.bind.annotation.XmlElements",
+      "org.glassfish.jaxb.core.v2.model.annotation.Locatable"
+    ]
   },
   {
-    "condition":{"typeReachable":"org.ehcache.xml.ResourceConfigurationParser"},
-    "interfaces":["jakarta.xml.bind.annotation.XmlElements","org.glassfish.jaxb.core.v2.model.annotation.Locatable"]
+    "condition": {
+      "typeReachable": "org.ehcache.xml.ResourceConfigurationParser"
+    },
+    "interfaces": [
+      "jakarta.xml.bind.annotation.XmlElements",
+      "org.glassfish.jaxb.core.v2.model.annotation.Locatable"
+    ]
   },
   {
-    "condition":{"typeReachable":"org.ehcache.xml.ConfigurationParser"},
-    "interfaces":["jakarta.xml.bind.annotation.XmlEnumValue","org.glassfish.jaxb.core.v2.model.annotation.Locatable"]
+    "condition": {
+      "typeReachable": "org.ehcache.xml.ConfigurationParser"
+    },
+    "interfaces": [
+      "jakarta.xml.bind.annotation.XmlEnumValue",
+      "org.glassfish.jaxb.core.v2.model.annotation.Locatable"
+    ]
   },
   {
-    "condition":{"typeReachable":"org.ehcache.xml.ResourceConfigurationParser"},
-    "interfaces":["jakarta.xml.bind.annotation.XmlEnumValue","org.glassfish.jaxb.core.v2.model.annotation.Locatable"]
+    "condition": {
+      "typeReachable": "org.ehcache.xml.ResourceConfigurationParser"
+    },
+    "interfaces": [
+      "jakarta.xml.bind.annotation.XmlEnumValue",
+      "org.glassfish.jaxb.core.v2.model.annotation.Locatable"
+    ]
   },
   {
-    "condition":{"typeReachable":"org.ehcache.xml.ConfigurationParser"},
-    "interfaces":["jakarta.xml.bind.annotation.XmlID","org.glassfish.jaxb.core.v2.model.annotation.Locatable"]
+    "condition": {
+      "typeReachable": "org.ehcache.xml.ConfigurationParser"
+    },
+    "interfaces": [
+      "jakarta.xml.bind.annotation.XmlID",
+      "org.glassfish.jaxb.core.v2.model.annotation.Locatable"
+    ]
   },
   {
-    "condition":{"typeReachable":"org.ehcache.xml.ResourceConfigurationParser"},
-    "interfaces":["jakarta.xml.bind.annotation.XmlID","org.glassfish.jaxb.core.v2.model.annotation.Locatable"]
+    "condition": {
+      "typeReachable": "org.ehcache.xml.ResourceConfigurationParser"
+    },
+    "interfaces": [
+      "jakarta.xml.bind.annotation.XmlID",
+      "org.glassfish.jaxb.core.v2.model.annotation.Locatable"
+    ]
   },
   {
-    "condition":{"typeReachable":"org.ehcache.xml.ConfigurationParser"},
-    "interfaces":["jakarta.xml.bind.annotation.XmlIDREF","org.glassfish.jaxb.core.v2.model.annotation.Locatable"]
+    "condition": {
+      "typeReachable": "org.ehcache.xml.ConfigurationParser"
+    },
+    "interfaces": [
+      "jakarta.xml.bind.annotation.XmlIDREF",
+      "org.glassfish.jaxb.core.v2.model.annotation.Locatable"
+    ]
   },
   {
-    "condition":{"typeReachable":"org.ehcache.xml.ResourceConfigurationParser"},
-    "interfaces":["jakarta.xml.bind.annotation.XmlIDREF","org.glassfish.jaxb.core.v2.model.annotation.Locatable"]
+    "condition": {
+      "typeReachable": "org.ehcache.xml.ResourceConfigurationParser"
+    },
+    "interfaces": [
+      "jakarta.xml.bind.annotation.XmlIDREF",
+      "org.glassfish.jaxb.core.v2.model.annotation.Locatable"
+    ]
   },
   {
-    "condition":{"typeReachable":"org.ehcache.xml.ConfigurationParser"},
-    "interfaces":["jakarta.xml.bind.annotation.XmlSeeAlso","org.glassfish.jaxb.core.v2.model.annotation.Locatable"]
+    "condition": {
+      "typeReachable": "org.ehcache.xml.ConfigurationParser"
+    },
+    "interfaces": [
+      "jakarta.xml.bind.annotation.XmlSeeAlso",
+      "org.glassfish.jaxb.core.v2.model.annotation.Locatable"
+    ]
   },
   {
-    "condition":{"typeReachable":"org.ehcache.xml.ResourceConfigurationParser"},
-    "interfaces":["jakarta.xml.bind.annotation.XmlSeeAlso","org.glassfish.jaxb.core.v2.model.annotation.Locatable"]
+    "condition": {
+      "typeReachable": "org.ehcache.xml.ResourceConfigurationParser"
+    },
+    "interfaces": [
+      "jakarta.xml.bind.annotation.XmlSeeAlso",
+      "org.glassfish.jaxb.core.v2.model.annotation.Locatable"
+    ]
   },
   {
-    "condition":{"typeReachable":"org.ehcache.xml.ConfigurationParser"},
-    "interfaces":["jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter","org.glassfish.jaxb.core.v2.model.annotation.Locatable"]
+    "condition": {
+      "typeReachable": "org.ehcache.xml.ConfigurationParser"
+    },
+    "interfaces": [
+      "jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter",
+      "org.glassfish.jaxb.core.v2.model.annotation.Locatable"
+    ]
   },
   {
-    "condition":{"typeReachable":"org.ehcache.xml.ResourceConfigurationParser"},
-    "interfaces":["jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter","org.glassfish.jaxb.core.v2.model.annotation.Locatable"]
+    "condition": {
+      "typeReachable": "org.ehcache.xml.ResourceConfigurationParser"
+    },
+    "interfaces": [
+      "jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter",
+      "org.glassfish.jaxb.core.v2.model.annotation.Locatable"
+    ]
   },
   {
-    "condition":{"typeReachable":"org.ehcache.impl.internal.store.disk.OffHeapDiskStore"},
-    "interfaces":["org.ehcache.shadow.org.terracotta.offheapstore.storage.portability.Portability","org.ehcache.shadow.org.terracotta.offheapstore.disk.persistent.PersistentPortability"]
+    "condition": {
+      "typeReachable": "org.ehcache.impl.internal.store.disk.OffHeapDiskStore"
+    },
+    "interfaces": [
+      "org.ehcache.shadow.org.terracotta.offheapstore.storage.portability.Portability",
+      "org.ehcache.shadow.org.terracotta.offheapstore.disk.persistent.PersistentPortability"
+    ]
   },
   {
-    "condition":{"typeReachable":"org.ehcache.impl.internal.store.disk.OffHeapDiskStore"},
-    "interfaces":["org.ehcache.shadow.org.terracotta.offheapstore.storage.portability.WriteBackPortability","org.ehcache.shadow.org.terracotta.offheapstore.disk.persistent.PersistentPortability"]
+    "condition": {
+      "typeReachable": "org.ehcache.impl.internal.store.disk.OffHeapDiskStore"
+    },
+    "interfaces": [
+      "org.ehcache.shadow.org.terracotta.offheapstore.storage.portability.WriteBackPortability",
+      "org.ehcache.shadow.org.terracotta.offheapstore.disk.persistent.PersistentPortability"
+    ]
   },
   {
-    "condition":{"typeReachable":"org.ehcache.sizeof.annotations.AnnotationProxyFactory"},
-    "interfaces":["org.ehcache.sizeof.annotations.IgnoreSizeOf"]
+    "condition": {
+      "typeReachable": "org.ehcache.sizeof.annotations.AnnotationProxyFactory"
+    },
+    "interfaces": [
+      "org.ehcache.sizeof.annotations.IgnoreSizeOf"
+    ]
   }
 ]
