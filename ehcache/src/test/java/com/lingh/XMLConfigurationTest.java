@@ -45,6 +45,6 @@ public class XMLConfigurationTest {
     void testMultipleEhcacheManagerConfigurations() {
         URL resource = getClass().getResource("/multiple-variants.xml");
         assertThat(resource).isNotNull();
-        assertThat(XmlMultiConfiguration.from(resource).build().configuration("foo-manager", "offheap")).isNotNull();
+        assertThat(XmlMultiConfiguration.from(resource).build().configuration("foo-manager", "offHeap")).isNotNull();
     }
 }

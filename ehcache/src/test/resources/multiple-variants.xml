@@ -14,7 +14,7 @@
                 </cache>
             </config>
         </multi:variant>
-        <multi:variant type="offheap">
+        <multi:variant type="offHeap">
             <config>
                 <cache alias="foo">
                     <key-type>java.lang.String</key-type>
