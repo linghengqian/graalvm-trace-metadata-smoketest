@@ -1,0 +1,29 @@
+[
+  {
+    "name": "org.ehcache.core.internal.statistics.StatsUtils$3",
+    "queryAllDeclaredMethods": true
+  },
+  {
+    "name": "org.ehcache.impl.serialization.CompactJavaSerializer",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.lang.ClassLoader"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "org.ehcache.shadow.org.terracotta.context.query.Matchers$3",
+    "queryAllDeclaredMethods": true
+  },
+  {
+    "name": "org.ehcache.shadow.org.terracotta.context.query.Matchers$4",
+    "queryAllDeclaredMethods": true
+  },
+  {
+    "name": "org.ehcache.shadow.org.terracotta.statistics.MappedOperationStatistic$1",
+    "queryAllDeclaredMethods": true
+  }
+]
