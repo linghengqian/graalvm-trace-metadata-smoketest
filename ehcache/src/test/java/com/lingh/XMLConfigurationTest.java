@@ -2,15 +2,23 @@ package com.lingh;
 
 import org.ehcache.Cache;
 import org.ehcache.CacheManager;
+import org.ehcache.config.CacheConfiguration;
+import org.ehcache.config.Configuration;
 import org.ehcache.config.ResourceType;
 import org.ehcache.config.builders.CacheConfigurationBuilder;
 import org.ehcache.config.builders.CacheManagerBuilder;
 import org.ehcache.config.builders.ResourcePoolsBuilder;
+import org.ehcache.core.config.DefaultConfiguration;
+import org.ehcache.jsr107.EhcacheCachingProvider;
 import org.ehcache.xml.XmlConfiguration;
 import org.ehcache.xml.multi.XmlMultiConfiguration;
 import org.junit.jupiter.api.Test;
 
+import javax.cache.Caching;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -46,5 +54,35 @@ public class XMLConfigurationTest {
         URL resource = getClass().getResource("/multiple-variants.xml");
         assertThat(resource).isNotNull();
         assertThat(XmlMultiConfiguration.from(resource).build().configuration("foo-manager", "offHeap")).isNotNull();
+    }
+
+    @Test
+    void testMultipleCacheManagerRetrieval() {
+        URL multipleManagersResource = getClass().getResource("/multiple-managers.xml");
+        URL multipleVariantsResource = getClass().getResource("/multiple-variants.xml");
+        assertThat(multipleManagersResource).isNotNull();
+        assertThat(multipleVariantsResource).isNotNull();
+        XmlMultiConfiguration multipleConfiguration = XmlMultiConfiguration.from(multipleManagersResource).build();
+        XmlMultiConfiguration variantConfiguration = XmlMultiConfiguration.from(multipleVariantsResource).build();
+        assertThat(multipleConfiguration.identities().stream().collect(Collectors.toMap(i -> i, multipleConfiguration::configuration))).isNotNull();
+        assertThat(variantConfiguration.identities().stream()
+                .collect(Collectors.toMap(i -> i, i -> variantConfiguration.configuration(i, "offHeap")))).isNotNull();
+    }
+
+    @Test
+    void testBuildingXMLMultiConfigurations() {
+        Map<String, CacheConfiguration<?, ?>> caches = new HashMap<>();
+        caches.put("preConfigured", CacheConfigurationBuilder.newCacheConfigurationBuilder(Long.class, String.class,
+                ResourcePoolsBuilder.heap(10L)).build());
+        EhcacheCachingProvider provider = (EhcacheCachingProvider) Caching.getCachingProvider(EhcacheCachingProvider.class.getName());
+        Configuration barConfiguration = new DefaultConfiguration(caches, provider.getDefaultClassLoader());
+        XmlMultiConfiguration multiConfiguration = XmlMultiConfiguration.fromNothing()
+                .withManager("bar", barConfiguration)
+                .withManager("foo").variant("heap", barConfiguration).variant("offHeap", barConfiguration)
+                .build();
+        assertThat(multiConfiguration).isNotNull();
+        assertThat(XmlMultiConfiguration.from(multiConfiguration).withManager("foo").build()).isNotNull();
+        assertThat(multiConfiguration.asRenderedDocument()).startsWith("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>");
+        assertThat(multiConfiguration.asDocument().toString()).isEqualTo("[#document: null]");
     }
 }
