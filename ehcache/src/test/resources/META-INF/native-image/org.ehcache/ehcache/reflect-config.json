@@ -348,6 +348,10 @@
   "name":"java.io.FilePermission"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.impl.config.SizedResourcePoolImpl"},
+  "name":"java.io.FilePermission"
+},
+{
   "condition":{"typeReachable":"org.ehcache.sizeof.impl.JvmInformation"},
   "name":"java.lang.Boolean",
   "fields":[{"name":"TYPE"}]
@@ -437,6 +441,10 @@
   "name":"java.lang.Object"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.ConfigurationParser$$Lambda$618/0x0000000800e54c00"},
+  "name":"java.lang.Object"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.ResourceConfigurationParser"},
   "name":"java.lang.Object",
   "queryAllDeclaredMethods":true
@@ -460,11 +468,19 @@
   "name":"java.lang.Object"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8e0c8"},
+  "name":"java.lang.Object"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8f0f0"},
   "name":"java.lang.Object"
 },
 {
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$844/0x0000000800fa2000"},
+  "name":"java.lang.Object"
+},
+{
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$847/0x0000000800fa5250"},
   "name":"java.lang.Object"
 },
 {
@@ -492,6 +508,10 @@
 },
 {
   "condition":{"typeReachable":"org.ehcache.core.EhcacheManager"},
+  "name":"java.lang.RuntimePermission"
+},
+{
+  "condition":{"typeReachable":"org.ehcache.impl.config.SizedResourcePoolImpl"},
   "name":"java.lang.RuntimePermission"
 },
 {
@@ -626,11 +646,24 @@
   "name":"java.net.NetPermission"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.impl.config.SizedResourcePoolImpl"},
+  "name":"java.net.NetPermission"
+},
+{
   "condition":{"typeReachable":"org.ehcache.core.EhcacheManager"},
   "name":"java.net.SocketPermission"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.impl.config.SizedResourcePoolImpl"},
+  "name":"java.net.SocketPermission"
+},
+{
   "condition":{"typeReachable":"org.ehcache.core.EhcacheManager"},
+  "name":"java.net.URLPermission",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.String","java.lang.String"] }]
+},
+{
+  "condition":{"typeReachable":"org.ehcache.impl.config.SizedResourcePoolImpl"},
   "name":"java.net.URLPermission",
   "methods":[{"name":"<init>","parameterTypes":["java.lang.String","java.lang.String"] }]
 },
@@ -643,6 +676,10 @@
   "name":"java.security.AllPermission"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.impl.config.SizedResourcePoolImpl"},
+  "name":"java.security.AllPermission"
+},
+{
   "condition":{"typeReachable":"org.ehcache.shadow.org.terracotta.utilities.io.Files"},
   "name":"java.security.SecureRandomParameters"
 },
@@ -652,6 +689,10 @@
 },
 {
   "condition":{"typeReachable":"org.ehcache.core.EhcacheManager"},
+  "name":"java.security.SecurityPermission"
+},
+{
+  "condition":{"typeReachable":"org.ehcache.impl.config.SizedResourcePoolImpl"},
   "name":"java.security.SecurityPermission"
 },
 {
@@ -675,6 +716,10 @@
 },
 {
   "condition":{"typeReachable":"org.ehcache.core.EhcacheManager"},
+  "name":"java.util.PropertyPermission"
+},
+{
+  "condition":{"typeReachable":"org.ehcache.impl.config.SizedResourcePoolImpl"},
   "name":"java.util.PropertyPermission"
 },
 {
@@ -721,6 +766,10 @@
 },
 {
   "condition":{"typeReachable":"org.ehcache.core.EhcacheManager"},
+  "name":"javax.smartcardio.CardPermission"
+},
+{
+  "condition":{"typeReachable":"org.ehcache.impl.config.SizedResourcePoolImpl"},
   "name":"javax.smartcardio.CardPermission"
 },
 {
@@ -850,6 +899,10 @@
 },
 {
   "condition":{"typeReachable":"org.ehcache.impl.store.BaseStore$BaseStoreProvider"},
+  "name":"org.ehcache.core.internal.statistics.StatsUtils$3"
+},
+{
+  "condition":{"typeReachable":"org.ehcache.impl.store.BaseStore$BaseStoreProvider$$Lambda$436/0x0000000800d97848"},
   "name":"org.ehcache.core.internal.statistics.StatsUtils$3"
 },
 {
@@ -1095,6 +1148,10 @@
   "name":"org.ehcache.shadow.org.terracotta.context.query.Matchers$1"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.impl.store.BaseStore$BaseStoreProvider$$Lambda$436/0x0000000800d97848"},
+  "name":"org.ehcache.shadow.org.terracotta.context.query.Matchers$1"
+},
+{
   "condition":{"typeReachable":"org.ehcache.impl.store.BaseStore$BaseStoreProvider$$Lambda$438/0x0000000800d961f8"},
   "name":"org.ehcache.shadow.org.terracotta.context.query.Matchers$1"
 },
@@ -1152,6 +1209,10 @@
   "name":"org.ehcache.shadow.org.terracotta.context.query.Matchers$2"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.impl.store.BaseStore$BaseStoreProvider$$Lambda$436/0x0000000800d97848"},
+  "name":"org.ehcache.shadow.org.terracotta.context.query.Matchers$2"
+},
+{
   "condition":{"typeReachable":"org.ehcache.impl.store.BaseStore$BaseStoreProvider$$Lambda$438/0x0000000800d961f8"},
   "name":"org.ehcache.shadow.org.terracotta.context.query.Matchers$2"
 },
@@ -1192,6 +1253,10 @@
   "name":"org.ehcache.shadow.org.terracotta.context.query.Matchers$3"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.impl.store.BaseStore$BaseStoreProvider$$Lambda$436/0x0000000800d97848"},
+  "name":"org.ehcache.shadow.org.terracotta.context.query.Matchers$3"
+},
+{
   "condition":{"typeReachable":"org.ehcache.impl.store.BaseStore$BaseStoreProvider$$Lambda$438/0x0000000800d961f8"},
   "name":"org.ehcache.shadow.org.terracotta.context.query.Matchers$3"
 },
@@ -1229,6 +1294,10 @@
 },
 {
   "condition":{"typeReachable":"org.ehcache.impl.store.BaseStore$BaseStoreProvider"},
+  "name":"org.ehcache.shadow.org.terracotta.context.query.Matchers$4"
+},
+{
+  "condition":{"typeReachable":"org.ehcache.impl.store.BaseStore$BaseStoreProvider$$Lambda$436/0x0000000800d97848"},
   "name":"org.ehcache.shadow.org.terracotta.context.query.Matchers$4"
 },
 {
@@ -1289,6 +1358,10 @@
   "name":"org.ehcache.shadow.org.terracotta.context.query.Matchers$5"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.impl.store.BaseStore$BaseStoreProvider$$Lambda$436/0x0000000800d97848"},
+  "name":"org.ehcache.shadow.org.terracotta.context.query.Matchers$5"
+},
+{
   "condition":{"typeReachable":"org.ehcache.impl.store.BaseStore$BaseStoreProvider$$Lambda$438/0x0000000800d961f8"},
   "name":"org.ehcache.shadow.org.terracotta.context.query.Matchers$5"
 },
@@ -1346,6 +1419,10 @@
   "name":"org.ehcache.shadow.org.terracotta.context.query.Matchers$6"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.impl.store.BaseStore$BaseStoreProvider$$Lambda$436/0x0000000800d97848"},
+  "name":"org.ehcache.shadow.org.terracotta.context.query.Matchers$6"
+},
+{
   "condition":{"typeReachable":"org.ehcache.impl.store.BaseStore$BaseStoreProvider$$Lambda$438/0x0000000800d961f8"},
   "name":"org.ehcache.shadow.org.terracotta.context.query.Matchers$6"
 },
@@ -1400,6 +1477,10 @@
 },
 {
   "condition":{"typeReachable":"org.ehcache.impl.store.BaseStore$BaseStoreProvider"},
+  "name":"org.ehcache.shadow.org.terracotta.context.query.Matchers$8"
+},
+{
+  "condition":{"typeReachable":"org.ehcache.impl.store.BaseStore$BaseStoreProvider$$Lambda$436/0x0000000800d97848"},
   "name":"org.ehcache.shadow.org.terracotta.context.query.Matchers$8"
 },
 {
@@ -1525,6 +1606,10 @@
   "name":"org.ehcache.shadow.org.terracotta.statistics.MappedOperationStatistic"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.impl.store.BaseStore$BaseStoreProvider$$Lambda$436/0x0000000800d97848"},
+  "name":"org.ehcache.shadow.org.terracotta.statistics.MappedOperationStatistic"
+},
+{
   "condition":{"typeReachable":"org.ehcache.impl.store.BaseStore$BaseStoreProvider$$Lambda$438/0x0000000800d961f8"},
   "name":"org.ehcache.shadow.org.terracotta.statistics.MappedOperationStatistic"
 },
@@ -1546,6 +1631,10 @@
 },
 {
   "condition":{"typeReachable":"org.ehcache.impl.store.BaseStore$BaseStoreProvider"},
+  "name":"org.ehcache.shadow.org.terracotta.statistics.MappedOperationStatistic$1"
+},
+{
+  "condition":{"typeReachable":"org.ehcache.impl.store.BaseStore$BaseStoreProvider$$Lambda$436/0x0000000800d97848"},
   "name":"org.ehcache.shadow.org.terracotta.statistics.MappedOperationStatistic$1"
 },
 {
@@ -1660,6 +1749,10 @@
   "name":"org.ehcache.xml.model.BaseCacheType"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.ConfigurationParser$$Lambda$618/0x0000000800e54c00"},
+  "name":"org.ehcache.xml.model.BaseCacheType"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.ResourceConfigurationParser"},
   "name":"org.ehcache.xml.model.BaseCacheType",
   "allDeclaredFields":true,
@@ -1685,11 +1778,19 @@
   "name":"org.ehcache.xml.model.BaseCacheType"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8e0c8"},
+  "name":"org.ehcache.xml.model.BaseCacheType"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8f0f0"},
   "name":"org.ehcache.xml.model.BaseCacheType"
 },
 {
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$844/0x0000000800fa2000"},
+  "name":"org.ehcache.xml.model.BaseCacheType"
+},
+{
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$847/0x0000000800fa5250"},
   "name":"org.ehcache.xml.model.BaseCacheType"
 },
 {
@@ -1725,6 +1826,10 @@
   "name":"org.ehcache.xml.model.CacheEntryType"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.ConfigurationParser$$Lambda$618/0x0000000800e54c00"},
+  "name":"org.ehcache.xml.model.CacheEntryType"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.ResourceConfigurationParser"},
   "name":"org.ehcache.xml.model.CacheEntryType",
   "allDeclaredFields":true,
@@ -1750,11 +1855,19 @@
   "name":"org.ehcache.xml.model.CacheEntryType"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8e0c8"},
+  "name":"org.ehcache.xml.model.CacheEntryType"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8f0f0"},
   "name":"org.ehcache.xml.model.CacheEntryType"
 },
 {
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$844/0x0000000800fa2000"},
+  "name":"org.ehcache.xml.model.CacheEntryType"
+},
+{
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$847/0x0000000800fa5250"},
   "name":"org.ehcache.xml.model.CacheEntryType"
 },
 {
@@ -1790,6 +1903,10 @@
   "name":"org.ehcache.xml.model.CacheLoaderWriterType"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.ConfigurationParser$$Lambda$618/0x0000000800e54c00"},
+  "name":"org.ehcache.xml.model.CacheLoaderWriterType"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.ResourceConfigurationParser"},
   "name":"org.ehcache.xml.model.CacheLoaderWriterType",
   "allDeclaredFields":true,
@@ -1815,11 +1932,19 @@
   "name":"org.ehcache.xml.model.CacheLoaderWriterType"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8e0c8"},
+  "name":"org.ehcache.xml.model.CacheLoaderWriterType"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8f0f0"},
   "name":"org.ehcache.xml.model.CacheLoaderWriterType"
 },
 {
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$844/0x0000000800fa2000"},
+  "name":"org.ehcache.xml.model.CacheLoaderWriterType"
+},
+{
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$847/0x0000000800fa5250"},
   "name":"org.ehcache.xml.model.CacheLoaderWriterType"
 },
 {
@@ -1855,6 +1980,10 @@
   "name":"org.ehcache.xml.model.CacheLoaderWriterType$WriteBehind"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.ConfigurationParser$$Lambda$618/0x0000000800e54c00"},
+  "name":"org.ehcache.xml.model.CacheLoaderWriterType$WriteBehind"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.ResourceConfigurationParser"},
   "name":"org.ehcache.xml.model.CacheLoaderWriterType$WriteBehind",
   "allDeclaredFields":true,
@@ -1880,11 +2009,19 @@
   "name":"org.ehcache.xml.model.CacheLoaderWriterType$WriteBehind"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8e0c8"},
+  "name":"org.ehcache.xml.model.CacheLoaderWriterType$WriteBehind"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8f0f0"},
   "name":"org.ehcache.xml.model.CacheLoaderWriterType$WriteBehind"
 },
 {
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$844/0x0000000800fa2000"},
+  "name":"org.ehcache.xml.model.CacheLoaderWriterType$WriteBehind"
+},
+{
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$847/0x0000000800fa5250"},
   "name":"org.ehcache.xml.model.CacheLoaderWriterType$WriteBehind"
 },
 {
@@ -1920,6 +2057,10 @@
   "name":"org.ehcache.xml.model.CacheLoaderWriterType$WriteBehind$Batching"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.ConfigurationParser$$Lambda$618/0x0000000800e54c00"},
+  "name":"org.ehcache.xml.model.CacheLoaderWriterType$WriteBehind$Batching"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.ResourceConfigurationParser"},
   "name":"org.ehcache.xml.model.CacheLoaderWriterType$WriteBehind$Batching",
   "allDeclaredFields":true,
@@ -1945,11 +2086,19 @@
   "name":"org.ehcache.xml.model.CacheLoaderWriterType$WriteBehind$Batching"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8e0c8"},
+  "name":"org.ehcache.xml.model.CacheLoaderWriterType$WriteBehind$Batching"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8f0f0"},
   "name":"org.ehcache.xml.model.CacheLoaderWriterType$WriteBehind$Batching"
 },
 {
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$844/0x0000000800fa2000"},
+  "name":"org.ehcache.xml.model.CacheLoaderWriterType$WriteBehind$Batching"
+},
+{
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$847/0x0000000800fa5250"},
   "name":"org.ehcache.xml.model.CacheLoaderWriterType$WriteBehind$Batching"
 },
 {
@@ -1985,6 +2134,10 @@
   "name":"org.ehcache.xml.model.CacheLoaderWriterType$WriteBehind$NonBatching"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.ConfigurationParser$$Lambda$618/0x0000000800e54c00"},
+  "name":"org.ehcache.xml.model.CacheLoaderWriterType$WriteBehind$NonBatching"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.ResourceConfigurationParser"},
   "name":"org.ehcache.xml.model.CacheLoaderWriterType$WriteBehind$NonBatching",
   "allDeclaredFields":true,
@@ -2010,11 +2163,19 @@
   "name":"org.ehcache.xml.model.CacheLoaderWriterType$WriteBehind$NonBatching"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8e0c8"},
+  "name":"org.ehcache.xml.model.CacheLoaderWriterType$WriteBehind$NonBatching"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8f0f0"},
   "name":"org.ehcache.xml.model.CacheLoaderWriterType$WriteBehind$NonBatching"
 },
 {
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$844/0x0000000800fa2000"},
+  "name":"org.ehcache.xml.model.CacheLoaderWriterType$WriteBehind$NonBatching"
+},
+{
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$847/0x0000000800fa5250"},
   "name":"org.ehcache.xml.model.CacheLoaderWriterType$WriteBehind$NonBatching"
 },
 {
@@ -2050,6 +2211,10 @@
   "name":"org.ehcache.xml.model.CacheTemplateType"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.ConfigurationParser$$Lambda$618/0x0000000800e54c00"},
+  "name":"org.ehcache.xml.model.CacheTemplateType"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.ResourceConfigurationParser"},
   "name":"org.ehcache.xml.model.CacheTemplateType",
   "allDeclaredFields":true,
@@ -2076,11 +2241,19 @@
   "name":"org.ehcache.xml.model.CacheTemplateType"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8e0c8"},
+  "name":"org.ehcache.xml.model.CacheTemplateType"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8f0f0"},
   "name":"org.ehcache.xml.model.CacheTemplateType"
 },
 {
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$844/0x0000000800fa2000"},
+  "name":"org.ehcache.xml.model.CacheTemplateType"
+},
+{
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$847/0x0000000800fa5250"},
   "name":"org.ehcache.xml.model.CacheTemplateType"
 },
 {
@@ -2116,6 +2289,10 @@
   "name":"org.ehcache.xml.model.CacheType"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.ConfigurationParser$$Lambda$618/0x0000000800e54c00"},
+  "name":"org.ehcache.xml.model.CacheType"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.ResourceConfigurationParser"},
   "name":"org.ehcache.xml.model.CacheType",
   "allDeclaredFields":true,
@@ -2141,11 +2318,19 @@
   "name":"org.ehcache.xml.model.CacheType"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8e0c8"},
+  "name":"org.ehcache.xml.model.CacheType"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8f0f0"},
   "name":"org.ehcache.xml.model.CacheType"
 },
 {
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$844/0x0000000800fa2000"},
+  "name":"org.ehcache.xml.model.CacheType"
+},
+{
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$847/0x0000000800fa5250"},
   "name":"org.ehcache.xml.model.CacheType"
 },
 {
@@ -2181,6 +2366,10 @@
   "name":"org.ehcache.xml.model.ConfigType"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.ConfigurationParser$$Lambda$618/0x0000000800e54c00"},
+  "name":"org.ehcache.xml.model.ConfigType"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.ResourceConfigurationParser"},
   "name":"org.ehcache.xml.model.ConfigType",
   "allDeclaredFields":true,
@@ -2206,11 +2395,19 @@
   "name":"org.ehcache.xml.model.ConfigType"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8e0c8"},
+  "name":"org.ehcache.xml.model.ConfigType"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8f0f0"},
   "name":"org.ehcache.xml.model.ConfigType"
 },
 {
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$844/0x0000000800fa2000"},
+  "name":"org.ehcache.xml.model.ConfigType"
+},
+{
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$847/0x0000000800fa5250"},
   "name":"org.ehcache.xml.model.ConfigType"
 },
 {
@@ -2246,6 +2443,10 @@
   "name":"org.ehcache.xml.model.CopierType"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.ConfigurationParser$$Lambda$618/0x0000000800e54c00"},
+  "name":"org.ehcache.xml.model.CopierType"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.ResourceConfigurationParser"},
   "name":"org.ehcache.xml.model.CopierType",
   "allDeclaredFields":true,
@@ -2271,11 +2472,19 @@
   "name":"org.ehcache.xml.model.CopierType"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8e0c8"},
+  "name":"org.ehcache.xml.model.CopierType"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8f0f0"},
   "name":"org.ehcache.xml.model.CopierType"
 },
 {
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$844/0x0000000800fa2000"},
+  "name":"org.ehcache.xml.model.CopierType"
+},
+{
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$847/0x0000000800fa5250"},
   "name":"org.ehcache.xml.model.CopierType"
 },
 {
@@ -2311,6 +2520,10 @@
   "name":"org.ehcache.xml.model.CopierType$Copier"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.ConfigurationParser$$Lambda$618/0x0000000800e54c00"},
+  "name":"org.ehcache.xml.model.CopierType$Copier"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.ResourceConfigurationParser"},
   "name":"org.ehcache.xml.model.CopierType$Copier",
   "allDeclaredFields":true,
@@ -2336,11 +2549,19 @@
   "name":"org.ehcache.xml.model.CopierType$Copier"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8e0c8"},
+  "name":"org.ehcache.xml.model.CopierType$Copier"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8f0f0"},
   "name":"org.ehcache.xml.model.CopierType$Copier"
 },
 {
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$844/0x0000000800fa2000"},
+  "name":"org.ehcache.xml.model.CopierType$Copier"
+},
+{
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$847/0x0000000800fa5250"},
   "name":"org.ehcache.xml.model.CopierType$Copier"
 },
 {
@@ -2386,6 +2607,10 @@
   "name":"org.ehcache.xml.model.DiskStoreSettingsType"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.ConfigurationParser$$Lambda$618/0x0000000800e54c00"},
+  "name":"org.ehcache.xml.model.DiskStoreSettingsType"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.ResourceConfigurationParser"},
   "name":"org.ehcache.xml.model.DiskStoreSettingsType",
   "allDeclaredFields":true,
@@ -2411,11 +2636,19 @@
   "name":"org.ehcache.xml.model.DiskStoreSettingsType"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8e0c8"},
+  "name":"org.ehcache.xml.model.DiskStoreSettingsType"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8f0f0"},
   "name":"org.ehcache.xml.model.DiskStoreSettingsType"
 },
 {
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$844/0x0000000800fa2000"},
+  "name":"org.ehcache.xml.model.DiskStoreSettingsType"
+},
+{
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$847/0x0000000800fa5250"},
   "name":"org.ehcache.xml.model.DiskStoreSettingsType"
 },
 {
@@ -2481,6 +2714,10 @@
   "name":"org.ehcache.xml.model.ExpiryType"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.ConfigurationParser$$Lambda$618/0x0000000800e54c00"},
+  "name":"org.ehcache.xml.model.ExpiryType"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.ResourceConfigurationParser"},
   "name":"org.ehcache.xml.model.ExpiryType",
   "allDeclaredFields":true,
@@ -2506,11 +2743,19 @@
   "name":"org.ehcache.xml.model.ExpiryType"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8e0c8"},
+  "name":"org.ehcache.xml.model.ExpiryType"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8f0f0"},
   "name":"org.ehcache.xml.model.ExpiryType"
 },
 {
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$844/0x0000000800fa2000"},
+  "name":"org.ehcache.xml.model.ExpiryType"
+},
+{
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$847/0x0000000800fa5250"},
   "name":"org.ehcache.xml.model.ExpiryType"
 },
 {
@@ -2546,6 +2791,10 @@
   "name":"org.ehcache.xml.model.ExpiryType$None"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.ConfigurationParser$$Lambda$618/0x0000000800e54c00"},
+  "name":"org.ehcache.xml.model.ExpiryType$None"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.ResourceConfigurationParser"},
   "name":"org.ehcache.xml.model.ExpiryType$None",
   "allDeclaredFields":true,
@@ -2571,11 +2820,19 @@
   "name":"org.ehcache.xml.model.ExpiryType$None"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8e0c8"},
+  "name":"org.ehcache.xml.model.ExpiryType$None"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8f0f0"},
   "name":"org.ehcache.xml.model.ExpiryType$None"
 },
 {
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$844/0x0000000800fa2000"},
+  "name":"org.ehcache.xml.model.ExpiryType$None"
+},
+{
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$847/0x0000000800fa5250"},
   "name":"org.ehcache.xml.model.ExpiryType$None"
 },
 {
@@ -2626,6 +2883,10 @@
   "name":"org.ehcache.xml.model.ListenersType"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.ConfigurationParser$$Lambda$618/0x0000000800e54c00"},
+  "name":"org.ehcache.xml.model.ListenersType"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.ResourceConfigurationParser"},
   "name":"org.ehcache.xml.model.ListenersType",
   "allDeclaredFields":true,
@@ -2651,11 +2912,19 @@
   "name":"org.ehcache.xml.model.ListenersType"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8e0c8"},
+  "name":"org.ehcache.xml.model.ListenersType"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8f0f0"},
   "name":"org.ehcache.xml.model.ListenersType"
 },
 {
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$844/0x0000000800fa2000"},
+  "name":"org.ehcache.xml.model.ListenersType"
+},
+{
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$847/0x0000000800fa5250"},
   "name":"org.ehcache.xml.model.ListenersType"
 },
 {
@@ -2691,6 +2960,10 @@
   "name":"org.ehcache.xml.model.ListenersType$Listener"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.ConfigurationParser$$Lambda$618/0x0000000800e54c00"},
+  "name":"org.ehcache.xml.model.ListenersType$Listener"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.ResourceConfigurationParser"},
   "name":"org.ehcache.xml.model.ListenersType$Listener",
   "allDeclaredFields":true,
@@ -2716,11 +2989,19 @@
   "name":"org.ehcache.xml.model.ListenersType$Listener"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8e0c8"},
+  "name":"org.ehcache.xml.model.ListenersType$Listener"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8f0f0"},
   "name":"org.ehcache.xml.model.ListenersType$Listener"
 },
 {
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$844/0x0000000800fa2000"},
+  "name":"org.ehcache.xml.model.ListenersType$Listener"
+},
+{
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$847/0x0000000800fa5250"},
   "name":"org.ehcache.xml.model.ListenersType$Listener"
 },
 {
@@ -2756,6 +3037,10 @@
   "name":"org.ehcache.xml.model.MemoryType"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.ConfigurationParser$$Lambda$618/0x0000000800e54c00"},
+  "name":"org.ehcache.xml.model.MemoryType"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.ResourceConfigurationParser"},
   "name":"org.ehcache.xml.model.MemoryType",
   "allDeclaredFields":true,
@@ -2781,11 +3066,19 @@
   "name":"org.ehcache.xml.model.MemoryType"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8e0c8"},
+  "name":"org.ehcache.xml.model.MemoryType"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8f0f0"},
   "name":"org.ehcache.xml.model.MemoryType"
 },
 {
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$844/0x0000000800fa2000"},
+  "name":"org.ehcache.xml.model.MemoryType"
+},
+{
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$847/0x0000000800fa5250"},
   "name":"org.ehcache.xml.model.MemoryType"
 },
 {
@@ -2821,6 +3114,10 @@
   "name":"org.ehcache.xml.model.MemoryTypeWithPropSubst"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.ConfigurationParser$$Lambda$618/0x0000000800e54c00"},
+  "name":"org.ehcache.xml.model.MemoryTypeWithPropSubst"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.ResourceConfigurationParser"},
   "name":"org.ehcache.xml.model.MemoryTypeWithPropSubst",
   "allDeclaredFields":true,
@@ -2846,11 +3143,19 @@
   "name":"org.ehcache.xml.model.MemoryTypeWithPropSubst"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8e0c8"},
+  "name":"org.ehcache.xml.model.MemoryTypeWithPropSubst"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8f0f0"},
   "name":"org.ehcache.xml.model.MemoryTypeWithPropSubst"
 },
 {
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$844/0x0000000800fa2000"},
+  "name":"org.ehcache.xml.model.MemoryTypeWithPropSubst"
+},
+{
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$847/0x0000000800fa5250"},
   "name":"org.ehcache.xml.model.MemoryTypeWithPropSubst"
 },
 {
@@ -2894,6 +3199,10 @@
   "name":"org.ehcache.xml.model.ObjectFactory"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.ConfigurationParser$$Lambda$618/0x0000000800e54c00"},
+  "name":"org.ehcache.xml.model.ObjectFactory"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.ResourceConfigurationParser"},
   "name":"org.ehcache.xml.model.ObjectFactory",
   "queryAllDeclaredMethods":true
@@ -2917,11 +3226,19 @@
   "name":"org.ehcache.xml.model.ObjectFactory"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8e0c8"},
+  "name":"org.ehcache.xml.model.ObjectFactory"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8f0f0"},
   "name":"org.ehcache.xml.model.ObjectFactory"
 },
 {
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$844/0x0000000800fa2000"},
+  "name":"org.ehcache.xml.model.ObjectFactory"
+},
+{
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$847/0x0000000800fa5250"},
   "name":"org.ehcache.xml.model.ObjectFactory"
 },
 {
@@ -2967,6 +3284,10 @@
   "name":"org.ehcache.xml.model.PersistableMemoryTypeWithPropSubst"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.ConfigurationParser$$Lambda$618/0x0000000800e54c00"},
+  "name":"org.ehcache.xml.model.PersistableMemoryTypeWithPropSubst"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.ResourceConfigurationParser"},
   "name":"org.ehcache.xml.model.PersistableMemoryTypeWithPropSubst",
   "allDeclaredFields":true,
@@ -2992,11 +3313,19 @@
   "name":"org.ehcache.xml.model.PersistableMemoryTypeWithPropSubst"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8e0c8"},
+  "name":"org.ehcache.xml.model.PersistableMemoryTypeWithPropSubst"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8f0f0"},
   "name":"org.ehcache.xml.model.PersistableMemoryTypeWithPropSubst"
 },
 {
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$844/0x0000000800fa2000"},
+  "name":"org.ehcache.xml.model.PersistableMemoryTypeWithPropSubst"
+},
+{
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$847/0x0000000800fa5250"},
   "name":"org.ehcache.xml.model.PersistableMemoryTypeWithPropSubst"
 },
 {
@@ -3032,6 +3361,10 @@
   "name":"org.ehcache.xml.model.PersistenceType"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.ConfigurationParser$$Lambda$618/0x0000000800e54c00"},
+  "name":"org.ehcache.xml.model.PersistenceType"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.ResourceConfigurationParser"},
   "name":"org.ehcache.xml.model.PersistenceType",
   "allDeclaredFields":true,
@@ -3057,11 +3390,19 @@
   "name":"org.ehcache.xml.model.PersistenceType"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8e0c8"},
+  "name":"org.ehcache.xml.model.PersistenceType"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8f0f0"},
   "name":"org.ehcache.xml.model.PersistenceType"
 },
 {
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$844/0x0000000800fa2000"},
+  "name":"org.ehcache.xml.model.PersistenceType"
+},
+{
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$847/0x0000000800fa5250"},
   "name":"org.ehcache.xml.model.PersistenceType"
 },
 {
@@ -3097,6 +3438,10 @@
   "name":"org.ehcache.xml.model.ResourceTypeWithPropSubst"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.ConfigurationParser$$Lambda$618/0x0000000800e54c00"},
+  "name":"org.ehcache.xml.model.ResourceTypeWithPropSubst"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.ResourceConfigurationParser"},
   "name":"org.ehcache.xml.model.ResourceTypeWithPropSubst",
   "allDeclaredFields":true,
@@ -3123,11 +3468,19 @@
   "name":"org.ehcache.xml.model.ResourceTypeWithPropSubst"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8e0c8"},
+  "name":"org.ehcache.xml.model.ResourceTypeWithPropSubst"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8f0f0"},
   "name":"org.ehcache.xml.model.ResourceTypeWithPropSubst"
 },
 {
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$844/0x0000000800fa2000"},
+  "name":"org.ehcache.xml.model.ResourceTypeWithPropSubst"
+},
+{
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$847/0x0000000800fa5250"},
   "name":"org.ehcache.xml.model.ResourceTypeWithPropSubst"
 },
 {
@@ -3173,6 +3526,10 @@
   "name":"org.ehcache.xml.model.ResourcesType"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.ConfigurationParser$$Lambda$618/0x0000000800e54c00"},
+  "name":"org.ehcache.xml.model.ResourcesType"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.ResourceConfigurationParser"},
   "name":"org.ehcache.xml.model.ResourcesType",
   "allDeclaredFields":true,
@@ -3198,11 +3555,19 @@
   "name":"org.ehcache.xml.model.ResourcesType"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8e0c8"},
+  "name":"org.ehcache.xml.model.ResourcesType"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8f0f0"},
   "name":"org.ehcache.xml.model.ResourcesType"
 },
 {
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$844/0x0000000800fa2000"},
+  "name":"org.ehcache.xml.model.ResourcesType"
+},
+{
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$847/0x0000000800fa5250"},
   "name":"org.ehcache.xml.model.ResourcesType"
 },
 {
@@ -3238,6 +3603,10 @@
   "name":"org.ehcache.xml.model.SerializerType"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.ConfigurationParser$$Lambda$618/0x0000000800e54c00"},
+  "name":"org.ehcache.xml.model.SerializerType"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.ResourceConfigurationParser"},
   "name":"org.ehcache.xml.model.SerializerType",
   "allDeclaredFields":true,
@@ -3263,11 +3632,19 @@
   "name":"org.ehcache.xml.model.SerializerType"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8e0c8"},
+  "name":"org.ehcache.xml.model.SerializerType"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8f0f0"},
   "name":"org.ehcache.xml.model.SerializerType"
 },
 {
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$844/0x0000000800fa2000"},
+  "name":"org.ehcache.xml.model.SerializerType"
+},
+{
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$847/0x0000000800fa5250"},
   "name":"org.ehcache.xml.model.SerializerType"
 },
 {
@@ -3303,6 +3680,10 @@
   "name":"org.ehcache.xml.model.SerializerType$Serializer"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.ConfigurationParser$$Lambda$618/0x0000000800e54c00"},
+  "name":"org.ehcache.xml.model.SerializerType$Serializer"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.ResourceConfigurationParser"},
   "name":"org.ehcache.xml.model.SerializerType$Serializer",
   "allDeclaredFields":true,
@@ -3328,11 +3709,19 @@
   "name":"org.ehcache.xml.model.SerializerType$Serializer"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8e0c8"},
+  "name":"org.ehcache.xml.model.SerializerType$Serializer"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8f0f0"},
   "name":"org.ehcache.xml.model.SerializerType$Serializer"
 },
 {
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$844/0x0000000800fa2000"},
+  "name":"org.ehcache.xml.model.SerializerType$Serializer"
+},
+{
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$847/0x0000000800fa5250"},
   "name":"org.ehcache.xml.model.SerializerType$Serializer"
 },
 {
@@ -3368,6 +3757,10 @@
   "name":"org.ehcache.xml.model.ServiceType"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.ConfigurationParser$$Lambda$618/0x0000000800e54c00"},
+  "name":"org.ehcache.xml.model.ServiceType"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.ResourceConfigurationParser"},
   "name":"org.ehcache.xml.model.ServiceType",
   "allDeclaredFields":true,
@@ -3393,11 +3786,19 @@
   "name":"org.ehcache.xml.model.ServiceType"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8e0c8"},
+  "name":"org.ehcache.xml.model.ServiceType"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8f0f0"},
   "name":"org.ehcache.xml.model.ServiceType"
 },
 {
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$844/0x0000000800fa2000"},
+  "name":"org.ehcache.xml.model.ServiceType"
+},
+{
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$847/0x0000000800fa5250"},
   "name":"org.ehcache.xml.model.ServiceType"
 },
 {
@@ -3433,6 +3834,10 @@
   "name":"org.ehcache.xml.model.SizeofType"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.ConfigurationParser$$Lambda$618/0x0000000800e54c00"},
+  "name":"org.ehcache.xml.model.SizeofType"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.ResourceConfigurationParser"},
   "name":"org.ehcache.xml.model.SizeofType",
   "allDeclaredFields":true,
@@ -3458,11 +3863,19 @@
   "name":"org.ehcache.xml.model.SizeofType"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8e0c8"},
+  "name":"org.ehcache.xml.model.SizeofType"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8f0f0"},
   "name":"org.ehcache.xml.model.SizeofType"
 },
 {
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$844/0x0000000800fa2000"},
+  "name":"org.ehcache.xml.model.SizeofType"
+},
+{
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$847/0x0000000800fa5250"},
   "name":"org.ehcache.xml.model.SizeofType"
 },
 {
@@ -3498,6 +3911,10 @@
   "name":"org.ehcache.xml.model.SizeofType$MaxObjectGraphSize"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.ConfigurationParser$$Lambda$618/0x0000000800e54c00"},
+  "name":"org.ehcache.xml.model.SizeofType$MaxObjectGraphSize"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.ResourceConfigurationParser"},
   "name":"org.ehcache.xml.model.SizeofType$MaxObjectGraphSize",
   "allDeclaredFields":true,
@@ -3523,11 +3940,19 @@
   "name":"org.ehcache.xml.model.SizeofType$MaxObjectGraphSize"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8e0c8"},
+  "name":"org.ehcache.xml.model.SizeofType$MaxObjectGraphSize"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8f0f0"},
   "name":"org.ehcache.xml.model.SizeofType$MaxObjectGraphSize"
 },
 {
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$844/0x0000000800fa2000"},
+  "name":"org.ehcache.xml.model.SizeofType$MaxObjectGraphSize"
+},
+{
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$847/0x0000000800fa5250"},
   "name":"org.ehcache.xml.model.SizeofType$MaxObjectGraphSize"
 },
 {
@@ -3563,6 +3988,10 @@
   "name":"org.ehcache.xml.model.ThreadPoolReferenceType"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.ConfigurationParser$$Lambda$618/0x0000000800e54c00"},
+  "name":"org.ehcache.xml.model.ThreadPoolReferenceType"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.ResourceConfigurationParser"},
   "name":"org.ehcache.xml.model.ThreadPoolReferenceType",
   "allDeclaredFields":true,
@@ -3588,11 +4017,19 @@
   "name":"org.ehcache.xml.model.ThreadPoolReferenceType"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8e0c8"},
+  "name":"org.ehcache.xml.model.ThreadPoolReferenceType"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8f0f0"},
   "name":"org.ehcache.xml.model.ThreadPoolReferenceType"
 },
 {
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$844/0x0000000800fa2000"},
+  "name":"org.ehcache.xml.model.ThreadPoolReferenceType"
+},
+{
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$847/0x0000000800fa5250"},
   "name":"org.ehcache.xml.model.ThreadPoolReferenceType"
 },
 {
@@ -3628,6 +4065,10 @@
   "name":"org.ehcache.xml.model.ThreadPoolsType"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.ConfigurationParser$$Lambda$618/0x0000000800e54c00"},
+  "name":"org.ehcache.xml.model.ThreadPoolsType"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.ResourceConfigurationParser"},
   "name":"org.ehcache.xml.model.ThreadPoolsType",
   "allDeclaredFields":true,
@@ -3653,11 +4094,19 @@
   "name":"org.ehcache.xml.model.ThreadPoolsType"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8e0c8"},
+  "name":"org.ehcache.xml.model.ThreadPoolsType"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8f0f0"},
   "name":"org.ehcache.xml.model.ThreadPoolsType"
 },
 {
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$844/0x0000000800fa2000"},
+  "name":"org.ehcache.xml.model.ThreadPoolsType"
+},
+{
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$847/0x0000000800fa5250"},
   "name":"org.ehcache.xml.model.ThreadPoolsType"
 },
 {
@@ -3693,6 +4142,10 @@
   "name":"org.ehcache.xml.model.ThreadPoolsType$ThreadPool"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.ConfigurationParser$$Lambda$618/0x0000000800e54c00"},
+  "name":"org.ehcache.xml.model.ThreadPoolsType$ThreadPool"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.ResourceConfigurationParser"},
   "name":"org.ehcache.xml.model.ThreadPoolsType$ThreadPool",
   "allDeclaredFields":true,
@@ -3718,11 +4171,19 @@
   "name":"org.ehcache.xml.model.ThreadPoolsType$ThreadPool"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8e0c8"},
+  "name":"org.ehcache.xml.model.ThreadPoolsType$ThreadPool"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8f0f0"},
   "name":"org.ehcache.xml.model.ThreadPoolsType$ThreadPool"
 },
 {
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$844/0x0000000800fa2000"},
+  "name":"org.ehcache.xml.model.ThreadPoolsType$ThreadPool"
+},
+{
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$847/0x0000000800fa5250"},
   "name":"org.ehcache.xml.model.ThreadPoolsType$ThreadPool"
 },
 {
@@ -3758,6 +4219,10 @@
   "name":"org.ehcache.xml.model.TimeTypeWithPropSubst"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.ConfigurationParser$$Lambda$618/0x0000000800e54c00"},
+  "name":"org.ehcache.xml.model.TimeTypeWithPropSubst"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.ResourceConfigurationParser"},
   "name":"org.ehcache.xml.model.TimeTypeWithPropSubst",
   "allDeclaredFields":true,
@@ -3783,11 +4248,19 @@
   "name":"org.ehcache.xml.model.TimeTypeWithPropSubst"
 },
 {
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8e0c8"},
+  "name":"org.ehcache.xml.model.TimeTypeWithPropSubst"
+},
+{
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$834/0x0000000800f8f0f0"},
   "name":"org.ehcache.xml.model.TimeTypeWithPropSubst"
 },
 {
   "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$844/0x0000000800fa2000"},
+  "name":"org.ehcache.xml.model.TimeTypeWithPropSubst"
+},
+{
+  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration$$Lambda$847/0x0000000800fa5250"},
   "name":"org.ehcache.xml.model.TimeTypeWithPropSubst"
 },
 {
