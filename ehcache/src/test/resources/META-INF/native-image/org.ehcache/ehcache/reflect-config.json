@@ -929,6 +929,11 @@
   "queryAllPublicMethods":true
 },
 {
+  "condition":{"typeReachable":"org.ehcache.impl.internal.store.heap.OnHeapStore"},
+  "name":"org.ehcache.impl.internal.store.heap.OnHeapStore",
+  "allDeclaredFields":true
+},
+{
   "condition":{"typeReachable":"org.ehcache.impl.internal.store.heap.OnHeapStore$Provider"},
   "name":"org.ehcache.impl.internal.store.heap.OnHeapStore",
   "allDeclaredFields":true,
@@ -1330,6 +1335,10 @@
   "queryAllPublicMethods":true
 },
 {
+  "condition":{"typeReachable":"org.ehcache.impl.internal.store.heap.OnHeapStore"},
+  "name":"org.ehcache.shadow.org.terracotta.statistics.GeneralOperationStatistic"
+},
+{
   "condition":{"typeReachable":"org.ehcache.impl.internal.store.heap.OnHeapStore$Provider"},
   "name":"org.ehcache.shadow.org.terracotta.statistics.GeneralOperationStatistic",
   "queryAllPublicMethods":true
@@ -1402,6 +1411,10 @@
   "condition":{"typeReachable":"org.ehcache.impl.internal.store.disk.OffHeapDiskStore$Provider"},
   "name":"org.ehcache.shadow.org.terracotta.statistics.PassThroughStatistic",
   "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"org.ehcache.impl.internal.store.heap.OnHeapStore"},
+  "name":"org.ehcache.shadow.org.terracotta.statistics.PassThroughStatistic"
 },
 {
   "condition":{"typeReachable":"org.ehcache.impl.internal.store.heap.OnHeapStore$Provider"},
