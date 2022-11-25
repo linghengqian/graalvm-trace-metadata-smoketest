@@ -67,12 +67,6 @@
   },
   {
     "condition": {
-      "typeReachable": "com.hazelcast.internal.metrics.impl.MetricsService"
-    },
-    "name": "[Ljavax.management.openmbean.CompositeData;"
-  },
-  {
-    "condition": {
       "typeReachable": "com.hazelcast.internal.util.phonehome.PhoneHome"
     },
     "name": "[Lsun.security.pkcs.SignerInfo;"
@@ -5087,55 +5081,6 @@
       "typeReachable": "com.hazelcast.internal.nio.ClassLoaderUtil"
     },
     "name": "javax.cache.processor.EntryProcessorException"
-  },
-  {
-    "condition": {
-      "typeReachable": "com.hazelcast.internal.metrics.impl.MetricsService"
-    },
-    "name": "javax.management.MBeanOperationInfo",
-    "queryAllPublicMethods": true,
-    "methods": [
-      {
-        "name": "getSignature",
-        "parameterTypes": []
-      }
-    ]
-  },
-  {
-    "condition": {
-      "typeReachable": "com.hazelcast.internal.metrics.impl.MetricsService"
-    },
-    "name": "javax.management.MBeanServerBuilder",
-    "methods": [
-      {
-        "name": "<init>",
-        "parameterTypes": []
-      }
-    ]
-  },
-  {
-    "condition": {
-      "typeReachable": "com.hazelcast.internal.metrics.impl.MetricsService"
-    },
-    "name": "javax.management.ObjectName"
-  },
-  {
-    "condition": {
-      "typeReachable": "com.hazelcast.internal.metrics.impl.MetricsService"
-    },
-    "name": "javax.management.openmbean.CompositeData"
-  },
-  {
-    "condition": {
-      "typeReachable": "com.hazelcast.internal.metrics.impl.MetricsService"
-    },
-    "name": "javax.management.openmbean.OpenMBeanOperationInfoSupport"
-  },
-  {
-    "condition": {
-      "typeReachable": "com.hazelcast.internal.metrics.impl.MetricsService"
-    },
-    "name": "javax.management.openmbean.TabularData"
   },
   {
     "condition": {
