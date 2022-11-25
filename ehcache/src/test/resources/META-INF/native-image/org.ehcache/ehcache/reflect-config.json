@@ -90,21 +90,6 @@
   ]
 },
 {
-  "condition":{"typeReachable":"org.ehcache.xml.ConfigurationParser"},
-  "name":"jakarta.xml.bind.annotation.W3CDomHandler",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"org.ehcache.xml.ResourceConfigurationParser"},
-  "name":"jakarta.xml.bind.annotation.W3CDomHandler",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration"},
-  "name":"jakarta.xml.bind.annotation.W3CDomHandler",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
   "condition":{"typeReachable":"org.ehcache.xml.XmlConfiguration"},
   "name":"jakarta.xml.bind.annotation.adapters.CollapsedStringAdapter",
   "methods":[{"name":"<init>","parameterTypes":[] }]
