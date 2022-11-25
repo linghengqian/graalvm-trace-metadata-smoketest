@@ -4,19 +4,7 @@
     {
       "condition":{"typeReachable":"org.ehcache.impl.config.SizedResourcePoolImpl"},
       "pattern":"\\QMETA-INF/services/ch.qos.logback.classic.spi.Configurator\\E"
-    }, 
-    {
-      "condition":{"typeReachable":"org.ehcache.xml.ConfigurationParser"},
-      "pattern":"\\QMETA-INF/services/jakarta.xml.bind.JAXBContext\\E"
-    }, 
-    {
-      "condition":{"typeReachable":"org.ehcache.xml.ResourceConfigurationParser"},
-      "pattern":"\\QMETA-INF/services/jakarta.xml.bind.JAXBContext\\E"
-    }, 
-    {
-      "condition":{"typeReachable":"org.ehcache.xml.multi.XmlMultiConfiguration"},
-      "pattern":"\\QMETA-INF/services/jakarta.xml.bind.JAXBContext\\E"
-    }, 
+    },
     {
       "condition":{"typeReachable":"org.ehcache.core.spi.ServiceLocator$DependencySet"},
       "pattern":"\\QMETA-INF/services/org.ehcache.core.spi.service.ServiceFactory\\E"
