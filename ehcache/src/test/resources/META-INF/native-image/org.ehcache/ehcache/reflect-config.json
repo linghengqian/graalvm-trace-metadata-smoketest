@@ -52,12 +52,6 @@
     "condition": {
       "typeReachable": "org.ehcache.sizeof.impl.JvmInformation"
     },
-    "name": "[Ljavax.management.openmbean.CompositeData;"
-  },
-  {
-    "condition": {
-      "typeReachable": "org.ehcache.sizeof.impl.JvmInformation"
-    },
     "name": "[S"
   },
   {
@@ -1178,55 +1172,6 @@
     },
     "name": "java.util.logging.LoggingMXBean",
     "queryAllPublicMethods": true
-  },
-  {
-    "condition": {
-      "typeReachable": "org.ehcache.sizeof.impl.JvmInformation"
-    },
-    "name": "javax.management.MBeanOperationInfo",
-    "queryAllPublicMethods": true,
-    "methods": [
-      {
-        "name": "getSignature",
-        "parameterTypes": []
-      }
-    ]
-  },
-  {
-    "condition": {
-      "typeReachable": "org.ehcache.sizeof.impl.JvmInformation"
-    },
-    "name": "javax.management.MBeanServerBuilder",
-    "methods": [
-      {
-        "name": "<init>",
-        "parameterTypes": []
-      }
-    ]
-  },
-  {
-    "condition": {
-      "typeReachable": "org.ehcache.sizeof.impl.JvmInformation"
-    },
-    "name": "javax.management.ObjectName"
-  },
-  {
-    "condition": {
-      "typeReachable": "org.ehcache.sizeof.impl.JvmInformation"
-    },
-    "name": "javax.management.openmbean.CompositeData"
-  },
-  {
-    "condition": {
-      "typeReachable": "org.ehcache.sizeof.impl.JvmInformation"
-    },
-    "name": "javax.management.openmbean.OpenMBeanOperationInfoSupport"
-  },
-  {
-    "condition": {
-      "typeReachable": "org.ehcache.sizeof.impl.JvmInformation"
-    },
-    "name": "javax.management.openmbean.TabularData"
   },
   {
     "condition": {
