@@ -1,6 +1,6 @@
 {
   "rules": [
     {"excludeClasses": "**"},
-    {"includeClasses": "jakarta.xml.bind.**"}
+    {"includeClasses": "org.ehcache.**"}
   ]
 }

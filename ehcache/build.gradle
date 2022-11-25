@@ -40,7 +40,7 @@ graalvmNative {
         metadataCopy {
             mergeWithExisting = true
             inputTaskNames.add("test")
-            outputDirectories.add("src/test/resources/META-INF/native-image/jakarta.xml.bind/jakarta.xml.bind-api")
+            outputDirectories.add("src/test/resources/META-INF/native-image/org.ehcache/ehcache")
         }
     }
 }
