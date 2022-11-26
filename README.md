@@ -13,7 +13,6 @@
 sdk use java 22.3.r17-grl
 gu install native-image
 sudo apt-get install build-essential libz-dev zlib1g-dev -y
-sdk install scala 2.13.10
 ```
 
 - select one.
