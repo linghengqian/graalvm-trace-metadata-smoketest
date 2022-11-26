@@ -1,0 +1,56 @@
+dataSources:
+  ds_0:
+    dataSourceClassName: com.zaxxer.hikari.HikariDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    jdbcUrl: jdbc:mysql://localhost:3306/demo_ds_0?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password:
+  ds_1:
+    dataSourceClassName: com.zaxxer.hikari.HikariDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    jdbcUrl: jdbc:mysql://localhost:3306/demo_ds_1?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password:
+
+rules:
+- !SHARDING
+  autoTables:
+    t_order:
+      actualDataSources: ds_0,ds_1
+      shardingStrategy:
+        standard:
+          shardingColumn: order_id
+          shardingAlgorithmName: auto-mod
+      keyGenerateStrategy:
+        column: order_id
+        keyGeneratorName: snowflake
+    t_order_item:
+      actualDataSources: ds_0,ds_1
+      shardingStrategy:
+        standard:
+          shardingColumn: order_id
+          shardingAlgorithmName: auto-mod
+      keyGenerateStrategy:
+        column: order_item_id
+        keyGeneratorName: snowflake
+    t_account:
+      actualDataSources: ds_0,ds_1
+      shardingStrategy:
+        standard:
+          shardingAlgorithmName: auto-mod
+      keyGenerateStrategy:
+        column: account_id
+        keyGeneratorName: snowflake
+  defaultShardingColumn: account_id
+  shardingAlgorithms:
+    auto-mod:
+      type: MOD
+      props:
+        sharding-count: 4
+  
+  keyGenerators:
+    snowflake:
+      type: SNOWFLAKE
+
+props:
+  sql-show: true
