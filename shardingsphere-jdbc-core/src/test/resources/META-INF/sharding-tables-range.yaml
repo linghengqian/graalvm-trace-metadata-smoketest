@@ -1,8 +1,8 @@
 dataSources:
   ds:
     dataSourceClassName: com.zaxxer.hikari.HikariDataSource
-    driverClassName: com.mysql.jdbc.Driver
-    jdbcUrl: jdbc:mysql://localhost:3306/demo_ds?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    driverClassName: org.h2.Driver
+    jdbcUrl: jdbc:h2:mem:demo_ds;MODE=MYSQL;DATABASE_TO_LOWER=TRUE;INIT=RUNSCRIPT FROM 'classpath:sql-script.sql'
     username: root
     password:
 
