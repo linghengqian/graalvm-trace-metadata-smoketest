@@ -34,7 +34,7 @@ cd ./shardingsphere-jdbc-core/
 ```shell
 ./gradlew -Pagent clean test
 ./gradlew metadataCopy --task test
-./gradlew -Pagent nativeTest
+./gradlew clean nativeTest
 ```
 
 - According to https://github.com/oracle/graalvm-reachability-metadata/pull/122#discussion_r1030139343, we need to

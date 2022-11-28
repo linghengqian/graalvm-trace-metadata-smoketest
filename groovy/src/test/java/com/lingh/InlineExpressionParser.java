@@ -6,6 +6,7 @@ import groovy.lang.Closure;
 import groovy.lang.GString;
 import groovy.lang.GroovyShell;
 import groovy.lang.Script;
+import groovy.transform.CompileStatic;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -20,6 +21,7 @@ import java.util.stream.Collectors;
 /**
  * Inline expression parser.
  */
+@CompileStatic
 public final class InlineExpressionParser {
     
     private static final char SPLITTER = ',';

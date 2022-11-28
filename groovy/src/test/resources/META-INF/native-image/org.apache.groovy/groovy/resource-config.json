@@ -2,24 +2,22 @@
   "resources":{
   "includes":[
     {
-      "condition":{"typeReachable":"groovy.lang.GroovySystem"},
       "pattern":"\\QMETA-INF/dgminfo\\E"
     }, 
     {
-      "condition":{"typeReachable":"org.codehaus.groovy.reflection.GeneratedMetaMethod$DgmMethodRecord"},
-      "pattern":"\\QMETA-INF/dgminfo\\E"
-    }, 
-    {
-      "condition":{"typeReachable":"org.codehaus.groovy.vmplugin.v9.Java9"},
       "pattern":"\\QMETA-INF/services/java.nio.file.spi.FileSystemProvider\\E"
     }, 
     {
-      "condition":{"typeReachable":"groovy.lang.GroovyClassLoader"},
       "pattern":"\\QMETA-INF/services/org.codehaus.groovy.transform.ASTTransformation\\E"
     }, 
     {
-      "condition":{"typeReachable":"org.codehaus.groovy.transform.ASTTransformationVisitor"},
-      "pattern":"\\QMETA-INF/services/org.codehaus.groovy.transform.ASTTransformation\\E"
+      "pattern":"\\QMETA-INF/services/org.junit.platform.engine.TestEngine\\E"
+    }, 
+    {
+      "pattern":"\\QMETA-INF/services/org.junit.platform.launcher.TestExecutionListener\\E"
+    }, 
+    {
+      "pattern":"\\Qorg/slf4j/impl/StaticLoggerBinder.class\\E"
     }
   ]},
   "bundles":[]
