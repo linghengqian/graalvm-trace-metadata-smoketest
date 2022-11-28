@@ -389,9 +389,6 @@ public class ShardingRawJdbcTest {
                 });
     }
 
-    /*
-     * Please make sure primary replica data replication sync on MySQL is running correctly. Otherwise this example will query empty data from replica.
-     */
     @Test
     void testShardingRawJavaRangeConfiguration() {
         Stream.of(ShardingType.SHARDING_DATABASES, ShardingType.SHARDING_TABLES, ShardingType.SHARDING_DATABASES_AND_TABLES)
@@ -491,7 +488,6 @@ public class ShardingRawJdbcTest {
                             default:
                                 throw new UnsupportedOperationException(shardingType.name());
                         }
-                        OrderRepository orderRepository = new OrderRepositoryImpl(dataSource);
                         OrderItemRepository orderItemRepository = new OrderItemRepositoryImpl(dataSource);
                         try {
                             try (Connection connection = dataSource.getConnection();
@@ -557,16 +553,48 @@ public class ShardingRawJdbcTest {
                                 orderIds.add(order.getOrderId());
                             }
                             System.out.println("---------------------------- Print Order Data -----------------------");
-                            orderRepository.selectAll().forEach(System.out::println);
+                            List<Order> result = new LinkedList<>();
+                            try (Connection connection = dataSource.getConnection();
+                                 PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM t_order");
+                                 ResultSet resultSet = preparedStatement.executeQuery()) {
+                                while (resultSet.next()) {
+                                    Order order = new Order();
+                                    order.setOrderId(resultSet.getLong(1));
+                                    order.setUserId(resultSet.getInt(2));
+                                    order.setAddressId(resultSet.getLong(3));
+                                    order.setStatus(resultSet.getString(4));
+                                    result.add(order);
+                                }
+                            }
+                            result.forEach(System.out::println);
                             System.out.println("---------------------------- Print OrderItem Data -------------------");
                             orderItemRepository.selectAll().forEach(System.out::println);
                             System.out.println("---------------------------- Delete Data ----------------------------");
                             for (Long each : orderIds) {
-                                orderRepository.delete(each);
-                                orderItemRepository.delete(each);
+                                try (Connection connection = dataSource.getConnection();
+                                     PreparedStatement firstPreparedStatement = connection.prepareStatement("DELETE FROM t_order WHERE order_id=?");
+                                     PreparedStatement secondPreparedStatement = connection.prepareStatement("DELETE FROM t_order_item WHERE order_id=?")) {
+                                    firstPreparedStatement.setLong(1, each);
+                                    firstPreparedStatement.executeUpdate();
+                                    secondPreparedStatement.setLong(1, each);
+                                    secondPreparedStatement.executeUpdate();
+                                }
                             }
                             System.out.println("---------------------------- Print Order Data -----------------------");
-                            orderRepository.selectAll().forEach(System.out::println);
+                            List<Order> secondResult = new LinkedList<>();
+                            try (Connection connection = dataSource.getConnection();
+                                 PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM t_order");
+                                 ResultSet resultSet = preparedStatement.executeQuery()) {
+                                while (resultSet.next()) {
+                                    Order order = new Order();
+                                    order.setOrderId(resultSet.getLong(1));
+                                    order.setUserId(resultSet.getInt(2));
+                                    order.setAddressId(resultSet.getLong(3));
+                                    order.setStatus(resultSet.getString(4));
+                                    secondResult.add(order);
+                                }
+                            }
+                            secondResult.forEach(System.out::println);
                             System.out.println("---------------------------- Print OrderItem Data -------------------");
                             orderItemRepository.selectAll().forEach(System.out::println);
                             System.out.println("-------------- Process Success Finish --------------");
@@ -638,8 +666,6 @@ public class ShardingRawJdbcTest {
                                     hintManager.addDatabaseShardingValue("t_order", 2L);
                                     hintManager.addTableShardingValue("t_order", 1L);
                                     break;
-                                default:
-                                    throw new UnsupportedOperationException("unsupported type");
                             }
                             statement.execute("select * from t_order");
                             statement.execute("SELECT i.* FROM t_order o, t_order_item i WHERE o.order_id = i.order_id");
