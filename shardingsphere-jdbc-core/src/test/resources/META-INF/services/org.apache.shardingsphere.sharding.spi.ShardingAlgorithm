@@ -1,2 +1,3 @@
 com.lingh.hint.ModuloHintShardingAlgorithm
 com.lingh.algorithm.StandardModuloShardingDatabaseAlgorithm
+com.lingh.algorithm.StandardModuloShardingTableAlgorithm
