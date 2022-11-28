@@ -1,0 +1,2156 @@
+[
+{
+  "name":"Script1",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":["groovy.lang.Binding"] }]
+},
+{
+  "name":"Script1$_run_closure1",
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"doCall","parameterTypes":["java.lang.Object"] }]
+},
+{
+  "name":"Script1BeanInfo"
+},
+{
+  "name":"Script1Customizer"
+},
+{
+  "name":"Script2",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":["groovy.lang.Binding"] }]
+},
+{
+  "name":"Script2BeanInfo"
+},
+{
+  "name":"Script2Customizer"
+},
+{
+  "name":"Script3",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":["groovy.lang.Binding"] }]
+},
+{
+  "name":"Script3BeanInfo"
+},
+{
+  "name":"Script3Customizer"
+},
+{
+  "name":"Script4",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":["groovy.lang.Binding"] }]
+},
+{
+  "name":"Script4BeanInfo"
+},
+{
+  "name":"Script4Customizer"
+},
+{
+  "name":"Script5",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":["groovy.lang.Binding"] }]
+},
+{
+  "name":"Script5$_run_closure1",
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"doCall","parameterTypes":["java.lang.Object"] }]
+},
+{
+  "name":"Script5BeanInfo"
+},
+{
+  "name":"Script5Customizer"
+},
+{
+  "name":"Script6",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":["groovy.lang.Binding"] }]
+},
+{
+  "name":"Script6BeanInfo"
+},
+{
+  "name":"Script6Customizer"
+},
+{
+  "name":"Script7",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":["groovy.lang.Binding"] }]
+},
+{
+  "name":"Script7BeanInfo"
+},
+{
+  "name":"Script7Customizer"
+},
+{
+  "name":"[B"
+},
+{
+  "name":"[C"
+},
+{
+  "name":"[I"
+},
+{
+  "name":"[Lcom.zaxxer.hikari.util.ConcurrentBag$IConcurrentBagEntry;"
+},
+{
+  "name":"[Ljava.io.ObjectStreamField;"
+},
+{
+  "name":"[Ljava.lang.CharSequence;"
+},
+{
+  "name":"[Ljava.lang.Class;"
+},
+{
+  "name":"[Ljava.lang.Object;"
+},
+{
+  "name":"[Ljava.lang.String;"
+},
+{
+  "name":"[Ljava.lang.annotation.Annotation;"
+},
+{
+  "name":"[Ljava.lang.reflect.AnnotatedType;"
+},
+{
+  "name":"[Ljava.lang.reflect.Constructor;"
+},
+{
+  "name":"[Ljava.lang.reflect.Field;"
+},
+{
+  "name":"[Ljava.lang.reflect.Method;"
+},
+{
+  "name":"[Ljava.lang.reflect.Type;"
+},
+{
+  "name":"[Ljava.lang.reflect.TypeVariable;"
+},
+{
+  "name":"[Ljava.sql.Statement;"
+},
+{
+  "name":"[Lorg.codehaus.groovy.runtime.callsite.CallSite;"
+},
+{
+  "name":"ch.qos.logback.classic.encoder.PatternLayoutEncoder",
+  "queryAllPublicMethods":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"ch.qos.logback.classic.pattern.DateConverter",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"ch.qos.logback.classic.pattern.LevelConverter",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"ch.qos.logback.classic.pattern.LineSeparatorConverter",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"ch.qos.logback.classic.pattern.LoggerConverter",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"ch.qos.logback.classic.pattern.MessageConverter",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"ch.qos.logback.classic.pattern.ThreadConverter",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"ch.qos.logback.core.ConsoleAppender",
+  "queryAllPublicMethods":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"ch.qos.logback.core.OutputStreamAppender",
+  "methods":[{"name":"setEncoder","parameterTypes":["ch.qos.logback.core.encoder.Encoder"] }]
+},
+{
+  "name":"ch.qos.logback.core.encoder.LayoutWrappingEncoder",
+  "methods":[{"name":"setParent","parameterTypes":["ch.qos.logback.core.spi.ContextAware"] }]
+},
+{
+  "name":"ch.qos.logback.core.pattern.PatternLayoutEncoderBase",
+  "methods":[{"name":"setPattern","parameterTypes":["java.lang.String"] }]
+},
+{
+  "name":"com.github.benmanes.caffeine.cache.BBHeader$ReadAndWriteCounterRef",
+  "fields":[{"name":"writeCounter"}]
+},
+{
+  "name":"com.github.benmanes.caffeine.cache.BBHeader$ReadCounterRef",
+  "fields":[{"name":"readCounter"}]
+},
+{
+  "name":"com.github.benmanes.caffeine.cache.BLCHeader$DrainStatusRef",
+  "fields":[{"name":"drainStatus"}]
+},
+{
+  "name":"com.github.benmanes.caffeine.cache.BaseMpscLinkedArrayQueueColdProducerFields",
+  "fields":[{"name":"producerLimit"}]
+},
+{
+  "name":"com.github.benmanes.caffeine.cache.BaseMpscLinkedArrayQueueConsumerFields",
+  "fields":[{"name":"consumerIndex"}]
+},
+{
+  "name":"com.github.benmanes.caffeine.cache.BaseMpscLinkedArrayQueueProducerFields",
+  "fields":[{"name":"producerIndex"}]
+},
+{
+  "name":"com.github.benmanes.caffeine.cache.CacheLoader",
+  "methods":[{"name":"loadAll","parameterTypes":["java.lang.Iterable"] }]
+},
+{
+  "name":"com.github.benmanes.caffeine.cache.PD",
+  "fields":[{"name":"value"}]
+},
+{
+  "name":"com.github.benmanes.caffeine.cache.PDMS",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.benmanes.caffeine.cache.SIMS",
+  "methods":[{"name":"<init>","parameterTypes":["com.github.benmanes.caffeine.cache.Caffeine","com.github.benmanes.caffeine.cache.CacheLoader","boolean"] }]
+},
+{
+  "name":"com.github.benmanes.caffeine.cache.StripedBuffer",
+  "fields":[{"name":"tableBusy"}]
+},
+{
+  "name":"com.google.common.util.concurrent.AbstractFuture",
+  "fields":[
+    {"name":"listeners"}, 
+    {"name":"value"}, 
+    {"name":"waiters"}
+  ]
+},
+{
+  "name":"com.google.common.util.concurrent.AbstractFuture$Waiter",
+  "fields":[
+    {"name":"next"}, 
+    {"name":"thread"}
+  ]
+},
+{
+  "name":"com.ibm.icu.text.Collator"
+},
+{
+  "name":"com.lingh.DataSourceUtil",
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"com.lingh.ShardingRawJdbcTest",
+  "allDeclaredFields":true,
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"testShardingHintRaw","parameterTypes":[] }, 
+    {"name":"testShardingRawJavaConfiguration","parameterTypes":[] }, 
+    {"name":"testShardingRawJavaRangeConfiguration","parameterTypes":[] }, 
+    {"name":"testShardingRawYamlConfiguration","parameterTypes":[] }, 
+    {"name":"testShardingRawYamlRangeConfiguration","parameterTypes":[] }
+  ]
+},
+{
+  "name":"com.lingh.algorithm.StandardModuloShardingDatabaseAlgorithm",
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.lingh.algorithm.StandardModuloShardingTableAlgorithm",
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.lingh.config.ExampleConfiguration",
+  "allDeclaredClasses":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"com.lingh.config.ShardingDatabasesAndTablesConfigurationPrecise",
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"com.lingh.config.ShardingDatabasesAndTablesConfigurationRange",
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"com.lingh.config.ShardingDatabasesConfigurationPrecise",
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"com.lingh.config.ShardingDatabasesConfigurationRange",
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"com.lingh.config.ShardingTablesConfigurationPrecise",
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"com.lingh.config.ShardingTablesConfigurationRange",
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"com.lingh.entity.Account",
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"com.lingh.entity.Address",
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"com.lingh.entity.Order",
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"com.lingh.entity.OrderItem",
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"com.lingh.entity.OrderStatisticsInfo",
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"com.lingh.hint.ModuloHintShardingAlgorithm",
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.lingh.type.ShardingType",
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"com.sun.org.apache.xerces.internal.jaxp.SAXParserFactoryImpl",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.zaxxer.hikari.HikariConfig",
+  "fields":[
+    {"name":"dataSourceProperties"}, 
+    {"name":"jdbcUrl"}
+  ],
+  "methods":[
+    {"name":"getCatalog","parameterTypes":[] }, 
+    {"name":"getConnectionInitSql","parameterTypes":[] }, 
+    {"name":"getConnectionTestQuery","parameterTypes":[] }, 
+    {"name":"getConnectionTimeout","parameterTypes":[] }, 
+    {"name":"getDataSourceClassName","parameterTypes":[] }, 
+    {"name":"getDataSourceJNDI","parameterTypes":[] }, 
+    {"name":"getDataSourceProperties","parameterTypes":[] }, 
+    {"name":"getExceptionOverrideClassName","parameterTypes":[] }, 
+    {"name":"getHealthCheckProperties","parameterTypes":[] }, 
+    {"name":"getIdleTimeout","parameterTypes":[] }, 
+    {"name":"getInitializationFailTimeout","parameterTypes":[] }, 
+    {"name":"getJdbcUrl","parameterTypes":[] }, 
+    {"name":"getKeepaliveTime","parameterTypes":[] }, 
+    {"name":"getLeakDetectionThreshold","parameterTypes":[] }, 
+    {"name":"getMaxLifetime","parameterTypes":[] }, 
+    {"name":"getMaximumPoolSize","parameterTypes":[] }, 
+    {"name":"getMinimumIdle","parameterTypes":[] }, 
+    {"name":"getPassword","parameterTypes":[] }, 
+    {"name":"getPoolName","parameterTypes":[] }, 
+    {"name":"getSchema","parameterTypes":[] }, 
+    {"name":"getTransactionIsolation","parameterTypes":[] }, 
+    {"name":"getUsername","parameterTypes":[] }, 
+    {"name":"getValidationTimeout","parameterTypes":[] }, 
+    {"name":"isAllowPoolSuspension","parameterTypes":[] }, 
+    {"name":"isAutoCommit","parameterTypes":[] }, 
+    {"name":"isIsolateInternalQueries","parameterTypes":[] }, 
+    {"name":"isReadOnly","parameterTypes":[] }, 
+    {"name":"isRegisterMbeans","parameterTypes":[] }, 
+    {"name":"setConnectionTimeout","parameterTypes":["long"] }, 
+    {"name":"setIdleTimeout","parameterTypes":["long"] }, 
+    {"name":"setJdbcUrl","parameterTypes":["java.lang.String"] }, 
+    {"name":"setMaxLifetime","parameterTypes":["long"] }, 
+    {"name":"setMaximumPoolSize","parameterTypes":["int"] }, 
+    {"name":"setMinimumIdle","parameterTypes":["int"] }, 
+    {"name":"setReadOnly","parameterTypes":["boolean"] }, 
+    {"name":"setUsername","parameterTypes":["java.lang.String"] }
+  ]
+},
+{
+  "name":"com.zaxxer.hikari.HikariDataSource",
+  "queryAllPublicMethods":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"isClosed","parameterTypes":[] }, 
+    {"name":"isRunning","parameterTypes":[] }
+  ]
+},
+{
+  "name":"groovy.grape.GrabAnnotationTransformation",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"groovy.grape.GrapeIvy"
+},
+{
+  "name":"groovy.io.FileType"
+},
+{
+  "name":"groovy.lang.Binding",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "name":"groovy.lang.BindingBeanInfo"
+},
+{
+  "name":"groovy.lang.BindingCustomizer"
+},
+{
+  "name":"groovy.lang.Buildable",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "name":"groovy.lang.Closure",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"getProperty","parameterTypes":["java.lang.String"] }]
+},
+{
+  "name":"groovy.lang.Closure$1",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "name":"groovy.lang.Closure$1BeanInfo"
+},
+{
+  "name":"groovy.lang.Closure$1Customizer"
+},
+{
+  "name":"groovy.lang.ClosureBeanInfo"
+},
+{
+  "name":"groovy.lang.ClosureCustomizer"
+},
+{
+  "name":"groovy.lang.EmptyRange"
+},
+{
+  "name":"groovy.lang.ExpandoMetaClass",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "name":"groovy.lang.ExpandoMetaClassBeanInfo"
+},
+{
+  "name":"groovy.lang.ExpandoMetaClassCustomizer"
+},
+{
+  "name":"groovy.lang.GString",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"build","parameterTypes":["groovy.lang.GroovyObject"] }, 
+    {"name":"charAt","parameterTypes":["int"] }, 
+    {"name":"compareTo","parameterTypes":["java.lang.Object"] }, 
+    {"name":"getStrings","parameterTypes":[] }, 
+    {"name":"length","parameterTypes":[] }, 
+    {"name":"subSequence","parameterTypes":["int","int"] }, 
+    {"name":"toString","parameterTypes":[] }, 
+    {"name":"writeTo","parameterTypes":["java.io.Writer"] }
+  ]
+},
+{
+  "name":"groovy.lang.GString$1",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "name":"groovy.lang.GString$1BeanInfo"
+},
+{
+  "name":"groovy.lang.GString$1Customizer"
+},
+{
+  "name":"groovy.lang.GStringBeanInfo"
+},
+{
+  "name":"groovy.lang.GStringCustomizer"
+},
+{
+  "name":"groovy.lang.GroovyCallable",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "name":"groovy.lang.GroovyObject",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"getProperty","parameterTypes":["java.lang.String"] }, 
+    {"name":"invokeMethod","parameterTypes":["java.lang.String","java.lang.Object"] }
+  ]
+},
+{
+  "name":"groovy.lang.GroovyObjectSupport",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"getMetaClass","parameterTypes":[] }, 
+    {"name":"setMetaClass","parameterTypes":["groovy.lang.MetaClass"] }
+  ]
+},
+{
+  "name":"groovy.lang.GroovyObjectSupportBeanInfo"
+},
+{
+  "name":"groovy.lang.GroovyObjectSupportCustomizer"
+},
+{
+  "name":"groovy.lang.GroovyShell",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "name":"groovy.lang.GroovyShellBeanInfo"
+},
+{
+  "name":"groovy.lang.GroovyShellCustomizer"
+},
+{
+  "name":"groovy.lang.GroovySystem"
+},
+{
+  "name":"groovy.lang.IntRange",
+  "methods":[{"name":"toString","parameterTypes":[] }]
+},
+{
+  "name":"groovy.lang.ListWithDefault"
+},
+{
+  "name":"groovy.lang.MetaClass",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"groovy.lang.MetaClassImpl",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"groovy.lang.MetaClassImplBeanInfo"
+},
+{
+  "name":"groovy.lang.MetaClassImplCustomizer"
+},
+{
+  "name":"groovy.lang.MetaMethod",
+  "queryAllDeclaredMethods":true,
+  "methods":[{"name":"doMethodInvoke","parameterTypes":["java.lang.Object","java.lang.Object[]"] }]
+},
+{
+  "name":"groovy.lang.MetaObjectProtocol",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "methods":[
+    {"name":"getProperty","parameterTypes":["java.lang.Object","java.lang.String"] }, 
+    {"name":"invokeConstructor","parameterTypes":["java.lang.Object[]"] }, 
+    {"name":"invokeMethod","parameterTypes":["java.lang.Object","java.lang.String","java.lang.Object[]"] }, 
+    {"name":"invokeStaticMethod","parameterTypes":["java.lang.Object","java.lang.String","java.lang.Object[]"] }
+  ]
+},
+{
+  "name":"groovy.lang.MetaProperty",
+  "queryAllDeclaredMethods":true,
+  "methods":[{"name":"getProperty","parameterTypes":["java.lang.Object"] }]
+},
+{
+  "name":"groovy.lang.MutableMetaClass",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"groovy.lang.ObjectRange"
+},
+{
+  "name":"groovy.lang.Range",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"groovy.lang.Script",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "name":"groovy.lang.ScriptBeanInfo"
+},
+{
+  "name":"groovy.lang.ScriptCustomizer"
+},
+{
+  "name":"groovy.lang.SpreadMap"
+},
+{
+  "name":"groovy.lang.Writable",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "name":"groovy.lang.groovydoc.Groovydoc"
+},
+{
+  "name":"groovy.runtime.metaclass.CustomMetaClassCreationHandle"
+},
+{
+  "name":"groovy.runtime.metaclass.Script1$_run_closure1MetaClass"
+},
+{
+  "name":"groovy.runtime.metaclass.Script1MetaClass"
+},
+{
+  "name":"groovy.runtime.metaclass.Script2MetaClass"
+},
+{
+  "name":"groovy.runtime.metaclass.Script3MetaClass"
+},
+{
+  "name":"groovy.runtime.metaclass.Script4MetaClass"
+},
+{
+  "name":"groovy.runtime.metaclass.Script5$_run_closure1MetaClass"
+},
+{
+  "name":"groovy.runtime.metaclass.Script5MetaClass"
+},
+{
+  "name":"groovy.runtime.metaclass.Script6MetaClass"
+},
+{
+  "name":"groovy.runtime.metaclass.Script7MetaClass"
+},
+{
+  "name":"groovy.runtime.metaclass.groovy.lang.BindingMetaClass"
+},
+{
+  "name":"groovy.runtime.metaclass.groovy.lang.Closure$1MetaClass"
+},
+{
+  "name":"groovy.runtime.metaclass.groovy.lang.ExpandoMetaClassMetaClass"
+},
+{
+  "name":"groovy.runtime.metaclass.groovy.lang.GString$1MetaClass"
+},
+{
+  "name":"groovy.runtime.metaclass.groovy.lang.GroovyShellMetaClass"
+},
+{
+  "name":"groovy.runtime.metaclass.groovy.util.ExpandoMetaClass"
+},
+{
+  "name":"groovy.runtime.metaclass.java.lang.IntegerMetaClass"
+},
+{
+  "name":"groovy.runtime.metaclass.org.codehaus.groovy.runtime.GStringImplMetaClass"
+},
+{
+  "name":"groovy.transform.Internal",
+  "queryAllDeclaredMethods":true
+},
+{
+  "name":"groovy.util.BufferedIterator"
+},
+{
+  "name":"groovy.util.Expando",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "name":"groovy.util.ExpandoBeanInfo"
+},
+{
+  "name":"groovy.util.ExpandoCustomizer"
+},
+{
+  "name":"java.beans.PropertyVetoException"
+},
+{
+  "name":"java.beans.Transient",
+  "queryAllDeclaredMethods":true,
+  "methods":[{"name":"value","parameterTypes":[] }]
+},
+{
+  "name":"java.io.BufferedInputStream"
+},
+{
+  "name":"java.io.BufferedOutputStream"
+},
+{
+  "name":"java.io.BufferedReader"
+},
+{
+  "name":"java.io.BufferedWriter"
+},
+{
+  "name":"java.io.Closeable",
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.io.DataInput",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.io.DataInputStream"
+},
+{
+  "name":"java.io.DataOutput",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.io.DataOutputStream"
+},
+{
+  "name":"java.io.File"
+},
+{
+  "name":"java.io.FilePermission"
+},
+{
+  "name":"java.io.Flushable",
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.io.InputStream",
+  "queryAllDeclaredMethods":true,
+  "methods":[{"name":"close","parameterTypes":[] }]
+},
+{
+  "name":"java.io.ObjectInput",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.io.ObjectInputStream"
+},
+{
+  "name":"java.io.ObjectOutput",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.io.ObjectOutputStream"
+},
+{
+  "name":"java.io.ObjectStreamConstants",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.io.OutputStream",
+  "queryAllDeclaredMethods":true,
+  "methods":[
+    {"name":"close","parameterTypes":[] }, 
+    {"name":"flush","parameterTypes":[] }
+  ]
+},
+{
+  "name":"java.io.PrintStream"
+},
+{
+  "name":"java.io.PrintWriter"
+},
+{
+  "name":"java.io.Reader",
+  "queryAllDeclaredMethods":true,
+  "methods":[
+    {"name":"close","parameterTypes":[] }, 
+    {"name":"read","parameterTypes":["java.nio.CharBuffer"] }
+  ]
+},
+{
+  "name":"java.io.Serializable",
+  "allDeclaredFields":true,
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "name":"java.io.Writer",
+  "queryAllDeclaredMethods":true,
+  "methods":[
+    {"name":"append","parameterTypes":["char"] }, 
+    {"name":"append","parameterTypes":["java.lang.CharSequence"] }, 
+    {"name":"append","parameterTypes":["java.lang.CharSequence","int","int"] }, 
+    {"name":"close","parameterTypes":[] }, 
+    {"name":"flush","parameterTypes":[] }
+  ]
+},
+{
+  "name":"java.lang.AbstractStringBuilder",
+  "queryAllDeclaredMethods":true,
+  "methods":[
+    {"name":"append","parameterTypes":["char"] }, 
+    {"name":"append","parameterTypes":["java.lang.CharSequence"] }, 
+    {"name":"append","parameterTypes":["java.lang.CharSequence","int","int"] }, 
+    {"name":"charAt","parameterTypes":["int"] }, 
+    {"name":"length","parameterTypes":[] }, 
+    {"name":"subSequence","parameterTypes":["int","int"] }, 
+    {"name":"toString","parameterTypes":[] }
+  ]
+},
+{
+  "name":"java.lang.Appendable",
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.lang.AutoCloseable",
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.lang.Boolean"
+},
+{
+  "name":"java.lang.CharSequence",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "name":"java.lang.Character"
+},
+{
+  "name":"java.lang.Class",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"forName","parameterTypes":["java.lang.String","boolean","java.lang.ClassLoader"] }]
+},
+{
+  "name":"java.lang.ClassLoader",
+  "queryAllDeclaredMethods":true
+},
+{
+  "name":"java.lang.Cloneable",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "name":"java.lang.Comparable",
+  "allDeclaredFields":true,
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "name":"java.lang.Deprecated",
+  "queryAllDeclaredMethods":true,
+  "methods":[
+    {"name":"forRemoval","parameterTypes":[] }, 
+    {"name":"since","parameterTypes":[] }
+  ]
+},
+{
+  "name":"java.lang.Double"
+},
+{
+  "name":"java.lang.Enum",
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "methods":[{"name":"compareTo","parameterTypes":["java.lang.Object"] }]
+},
+{
+  "name":"java.lang.Float"
+},
+{
+  "name":"java.lang.FunctionalInterface",
+  "queryAllDeclaredMethods":true
+},
+{
+  "name":"java.lang.Integer",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "name":"java.lang.IntegerBeanInfo"
+},
+{
+  "name":"java.lang.IntegerCustomizer"
+},
+{
+  "name":"java.lang.Iterable",
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.lang.Long"
+},
+{
+  "name":"java.lang.Number",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.lang.NumberBeanInfo"
+},
+{
+  "name":"java.lang.NumberCustomizer"
+},
+{
+  "name":"java.lang.Object",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"equals","parameterTypes":["java.lang.Object"] }, 
+    {"name":"hashCode","parameterTypes":[] }, 
+    {"name":"toString","parameterTypes":[] }
+  ]
+},
+{
+  "name":"java.lang.ObjectBeanInfo"
+},
+{
+  "name":"java.lang.ObjectCustomizer"
+},
+{
+  "name":"java.lang.Process",
+  "queryAllDeclaredMethods":true
+},
+{
+  "name":"java.lang.Readable",
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.lang.Runnable",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "name":"java.lang.RuntimePermission"
+},
+{
+  "name":"java.lang.Short"
+},
+{
+  "name":"java.lang.String",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "name":"java.lang.StringBuffer"
+},
+{
+  "name":"java.lang.StringBuilder"
+},
+{
+  "name":"java.lang.System$Logger",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.lang.Thread",
+  "fields":[{"name":"threadLocalRandomProbe"}]
+},
+{
+  "name":"java.lang.Throwable"
+},
+{
+  "name":"java.lang.invoke.MethodHandle"
+},
+{
+  "name":"java.lang.reflect.AccessibleObject",
+  "methods":[{"name":"getAnnotations","parameterTypes":[] }]
+},
+{
+  "name":"java.lang.reflect.AnnotatedElement",
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.lang.reflect.Executable",
+  "queryAllDeclaredMethods":true,
+  "methods":[
+    {"name":"getAnnotation","parameterTypes":["java.lang.Class"] }, 
+    {"name":"getDeclaredAnnotations","parameterTypes":[] }, 
+    {"name":"getDeclaringClass","parameterTypes":[] }, 
+    {"name":"getModifiers","parameterTypes":[] }, 
+    {"name":"getName","parameterTypes":[] }, 
+    {"name":"getTypeParameters","parameterTypes":[] }, 
+    {"name":"isSynthetic","parameterTypes":[] }
+  ]
+},
+{
+  "name":"java.lang.reflect.GenericDeclaration",
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.lang.reflect.Member",
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.lang.reflect.Type",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.math.BigDecimal"
+},
+{
+  "name":"java.math.BigInteger"
+},
+{
+  "name":"java.net.NetPermission"
+},
+{
+  "name":"java.net.ServerSocket"
+},
+{
+  "name":"java.net.Socket"
+},
+{
+  "name":"java.net.SocketPermission"
+},
+{
+  "name":"java.net.URI"
+},
+{
+  "name":"java.net.URL"
+},
+{
+  "name":"java.net.URLPermission",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.String","java.lang.String"] }]
+},
+{
+  "name":"java.nio.charset.Charset",
+  "queryAllDeclaredMethods":true,
+  "methods":[{"name":"compareTo","parameterTypes":["java.lang.Object"] }]
+},
+{
+  "name":"java.security.AllPermission"
+},
+{
+  "name":"java.security.MessageDigestSpi"
+},
+{
+  "name":"java.security.PrivilegedAction",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.security.PrivilegedExceptionAction",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.security.SecureRandomParameters"
+},
+{
+  "name":"java.security.SecurityPermission"
+},
+{
+  "name":"java.sql.Date"
+},
+{
+  "name":"java.sql.PseudoColumnUsage"
+},
+{
+  "name":"java.sql.Timestamp"
+},
+{
+  "name":"java.util.AbstractCollection",
+  "queryAllDeclaredMethods":true,
+  "methods":[
+    {"name":"add","parameterTypes":["java.lang.Object"] }, 
+    {"name":"addAll","parameterTypes":["java.util.Collection"] }, 
+    {"name":"clear","parameterTypes":[] }, 
+    {"name":"contains","parameterTypes":["java.lang.Object"] }, 
+    {"name":"containsAll","parameterTypes":["java.util.Collection"] }, 
+    {"name":"isEmpty","parameterTypes":[] }, 
+    {"name":"iterator","parameterTypes":[] }, 
+    {"name":"remove","parameterTypes":["java.lang.Object"] }, 
+    {"name":"removeAll","parameterTypes":["java.util.Collection"] }, 
+    {"name":"retainAll","parameterTypes":["java.util.Collection"] }, 
+    {"name":"size","parameterTypes":[] }, 
+    {"name":"toArray","parameterTypes":[] }, 
+    {"name":"toArray","parameterTypes":["java.lang.Object[]"] }
+  ]
+},
+{
+  "name":"java.util.AbstractList",
+  "queryAllDeclaredMethods":true,
+  "methods":[
+    {"name":"add","parameterTypes":["int","java.lang.Object"] }, 
+    {"name":"add","parameterTypes":["java.lang.Object"] }, 
+    {"name":"addAll","parameterTypes":["int","java.util.Collection"] }, 
+    {"name":"clear","parameterTypes":[] }, 
+    {"name":"equals","parameterTypes":["java.lang.Object"] }, 
+    {"name":"get","parameterTypes":["int"] }, 
+    {"name":"hashCode","parameterTypes":[] }, 
+    {"name":"indexOf","parameterTypes":["java.lang.Object"] }, 
+    {"name":"iterator","parameterTypes":[] }, 
+    {"name":"lastIndexOf","parameterTypes":["java.lang.Object"] }, 
+    {"name":"listIterator","parameterTypes":[] }, 
+    {"name":"listIterator","parameterTypes":["int"] }, 
+    {"name":"remove","parameterTypes":["int"] }, 
+    {"name":"set","parameterTypes":["int","java.lang.Object"] }, 
+    {"name":"subList","parameterTypes":["int","int"] }
+  ]
+},
+{
+  "name":"java.util.AbstractMap",
+  "queryAllDeclaredMethods":true,
+  "methods":[
+    {"name":"clear","parameterTypes":[] }, 
+    {"name":"containsKey","parameterTypes":["java.lang.Object"] }, 
+    {"name":"containsValue","parameterTypes":["java.lang.Object"] }, 
+    {"name":"entrySet","parameterTypes":[] }, 
+    {"name":"equals","parameterTypes":["java.lang.Object"] }, 
+    {"name":"get","parameterTypes":["java.lang.Object"] }, 
+    {"name":"hashCode","parameterTypes":[] }, 
+    {"name":"isEmpty","parameterTypes":[] }, 
+    {"name":"keySet","parameterTypes":[] }, 
+    {"name":"put","parameterTypes":["java.lang.Object","java.lang.Object"] }, 
+    {"name":"putAll","parameterTypes":["java.util.Map"] }, 
+    {"name":"remove","parameterTypes":["java.lang.Object"] }, 
+    {"name":"size","parameterTypes":[] }, 
+    {"name":"values","parameterTypes":[] }
+  ]
+},
+{
+  "name":"java.util.ArrayList",
+  "methods":[{"name":"<init>","parameterTypes":["java.util.Collection"] }]
+},
+{
+  "name":"java.util.BitSet"
+},
+{
+  "name":"java.util.Collection",
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.util.Comparator"
+},
+{
+  "name":"java.util.Deque",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.util.Enumeration",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.util.HashSet",
+  "methods":[{"name":"<init>","parameterTypes":["java.util.Collection"] }]
+},
+{
+  "name":"java.util.Iterator",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.util.LinkedHashSet"
+},
+{
+  "name":"java.util.List",
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.util.Locale"
+},
+{
+  "name":"java.util.Map",
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.util.Map$Entry"
+},
+{
+  "name":"java.util.Optional"
+},
+{
+  "name":"java.util.OptionalDouble"
+},
+{
+  "name":"java.util.OptionalInt"
+},
+{
+  "name":"java.util.OptionalLong"
+},
+{
+  "name":"java.util.Properties",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"java.util.PropertyPermission"
+},
+{
+  "name":"java.util.Queue",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.util.Random"
+},
+{
+  "name":"java.util.ResourceBundle",
+  "queryAllDeclaredMethods":true
+},
+{
+  "name":"java.util.Set",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.util.SortedMap",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.util.SortedSet",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.util.Spliterator",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.util.Timer"
+},
+{
+  "name":"java.util.TimerTask"
+},
+{
+  "name":"java.util.concurrent.ArrayBlockingQueue"
+},
+{
+  "name":"java.util.concurrent.BlockingQueue",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.util.concurrent.Callable",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "name":"java.util.concurrent.Future",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.util.concurrent.locks.AbstractOwnableSynchronizer"
+},
+{
+  "name":"java.util.concurrent.locks.AbstractQueuedSynchronizer"
+},
+{
+  "name":"java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject"
+},
+{
+  "name":"java.util.concurrent.locks.ReentrantLock"
+},
+{
+  "name":"java.util.concurrent.locks.ReentrantLock$NonfairSync"
+},
+{
+  "name":"java.util.concurrent.locks.ReentrantLock$Sync"
+},
+{
+  "name":"java.util.function.DoubleFunction",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.util.function.DoublePredicate",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.util.function.Function",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.util.function.IntFunction",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.util.function.IntPredicate",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.util.function.LongFunction",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.util.function.LongPredicate",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.util.function.Supplier",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.util.function.ToDoubleFunction",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.util.function.ToIntFunction",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.util.function.ToLongFunction",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.util.regex.MatchResult",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.util.regex.Matcher"
+},
+{
+  "name":"java.util.regex.Pattern"
+},
+{
+  "name":"java.util.stream.BaseStream",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.util.stream.DoubleStream"
+},
+{
+  "name":"java.util.stream.IntStream"
+},
+{
+  "name":"java.util.stream.LongStream"
+},
+{
+  "name":"java.util.stream.Stream",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"javax.management.ObjectName"
+},
+{
+  "name":"javax.smartcardio.CardPermission"
+},
+{
+  "name":"jdk.internal.HotSpotIntrinsicCandidate",
+  "queryAllDeclaredMethods":true
+},
+{
+  "name":"jdk.internal.reflect.CallerSensitive",
+  "queryAllDeclaredMethods":true
+},
+{
+  "name":"jdk.internal.vm.annotation.ForceInline",
+  "queryAllDeclaredMethods":true
+},
+{
+  "name":"jdk.internal.vm.annotation.Stable",
+  "queryAllDeclaredMethods":true
+},
+{
+  "name":"org.apache.calcite.avatica.AvaticaJdbc41Factory",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.calcite.avatica.remote.Driver"
+},
+{
+  "name":"org.apache.calcite.jdbc.CalciteJdbc41Factory",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.calcite.jdbc.Driver"
+},
+{
+  "name":"org.apache.shardingsphere.authority.provider.database.DatabasePermittedPrivilegesProviderAlgorithm",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.shardingsphere.authority.provider.simple.AllPermittedPrivilegesProviderAlgorithm",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.shardingsphere.authority.yaml.config.YamlAuthorityRuleConfiguration"
+},
+{
+  "name":"org.apache.shardingsphere.dbdiscovery.yaml.config.YamlDatabaseDiscoveryRuleConfiguration"
+},
+{
+  "name":"org.apache.shardingsphere.encrypt.yaml.config.YamlEncryptRuleConfiguration"
+},
+{
+  "name":"org.apache.shardingsphere.infra.config.algorithm.ShardingSphereAlgorithm",
+  "allDeclaredClasses":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"org.apache.shardingsphere.infra.config.props.BackendExecutorType",
+  "methods":[{"name":"valueOf","parameterTypes":["java.lang.String"] }]
+},
+{
+  "name":"org.apache.shardingsphere.infra.parser.cache.SQLStatementCacheLoader"
+},
+{
+  "name":"org.apache.shardingsphere.infra.util.spi.lifecycle.SPIPostProcessor",
+  "allDeclaredClasses":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"org.apache.shardingsphere.infra.util.spi.type.typed.TypedSPI",
+  "allDeclaredClasses":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"org.apache.shardingsphere.infra.yaml.config.pojo.YamlRootConfiguration",
+  "allDeclaredFields":true,
+  "queryAllPublicMethods":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"setDataSources","parameterTypes":["java.util.Map"] }, 
+    {"name":"setDatabaseName","parameterTypes":["java.lang.String"] }, 
+    {"name":"setMode","parameterTypes":["org.apache.shardingsphere.infra.yaml.config.pojo.mode.YamlModeConfiguration"] }, 
+    {"name":"setProps","parameterTypes":["java.util.Properties"] }, 
+    {"name":"setRules","parameterTypes":["java.util.Collection"] }
+  ]
+},
+{
+  "name":"org.apache.shardingsphere.infra.yaml.config.pojo.YamlRootConfigurationBeanInfo"
+},
+{
+  "name":"org.apache.shardingsphere.infra.yaml.config.pojo.YamlRootConfigurationCustomizer"
+},
+{
+  "name":"org.apache.shardingsphere.infra.yaml.config.pojo.algorithm.YamlAlgorithmConfiguration",
+  "allDeclaredFields":true,
+  "queryAllPublicMethods":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"getProps","parameterTypes":[] }, 
+    {"name":"getType","parameterTypes":[] }, 
+    {"name":"setProps","parameterTypes":["java.util.Properties"] }, 
+    {"name":"setType","parameterTypes":["java.lang.String"] }
+  ]
+},
+{
+  "name":"org.apache.shardingsphere.infra.yaml.config.pojo.algorithm.YamlAlgorithmConfigurationBeanInfo"
+},
+{
+  "name":"org.apache.shardingsphere.infra.yaml.config.pojo.algorithm.YamlAlgorithmConfigurationCustomizer"
+},
+{
+  "name":"org.apache.shardingsphere.infra.yaml.config.pojo.mode.YamlModeConfiguration",
+  "allDeclaredFields":true,
+  "queryAllPublicMethods":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"setRepository","parameterTypes":["org.apache.shardingsphere.infra.yaml.config.pojo.mode.YamlPersistRepositoryConfiguration"] }, 
+    {"name":"setType","parameterTypes":["java.lang.String"] }
+  ]
+},
+{
+  "name":"org.apache.shardingsphere.infra.yaml.config.pojo.mode.YamlModeConfigurationBeanInfo"
+},
+{
+  "name":"org.apache.shardingsphere.infra.yaml.config.pojo.mode.YamlModeConfigurationCustomizer"
+},
+{
+  "name":"org.apache.shardingsphere.infra.yaml.config.pojo.mode.YamlPersistRepositoryConfiguration",
+  "allDeclaredFields":true,
+  "queryAllPublicMethods":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"setType","parameterTypes":["java.lang.String"] }
+  ]
+},
+{
+  "name":"org.apache.shardingsphere.infra.yaml.config.pojo.mode.YamlPersistRepositoryConfigurationBeanInfo"
+},
+{
+  "name":"org.apache.shardingsphere.infra.yaml.config.pojo.mode.YamlPersistRepositoryConfigurationCustomizer"
+},
+{
+  "name":"org.apache.shardingsphere.infra.yaml.config.shortcut.YamlRuleConfigurationShortcuts",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.shardingsphere.mode.manager.standalone.subscriber.ProcessStandaloneSubscriber",
+  "queryAllDeclaredMethods":true
+},
+{
+  "name":"org.apache.shardingsphere.mode.repository.standalone.jdbc.JDBCRepository",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.shardingsphere.parser.yaml.config.YamlSQLParserRuleConfiguration"
+},
+{
+  "name":"org.apache.shardingsphere.readwritesplitting.yaml.config.YamlReadwriteSplittingRuleConfiguration"
+},
+{
+  "name":"org.apache.shardingsphere.shadow.yaml.config.YamlShadowRuleConfiguration"
+},
+{
+  "name":"org.apache.shardingsphere.sharding.algorithm.keygen.SnowflakeKeyGenerateAlgorithm",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.shardingsphere.sharding.algorithm.keygen.UUIDKeyGenerateAlgorithm",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.shardingsphere.sharding.algorithm.sharding.classbased.ClassBasedShardingAlgorithm",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.shardingsphere.sharding.algorithm.sharding.complex.ComplexInlineShardingAlgorithm",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.shardingsphere.sharding.algorithm.sharding.datetime.AutoIntervalShardingAlgorithm",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.shardingsphere.sharding.algorithm.sharding.datetime.IntervalShardingAlgorithm",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.shardingsphere.sharding.algorithm.sharding.hint.HintInlineShardingAlgorithm",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.shardingsphere.sharding.algorithm.sharding.inline.InlineShardingAlgorithm",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.shardingsphere.sharding.algorithm.sharding.mod.HashModShardingAlgorithm",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.shardingsphere.sharding.algorithm.sharding.mod.ModShardingAlgorithm",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.shardingsphere.sharding.algorithm.sharding.range.BoundaryBasedRangeShardingAlgorithm",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.shardingsphere.sharding.algorithm.sharding.range.VolumeBasedRangeShardingAlgorithm",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.shardingsphere.sharding.api.sharding.hint.HintShardingAlgorithm",
+  "allDeclaredClasses":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"org.apache.shardingsphere.sharding.api.sharding.standard.StandardShardingAlgorithm",
+  "allDeclaredClasses":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"org.apache.shardingsphere.sharding.cache.yaml.YamlShardingCacheRuleConfiguration"
+},
+{
+  "name":"org.apache.shardingsphere.sharding.cosid.algorithm.keygen.CosIdKeyGenerateAlgorithm",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.shardingsphere.sharding.cosid.algorithm.keygen.CosIdSnowflakeKeyGenerateAlgorithm",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.shardingsphere.sharding.cosid.algorithm.sharding.interval.CosIdIntervalShardingAlgorithm",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.shardingsphere.sharding.cosid.algorithm.sharding.interval.CosIdSnowflakeIntervalShardingAlgorithm",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.shardingsphere.sharding.cosid.algorithm.sharding.mod.CosIdModShardingAlgorithm",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.shardingsphere.sharding.decider.ShardingSQLFederationDecider",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.shardingsphere.sharding.nanoid.algorithm.keygen.NanoIdKeyGenerateAlgorithm",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.shardingsphere.sharding.spi.ShardingAlgorithm",
+  "allDeclaredClasses":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"org.apache.shardingsphere.sharding.yaml.config.YamlShardingRuleConfiguration",
+  "allDeclaredFields":true,
+  "queryAllPublicMethods":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"getAuditors","parameterTypes":[] }, 
+    {"name":"getAutoTables","parameterTypes":[] }, 
+    {"name":"getBindingTables","parameterTypes":[] }, 
+    {"name":"getBroadcastTables","parameterTypes":[] }, 
+    {"name":"getDefaultAuditStrategy","parameterTypes":[] }, 
+    {"name":"getDefaultDatabaseStrategy","parameterTypes":[] }, 
+    {"name":"getDefaultKeyGenerateStrategy","parameterTypes":[] }, 
+    {"name":"getDefaultShardingColumn","parameterTypes":[] }, 
+    {"name":"getDefaultTableStrategy","parameterTypes":[] }, 
+    {"name":"getKeyGenerators","parameterTypes":[] }, 
+    {"name":"getShardingAlgorithms","parameterTypes":[] }, 
+    {"name":"getTables","parameterTypes":[] }, 
+    {"name":"setBindingTables","parameterTypes":["java.util.Collection"] }, 
+    {"name":"setBroadcastTables","parameterTypes":["java.util.Collection"] }, 
+    {"name":"setDefaultDatabaseStrategy","parameterTypes":["org.apache.shardingsphere.sharding.yaml.config.strategy.sharding.YamlShardingStrategyConfiguration"] }, 
+    {"name":"setDefaultShardingColumn","parameterTypes":["java.lang.String"] }, 
+    {"name":"setDefaultTableStrategy","parameterTypes":["org.apache.shardingsphere.sharding.yaml.config.strategy.sharding.YamlShardingStrategyConfiguration"] }, 
+    {"name":"setKeyGenerators","parameterTypes":["java.util.Map"] }, 
+    {"name":"setShardingAlgorithms","parameterTypes":["java.util.Map"] }, 
+    {"name":"setTables","parameterTypes":["java.util.Map"] }
+  ]
+},
+{
+  "name":"org.apache.shardingsphere.sharding.yaml.config.YamlShardingRuleConfigurationBeanInfo"
+},
+{
+  "name":"org.apache.shardingsphere.sharding.yaml.config.YamlShardingRuleConfigurationCustomizer"
+},
+{
+  "name":"org.apache.shardingsphere.sharding.yaml.config.rule.YamlTableRuleConfiguration",
+  "allDeclaredFields":true,
+  "queryAllPublicMethods":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"getActualDataNodes","parameterTypes":[] }, 
+    {"name":"getAuditStrategy","parameterTypes":[] }, 
+    {"name":"getDatabaseStrategy","parameterTypes":[] }, 
+    {"name":"getKeyGenerateStrategy","parameterTypes":[] }, 
+    {"name":"getLogicTable","parameterTypes":[] }, 
+    {"name":"getTableStrategy","parameterTypes":[] }, 
+    {"name":"setActualDataNodes","parameterTypes":["java.lang.String"] }, 
+    {"name":"setDatabaseStrategy","parameterTypes":["org.apache.shardingsphere.sharding.yaml.config.strategy.sharding.YamlShardingStrategyConfiguration"] }, 
+    {"name":"setKeyGenerateStrategy","parameterTypes":["org.apache.shardingsphere.sharding.yaml.config.strategy.keygen.YamlKeyGenerateStrategyConfiguration"] }, 
+    {"name":"setLogicTable","parameterTypes":["java.lang.String"] }, 
+    {"name":"setTableStrategy","parameterTypes":["org.apache.shardingsphere.sharding.yaml.config.strategy.sharding.YamlShardingStrategyConfiguration"] }
+  ]
+},
+{
+  "name":"org.apache.shardingsphere.sharding.yaml.config.rule.YamlTableRuleConfigurationBeanInfo"
+},
+{
+  "name":"org.apache.shardingsphere.sharding.yaml.config.rule.YamlTableRuleConfigurationCustomizer"
+},
+{
+  "name":"org.apache.shardingsphere.sharding.yaml.config.strategy.keygen.YamlKeyGenerateStrategyConfiguration",
+  "allDeclaredFields":true,
+  "queryAllPublicMethods":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"getColumn","parameterTypes":[] }, 
+    {"name":"getKeyGeneratorName","parameterTypes":[] }, 
+    {"name":"setColumn","parameterTypes":["java.lang.String"] }, 
+    {"name":"setKeyGeneratorName","parameterTypes":["java.lang.String"] }
+  ]
+},
+{
+  "name":"org.apache.shardingsphere.sharding.yaml.config.strategy.keygen.YamlKeyGenerateStrategyConfigurationBeanInfo"
+},
+{
+  "name":"org.apache.shardingsphere.sharding.yaml.config.strategy.keygen.YamlKeyGenerateStrategyConfigurationCustomizer"
+},
+{
+  "name":"org.apache.shardingsphere.sharding.yaml.config.strategy.sharding.YamlHintShardingStrategyConfiguration",
+  "allDeclaredFields":true,
+  "queryAllPublicMethods":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"getShardingAlgorithmName","parameterTypes":[] }, 
+    {"name":"setShardingAlgorithmName","parameterTypes":["java.lang.String"] }
+  ]
+},
+{
+  "name":"org.apache.shardingsphere.sharding.yaml.config.strategy.sharding.YamlHintShardingStrategyConfigurationBeanInfo"
+},
+{
+  "name":"org.apache.shardingsphere.sharding.yaml.config.strategy.sharding.YamlHintShardingStrategyConfigurationCustomizer"
+},
+{
+  "name":"org.apache.shardingsphere.sharding.yaml.config.strategy.sharding.YamlNoneShardingStrategyConfiguration",
+  "allDeclaredFields":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"org.apache.shardingsphere.sharding.yaml.config.strategy.sharding.YamlNoneShardingStrategyConfigurationBeanInfo"
+},
+{
+  "name":"org.apache.shardingsphere.sharding.yaml.config.strategy.sharding.YamlNoneShardingStrategyConfigurationCustomizer"
+},
+{
+  "name":"org.apache.shardingsphere.sharding.yaml.config.strategy.sharding.YamlShardingStrategyConfiguration",
+  "allDeclaredFields":true,
+  "queryAllPublicMethods":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"getComplex","parameterTypes":[] }, 
+    {"name":"getHint","parameterTypes":[] }, 
+    {"name":"getNone","parameterTypes":[] }, 
+    {"name":"getStandard","parameterTypes":[] }, 
+    {"name":"setHint","parameterTypes":["org.apache.shardingsphere.sharding.yaml.config.strategy.sharding.YamlHintShardingStrategyConfiguration"] }, 
+    {"name":"setNone","parameterTypes":["org.apache.shardingsphere.sharding.yaml.config.strategy.sharding.YamlNoneShardingStrategyConfiguration"] }, 
+    {"name":"setStandard","parameterTypes":["org.apache.shardingsphere.sharding.yaml.config.strategy.sharding.YamlStandardShardingStrategyConfiguration"] }
+  ]
+},
+{
+  "name":"org.apache.shardingsphere.sharding.yaml.config.strategy.sharding.YamlShardingStrategyConfigurationBeanInfo"
+},
+{
+  "name":"org.apache.shardingsphere.sharding.yaml.config.strategy.sharding.YamlShardingStrategyConfigurationCustomizer"
+},
+{
+  "name":"org.apache.shardingsphere.sharding.yaml.config.strategy.sharding.YamlStandardShardingStrategyConfiguration",
+  "allDeclaredFields":true,
+  "queryAllPublicMethods":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"getShardingAlgorithmName","parameterTypes":[] }, 
+    {"name":"getShardingColumn","parameterTypes":[] }, 
+    {"name":"setShardingAlgorithmName","parameterTypes":["java.lang.String"] }, 
+    {"name":"setShardingColumn","parameterTypes":["java.lang.String"] }
+  ]
+},
+{
+  "name":"org.apache.shardingsphere.sharding.yaml.config.strategy.sharding.YamlStandardShardingStrategyConfigurationBeanInfo"
+},
+{
+  "name":"org.apache.shardingsphere.sharding.yaml.config.strategy.sharding.YamlStandardShardingStrategyConfigurationCustomizer"
+},
+{
+  "name":"org.apache.shardingsphere.singletable.decider.SingleTableSQLFederationDecider",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.shardingsphere.singletable.yaml.config.pojo.YamlSingleTableRuleConfiguration"
+},
+{
+  "name":"org.apache.shardingsphere.sql.parser.core.database.cache.ParseTreeCacheLoader"
+},
+{
+  "name":"org.apache.shardingsphere.sql.parser.mysql.parser.MySQLLexer",
+  "methods":[{"name":"<init>","parameterTypes":["org.antlr.v4.runtime.CharStream"] }]
+},
+{
+  "name":"org.apache.shardingsphere.sql.parser.mysql.parser.MySQLParser",
+  "methods":[{"name":"<init>","parameterTypes":["org.antlr.v4.runtime.TokenStream"] }]
+},
+{
+  "name":"org.apache.shardingsphere.sql.parser.mysql.visitor.format.facade.MySQLFormatSQLVisitorFacade",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.shardingsphere.sql.parser.mysql.visitor.statement.facade.MySQLStatementSQLVisitorFacade",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.shardingsphere.sql.parser.mysql.visitor.statement.impl.MySQLDDLStatementSQLVisitor",
+  "methods":[{"name":"<init>","parameterTypes":["java.util.Properties"] }]
+},
+{
+  "name":"org.apache.shardingsphere.sql.parser.mysql.visitor.statement.impl.MySQLDMLStatementSQLVisitor",
+  "methods":[{"name":"<init>","parameterTypes":["java.util.Properties"] }]
+},
+{
+  "name":"org.apache.shardingsphere.sql.parser.opengauss.visitor.format.facade.OpenGaussFormatSQLVisitorFacade",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.shardingsphere.sql.parser.opengauss.visitor.statement.facade.OpenGaussStatementSQLVisitorFacade",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.shardingsphere.sql.parser.oracle.visitor.format.facade.OracleFormatSQLVisitorFacade",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.shardingsphere.sql.parser.oracle.visitor.statement.facade.OracleStatementSQLVisitorFacade",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.shardingsphere.sql.parser.postgresql.visitor.format.facade.PostgreSQLFormatSQLVisitorFacade",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.shardingsphere.sql.parser.postgresql.visitor.statement.facade.PostgreSQLStatementSQLVisitorFacade",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.shardingsphere.sql.parser.sql92.visitor.format.facade.SQL92FormatSQLVisitorFacade",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.shardingsphere.sql.parser.sql92.visitor.statement.facade.SQL92StatementSQLVisitorFacade",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.shardingsphere.sql.parser.sqlserver.visitor.format.facade.SQLServerFormatSQLVisitorFacade",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.shardingsphere.sql.parser.sqlserver.visitor.statement.facade.SQLServerStatementSQLVisitorFacade",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.shardingsphere.sqlfederation.advanced.AdvancedSQLFederationExecutor",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.shardingsphere.sqlfederation.original.OriginalSQLFederationExecutor",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.shardingsphere.sqltranslator.yaml.config.YamlSQLTranslatorRuleConfiguration"
+},
+{
+  "name":"org.apache.shardingsphere.traffic.yaml.config.YamlTrafficRuleConfiguration"
+},
+{
+  "name":"org.apache.shardingsphere.transaction.yaml.config.YamlTransactionRuleConfiguration"
+},
+{
+  "name":"org.apiguardian.api.API",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"org.codehaus.groovy.reflection.stdclasses.CachedSAMClass",
+  "methods":[{"name":"coerceToSAM","parameterTypes":["groovy.lang.Closure","java.lang.reflect.Method","java.lang.Class"] }]
+},
+{
+  "name":"org.codehaus.groovy.runtime.DefaultGroovyMethodsSupport",
+  "queryAllDeclaredMethods":true
+},
+{
+  "name":"org.codehaus.groovy.runtime.DefaultGroovyStaticMethods",
+  "queryAllDeclaredMethods":true
+},
+{
+  "name":"org.codehaus.groovy.runtime.GStringImpl",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "name":"org.codehaus.groovy.runtime.GStringImplBeanInfo"
+},
+{
+  "name":"org.codehaus.groovy.runtime.GStringImplCustomizer"
+},
+{
+  "name":"org.codehaus.groovy.runtime.GeneratedClosure",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "name":"org.codehaus.groovy.runtime.GroovyCategorySupport",
+  "methods":[{"name":"hasCategoryInCurrentThread","parameterTypes":[] }]
+},
+{
+  "name":"org.codehaus.groovy.runtime.InvokerHelper",
+  "methods":[{"name":"getMetaClass","parameterTypes":["java.lang.Object"] }]
+},
+{
+  "name":"org.codehaus.groovy.runtime.NullObject"
+},
+{
+  "name":"org.codehaus.groovy.runtime.ScriptBytecodeAdapter",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"org.codehaus.groovy.runtime.callsite.CallSite",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"org.codehaus.groovy.runtime.dgm$549",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.String","org.codehaus.groovy.reflection.CachedClass","java.lang.Class","java.lang.Class[]"] }]
+},
+{
+  "name":"org.codehaus.groovy.runtime.dgmimpl.NumberNumberDiv",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.codehaus.groovy.runtime.dgmimpl.NumberNumberMinus",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.codehaus.groovy.runtime.dgmimpl.NumberNumberMultiply",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.codehaus.groovy.runtime.dgmimpl.NumberNumberPlus",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.codehaus.groovy.runtime.dgmimpl.arrays.BooleanArrayGetAtMetaMethod",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.codehaus.groovy.runtime.dgmimpl.arrays.BooleanArrayPutAtMetaMethod",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.codehaus.groovy.runtime.dgmimpl.arrays.ByteArrayGetAtMetaMethod",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.codehaus.groovy.runtime.dgmimpl.arrays.ByteArrayPutAtMetaMethod",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.codehaus.groovy.runtime.dgmimpl.arrays.CharacterArrayGetAtMetaMethod",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.codehaus.groovy.runtime.dgmimpl.arrays.CharacterArrayPutAtMetaMethod",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.codehaus.groovy.runtime.dgmimpl.arrays.DoubleArrayGetAtMetaMethod",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.codehaus.groovy.runtime.dgmimpl.arrays.DoubleArrayPutAtMetaMethod",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.codehaus.groovy.runtime.dgmimpl.arrays.FloatArrayGetAtMetaMethod",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.codehaus.groovy.runtime.dgmimpl.arrays.FloatArrayPutAtMetaMethod",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.codehaus.groovy.runtime.dgmimpl.arrays.IntegerArrayGetAtMetaMethod",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.codehaus.groovy.runtime.dgmimpl.arrays.IntegerArrayPutAtMetaMethod",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.codehaus.groovy.runtime.dgmimpl.arrays.LongArrayGetAtMetaMethod",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.codehaus.groovy.runtime.dgmimpl.arrays.LongArrayPutAtMetaMethod",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.codehaus.groovy.runtime.dgmimpl.arrays.ObjectArrayGetAtMetaMethod",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.codehaus.groovy.runtime.dgmimpl.arrays.ObjectArrayPutAtMetaMethod",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.codehaus.groovy.runtime.dgmimpl.arrays.ShortArrayGetAtMetaMethod",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.codehaus.groovy.runtime.dgmimpl.arrays.ShortArrayPutAtMetaMethod",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.codehaus.groovy.runtime.typehandling.DefaultTypeTransformation",
+  "methods":[{"name":"castToType","parameterTypes":["java.lang.Object","java.lang.Class"] }]
+},
+{
+  "name":"org.codehaus.groovy.runtime.typehandling.GroovyCastException",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Object","java.lang.Class"] }]
+},
+{
+  "name":"org.codehaus.groovy.vmplugin.v10.Java10",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.codehaus.groovy.vmplugin.v10.PluginDefaultGroovyMethods",
+  "queryAllDeclaredMethods":true
+},
+{
+  "name":"org.codehaus.groovy.vmplugin.v8.IndyGuardsFiltersAndSignatures",
+  "methods":[
+    {"name":"invokeGroovyObjectInvoker","parameterTypes":["groovy.lang.MissingMethodException","java.lang.Object","java.lang.String","java.lang.Object[]"] }, 
+    {"name":"isNull","parameterTypes":["java.lang.Object"] }, 
+    {"name":"isSameMetaClass","parameterTypes":["groovy.lang.MetaClass","java.lang.Object"] }, 
+    {"name":"sameClass","parameterTypes":["java.lang.Class","java.lang.Object"] }, 
+    {"name":"sameClasses","parameterTypes":["java.lang.Object[]","java.lang.Object[]"] }, 
+    {"name":"setBeanProperties","parameterTypes":["groovy.lang.MetaClass","java.lang.Object","java.util.Map"] }, 
+    {"name":"unwrap","parameterTypes":["groovy.lang.GroovyRuntimeException"] }, 
+    {"name":"unwrap","parameterTypes":["java.lang.Object"] }
+  ]
+},
+{
+  "name":"org.codehaus.groovy.vmplugin.v8.IndyInterface",
+  "methods":[
+    {"name":"fromCache","parameterTypes":["java.lang.invoke.MutableCallSite","java.lang.Class","java.lang.String","int","java.lang.Boolean","java.lang.Boolean","java.lang.Boolean","java.lang.Object","java.lang.Object[]"] }, 
+    {"name":"selectMethod","parameterTypes":["java.lang.invoke.MutableCallSite","java.lang.Class","java.lang.String","int","java.lang.Boolean","java.lang.Boolean","java.lang.Boolean","java.lang.Object","java.lang.Object[]"] }
+  ]
+},
+{
+  "name":"org.codehaus.groovy.vmplugin.v8.PluginDefaultGroovyMethods",
+  "queryAllDeclaredMethods":true
+},
+{
+  "name":"org.codehaus.groovy.vmplugin.v9.PluginDefaultGroovyMethods",
+  "queryAllDeclaredMethods":true
+},
+{
+  "name":"org.h2.Driver",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.locationtech.jts.geom.Geometry"
+},
+{
+  "name":"org.postgresql.Driver"
+},
+{
+  "name":"sun.misc.Unsafe",
+  "allDeclaredFields":true
+},
+{
+  "name":"sun.security.provider.MD5",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.provider.NativePRNG",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.provider.SHA",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.provider.SHA2$SHA256",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.provider.SecureRandom",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+}
+]

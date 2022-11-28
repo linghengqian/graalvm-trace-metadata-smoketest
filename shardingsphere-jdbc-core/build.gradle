@@ -29,8 +29,9 @@ test {
 graalvmNative {
     binaries {
         main {
-            buildArgs.add('--initialize-at-run-time=groovy.grape.GrapeIvy')
-            buildArgs.add('--initialize-at-build-time')
+//            buildArgs.add('--initialize-at-run-time=groovy.grape.GrapeIvy')
+//            buildArgs.add('--initialize-at-build-time')
+            buildArgs.add('--report-unsupported-elements-at-runtime')
         }
     }
     agent {
