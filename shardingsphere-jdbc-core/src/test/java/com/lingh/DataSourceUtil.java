@@ -1,26 +1,27 @@
-
 package com.lingh;
 
 import com.zaxxer.hikari.HikariDataSource;
 
 import javax.sql.DataSource;
+import java.io.File;
+import java.net.URL;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public final class DataSourceUtil {
-    
-    private static final String HOST = "localhost";
-    
-    private static final int PORT = 3306;
-    
-    private static final String USER_NAME = "root";
-    
-    private static final String PASSWORD = "";
-    
+
     public static DataSource createDataSource(final String dataSourceName) {
         HikariDataSource result = new HikariDataSource();
-        result.setDriverClassName("com.mysql.jdbc.Driver");
-        result.setJdbcUrl(String.format("jdbc:mysql://%s:%s/%s?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8", HOST, PORT, dataSourceName));
-        result.setUsername(USER_NAME);
-        result.setPassword(PASSWORD);
+        result.setDriverClassName("org.h2.Driver");
+        result.setJdbcUrl("jdbc:h2:mem:" + dataSourceName);
+        result.setUsername("root");
+        result.setPassword("");
         return result;
+    }
+
+    public static File getFile(final String fileName) {
+        URL resource = DataSourceUtil.class.getResource(fileName);
+        assertThat(resource).isNotNull();
+        return new File(resource.getFile());
     }
 }

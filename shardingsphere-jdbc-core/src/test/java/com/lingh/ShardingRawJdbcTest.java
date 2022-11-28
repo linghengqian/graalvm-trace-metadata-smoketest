@@ -1,9 +1,6 @@
 package com.lingh;
 
-import com.lingh.factory.DataSourceFactory;
-import com.lingh.factory.RangeDataSourceFactory;
-import com.lingh.factory.YamlDataSourceFactory;
-import com.lingh.factory.YamlRangeDataSourceFactory;
+import com.lingh.config.*;
 import com.lingh.repository.AddressRepositoryImpl;
 import com.lingh.repository.OrderItemRepositoryImpl;
 import com.lingh.repository.RangeOrderRepositoryImpl;
@@ -50,14 +47,43 @@ public class ShardingRawJdbcTest {
     /*
      * Please make sure primary replica data replication sync on MySQL is running correctly. Otherwise this example will query empty data from replica.
      */
+    @SuppressWarnings("ConstantConditions")
     @Test
     void testShardingRawYamlRangeConfiguration() {
         Stream.of(ShardingType.SHARDING_DATABASES, ShardingType.SHARDING_TABLES, ShardingType.SHARDING_DATABASES_AND_TABLES)
                 .forEach(shardingType -> {
                     try {
-                        DataSource dataSource = YamlRangeDataSourceFactory.newInstance(shardingType);
-                        ExampleExecuteTemplate.run(new OrderServiceImpl(dataSource));
-                        ExampleExecuteTemplate.run(new AccountServiceImpl(dataSource));
+                        DataSource dataSource;
+                        switch (shardingType) {
+                            case SHARDING_DATABASES:
+                                dataSource = YamlShardingSphereDataSourceFactory.createDataSource(DataSourceUtil.getFile("/META-INF/sharding-databases-range.yaml"));
+                                break;
+                            case SHARDING_TABLES:
+                                dataSource = YamlShardingSphereDataSourceFactory.createDataSource(DataSourceUtil.getFile("/META-INF/sharding-tables-range.yaml"));
+                                break;
+                            case SHARDING_DATABASES_AND_TABLES:
+                                dataSource = YamlShardingSphereDataSourceFactory.createDataSource(DataSourceUtil.getFile("/META-INF/sharding-databases-tables-range.yaml"));
+                                break;
+                            case SHARDING_DATABASES_INTERVAL:
+                                dataSource = YamlShardingSphereDataSourceFactory.createDataSource(DataSourceUtil.getFile("/META-INF/sharding-databases-interval.yaml"));
+                                break;
+                            default:
+                                throw new UnsupportedOperationException(shardingType.name());
+                        }
+                        ExampleService orderService = new OrderServiceImpl(dataSource);
+                        try {
+                            orderService.initEnvironment();
+                            orderService.processSuccess();
+                        } finally {
+                            orderService.cleanEnvironment();
+                        }
+                        ExampleService accountService = new AccountServiceImpl(dataSource);
+                        try {
+                            accountService.initEnvironment();
+                            accountService.processSuccess();
+                        } finally {
+                            accountService.cleanEnvironment();
+                        }
                     } catch (SQLException | IOException e) {
                         throw new RuntimeException(e);
                     }
@@ -66,14 +92,14 @@ public class ShardingRawJdbcTest {
 
     @Test
     void testShardingRawYamlIntervalConfiguration() throws SQLException, IOException {
-        DataSource dataSource = YamlRangeDataSourceFactory.newInstance(ShardingType.SHARDING_DATABASES_INTERVAL);
-        ExampleExecuteTemplate.run(new OrderStatisticsInfoServiceImpl(dataSource));
-    }
-
-    private static File getFile(final String fileName) {
-        URL resource = YamlDataSourceFactory.class.getResource(fileName);
-        assertThat(resource).isNotNull();
-        return new File(resource.getFile());
+        DataSource dataSource = YamlShardingSphereDataSourceFactory.createDataSource(DataSourceUtil.getFile("/META-INF/sharding-databases-interval.yaml"));
+        ExampleService exampleService = new OrderStatisticsInfoServiceImpl(dataSource);
+        try {
+            exampleService.initEnvironment();
+            exampleService.processSuccess();
+        } finally {
+            exampleService.cleanEnvironment();
+        }
     }
 
     /*
@@ -87,22 +113,34 @@ public class ShardingRawJdbcTest {
                         DataSource dataSource;
                         switch (shardingType) {
                             case SHARDING_DATABASES:
-                                dataSource = YamlShardingSphereDataSourceFactory.createDataSource(getFile("/META-INF/sharding-databases.yaml"));
+                                dataSource = YamlShardingSphereDataSourceFactory.createDataSource(DataSourceUtil.getFile("/META-INF/sharding-databases.yaml"));
                                 break;
                             case SHARDING_TABLES:
-                                dataSource = YamlShardingSphereDataSourceFactory.createDataSource(getFile("/META-INF/sharding-tables.yaml"));
+                                dataSource = YamlShardingSphereDataSourceFactory.createDataSource(DataSourceUtil.getFile("/META-INF/sharding-tables.yaml"));
                                 break;
                             case SHARDING_DATABASES_AND_TABLES:
-                                dataSource = YamlShardingSphereDataSourceFactory.createDataSource(getFile("/META-INF/sharding-databases-tables.yaml"));
+                                dataSource = YamlShardingSphereDataSourceFactory.createDataSource(DataSourceUtil.getFile("/META-INF/sharding-databases-tables.yaml"));
                                 break;
                             case SHARDING_AUTO_TABLES:
-                                dataSource = YamlShardingSphereDataSourceFactory.createDataSource(getFile("/META-INF/sharding-auto-tables.yaml"));
+                                dataSource = YamlShardingSphereDataSourceFactory.createDataSource(DataSourceUtil.getFile("/META-INF/sharding-auto-tables.yaml"));
                                 break;
                             default:
                                 throw new UnsupportedOperationException(shardingType.name());
                         }
-                        ExampleExecuteTemplate.run(new OrderServiceImpl(dataSource));
-                        ExampleExecuteTemplate.run(new AccountServiceImpl(dataSource));
+                        ExampleService orderService = new OrderServiceImpl(dataSource);
+                        try {
+                            orderService.initEnvironment();
+                            orderService.processSuccess();
+                        } finally {
+                            orderService.cleanEnvironment();
+                        }
+                        ExampleService accountService = new AccountServiceImpl(dataSource);
+                        try {
+                            accountService.initEnvironment();
+                            accountService.processSuccess();
+                        } finally {
+                            accountService.cleanEnvironment();
+                        }
                     } catch (SQLException | IOException e) {
                         throw new RuntimeException(e);
                     }
@@ -117,9 +155,28 @@ public class ShardingRawJdbcTest {
         Stream.of(ShardingType.SHARDING_DATABASES, ShardingType.SHARDING_TABLES, ShardingType.SHARDING_DATABASES_AND_TABLES)
                 .forEach(shardingType -> {
                     try {
-                        DataSource dataSource = RangeDataSourceFactory.newInstance(shardingType);
-                        OrderServiceImpl orderService = new OrderServiceImpl(new RangeOrderRepositoryImpl(dataSource), new OrderItemRepositoryImpl(dataSource), new AddressRepositoryImpl(dataSource));
-                        ExampleExecuteTemplate.run(orderService);
+                        DataSource dataSource;
+                        switch (shardingType) {
+                            case SHARDING_DATABASES:
+                                dataSource = new ShardingDatabasesConfigurationRange().getDataSource();
+                                break;
+                            case SHARDING_TABLES:
+                                dataSource = new ShardingTablesConfigurationRange().getDataSource();
+                                break;
+                            case SHARDING_DATABASES_AND_TABLES:
+                                dataSource = new ShardingDatabasesAndTablesConfigurationRange().getDataSource();
+                                break;
+                            default:
+                                throw new UnsupportedOperationException(shardingType.name());
+                        }
+
+                        ExampleService orderService = new OrderServiceImpl(new RangeOrderRepositoryImpl(dataSource), new OrderItemRepositoryImpl(dataSource), new AddressRepositoryImpl(dataSource));
+                        try {
+                            orderService.initEnvironment();
+                            orderService.processSuccess();
+                        } finally {
+                            orderService.cleanEnvironment();
+                        }
                     } catch (SQLException e) {
                         throw new RuntimeException(e);
                     }
@@ -134,8 +191,28 @@ public class ShardingRawJdbcTest {
         Stream.of(ShardingType.SHARDING_DATABASES, ShardingType.SHARDING_TABLES, ShardingType.SHARDING_DATABASES_AND_TABLES)
                 .forEach(shardingType -> {
                     try {
-                        DataSource dataSource = DataSourceFactory.newInstance(shardingType);
-                        ExampleExecuteTemplate.run(new OrderServiceImpl(dataSource));
+                        DataSource dataSource;
+                        switch (shardingType) {
+                            case SHARDING_DATABASES:
+                                dataSource = new ShardingDatabasesConfigurationPrecise().getDataSource();
+                                break;
+                            case SHARDING_TABLES:
+                                dataSource = new ShardingTablesConfigurationPrecise().getDataSource();
+                                break;
+                            case SHARDING_DATABASES_AND_TABLES:
+                                dataSource = new ShardingDatabasesAndTablesConfigurationPrecise().getDataSource();
+                                break;
+                            default:
+                                throw new UnsupportedOperationException(shardingType.name());
+                        }
+
+                        ExampleService exampleService = new OrderServiceImpl(dataSource);
+                        try {
+                            exampleService.initEnvironment();
+                            exampleService.processSuccess();
+                        } finally {
+                            exampleService.cleanEnvironment();
+                        }
                     } catch (SQLException e) {
                         throw new RuntimeException(e);
                     }
