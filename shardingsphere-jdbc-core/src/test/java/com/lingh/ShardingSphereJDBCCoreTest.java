@@ -127,18 +127,20 @@ public class ShardingSphereJDBCCoreTest {
                 .forEach(shardingType -> {
                     try {
                         URL resource;
-                        DataSource dataSource = null;
+                        DataSource dataSource;
                         switch (shardingType) {
                             case SHARDING_HINT_DATABASES_ONLY:
                                 resource = getClass().getResource("/META-INF/sharding-hint-databases-only.yaml");
                                 assertThat(resource).isNotNull();
                                 dataSource = YamlShardingSphereDataSourceFactory.createDataSource(new File(resource.getFile()));
+                                break;
                             case SHARDING_HINT_DATABASES_TABLES:
                                 resource = getClass().getResource("/META-INF/sharding-hint-databases-tables.yaml");
                                 assertThat(resource).isNotNull();
                                 dataSource = YamlShardingSphereDataSourceFactory.createDataSource(new File(resource.getFile()));
-//                            default:
-//                                throw new UnsupportedOperationException("unsupported type");
+                                break;
+                            default:
+                                throw new UnsupportedOperationException("unsupported type");
                         }
                         ExampleService exampleService = new OrderServiceImpl(dataSource);
                         exampleService.initEnvironment();
@@ -148,15 +150,14 @@ public class ShardingSphereJDBCCoreTest {
                             switch (shardingType) {
                                 case SHARDING_HINT_DATABASES_ONLY:
                                     hintManager.setDatabaseShardingValue(1L);
-                                    return;
+                                    break;
                                 case SHARDING_HINT_DATABASES_TABLES:
                                     hintManager.addDatabaseShardingValue("t_order", 2L);
                                     hintManager.addTableShardingValue("t_order", 1L);
-                                    return;
-//                                default:
-//                                    throw new UnsupportedOperationException("unsupported type");
+                                    break;
+                                default:
+                                    throw new UnsupportedOperationException("unsupported type");
                             }
-
                             statement.execute("select * from t_order");
                             statement.execute("SELECT i.* FROM t_order o, t_order_item i WHERE o.order_id = i.order_id");
                             statement.execute("select * from t_order_item");
