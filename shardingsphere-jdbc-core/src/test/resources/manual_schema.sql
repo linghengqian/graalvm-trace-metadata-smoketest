@@ -43,3 +43,19 @@ CREATE DATABASE shadow_demo_ds_1;
 CREATE DATABASE demo_shadow_write_ds;
 CREATE DATABASE demo_shadow_read_ds;
 CREATE DATABASE demo_read_ds;
+
+-- Execute SQL Script through logical-database connection , eg: sharding_db. Docker samples configuration in the 'conf/config-sharding.yaml' file
+-- CREATE TABLE t_order
+-- (
+--     "order_id" INT,
+--     "user_id"  INT NOT NULL,
+--     PRIMARY KEY ("order_id")
+-- );
+-- CREATE TABLE t_order_item
+-- (
+--     "order_item_id" INT,
+--     "order_id"      INT NOT NULL,
+--     "user_id"       INT NOT NULL,
+--     "status"        varchar(50),
+--     PRIMARY KEY ("order_item_id")
+-- );

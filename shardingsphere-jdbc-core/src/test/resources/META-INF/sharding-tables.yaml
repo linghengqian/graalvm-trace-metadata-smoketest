@@ -2,7 +2,7 @@ dataSources:
   ds:
     dataSourceClassName: com.zaxxer.hikari.HikariDataSource
     driverClassName: org.h2.Driver
-    jdbcUrl: jdbc:h2:mem:demo_ds;MODE=PostgreSQL;INIT=RUNSCRIPT FROM 'classpath:sql-script.sql'
+    jdbcUrl: jdbc:h2:mem:demo_ds
     username: root
     password:
 

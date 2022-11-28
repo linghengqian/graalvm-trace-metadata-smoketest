@@ -18,6 +18,7 @@ dependencies {
     testImplementation 'org.assertj:assertj-core:3.22.0'
     testImplementation 'com.h2database:h2:2.1.214'
     testImplementation 'com.zaxxer:HikariCP:5.0.1'
+    testImplementation 'ch.qos.logback:logback-classic:1.2.11'
 }
 
 test {

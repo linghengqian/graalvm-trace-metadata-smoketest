@@ -27,7 +27,7 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ShardingSphereJDBCCoreTest {
+public class ShardingRawJdbcTest {
 
     @SuppressWarnings({"SqlDialectInspection", "SqlNoDataSourceInspection"})
     @Test
@@ -70,6 +70,12 @@ public class ShardingSphereJDBCCoreTest {
         ExampleExecuteTemplate.run(new OrderStatisticsInfoServiceImpl(dataSource));
     }
 
+    private static File getFile(final String fileName) {
+        URL resource = YamlDataSourceFactory.class.getResource(fileName);
+        assertThat(resource).isNotNull();
+        return new File(resource.getFile());
+    }
+
     /*
      * Please make sure primary replica data replication sync on MySQL is running correctly. Otherwise this example will query empty data from replica.
      */
@@ -78,7 +84,23 @@ public class ShardingSphereJDBCCoreTest {
         Stream.of(ShardingType.SHARDING_DATABASES, ShardingType.SHARDING_TABLES, ShardingType.SHARDING_DATABASES_AND_TABLES, ShardingType.SHARDING_AUTO_TABLES)
                 .forEach(shardingType -> {
                     try {
-                        DataSource dataSource = YamlDataSourceFactory.newInstance(shardingType);
+                        DataSource dataSource;
+                        switch (shardingType) {
+                            case SHARDING_DATABASES:
+                                dataSource = YamlShardingSphereDataSourceFactory.createDataSource(getFile("/META-INF/sharding-databases.yaml"));
+                                break;
+                            case SHARDING_TABLES:
+                                dataSource = YamlShardingSphereDataSourceFactory.createDataSource(getFile("/META-INF/sharding-tables.yaml"));
+                                break;
+                            case SHARDING_DATABASES_AND_TABLES:
+                                dataSource = YamlShardingSphereDataSourceFactory.createDataSource(getFile("/META-INF/sharding-databases-tables.yaml"));
+                                break;
+                            case SHARDING_AUTO_TABLES:
+                                dataSource = YamlShardingSphereDataSourceFactory.createDataSource(getFile("/META-INF/sharding-auto-tables.yaml"));
+                                break;
+                            default:
+                                throw new UnsupportedOperationException(shardingType.name());
+                        }
                         ExampleExecuteTemplate.run(new OrderServiceImpl(dataSource));
                         ExampleExecuteTemplate.run(new AccountServiceImpl(dataSource));
                     } catch (SQLException | IOException e) {
