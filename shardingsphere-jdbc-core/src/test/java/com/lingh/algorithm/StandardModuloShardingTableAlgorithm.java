@@ -11,17 +11,18 @@ import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.Properties;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Getter
 public final class StandardModuloShardingTableAlgorithm implements StandardShardingAlgorithm<Long> {
-    
+
     private Properties props;
-    
+
     @Override
     public void init(final Properties props) {
         this.props = props;
     }
-    
+
     @Override
     public String doSharding(final Collection<String> tableNames, final PreciseShardingValue<Long> shardingValue) {
         for (String each : tableNames) {
@@ -31,22 +32,19 @@ public final class StandardModuloShardingTableAlgorithm implements StandardShard
         }
         throw new UnsupportedOperationException("");
     }
-    
+
     @Override
     public Collection<String> doSharding(final Collection<String> tableNames, final RangeShardingValue<Long> shardingValue) {
-        Set<String> result = new LinkedHashSet<>();
+        Set<String> result;
         if (Range.closed(200000000000000000L, 400000000000000000L).encloses(shardingValue.getValueRange())) {
-            for (String each : tableNames) {
-                if (each.endsWith("0")) {
-                    result.add(each);
-                }
-            }
+            result = tableNames.stream().filter(each -> each.endsWith("0"))
+                    .collect(Collectors.toCollection(LinkedHashSet::new));
         } else {
             throw new UnsupportedOperationException("");
         }
         return result;
     }
-    
+
     @Override
     public String getType() {
         return "STANDARD_TEST_TBL";

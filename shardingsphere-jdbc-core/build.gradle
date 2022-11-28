@@ -19,6 +19,7 @@ dependencies {
     testImplementation 'com.h2database:h2:2.1.214'
     testImplementation 'com.zaxxer:HikariCP:5.0.1'
     testImplementation 'ch.qos.logback:logback-classic:1.2.11'
+    testRuntimeOnly 'org.postgresql:postgresql:42.5.1'  // TODO why?
 }
 
 test {

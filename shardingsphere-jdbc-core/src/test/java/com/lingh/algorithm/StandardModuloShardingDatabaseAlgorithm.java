@@ -10,6 +10,7 @@ import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.Properties;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Getter
 public final class StandardModuloShardingDatabaseAlgorithm implements StandardShardingAlgorithm<Integer> {
@@ -35,11 +36,8 @@ public final class StandardModuloShardingDatabaseAlgorithm implements StandardSh
     public Collection<String> doSharding(final Collection<String> databaseNames, final RangeShardingValue<Integer> shardingValueRange) {
         Set<String> result = new LinkedHashSet<>();
         if (Range.closed(1, 5).encloses(shardingValueRange.getValueRange())) {
-            for (String each : databaseNames) {
-                if (each.endsWith("0")) {
-                    result.add(each);
-                }
-            }
+            result = databaseNames.stream()
+                    .filter(each -> each.endsWith("0")).collect(Collectors.toCollection(LinkedHashSet::new));
         } else if (Range.closed(6, 10).encloses(shardingValueRange.getValueRange())) {
             for (String each : databaseNames) {
                 if (each.endsWith("1")) {

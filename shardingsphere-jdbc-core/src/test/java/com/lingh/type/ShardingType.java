@@ -1,5 +1,3 @@
-
-
 package com.lingh.type;
 
 public enum ShardingType {
@@ -15,8 +13,6 @@ public enum ShardingType {
     SHARDING_HINT_DATABASES_ONLY,
     
     SHARDING_HINT_DATABASES_TABLES,
-    
-    READWRITE_SPLITTING_HINT,
     
     SHARDING_DATABASES_INTERVAL
 }

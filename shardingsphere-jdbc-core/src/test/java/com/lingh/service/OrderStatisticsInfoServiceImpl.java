@@ -41,14 +41,6 @@ public final class OrderStatisticsInfoServiceImpl implements ExampleService {
         System.out.println("-------------- Process Success Finish --------------");
     }
 
-    @Override
-    public void processFailure() throws SQLException {
-        System.out.println("-------------- Process Failure Begin ---------------");
-        insertData();
-        System.out.println("-------------- Process Failure Finish --------------");
-        throw new RuntimeException("Exception occur for transaction test.");
-    }
-
     private Collection<Long> insertData() throws SQLException {
         System.out.println("------------------- Insert Data --------------------");
         Collection<Long> result = new ArrayList<>(10);

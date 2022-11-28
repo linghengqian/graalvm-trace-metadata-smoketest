@@ -10,27 +10,24 @@ import java.util.Properties;
 
 @Getter
 public final class ModuloHintShardingAlgorithm implements HintShardingAlgorithm<Long> {
-    
+
     private Properties props;
-    
+
     @Override
     public void init(final Properties props) {
         this.props = props;
     }
-    
+
     @Override
     public Collection<String> doSharding(final Collection<String> availableTargetNames, final HintShardingValue<Long> shardingValue) {
         Collection<String> result = new LinkedList<>();
-        for (String each : availableTargetNames) {
-            for (Long value : shardingValue.getValues()) {
-                if (each.endsWith(String.valueOf(value % 2))) {
-                    result.add(each);
-                }
-            }
-        }
+        availableTargetNames.forEach(each -> shardingValue.getValues()
+                .stream()
+                .filter(value -> each.endsWith(String.valueOf(value % 2)))
+                .map(value -> each).forEach(result::add));
         return result;
     }
-    
+
     @Override
     public String getType() {
         return "HINT_TEST";

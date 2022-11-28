@@ -25,14 +25,7 @@ public interface ExampleService {
      * @throws SQLException SQL exception
      */
     void processSuccess() throws SQLException;
-    
-    /**
-     * Process failure.
-     * 
-     * @throws SQLException SQL exception
-     */
-    void processFailure() throws SQLException;
-    
+
     /**
      * Print data.
      * 

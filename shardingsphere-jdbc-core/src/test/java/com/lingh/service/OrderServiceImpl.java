@@ -85,29 +85,6 @@ public final class OrderServiceImpl implements ExampleService {
         System.out.println("-------------- Process Success Finish --------------");
     }
 
-    @SuppressWarnings("MismatchedQueryAndUpdateOfCollection")
-    @Override
-    public void processFailure() throws SQLException {
-        System.out.println("-------------- Process Failure Begin ---------------");
-        System.out.println("---------------------------- Insert Data ----------------------------");
-        List<Long> result = new ArrayList<>(10);
-        for (int i = 1; i <= 10; i++) {
-            Order order = new Order();
-            order.setUserId(i);
-            order.setAddressId(i);
-            order.setStatus("INSERT_TEST");
-            orderRepository.insert(order);
-            OrderItem item = new OrderItem();
-            item.setOrderId(order.getOrderId());
-            item.setUserId(i);
-            item.setStatus("INSERT_TEST");
-            orderItemRepository.insert(item);
-            result.add(order.getOrderId());
-        }
-        System.out.println("-------------- Process Failure Finish --------------");
-        throw new RuntimeException("Exception occur for transaction test.");
-    }
-
     @Override
     public void printData() throws SQLException {
         System.out.println("---------------------------- Print Order Data -----------------------");
