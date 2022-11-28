@@ -4,13 +4,13 @@ dataSources:
   ds_0:
     dataSourceClassName: com.zaxxer.hikari.HikariDataSource
     driverClassName: org.h2.Driver
-    jdbcUrl: jdbc:h2:mem:demo_ds_0;MODE=MYSQL;DATABASE_TO_LOWER=TRUE;INIT=RUNSCRIPT FROM 'classpath:sql-script.sql'
+    jdbcUrl: jdbc:h2:mem:demo_ds_0;MODE=PostgreSQL;INIT=RUNSCRIPT FROM 'classpath:sql-script.sql'
     username: root
     password:
   ds_1:
     dataSourceClassName: com.zaxxer.hikari.HikariDataSource
     driverClassName: org.h2.Driver
-    jdbcUrl: jdbc:h2:mem:demo_ds_1;MODE=MYSQL;DATABASE_TO_LOWER=TRUE;INIT=RUNSCRIPT FROM 'classpath:sql-script.sql'
+    jdbcUrl: jdbc:h2:mem:demo_ds_1;MODE=PostgreSQL;INIT=RUNSCRIPT FROM 'classpath:sql-script.sql'
     username: root
     password:
 
