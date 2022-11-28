@@ -47,5 +47,8 @@ graalvmNative {
             inputTaskNames.add("test")
             outputDirectories.add("src/test/resources/META-INF/native-image/org.apache.shardingsphere/shardingsphere-jdbc-core")
         }
+        metadataRepository {
+            enabled = true
+        }
     }
 }

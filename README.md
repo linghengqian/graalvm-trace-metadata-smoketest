@@ -26,6 +26,7 @@ cd ./vertx-core/
 cd ./groovy/
 cd ./hazelcast/
 cd ./ehcache/
+cd ./shardingsphere-jdbc-core/
 ```
 
 - exec.
