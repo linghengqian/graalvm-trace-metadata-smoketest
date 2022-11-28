@@ -1,5 +1,3 @@
-
-
 package com.lingh.hint;
 
 import lombok.Getter;

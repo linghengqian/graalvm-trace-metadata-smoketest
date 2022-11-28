@@ -1,3 +1,2 @@
-
- 
-org.apache.shardingsphere.example.sharding.raw.jdbc.hint.ModuloHintShardingAlgorithm
+com.lingh.hint.ModuloHintShardingAlgorithm
+com.lingh.algorithm.StandardModuloShardingDatabaseAlgorithm

@@ -4,7 +4,12 @@ package com.lingh.service;
 import com.lingh.entity.Address;
 import com.lingh.entity.Order;
 import com.lingh.entity.OrderItem;
-import com.lingh.repository.*;
+import com.lingh.repository.AddressRepository;
+import com.lingh.repository.AddressRepositoryImpl;
+import com.lingh.repository.OrderItemRepository;
+import com.lingh.repository.OrderItemRepositoryImpl;
+import com.lingh.repository.OrderRepository;
+import com.lingh.repository.OrderRepositoryImpl;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
@@ -14,9 +19,7 @@ import java.util.List;
 public final class OrderServiceImpl implements ExampleService {
 
     private final OrderRepository orderRepository;
-
     private final OrderItemRepository orderItemRepository;
-
     private final AddressRepository addressRepository;
 
     public OrderServiceImpl(final DataSource dataSource) {
@@ -37,26 +40,14 @@ public final class OrderServiceImpl implements ExampleService {
         orderItemRepository.createTableIfNotExists();
         orderRepository.truncateTable();
         orderItemRepository.truncateTable();
-        initAddressTable();
-    }
-
-    private void initAddressTable() throws SQLException {
         addressRepository.createTableIfNotExists();
         addressRepository.truncateTable();
-        initAddressData();
-    }
-
-    private void initAddressData() throws SQLException {
         for (int i = 0; i < 10; i++) {
-            insertAddress(i);
+            Address address = new Address();
+            address.setAddressId((long) i);
+            address.setAddressName("address_" + i);
+            addressRepository.insert(address);
         }
-    }
-
-    private void insertAddress(final int i) throws SQLException {
-        Address address = new Address();
-        address.setAddressId((long) i);
-        address.setAddressName("address_" + i);
-        addressRepository.insert(address);
     }
 
     @Override
@@ -69,66 +60,59 @@ public final class OrderServiceImpl implements ExampleService {
     @Override
     public void processSuccess() throws SQLException {
         System.out.println("-------------- Process Success Begin ---------------");
-        List<Long> orderIds = insertData();
-        printData();
-        deleteData(orderIds);
-        printData();
-        System.out.println("-------------- Process Success Finish --------------");
-    }
-
-    @Override
-    public void processFailure() throws SQLException {
-        System.out.println("-------------- Process Failure Begin ---------------");
-        insertData();
-        System.out.println("-------------- Process Failure Finish --------------");
-        throw new RuntimeException("Exception occur for transaction test.");
-    }
-
-    private List<Long> insertData() throws SQLException {
         System.out.println("---------------------------- Insert Data ----------------------------");
-        List<Long> result = new ArrayList<>(10);
+        List<Long> orderIds = new ArrayList<>(10);
         for (int i = 1; i <= 10; i++) {
-            Order order = insertOrder(i);
-            insertOrderItem(i, order);
-            result.add(order.getOrderId());
+            Order order = new Order();
+            order.setUserId(i);
+            order.setAddressId(i);
+            order.setStatus("INSERT_TEST");
+            orderRepository.insert(order);
+            OrderItem item = new OrderItem();
+            item.setOrderId(order.getOrderId());
+            item.setUserId(i);
+            item.setStatus("INSERT_TEST");
+            orderItemRepository.insert(item);
+            orderIds.add(order.getOrderId());
         }
-        return result;
-    }
-
-    private Order insertOrder(final int i) throws SQLException {
-        Order order = new Order();
-        order.setUserId(i);
-        order.setAddressId(i);
-        order.setStatus("INSERT_TEST");
-        orderRepository.insert(order);
-        return order;
-    }
-
-    private void insertOrderItem(final int i, final Order order) throws SQLException {
-        OrderItem item = new OrderItem();
-        item.setOrderId(order.getOrderId());
-        item.setUserId(i);
-        item.setStatus("INSERT_TEST");
-        orderItemRepository.insert(item);
-    }
-
-    private void deleteData(final List<Long> orderIds) throws SQLException {
+        printData();
         System.out.println("---------------------------- Delete Data ----------------------------");
         for (Long each : orderIds) {
             orderRepository.delete(each);
             orderItemRepository.delete(each);
         }
+        printData();
+        System.out.println("-------------- Process Success Finish --------------");
+    }
+
+    @SuppressWarnings("MismatchedQueryAndUpdateOfCollection")
+    @Override
+    public void processFailure() throws SQLException {
+        System.out.println("-------------- Process Failure Begin ---------------");
+        System.out.println("---------------------------- Insert Data ----------------------------");
+        List<Long> result = new ArrayList<>(10);
+        for (int i = 1; i <= 10; i++) {
+            Order order = new Order();
+            order.setUserId(i);
+            order.setAddressId(i);
+            order.setStatus("INSERT_TEST");
+            orderRepository.insert(order);
+            OrderItem item = new OrderItem();
+            item.setOrderId(order.getOrderId());
+            item.setUserId(i);
+            item.setStatus("INSERT_TEST");
+            orderItemRepository.insert(item);
+            result.add(order.getOrderId());
+        }
+        System.out.println("-------------- Process Failure Finish --------------");
+        throw new RuntimeException("Exception occur for transaction test.");
     }
 
     @Override
     public void printData() throws SQLException {
         System.out.println("---------------------------- Print Order Data -----------------------");
-        for (Object each : orderRepository.selectAll()) {
-            System.out.println(each);
-        }
+        orderRepository.selectAll().forEach(System.out::println);
         System.out.println("---------------------------- Print OrderItem Data -------------------");
-        for (Object each : orderItemRepository.selectAll()) {
-            System.out.println(each);
-        }
+        orderItemRepository.selectAll().forEach(System.out::println);
     }
 }

@@ -44,9 +44,6 @@ public class ShardingRawJdbcTest {
         exampleService.cleanEnvironment();
     }
 
-    /*
-     * Please make sure primary replica data replication sync on MySQL is running correctly. Otherwise this example will query empty data from replica.
-     */
     @SuppressWarnings("ConstantConditions")
     @Test
     void testShardingRawYamlRangeConfiguration() {
