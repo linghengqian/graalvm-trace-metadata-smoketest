@@ -1,8 +1,20 @@
 package com.lingh;
 
-import com.lingh.config.*;
-import com.lingh.entity.*;
-import com.lingh.repository.*;
+import com.lingh.config.ShardingDatabasesAndTablesConfigurationPrecise;
+import com.lingh.config.ShardingDatabasesAndTablesConfigurationRange;
+import com.lingh.config.ShardingDatabasesConfigurationPrecise;
+import com.lingh.config.ShardingDatabasesConfigurationRange;
+import com.lingh.config.ShardingTablesConfigurationPrecise;
+import com.lingh.config.ShardingTablesConfigurationRange;
+import com.lingh.entity.Account;
+import com.lingh.entity.Address;
+import com.lingh.entity.Order;
+import com.lingh.entity.OrderItem;
+import com.lingh.entity.OrderStatisticsInfo;
+import com.lingh.repository.OrderItemRepository;
+import com.lingh.repository.OrderItemRepositoryImpl;
+import com.lingh.repository.OrderRepository;
+import com.lingh.repository.OrderRepositoryImpl;
 import com.lingh.type.ShardingType;
 import org.apache.shardingsphere.driver.api.yaml.YamlShardingSphereDataSourceFactory;
 import org.apache.shardingsphere.infra.hint.HintManager;
@@ -188,7 +200,6 @@ public class ShardingRawJdbcTest {
                                 statement.executeUpdate("DROP TABLE t_address");
                             }
                         }
-                        AccountRepository accountRepository = new AccountRepositoryImpl(dataSource);
                         try {
                             try (Connection connection = dataSource.getConnection();
                                  Statement statement = connection.createStatement()) {
@@ -217,7 +228,19 @@ public class ShardingRawJdbcTest {
                                 result.add(account.getAccountId());
                             }
                             System.out.println("---------------------------- Print Account Data -----------------------");
-                            accountRepository.selectAll().forEach(System.out::println);
+                            List<Account> anotherResult = new LinkedList<>();
+                            try (Connection connection = dataSource.getConnection();
+                                 PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM t_account");
+                                 ResultSet resultSet = preparedStatement.executeQuery()) {
+                                while (resultSet.next()) {
+                                    Account account = new Account();
+                                    account.setAccountId(resultSet.getLong(1));
+                                    account.setUserId(resultSet.getInt(2));
+                                    account.setStatus(resultSet.getString(3));
+                                    anotherResult.add(account);
+                                }
+                            }
+                            anotherResult.forEach(System.out::println);
                             System.out.println("---------------------------- Delete Data ----------------------------");
                             for (Long each : result) {
                                 try (Connection connection = dataSource.getConnection();
@@ -228,7 +251,19 @@ public class ShardingRawJdbcTest {
                                 }
                             }
                             System.out.println("---------------------------- Print Account Data -----------------------");
-                            accountRepository.selectAll().forEach(System.out::println);
+                            List<Account> oneResult = new LinkedList<>();
+                            try (Connection connection = dataSource.getConnection();
+                                 PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM t_account");
+                                 ResultSet resultSet = preparedStatement.executeQuery()) {
+                                while (resultSet.next()) {
+                                    Account account = new Account();
+                                    account.setAccountId(resultSet.getLong(1));
+                                    account.setUserId(resultSet.getInt(2));
+                                    account.setStatus(resultSet.getString(3));
+                                    oneResult.add(account);
+                                }
+                            }
+                            oneResult.forEach(System.out::println);
                             System.out.println("-------------- Process Success Finish --------------");
                         } finally {
                             try (Connection connection = dataSource.getConnection();
@@ -245,10 +280,12 @@ public class ShardingRawJdbcTest {
     @Test
     void testShardingRawYamlIntervalConfiguration() throws SQLException, IOException {
         DataSource dataSource = YamlShardingSphereDataSourceFactory.createDataSource(DataSourceUtil.getFile("/META-INF/sharding-databases-interval.yaml"));
-        OrderStatisticsInfoRepository orderStatisticsInfoRepository = new OrderStatisticsInfoRepositoryImpl(dataSource);
         try {
-            orderStatisticsInfoRepository.createTableIfNotExists();
-            orderStatisticsInfoRepository.truncateTable();
+            try (Connection connection = dataSource.getConnection();
+                 Statement statement = connection.createStatement()) {
+                statement.executeUpdate("CREATE TABLE IF NOT EXISTS order_statistics_info (id BIGINT NOT NULL AUTO_INCREMENT, user_id BIGINT NOT NULL, order_date DATE NOT NULL, order_num INT, PRIMARY KEY (id))");
+                statement.executeUpdate("TRUNCATE TABLE order_statistics_info");
+            }
             System.out.println("-------------- Process Success Begin ---------------");
             System.out.println("------------------- Insert Data --------------------");
             Collection<Long> result = new ArrayList<>(10);
@@ -261,26 +298,70 @@ public class ShardingRawJdbcTest {
                     tempResult.setOrderDate(LocalDate.now());
                 }
                 tempResult.setOrderNum(i * 10);
-                orderStatisticsInfoRepository.insert(tempResult);
+                try (Connection connection = dataSource.getConnection();
+                     PreparedStatement preparedStatement = connection.prepareStatement(
+                             "INSERT INTO order_statistics_info (user_id, order_date, order_num) VALUES (?, ?, ?)"
+                             , Statement.RETURN_GENERATED_KEYS)) {
+                    preparedStatement.setLong(1, tempResult.getUserId());
+                    preparedStatement.setDate(2, Date.valueOf(tempResult.getOrderDate()));
+                    preparedStatement.setInt(3, tempResult.getOrderNum());
+                    preparedStatement.executeUpdate();
+                    try (ResultSet resultSet = preparedStatement.getGeneratedKeys()) {
+                        if (resultSet.next()) {
+                            tempResult.setId(resultSet.getLong(1));
+                        }
+                    }
+                }
                 result.add(tempResult.getId());
             }
             System.out.println("---------------- Print Order Data ------------------");
-            orderStatisticsInfoRepository.selectAll().forEach(System.out::println);
+            List<OrderStatisticsInfo> oneResult = new LinkedList<>();
+            try (Connection connection = dataSource.getConnection();
+                 PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM order_statistics_info");
+                 ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    OrderStatisticsInfo orderStatisticsInfo = new OrderStatisticsInfo();
+                    orderStatisticsInfo.setId(resultSet.getLong(1));
+                    orderStatisticsInfo.setUserId(resultSet.getLong(2));
+                    orderStatisticsInfo.setOrderDate(resultSet.getDate(3).toLocalDate());
+                    orderStatisticsInfo.setOrderNum(resultSet.getInt(4));
+                    oneResult.add(orderStatisticsInfo);
+                }
+            }
+            oneResult.forEach(System.out::println);
             System.out.println("-------------------- Delete Data -------------------");
             for (Long each : result) {
-                orderStatisticsInfoRepository.delete(each);
+                try (Connection connection = dataSource.getConnection();
+                     PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM order_statistics_info WHERE id=?")) {
+                    preparedStatement.setLong(1, each);
+                    preparedStatement.executeUpdate();
+                }
             }
             System.out.println("---------------- Print Order Data ------------------");
-            orderStatisticsInfoRepository.selectAll().forEach(System.out::println);
+            List<OrderStatisticsInfo> anotherResult = new LinkedList<>();
+            try (Connection connection = dataSource.getConnection();
+                 PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM order_statistics_info");
+                 ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    OrderStatisticsInfo orderStatisticsInfo = new OrderStatisticsInfo();
+                    orderStatisticsInfo.setId(resultSet.getLong(1));
+                    orderStatisticsInfo.setUserId(resultSet.getLong(2));
+                    orderStatisticsInfo.setOrderDate(resultSet.getDate(3).toLocalDate());
+                    orderStatisticsInfo.setOrderNum(resultSet.getInt(4));
+                    anotherResult.add(orderStatisticsInfo);
+                }
+            }
+            anotherResult.forEach(System.out::println);
+
             System.out.println("-------------- Process Success Finish --------------");
         } finally {
-            orderStatisticsInfoRepository.dropTable();
+            try (Connection connection = dataSource.getConnection();
+                 Statement statement = connection.createStatement()) {
+                statement.executeUpdate("DROP TABLE order_statistics_info");
+            }
         }
     }
 
-    /*
-     * Please make sure primary replica data replication sync on MySQL is running correctly. Otherwise this example will query empty data from replica.
-     */
     @Test
     void testShardingRawYamlConfiguration() {
         Stream.of(ShardingType.SHARDING_DATABASES, ShardingType.SHARDING_TABLES, ShardingType.SHARDING_DATABASES_AND_TABLES, ShardingType.SHARDING_AUTO_TABLES)
@@ -303,22 +384,29 @@ public class ShardingRawJdbcTest {
                             default:
                                 throw new UnsupportedOperationException(shardingType.name());
                         }
-                        OrderRepository orderRepository = new OrderRepositoryImpl(dataSource);
                         OrderItemRepository orderItemRepository = new OrderItemRepositoryImpl(dataSource);
-                        AddressRepository addressRepository = new AddressRepositoryImpl(dataSource);
-
                         try {
-                            orderRepository.createTableIfNotExists();
-                            orderItemRepository.createTableIfNotExists();
-                            orderRepository.truncateTable();
-                            orderItemRepository.truncateTable();
-                            addressRepository.createTableIfNotExists();
-                            addressRepository.truncateTable();
+                            try (Connection connection = dataSource.getConnection();
+                                 Statement statement = connection.createStatement()) {
+                                statement.executeUpdate("CREATE TABLE IF NOT EXISTS t_order (order_id BIGINT NOT NULL AUTO_INCREMENT, user_id INT NOT NULL, address_id BIGINT NOT NULL, status VARCHAR(50), PRIMARY KEY (order_id))");
+                                statement.executeUpdate("CREATE TABLE IF NOT EXISTS t_order_item (order_item_id BIGINT NOT NULL AUTO_INCREMENT, order_id BIGINT NOT NULL, user_id INT NOT NULL, status VARCHAR(50), PRIMARY KEY (order_item_id))");
+                                statement.executeUpdate("TRUNCATE TABLE t_order");
+                                statement.executeUpdate("TRUNCATE TABLE t_order_item");
+                                statement.executeUpdate("CREATE TABLE IF NOT EXISTS t_address (address_id BIGINT NOT NULL, address_name VARCHAR(100) NOT NULL, PRIMARY KEY (address_id))");
+                                statement.executeUpdate("TRUNCATE TABLE t_address");
+                            }
+
                             for (int i = 0; i < 10; i++) {
                                 Address address = new Address();
                                 address.setAddressId((long) i);
                                 address.setAddressName("address_" + i);
-                                addressRepository.insert(address);
+                                try (Connection connection = dataSource.getConnection();
+                                     PreparedStatement preparedStatement = connection.prepareStatement(
+                                             "INSERT INTO t_address (address_id, address_name) VALUES (?, ?)")) {
+                                    preparedStatement.setLong(1, address.getAddressId());
+                                    preparedStatement.setString(2, address.getAddressName());
+                                    preparedStatement.executeUpdate();
+                                }
                             }
                             System.out.println("-------------- Process Success Begin ---------------");
                             System.out.println("---------------------------- Insert Data ----------------------------");
@@ -328,38 +416,98 @@ public class ShardingRawJdbcTest {
                                 order.setUserId(i);
                                 order.setAddressId(i);
                                 order.setStatus("INSERT_TEST");
-                                orderRepository.insert(order);
+                                try (Connection connection = dataSource.getConnection();
+                                     PreparedStatement preparedStatement = connection.prepareStatement(
+                                             "INSERT INTO t_order (user_id, address_id, status) VALUES (?, ?, ?)", Statement.RETURN_GENERATED_KEYS)) {
+                                    preparedStatement.setInt(1, order.getUserId());
+                                    preparedStatement.setLong(2, order.getAddressId());
+                                    preparedStatement.setString(3, order.getStatus());
+                                    preparedStatement.executeUpdate();
+                                    try (ResultSet resultSet = preparedStatement.getGeneratedKeys()) {
+                                        if (resultSet.next()) {
+                                            order.setOrderId(resultSet.getLong(1));
+                                        }
+                                    }
+                                }
                                 OrderItem item = new OrderItem();
                                 item.setOrderId(order.getOrderId());
                                 item.setUserId(i);
                                 item.setStatus("INSERT_TEST");
-                                orderItemRepository.insert(item);
+                                try (Connection connection = dataSource.getConnection();
+                                     PreparedStatement preparedStatement = connection.prepareStatement(
+                                             "INSERT INTO t_order_item (order_id, user_id, status) VALUES (?, ?, ?)", Statement.RETURN_GENERATED_KEYS)) {
+                                    preparedStatement.setLong(1, item.getOrderId());
+                                    preparedStatement.setInt(2, item.getUserId());
+                                    preparedStatement.setString(3, item.getStatus());
+                                    preparedStatement.executeUpdate();
+                                    try (ResultSet resultSet = preparedStatement.getGeneratedKeys()) {
+                                        if (resultSet.next()) {
+                                            item.setOrderItemId(resultSet.getLong(1));
+                                        }
+                                    }
+                                }
                                 orderIds.add(order.getOrderId());
                             }
                             System.out.println("---------------------------- Print Order Data -----------------------");
-                            orderRepository.selectAll().forEach(System.out::println);
+                            List<Order> result = new LinkedList<>();
+                            try (Connection connection = dataSource.getConnection();
+                                 PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM t_order");
+                                 ResultSet resultSet = preparedStatement.executeQuery()) {
+                                while (resultSet.next()) {
+                                    Order order = new Order();
+                                    order.setOrderId(resultSet.getLong(1));
+                                    order.setUserId(resultSet.getInt(2));
+                                    order.setAddressId(resultSet.getLong(3));
+                                    order.setStatus(resultSet.getString(4));
+                                    result.add(order);
+                                }
+                            }
+                            result.forEach(System.out::println);
                             System.out.println("---------------------------- Print OrderItem Data -------------------");
                             orderItemRepository.selectAll().forEach(System.out::println);
                             System.out.println("---------------------------- Delete Data ----------------------------");
                             for (Long each : orderIds) {
-                                orderRepository.delete(each);
-                                orderItemRepository.delete(each);
+                                try (Connection connection = dataSource.getConnection();
+                                     PreparedStatement firstPreparedStatement = connection.prepareStatement("DELETE FROM t_order WHERE order_id=?");
+                                     PreparedStatement secondPreparedStatement = connection.prepareStatement("DELETE FROM t_order_item WHERE order_id=?")) {
+                                    firstPreparedStatement.setLong(1, each);
+                                    firstPreparedStatement.executeUpdate();
+                                    secondPreparedStatement.setLong(1, each);
+                                    secondPreparedStatement.executeUpdate();
+                                }
                             }
                             System.out.println("---------------------------- Print Order Data -----------------------");
-                            orderRepository.selectAll().forEach(System.out::println);
+                            List<Order> secondResult = new LinkedList<>();
+                            try (Connection connection = dataSource.getConnection();
+                                 PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM t_order");
+                                 ResultSet resultSet = preparedStatement.executeQuery()) {
+                                while (resultSet.next()) {
+                                    Order order = new Order();
+                                    order.setOrderId(resultSet.getLong(1));
+                                    order.setUserId(resultSet.getInt(2));
+                                    order.setAddressId(resultSet.getLong(3));
+                                    order.setStatus(resultSet.getString(4));
+                                    secondResult.add(order);
+                                }
+                            }
+                            secondResult.forEach(System.out::println);
                             System.out.println("---------------------------- Print OrderItem Data -------------------");
                             orderItemRepository.selectAll().forEach(System.out::println);
                             System.out.println("-------------- Process Success Finish --------------");
                         } finally {
-                            orderRepository.dropTable();
-                            orderItemRepository.dropTable();
-                            addressRepository.dropTable();
+                            try (Connection connection = dataSource.getConnection();
+                                 Statement statement = connection.createStatement()) {
+                                statement.executeUpdate("DROP TABLE t_order");
+                                statement.executeUpdate("DROP TABLE t_order_item");
+                                statement.executeUpdate("DROP TABLE t_address");
+                            }
                         }
-                        AccountRepository accountRepository = new AccountRepositoryImpl(dataSource);
-
                         try {
-                            accountRepository.createTableIfNotExists();
-                            accountRepository.truncateTable();
+                            try (Connection connection = dataSource.getConnection();
+                                 Statement statement = connection.createStatement()) {
+                                statement.executeUpdate("CREATE TABLE IF NOT EXISTS t_account (account_id BIGINT NOT NULL AUTO_INCREMENT, user_id INT NOT NULL, status VARCHAR(50), PRIMARY KEY (account_id))");
+                                statement.executeUpdate("TRUNCATE TABLE t_account");
+                            }
                             System.out.println("-------------- Process Success Begin ---------------");
                             System.out.println("---------------------------- Insert Data ----------------------------");
                             List<Long> result = new ArrayList<>(10);
@@ -367,21 +515,64 @@ public class ShardingRawJdbcTest {
                                 Account account = new Account();
                                 account.setUserId(i);
                                 account.setStatus("INSERT_TEST");
-                                accountRepository.insert(account);
+                                try (Connection connection = dataSource.getConnection();
+                                     PreparedStatement preparedStatement = connection.prepareStatement(
+                                             "INSERT INTO t_account (user_id, status) VALUES (?, ?)", Statement.RETURN_GENERATED_KEYS)) {
+                                    preparedStatement.setInt(1, account.getUserId());
+                                    preparedStatement.setString(2, account.getStatus());
+                                    preparedStatement.executeUpdate();
+                                    try (ResultSet resultSet = preparedStatement.getGeneratedKeys()) {
+                                        if (resultSet.next()) {
+                                            account.setAccountId(resultSet.getLong(1));
+                                        }
+                                    }
+                                }
                                 result.add(account.getAccountId());
                             }
                             System.out.println("---------------------------- Print Account Data -----------------------");
-                            accountRepository.selectAll().forEach(System.out::println);
+                            List<Account> anotherResult = new LinkedList<>();
+                            try (Connection connection = dataSource.getConnection();
+                                 PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM t_account");
+                                 ResultSet resultSet = preparedStatement.executeQuery()) {
+                                while (resultSet.next()) {
+                                    Account account = new Account();
+                                    account.setAccountId(resultSet.getLong(1));
+                                    account.setUserId(resultSet.getInt(2));
+                                    account.setStatus(resultSet.getString(3));
+                                    anotherResult.add(account);
+                                }
+                            }
+                            anotherResult.forEach(System.out::println);
                             System.out.println("---------------------------- Delete Data ----------------------------");
                             for (Long each : result) {
-                                accountRepository.delete(each);
+                                try (Connection connection = dataSource.getConnection();
+                                     PreparedStatement preparedStatement = connection.prepareStatement(
+                                             "DELETE FROM t_account WHERE account_id=?")) {
+                                    preparedStatement.setLong(1, each);
+                                    preparedStatement.executeUpdate();
+                                }
                             }
                             System.out.println("---------------------------- Print Account Data -----------------------");
-                            accountRepository.selectAll().forEach(System.out::println);
+                            List<Account> oneResult = new LinkedList<>();
+                            try (Connection connection = dataSource.getConnection();
+                                 PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM t_account");
+                                 ResultSet resultSet = preparedStatement.executeQuery()) {
+                                while (resultSet.next()) {
+                                    Account account = new Account();
+                                    account.setAccountId(resultSet.getLong(1));
+                                    account.setUserId(resultSet.getInt(2));
+                                    account.setStatus(resultSet.getString(3));
+                                    oneResult.add(account);
+                                }
+                            }
+                            oneResult.forEach(System.out::println);
                             System.out.println("-------------- Process Success Finish --------------");
 
                         } finally {
-                            accountRepository.dropTable();
+                            try (Connection connection = dataSource.getConnection();
+                                 Statement statement = connection.createStatement()) {
+                                statement.executeUpdate("DROP TABLE t_account");
+                            }
                         }
                     } catch (SQLException | IOException e) {
                         throw new RuntimeException(e);
@@ -408,23 +599,28 @@ public class ShardingRawJdbcTest {
                             default:
                                 throw new UnsupportedOperationException(shardingType.name());
                         }
-
-                        OrderRepository orderRepository = new RangeOrderRepositoryImpl(dataSource);
                         OrderItemRepository orderItemRepository = new OrderItemRepositoryImpl(dataSource);
-                        AddressRepository addressRepository = new AddressRepositoryImpl(dataSource);
-
                         try {
-                            orderRepository.createTableIfNotExists();
-                            orderItemRepository.createTableIfNotExists();
-                            orderRepository.truncateTable();
-                            orderItemRepository.truncateTable();
-                            addressRepository.createTableIfNotExists();
-                            addressRepository.truncateTable();
+                            try (Connection connection = dataSource.getConnection();
+                                 Statement statement = connection.createStatement()) {
+                                statement.executeUpdate("CREATE TABLE IF NOT EXISTS t_order (order_id BIGINT NOT NULL AUTO_INCREMENT, user_id INT NOT NULL, address_id BIGINT NOT NULL, status VARCHAR(50), PRIMARY KEY (order_id))");
+                                statement.executeUpdate("CREATE TABLE IF NOT EXISTS t_order_item (order_item_id BIGINT NOT NULL AUTO_INCREMENT, order_id BIGINT NOT NULL, user_id INT NOT NULL, status VARCHAR(50), PRIMARY KEY (order_item_id))");
+                                statement.executeUpdate("TRUNCATE TABLE t_order");
+                                statement.executeUpdate("TRUNCATE TABLE t_order_item");
+                                statement.executeUpdate("CREATE TABLE IF NOT EXISTS t_address (address_id BIGINT NOT NULL, address_name VARCHAR(100) NOT NULL, PRIMARY KEY (address_id))");
+                                statement.executeUpdate("TRUNCATE TABLE t_address");
+                            }
                             for (int i = 0; i < 10; i++) {
                                 Address address = new Address();
                                 address.setAddressId((long) i);
                                 address.setAddressName("address_" + i);
-                                addressRepository.insert(address);
+                                try (Connection connection = dataSource.getConnection();
+                                     PreparedStatement preparedStatement = connection.prepareStatement(
+                                             "INSERT INTO t_address (address_id, address_name) VALUES (?, ?)")) {
+                                    preparedStatement.setLong(1, address.getAddressId());
+                                    preparedStatement.setString(2, address.getAddressName());
+                                    preparedStatement.executeUpdate();
+                                }
                             }
 
                             System.out.println("-------------- Process Success Begin ---------------");
@@ -435,33 +631,91 @@ public class ShardingRawJdbcTest {
                                 order.setUserId(i);
                                 order.setAddressId(i);
                                 order.setStatus("INSERT_TEST");
-                                orderRepository.insert(order);
+                                try (Connection connection = dataSource.getConnection();
+                                     PreparedStatement preparedStatement = connection.prepareStatement(
+                                             "INSERT INTO t_order (user_id, address_id, status) VALUES (?, ?, ?)", Statement.RETURN_GENERATED_KEYS)) {
+                                    preparedStatement.setInt(1, order.getUserId());
+                                    preparedStatement.setLong(2, order.getAddressId());
+                                    preparedStatement.setString(3, order.getStatus());
+                                    preparedStatement.executeUpdate();
+                                    try (ResultSet resultSet = preparedStatement.getGeneratedKeys()) {
+                                        if (resultSet.next()) {
+                                            order.setOrderId(resultSet.getLong(1));
+                                        }
+                                    }
+                                }
                                 OrderItem item = new OrderItem();
                                 item.setOrderId(order.getOrderId());
                                 item.setUserId(i);
                                 item.setStatus("INSERT_TEST");
-                                orderItemRepository.insert(item);
+                                try (Connection connection = dataSource.getConnection();
+                                     PreparedStatement preparedStatement = connection.prepareStatement(
+                                             "INSERT INTO t_order_item (order_id, user_id, status) VALUES (?, ?, ?)", Statement.RETURN_GENERATED_KEYS)) {
+                                    preparedStatement.setLong(1, item.getOrderId());
+                                    preparedStatement.setInt(2, item.getUserId());
+                                    preparedStatement.setString(3, item.getStatus());
+                                    preparedStatement.executeUpdate();
+                                    try (ResultSet resultSet = preparedStatement.getGeneratedKeys()) {
+                                        if (resultSet.next()) {
+                                            item.setOrderItemId(resultSet.getLong(1));
+                                        }
+                                    }
+                                }
                                 orderIds.add(order.getOrderId());
                             }
                             System.out.println("---------------------------- Print Order Data -----------------------");
-                            orderRepository.selectAll().forEach(System.out::println);
+                            List<Order> result = new LinkedList<>();
+                            try (Connection connection = dataSource.getConnection();
+                                 PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM t_order WHERE order_id BETWEEN 200000000000000000 AND 400000000000000000");
+                                 ResultSet resultSet = preparedStatement.executeQuery()) {
+                                while (resultSet.next()) {
+                                    Order order = new Order();
+                                    order.setOrderId(resultSet.getLong(1));
+                                    order.setUserId(resultSet.getInt(2));
+                                    order.setAddressId(resultSet.getLong(3));
+                                    order.setStatus(resultSet.getString(4));
+                                    result.add(order);
+                                }
+                            }
+                            result.forEach(System.out::println);
                             System.out.println("---------------------------- Print OrderItem Data -------------------");
                             orderItemRepository.selectAll().forEach(System.out::println);
                             System.out.println("---------------------------- Delete Data ----------------------------");
                             for (Long each : orderIds) {
-                                orderRepository.delete(each);
-                                orderItemRepository.delete(each);
+                                try (Connection connection = dataSource.getConnection();
+                                     PreparedStatement firstPreparedStatement = connection.prepareStatement("DELETE FROM t_order WHERE order_id=?");
+                                     PreparedStatement secondPreparedStatement = connection.prepareStatement("DELETE FROM t_order_item WHERE order_id=?")) {
+                                    firstPreparedStatement.setLong(1, each);
+                                    firstPreparedStatement.executeUpdate();
+                                    secondPreparedStatement.setLong(1, each);
+                                    secondPreparedStatement.executeUpdate();
+                                }
                             }
                             System.out.println("---------------------------- Print Order Data -----------------------");
-                            orderRepository.selectAll().forEach(System.out::println);
+                            List<Order> secondResult = new LinkedList<>();
+                            try (Connection connection = dataSource.getConnection();
+                                 PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM t_order WHERE order_id BETWEEN 200000000000000000 AND 400000000000000000");
+                                 ResultSet resultSet = preparedStatement.executeQuery()) {
+                                while (resultSet.next()) {
+                                    Order order = new Order();
+                                    order.setOrderId(resultSet.getLong(1));
+                                    order.setUserId(resultSet.getInt(2));
+                                    order.setAddressId(resultSet.getLong(3));
+                                    order.setStatus(resultSet.getString(4));
+                                    secondResult.add(order);
+                                }
+                            }
+                            secondResult.forEach(System.out::println);
                             System.out.println("---------------------------- Print OrderItem Data -------------------");
                             orderItemRepository.selectAll().forEach(System.out::println);
                             System.out.println("-------------- Process Success Finish --------------");
-
                         } finally {
-                            orderRepository.dropTable();
-                            orderItemRepository.dropTable();
-                            addressRepository.dropTable();
+                            try (Connection connection = dataSource.getConnection();
+                                 Statement statement = connection.createStatement()) {
+                                statement.executeUpdate("DROP TABLE t_order");
+                                statement.executeUpdate("DROP TABLE t_order_item");
+                                statement.executeUpdate("DROP TABLE t_address");
+                            }
                         }
                     } catch (SQLException e) {
                         throw new RuntimeException(e);
