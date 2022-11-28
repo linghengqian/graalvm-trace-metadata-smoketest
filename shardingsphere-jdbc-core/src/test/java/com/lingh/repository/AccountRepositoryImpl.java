@@ -9,6 +9,7 @@ import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
 
+@SuppressWarnings({"SqlNoDataSourceInspection", "SqlResolve"})
 public class AccountRepositoryImpl implements AccountRepository {
 
     private final DataSource dataSource;
