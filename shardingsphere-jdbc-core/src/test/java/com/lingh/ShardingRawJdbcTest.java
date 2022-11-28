@@ -11,10 +11,6 @@ import com.lingh.entity.Address;
 import com.lingh.entity.Order;
 import com.lingh.entity.OrderItem;
 import com.lingh.entity.OrderStatisticsInfo;
-import com.lingh.repository.OrderItemRepository;
-import com.lingh.repository.OrderItemRepositoryImpl;
-import com.lingh.repository.OrderRepository;
-import com.lingh.repository.OrderRepositoryImpl;
 import com.lingh.type.ShardingType;
 import org.apache.shardingsphere.driver.api.yaml.YamlShardingSphereDataSourceFactory;
 import org.apache.shardingsphere.infra.hint.HintManager;
@@ -98,8 +94,6 @@ public class ShardingRawJdbcTest {
                             default:
                                 throw new UnsupportedOperationException(shardingType.name());
                         }
-                        OrderRepository orderRepository = new OrderRepositoryImpl(dataSource);
-                        OrderItemRepository orderItemRepository = new OrderItemRepositoryImpl(dataSource);
                         try {
                             try (Connection connection = dataSource.getConnection();
                                  Statement statement = connection.createStatement()) {
@@ -181,16 +175,69 @@ public class ShardingRawJdbcTest {
                             }
                             result.forEach(System.out::println);
                             System.out.println("---------------------------- Print OrderItem Data -------------------");
-                            orderItemRepository.selectAll().forEach(System.out::println);
+// TODO Associated query with encrypt may query and decrypt failed. see https://github.com/apache/shardingsphere/issues/3352
+//        String sql = "SELECT i.* FROM t_order o, t_order_item i WHERE o.order_id = i.order_id";
+//        String sql = "SELECT * FROM t_order_item";
+                            List<OrderItem> anotherResult = new LinkedList<>();
+                            try (Connection connection = dataSource.getConnection();
+                                 PreparedStatement preparedStatement = connection.prepareStatement("SELECT i.* FROM t_order o, t_order_item i WHERE o.order_id = i.order_id");
+                                 ResultSet resultSet = preparedStatement.executeQuery()) {
+                                while (resultSet.next()) {
+                                    OrderItem orderItem = new OrderItem();
+                                    orderItem.setOrderItemId(resultSet.getLong(1));
+                                    orderItem.setOrderId(resultSet.getLong(2));
+                                    orderItem.setUserId(resultSet.getInt(3));
+                                    orderItem.setStatus(resultSet.getString(4));
+                                    anotherResult.add(orderItem);
+                                }
+                            }
+                            anotherResult.forEach(System.out::println);
                             System.out.println("---------------------------- Delete Data ----------------------------");
                             for (Long each : orderIds) {
-                                orderRepository.delete(each);
-                                orderItemRepository.delete(each);
+                                try (Connection connection = dataSource.getConnection();
+                                     PreparedStatement firstPreparedStatement = connection.prepareStatement("DELETE FROM t_order WHERE order_id=?");
+                                     PreparedStatement secondPreparedStatement = connection.prepareStatement("DELETE FROM t_order_item WHERE order_id=?")) {
+                                    firstPreparedStatement.setLong(1, each);
+                                    firstPreparedStatement.executeUpdate();
+                                    secondPreparedStatement.setLong(1, each);
+                                    secondPreparedStatement.executeUpdate();
+                                }
                             }
                             System.out.println("---------------------------- Print Order Data -----------------------");
-                            orderRepository.selectAll().forEach(System.out::println);
+                            List<Order> secondResult = new LinkedList<>();
+                            try (Connection connection = dataSource.getConnection();
+                                 PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM t_order");
+                                 ResultSet resultSet = preparedStatement.executeQuery()) {
+                                while (resultSet.next()) {
+                                    Order order = new Order();
+                                    order.setOrderId(resultSet.getLong(1));
+                                    order.setUserId(resultSet.getInt(2));
+                                    order.setAddressId(resultSet.getLong(3));
+                                    order.setStatus(resultSet.getString(4));
+                                    secondResult.add(order);
+                                }
+                            }
+                            secondResult.forEach(System.out::println);
                             System.out.println("---------------------------- Print OrderItem Data -------------------");
-                            orderItemRepository.selectAll().forEach(System.out::println);
+                            // TODO Associated query with encrypt may query and decrypt failed. see https://github.com/apache/shardingsphere/issues/3352
+//        String sql = "SELECT i.* FROM t_order o, t_order_item i WHERE o.order_id = i.order_id";
+//        String sql = "SELECT * FROM t_order_item";
+                            List<OrderItem> thirdResult = new LinkedList<>();
+                            try (Connection connection = dataSource.getConnection();
+                                 PreparedStatement preparedStatement = connection.prepareStatement("SELECT i.* FROM t_order o, t_order_item i WHERE o.order_id = i.order_id");
+                                 ResultSet resultSet = preparedStatement.executeQuery()) {
+                                while (resultSet.next()) {
+                                    OrderItem orderItem = new OrderItem();
+                                    orderItem.setOrderItemId(resultSet.getLong(1));
+                                    orderItem.setOrderId(resultSet.getLong(2));
+                                    orderItem.setUserId(resultSet.getInt(3));
+                                    orderItem.setStatus(resultSet.getString(4));
+                                    thirdResult.add(orderItem);
+                                }
+                            }
+                            thirdResult.forEach(System.out::println);
+
+
                             System.out.println("-------------- Process Success Finish --------------");
                         } finally {
                             try (Connection connection = dataSource.getConnection();
@@ -384,7 +431,6 @@ public class ShardingRawJdbcTest {
                             default:
                                 throw new UnsupportedOperationException(shardingType.name());
                         }
-                        OrderItemRepository orderItemRepository = new OrderItemRepositoryImpl(dataSource);
                         try {
                             try (Connection connection = dataSource.getConnection();
                                  Statement statement = connection.createStatement()) {
@@ -464,7 +510,23 @@ public class ShardingRawJdbcTest {
                             }
                             result.forEach(System.out::println);
                             System.out.println("---------------------------- Print OrderItem Data -------------------");
-                            orderItemRepository.selectAll().forEach(System.out::println);
+                            // TODO Associated query with encrypt may query and decrypt failed. see https://github.com/apache/shardingsphere/issues/3352
+//        String sql = "SELECT i.* FROM t_order o, t_order_item i WHERE o.order_id = i.order_id";
+//        String sql = "SELECT * FROM t_order_item";
+                            List<OrderItem> thirdResult = new LinkedList<>();
+                            try (Connection connection = dataSource.getConnection();
+                                 PreparedStatement preparedStatement = connection.prepareStatement("SELECT i.* FROM t_order o, t_order_item i WHERE o.order_id = i.order_id");
+                                 ResultSet resultSet = preparedStatement.executeQuery()) {
+                                while (resultSet.next()) {
+                                    OrderItem orderItem = new OrderItem();
+                                    orderItem.setOrderItemId(resultSet.getLong(1));
+                                    orderItem.setOrderId(resultSet.getLong(2));
+                                    orderItem.setUserId(resultSet.getInt(3));
+                                    orderItem.setStatus(resultSet.getString(4));
+                                    thirdResult.add(orderItem);
+                                }
+                            }
+                            thirdResult.forEach(System.out::println);
                             System.out.println("---------------------------- Delete Data ----------------------------");
                             for (Long each : orderIds) {
                                 try (Connection connection = dataSource.getConnection();
@@ -492,7 +554,23 @@ public class ShardingRawJdbcTest {
                             }
                             secondResult.forEach(System.out::println);
                             System.out.println("---------------------------- Print OrderItem Data -------------------");
-                            orderItemRepository.selectAll().forEach(System.out::println);
+                            // TODO Associated query with encrypt may query and decrypt failed. see https://github.com/apache/shardingsphere/issues/3352
+//        String sql = "SELECT i.* FROM t_order o, t_order_item i WHERE o.order_id = i.order_id";
+//        String sql = "SELECT * FROM t_order_item";
+                            List<OrderItem> anotherResult = new LinkedList<>();
+                            try (Connection connection = dataSource.getConnection();
+                                 PreparedStatement preparedStatement = connection.prepareStatement("SELECT i.* FROM t_order o, t_order_item i WHERE o.order_id = i.order_id");
+                                 ResultSet resultSet = preparedStatement.executeQuery()) {
+                                while (resultSet.next()) {
+                                    OrderItem orderItem = new OrderItem();
+                                    orderItem.setOrderItemId(resultSet.getLong(1));
+                                    orderItem.setOrderId(resultSet.getLong(2));
+                                    orderItem.setUserId(resultSet.getInt(3));
+                                    orderItem.setStatus(resultSet.getString(4));
+                                    anotherResult.add(orderItem);
+                                }
+                            }
+                            anotherResult.forEach(System.out::println);
                             System.out.println("-------------- Process Success Finish --------------");
                         } finally {
                             try (Connection connection = dataSource.getConnection();
@@ -599,7 +677,6 @@ public class ShardingRawJdbcTest {
                             default:
                                 throw new UnsupportedOperationException(shardingType.name());
                         }
-                        OrderItemRepository orderItemRepository = new OrderItemRepositoryImpl(dataSource);
                         try {
                             try (Connection connection = dataSource.getConnection();
                                  Statement statement = connection.createStatement()) {
@@ -679,7 +756,23 @@ public class ShardingRawJdbcTest {
                             }
                             result.forEach(System.out::println);
                             System.out.println("---------------------------- Print OrderItem Data -------------------");
-                            orderItemRepository.selectAll().forEach(System.out::println);
+                            // TODO Associated query with encrypt may query and decrypt failed. see https://github.com/apache/shardingsphere/issues/3352
+//        String sql = "SELECT i.* FROM t_order o, t_order_item i WHERE o.order_id = i.order_id";
+//        String sql = "SELECT * FROM t_order_item";
+                            List<OrderItem> anotherResult = new LinkedList<>();
+                            try (Connection connection = dataSource.getConnection();
+                                 PreparedStatement preparedStatement = connection.prepareStatement("SELECT i.* FROM t_order o, t_order_item i WHERE o.order_id = i.order_id");
+                                 ResultSet resultSet = preparedStatement.executeQuery()) {
+                                while (resultSet.next()) {
+                                    OrderItem orderItem = new OrderItem();
+                                    orderItem.setOrderItemId(resultSet.getLong(1));
+                                    orderItem.setOrderId(resultSet.getLong(2));
+                                    orderItem.setUserId(resultSet.getInt(3));
+                                    orderItem.setStatus(resultSet.getString(4));
+                                    anotherResult.add(orderItem);
+                                }
+                            }
+                            anotherResult.forEach(System.out::println);
                             System.out.println("---------------------------- Delete Data ----------------------------");
                             for (Long each : orderIds) {
                                 try (Connection connection = dataSource.getConnection();
@@ -707,7 +800,23 @@ public class ShardingRawJdbcTest {
                             }
                             secondResult.forEach(System.out::println);
                             System.out.println("---------------------------- Print OrderItem Data -------------------");
-                            orderItemRepository.selectAll().forEach(System.out::println);
+                            // TODO Associated query with encrypt may query and decrypt failed. see https://github.com/apache/shardingsphere/issues/3352
+//        String sql = "SELECT i.* FROM t_order o, t_order_item i WHERE o.order_id = i.order_id";
+//        String sql = "SELECT * FROM t_order_item";
+                            List<OrderItem> thirdResult = new LinkedList<>();
+                            try (Connection connection = dataSource.getConnection();
+                                 PreparedStatement preparedStatement = connection.prepareStatement("SELECT i.* FROM t_order o, t_order_item i WHERE o.order_id = i.order_id");
+                                 ResultSet resultSet = preparedStatement.executeQuery()) {
+                                while (resultSet.next()) {
+                                    OrderItem orderItem = new OrderItem();
+                                    orderItem.setOrderItemId(resultSet.getLong(1));
+                                    orderItem.setOrderId(resultSet.getLong(2));
+                                    orderItem.setUserId(resultSet.getInt(3));
+                                    orderItem.setStatus(resultSet.getString(4));
+                                    thirdResult.add(orderItem);
+                                }
+                            }
+                            thirdResult.forEach(System.out::println);
                             System.out.println("-------------- Process Success Finish --------------");
                         } finally {
                             try (Connection connection = dataSource.getConnection();
@@ -742,7 +851,6 @@ public class ShardingRawJdbcTest {
                             default:
                                 throw new UnsupportedOperationException(shardingType.name());
                         }
-                        OrderItemRepository orderItemRepository = new OrderItemRepositoryImpl(dataSource);
                         try {
                             try (Connection connection = dataSource.getConnection();
                                  Statement statement = connection.createStatement()) {
@@ -822,7 +930,23 @@ public class ShardingRawJdbcTest {
                             }
                             result.forEach(System.out::println);
                             System.out.println("---------------------------- Print OrderItem Data -------------------");
-                            orderItemRepository.selectAll().forEach(System.out::println);
+                            // TODO Associated query with encrypt may query and decrypt failed. see https://github.com/apache/shardingsphere/issues/3352
+//        String sql = "SELECT i.* FROM t_order o, t_order_item i WHERE o.order_id = i.order_id";
+//        String sql = "SELECT * FROM t_order_item";
+                            List<OrderItem> anotherResult = new LinkedList<>();
+                            try (Connection connection = dataSource.getConnection();
+                                 PreparedStatement preparedStatement = connection.prepareStatement("SELECT i.* FROM t_order o, t_order_item i WHERE o.order_id = i.order_id");
+                                 ResultSet resultSet = preparedStatement.executeQuery()) {
+                                while (resultSet.next()) {
+                                    OrderItem orderItem = new OrderItem();
+                                    orderItem.setOrderItemId(resultSet.getLong(1));
+                                    orderItem.setOrderId(resultSet.getLong(2));
+                                    orderItem.setUserId(resultSet.getInt(3));
+                                    orderItem.setStatus(resultSet.getString(4));
+                                    anotherResult.add(orderItem);
+                                }
+                            }
+                            anotherResult.forEach(System.out::println);
                             System.out.println("---------------------------- Delete Data ----------------------------");
                             for (Long each : orderIds) {
                                 try (Connection connection = dataSource.getConnection();
@@ -850,7 +974,23 @@ public class ShardingRawJdbcTest {
                             }
                             secondResult.forEach(System.out::println);
                             System.out.println("---------------------------- Print OrderItem Data -------------------");
-                            orderItemRepository.selectAll().forEach(System.out::println);
+                            // TODO Associated query with encrypt may query and decrypt failed. see https://github.com/apache/shardingsphere/issues/3352
+//        String sql = "SELECT i.* FROM t_order o, t_order_item i WHERE o.order_id = i.order_id";
+//        String sql = "SELECT * FROM t_order_item";
+                            List<OrderItem> thirdResult = new LinkedList<>();
+                            try (Connection connection = dataSource.getConnection();
+                                 PreparedStatement preparedStatement = connection.prepareStatement("SELECT i.* FROM t_order o, t_order_item i WHERE o.order_id = i.order_id");
+                                 ResultSet resultSet = preparedStatement.executeQuery()) {
+                                while (resultSet.next()) {
+                                    OrderItem orderItem = new OrderItem();
+                                    orderItem.setOrderItemId(resultSet.getLong(1));
+                                    orderItem.setOrderId(resultSet.getLong(2));
+                                    orderItem.setUserId(resultSet.getInt(3));
+                                    orderItem.setStatus(resultSet.getString(4));
+                                    thirdResult.add(orderItem);
+                                }
+                            }
+                            thirdResult.forEach(System.out::println);
                             System.out.println("-------------- Process Success Finish --------------");
                         } finally {
                             try (Connection connection = dataSource.getConnection();

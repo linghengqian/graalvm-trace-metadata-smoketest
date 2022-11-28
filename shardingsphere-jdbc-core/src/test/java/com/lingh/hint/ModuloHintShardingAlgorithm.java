@@ -1,6 +1,5 @@
 package com.lingh.hint;
 
-import lombok.Getter;
 import org.apache.shardingsphere.sharding.api.sharding.hint.HintShardingAlgorithm;
 import org.apache.shardingsphere.sharding.api.sharding.hint.HintShardingValue;
 
@@ -8,7 +7,6 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.Properties;
 
-@Getter
 public final class ModuloHintShardingAlgorithm implements HintShardingAlgorithm<Long> {
 
     private Properties props;
@@ -31,5 +29,9 @@ public final class ModuloHintShardingAlgorithm implements HintShardingAlgorithm<
     @Override
     public String getType() {
         return "HINT_TEST";
+    }
+
+    public Properties getProps() {
+        return this.props;
     }
 }

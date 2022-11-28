@@ -1,5 +1,3 @@
-
-
 package com.lingh.entity;
 
 import java.io.Serializable;

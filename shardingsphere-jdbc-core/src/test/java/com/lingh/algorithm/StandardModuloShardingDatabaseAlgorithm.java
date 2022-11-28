@@ -1,7 +1,6 @@
 package com.lingh.algorithm;
 
 import com.google.common.collect.Range;
-import lombok.Getter;
 import org.apache.shardingsphere.sharding.api.sharding.standard.PreciseShardingValue;
 import org.apache.shardingsphere.sharding.api.sharding.standard.RangeShardingValue;
 import org.apache.shardingsphere.sharding.api.sharding.standard.StandardShardingAlgorithm;
@@ -12,7 +11,6 @@ import java.util.Properties;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@Getter
 public final class StandardModuloShardingDatabaseAlgorithm implements StandardShardingAlgorithm<Integer> {
     
     private Properties props;
@@ -55,5 +53,9 @@ public final class StandardModuloShardingDatabaseAlgorithm implements StandardSh
     @Override
     public String getType() {
         return "STANDARD_TEST_DB";
+    }
+
+    public Properties getProps() {
+        return this.props;
     }
 }
