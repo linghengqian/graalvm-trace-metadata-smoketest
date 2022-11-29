@@ -326,7 +326,7 @@ public class ShardingRawJdbcTest {
                 });
     }
 
-    @Test // todo fail
+    @Test // todo fail ,need to fix INTERVAL java.sql.Date
     @Disabled
     @DisabledInNativeImage
     void testShardingRawYamlIntervalConfiguration() throws SQLException, IOException {
