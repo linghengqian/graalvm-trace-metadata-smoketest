@@ -25,14 +25,14 @@ test {
 
 graalvmNative {
     binaries {
-        main {
+        test {
             buildArgs.add('--report-unsupported-elements-at-runtime')
         }
     }
     agent {
         defaultMode = "standard"
         modes {
-            standard{
+            standard {
             }
             conditional {
                 userCodeFilterPath = "user-code-filter.json"
