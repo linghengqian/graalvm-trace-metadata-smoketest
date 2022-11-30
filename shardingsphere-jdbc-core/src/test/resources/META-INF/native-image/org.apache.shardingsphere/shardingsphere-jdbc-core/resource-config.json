@@ -134,40 +134,16 @@
       "pattern":"\\QMETA-INF/services/org.junit.platform.launcher.TestExecutionListener\\E"
     }, 
     {
-      "pattern":"\\QMETA-INF/sharding-auto-tables.yaml\\E"
-    },
-    {
-      "pattern":"\\QMETA-INF/sharding-databases.yaml\\E"
-    },
-    {
-      "pattern":"\\QMETA-INF/sharding-databases-interval.yaml\\E"
+      "pattern":"\\QMETA-INF/sharding-databases-range.yaml\\E"
     }, 
     {
-      "pattern":"\\QMETA-INF/sharding-databases-range.yaml\\E"
-    },
-    {
-      "pattern":"\\QMETA-INF/sharding-databases-tables.yaml\\E"
-    },
-    {
-      "pattern":"\\QMETA-INF/sharding-databases-tables-range.yaml\\E"
-    },
+      "pattern":"\\QMETA-INF/sharding-databases.yaml\\E"
+    }, 
     {
       "pattern":"\\QMETA-INF/sharding-hint-databases-only.yaml\\E"
     }, 
     {
       "pattern":"\\QMETA-INF/sharding-hint-databases-tables.yaml\\E"
-    }, 
-    {
-      "pattern":"\\QMETA-INF/sharding-sql-comment-hint.yaml\\E"
-    },
-    {
-      "pattern":"\\QMETA-INF/sharding-tables.yaml\\E"
-    },
-    {
-      "pattern":"\\QMETA-INF/sharding-tables-range.yaml\\E"
-    },
-    {
-      "pattern":"\\Qlogback.xml\\E"
     }, 
     {
       "pattern":"\\Qorg/h2/util/data.zip\\E"

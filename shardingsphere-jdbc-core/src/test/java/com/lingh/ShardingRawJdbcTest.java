@@ -19,9 +19,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.DisabledInNativeImage;
 
 import javax.sql.DataSource;
-import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -30,8 +28,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Stream;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 @SuppressWarnings({"SqlResolve", "SqlNoDataSourceInspection"})
 public class ShardingRawJdbcTest {
 
@@ -39,9 +35,7 @@ public class ShardingRawJdbcTest {
     @Disabled
     @DisabledInNativeImage
     void testShardingSQLCommentHintRaw() throws SQLException, IOException {
-        URL resource = getClass().getResource("/META-INF/sharding-sql-comment-hint.yaml");
-        assertThat(resource).isNotNull();
-        DataSource dataSource = YamlShardingSphereDataSourceFactory.createDataSource(new File(resource.getFile()));
+        DataSource dataSource = YamlShardingSphereDataSourceFactory.createDataSource(DataSourceUtil.getFile("/META-INF/sharding-sql-comment-hint.yaml"));
         try (Connection connection = dataSource.getConnection();
              Statement statement = connection.createStatement()) {
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS t_order (order_id BIGINT NOT NULL AUTO_INCREMENT, user_id INT NOT NULL, address_id BIGINT NOT NULL, status VARCHAR(50), PRIMARY KEY (order_id))");
@@ -1018,18 +1012,13 @@ public class ShardingRawJdbcTest {
         Stream.of(ShardingType.SHARDING_HINT_DATABASES_ONLY, ShardingType.SHARDING_HINT_DATABASES_TABLES)
                 .forEach(shardingType -> {
                     try {
-                        URL resource;
                         DataSource dataSource;
                         switch (shardingType) {
                             case SHARDING_HINT_DATABASES_ONLY:
-                                resource = getClass().getResource("/META-INF/sharding-hint-databases-only.yaml");
-                                assertThat(resource).isNotNull();
-                                dataSource = YamlShardingSphereDataSourceFactory.createDataSource(new File(resource.getFile()));
+                                dataSource = YamlShardingSphereDataSourceFactory.createDataSource(DataSourceUtil.getFile("/META-INF/sharding-hint-databases-only.yaml"));
                                 break;
                             case SHARDING_HINT_DATABASES_TABLES:
-                                resource = getClass().getResource("/META-INF/sharding-hint-databases-tables.yaml");
-                                assertThat(resource).isNotNull();
-                                dataSource = YamlShardingSphereDataSourceFactory.createDataSource(new File(resource.getFile()));
+                                dataSource = YamlShardingSphereDataSourceFactory.createDataSource(DataSourceUtil.getFile("/META-INF/sharding-hint-databases-tables.yaml"));
                                 break;
                             default:
                                 throw new UnsupportedOperationException("unsupported type");

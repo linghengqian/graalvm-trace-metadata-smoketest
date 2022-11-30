@@ -3,7 +3,7 @@ package com.lingh;
 import com.zaxxer.hikari.HikariDataSource;
 
 import javax.sql.DataSource;
-import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -19,9 +19,10 @@ public final class DataSourceUtil {
         return result;
     }
 
-    public static File getFile(final String fileName) {
+    @SuppressWarnings("resource")
+    public static byte[] getFile(final String fileName) throws IOException {
         URL resource = DataSourceUtil.class.getResource(fileName);
         assertThat(resource).isNotNull();
-        return new File(resource.getFile());
+        return resource.openStream().readAllBytes();
     }
 }
