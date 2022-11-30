@@ -2,154 +2,172 @@
   "resources":{
   "includes":[
     {
+      "condition":{"typeReachable":"org.apache.shardingsphere.infra.util.expr.InlineExpressionParser"},
       "pattern":"\\QMETA-INF/dgminfo\\E"
     }, 
     {
-      "pattern":"\\QMETA-INF/services/java.nio.file.spi.FileSystemProvider\\E"
-    }, 
-    {
-      "pattern":"\\QMETA-INF/services/java.sql.Driver\\E"
-    }, 
-    {
+      "condition":{"typeReachable":"org.apache.shardingsphere.authority.factory.AuthorityProviderAlgorithmFactory"},
       "pattern":"\\QMETA-INF/services/org.apache.shardingsphere.authority.spi.AuthorityProviderAlgorithm\\E"
     }, 
     {
+      "condition":{"typeReachable":"org.apache.shardingsphere.driver.state.DriverStateFactory"},
       "pattern":"\\QMETA-INF/services/org.apache.shardingsphere.driver.state.DriverState\\E"
     }, 
     {
+      "condition":{"typeReachable":"org.apache.shardingsphere.infra.binder.decider.SQLFederationDeciderFactory"},
       "pattern":"\\QMETA-INF/services/org.apache.shardingsphere.infra.binder.decider.SQLFederationDecider\\E"
     }, 
     {
+      "condition":{"typeReachable":"org.apache.shardingsphere.infra.config.rule.checker.RuleConfigurationCheckerFactory"},
       "pattern":"\\QMETA-INF/services/org.apache.shardingsphere.infra.config.rule.checker.RuleConfigurationChecker\\E"
     }, 
     {
+      "condition":{"typeReachable":"org.apache.shardingsphere.infra.context.refresher.MetaDataRefresherFactory"},
       "pattern":"\\QMETA-INF/services/org.apache.shardingsphere.infra.context.refresher.MetaDataRefresher\\E"
     }, 
     {
+      "condition":{"typeReachable":"org.apache.shardingsphere.infra.database.type.DatabaseTypeFactory"},
       "pattern":"\\QMETA-INF/services/org.apache.shardingsphere.infra.database.type.DatabaseType\\E"
     }, 
     {
+      "condition":{"typeReachable":"org.apache.shardingsphere.infra.datanode.DataNodeBuilderFactory"},
       "pattern":"\\QMETA-INF/services/org.apache.shardingsphere.infra.datanode.DataNodeBuilder\\E"
     }, 
     {
+      "condition":{"typeReachable":"org.apache.shardingsphere.infra.datasource.pool.metadata.DataSourcePoolMetaDataFactory"},
       "pattern":"\\QMETA-INF/services/org.apache.shardingsphere.infra.datasource.pool.metadata.DataSourcePoolMetaData\\E"
     }, 
     {
+      "condition":{"typeReachable":"org.apache.shardingsphere.infra.executor.check.SQLCheckerFactory"},
       "pattern":"\\QMETA-INF/services/org.apache.shardingsphere.infra.executor.check.SQLChecker\\E"
     }, 
     {
+      "condition":{"typeReachable":"org.apache.shardingsphere.infra.executor.sql.prepare.driver.SQLExecutionUnitBuilderFactory"},
       "pattern":"\\QMETA-INF/services/org.apache.shardingsphere.infra.executor.sql.prepare.driver.SQLExecutionUnitBuilder\\E"
     }, 
     {
+      "condition":{"typeReachable":"org.apache.shardingsphere.infra.executor.sql.process.spi.ExecuteProcessReporterFactory"},
       "pattern":"\\QMETA-INF/services/org.apache.shardingsphere.infra.executor.sql.process.spi.ExecuteProcessReporter\\E"
     }, 
     {
+      "condition":{"typeReachable":"org.apache.shardingsphere.infra.instance.metadata.InstanceMetaDataBuilderFactory"},
       "pattern":"\\QMETA-INF/services/org.apache.shardingsphere.infra.instance.metadata.InstanceMetaDataBuilder\\E"
     }, 
     {
+      "condition":{"typeReachable":"org.apache.shardingsphere.infra.merge.engine.ResultProcessEngineFactory"},
       "pattern":"\\QMETA-INF/services/org.apache.shardingsphere.infra.merge.engine.ResultProcessEngine\\E"
     }, 
     {
+      "condition":{"typeReachable":"org.apache.shardingsphere.infra.metadata.data.builder.ShardingSphereDataBuilderFactory"},
       "pattern":"\\QMETA-INF/services/org.apache.shardingsphere.infra.metadata.data.builder.ShardingSphereDataBuilder\\E"
     }, 
     {
+      "condition":{"typeReachable":"org.apache.shardingsphere.infra.metadata.database.schema.decorator.spi.RuleBasedSchemaMetaDataDecoratorFactory"},
       "pattern":"\\QMETA-INF/services/org.apache.shardingsphere.infra.metadata.database.schema.decorator.spi.RuleBasedSchemaMetaDataDecorator\\E"
     }, 
     {
+      "condition":{"typeReachable":"org.apache.shardingsphere.infra.metadata.database.schema.loader.spi.DataTypeLoaderFactory"},
       "pattern":"\\QMETA-INF/services/org.apache.shardingsphere.infra.metadata.database.schema.loader.spi.DataTypeLoader\\E"
     }, 
     {
+      "condition":{"typeReachable":"org.apache.shardingsphere.infra.metadata.database.schema.loader.spi.DialectSchemaMetaDataLoaderFactory"},
       "pattern":"\\QMETA-INF/services/org.apache.shardingsphere.infra.metadata.database.schema.loader.spi.DialectSchemaMetaDataLoader\\E"
     }, 
     {
+      "condition":{"typeReachable":"org.apache.shardingsphere.infra.rewrite.context.SQLRewriteContextDecoratorFactory"},
       "pattern":"\\QMETA-INF/services/org.apache.shardingsphere.infra.rewrite.context.SQLRewriteContextDecorator\\E"
     }, 
     {
+      "condition":{"typeReachable":"org.apache.shardingsphere.infra.route.SQLRouterFactory"},
       "pattern":"\\QMETA-INF/services/org.apache.shardingsphere.infra.route.SQLRouter\\E"
     }, 
     {
+      "condition":{"typeReachable":"org.apache.shardingsphere.infra.rule.builder.database.DatabaseRuleBuilderFactory"},
       "pattern":"\\QMETA-INF/services/org.apache.shardingsphere.infra.rule.builder.database.DatabaseRuleBuilder\\E"
     }, 
     {
+      "condition":{"typeReachable":"org.apache.shardingsphere.infra.rule.builder.database.DefaultDatabaseRuleConfigurationBuilderFactory"},
       "pattern":"\\QMETA-INF/services/org.apache.shardingsphere.infra.rule.builder.database.DefaultDatabaseRuleConfigurationBuilder\\E"
     }, 
     {
+      "condition":{"typeReachable":"org.apache.shardingsphere.infra.rule.builder.global.DefaultGlobalRuleConfigurationBuilderFactory"},
       "pattern":"\\QMETA-INF/services/org.apache.shardingsphere.infra.rule.builder.global.DefaultGlobalRuleConfigurationBuilder\\E"
     }, 
     {
+      "condition":{"typeReachable":"org.apache.shardingsphere.infra.rule.builder.global.GlobalRuleBuilderFactory"},
       "pattern":"\\QMETA-INF/services/org.apache.shardingsphere.infra.rule.builder.global.GlobalRuleBuilder\\E"
     }, 
     {
+      "condition":{"typeReachable":"org.apache.shardingsphere.infra.util.yaml.constructor.ShardingSphereYamlConstructFactory"},
       "pattern":"\\QMETA-INF/services/org.apache.shardingsphere.infra.util.yaml.constructor.ShardingSphereYamlConstruct\\E"
     }, 
     {
+      "condition":{"typeReachable":"org.apache.shardingsphere.infra.util.yaml.representer.processor.ShardingSphereYamlTupleProcessorFactory"},
       "pattern":"\\QMETA-INF/services/org.apache.shardingsphere.infra.util.yaml.representer.processor.ShardingSphereYamlTupleProcessor\\E"
     }, 
     {
+      "condition":{"typeReachable":"org.apache.shardingsphere.infra.util.yaml.shortcuts.ShardingSphereYamlShortcutsFactory"},
       "pattern":"\\QMETA-INF/services/org.apache.shardingsphere.infra.util.yaml.shortcuts.ShardingSphereYamlShortcuts\\E"
     }, 
     {
+      "condition":{"typeReachable":"org.apache.shardingsphere.infra.yaml.config.swapper.mode.YamlPersistRepositoryConfigurationSwapperFactory"},
       "pattern":"\\QMETA-INF/services/org.apache.shardingsphere.infra.yaml.config.swapper.mode.YamlPersistRepositoryConfigurationSwapper\\E"
     }, 
     {
+      "condition":{"typeReachable":"org.apache.shardingsphere.infra.yaml.config.swapper.rule.YamlRuleConfigurationSwapperFactory"},
       "pattern":"\\QMETA-INF/services/org.apache.shardingsphere.infra.yaml.config.swapper.rule.YamlRuleConfigurationSwapper\\E"
     }, 
     {
+      "condition":{"typeReachable":"org.apache.shardingsphere.mode.manager.ContextManagerBuilderFactory"},
       "pattern":"\\QMETA-INF/services/org.apache.shardingsphere.mode.manager.ContextManagerBuilder\\E"
     }, 
     {
+      "condition":{"typeReachable":"org.apache.shardingsphere.mode.repository.standalone.StandalonePersistRepositoryFactory"},
       "pattern":"\\QMETA-INF/services/org.apache.shardingsphere.mode.repository.standalone.StandalonePersistRepository\\E"
     }, 
     {
+      "condition":{"typeReachable":"org.apache.shardingsphere.mode.repository.standalone.jdbc.provider.JDBCRepositoryProviderFactory"},
       "pattern":"\\QMETA-INF/services/org.apache.shardingsphere.mode.repository.standalone.jdbc.provider.JDBCRepositoryProvider\\E"
     }, 
     {
+      "condition":{"typeReachable":"org.apache.shardingsphere.sharding.factory.KeyGenerateAlgorithmFactory"},
       "pattern":"\\QMETA-INF/services/org.apache.shardingsphere.sharding.spi.KeyGenerateAlgorithm\\E"
     }, 
     {
+      "condition":{"typeReachable":"org.apache.shardingsphere.sharding.factory.ShardingAlgorithmFactory"},
       "pattern":"\\QMETA-INF/services/org.apache.shardingsphere.sharding.spi.ShardingAlgorithm\\E"
     }, 
     {
+      "condition":{"typeReachable":"org.apache.shardingsphere.sql.parser.core.database.parser.DatabaseTypedSQLParserFacadeFactory"},
       "pattern":"\\QMETA-INF/services/org.apache.shardingsphere.sql.parser.spi.DatabaseTypedSQLParserFacade\\E"
     }, 
     {
+      "condition":{"typeReachable":"org.apache.shardingsphere.sql.parser.core.database.visitor.SQLVisitorFacadeFactory"},
       "pattern":"\\QMETA-INF/services/org.apache.shardingsphere.sql.parser.spi.SQLVisitorFacade\\E"
     }, 
     {
+      "condition":{"typeReachable":"org.apache.shardingsphere.sqlfederation.optimizer.context.parser.dialect.OptimizerSQLDialectBuilderFactory"},
       "pattern":"\\QMETA-INF/services/org.apache.shardingsphere.sqlfederation.optimizer.context.parser.dialect.OptimizerSQLDialectBuilder\\E"
     }, 
     {
+      "condition":{"typeReachable":"org.apache.shardingsphere.sqlfederation.factory.SQLFederationExecutorFactory"},
       "pattern":"\\QMETA-INF/services/org.apache.shardingsphere.sqlfederation.spi.SQLFederationExecutor\\E"
     }, 
     {
+      "condition":{"typeReachable":"org.apache.shardingsphere.sqltranslator.factory.SQLTranslatorFactory"},
       "pattern":"\\QMETA-INF/services/org.apache.shardingsphere.sqltranslator.spi.SQLTranslator\\E"
     }, 
     {
+      "condition":{"typeReachable":"org.apache.shardingsphere.infra.util.expr.InlineExpressionParser"},
       "pattern":"\\QMETA-INF/services/org.codehaus.groovy.transform.ASTTransformation\\E"
     }, 
     {
-      "pattern":"\\QMETA-INF/services/org.junit.platform.engine.TestEngine\\E"
+      "condition":{"typeReachable":"org.apache.shardingsphere.sharding.rule.ShardingRule"},
+      "pattern":"\\QMETA-INF/services/org.codehaus.groovy.transform.ASTTransformation\\E"
     }, 
     {
-      "pattern":"\\QMETA-INF/services/org.junit.platform.launcher.TestExecutionListener\\E"
-    }, 
-    {
-      "pattern":"\\QMETA-INF/sharding-databases-range.yaml\\E"
-    }, 
-    {
-      "pattern":"\\QMETA-INF/sharding-databases.yaml\\E"
-    }, 
-    {
-      "pattern":"\\QMETA-INF/sharding-hint-databases-only.yaml\\E"
-    }, 
-    {
-      "pattern":"\\QMETA-INF/sharding-hint-databases-tables.yaml\\E"
-    }, 
-    {
+      "condition":{"typeReachable":"org.apache.shardingsphere.driver.jdbc.context.CachedDatabaseMetaData"},
       "pattern":"\\Qorg/h2/util/data.zip\\E"
-    }, 
-    {
-      "pattern":"\\Qorg/slf4j/impl/StaticLoggerBinder.class\\E"
     }
   ]},
   "bundles":[]
