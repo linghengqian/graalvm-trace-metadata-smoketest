@@ -39,7 +39,7 @@
     }, 
     {
       "condition":{"typeReachable":"com.hazelcast.config.AbstractXmlConfigHelper"},
-      "pattern":"\\Qhazelcast-client-config-5.2.xsd\\E"
+      "pattern":"hazelcast-client-config-[0-9.-]+xsd"
     }, 
     {
       "condition":{"typeReachable":"com.hazelcast.internal.config.AbstractConfigLocator"},
