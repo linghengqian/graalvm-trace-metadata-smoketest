@@ -4816,66 +4816,6 @@
   "methods":[{"name":"<init>","parameterTypes":["sun.security.x509.X500Name"] }]
 },
 {
-  "condition":{"typeReachable":"com.hazelcast.internal.metrics.impl.MetricsService"},
-  "name":"jdk.management.jfr.ConfigurationInfo",
-  "queryAllPublicMethods":true
-},
-{
-  "condition":{"typeReachable":"com.hazelcast.internal.metrics.jmx.JmxPublisher"},
-  "name":"jdk.management.jfr.ConfigurationInfo",
-  "queryAllPublicMethods":true
-},
-{
-  "condition":{"typeReachable":"com.hazelcast.internal.metrics.impl.MetricsService"},
-  "name":"jdk.management.jfr.EventTypeInfo",
-  "queryAllPublicMethods":true
-},
-{
-  "condition":{"typeReachable":"com.hazelcast.internal.metrics.jmx.JmxPublisher"},
-  "name":"jdk.management.jfr.EventTypeInfo",
-  "queryAllPublicMethods":true
-},
-{
-  "condition":{"typeReachable":"com.hazelcast.internal.metrics.impl.MetricsService"},
-  "name":"jdk.management.jfr.FlightRecorderMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "condition":{"typeReachable":"com.hazelcast.internal.metrics.jmx.JmxPublisher"},
-  "name":"jdk.management.jfr.FlightRecorderMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "condition":{"typeReachable":"com.hazelcast.internal.metrics.impl.MetricsService"},
-  "name":"jdk.management.jfr.FlightRecorderMXBeanImpl",
-  "queryAllPublicConstructors":true
-},
-{
-  "condition":{"typeReachable":"com.hazelcast.internal.metrics.jmx.JmxPublisher"},
-  "name":"jdk.management.jfr.FlightRecorderMXBeanImpl",
-  "queryAllPublicConstructors":true
-},
-{
-  "condition":{"typeReachable":"com.hazelcast.internal.metrics.impl.MetricsService"},
-  "name":"jdk.management.jfr.RecordingInfo",
-  "queryAllPublicMethods":true
-},
-{
-  "condition":{"typeReachable":"com.hazelcast.internal.metrics.jmx.JmxPublisher"},
-  "name":"jdk.management.jfr.RecordingInfo",
-  "queryAllPublicMethods":true
-},
-{
-  "condition":{"typeReachable":"com.hazelcast.internal.metrics.impl.MetricsService"},
-  "name":"jdk.management.jfr.SettingDescriptorInfo",
-  "queryAllPublicMethods":true
-},
-{
-  "condition":{"typeReachable":"com.hazelcast.internal.metrics.jmx.JmxPublisher"},
-  "name":"jdk.management.jfr.SettingDescriptorInfo",
-  "queryAllPublicMethods":true
-},
-{
   "condition":{"typeReachable":"com.hazelcast.internal.memory.impl.UnsafeUtil$1"},
   "name":"sun.misc.Unsafe",
   "fields":[{"name":"theUnsafe"}]
