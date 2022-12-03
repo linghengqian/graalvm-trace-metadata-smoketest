@@ -27,6 +27,7 @@ cd ./groovy/
 cd ./hazelcast/
 cd ./ehcache/
 cd ./shardingsphere-jdbc-core/
+cd ./nashorn-core/
 ```
 
 - exec.
@@ -36,6 +37,3 @@ cd ./shardingsphere-jdbc-core/
 ./gradlew metadataCopy --task test
 ./gradlew clean nativeTest
 ```
-
-- According to https://github.com/oracle/graalvm-reachability-metadata/pull/122#discussion_r1030139343, we need to
-  remove `com.sun.management.**`, `sun.management.**`, `java. management.**` related reachability metadata.

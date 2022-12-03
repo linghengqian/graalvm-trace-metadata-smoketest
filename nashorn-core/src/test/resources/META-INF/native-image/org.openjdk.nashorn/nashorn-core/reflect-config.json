@@ -1,0 +1,540 @@
+[
+{
+  "name":"[Ljava.lang.Object;"
+},
+{
+  "name":"com.lingh.NashornTest",
+  "allDeclaredFields":true,
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"test","parameterTypes":[] }
+  ]
+},
+{
+  "name":"java.beans.Statement"
+},
+{
+  "name":"java.beans.XMLDecoder"
+},
+{
+  "name":"java.beans.XMLEncoder"
+},
+{
+  "name":"java.lang.Class",
+  "methods":[{"name":"isInstance","parameterTypes":["java.lang.Object"] }]
+},
+{
+  "name":"java.lang.Double",
+  "methods":[
+    {"name":"doubleToRawLongBits","parameterTypes":["double"] }, 
+    {"name":"isNaN","parameterTypes":["double"] }, 
+    {"name":"longBitsToDouble","parameterTypes":["long"] }
+  ]
+},
+{
+  "name":"java.lang.Enum"
+},
+{
+  "name":"java.lang.invoke.MethodHandle"
+},
+{
+  "name":"java.lang.reflect.Array",
+  "methods":[{"name":"newInstance","parameterTypes":["java.lang.Class","int"] }]
+},
+{
+  "name":"java.security.SecureRandomParameters"
+},
+{
+  "name":"java.util.HashSet"
+},
+{
+  "name":"java.util.LinkedHashSet"
+},
+{
+  "name":"java.util.concurrent.ArrayBlockingQueue"
+},
+{
+  "name":"java.util.concurrent.locks.AbstractOwnableSynchronizer"
+},
+{
+  "name":"java.util.concurrent.locks.AbstractQueuedSynchronizer"
+},
+{
+  "name":"java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject"
+},
+{
+  "name":"java.util.concurrent.locks.ReentrantLock"
+},
+{
+  "name":"java.util.concurrent.locks.ReentrantLock$NonfairSync"
+},
+{
+  "name":"java.util.concurrent.locks.ReentrantLock$Sync"
+},
+{
+  "name":"jdk.dynalink.DynamicLinker",
+  "methods":[{"name":"relink","parameterTypes":["jdk.dynalink.RelinkableCallSite","int","java.lang.Object[]"] }]
+},
+{
+  "name":"jdk.dynalink.beans.BeansLinker",
+  "methods":[{"name":"isDynamicMethod","parameterTypes":["java.lang.Object"] }]
+},
+{
+  "name":"jdk.dynalink.beans.StaticClass",
+  "methods":[{"name":"getRepresentedClass","parameterTypes":[] }]
+},
+{
+  "name":"jdk.dynalink.beans.StaticClassLinker",
+  "methods":[{"name":"isClass","parameterTypes":["java.lang.Class","java.lang.Object"] }]
+},
+{
+  "name":"jdk.dynalink.linker.support.DefaultInternalObjectFilter",
+  "methods":[{"name":"filterVarArgs","parameterTypes":["java.lang.invoke.MethodHandle","java.lang.Object[]"] }]
+},
+{
+  "name":"jdk.dynalink.linker.support.Guards",
+  "methods":[
+    {"name":"isArray","parameterTypes":["java.lang.Object"] }, 
+    {"name":"isIdentical","parameterTypes":["java.lang.Object","java.lang.Object"] }, 
+    {"name":"isNotNull","parameterTypes":["java.lang.Object"] }, 
+    {"name":"isNull","parameterTypes":["java.lang.Object"] }, 
+    {"name":"isOfClass","parameterTypes":["java.lang.Class","java.lang.Object"] }
+  ]
+},
+{
+  "name":"jdk.dynalink.support.ChainedCallSite",
+  "methods":[{"name":"prune","parameterTypes":["java.lang.invoke.MethodHandle","boolean"] }]
+},
+{
+  "name":"netscape.javascript.JSObject"
+},
+{
+  "name":"org.graalvm.polyglot.Engine",
+  "methods":[{"name":"getImpl","parameterTypes":[] }]
+},
+{
+  "name":"org.graalvm.polyglot.management.Management"
+},
+{
+  "name":"org.openjdk.nashorn.api.scripting.JSObject",
+  "methods":[
+    {"name":"call","parameterTypes":["java.lang.Object","java.lang.Object[]"] }, 
+    {"name":"getMember","parameterTypes":["java.lang.String"] }, 
+    {"name":"newObject","parameterTypes":["java.lang.Object[]"] }, 
+    {"name":"setMember","parameterTypes":["java.lang.String","java.lang.Object"] }
+  ]
+},
+{
+  "name":"org.openjdk.nashorn.internal.codegen.ObjectClassGenerator",
+  "methods":[
+    {"name":"getDifferent","parameterTypes":["java.lang.Object","java.lang.Class","java.lang.invoke.MethodHandle","java.lang.invoke.MethodHandle","int"] }, 
+    {"name":"getDifferentUndefined","parameterTypes":["int"] }, 
+    {"name":"isType","parameterTypes":["java.lang.Class","java.lang.Object"] }
+  ]
+},
+{
+  "name":"org.openjdk.nashorn.internal.lookup.Lookup",
+  "methods":[
+    {"name":"emptyGetter","parameterTypes":["java.lang.Object"] }, 
+    {"name":"emptySetter","parameterTypes":["java.lang.Object","java.lang.Object"] }, 
+    {"name":"typeErrorThrower","parameterTypes":["java.lang.Object"] }
+  ]
+},
+{
+  "name":"org.openjdk.nashorn.internal.lookup.MethodHandleFactory",
+  "methods":[
+    {"name":"traceArgs","parameterTypes":["org.openjdk.nashorn.internal.runtime.logging.DebugLogger","java.lang.String","int","java.lang.Object[]"] }, 
+    {"name":"traceReturn","parameterTypes":["org.openjdk.nashorn.internal.runtime.logging.DebugLogger","java.lang.Object"] }, 
+    {"name":"traceReturnVoid","parameterTypes":["org.openjdk.nashorn.internal.runtime.logging.DebugLogger"] }
+  ]
+},
+{
+  "name":"org.openjdk.nashorn.internal.objects.Global",
+  "methods":[
+    {"name":"__noSuchProperty__","parameterTypes":["java.lang.Object","java.lang.Object"] }, 
+    {"name":"eval","parameterTypes":["java.lang.Object","java.lang.Object"] }, 
+    {"name":"exit","parameterTypes":["java.lang.Object","java.lang.Object"] }, 
+    {"name":"lexicalScopeFilter","parameterTypes":["java.lang.Object"] }, 
+    {"name":"load","parameterTypes":["java.lang.Object","java.lang.Object"] }, 
+    {"name":"loadWithNewGlobal","parameterTypes":["java.lang.Object","java.lang.Object[]"] }, 
+    {"name":"print","parameterTypes":["java.lang.Object","java.lang.Object[]"] }, 
+    {"name":"println","parameterTypes":["java.lang.Object","java.lang.Object[]"] }
+  ]
+},
+{
+  "name":"org.openjdk.nashorn.internal.objects.NativeArray$Constructor",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.openjdk.nashorn.internal.objects.NativeBoolean$Constructor",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.openjdk.nashorn.internal.objects.NativeError",
+  "methods":[
+    {"name":"getColumnNumber","parameterTypes":["java.lang.Object"] }, 
+    {"name":"getFileName","parameterTypes":["java.lang.Object"] }, 
+    {"name":"getLineNumber","parameterTypes":["java.lang.Object"] }, 
+    {"name":"getStack","parameterTypes":["java.lang.Object"] }, 
+    {"name":"setColumnNumber","parameterTypes":["java.lang.Object","java.lang.Object"] }, 
+    {"name":"setFileName","parameterTypes":["java.lang.Object","java.lang.Object"] }, 
+    {"name":"setLineNumber","parameterTypes":["java.lang.Object","java.lang.Object"] }, 
+    {"name":"setStack","parameterTypes":["java.lang.Object","java.lang.Object"] }
+  ]
+},
+{
+  "name":"org.openjdk.nashorn.internal.objects.NativeError$Constructor",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.openjdk.nashorn.internal.objects.NativeFunction$Constructor",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.openjdk.nashorn.internal.objects.NativeMath$Constructor",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.openjdk.nashorn.internal.objects.NativeNumber$Constructor",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.openjdk.nashorn.internal.objects.NativeObject",
+  "methods":[
+    {"name":"get__proto__","parameterTypes":["java.lang.Object"] }, 
+    {"name":"set__proto__","parameterTypes":["java.lang.Object","java.lang.Object"] }
+  ]
+},
+{
+  "name":"org.openjdk.nashorn.internal.objects.NativeObject$Constructor",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.openjdk.nashorn.internal.objects.NativeReferenceError$Constructor",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.openjdk.nashorn.internal.objects.NativeString$Constructor",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.openjdk.nashorn.internal.objects.NativeSymbol",
+  "methods":[
+    {"name":"protoFilter","parameterTypes":["java.lang.Object"] }, 
+    {"name":"wrapFilter","parameterTypes":["java.lang.Object"] }
+  ]
+},
+{
+  "name":"org.openjdk.nashorn.internal.objects.NativeSyntaxError$Constructor",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.openjdk.nashorn.internal.objects.NativeTypeError$Constructor",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.openjdk.nashorn.internal.runtime.AccessorProperty",
+  "methods":[
+    {"name":"invalidateSwitchPoint","parameterTypes":["org.openjdk.nashorn.internal.runtime.AccessorProperty","java.lang.Object"] }, 
+    {"name":"replaceMap","parameterTypes":["java.lang.Object","org.openjdk.nashorn.internal.runtime.PropertyMap"] }
+  ]
+},
+{
+  "name":"org.openjdk.nashorn.internal.runtime.CompiledFunction",
+  "methods":[
+    {"name":"handleRewriteException","parameterTypes":["org.openjdk.nashorn.internal.runtime.CompiledFunction","org.openjdk.nashorn.internal.runtime.CompiledFunction$OptimismInfo","org.openjdk.nashorn.internal.runtime.RewriteException"] }, 
+    {"name":"newFilter","parameterTypes":["java.lang.Object","java.lang.Object"] }, 
+    {"name":"relinkComposableInvoker","parameterTypes":["java.lang.invoke.CallSite","org.openjdk.nashorn.internal.runtime.CompiledFunction","boolean"] }
+  ]
+},
+{
+  "name":"org.openjdk.nashorn.internal.runtime.GlobalConstants",
+  "methods":[
+    {"name":"invalidateSwitchPoint","parameterTypes":["java.lang.Object","org.openjdk.nashorn.internal.runtime.GlobalConstants$Access"] }, 
+    {"name":"receiverGuard","parameterTypes":["org.openjdk.nashorn.internal.runtime.GlobalConstants$Access","java.lang.Object","java.lang.Object"] }
+  ]
+},
+{
+  "name":"org.openjdk.nashorn.internal.runtime.GlobalFunctions",
+  "methods":[
+    {"name":"anonymous","parameterTypes":["java.lang.Object"] }, 
+    {"name":"decodeURI","parameterTypes":["java.lang.Object","java.lang.Object"] }, 
+    {"name":"decodeURIComponent","parameterTypes":["java.lang.Object","java.lang.Object"] }, 
+    {"name":"encodeURI","parameterTypes":["java.lang.Object","java.lang.Object"] }, 
+    {"name":"encodeURIComponent","parameterTypes":["java.lang.Object","java.lang.Object"] }, 
+    {"name":"escape","parameterTypes":["java.lang.Object","java.lang.Object"] }, 
+    {"name":"isFinite","parameterTypes":["java.lang.Object","java.lang.Object"] }, 
+    {"name":"isNaN","parameterTypes":["java.lang.Object","java.lang.Object"] }, 
+    {"name":"parseFloat","parameterTypes":["java.lang.Object","java.lang.Object"] }, 
+    {"name":"parseInt","parameterTypes":["java.lang.Object","java.lang.Object"] }, 
+    {"name":"parseInt","parameterTypes":["java.lang.Object","java.lang.Object","int"] }, 
+    {"name":"parseInt","parameterTypes":["java.lang.Object","java.lang.Object","java.lang.Object"] }, 
+    {"name":"unescape","parameterTypes":["java.lang.Object","java.lang.Object"] }
+  ]
+},
+{
+  "name":"org.openjdk.nashorn.internal.runtime.JSType",
+  "methods":[
+    {"name":"addExact","parameterTypes":["int","int","int"] }, 
+    {"name":"decrementExact","parameterTypes":["int","int"] }, 
+    {"name":"divExact","parameterTypes":["int","int","int"] }, 
+    {"name":"divZero","parameterTypes":["int","int"] }, 
+    {"name":"incrementExact","parameterTypes":["int","int"] }, 
+    {"name":"isNumber","parameterTypes":["java.lang.Object"] }, 
+    {"name":"isString","parameterTypes":["java.lang.Object"] }, 
+    {"name":"mulExact","parameterTypes":["int","int","int"] }, 
+    {"name":"negateExact","parameterTypes":["int","int"] }, 
+    {"name":"remExact","parameterTypes":["int","int","int"] }, 
+    {"name":"remZero","parameterTypes":["int","int"] }, 
+    {"name":"subExact","parameterTypes":["int","int","int"] }, 
+    {"name":"throwUnwarrantedOptimismException","parameterTypes":["java.lang.Object","int"] }, 
+    {"name":"toBoolean","parameterTypes":["double"] }, 
+    {"name":"toBoolean","parameterTypes":["int"] }, 
+    {"name":"toBoolean","parameterTypes":["java.lang.Object"] }, 
+    {"name":"toInt32","parameterTypes":["double"] }, 
+    {"name":"toInt32","parameterTypes":["long"] }, 
+    {"name":"toInt32","parameterTypes":["java.lang.Object"] }, 
+    {"name":"toInt32Optimistic","parameterTypes":["java.lang.Object","int"] }, 
+    {"name":"toInteger","parameterTypes":["java.lang.Object"] }, 
+    {"name":"toJavaArray","parameterTypes":["java.lang.Object","java.lang.Class"] }, 
+    {"name":"toJavaArrayWithLookup","parameterTypes":["java.lang.Object","java.lang.Class","jdk.dynalink.SecureLookupSupplier"] }, 
+    {"name":"toLong","parameterTypes":["double"] }, 
+    {"name":"toLong","parameterTypes":["java.lang.Object"] }, 
+    {"name":"toNumber","parameterTypes":["java.lang.Object"] }, 
+    {"name":"toNumberOptimistic","parameterTypes":["java.lang.Object","int"] }, 
+    {"name":"toPrimitiveToCharSequence","parameterTypes":["java.lang.Object"] }, 
+    {"name":"toPrimitiveToString","parameterTypes":["java.lang.Object"] }, 
+    {"name":"toString","parameterTypes":["double"] }, 
+    {"name":"toString","parameterTypes":["java.lang.Object"] }, 
+    {"name":"toUint32","parameterTypes":["double"] }, 
+    {"name":"toUint32","parameterTypes":["java.lang.Object"] }, 
+    {"name":"toUint32Double","parameterTypes":["int"] }, 
+    {"name":"toUint32Optimistic","parameterTypes":["int","int"] }, 
+    {"name":"voidReturn","parameterTypes":[] }
+  ]
+},
+{
+  "name":"org.openjdk.nashorn.internal.runtime.ListAdapter",
+  "methods":[{"name":"create","parameterTypes":["java.lang.Object"] }]
+},
+{
+  "name":"org.openjdk.nashorn.internal.runtime.NativeJavaPackage",
+  "methods":[{"name":"classNotFound","parameterTypes":["org.openjdk.nashorn.internal.runtime.NativeJavaPackage"] }]
+},
+{
+  "name":"org.openjdk.nashorn.internal.runtime.OptimisticReturnFilters",
+  "methods":[
+    {"name":"ensureInt","parameterTypes":["char","int"] }, 
+    {"name":"ensureInt","parameterTypes":["double","int"] }, 
+    {"name":"ensureInt","parameterTypes":["int"] }, 
+    {"name":"ensureInt","parameterTypes":["long","int"] }, 
+    {"name":"ensureInt","parameterTypes":["java.lang.Object","int"] }, 
+    {"name":"ensureInt","parameterTypes":["boolean","int"] }, 
+    {"name":"ensureNumber","parameterTypes":["long","int"] }, 
+    {"name":"ensureNumber","parameterTypes":["java.lang.Object","int"] }
+  ]
+},
+{
+  "name":"org.openjdk.nashorn.internal.runtime.PrototypeObject",
+  "methods":[
+    {"name":"getConstructor","parameterTypes":["java.lang.Object"] }, 
+    {"name":"setConstructor","parameterTypes":["java.lang.Object","java.lang.Object"] }
+  ]
+},
+{
+  "name":"org.openjdk.nashorn.internal.runtime.RewriteException",
+  "methods":[{"name":"populateArray","parameterTypes":["java.lang.Object[]","int","java.lang.Object[]"] }]
+},
+{
+  "name":"org.openjdk.nashorn.internal.runtime.ScriptFunction",
+  "methods":[
+    {"name":"G$length","parameterTypes":["java.lang.Object"] }, 
+    {"name":"G$name","parameterTypes":["java.lang.Object"] }, 
+    {"name":"G$prototype","parameterTypes":["java.lang.Object"] }, 
+    {"name":"S$prototype","parameterTypes":["java.lang.Object","java.lang.Object"] }, 
+    {"name":"addZerothElement","parameterTypes":["java.lang.Object[]","java.lang.Object"] }, 
+    {"name":"allocate","parameterTypes":[] }, 
+    {"name":"globalFilter","parameterTypes":["java.lang.Object"] }, 
+    {"name":"invokeSync","parameterTypes":["org.openjdk.nashorn.internal.runtime.ScriptFunction","java.lang.Object","java.lang.Object","java.lang.Object[]"] }, 
+    {"name":"isApplyFunction","parameterTypes":["boolean","java.lang.Object","java.lang.Object"] }, 
+    {"name":"isFunctionMH","parameterTypes":["java.lang.Object","org.openjdk.nashorn.internal.runtime.ScriptFunctionData"] }, 
+    {"name":"isNonStrictFunction","parameterTypes":["java.lang.Object","java.lang.Object","org.openjdk.nashorn.internal.runtime.ScriptFunctionData"] }, 
+    {"name":"wrapFilter","parameterTypes":["java.lang.Object"] }
+  ]
+},
+{
+  "name":"org.openjdk.nashorn.internal.runtime.ScriptFunctionData",
+  "methods":[
+    {"name":"bindVarArgs","parameterTypes":["java.lang.Object[]","java.lang.Object[]"] }, 
+    {"name":"wrapThis","parameterTypes":["java.lang.Object"] }
+  ]
+},
+{
+  "name":"org.openjdk.nashorn.internal.runtime.ScriptObject",
+  "fields":[
+    {"name":"objectSpill"}, 
+    {"name":"primitiveSpill"}
+  ],
+  "methods":[
+    {"name":"compareAndSetMap","parameterTypes":["org.openjdk.nashorn.internal.runtime.PropertyMap","org.openjdk.nashorn.internal.runtime.PropertyMap"] }, 
+    {"name":"declareAndSet","parameterTypes":["java.lang.String","java.lang.Object"] }, 
+    {"name":"delete","parameterTypes":["java.lang.Object","boolean"] }, 
+    {"name":"ensureSpillSize","parameterTypes":["int"] }, 
+    {"name":"extensionCheck","parameterTypes":["boolean","java.lang.String"] }, 
+    {"name":"getArgument","parameterTypes":["int"] }, 
+    {"name":"getArray","parameterTypes":[] }, 
+    {"name":"getProto","parameterTypes":[] }, 
+    {"name":"globalFilter","parameterTypes":["java.lang.Object"] }, 
+    {"name":"knownFunctionPropertyGuardProto","parameterTypes":["java.lang.Object","org.openjdk.nashorn.internal.runtime.PropertyMap","java.lang.invoke.MethodHandle","int","org.openjdk.nashorn.internal.runtime.ScriptFunction"] }, 
+    {"name":"knownFunctionPropertyGuardSelf","parameterTypes":["java.lang.Object","org.openjdk.nashorn.internal.runtime.PropertyMap","java.lang.invoke.MethodHandle","org.openjdk.nashorn.internal.runtime.ScriptFunction"] }, 
+    {"name":"megamorphicGet","parameterTypes":["java.lang.String","boolean","boolean"] }, 
+    {"name":"set","parameterTypes":["java.lang.Object","double","int"] }, 
+    {"name":"set","parameterTypes":["java.lang.Object","int","int"] }, 
+    {"name":"set","parameterTypes":["java.lang.Object","java.lang.Object","int"] }, 
+    {"name":"setArgument","parameterTypes":["int","java.lang.Object"] }, 
+    {"name":"truncatingFilter","parameterTypes":["int","java.lang.Object[]"] }
+  ]
+},
+{
+  "name":"org.openjdk.nashorn.internal.runtime.ScriptRuntime",
+  "methods":[
+    {"name":"apply","parameterTypes":["org.openjdk.nashorn.internal.runtime.ScriptFunction","java.lang.Object","java.lang.Object[]"] }, 
+    {"name":"throwConstTypeError","parameterTypes":["java.lang.String"] }, 
+    {"name":"throwReferenceError","parameterTypes":["java.lang.String"] }
+  ]
+},
+{
+  "name":"org.openjdk.nashorn.internal.runtime.Undefined",
+  "methods":[
+    {"name":"delete","parameterTypes":["java.lang.Object","boolean"] }, 
+    {"name":"get","parameterTypes":["java.lang.Object"] }, 
+    {"name":"set","parameterTypes":["java.lang.Object","java.lang.Object","int"] }
+  ]
+},
+{
+  "name":"org.openjdk.nashorn.internal.runtime.UserAccessorProperty",
+  "methods":[
+    {"name":"invokeIntGetter","parameterTypes":["org.openjdk.nashorn.internal.runtime.UserAccessorProperty$Accessors","java.lang.invoke.MethodHandle","int","java.lang.Object"] }, 
+    {"name":"invokeIntSetter","parameterTypes":["org.openjdk.nashorn.internal.runtime.UserAccessorProperty$Accessors","java.lang.invoke.MethodHandle","java.lang.String","java.lang.Object","int"] }, 
+    {"name":"invokeNumberGetter","parameterTypes":["org.openjdk.nashorn.internal.runtime.UserAccessorProperty$Accessors","java.lang.invoke.MethodHandle","int","java.lang.Object"] }, 
+    {"name":"invokeNumberSetter","parameterTypes":["org.openjdk.nashorn.internal.runtime.UserAccessorProperty$Accessors","java.lang.invoke.MethodHandle","java.lang.String","java.lang.Object","double"] }, 
+    {"name":"invokeObjectGetter","parameterTypes":["org.openjdk.nashorn.internal.runtime.UserAccessorProperty$Accessors","java.lang.invoke.MethodHandle","java.lang.Object"] }, 
+    {"name":"invokeObjectSetter","parameterTypes":["org.openjdk.nashorn.internal.runtime.UserAccessorProperty$Accessors","java.lang.invoke.MethodHandle","java.lang.String","java.lang.Object","java.lang.Object"] }
+  ]
+},
+{
+  "name":"org.openjdk.nashorn.internal.runtime.arrays.ArrayData",
+  "methods":[{"name":"throwUnwarranted","parameterTypes":["org.openjdk.nashorn.internal.runtime.arrays.ArrayData","int","int"] }]
+},
+{
+  "name":"org.openjdk.nashorn.internal.runtime.arrays.ContinuousArrayData",
+  "methods":[{"name":"guard","parameterTypes":["java.lang.Class","org.openjdk.nashorn.internal.runtime.ScriptObject"] }]
+},
+{
+  "name":"org.openjdk.nashorn.internal.runtime.arrays.ObjectArrayData",
+  "methods":[
+    {"name":"getElem","parameterTypes":["int"] }, 
+    {"name":"setElem","parameterTypes":["int","java.lang.Object"] }
+  ]
+},
+{
+  "name":"org.openjdk.nashorn.internal.runtime.linker.BrowserJSObjectLinker",
+  "methods":[
+    {"name":"get","parameterTypes":["java.lang.invoke.MethodHandle","java.lang.Object","java.lang.Object"] }, 
+    {"name":"isJSObject","parameterTypes":["java.lang.Object"] }, 
+    {"name":"put","parameterTypes":["java.lang.Object","java.lang.Object","java.lang.Object"] }
+  ]
+},
+{
+  "name":"org.openjdk.nashorn.internal.runtime.linker.JSObjectLinker",
+  "methods":[
+    {"name":"callToApply","parameterTypes":["java.lang.invoke.MethodHandle","org.openjdk.nashorn.api.scripting.JSObject","java.lang.Object","java.lang.Object[]"] }, 
+    {"name":"del","parameterTypes":["java.lang.Object","java.lang.Object"] }, 
+    {"name":"get","parameterTypes":["java.lang.invoke.MethodHandle","java.lang.Object","java.lang.Object"] }, 
+    {"name":"isJSObject","parameterTypes":["java.lang.Object"] }, 
+    {"name":"jsObjectScopeCall","parameterTypes":["org.openjdk.nashorn.api.scripting.JSObject","java.lang.Object","java.lang.Object[]"] }, 
+    {"name":"put","parameterTypes":["java.lang.Object","java.lang.Object","java.lang.Object"] }
+  ]
+},
+{
+  "name":"org.openjdk.nashorn.internal.runtime.linker.JavaSuperAdapter",
+  "methods":[{"name":"getAdapter","parameterTypes":[] }]
+},
+{
+  "name":"org.openjdk.nashorn.internal.runtime.linker.JavaSuperAdapterLinker",
+  "methods":[
+    {"name":"addPrefixToMethodName","parameterTypes":["java.lang.Object"] }, 
+    {"name":"bindDynamicMethod","parameterTypes":["java.lang.Object","java.lang.Object"] }, 
+    {"name":"isAdapterOfClass","parameterTypes":["java.lang.Class","java.lang.Object"] }
+  ]
+},
+{
+  "name":"org.openjdk.nashorn.internal.runtime.linker.LinkerCallSite",
+  "methods":[{"name":"increaseMissCount","parameterTypes":["java.lang.String","java.lang.Object"] }]
+},
+{
+  "name":"org.openjdk.nashorn.internal.runtime.linker.NashornBeansLinker",
+  "methods":[
+    {"name":"consStringFilter","parameterTypes":["java.lang.Object"] }, 
+    {"name":"exportArgument","parameterTypes":["java.lang.Object"] }, 
+    {"name":"importResult","parameterTypes":["java.lang.Object"] }
+  ]
+},
+{
+  "name":"org.openjdk.nashorn.internal.runtime.linker.NashornBottomLinker",
+  "methods":[
+    {"name":"missingPropertyRemover","parameterTypes":["java.lang.Object","java.lang.Object"] }, 
+    {"name":"throwOptimisticUndefined","parameterTypes":["int"] }, 
+    {"name":"throwStrictPropertyRemover","parameterTypes":["java.lang.Object","java.lang.Object"] }, 
+    {"name":"throwStrictPropertySetter","parameterTypes":["java.lang.Object","java.lang.Object"] }
+  ]
+},
+{
+  "name":"org.openjdk.nashorn.internal.runtime.linker.NashornGuards",
+  "methods":[
+    {"name":"isMap","parameterTypes":["java.lang.Object","org.openjdk.nashorn.internal.runtime.PropertyMap"] }, 
+    {"name":"isMap","parameterTypes":["org.openjdk.nashorn.internal.runtime.ScriptObject","org.openjdk.nashorn.internal.runtime.PropertyMap"] }, 
+    {"name":"isNotJSObject","parameterTypes":["java.lang.Object"] }, 
+    {"name":"isScriptObject","parameterTypes":["java.lang.Object"] }, 
+    {"name":"sameObject","parameterTypes":["java.lang.Object","java.lang.ref.WeakReference"] }
+  ]
+},
+{
+  "name":"org.openjdk.nashorn.internal.runtime.linker.NashornLinker",
+  "methods":[
+    {"name":"createMirror","parameterTypes":["java.lang.Object"] }, 
+    {"name":"isFunction","parameterTypes":["java.lang.Object"] }, 
+    {"name":"isNashornTypeOrUndefined","parameterTypes":["java.lang.Object"] }
+  ]
+},
+{
+  "name":"org.openjdk.nashorn.internal.runtime.linker.NashornPrimitiveLinker",
+  "methods":[{"name":"isJavaScriptPrimitive","parameterTypes":["java.lang.Object"] }]
+},
+{
+  "name":"org.openjdk.nashorn.internal.scripts.JO0P0"
+},
+{
+  "name":"org.openjdk.nashorn.internal.scripts.Script$\\^eval\\_",
+  "fields":[
+    {"name":"constants"}, 
+    {"name":"source"}
+  ],
+  "methods":[
+    {"name":":createProgramFunction","parameterTypes":["org.openjdk.nashorn.internal.runtime.ScriptObject"] }, 
+    {"name":":program","parameterTypes":["org.openjdk.nashorn.internal.runtime.ScriptFunction","java.lang.Object"] }
+  ]
+},
+{
+  "name":"sun.security.provider.NativePRNG",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.provider.SHA",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+}
+]
