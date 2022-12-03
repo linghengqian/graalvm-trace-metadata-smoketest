@@ -28,6 +28,7 @@ cd ./hazelcast/
 cd ./ehcache/
 cd ./shardingsphere-jdbc-core/
 cd ./nashorn-core/
+cd ./js/
 ```
 
 - exec.
