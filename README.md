@@ -13,6 +13,7 @@
 sdk use java 22.3.r17-grl
 gu install native-image
 sudo apt-get install build-essential libz-dev zlib1g-dev -y
+gu install js espresso
 ```
 
 - select one.
