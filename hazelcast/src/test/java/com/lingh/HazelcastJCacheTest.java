@@ -4,8 +4,6 @@ import com.hazelcast.cache.HazelcastCachingProvider;
 import com.hazelcast.config.Config;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import javax.cache.Cache;
@@ -18,20 +16,9 @@ import javax.cache.spi.CachingProvider;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class HazelcastJCacheTest {
-    static HazelcastInstance hazelcastInstance;
-
-    @BeforeAll
-    static void before() {
-        hazelcastInstance = Hazelcast.newHazelcastInstance(new Config());
-    }
-
-    @AfterAll
-    static void after() {
-        hazelcastInstance.shutdown();
-    }
-
     @Test
     void testJCacheOrigin() {
+        HazelcastInstance hazelcastInstance = Hazelcast.newHazelcastInstance(new Config());
         CachingProvider cachingProvider = Caching.getCachingProvider(HazelcastCachingProvider.class.getName());
         CacheManager cacheManager = cachingProvider.getCacheManager();
         CompleteConfiguration<String, String> config = new MutableConfiguration<String, String>().setTypes(String.class, String.class);
@@ -39,5 +26,6 @@ public class HazelcastJCacheTest {
         cache.put("world", "Hello World");
         assertThat(cache.get("world")).isEqualTo("Hello World");
         assertThat(cacheManager.getCache("example", String.class, String.class)).isNotNull();
+        hazelcastInstance.shutdown();
     }
 }
