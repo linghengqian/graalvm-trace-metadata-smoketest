@@ -98,15 +98,11 @@ class HazelcastTest {
         client.shutdown();
     }
 
-    @SuppressWarnings("OverwrittenKey")
     @Test
     void testSet() {
         HazelcastInstance client = HazelcastClient.newHazelcastClient();
         Set<String> set = client.getSet("my-distributed-set");
         set.add("item1");
-        set.add("item1");
-        set.add("item2");
-        set.add("item2");
         set.add("item2");
         set.add("item3");
         assertThat(set).contains("item1", "item2", "item3");
