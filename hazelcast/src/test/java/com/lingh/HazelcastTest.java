@@ -32,7 +32,7 @@ import java.util.stream.IntStream;
 import static com.hazelcast.query.Predicates.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class HazelcastTest {
+class HazelcastTest {
     static HazelcastInstance hazelcastInstance;
 
     @BeforeAll
@@ -42,7 +42,7 @@ public class HazelcastTest {
 
     @AfterAll
     static void after() {
-        hazelcastInstance.shutdown();
+        Hazelcast.shutdownAll();
     }
 
     @Test
