@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.sql.DataSource;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -48,11 +49,11 @@ public class NestDataSourceTest {
         ds.addDataSource("teacher", dataSourceCreator.createDataSource(teacherDataSourceProperty));
         ds.addDataSource("student", dataSourceCreator.createDataSource(studentDataSourceProperty));
         assertThat(ds.getDataSources().keySet()).contains("master", "salve", "teacher", "student");
-
-        teacherService.selectTeachers(); //nest1
-        studentService.selectStudents(); //nest1
+        schoolService.addTeacherAndStudent();
+        assertThat(teacherService.selectTeachers()).isEqualTo(List.of(new Teacher(1, "tt", 2)));
+        assertThat(studentService.selectStudents()).isEqualTo(List.of(new Student(1, "tt", 2)));
         schoolService.selectTeachersAndStudents(); //nest2
         schoolService.selectTeachersInnerStudents(); //nest3
-        teacherService.selectTeachers(); //tx
+        schoolService.addTeacherAndStudentWithTx();
     }
 }

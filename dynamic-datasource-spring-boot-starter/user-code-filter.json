@@ -1,6 +1,6 @@
 {
   "rules": [
     {"excludeClasses": "**"},
-    {"includeClasses": "com.baomidou.**"}
+    {"includeClasses": "com.baomidou.dynamic.**"}
   ]
 }
