@@ -7,7 +7,7 @@
 
 # start demo
 
-- In Windows 11, IntelliJ IDEA Snapcraft Version under WSLg.
+- In Windows 11, IntelliJ IDEA installed by Jetbrains Toolbox AppImage under WSLg.
 
 ```shell
 sdk use java 22.3.r17-grl
@@ -30,6 +30,7 @@ cd ./ehcache/
 cd ./shardingsphere-jdbc-core/
 cd ./nashorn-core/
 cd ./js/
+cd ./dynamic-datasource-spring-boot-starter/
 ```
 
 - exec.
