@@ -29,7 +29,7 @@ public class LoadDatasourceFromJDBCTest {
     @Test
     void testExistDataSource() {
         DynamicRoutingDataSource ds = (DynamicRoutingDataSource) dataSource;
-        assertThat(ds.getDataSources().keySet()).contains("db1", "db2", "db3");
+        assertThat(ds.getDataSources().keySet()).contains("master", "db1", "db2", "db3");
     }
 }
 
@@ -45,8 +45,7 @@ class LoadDatasourceFromJDBCApplication {
     public DynamicDataSourceProvider dynamicDataSourceProvider() {
         return new AbstractJdbcDataSourceProvider("org.h2.Driver", "jdbc:h2:mem:test;MODE=MySQL", "sa", "") {
             @Override
-            protected Map<String, DataSourceProperty> executeStmt(Statement statement)
-                    throws SQLException {
+            protected Map<String, DataSourceProperty> executeStmt(Statement statement) throws SQLException {
                 statement.execute("""
                         CREATE TABLE IF NOT EXISTS `DB`
                         (
@@ -56,6 +55,7 @@ class LoadDatasourceFromJDBCApplication {
                             `url`   VARCHAR(30) NULL DEFAULT NULL,
                             `driver`   VARCHAR(30) NULL DEFAULT NULL
                         )""");
+                statement.executeUpdate("insert into DB values ('master','sa','','jdbc:h2:mem:test;MODE=MySQL','org.h2.Driver')");
                 statement.executeUpdate("insert into DB values ('db1','sa','','jdbc:h2:mem:test2','org.h2.Driver')");
                 statement.executeUpdate("insert into DB values ('db2','sa','','jdbc:h2:mem:test3','org.h2.Driver')");
                 statement.executeUpdate("insert into DB values ('db3','sa','','jdbc:h2:mem:test4','org.h2.Driver')");
