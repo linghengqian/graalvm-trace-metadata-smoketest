@@ -3,7 +3,7 @@ package com.lingh;
 import com.baomidou.dynamic.datasource.DynamicRoutingDataSource;
 import com.baomidou.dynamic.datasource.creator.DefaultDataSourceCreator;
 import com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DataSourceProperty;
-import com.baomidou.dynamic.datasource.spring.boot.autoconfigure.druid.DruidConfig;
+import com.baomidou.dynamic.datasource.spring.boot.autoconfigure.hikari.HikariCpConfig;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -24,11 +24,11 @@ public class AddRemoveDatasourceTest {
 
     @Test
     void testAddAndRemoveDataSource() {
-        DruidConfig druidConfig = new DruidConfig();
-        druidConfig.setValidationQuery("select 1");
+        HikariCpConfig hikariCpConfig = new HikariCpConfig();
+        hikariCpConfig.setConnectionTestQuery("select 1");
         DataSourceProperty dataSourceProperty = new DataSourceProperty()
                 .setPoolName("slave_1").setDriverClassName("org.h2.Driver").setUrl("jdbc:h2:mem:test1;MODE=MySQL")
-                .setUsername("sa").setPassword("").setDruid(druidConfig);
+                .setUsername("sa").setPassword("").setHikari(hikariCpConfig);
         DynamicRoutingDataSource ds = (DynamicRoutingDataSource) dataSource;
         ds.addDataSource(dataSourceProperty.getPoolName(), dataSourceCreator.createDataSource(dataSourceProperty));
         assertThat(ds.getDataSources().keySet()).contains("slave_1");

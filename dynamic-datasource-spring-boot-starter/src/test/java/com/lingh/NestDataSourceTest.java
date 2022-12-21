@@ -3,9 +3,11 @@ package com.lingh;
 import com.baomidou.dynamic.datasource.DynamicRoutingDataSource;
 import com.baomidou.dynamic.datasource.creator.DefaultDataSourceCreator;
 import com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DataSourceProperty;
-import com.lingh.service.SchoolService;
-import com.lingh.service.StudentService;
-import com.lingh.service.TeacherService;
+import com.lingh.service.nest.SchoolService;
+import com.lingh.service.nest.Student;
+import com.lingh.service.nest.StudentService;
+import com.lingh.service.nest.Teacher;
+import com.lingh.service.nest.TeacherService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -35,7 +37,7 @@ public class NestDataSourceTest {
     void testNest() {
         DataSourceProperty masterDataSourceProperty = new DataSourceProperty()
                 .setPoolName("master").setDriverClassName("org.h2.Driver")
-                .setUrl("jdbc:h2:mem:test;MODE=MySQL;DB_CLOSE_ON_EXIT=FALSE;INIT=RUNSCRIPT FROM 'classpath:db/schema.sql'")
+                .setUrl("jdbc:h2:mem:test;MODE=MySQL;DB_CLOSE_ON_EXIT=FALSE;INIT=RUNSCRIPT FROM 'classpath:db/add-remove-datasource.sql'")
                 .setUsername("sa").setPassword("");
         DataSourceProperty teacherDataSourceProperty = new DataSourceProperty()
                 .setPoolName("teacher").setDriverClassName("org.h2.Driver").setUrl("jdbc:h2:mem:test;MODE=MySQL;DB_CLOSE_ON_EXIT=FALSE")

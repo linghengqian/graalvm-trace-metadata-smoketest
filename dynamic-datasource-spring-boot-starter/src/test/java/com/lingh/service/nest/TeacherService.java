@@ -1,7 +1,6 @@
-package com.lingh.service;
+package com.lingh.service.nest;
 
 import com.baomidou.dynamic.datasource.annotation.DS;
-import com.lingh.Teacher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
