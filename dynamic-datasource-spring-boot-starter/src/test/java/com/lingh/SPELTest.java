@@ -41,11 +41,11 @@ public class SPELTest {
                 .setUsername("sa").setPassword("");
         DynamicRoutingDataSource ds = (DynamicRoutingDataSource) dataSource;
         ds.addDataSource("master", dataSourceCreator.createDataSource(masterDataSourceProperty));
-        ds.addDataSource("tenant1_1", dataSourceCreator.createDataSource(tenant1_1DataSourceProperty));
-        ds.addDataSource("tenant1_2", dataSourceCreator.createDataSource(tenant1_2DataSourceProperty));
-        ds.addDataSource("tenant2_1", dataSourceCreator.createDataSource(tenant2_1DataSourceProperty));
-        ds.addDataSource("tenant2_2", dataSourceCreator.createDataSource(tenant2_2DataSourceProperty));
-        assertThat(ds.getDataSources().keySet()).contains("master", "teacher", "student");
+        ds.addDataSource(tenant1_1DataSourceProperty.getPoolName(), dataSourceCreator.createDataSource(tenant1_1DataSourceProperty));
+        ds.addDataSource(tenant1_2DataSourceProperty.getPoolName(), dataSourceCreator.createDataSource(tenant1_2DataSourceProperty));
+        ds.addDataSource(tenant2_1DataSourceProperty.getPoolName(), dataSourceCreator.createDataSource(tenant2_1DataSourceProperty));
+        ds.addDataSource(tenant2_2DataSourceProperty.getPoolName(), dataSourceCreator.createDataSource(tenant2_2DataSourceProperty));
+        assertThat(ds.getDataSources().keySet()).contains("master", "tenant1_1", "tenant1_2", "tenant2_1", "tenant2_2");
     }
 }
 

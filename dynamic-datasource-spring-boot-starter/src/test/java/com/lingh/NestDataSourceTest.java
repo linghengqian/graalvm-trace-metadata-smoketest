@@ -46,9 +46,9 @@ public class NestDataSourceTest {
                 .setPoolName("student").setDriverClassName("org.h2.Driver").setUrl("jdbc:h2:mem:test;MODE=MySQL;DB_CLOSE_ON_EXIT=FALSE")
                 .setUsername("sa").setPassword("");
         DynamicRoutingDataSource ds = (DynamicRoutingDataSource) dataSource;
-        ds.addDataSource("master", dataSourceCreator.createDataSource(masterDataSourceProperty));
-        ds.addDataSource("teacher", dataSourceCreator.createDataSource(teacherDataSourceProperty));
-        ds.addDataSource("student", dataSourceCreator.createDataSource(studentDataSourceProperty));
+        ds.addDataSource(masterDataSourceProperty.getPoolName(), dataSourceCreator.createDataSource(masterDataSourceProperty));
+        ds.addDataSource(teacherDataSourceProperty.getPoolName(), dataSourceCreator.createDataSource(teacherDataSourceProperty));
+        ds.addDataSource(studentDataSourceProperty.getPoolName(), dataSourceCreator.createDataSource(studentDataSourceProperty));
         assertThat(ds.getDataSources().keySet()).contains("master", "teacher", "student");
         assertThat(teacherService.addTeacherWithTx("ss", 1)).isEqualTo(1);
         assertThat(studentService.addStudentWithTx("tt", 2)).isEqualTo(1);
