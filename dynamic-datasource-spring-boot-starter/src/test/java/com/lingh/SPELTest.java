@@ -63,21 +63,19 @@ public class SPELTest {
                 .setPoolName("tenant2_2").setDriverClassName("org.h2.Driver").setUrl("jdbc:h2:mem:test;MODE=MySQL;DB_CLOSE_ON_EXIT=FALSE")
                 .setUsername("sa").setPassword("");
         DynamicRoutingDataSource ds = (DynamicRoutingDataSource) dataSource;
-        ds.addDataSource("master", dataSourceCreator.createDataSource(masterDataSourceProperty));
+        ds.addDataSource(masterDataSourceProperty.getPoolName(), dataSourceCreator.createDataSource(masterDataSourceProperty));
         ds.addDataSource(tenant1_1DataSourceProperty.getPoolName(), dataSourceCreator.createDataSource(tenant1_1DataSourceProperty));
         ds.addDataSource(tenant1_2DataSourceProperty.getPoolName(), dataSourceCreator.createDataSource(tenant1_2DataSourceProperty));
         ds.addDataSource(tenant2_1DataSourceProperty.getPoolName(), dataSourceCreator.createDataSource(tenant2_1DataSourceProperty));
         ds.addDataSource(tenant2_2DataSourceProperty.getPoolName(), dataSourceCreator.createDataSource(tenant2_2DataSourceProperty));
         assertThat(ds.getDataSources().keySet()).contains("master", "tenant1_1", "tenant1_2", "tenant2_1", "tenant2_2");
         assertThrows(ServletException.class, () -> {
-            mockMvc.perform(MockMvcRequestBuilders.get("/users/session")
-                            .characterEncoding(StandardCharsets.UTF_8))
+            mockMvc.perform(MockMvcRequestBuilders.get("/users/session").characterEncoding(StandardCharsets.UTF_8))
                     .andDo(print()).andExpectAll(
                             status().isOk(),
                             content().encoding(StandardCharsets.UTF_8)
                     ).andReturn().getResponse().getContentAsString();
-            mockMvc.perform(MockMvcRequestBuilders.get("/users/header")
-                    .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+            mockMvc.perform(MockMvcRequestBuilders.get("/users/header").contentType(MediaType.APPLICATION_FORM_URLENCODED)
                     .header("tenantName", "tenant1")
                     .characterEncoding(StandardCharsets.UTF_8)
             ).andDo(print()).andExpectAll(
