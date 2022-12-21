@@ -15,7 +15,7 @@ import javax.sql.DataSource;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
-@SpringBootTest(classes = AddRemoveApplication.class, webEnvironment = RANDOM_PORT)
+@SpringBootTest(classes = AddRemoveDatasourceApplication.class, webEnvironment = RANDOM_PORT)
 public class AddRemoveDatasourceTest {
     @Autowired
     DataSource dataSource;
@@ -38,8 +38,8 @@ public class AddRemoveDatasourceTest {
 }
 
 @SpringBootApplication
-class AddRemoveApplication {
+class AddRemoveDatasourceApplication {
     public static void main(String[] args) {
-        SpringApplication.run(AddRemoveApplication.class, args);
+        SpringApplication.run(AddRemoveDatasourceApplication.class, args);
     }
 }
