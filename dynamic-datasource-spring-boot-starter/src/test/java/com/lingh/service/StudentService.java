@@ -2,12 +2,15 @@ package com.lingh.service;
 
 import com.baomidou.dynamic.datasource.annotation.DS;
 import com.lingh.Student;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.sql.DataSource;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -15,8 +18,11 @@ import java.util.List;
 @Service
 @DS("student")
 public class StudentService {
-    @Autowired
-    DataSource dataSource;
+    private final DataSource dataSource;
+
+    public StudentService(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
 
     @Transactional
     public int addStudentWithTx(String name, Integer age) {
@@ -39,7 +45,6 @@ public class StudentService {
             throw new RuntimeException(e);
         }
     }
-
 
     public List<Student> selectStudents() {
         List<Student> result = new LinkedList<>();

@@ -2,12 +2,15 @@ package com.lingh.service;
 
 import com.baomidou.dynamic.datasource.annotation.DS;
 import com.lingh.Teacher;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.sql.DataSource;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -15,10 +18,11 @@ import java.util.List;
 @Service
 @DS("teacher")
 public class TeacherService {
-    @Autowired
-    DataSource dataSource;
-    @Autowired
-    private StudentService studentService;
+    private final DataSource dataSource;
+
+    public TeacherService(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
 
     @Transactional
     public int addTeacherWithTx(String name, Integer age) {
@@ -56,15 +60,5 @@ public class TeacherService {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    public void selectTeachersInnerStudents() {
-        try (Connection connection = dataSource.getConnection();
-             Statement statement = connection.createStatement()) {
-            statement.executeQuery("SELECT * FROM teacher");
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        studentService.selectStudents();
     }
 }
