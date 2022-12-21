@@ -21,26 +21,24 @@ public class TeacherService {
     private StudentService studentService;
 
     @Transactional
-    public boolean addTeacherWithTx(String name, Integer age) {
+    public int addTeacherWithTx(String name, Integer age) {
         try (Connection connection = dataSource.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("insert into teacher (name,age) values (?,?)")) {
             preparedStatement.setString(1, name);
             preparedStatement.setInt(2, age);
-            int i = preparedStatement.executeUpdate();
-            return i != 0;
+            return preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
 
-    public boolean addTeacherNoTx(String name, Integer age) {
+    public int addTeacherNoTx(String name, Integer age) {
         try (Connection connection = dataSource.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("insert into teacher (name,age) values (?,?)")) {
             preparedStatement.setString(1, name);
             preparedStatement.setInt(2, age);
-            int i = preparedStatement.executeUpdate();
-            return i != 0;
+            return preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

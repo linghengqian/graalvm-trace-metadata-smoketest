@@ -12,23 +12,10 @@ public class SchoolService {
     @Autowired
     private StudentService studentService;
 
-    public void selectTeachersAndStudents() {
-        teacherService.selectTeachers();
-        studentService.selectStudents();
-    }
-
-    public void selectTeachersInnerStudents() {
-        teacherService.selectTeachersInnerStudents();
-    }
-
-    public void addTeacherAndStudent() {
-        teacherService.addTeacherWithTx("ss", 1);
-        studentService.addStudentWithTx("tt", 2);
-    }
-
     @Transactional
-    public void addTeacherAndStudentWithTx() {
-        teacherService.addTeacherWithTx("ss", 1);
-        studentService.addStudentNoTx("tt", 2);
+    public int addTeacherAndStudentWithTx() {
+        int aa = teacherService.addTeacherNoTx("aa", 3);
+        int bb = studentService.addStudentNoTx("bb", 4);
+        return aa + bb;
     }
 }

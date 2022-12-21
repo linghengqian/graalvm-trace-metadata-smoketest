@@ -6,13 +6,16 @@ import com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DataSourcePrope
 import com.baomidou.dynamic.datasource.spring.boot.autoconfigure.druid.DruidConfig;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.sql.DataSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
-@SpringBootTest(classes = DynamicDatasourceApplication.class)
+@SpringBootTest(classes = AddRemoveApplication.class, webEnvironment = RANDOM_PORT)
 public class AddRemoveDatasourceTest {
     @Autowired
     DataSource dataSource;
@@ -31,5 +34,12 @@ public class AddRemoveDatasourceTest {
         assertThat(ds.getDataSources().keySet()).contains("slave_1");
         ds.removeDataSource("slave_1");
         assertThat(ds.getDataSources().keySet()).doesNotContain("slave_1");
+    }
+}
+
+@SpringBootApplication
+class AddRemoveApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(AddRemoveApplication.class, args);
     }
 }

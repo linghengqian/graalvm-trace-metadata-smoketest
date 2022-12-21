@@ -8,14 +8,17 @@ import com.lingh.service.StudentService;
 import com.lingh.service.TeacherService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.sql.DataSource;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
-@SpringBootTest(classes = DynamicDatasourceApplication.class)
+@SpringBootTest(classes = NestApplication.class, webEnvironment = RANDOM_PORT)
 public class NestDataSourceTest {
     @Autowired
     DataSource dataSource;
@@ -34,9 +37,6 @@ public class NestDataSourceTest {
                 .setPoolName("master").setDriverClassName("org.h2.Driver")
                 .setUrl("jdbc:h2:mem:test;MODE=MySQL;DB_CLOSE_ON_EXIT=FALSE;INIT=RUNSCRIPT FROM 'classpath:db/schema.sql'")
                 .setUsername("sa").setPassword("");
-        DataSourceProperty salveDataSourceProperty = new DataSourceProperty()
-                .setPoolName("salve").setDriverClassName("org.h2.Driver").setUrl("jdbc:h2:mem:test;MODE=MySQL;DB_CLOSE_ON_EXIT=FALSE")
-                .setUsername("sa").setPassword("");
         DataSourceProperty teacherDataSourceProperty = new DataSourceProperty()
                 .setPoolName("teacher").setDriverClassName("org.h2.Driver").setUrl("jdbc:h2:mem:test;MODE=MySQL;DB_CLOSE_ON_EXIT=FALSE")
                 .setUsername("sa").setPassword("");
@@ -45,15 +45,22 @@ public class NestDataSourceTest {
                 .setUsername("sa").setPassword("");
         DynamicRoutingDataSource ds = (DynamicRoutingDataSource) dataSource;
         ds.addDataSource("master", dataSourceCreator.createDataSource(masterDataSourceProperty));
-        ds.addDataSource("salve", dataSourceCreator.createDataSource(salveDataSourceProperty));
         ds.addDataSource("teacher", dataSourceCreator.createDataSource(teacherDataSourceProperty));
         ds.addDataSource("student", dataSourceCreator.createDataSource(studentDataSourceProperty));
-        assertThat(ds.getDataSources().keySet()).contains("master", "salve", "teacher", "student");
-        schoolService.addTeacherAndStudent();
+        assertThat(ds.getDataSources().keySet()).contains("master", "teacher", "student");
+        assertThat(teacherService.addTeacherWithTx("ss", 1)).isEqualTo(1);
+        assertThat(studentService.addStudentWithTx("tt", 2)).isEqualTo(1);
         assertThat(teacherService.selectTeachers()).isEqualTo(List.of(new Teacher(1, "tt", 2)));
         assertThat(studentService.selectStudents()).isEqualTo(List.of(new Student(1, "tt", 2)));
-        schoolService.selectTeachersAndStudents(); //nest2
-        schoolService.selectTeachersInnerStudents(); //nest3
-        schoolService.addTeacherAndStudentWithTx();
+        assertThat(schoolService.addTeacherAndStudentWithTx()).isEqualTo(2);
+        assertThat(teacherService.selectTeachers()).isEqualTo(List.of(new Teacher(1, "tt", 2), new Teacher(2, "bb", 4)));
+        assertThat(studentService.selectStudents()).isEqualTo(List.of(new Student(1, "tt", 2), new Student(2, "bb", 4)));
+    }
+}
+
+@SpringBootApplication
+class NestApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(NestApplication.class, args);
     }
 }
