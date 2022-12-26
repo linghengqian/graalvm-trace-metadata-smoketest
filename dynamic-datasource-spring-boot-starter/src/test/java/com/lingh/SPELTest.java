@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.web.context.WebApplicationContext;
@@ -75,7 +74,7 @@ public class SPELTest {
                             status().isOk(),
                             content().encoding(StandardCharsets.UTF_8)
                     ).andReturn().getResponse().getContentAsString();
-            mockMvc.perform(MockMvcRequestBuilders.get("/users/header").contentType(MediaType.APPLICATION_FORM_URLENCODED)
+            mockMvc.perform(MockMvcRequestBuilders.get("/users/header")
                     .header("tenantName", "tenant1")
                     .characterEncoding(StandardCharsets.UTF_8)
             ).andDo(print()).andExpectAll(
