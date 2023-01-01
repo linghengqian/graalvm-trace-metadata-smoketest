@@ -10,6 +10,12 @@
 - In Windows 11, IntelliJ IDEA installed by Jetbrains Toolbox AppImage under WSLg.
 
 ```shell
+cd /tmp
+sudo apt install unzip zip curl sed -y
+curl -s "https://get.sdkman.io" | bash
+source "$HOME/.sdkman/bin/sdkman-init.sh"
+sdk version
+sdk install java 22.3.r17-grl
 sdk use java 22.3.r17-grl
 gu install native-image
 sudo apt-get install build-essential libz-dev zlib1g-dev -y
