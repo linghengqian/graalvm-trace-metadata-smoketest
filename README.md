@@ -36,6 +36,7 @@ cd ./shardingsphere-jdbc-core/
 cd ./nashorn-core/
 cd ./js/
 cd ./dynamic-datasource-spring-boot-starter/
+cd ./curator-client/
 ```
 
 - exec.
