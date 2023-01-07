@@ -1,3 +1,1 @@
-com.lingh.hint.ModuloHintShardingAlgorithm
-com.lingh.algorithm.StandardModuloShardingDatabaseAlgorithm
-com.lingh.algorithm.StandardModuloShardingTableAlgorithm
+com.lingh.test.e2e.driver.fixture.sharding.JDBCStandardShardingAlgorithmFixture

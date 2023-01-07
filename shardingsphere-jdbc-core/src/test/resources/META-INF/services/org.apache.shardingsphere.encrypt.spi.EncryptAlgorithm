@@ -1,0 +1,2 @@
+com.lingh.test.e2e.driver.fixture.encrypt.JDBCEncryptAlgorithmFixture
+com.lingh.test.e2e.driver.fixture.encrypt.JDBCQueryAssistedEncryptAlgorithmFixture

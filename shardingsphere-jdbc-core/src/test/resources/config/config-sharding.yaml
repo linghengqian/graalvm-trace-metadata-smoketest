@@ -1,0 +1,65 @@
+databaseName: logic_db
+
+rules:
+- !SHARDING
+  tables:
+    t_order:
+      actualDataNodes: jdbc_${0..1}.t_order_${0..1}
+    t_order_item:
+      actualDataNodes: jdbc_${0..1}.t_order_item_${0..1}
+      keyGenerateStrategy:
+        column: item_id
+        keyGeneratorName: jdbc_increment_fixture
+    t_config:
+      actualDataNodes: jdbc_${0..1}.t_config
+    t_user:
+      actualDataNodes: jdbc_0.t_user_${0..1}
+      tableStrategy:
+        standard:
+          shardingColumn: id
+          shardingAlgorithmName: table_inline
+      keyGenerateStrategy:
+        column: id
+        keyGeneratorName: jdbc_reset_increment_fixture
+  autoTables:
+    t_order_auto:
+      actualDataSources: jdbc_0, jdbc_1
+      shardingStrategy:
+        standard:
+          shardingColumn: order_id
+          shardingAlgorithmName: mod
+    t_order_item_auto:
+      shardingStrategy:
+        standard:
+          shardingColumn: order_id
+          shardingAlgorithmName: mod
+  bindingTables:
+    - t_order,t_order_item
+  broadcastTables:
+    - t_config
+  defaultTableStrategy:
+    standard:
+      shardingColumn: order_id
+      shardingAlgorithmName: jdbc_standard_fixture
+  defaultDatabaseStrategy:
+    standard:
+      shardingColumn: user_id
+      shardingAlgorithmName: jdbc_standard_fixture
+  
+  shardingAlgorithms:
+    jdbc_standard_fixture:
+        type: JDBC.STANDARD.FIXTURE
+    table_inline:
+      type: INLINE
+      props:
+        algorithm-expression: t_user_${id % 2}
+    mod:
+      type: MOD
+      props:
+        sharding-count: 2
+  
+  keyGenerators:
+    jdbc_increment_fixture:
+      type: JDBC.INCREMENT.FIXTURE
+    jdbc_reset_increment_fixture:
+      type: JDBC.RESET_INCREMENT.FIXTURE

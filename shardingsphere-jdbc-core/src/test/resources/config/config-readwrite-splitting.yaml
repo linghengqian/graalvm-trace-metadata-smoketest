@@ -1,0 +1,14 @@
+databaseName: logic_db
+
+rules:
+- !READWRITE_SPLITTING
+  dataSources:
+    test_ds:
+      staticStrategy:
+        writeDataSourceName: test_primary_ds
+        readDataSourceNames:
+          - test_replica_ds
+      loadBalancerName: roundRobin
+  loadBalancers:
+    roundRobin:
+      type: ROUND_ROBIN
