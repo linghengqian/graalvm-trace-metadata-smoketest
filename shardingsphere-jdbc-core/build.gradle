@@ -12,11 +12,10 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.1'
-    // TODO Use https://github.com/apache/shardingsphere/commit/5bfff28e9be568a09f6d57618659160d9e68853f, need to add ConnectionManagerTest and YamlShardingSphereDataSourceFactoryTest
+    // TODO Use https://github.com/apache/shardingsphere/commit/5bfff28e9be568a09f6d57618659160d9e68853f,
+    //  need to add ConnectionManagerTest and ShardingSphereResultSetTest, ShardingSphereDriverURLTest
     testImplementation 'org.apache.shardingsphere:shardingsphere-jdbc-core:5.3.0'
-    testRuntimeOnly 'org.junit.vintage:junit-vintage-engine:5.9.1'
+    testImplementation 'org.junit.vintage:junit-vintage-engine:5.9.1'
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'org.mockito:mockito-core:4.11.0'
     testImplementation 'com.h2database:h2:2.1.214'
