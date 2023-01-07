@@ -1,0 +1,47 @@
+package com.lingh.impl;
+
+import io.etcd.jetcd.ByteSequence;
+import io.etcd.jetcd.Client;
+import io.etcd.jetcd.KV;
+import io.etcd.jetcd.Watch;
+import io.etcd.jetcd.Watch.Watcher;
+import io.etcd.jetcd.test.EtcdClusterExtension;
+import io.etcd.jetcd.watch.WatchEvent.EventType;
+import io.etcd.jetcd.watch.WatchResponse;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Timeout;
+import org.junit.jupiter.api.extension.RegisterExtension;
+
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicReference;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.awaitility.Awaitility.await;
+
+@Timeout(value = 30)
+public class WatchResumeTest {
+
+    @RegisterExtension
+    public static final EtcdClusterExtension cluster = EtcdClusterExtension.builder()
+        .withNodes(3)
+        .build();
+
+    @Test
+    public void testWatchOnPut() throws Exception {
+        try (Client client = TestUtil.client(cluster).build()) {
+            Watch watchClient = client.getWatchClient();
+            KV kvClient = client.getKVClient();
+            final ByteSequence key = TestUtil.randomByteSequence();
+            final ByteSequence value = TestUtil.randomByteSequence();
+            final AtomicReference<WatchResponse> ref = new AtomicReference<>();
+            try (Watcher ignored = watchClient.watch(key, ref::set)) {
+                cluster.restart();
+                kvClient.put(key, value).get(1, TimeUnit.SECONDS);
+                await().atMost(30, TimeUnit.SECONDS).untilAsserted(() -> assertThat(ref.get()).isNotNull());
+                assertThat(ref.get().getEvents().size()).isEqualTo(1);
+                assertThat(ref.get().getEvents().get(0).getEventType()).isEqualTo(EventType.PUT);
+                assertThat(ref.get().getEvents().get(0).getKeyValue().getKey()).isEqualTo(key);
+            }
+        }
+    }
+}
