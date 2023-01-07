@@ -1,0 +1,2666 @@
+[
+{
+  "condition":{"typeReachable":"org.mockito.internal.configuration.IndependentAnnotationEngine"},
+  "name":"com.lingh.executor.AbstractBaseExecutorTest",
+  "allDeclaredFields":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.configuration.SpyAnnotationEngine"},
+  "name":"com.lingh.executor.AbstractBaseExecutorTest",
+  "allDeclaredFields":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.configuration.injection.scanner.InjectMocksScanner"},
+  "name":"com.lingh.executor.AbstractBaseExecutorTest",
+  "allDeclaredFields":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.configuration.injection.scanner.MockScanner"},
+  "name":"com.lingh.executor.AbstractBaseExecutorTest",
+  "allDeclaredFields":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.runners.DefaultInternalRunner$1"},
+  "name":"com.lingh.executor.AbstractBaseExecutorTest",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "methods":[{"name":"tearDown","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.runners.DefaultInternalRunner$1$1"},
+  "name":"com.lingh.executor.AbstractBaseExecutorTest",
+  "methods":[{"name":"setUp","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.configuration.IndependentAnnotationEngine"},
+  "name":"com.lingh.executor.batch.BatchPreparedStatementExecutorTest",
+  "allDeclaredFields":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.configuration.SpyAnnotationEngine"},
+  "name":"com.lingh.executor.batch.BatchPreparedStatementExecutorTest",
+  "allDeclaredFields":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.configuration.injection.scanner.InjectMocksScanner"},
+  "name":"com.lingh.executor.batch.BatchPreparedStatementExecutorTest",
+  "allDeclaredFields":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.configuration.injection.scanner.MockScanner"},
+  "name":"com.lingh.executor.batch.BatchPreparedStatementExecutorTest",
+  "allDeclaredFields":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.runners.DefaultInternalRunner$1"},
+  "name":"com.lingh.executor.batch.BatchPreparedStatementExecutorTest",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.runners.DefaultInternalRunner$1$1"},
+  "name":"com.lingh.executor.batch.BatchPreparedStatementExecutorTest",
+  "methods":[
+    {"name":"assertExecuteBatchForMultiplePreparedStatementsFailure","parameterTypes":[] }, 
+    {"name":"assertExecuteBatchForMultiplePreparedStatementsSuccess","parameterTypes":[] }, 
+    {"name":"assertExecuteBatchForSinglePreparedStatementFailure","parameterTypes":[] }, 
+    {"name":"assertExecuteBatchForSinglePreparedStatementSuccess","parameterTypes":[] }, 
+    {"name":"assertNoPreparedStatement","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.configuration.IndependentAnnotationEngine"},
+  "name":"com.lingh.jdbc.context.CachedDatabaseMetaDataTest",
+  "allDeclaredFields":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.configuration.SpyAnnotationEngine"},
+  "name":"com.lingh.jdbc.context.CachedDatabaseMetaDataTest",
+  "allDeclaredFields":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.configuration.injection.scanner.InjectMocksScanner"},
+  "name":"com.lingh.jdbc.context.CachedDatabaseMetaDataTest",
+  "allDeclaredFields":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.configuration.injection.scanner.MockScanner"},
+  "name":"com.lingh.jdbc.context.CachedDatabaseMetaDataTest",
+  "allDeclaredFields":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.runners.DefaultInternalRunner$1"},
+  "name":"com.lingh.jdbc.context.CachedDatabaseMetaDataTest",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.runners.DefaultInternalRunner$1$1"},
+  "name":"com.lingh.jdbc.context.CachedDatabaseMetaDataTest",
+  "methods":[
+    {"name":"assertGetRowIdLifetimeFromOriginMetaData","parameterTypes":[] }, 
+    {"name":"assertGetRowIdLifetimeFromOriginMetaDataWhenNotSupported","parameterTypes":[] }, 
+    {"name":"assertIsGeneratedKeyAlwaysReturned","parameterTypes":[] }, 
+    {"name":"assertIsGeneratedKeyAlwaysReturnedWhenNotSupported","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.configuration.IndependentAnnotationEngine"},
+  "name":"com.lingh.jdbc.core.datasource.metadata.ShardingSphereDatabaseMetaDataTest",
+  "allDeclaredFields":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.configuration.SpyAnnotationEngine"},
+  "name":"com.lingh.jdbc.core.datasource.metadata.ShardingSphereDatabaseMetaDataTest",
+  "allDeclaredFields":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.configuration.injection.scanner.InjectMocksScanner"},
+  "name":"com.lingh.jdbc.core.datasource.metadata.ShardingSphereDatabaseMetaDataTest",
+  "allDeclaredFields":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.configuration.injection.scanner.MockScanner"},
+  "name":"com.lingh.jdbc.core.datasource.metadata.ShardingSphereDatabaseMetaDataTest",
+  "allDeclaredFields":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.runners.DefaultInternalRunner$1"},
+  "name":"com.lingh.jdbc.core.datasource.metadata.ShardingSphereDatabaseMetaDataTest",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.runners.DefaultInternalRunner$1$1"},
+  "name":"com.lingh.jdbc.core.datasource.metadata.ShardingSphereDatabaseMetaDataTest",
+  "methods":[
+    {"name":"assertAllProceduresAreCallable","parameterTypes":[] }, 
+    {"name":"assertAllTablesAreSelectable","parameterTypes":[] }, 
+    {"name":"assertAssertIsCatalogAtStart","parameterTypes":[] }, 
+    {"name":"assertAssertIsReadOnly","parameterTypes":[] }, 
+    {"name":"assertAutoCommitFailureClosesAllResultSets","parameterTypes":[] }, 
+    {"name":"assertDataDefinitionCausesTransactionCommit","parameterTypes":[] }, 
+    {"name":"assertDataDefinitionIgnoredInTransactions","parameterTypes":[] }, 
+    {"name":"assertDeletesAreDetected","parameterTypes":[] }, 
+    {"name":"assertDoesMaxRowSizeIncludeBlobs","parameterTypes":[] }, 
+    {"name":"assertGeneratedKeyAlwaysReturned","parameterTypes":[] }, 
+    {"name":"assertGetAttributes","parameterTypes":[] }, 
+    {"name":"assertGetBestRowIdentifier","parameterTypes":[] }, 
+    {"name":"assertGetCatalogSeparator","parameterTypes":[] }, 
+    {"name":"assertGetCatalogTerm","parameterTypes":[] }, 
+    {"name":"assertGetCatalogs","parameterTypes":[] }, 
+    {"name":"assertGetClientInfoProperties","parameterTypes":[] }, 
+    {"name":"assertGetColumnPrivileges","parameterTypes":[] }, 
+    {"name":"assertGetColumns","parameterTypes":[] }, 
+    {"name":"assertGetConnection","parameterTypes":[] }, 
+    {"name":"assertGetCrossReference","parameterTypes":[] }, 
+    {"name":"assertGetDatabaseMajorVersion","parameterTypes":[] }, 
+    {"name":"assertGetDatabaseMinorVersion","parameterTypes":[] }, 
+    {"name":"assertGetDatabaseProductName","parameterTypes":[] }, 
+    {"name":"assertGetDatabaseProductVersion","parameterTypes":[] }, 
+    {"name":"assertGetDefaultTransactionIsolation","parameterTypes":[] }, 
+    {"name":"assertGetDriverMajorVersion","parameterTypes":[] }, 
+    {"name":"assertGetDriverMinorVersion","parameterTypes":[] }, 
+    {"name":"assertGetDriverName","parameterTypes":[] }, 
+    {"name":"assertGetDriverVersion","parameterTypes":[] }, 
+    {"name":"assertGetExportedKeys","parameterTypes":[] }, 
+    {"name":"assertGetExtraNameCharacters","parameterTypes":[] }, 
+    {"name":"assertGetFunctionColumns","parameterTypes":[] }, 
+    {"name":"assertGetFunctions","parameterTypes":[] }, 
+    {"name":"assertGetIdentifierQuoteString","parameterTypes":[] }, 
+    {"name":"assertGetImportedKeys","parameterTypes":[] }, 
+    {"name":"assertGetIndexInfo","parameterTypes":[] }, 
+    {"name":"assertGetJDBCMajorVersion","parameterTypes":[] }, 
+    {"name":"assertGetJDBCMinorVersion","parameterTypes":[] }, 
+    {"name":"assertGetMaxBinaryLiteralLength","parameterTypes":[] }, 
+    {"name":"assertGetMaxCatalogNameLength","parameterTypes":[] }, 
+    {"name":"assertGetMaxCharLiteralLength","parameterTypes":[] }, 
+    {"name":"assertGetMaxColumnNameLength","parameterTypes":[] }, 
+    {"name":"assertGetMaxColumnsInGroupBy","parameterTypes":[] }, 
+    {"name":"assertGetMaxColumnsInIndex","parameterTypes":[] }, 
+    {"name":"assertGetMaxColumnsInOrderBy","parameterTypes":[] }, 
+    {"name":"assertGetMaxColumnsInSelect","parameterTypes":[] }, 
+    {"name":"assertGetMaxColumnsInTable","parameterTypes":[] }, 
+    {"name":"assertGetMaxConnections","parameterTypes":[] }, 
+    {"name":"assertGetMaxCursorNameLength","parameterTypes":[] }, 
+    {"name":"assertGetMaxIndexLength","parameterTypes":[] }, 
+    {"name":"assertGetMaxProcedureNameLength","parameterTypes":[] }, 
+    {"name":"assertGetMaxRowSize","parameterTypes":[] }, 
+    {"name":"assertGetMaxSchemaNameLength","parameterTypes":[] }, 
+    {"name":"assertGetMaxStatementLength","parameterTypes":[] }, 
+    {"name":"assertGetMaxStatements","parameterTypes":[] }, 
+    {"name":"assertGetMaxTableNameLength","parameterTypes":[] }, 
+    {"name":"assertGetMaxTablesInSelect","parameterTypes":[] }, 
+    {"name":"assertGetMaxUserNameLength","parameterTypes":[] }, 
+    {"name":"assertGetNumericFunctions","parameterTypes":[] }, 
+    {"name":"assertGetPrimaryKeys","parameterTypes":[] }, 
+    {"name":"assertGetProcedureColumns","parameterTypes":[] }, 
+    {"name":"assertGetProcedureTerm","parameterTypes":[] }, 
+    {"name":"assertGetProcedures","parameterTypes":[] }, 
+    {"name":"assertGetPseudoColumns","parameterTypes":[] }, 
+    {"name":"assertGetResultSetHoldability","parameterTypes":[] }, 
+    {"name":"assertGetRowIdLifetime","parameterTypes":[] }, 
+    {"name":"assertGetSQLKeywords","parameterTypes":[] }, 
+    {"name":"assertGetSQLStateType","parameterTypes":[] }, 
+    {"name":"assertGetSchemaTerm","parameterTypes":[] }, 
+    {"name":"assertGetSchemas","parameterTypes":[] }, 
+    {"name":"assertGetSchemasForCatalogAndSchemaPattern","parameterTypes":[] }, 
+    {"name":"assertGetSearchStringEscape","parameterTypes":[] }, 
+    {"name":"assertGetStringFunctions","parameterTypes":[] }, 
+    {"name":"assertGetSuperTables","parameterTypes":[] }, 
+    {"name":"assertGetSuperTypes","parameterTypes":[] }, 
+    {"name":"assertGetSystemFunctions","parameterTypes":[] }, 
+    {"name":"assertGetTablePrivileges","parameterTypes":[] }, 
+    {"name":"assertGetTableTypes","parameterTypes":[] }, 
+    {"name":"assertGetTables","parameterTypes":[] }, 
+    {"name":"assertGetTimeDateFunctions","parameterTypes":[] }, 
+    {"name":"assertGetTypeInfo","parameterTypes":[] }, 
+    {"name":"assertGetUDTs","parameterTypes":[] }, 
+    {"name":"assertGetURL","parameterTypes":[] }, 
+    {"name":"assertGetUserName","parameterTypes":[] }, 
+    {"name":"assertGetVersionColumns","parameterTypes":[] }, 
+    {"name":"assertInsertsAreDetected","parameterTypes":[] }, 
+    {"name":"assertLocatorsUpdateCopy","parameterTypes":[] }, 
+    {"name":"assertNullPlusNonNullIsNull","parameterTypes":[] }, 
+    {"name":"assertNullsAreSortedAtEnd","parameterTypes":[] }, 
+    {"name":"assertNullsAreSortedAtStart","parameterTypes":[] }, 
+    {"name":"assertNullsAreSortedHigh","parameterTypes":[] }, 
+    {"name":"assertNullsAreSortedLow","parameterTypes":[] }, 
+    {"name":"assertOthersDeletesAreVisible","parameterTypes":[] }, 
+    {"name":"assertOthersInsertsAreVisible","parameterTypes":[] }, 
+    {"name":"assertOthersUpdatesAreVisible","parameterTypes":[] }, 
+    {"name":"assertOwnDeletesAreVisible","parameterTypes":[] }, 
+    {"name":"assertOwnInsertsAreVisible","parameterTypes":[] }, 
+    {"name":"assertOwnUpdatesAreVisible","parameterTypes":[] }, 
+    {"name":"assertStoresLowerCaseIdentifiers","parameterTypes":[] }, 
+    {"name":"assertStoresLowerCaseQuotedIdentifiers","parameterTypes":[] }, 
+    {"name":"assertStoresMixedCaseIdentifiers","parameterTypes":[] }, 
+    {"name":"assertStoresMixedCaseQuotedIdentifiers","parameterTypes":[] }, 
+    {"name":"assertStoresUpperCaseIdentifiers","parameterTypes":[] }, 
+    {"name":"assertStoresUpperCaseQuotedIdentifiers","parameterTypes":[] }, 
+    {"name":"assertSupportsANSI92EntryLevelSQL","parameterTypes":[] }, 
+    {"name":"assertSupportsANSI92FullSQL","parameterTypes":[] }, 
+    {"name":"assertSupportsANSI92IntermediateSQL","parameterTypes":[] }, 
+    {"name":"assertSupportsAlterTableWithAddColumn","parameterTypes":[] }, 
+    {"name":"assertSupportsAlterTableWithDropColumn","parameterTypes":[] }, 
+    {"name":"assertSupportsBatchUpdates","parameterTypes":[] }, 
+    {"name":"assertSupportsCatalogsInDataManipulation","parameterTypes":[] }, 
+    {"name":"assertSupportsCatalogsInIndexDefinitions","parameterTypes":[] }, 
+    {"name":"assertSupportsCatalogsInPrivilegeDefinitions","parameterTypes":[] }, 
+    {"name":"assertSupportsCatalogsInProcedureCalls","parameterTypes":[] }, 
+    {"name":"assertSupportsCatalogsInTableDefinitions","parameterTypes":[] }, 
+    {"name":"assertSupportsColumnAliasing","parameterTypes":[] }, 
+    {"name":"assertSupportsConvert","parameterTypes":[] }, 
+    {"name":"assertSupportsCoreSQLGrammar","parameterTypes":[] }, 
+    {"name":"assertSupportsCorrelatedSubqueries","parameterTypes":[] }, 
+    {"name":"assertSupportsDataDefinitionAndDataManipulationTransactions","parameterTypes":[] }, 
+    {"name":"assertSupportsDataManipulationTransactionsOnly","parameterTypes":[] }, 
+    {"name":"assertSupportsDifferentTableCorrelationNames","parameterTypes":[] }, 
+    {"name":"assertSupportsExpressionsInOrderBy","parameterTypes":[] }, 
+    {"name":"assertSupportsExtendedSQLGrammar","parameterTypes":[] }, 
+    {"name":"assertSupportsFullOuterJoins","parameterTypes":[] }, 
+    {"name":"assertSupportsGetGeneratedKeys","parameterTypes":[] }, 
+    {"name":"assertSupportsGroupBy","parameterTypes":[] }, 
+    {"name":"assertSupportsGroupByBeyondSelect","parameterTypes":[] }, 
+    {"name":"assertSupportsGroupByUnrelated","parameterTypes":[] }, 
+    {"name":"assertSupportsIntegrityEnhancementFacility","parameterTypes":[] }, 
+    {"name":"assertSupportsLikeEscapeClause","parameterTypes":[] }, 
+    {"name":"assertSupportsLimitedOuterJoins","parameterTypes":[] }, 
+    {"name":"assertSupportsMinimumSQLGrammar","parameterTypes":[] }, 
+    {"name":"assertSupportsMixedCaseIdentifiers","parameterTypes":[] }, 
+    {"name":"assertSupportsMixedCaseQuotedIdentifiers","parameterTypes":[] }, 
+    {"name":"assertSupportsMultipleOpenResults","parameterTypes":[] }, 
+    {"name":"assertSupportsMultipleResultSets","parameterTypes":[] }, 
+    {"name":"assertSupportsMultipleTransactions","parameterTypes":[] }, 
+    {"name":"assertSupportsNamedParameters","parameterTypes":[] }, 
+    {"name":"assertSupportsNonNullableColumns","parameterTypes":[] }, 
+    {"name":"assertSupportsOpenCursorsAcrossCommit","parameterTypes":[] }, 
+    {"name":"assertSupportsOpenCursorsAcrossRollback","parameterTypes":[] }, 
+    {"name":"assertSupportsOpenStatementsAcrossCommit","parameterTypes":[] }, 
+    {"name":"assertSupportsOpenStatementsAcrossRollback","parameterTypes":[] }, 
+    {"name":"assertSupportsOrderByUnrelated","parameterTypes":[] }, 
+    {"name":"assertSupportsOuterJoins","parameterTypes":[] }, 
+    {"name":"assertSupportsPositionedDelete","parameterTypes":[] }, 
+    {"name":"assertSupportsPositionedUpdate","parameterTypes":[] }, 
+    {"name":"assertSupportsResultSetConcurrency","parameterTypes":[] }, 
+    {"name":"assertSupportsResultSetHoldability","parameterTypes":[] }, 
+    {"name":"assertSupportsResultSetType","parameterTypes":[] }, 
+    {"name":"assertSupportsSavepoints","parameterTypes":[] }, 
+    {"name":"assertSupportsSchemasInDataManipulation","parameterTypes":[] }, 
+    {"name":"assertSupportsSchemasInIndexDefinitions","parameterTypes":[] }, 
+    {"name":"assertSupportsSchemasInPrivilegeDefinitions","parameterTypes":[] }, 
+    {"name":"assertSupportsSchemasInProcedureCalls","parameterTypes":[] }, 
+    {"name":"assertSupportsSchemasInTableDefinitions","parameterTypes":[] }, 
+    {"name":"assertSupportsSelectForUpdate","parameterTypes":[] }, 
+    {"name":"assertSupportsStatementPooling","parameterTypes":[] }, 
+    {"name":"assertSupportsStoredFunctionsUsingCallSyntax","parameterTypes":[] }, 
+    {"name":"assertSupportsStoredProcedures","parameterTypes":[] }, 
+    {"name":"assertSupportsSubqueriesInComparisons","parameterTypes":[] }, 
+    {"name":"assertSupportsSubqueriesInExists","parameterTypes":[] }, 
+    {"name":"assertSupportsSubqueriesInIns","parameterTypes":[] }, 
+    {"name":"assertSupportsSubqueriesInQuantifieds","parameterTypes":[] }, 
+    {"name":"assertSupportsTableCorrelationNames","parameterTypes":[] }, 
+    {"name":"assertSupportsTransactionIsolationLevel","parameterTypes":[] }, 
+    {"name":"assertSupportsTransactions","parameterTypes":[] }, 
+    {"name":"assertSupportsUnion","parameterTypes":[] }, 
+    {"name":"assertSupportsUnionAll","parameterTypes":[] }, 
+    {"name":"assertUpdatesAreDetected","parameterTypes":[] }, 
+    {"name":"assertUsesLocalFilePerTable","parameterTypes":[] }, 
+    {"name":"assertUsesLocalFiles","parameterTypes":[] }, 
+    {"name":"setUp","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.configuration.IndependentAnnotationEngine"},
+  "name":"com.lingh.jdbc.core.resultset.DatabaseMetaDataResultSetTest",
+  "allDeclaredFields":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.configuration.SpyAnnotationEngine"},
+  "name":"com.lingh.jdbc.core.resultset.DatabaseMetaDataResultSetTest",
+  "allDeclaredFields":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.configuration.injection.scanner.InjectMocksScanner"},
+  "name":"com.lingh.jdbc.core.resultset.DatabaseMetaDataResultSetTest",
+  "allDeclaredFields":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.configuration.injection.scanner.MockScanner"},
+  "name":"com.lingh.jdbc.core.resultset.DatabaseMetaDataResultSetTest",
+  "allDeclaredFields":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.runners.DefaultInternalRunner$1"},
+  "name":"com.lingh.jdbc.core.resultset.DatabaseMetaDataResultSetTest",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.runners.DefaultInternalRunner$1$1"},
+  "name":"com.lingh.jdbc.core.resultset.DatabaseMetaDataResultSetTest",
+  "methods":[
+    {"name":"assertClose","parameterTypes":[] }, 
+    {"name":"assertFindColumn","parameterTypes":[] }, 
+    {"name":"assertGetBigDecimalWithIndex","parameterTypes":[] }, 
+    {"name":"assertGetBigDecimalWithIndexAndScale","parameterTypes":[] }, 
+    {"name":"assertGetBigDecimalWithLabel","parameterTypes":[] }, 
+    {"name":"assertGetBigDecimalWithLabelAndScale","parameterTypes":[] }, 
+    {"name":"assertGetBooleanWithIndex","parameterTypes":[] }, 
+    {"name":"assertGetBooleanWithLabel","parameterTypes":[] }, 
+    {"name":"assertGetByteWithIndex","parameterTypes":[] }, 
+    {"name":"assertGetByteWithLabel","parameterTypes":[] }, 
+    {"name":"assertGetBytesWithIndex","parameterTypes":[] }, 
+    {"name":"assertGetBytesWithLabel","parameterTypes":[] }, 
+    {"name":"assertGetConcurrency","parameterTypes":[] }, 
+    {"name":"assertGetDateWithIndex","parameterTypes":[] }, 
+    {"name":"assertGetDateWithLabel","parameterTypes":[] }, 
+    {"name":"assertGetDoubleWithIndex","parameterTypes":[] }, 
+    {"name":"assertGetDoubleWithLabel","parameterTypes":[] }, 
+    {"name":"assertGetFetchDirection","parameterTypes":[] }, 
+    {"name":"assertGetFetchSize","parameterTypes":[] }, 
+    {"name":"assertGetFloatWithIndex","parameterTypes":[] }, 
+    {"name":"assertGetFloatWithLabel","parameterTypes":[] }, 
+    {"name":"assertGetIntWithIndex","parameterTypes":[] }, 
+    {"name":"assertGetIntWithLabel","parameterTypes":[] }, 
+    {"name":"assertGetLongWithIndex","parameterTypes":[] }, 
+    {"name":"assertGetLongWithLabel","parameterTypes":[] }, 
+    {"name":"assertGetMetaData","parameterTypes":[] }, 
+    {"name":"assertGetNStringWithIndex","parameterTypes":[] }, 
+    {"name":"assertGetNStringWithLabel","parameterTypes":[] }, 
+    {"name":"assertGetObjectInvalidLabel","parameterTypes":[] }, 
+    {"name":"assertGetObjectOutOfIndexRange","parameterTypes":[] }, 
+    {"name":"assertGetObjectWithIndex","parameterTypes":[] }, 
+    {"name":"assertGetObjectWithLabel","parameterTypes":[] }, 
+    {"name":"assertGetShortWithIndex","parameterTypes":[] }, 
+    {"name":"assertGetShortWithLabel","parameterTypes":[] }, 
+    {"name":"assertGetStringWithIndex","parameterTypes":[] }, 
+    {"name":"assertGetStringWithLabel","parameterTypes":[] }, 
+    {"name":"assertGetStringWithLabelCaseInsensitive","parameterTypes":[] }, 
+    {"name":"assertGetTimeWithIndex","parameterTypes":[] }, 
+    {"name":"assertGetTimeWithLabel","parameterTypes":[] }, 
+    {"name":"assertGetTimestampWithIndex","parameterTypes":[] }, 
+    {"name":"assertGetTimestampWithLabel","parameterTypes":[] }, 
+    {"name":"assertGetType","parameterTypes":[] }, 
+    {"name":"assertGetURLWithIndex","parameterTypes":[] }, 
+    {"name":"assertGetURLWithLabel","parameterTypes":[] }, 
+    {"name":"assertNext","parameterTypes":[] }, 
+    {"name":"assertOperationWithClose","parameterTypes":[] }, 
+    {"name":"assertWasNull","parameterTypes":[] }, 
+    {"name":"setUp","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.configuration.IndependentAnnotationEngine"},
+  "name":"com.lingh.state.DriverStateContextTest",
+  "allDeclaredFields":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.configuration.SpyAnnotationEngine"},
+  "name":"com.lingh.state.DriverStateContextTest",
+  "allDeclaredFields":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.configuration.injection.scanner.InjectMocksScanner"},
+  "name":"com.lingh.state.DriverStateContextTest",
+  "allDeclaredFields":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.configuration.injection.scanner.MockScanner"},
+  "name":"com.lingh.state.DriverStateContextTest",
+  "allDeclaredFields":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.runners.DefaultInternalRunner$1"},
+  "name":"com.lingh.state.DriverStateContextTest",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicConstructors":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"tearDown","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.runners.DefaultInternalRunner$1$1"},
+  "name":"com.lingh.state.DriverStateContextTest",
+  "methods":[
+    {"name":"assertGetConnectionWithOkState","parameterTypes":[] }, 
+    {"name":"setUp","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.runners.DefaultInternalRunner$1$1"},
+  "name":"com.lingh.test.e2e.driver.fixture.keygen.IncrementKeyGenerateAlgorithmFixture",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.runners.DefaultInternalRunner$1$1"},
+  "name":"com.lingh.test.e2e.driver.fixture.keygen.ResetIncrementKeyGenerateAlgorithmFixture",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineDelegateByteBuddyMockMaker"},
+  "name":"com.sun.tools.attach.VirtualMachine"
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.InputStream$MockitoMock$e273ro0op99200N"},
+  "name":"java.io.InputStream",
+  "methods":[{"name":"read","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.Reader$MockitoMock$ve88fn2op99200N"},
+  "name":"java.io.Reader",
+  "methods":[
+    {"name":"close","parameterTypes":[] }, 
+    {"name":"read","parameterTypes":["char[]","int","int"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.SubclassBytecodeGenerator"},
+  "name":"java.io.Serializable"
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.ShardingSphereTransactionManager$MockitoMock$p0nu4v2op99200N"},
+  "name":"java.lang.AutoCloseable",
+  "methods":[{"name":"close","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"java.lang.Class",
+  "methods":[
+    {"name":"getAnnotatedInterfaces","parameterTypes":[] }, 
+    {"name":"getAnnotatedSuperclass","parameterTypes":[] }, 
+    {"name":"getModule","parameterTypes":[] }, 
+    {"name":"getNestHost","parameterTypes":[] }, 
+    {"name":"getNestMembers","parameterTypes":[] }, 
+    {"name":"getPermittedSubclasses","parameterTypes":[] }, 
+    {"name":"getRecordComponents","parameterTypes":[] }, 
+    {"name":"isNestmateOf","parameterTypes":["java.lang.Class"] }, 
+    {"name":"isRecord","parameterTypes":[] }, 
+    {"name":"isSealed","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineDelegateByteBuddyMockMaker"},
+  "name":"java.lang.Class",
+  "methods":[{"name":"getModule","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.ModuleHandler$ModuleSystemFound"},
+  "name":"java.lang.Class",
+  "methods":[
+    {"name":"forName","parameterTypes":["java.lang.String"] }, 
+    {"name":"getModule","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.TypeSupport"},
+  "name":"java.lang.Class",
+  "methods":[{"name":"isSealed","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"java.lang.ClassLoader",
+  "methods":[{"name":"getUnnamedModule","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"java.lang.Module",
+  "methods":[
+    {"name":"addExports","parameterTypes":["java.lang.String","java.lang.Module"] }, 
+    {"name":"canRead","parameterTypes":["java.lang.Module"] }, 
+    {"name":"isExported","parameterTypes":["java.lang.String"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineDelegateByteBuddyMockMaker"},
+  "name":"java.lang.Module",
+  "methods":[{"name":"canRead","parameterTypes":["java.lang.Module"] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.ModuleHandler$ModuleSystemFound"},
+  "name":"java.lang.Module",
+  "methods":[
+    {"name":"addExports","parameterTypes":["java.lang.String","java.lang.Module"] }, 
+    {"name":"addReads","parameterTypes":["java.lang.Module"] }, 
+    {"name":"canRead","parameterTypes":["java.lang.Module"] }, 
+    {"name":"isExported","parameterTypes":["java.lang.String"] }, 
+    {"name":"isExported","parameterTypes":["java.lang.String","java.lang.Module"] }, 
+    {"name":"isOpen","parameterTypes":["java.lang.String","java.lang.Module"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.Blob$MockitoMock$9h7ad01op99200N"},
+  "name":"java.lang.Object",
+  "methods":[
+    {"name":"clone","parameterTypes":[] }, 
+    {"name":"toString","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.Clob$MockitoMock$8k4bd01op99200N"},
+  "name":"java.lang.Object",
+  "methods":[
+    {"name":"clone","parameterTypes":[] }, 
+    {"name":"toString","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.Collection$MockitoMock$u22ifb3op99200N"},
+  "name":"java.lang.Object",
+  "methods":[
+    {"name":"clone","parameterTypes":[] }, 
+    {"name":"toString","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.Connection$MockitoMock$a3lier1op99200N"},
+  "name":"java.lang.Object",
+  "methods":[
+    {"name":"clone","parameterTypes":[] }, 
+    {"name":"toString","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.DataNodeContainedRule$MockitoMock$743aut2op99200N"},
+  "name":"java.lang.Object",
+  "methods":[
+    {"name":"clone","parameterTypes":[] }, 
+    {"name":"toString","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.DataSource$MockitoMock$tnibii1op99200N"},
+  "name":"java.lang.Object",
+  "methods":[
+    {"name":"clone","parameterTypes":[] }, 
+    {"name":"toString","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.DataSourceMetaData$MockitoMock$5ls0la1op99200N"},
+  "name":"java.lang.Object",
+  "methods":[
+    {"name":"clone","parameterTypes":[] }, 
+    {"name":"toString","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.DatabaseMetaData$MockitoMock$mjdo3d0op99200N"},
+  "name":"java.lang.Object",
+  "methods":[
+    {"name":"clone","parameterTypes":[] }, 
+    {"name":"toString","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.DatabaseType$MockitoMock$rldqbq1op99200N"},
+  "name":"java.lang.Object",
+  "methods":[
+    {"name":"clone","parameterTypes":[] }, 
+    {"name":"toString","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.InputStream$MockitoMock$e273ro0op99200N"},
+  "name":"java.lang.Object",
+  "methods":[
+    {"name":"clone","parameterTypes":[] }, 
+    {"name":"toString","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.Iterator$MockitoMock$ehklse0op99200N"},
+  "name":"java.lang.Object",
+  "methods":[
+    {"name":"clone","parameterTypes":[] }, 
+    {"name":"toString","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.Map$MockitoMock$ssgnom2op99200N"},
+  "name":"java.lang.Object",
+  "methods":[
+    {"name":"clone","parameterTypes":[] }, 
+    {"name":"toString","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.MergedResult$MockitoMock$vk5h731op99200N"},
+  "name":"java.lang.Object",
+  "methods":[
+    {"name":"clone","parameterTypes":[] }, 
+    {"name":"toString","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.PreparedStatement$MockitoMock$6lfk8k0op99200N"},
+  "name":"java.lang.Object",
+  "methods":[
+    {"name":"clone","parameterTypes":[] }, 
+    {"name":"toString","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.Reader$MockitoMock$ve88fn2op99200N"},
+  "name":"java.lang.Object",
+  "methods":[
+    {"name":"clone","parameterTypes":[] }, 
+    {"name":"toString","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.ResultSet$MockitoMock$pvsved3op99200N"},
+  "name":"java.lang.Object",
+  "methods":[
+    {"name":"clone","parameterTypes":[] }, 
+    {"name":"toString","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.ResultSetMetaData$MockitoMock$8jfcd82op99200N"},
+  "name":"java.lang.Object",
+  "methods":[
+    {"name":"clone","parameterTypes":[] }, 
+    {"name":"toString","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.RuleConfiguration$MockitoMock$f0lrh90op99200N"},
+  "name":"java.lang.Object",
+  "methods":[
+    {"name":"clone","parameterTypes":[] }, 
+    {"name":"toString","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.SQLStatement$MockitoMock$r19pnr1op99200N"},
+  "name":"java.lang.Object",
+  "methods":[
+    {"name":"clone","parameterTypes":[] }, 
+    {"name":"toString","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.SQLStatementContext$MockitoMock$gq9mvv0op99200N"},
+  "name":"java.lang.Object",
+  "methods":[
+    {"name":"clone","parameterTypes":[] }, 
+    {"name":"toString","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.SQLXML$MockitoMock$ln6ont1op99200N"},
+  "name":"java.lang.Object",
+  "methods":[
+    {"name":"clone","parameterTypes":[] }, 
+    {"name":"toString","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.Set$MockitoMock$2lmnom2op99200N"},
+  "name":"java.lang.Object",
+  "methods":[
+    {"name":"clone","parameterTypes":[] }, 
+    {"name":"toString","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.ShardingSphereTransactionManager$MockitoMock$p0nu4v2op99200N"},
+  "name":"java.lang.Object",
+  "methods":[
+    {"name":"clone","parameterTypes":[] }, 
+    {"name":"toString","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.Statement$MockitoMock$3jsmh53op99200N"},
+  "name":"java.lang.Object",
+  "methods":[
+    {"name":"clone","parameterTypes":[] }, 
+    {"name":"toString","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.Stream$MockitoMock$e1gq1n1op99200N"},
+  "name":"java.lang.Object",
+  "methods":[
+    {"name":"clone","parameterTypes":[] }, 
+    {"name":"toString","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.instance.ObjenesisInstantiator"},
+  "name":"java.lang.Object",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.debugging.Java9PlusLocationImpl$MetadataShim"},
+  "name":"java.lang.Object",
+  "methods":[{"name":"toString","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.runners.DefaultInternalRunner$1"},
+  "name":"java.lang.Object",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineDelegateByteBuddyMockMaker"},
+  "name":"java.lang.ProcessHandle",
+  "methods":[
+    {"name":"current","parameterTypes":[] }, 
+    {"name":"pid","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"java.lang.Runtime",
+  "methods":[{"name":"version","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"java.lang.Runtime$Version",
+  "methods":[{"name":"feature","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.StackWalkerChecker"},
+  "name":"java.lang.StackWalker",
+  "methods":[
+    {"name":"getInstance","parameterTypes":["java.lang.StackWalker$Option"] }, 
+    {"name":"walk","parameterTypes":["java.util.function.Function"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.debugging.Java9PlusLocationImpl"},
+  "name":"java.lang.StackWalker",
+  "methods":[
+    {"name":"getInstance","parameterTypes":["java.util.Set","int"] }, 
+    {"name":"walk","parameterTypes":["java.util.function.Function"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.debugging.LocationFactory"},
+  "name":"java.lang.StackWalker"
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.StackWalkerChecker"},
+  "name":"java.lang.StackWalker$Option"
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.debugging.Java9PlusLocationImpl"},
+  "name":"java.lang.StackWalker$Option"
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.StackWalkerChecker"},
+  "name":"java.lang.StackWalker$StackFrame",
+  "methods":[{"name":"getDeclaringClass","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.debugging.Java9PlusLocationImpl"},
+  "name":"java.lang.StackWalker$StackFrame"
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.debugging.Java9PlusLocationImpl$MetadataShim"},
+  "name":"java.lang.StackWalker$StackFrame",
+  "methods":[
+    {"name":"getClassName","parameterTypes":[] }, 
+    {"name":"getFileName","parameterTypes":[] }, 
+    {"name":"getLineNumber","parameterTypes":[] }, 
+    {"name":"getMethodName","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"java.lang.System",
+  "methods":[{"name":"getSecurityManager","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineDelegateByteBuddyMockMaker"},
+  "name":"java.lang.System",
+  "methods":[{"name":"getSecurityManager","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"java.lang.WeakPairMap"
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"java.lang.WeakPairMap$Pair"
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"java.lang.WeakPairMap$Pair$Weak"
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"java.lang.annotation.Retention",
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"java.lang.annotation.Target",
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"java.lang.instrument.Instrumentation",
+  "methods":[{"name":"redefineModule","parameterTypes":["java.lang.Module","java.util.Set","java.util.Map","java.util.Map","java.util.Set","java.util.Map"] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"java.lang.reflect.AnnotatedArrayType",
+  "methods":[{"name":"getAnnotatedGenericComponentType","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"java.lang.reflect.AnnotatedType",
+  "methods":[{"name":"getType","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.SubclassBytecodeGenerator"},
+  "name":"java.lang.reflect.AnnotatedType",
+  "methods":[{"name":"getType","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"java.lang.reflect.Executable",
+  "methods":[
+    {"name":"getAnnotatedParameterTypes","parameterTypes":[] }, 
+    {"name":"getAnnotatedReceiverType","parameterTypes":[] }, 
+    {"name":"getParameterCount","parameterTypes":[] }, 
+    {"name":"getParameters","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator$ParameterWritingVisitorWrapper$ParameterAddingClassVisitor"},
+  "name":"java.lang.reflect.Executable",
+  "methods":[{"name":"getParameterCount","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.MockMethodAdvice"},
+  "name":"java.lang.reflect.Executable",
+  "methods":[{"name":"getParameterCount","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.MockMethodAdvice$ConstructorShortcut"},
+  "name":"java.lang.reflect.Executable",
+  "methods":[{"name":"getParameterCount","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.MockMethodAdvice$ConstructorShortcut$1"},
+  "name":"java.lang.reflect.Executable",
+  "methods":[{"name":"getParameterCount","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.SubclassBytecodeGenerator"},
+  "name":"java.lang.reflect.Executable",
+  "methods":[
+    {"name":"getAnnotatedExceptionTypes","parameterTypes":[] }, 
+    {"name":"getAnnotatedReceiverType","parameterTypes":[] }, 
+    {"name":"getParameterCount","parameterTypes":[] }, 
+    {"name":"getParameters","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"java.lang.reflect.Method",
+  "methods":[{"name":"getAnnotatedReturnType","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.SubclassBytecodeGenerator"},
+  "name":"java.lang.reflect.Method",
+  "methods":[{"name":"getAnnotatedReturnType","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"java.lang.reflect.Parameter",
+  "methods":[
+    {"name":"getModifiers","parameterTypes":[] }, 
+    {"name":"getName","parameterTypes":[] }, 
+    {"name":"isNamePresent","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.SubclassBytecodeGenerator"},
+  "name":"java.lang.reflect.Parameter",
+  "methods":[{"name":"isNamePresent","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"java.security.AccessController"
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineDelegateByteBuddyMockMaker"},
+  "name":"java.security.AccessController",
+  "methods":[{"name":"doPrivileged","parameterTypes":["java.security.PrivilegedAction"] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineDelegateByteBuddyMockMaker"},
+  "name":"java.security.SecureRandomParameters"
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.runners.DefaultInternalRunner$1$1"},
+  "name":"java.security.SecureRandomParameters"
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.Blob$MockitoMock$9h7ad01op99200N"},
+  "name":"java.sql.Blob",
+  "methods":[
+    {"name":"free","parameterTypes":[] }, 
+    {"name":"getBinaryStream","parameterTypes":[] }, 
+    {"name":"getBinaryStream","parameterTypes":["long","long"] }, 
+    {"name":"getBytes","parameterTypes":["long","int"] }, 
+    {"name":"length","parameterTypes":[] }, 
+    {"name":"position","parameterTypes":["java.sql.Blob","long"] }, 
+    {"name":"position","parameterTypes":["byte[]","long"] }, 
+    {"name":"setBinaryStream","parameterTypes":["long"] }, 
+    {"name":"setBytes","parameterTypes":["long","byte[]"] }, 
+    {"name":"setBytes","parameterTypes":["long","byte[]","int","int"] }, 
+    {"name":"truncate","parameterTypes":["long"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.Clob$MockitoMock$8k4bd01op99200N"},
+  "name":"java.sql.Clob",
+  "methods":[
+    {"name":"free","parameterTypes":[] }, 
+    {"name":"getAsciiStream","parameterTypes":[] }, 
+    {"name":"getCharacterStream","parameterTypes":[] }, 
+    {"name":"getCharacterStream","parameterTypes":["long","long"] }, 
+    {"name":"getSubString","parameterTypes":["long","int"] }, 
+    {"name":"length","parameterTypes":[] }, 
+    {"name":"position","parameterTypes":["java.lang.String","long"] }, 
+    {"name":"position","parameterTypes":["java.sql.Clob","long"] }, 
+    {"name":"setAsciiStream","parameterTypes":["long"] }, 
+    {"name":"setCharacterStream","parameterTypes":["long"] }, 
+    {"name":"setString","parameterTypes":["long","java.lang.String"] }, 
+    {"name":"setString","parameterTypes":["long","java.lang.String","int","int"] }, 
+    {"name":"truncate","parameterTypes":["long"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.Connection$MockitoMock$a3lier1op99200N"},
+  "name":"java.sql.Connection",
+  "methods":[
+    {"name":"abort","parameterTypes":["java.util.concurrent.Executor"] }, 
+    {"name":"clearWarnings","parameterTypes":[] }, 
+    {"name":"close","parameterTypes":[] }, 
+    {"name":"commit","parameterTypes":[] }, 
+    {"name":"createArrayOf","parameterTypes":["java.lang.String","java.lang.Object[]"] }, 
+    {"name":"createBlob","parameterTypes":[] }, 
+    {"name":"createClob","parameterTypes":[] }, 
+    {"name":"createNClob","parameterTypes":[] }, 
+    {"name":"createSQLXML","parameterTypes":[] }, 
+    {"name":"createStatement","parameterTypes":[] }, 
+    {"name":"createStatement","parameterTypes":["int","int"] }, 
+    {"name":"createStatement","parameterTypes":["int","int","int"] }, 
+    {"name":"createStruct","parameterTypes":["java.lang.String","java.lang.Object[]"] }, 
+    {"name":"getAutoCommit","parameterTypes":[] }, 
+    {"name":"getCatalog","parameterTypes":[] }, 
+    {"name":"getClientInfo","parameterTypes":[] }, 
+    {"name":"getClientInfo","parameterTypes":["java.lang.String"] }, 
+    {"name":"getHoldability","parameterTypes":[] }, 
+    {"name":"getMetaData","parameterTypes":[] }, 
+    {"name":"getNetworkTimeout","parameterTypes":[] }, 
+    {"name":"getSchema","parameterTypes":[] }, 
+    {"name":"getTransactionIsolation","parameterTypes":[] }, 
+    {"name":"getTypeMap","parameterTypes":[] }, 
+    {"name":"getWarnings","parameterTypes":[] }, 
+    {"name":"isClosed","parameterTypes":[] }, 
+    {"name":"isReadOnly","parameterTypes":[] }, 
+    {"name":"isValid","parameterTypes":["int"] }, 
+    {"name":"nativeSQL","parameterTypes":["java.lang.String"] }, 
+    {"name":"prepareCall","parameterTypes":["java.lang.String"] }, 
+    {"name":"prepareCall","parameterTypes":["java.lang.String","int","int"] }, 
+    {"name":"prepareCall","parameterTypes":["java.lang.String","int","int","int"] }, 
+    {"name":"prepareStatement","parameterTypes":["java.lang.String"] }, 
+    {"name":"prepareStatement","parameterTypes":["java.lang.String","int"] }, 
+    {"name":"prepareStatement","parameterTypes":["java.lang.String","int","int"] }, 
+    {"name":"prepareStatement","parameterTypes":["java.lang.String","int","int","int"] }, 
+    {"name":"prepareStatement","parameterTypes":["java.lang.String","int[]"] }, 
+    {"name":"prepareStatement","parameterTypes":["java.lang.String","java.lang.String[]"] }, 
+    {"name":"releaseSavepoint","parameterTypes":["java.sql.Savepoint"] }, 
+    {"name":"rollback","parameterTypes":[] }, 
+    {"name":"rollback","parameterTypes":["java.sql.Savepoint"] }, 
+    {"name":"setAutoCommit","parameterTypes":["boolean"] }, 
+    {"name":"setCatalog","parameterTypes":["java.lang.String"] }, 
+    {"name":"setClientInfo","parameterTypes":["java.lang.String","java.lang.String"] }, 
+    {"name":"setClientInfo","parameterTypes":["java.util.Properties"] }, 
+    {"name":"setHoldability","parameterTypes":["int"] }, 
+    {"name":"setNetworkTimeout","parameterTypes":["java.util.concurrent.Executor","int"] }, 
+    {"name":"setReadOnly","parameterTypes":["boolean"] }, 
+    {"name":"setSavepoint","parameterTypes":[] }, 
+    {"name":"setSavepoint","parameterTypes":["java.lang.String"] }, 
+    {"name":"setSchema","parameterTypes":["java.lang.String"] }, 
+    {"name":"setTransactionIsolation","parameterTypes":["int"] }, 
+    {"name":"setTypeMap","parameterTypes":["java.util.Map"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.DatabaseMetaData$MockitoMock$mjdo3d0op99200N"},
+  "name":"java.sql.DatabaseMetaData",
+  "methods":[
+    {"name":"allProceduresAreCallable","parameterTypes":[] }, 
+    {"name":"allTablesAreSelectable","parameterTypes":[] }, 
+    {"name":"autoCommitFailureClosesAllResultSets","parameterTypes":[] }, 
+    {"name":"dataDefinitionCausesTransactionCommit","parameterTypes":[] }, 
+    {"name":"dataDefinitionIgnoredInTransactions","parameterTypes":[] }, 
+    {"name":"deletesAreDetected","parameterTypes":["int"] }, 
+    {"name":"doesMaxRowSizeIncludeBlobs","parameterTypes":[] }, 
+    {"name":"generatedKeyAlwaysReturned","parameterTypes":[] }, 
+    {"name":"getAttributes","parameterTypes":["java.lang.String","java.lang.String","java.lang.String","java.lang.String"] }, 
+    {"name":"getBestRowIdentifier","parameterTypes":["java.lang.String","java.lang.String","java.lang.String","int","boolean"] }, 
+    {"name":"getCatalogSeparator","parameterTypes":[] }, 
+    {"name":"getCatalogTerm","parameterTypes":[] }, 
+    {"name":"getCatalogs","parameterTypes":[] }, 
+    {"name":"getClientInfoProperties","parameterTypes":[] }, 
+    {"name":"getColumnPrivileges","parameterTypes":["java.lang.String","java.lang.String","java.lang.String","java.lang.String"] }, 
+    {"name":"getColumns","parameterTypes":["java.lang.String","java.lang.String","java.lang.String","java.lang.String"] }, 
+    {"name":"getConnection","parameterTypes":[] }, 
+    {"name":"getCrossReference","parameterTypes":["java.lang.String","java.lang.String","java.lang.String","java.lang.String","java.lang.String","java.lang.String"] }, 
+    {"name":"getDatabaseMajorVersion","parameterTypes":[] }, 
+    {"name":"getDatabaseMinorVersion","parameterTypes":[] }, 
+    {"name":"getDatabaseProductName","parameterTypes":[] }, 
+    {"name":"getDatabaseProductVersion","parameterTypes":[] }, 
+    {"name":"getDefaultTransactionIsolation","parameterTypes":[] }, 
+    {"name":"getDriverMajorVersion","parameterTypes":[] }, 
+    {"name":"getDriverMinorVersion","parameterTypes":[] }, 
+    {"name":"getDriverName","parameterTypes":[] }, 
+    {"name":"getDriverVersion","parameterTypes":[] }, 
+    {"name":"getExportedKeys","parameterTypes":["java.lang.String","java.lang.String","java.lang.String"] }, 
+    {"name":"getExtraNameCharacters","parameterTypes":[] }, 
+    {"name":"getFunctionColumns","parameterTypes":["java.lang.String","java.lang.String","java.lang.String","java.lang.String"] }, 
+    {"name":"getFunctions","parameterTypes":["java.lang.String","java.lang.String","java.lang.String"] }, 
+    {"name":"getIdentifierQuoteString","parameterTypes":[] }, 
+    {"name":"getImportedKeys","parameterTypes":["java.lang.String","java.lang.String","java.lang.String"] }, 
+    {"name":"getIndexInfo","parameterTypes":["java.lang.String","java.lang.String","java.lang.String","boolean","boolean"] }, 
+    {"name":"getJDBCMajorVersion","parameterTypes":[] }, 
+    {"name":"getJDBCMinorVersion","parameterTypes":[] }, 
+    {"name":"getMaxBinaryLiteralLength","parameterTypes":[] }, 
+    {"name":"getMaxCatalogNameLength","parameterTypes":[] }, 
+    {"name":"getMaxCharLiteralLength","parameterTypes":[] }, 
+    {"name":"getMaxColumnNameLength","parameterTypes":[] }, 
+    {"name":"getMaxColumnsInGroupBy","parameterTypes":[] }, 
+    {"name":"getMaxColumnsInIndex","parameterTypes":[] }, 
+    {"name":"getMaxColumnsInOrderBy","parameterTypes":[] }, 
+    {"name":"getMaxColumnsInSelect","parameterTypes":[] }, 
+    {"name":"getMaxColumnsInTable","parameterTypes":[] }, 
+    {"name":"getMaxConnections","parameterTypes":[] }, 
+    {"name":"getMaxCursorNameLength","parameterTypes":[] }, 
+    {"name":"getMaxIndexLength","parameterTypes":[] }, 
+    {"name":"getMaxProcedureNameLength","parameterTypes":[] }, 
+    {"name":"getMaxRowSize","parameterTypes":[] }, 
+    {"name":"getMaxSchemaNameLength","parameterTypes":[] }, 
+    {"name":"getMaxStatementLength","parameterTypes":[] }, 
+    {"name":"getMaxStatements","parameterTypes":[] }, 
+    {"name":"getMaxTableNameLength","parameterTypes":[] }, 
+    {"name":"getMaxTablesInSelect","parameterTypes":[] }, 
+    {"name":"getMaxUserNameLength","parameterTypes":[] }, 
+    {"name":"getNumericFunctions","parameterTypes":[] }, 
+    {"name":"getPrimaryKeys","parameterTypes":["java.lang.String","java.lang.String","java.lang.String"] }, 
+    {"name":"getProcedureColumns","parameterTypes":["java.lang.String","java.lang.String","java.lang.String","java.lang.String"] }, 
+    {"name":"getProcedureTerm","parameterTypes":[] }, 
+    {"name":"getProcedures","parameterTypes":["java.lang.String","java.lang.String","java.lang.String"] }, 
+    {"name":"getPseudoColumns","parameterTypes":["java.lang.String","java.lang.String","java.lang.String","java.lang.String"] }, 
+    {"name":"getResultSetHoldability","parameterTypes":[] }, 
+    {"name":"getRowIdLifetime","parameterTypes":[] }, 
+    {"name":"getSQLKeywords","parameterTypes":[] }, 
+    {"name":"getSQLStateType","parameterTypes":[] }, 
+    {"name":"getSchemaTerm","parameterTypes":[] }, 
+    {"name":"getSchemas","parameterTypes":[] }, 
+    {"name":"getSchemas","parameterTypes":["java.lang.String","java.lang.String"] }, 
+    {"name":"getSearchStringEscape","parameterTypes":[] }, 
+    {"name":"getStringFunctions","parameterTypes":[] }, 
+    {"name":"getSuperTables","parameterTypes":["java.lang.String","java.lang.String","java.lang.String"] }, 
+    {"name":"getSuperTypes","parameterTypes":["java.lang.String","java.lang.String","java.lang.String"] }, 
+    {"name":"getSystemFunctions","parameterTypes":[] }, 
+    {"name":"getTablePrivileges","parameterTypes":["java.lang.String","java.lang.String","java.lang.String"] }, 
+    {"name":"getTableTypes","parameterTypes":[] }, 
+    {"name":"getTables","parameterTypes":["java.lang.String","java.lang.String","java.lang.String","java.lang.String[]"] }, 
+    {"name":"getTimeDateFunctions","parameterTypes":[] }, 
+    {"name":"getTypeInfo","parameterTypes":[] }, 
+    {"name":"getUDTs","parameterTypes":["java.lang.String","java.lang.String","java.lang.String","int[]"] }, 
+    {"name":"getURL","parameterTypes":[] }, 
+    {"name":"getUserName","parameterTypes":[] }, 
+    {"name":"getVersionColumns","parameterTypes":["java.lang.String","java.lang.String","java.lang.String"] }, 
+    {"name":"insertsAreDetected","parameterTypes":["int"] }, 
+    {"name":"isCatalogAtStart","parameterTypes":[] }, 
+    {"name":"isReadOnly","parameterTypes":[] }, 
+    {"name":"locatorsUpdateCopy","parameterTypes":[] }, 
+    {"name":"nullPlusNonNullIsNull","parameterTypes":[] }, 
+    {"name":"nullsAreSortedAtEnd","parameterTypes":[] }, 
+    {"name":"nullsAreSortedAtStart","parameterTypes":[] }, 
+    {"name":"nullsAreSortedHigh","parameterTypes":[] }, 
+    {"name":"nullsAreSortedLow","parameterTypes":[] }, 
+    {"name":"othersDeletesAreVisible","parameterTypes":["int"] }, 
+    {"name":"othersInsertsAreVisible","parameterTypes":["int"] }, 
+    {"name":"othersUpdatesAreVisible","parameterTypes":["int"] }, 
+    {"name":"ownDeletesAreVisible","parameterTypes":["int"] }, 
+    {"name":"ownInsertsAreVisible","parameterTypes":["int"] }, 
+    {"name":"ownUpdatesAreVisible","parameterTypes":["int"] }, 
+    {"name":"storesLowerCaseIdentifiers","parameterTypes":[] }, 
+    {"name":"storesLowerCaseQuotedIdentifiers","parameterTypes":[] }, 
+    {"name":"storesMixedCaseIdentifiers","parameterTypes":[] }, 
+    {"name":"storesMixedCaseQuotedIdentifiers","parameterTypes":[] }, 
+    {"name":"storesUpperCaseIdentifiers","parameterTypes":[] }, 
+    {"name":"storesUpperCaseQuotedIdentifiers","parameterTypes":[] }, 
+    {"name":"supportsANSI92EntryLevelSQL","parameterTypes":[] }, 
+    {"name":"supportsANSI92FullSQL","parameterTypes":[] }, 
+    {"name":"supportsANSI92IntermediateSQL","parameterTypes":[] }, 
+    {"name":"supportsAlterTableWithAddColumn","parameterTypes":[] }, 
+    {"name":"supportsAlterTableWithDropColumn","parameterTypes":[] }, 
+    {"name":"supportsBatchUpdates","parameterTypes":[] }, 
+    {"name":"supportsCatalogsInDataManipulation","parameterTypes":[] }, 
+    {"name":"supportsCatalogsInIndexDefinitions","parameterTypes":[] }, 
+    {"name":"supportsCatalogsInPrivilegeDefinitions","parameterTypes":[] }, 
+    {"name":"supportsCatalogsInProcedureCalls","parameterTypes":[] }, 
+    {"name":"supportsCatalogsInTableDefinitions","parameterTypes":[] }, 
+    {"name":"supportsColumnAliasing","parameterTypes":[] }, 
+    {"name":"supportsConvert","parameterTypes":[] }, 
+    {"name":"supportsConvert","parameterTypes":["int","int"] }, 
+    {"name":"supportsCoreSQLGrammar","parameterTypes":[] }, 
+    {"name":"supportsCorrelatedSubqueries","parameterTypes":[] }, 
+    {"name":"supportsDataDefinitionAndDataManipulationTransactions","parameterTypes":[] }, 
+    {"name":"supportsDataManipulationTransactionsOnly","parameterTypes":[] }, 
+    {"name":"supportsDifferentTableCorrelationNames","parameterTypes":[] }, 
+    {"name":"supportsExpressionsInOrderBy","parameterTypes":[] }, 
+    {"name":"supportsExtendedSQLGrammar","parameterTypes":[] }, 
+    {"name":"supportsFullOuterJoins","parameterTypes":[] }, 
+    {"name":"supportsGetGeneratedKeys","parameterTypes":[] }, 
+    {"name":"supportsGroupBy","parameterTypes":[] }, 
+    {"name":"supportsGroupByBeyondSelect","parameterTypes":[] }, 
+    {"name":"supportsGroupByUnrelated","parameterTypes":[] }, 
+    {"name":"supportsIntegrityEnhancementFacility","parameterTypes":[] }, 
+    {"name":"supportsLikeEscapeClause","parameterTypes":[] }, 
+    {"name":"supportsLimitedOuterJoins","parameterTypes":[] }, 
+    {"name":"supportsMinimumSQLGrammar","parameterTypes":[] }, 
+    {"name":"supportsMixedCaseIdentifiers","parameterTypes":[] }, 
+    {"name":"supportsMixedCaseQuotedIdentifiers","parameterTypes":[] }, 
+    {"name":"supportsMultipleOpenResults","parameterTypes":[] }, 
+    {"name":"supportsMultipleResultSets","parameterTypes":[] }, 
+    {"name":"supportsMultipleTransactions","parameterTypes":[] }, 
+    {"name":"supportsNamedParameters","parameterTypes":[] }, 
+    {"name":"supportsNonNullableColumns","parameterTypes":[] }, 
+    {"name":"supportsOpenCursorsAcrossCommit","parameterTypes":[] }, 
+    {"name":"supportsOpenCursorsAcrossRollback","parameterTypes":[] }, 
+    {"name":"supportsOpenStatementsAcrossCommit","parameterTypes":[] }, 
+    {"name":"supportsOpenStatementsAcrossRollback","parameterTypes":[] }, 
+    {"name":"supportsOrderByUnrelated","parameterTypes":[] }, 
+    {"name":"supportsOuterJoins","parameterTypes":[] }, 
+    {"name":"supportsPositionedDelete","parameterTypes":[] }, 
+    {"name":"supportsPositionedUpdate","parameterTypes":[] }, 
+    {"name":"supportsResultSetConcurrency","parameterTypes":["int","int"] }, 
+    {"name":"supportsResultSetHoldability","parameterTypes":["int"] }, 
+    {"name":"supportsResultSetType","parameterTypes":["int"] }, 
+    {"name":"supportsSavepoints","parameterTypes":[] }, 
+    {"name":"supportsSchemasInDataManipulation","parameterTypes":[] }, 
+    {"name":"supportsSchemasInIndexDefinitions","parameterTypes":[] }, 
+    {"name":"supportsSchemasInPrivilegeDefinitions","parameterTypes":[] }, 
+    {"name":"supportsSchemasInProcedureCalls","parameterTypes":[] }, 
+    {"name":"supportsSchemasInTableDefinitions","parameterTypes":[] }, 
+    {"name":"supportsSelectForUpdate","parameterTypes":[] }, 
+    {"name":"supportsStatementPooling","parameterTypes":[] }, 
+    {"name":"supportsStoredFunctionsUsingCallSyntax","parameterTypes":[] }, 
+    {"name":"supportsStoredProcedures","parameterTypes":[] }, 
+    {"name":"supportsSubqueriesInComparisons","parameterTypes":[] }, 
+    {"name":"supportsSubqueriesInExists","parameterTypes":[] }, 
+    {"name":"supportsSubqueriesInIns","parameterTypes":[] }, 
+    {"name":"supportsSubqueriesInQuantifieds","parameterTypes":[] }, 
+    {"name":"supportsTableCorrelationNames","parameterTypes":[] }, 
+    {"name":"supportsTransactionIsolationLevel","parameterTypes":["int"] }, 
+    {"name":"supportsTransactions","parameterTypes":[] }, 
+    {"name":"supportsUnion","parameterTypes":[] }, 
+    {"name":"supportsUnionAll","parameterTypes":[] }, 
+    {"name":"updatesAreDetected","parameterTypes":["int"] }, 
+    {"name":"usesLocalFilePerTable","parameterTypes":[] }, 
+    {"name":"usesLocalFiles","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.PreparedStatement$MockitoMock$6lfk8k0op99200N"},
+  "name":"java.sql.PreparedStatement",
+  "methods":[
+    {"name":"addBatch","parameterTypes":[] }, 
+    {"name":"clearParameters","parameterTypes":[] }, 
+    {"name":"execute","parameterTypes":[] }, 
+    {"name":"executeQuery","parameterTypes":[] }, 
+    {"name":"executeUpdate","parameterTypes":[] }, 
+    {"name":"getMetaData","parameterTypes":[] }, 
+    {"name":"getParameterMetaData","parameterTypes":[] }, 
+    {"name":"setArray","parameterTypes":["int","java.sql.Array"] }, 
+    {"name":"setAsciiStream","parameterTypes":["int","java.io.InputStream"] }, 
+    {"name":"setAsciiStream","parameterTypes":["int","java.io.InputStream","int"] }, 
+    {"name":"setAsciiStream","parameterTypes":["int","java.io.InputStream","long"] }, 
+    {"name":"setBigDecimal","parameterTypes":["int","java.math.BigDecimal"] }, 
+    {"name":"setBinaryStream","parameterTypes":["int","java.io.InputStream"] }, 
+    {"name":"setBinaryStream","parameterTypes":["int","java.io.InputStream","int"] }, 
+    {"name":"setBinaryStream","parameterTypes":["int","java.io.InputStream","long"] }, 
+    {"name":"setBlob","parameterTypes":["int","java.io.InputStream"] }, 
+    {"name":"setBlob","parameterTypes":["int","java.io.InputStream","long"] }, 
+    {"name":"setBlob","parameterTypes":["int","java.sql.Blob"] }, 
+    {"name":"setBoolean","parameterTypes":["int","boolean"] }, 
+    {"name":"setByte","parameterTypes":["int","byte"] }, 
+    {"name":"setBytes","parameterTypes":["int","byte[]"] }, 
+    {"name":"setCharacterStream","parameterTypes":["int","java.io.Reader"] }, 
+    {"name":"setCharacterStream","parameterTypes":["int","java.io.Reader","int"] }, 
+    {"name":"setCharacterStream","parameterTypes":["int","java.io.Reader","long"] }, 
+    {"name":"setClob","parameterTypes":["int","java.io.Reader"] }, 
+    {"name":"setClob","parameterTypes":["int","java.io.Reader","long"] }, 
+    {"name":"setClob","parameterTypes":["int","java.sql.Clob"] }, 
+    {"name":"setDate","parameterTypes":["int","java.sql.Date"] }, 
+    {"name":"setDate","parameterTypes":["int","java.sql.Date","java.util.Calendar"] }, 
+    {"name":"setDouble","parameterTypes":["int","double"] }, 
+    {"name":"setFloat","parameterTypes":["int","float"] }, 
+    {"name":"setInt","parameterTypes":["int","int"] }, 
+    {"name":"setLong","parameterTypes":["int","long"] }, 
+    {"name":"setNCharacterStream","parameterTypes":["int","java.io.Reader"] }, 
+    {"name":"setNCharacterStream","parameterTypes":["int","java.io.Reader","long"] }, 
+    {"name":"setNClob","parameterTypes":["int","java.io.Reader"] }, 
+    {"name":"setNClob","parameterTypes":["int","java.io.Reader","long"] }, 
+    {"name":"setNClob","parameterTypes":["int","java.sql.NClob"] }, 
+    {"name":"setNString","parameterTypes":["int","java.lang.String"] }, 
+    {"name":"setNull","parameterTypes":["int","int"] }, 
+    {"name":"setNull","parameterTypes":["int","int","java.lang.String"] }, 
+    {"name":"setObject","parameterTypes":["int","java.lang.Object"] }, 
+    {"name":"setObject","parameterTypes":["int","java.lang.Object","int"] }, 
+    {"name":"setObject","parameterTypes":["int","java.lang.Object","int","int"] }, 
+    {"name":"setRef","parameterTypes":["int","java.sql.Ref"] }, 
+    {"name":"setRowId","parameterTypes":["int","java.sql.RowId"] }, 
+    {"name":"setSQLXML","parameterTypes":["int","java.sql.SQLXML"] }, 
+    {"name":"setShort","parameterTypes":["int","short"] }, 
+    {"name":"setString","parameterTypes":["int","java.lang.String"] }, 
+    {"name":"setTime","parameterTypes":["int","java.sql.Time"] }, 
+    {"name":"setTime","parameterTypes":["int","java.sql.Time","java.util.Calendar"] }, 
+    {"name":"setTimestamp","parameterTypes":["int","java.sql.Timestamp"] }, 
+    {"name":"setTimestamp","parameterTypes":["int","java.sql.Timestamp","java.util.Calendar"] }, 
+    {"name":"setURL","parameterTypes":["int","java.net.URL"] }, 
+    {"name":"setUnicodeStream","parameterTypes":["int","java.io.InputStream","int"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.ResultSet$MockitoMock$pvsved3op99200N"},
+  "name":"java.sql.ResultSet",
+  "methods":[
+    {"name":"absolute","parameterTypes":["int"] }, 
+    {"name":"afterLast","parameterTypes":[] }, 
+    {"name":"beforeFirst","parameterTypes":[] }, 
+    {"name":"cancelRowUpdates","parameterTypes":[] }, 
+    {"name":"clearWarnings","parameterTypes":[] }, 
+    {"name":"close","parameterTypes":[] }, 
+    {"name":"deleteRow","parameterTypes":[] }, 
+    {"name":"findColumn","parameterTypes":["java.lang.String"] }, 
+    {"name":"first","parameterTypes":[] }, 
+    {"name":"getArray","parameterTypes":["int"] }, 
+    {"name":"getArray","parameterTypes":["java.lang.String"] }, 
+    {"name":"getAsciiStream","parameterTypes":["int"] }, 
+    {"name":"getAsciiStream","parameterTypes":["java.lang.String"] }, 
+    {"name":"getBigDecimal","parameterTypes":["int"] }, 
+    {"name":"getBigDecimal","parameterTypes":["int","int"] }, 
+    {"name":"getBigDecimal","parameterTypes":["java.lang.String"] }, 
+    {"name":"getBigDecimal","parameterTypes":["java.lang.String","int"] }, 
+    {"name":"getBinaryStream","parameterTypes":["int"] }, 
+    {"name":"getBinaryStream","parameterTypes":["java.lang.String"] }, 
+    {"name":"getBlob","parameterTypes":["int"] }, 
+    {"name":"getBlob","parameterTypes":["java.lang.String"] }, 
+    {"name":"getBoolean","parameterTypes":["int"] }, 
+    {"name":"getBoolean","parameterTypes":["java.lang.String"] }, 
+    {"name":"getByte","parameterTypes":["int"] }, 
+    {"name":"getByte","parameterTypes":["java.lang.String"] }, 
+    {"name":"getBytes","parameterTypes":["int"] }, 
+    {"name":"getBytes","parameterTypes":["java.lang.String"] }, 
+    {"name":"getCharacterStream","parameterTypes":["int"] }, 
+    {"name":"getCharacterStream","parameterTypes":["java.lang.String"] }, 
+    {"name":"getClob","parameterTypes":["int"] }, 
+    {"name":"getClob","parameterTypes":["java.lang.String"] }, 
+    {"name":"getConcurrency","parameterTypes":[] }, 
+    {"name":"getCursorName","parameterTypes":[] }, 
+    {"name":"getDate","parameterTypes":["int"] }, 
+    {"name":"getDate","parameterTypes":["int","java.util.Calendar"] }, 
+    {"name":"getDate","parameterTypes":["java.lang.String"] }, 
+    {"name":"getDate","parameterTypes":["java.lang.String","java.util.Calendar"] }, 
+    {"name":"getDouble","parameterTypes":["int"] }, 
+    {"name":"getDouble","parameterTypes":["java.lang.String"] }, 
+    {"name":"getFetchDirection","parameterTypes":[] }, 
+    {"name":"getFetchSize","parameterTypes":[] }, 
+    {"name":"getFloat","parameterTypes":["int"] }, 
+    {"name":"getFloat","parameterTypes":["java.lang.String"] }, 
+    {"name":"getHoldability","parameterTypes":[] }, 
+    {"name":"getInt","parameterTypes":["int"] }, 
+    {"name":"getInt","parameterTypes":["java.lang.String"] }, 
+    {"name":"getLong","parameterTypes":["int"] }, 
+    {"name":"getLong","parameterTypes":["java.lang.String"] }, 
+    {"name":"getMetaData","parameterTypes":[] }, 
+    {"name":"getNCharacterStream","parameterTypes":["int"] }, 
+    {"name":"getNCharacterStream","parameterTypes":["java.lang.String"] }, 
+    {"name":"getNClob","parameterTypes":["int"] }, 
+    {"name":"getNClob","parameterTypes":["java.lang.String"] }, 
+    {"name":"getNString","parameterTypes":["int"] }, 
+    {"name":"getNString","parameterTypes":["java.lang.String"] }, 
+    {"name":"getObject","parameterTypes":["int"] }, 
+    {"name":"getObject","parameterTypes":["int","java.lang.Class"] }, 
+    {"name":"getObject","parameterTypes":["int","java.util.Map"] }, 
+    {"name":"getObject","parameterTypes":["java.lang.String"] }, 
+    {"name":"getObject","parameterTypes":["java.lang.String","java.lang.Class"] }, 
+    {"name":"getObject","parameterTypes":["java.lang.String","java.util.Map"] }, 
+    {"name":"getRef","parameterTypes":["int"] }, 
+    {"name":"getRef","parameterTypes":["java.lang.String"] }, 
+    {"name":"getRow","parameterTypes":[] }, 
+    {"name":"getRowId","parameterTypes":["int"] }, 
+    {"name":"getRowId","parameterTypes":["java.lang.String"] }, 
+    {"name":"getSQLXML","parameterTypes":["int"] }, 
+    {"name":"getSQLXML","parameterTypes":["java.lang.String"] }, 
+    {"name":"getShort","parameterTypes":["int"] }, 
+    {"name":"getShort","parameterTypes":["java.lang.String"] }, 
+    {"name":"getStatement","parameterTypes":[] }, 
+    {"name":"getString","parameterTypes":["int"] }, 
+    {"name":"getString","parameterTypes":["java.lang.String"] }, 
+    {"name":"getTime","parameterTypes":["int"] }, 
+    {"name":"getTime","parameterTypes":["int","java.util.Calendar"] }, 
+    {"name":"getTime","parameterTypes":["java.lang.String"] }, 
+    {"name":"getTime","parameterTypes":["java.lang.String","java.util.Calendar"] }, 
+    {"name":"getTimestamp","parameterTypes":["int"] }, 
+    {"name":"getTimestamp","parameterTypes":["int","java.util.Calendar"] }, 
+    {"name":"getTimestamp","parameterTypes":["java.lang.String"] }, 
+    {"name":"getTimestamp","parameterTypes":["java.lang.String","java.util.Calendar"] }, 
+    {"name":"getType","parameterTypes":[] }, 
+    {"name":"getURL","parameterTypes":["int"] }, 
+    {"name":"getURL","parameterTypes":["java.lang.String"] }, 
+    {"name":"getUnicodeStream","parameterTypes":["int"] }, 
+    {"name":"getUnicodeStream","parameterTypes":["java.lang.String"] }, 
+    {"name":"getWarnings","parameterTypes":[] }, 
+    {"name":"insertRow","parameterTypes":[] }, 
+    {"name":"isAfterLast","parameterTypes":[] }, 
+    {"name":"isBeforeFirst","parameterTypes":[] }, 
+    {"name":"isClosed","parameterTypes":[] }, 
+    {"name":"isFirst","parameterTypes":[] }, 
+    {"name":"isLast","parameterTypes":[] }, 
+    {"name":"last","parameterTypes":[] }, 
+    {"name":"moveToCurrentRow","parameterTypes":[] }, 
+    {"name":"moveToInsertRow","parameterTypes":[] }, 
+    {"name":"next","parameterTypes":[] }, 
+    {"name":"previous","parameterTypes":[] }, 
+    {"name":"refreshRow","parameterTypes":[] }, 
+    {"name":"relative","parameterTypes":["int"] }, 
+    {"name":"rowDeleted","parameterTypes":[] }, 
+    {"name":"rowInserted","parameterTypes":[] }, 
+    {"name":"rowUpdated","parameterTypes":[] }, 
+    {"name":"setFetchDirection","parameterTypes":["int"] }, 
+    {"name":"setFetchSize","parameterTypes":["int"] }, 
+    {"name":"updateArray","parameterTypes":["int","java.sql.Array"] }, 
+    {"name":"updateArray","parameterTypes":["java.lang.String","java.sql.Array"] }, 
+    {"name":"updateAsciiStream","parameterTypes":["int","java.io.InputStream"] }, 
+    {"name":"updateAsciiStream","parameterTypes":["int","java.io.InputStream","int"] }, 
+    {"name":"updateAsciiStream","parameterTypes":["int","java.io.InputStream","long"] }, 
+    {"name":"updateAsciiStream","parameterTypes":["java.lang.String","java.io.InputStream"] }, 
+    {"name":"updateAsciiStream","parameterTypes":["java.lang.String","java.io.InputStream","int"] }, 
+    {"name":"updateAsciiStream","parameterTypes":["java.lang.String","java.io.InputStream","long"] }, 
+    {"name":"updateBigDecimal","parameterTypes":["int","java.math.BigDecimal"] }, 
+    {"name":"updateBigDecimal","parameterTypes":["java.lang.String","java.math.BigDecimal"] }, 
+    {"name":"updateBinaryStream","parameterTypes":["int","java.io.InputStream"] }, 
+    {"name":"updateBinaryStream","parameterTypes":["int","java.io.InputStream","int"] }, 
+    {"name":"updateBinaryStream","parameterTypes":["int","java.io.InputStream","long"] }, 
+    {"name":"updateBinaryStream","parameterTypes":["java.lang.String","java.io.InputStream"] }, 
+    {"name":"updateBinaryStream","parameterTypes":["java.lang.String","java.io.InputStream","int"] }, 
+    {"name":"updateBinaryStream","parameterTypes":["java.lang.String","java.io.InputStream","long"] }, 
+    {"name":"updateBlob","parameterTypes":["int","java.io.InputStream"] }, 
+    {"name":"updateBlob","parameterTypes":["int","java.io.InputStream","long"] }, 
+    {"name":"updateBlob","parameterTypes":["int","java.sql.Blob"] }, 
+    {"name":"updateBlob","parameterTypes":["java.lang.String","java.io.InputStream"] }, 
+    {"name":"updateBlob","parameterTypes":["java.lang.String","java.io.InputStream","long"] }, 
+    {"name":"updateBlob","parameterTypes":["java.lang.String","java.sql.Blob"] }, 
+    {"name":"updateBoolean","parameterTypes":["int","boolean"] }, 
+    {"name":"updateBoolean","parameterTypes":["java.lang.String","boolean"] }, 
+    {"name":"updateByte","parameterTypes":["int","byte"] }, 
+    {"name":"updateByte","parameterTypes":["java.lang.String","byte"] }, 
+    {"name":"updateBytes","parameterTypes":["int","byte[]"] }, 
+    {"name":"updateBytes","parameterTypes":["java.lang.String","byte[]"] }, 
+    {"name":"updateCharacterStream","parameterTypes":["int","java.io.Reader"] }, 
+    {"name":"updateCharacterStream","parameterTypes":["int","java.io.Reader","int"] }, 
+    {"name":"updateCharacterStream","parameterTypes":["int","java.io.Reader","long"] }, 
+    {"name":"updateCharacterStream","parameterTypes":["java.lang.String","java.io.Reader"] }, 
+    {"name":"updateCharacterStream","parameterTypes":["java.lang.String","java.io.Reader","int"] }, 
+    {"name":"updateCharacterStream","parameterTypes":["java.lang.String","java.io.Reader","long"] }, 
+    {"name":"updateClob","parameterTypes":["int","java.io.Reader"] }, 
+    {"name":"updateClob","parameterTypes":["int","java.io.Reader","long"] }, 
+    {"name":"updateClob","parameterTypes":["int","java.sql.Clob"] }, 
+    {"name":"updateClob","parameterTypes":["java.lang.String","java.io.Reader"] }, 
+    {"name":"updateClob","parameterTypes":["java.lang.String","java.io.Reader","long"] }, 
+    {"name":"updateClob","parameterTypes":["java.lang.String","java.sql.Clob"] }, 
+    {"name":"updateDate","parameterTypes":["int","java.sql.Date"] }, 
+    {"name":"updateDate","parameterTypes":["java.lang.String","java.sql.Date"] }, 
+    {"name":"updateDouble","parameterTypes":["int","double"] }, 
+    {"name":"updateDouble","parameterTypes":["java.lang.String","double"] }, 
+    {"name":"updateFloat","parameterTypes":["int","float"] }, 
+    {"name":"updateFloat","parameterTypes":["java.lang.String","float"] }, 
+    {"name":"updateInt","parameterTypes":["int","int"] }, 
+    {"name":"updateInt","parameterTypes":["java.lang.String","int"] }, 
+    {"name":"updateLong","parameterTypes":["int","long"] }, 
+    {"name":"updateLong","parameterTypes":["java.lang.String","long"] }, 
+    {"name":"updateNCharacterStream","parameterTypes":["int","java.io.Reader"] }, 
+    {"name":"updateNCharacterStream","parameterTypes":["int","java.io.Reader","long"] }, 
+    {"name":"updateNCharacterStream","parameterTypes":["java.lang.String","java.io.Reader"] }, 
+    {"name":"updateNCharacterStream","parameterTypes":["java.lang.String","java.io.Reader","long"] }, 
+    {"name":"updateNClob","parameterTypes":["int","java.io.Reader"] }, 
+    {"name":"updateNClob","parameterTypes":["int","java.io.Reader","long"] }, 
+    {"name":"updateNClob","parameterTypes":["int","java.sql.NClob"] }, 
+    {"name":"updateNClob","parameterTypes":["java.lang.String","java.io.Reader"] }, 
+    {"name":"updateNClob","parameterTypes":["java.lang.String","java.io.Reader","long"] }, 
+    {"name":"updateNClob","parameterTypes":["java.lang.String","java.sql.NClob"] }, 
+    {"name":"updateNString","parameterTypes":["int","java.lang.String"] }, 
+    {"name":"updateNString","parameterTypes":["java.lang.String","java.lang.String"] }, 
+    {"name":"updateNull","parameterTypes":["int"] }, 
+    {"name":"updateNull","parameterTypes":["java.lang.String"] }, 
+    {"name":"updateObject","parameterTypes":["int","java.lang.Object"] }, 
+    {"name":"updateObject","parameterTypes":["int","java.lang.Object","int"] }, 
+    {"name":"updateObject","parameterTypes":["java.lang.String","java.lang.Object"] }, 
+    {"name":"updateObject","parameterTypes":["java.lang.String","java.lang.Object","int"] }, 
+    {"name":"updateRef","parameterTypes":["int","java.sql.Ref"] }, 
+    {"name":"updateRef","parameterTypes":["java.lang.String","java.sql.Ref"] }, 
+    {"name":"updateRow","parameterTypes":[] }, 
+    {"name":"updateRowId","parameterTypes":["int","java.sql.RowId"] }, 
+    {"name":"updateRowId","parameterTypes":["java.lang.String","java.sql.RowId"] }, 
+    {"name":"updateSQLXML","parameterTypes":["int","java.sql.SQLXML"] }, 
+    {"name":"updateSQLXML","parameterTypes":["java.lang.String","java.sql.SQLXML"] }, 
+    {"name":"updateShort","parameterTypes":["int","short"] }, 
+    {"name":"updateShort","parameterTypes":["java.lang.String","short"] }, 
+    {"name":"updateString","parameterTypes":["int","java.lang.String"] }, 
+    {"name":"updateString","parameterTypes":["java.lang.String","java.lang.String"] }, 
+    {"name":"updateTime","parameterTypes":["int","java.sql.Time"] }, 
+    {"name":"updateTime","parameterTypes":["java.lang.String","java.sql.Time"] }, 
+    {"name":"updateTimestamp","parameterTypes":["int","java.sql.Timestamp"] }, 
+    {"name":"updateTimestamp","parameterTypes":["java.lang.String","java.sql.Timestamp"] }, 
+    {"name":"wasNull","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.ResultSetMetaData$MockitoMock$8jfcd82op99200N"},
+  "name":"java.sql.ResultSetMetaData",
+  "methods":[
+    {"name":"getCatalogName","parameterTypes":["int"] }, 
+    {"name":"getColumnClassName","parameterTypes":["int"] }, 
+    {"name":"getColumnCount","parameterTypes":[] }, 
+    {"name":"getColumnDisplaySize","parameterTypes":["int"] }, 
+    {"name":"getColumnLabel","parameterTypes":["int"] }, 
+    {"name":"getColumnName","parameterTypes":["int"] }, 
+    {"name":"getColumnType","parameterTypes":["int"] }, 
+    {"name":"getColumnTypeName","parameterTypes":["int"] }, 
+    {"name":"getPrecision","parameterTypes":["int"] }, 
+    {"name":"getScale","parameterTypes":["int"] }, 
+    {"name":"getSchemaName","parameterTypes":["int"] }, 
+    {"name":"getTableName","parameterTypes":["int"] }, 
+    {"name":"isAutoIncrement","parameterTypes":["int"] }, 
+    {"name":"isCaseSensitive","parameterTypes":["int"] }, 
+    {"name":"isCurrency","parameterTypes":["int"] }, 
+    {"name":"isDefinitelyWritable","parameterTypes":["int"] }, 
+    {"name":"isNullable","parameterTypes":["int"] }, 
+    {"name":"isReadOnly","parameterTypes":["int"] }, 
+    {"name":"isSearchable","parameterTypes":["int"] }, 
+    {"name":"isSigned","parameterTypes":["int"] }, 
+    {"name":"isWritable","parameterTypes":["int"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.SQLXML$MockitoMock$ln6ont1op99200N"},
+  "name":"java.sql.SQLXML",
+  "methods":[
+    {"name":"free","parameterTypes":[] }, 
+    {"name":"getBinaryStream","parameterTypes":[] }, 
+    {"name":"getCharacterStream","parameterTypes":[] }, 
+    {"name":"getSource","parameterTypes":["java.lang.Class"] }, 
+    {"name":"getString","parameterTypes":[] }, 
+    {"name":"setBinaryStream","parameterTypes":[] }, 
+    {"name":"setCharacterStream","parameterTypes":[] }, 
+    {"name":"setResult","parameterTypes":["java.lang.Class"] }, 
+    {"name":"setString","parameterTypes":["java.lang.String"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.PreparedStatement$MockitoMock$6lfk8k0op99200N"},
+  "name":"java.sql.Statement",
+  "methods":[
+    {"name":"addBatch","parameterTypes":["java.lang.String"] }, 
+    {"name":"cancel","parameterTypes":[] }, 
+    {"name":"clearBatch","parameterTypes":[] }, 
+    {"name":"clearWarnings","parameterTypes":[] }, 
+    {"name":"close","parameterTypes":[] }, 
+    {"name":"closeOnCompletion","parameterTypes":[] }, 
+    {"name":"execute","parameterTypes":["java.lang.String"] }, 
+    {"name":"execute","parameterTypes":["java.lang.String","int"] }, 
+    {"name":"execute","parameterTypes":["java.lang.String","int[]"] }, 
+    {"name":"execute","parameterTypes":["java.lang.String","java.lang.String[]"] }, 
+    {"name":"executeBatch","parameterTypes":[] }, 
+    {"name":"executeQuery","parameterTypes":["java.lang.String"] }, 
+    {"name":"executeUpdate","parameterTypes":["java.lang.String"] }, 
+    {"name":"executeUpdate","parameterTypes":["java.lang.String","int"] }, 
+    {"name":"executeUpdate","parameterTypes":["java.lang.String","int[]"] }, 
+    {"name":"executeUpdate","parameterTypes":["java.lang.String","java.lang.String[]"] }, 
+    {"name":"getConnection","parameterTypes":[] }, 
+    {"name":"getFetchDirection","parameterTypes":[] }, 
+    {"name":"getFetchSize","parameterTypes":[] }, 
+    {"name":"getGeneratedKeys","parameterTypes":[] }, 
+    {"name":"getMaxFieldSize","parameterTypes":[] }, 
+    {"name":"getMaxRows","parameterTypes":[] }, 
+    {"name":"getMoreResults","parameterTypes":[] }, 
+    {"name":"getMoreResults","parameterTypes":["int"] }, 
+    {"name":"getQueryTimeout","parameterTypes":[] }, 
+    {"name":"getResultSet","parameterTypes":[] }, 
+    {"name":"getResultSetConcurrency","parameterTypes":[] }, 
+    {"name":"getResultSetHoldability","parameterTypes":[] }, 
+    {"name":"getResultSetType","parameterTypes":[] }, 
+    {"name":"getUpdateCount","parameterTypes":[] }, 
+    {"name":"getWarnings","parameterTypes":[] }, 
+    {"name":"isCloseOnCompletion","parameterTypes":[] }, 
+    {"name":"isClosed","parameterTypes":[] }, 
+    {"name":"isPoolable","parameterTypes":[] }, 
+    {"name":"setCursorName","parameterTypes":["java.lang.String"] }, 
+    {"name":"setEscapeProcessing","parameterTypes":["boolean"] }, 
+    {"name":"setFetchDirection","parameterTypes":["int"] }, 
+    {"name":"setFetchSize","parameterTypes":["int"] }, 
+    {"name":"setMaxFieldSize","parameterTypes":["int"] }, 
+    {"name":"setMaxRows","parameterTypes":["int"] }, 
+    {"name":"setPoolable","parameterTypes":["boolean"] }, 
+    {"name":"setQueryTimeout","parameterTypes":["int"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.Statement$MockitoMock$3jsmh53op99200N"},
+  "name":"java.sql.Statement",
+  "methods":[
+    {"name":"addBatch","parameterTypes":["java.lang.String"] }, 
+    {"name":"cancel","parameterTypes":[] }, 
+    {"name":"clearBatch","parameterTypes":[] }, 
+    {"name":"clearWarnings","parameterTypes":[] }, 
+    {"name":"close","parameterTypes":[] }, 
+    {"name":"closeOnCompletion","parameterTypes":[] }, 
+    {"name":"execute","parameterTypes":["java.lang.String"] }, 
+    {"name":"execute","parameterTypes":["java.lang.String","int"] }, 
+    {"name":"execute","parameterTypes":["java.lang.String","int[]"] }, 
+    {"name":"execute","parameterTypes":["java.lang.String","java.lang.String[]"] }, 
+    {"name":"executeBatch","parameterTypes":[] }, 
+    {"name":"executeQuery","parameterTypes":["java.lang.String"] }, 
+    {"name":"executeUpdate","parameterTypes":["java.lang.String"] }, 
+    {"name":"executeUpdate","parameterTypes":["java.lang.String","int"] }, 
+    {"name":"executeUpdate","parameterTypes":["java.lang.String","int[]"] }, 
+    {"name":"executeUpdate","parameterTypes":["java.lang.String","java.lang.String[]"] }, 
+    {"name":"getConnection","parameterTypes":[] }, 
+    {"name":"getFetchDirection","parameterTypes":[] }, 
+    {"name":"getFetchSize","parameterTypes":[] }, 
+    {"name":"getGeneratedKeys","parameterTypes":[] }, 
+    {"name":"getMaxFieldSize","parameterTypes":[] }, 
+    {"name":"getMaxRows","parameterTypes":[] }, 
+    {"name":"getMoreResults","parameterTypes":[] }, 
+    {"name":"getMoreResults","parameterTypes":["int"] }, 
+    {"name":"getQueryTimeout","parameterTypes":[] }, 
+    {"name":"getResultSet","parameterTypes":[] }, 
+    {"name":"getResultSetConcurrency","parameterTypes":[] }, 
+    {"name":"getResultSetHoldability","parameterTypes":[] }, 
+    {"name":"getResultSetType","parameterTypes":[] }, 
+    {"name":"getUpdateCount","parameterTypes":[] }, 
+    {"name":"getWarnings","parameterTypes":[] }, 
+    {"name":"isCloseOnCompletion","parameterTypes":[] }, 
+    {"name":"isClosed","parameterTypes":[] }, 
+    {"name":"isPoolable","parameterTypes":[] }, 
+    {"name":"setCursorName","parameterTypes":["java.lang.String"] }, 
+    {"name":"setEscapeProcessing","parameterTypes":["boolean"] }, 
+    {"name":"setFetchDirection","parameterTypes":["int"] }, 
+    {"name":"setFetchSize","parameterTypes":["int"] }, 
+    {"name":"setMaxFieldSize","parameterTypes":["int"] }, 
+    {"name":"setMaxRows","parameterTypes":["int"] }, 
+    {"name":"setPoolable","parameterTypes":["boolean"] }, 
+    {"name":"setQueryTimeout","parameterTypes":["int"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.Connection$MockitoMock$a3lier1op99200N"},
+  "name":"java.sql.Wrapper",
+  "methods":[
+    {"name":"isWrapperFor","parameterTypes":["java.lang.Class"] }, 
+    {"name":"unwrap","parameterTypes":["java.lang.Class"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.DataSource$MockitoMock$tnibii1op99200N"},
+  "name":"java.sql.Wrapper",
+  "methods":[
+    {"name":"isWrapperFor","parameterTypes":["java.lang.Class"] }, 
+    {"name":"unwrap","parameterTypes":["java.lang.Class"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.DatabaseMetaData$MockitoMock$mjdo3d0op99200N"},
+  "name":"java.sql.Wrapper",
+  "methods":[
+    {"name":"isWrapperFor","parameterTypes":["java.lang.Class"] }, 
+    {"name":"unwrap","parameterTypes":["java.lang.Class"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.PreparedStatement$MockitoMock$6lfk8k0op99200N"},
+  "name":"java.sql.Wrapper",
+  "methods":[
+    {"name":"isWrapperFor","parameterTypes":["java.lang.Class"] }, 
+    {"name":"unwrap","parameterTypes":["java.lang.Class"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.ResultSet$MockitoMock$pvsved3op99200N"},
+  "name":"java.sql.Wrapper",
+  "methods":[
+    {"name":"isWrapperFor","parameterTypes":["java.lang.Class"] }, 
+    {"name":"unwrap","parameterTypes":["java.lang.Class"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.ResultSetMetaData$MockitoMock$8jfcd82op99200N"},
+  "name":"java.sql.Wrapper",
+  "methods":[
+    {"name":"isWrapperFor","parameterTypes":["java.lang.Class"] }, 
+    {"name":"unwrap","parameterTypes":["java.lang.Class"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.Statement$MockitoMock$3jsmh53op99200N"},
+  "name":"java.sql.Wrapper",
+  "methods":[
+    {"name":"isWrapperFor","parameterTypes":["java.lang.Class"] }, 
+    {"name":"unwrap","parameterTypes":["java.lang.Class"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.Collection$MockitoMock$u22ifb3op99200N"},
+  "name":"java.util.Collection",
+  "methods":[
+    {"name":"add","parameterTypes":["java.lang.Object"] }, 
+    {"name":"addAll","parameterTypes":["java.util.Collection"] }, 
+    {"name":"clear","parameterTypes":[] }, 
+    {"name":"contains","parameterTypes":["java.lang.Object"] }, 
+    {"name":"containsAll","parameterTypes":["java.util.Collection"] }, 
+    {"name":"isEmpty","parameterTypes":[] }, 
+    {"name":"iterator","parameterTypes":[] }, 
+    {"name":"remove","parameterTypes":["java.lang.Object"] }, 
+    {"name":"removeAll","parameterTypes":["java.util.Collection"] }, 
+    {"name":"retainAll","parameterTypes":["java.util.Collection"] }, 
+    {"name":"size","parameterTypes":[] }, 
+    {"name":"toArray","parameterTypes":[] }, 
+    {"name":"toArray","parameterTypes":["java.lang.Object[]"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.Iterator$MockitoMock$ehklse0op99200N"},
+  "name":"java.util.Iterator",
+  "methods":[
+    {"name":"hasNext","parameterTypes":[] }, 
+    {"name":"next","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.Map$MockitoMock$ssgnom2op99200N"},
+  "name":"java.util.Map",
+  "methods":[
+    {"name":"clear","parameterTypes":[] }, 
+    {"name":"containsKey","parameterTypes":["java.lang.Object"] }, 
+    {"name":"containsValue","parameterTypes":["java.lang.Object"] }, 
+    {"name":"entrySet","parameterTypes":[] }, 
+    {"name":"get","parameterTypes":["java.lang.Object"] }, 
+    {"name":"isEmpty","parameterTypes":[] }, 
+    {"name":"keySet","parameterTypes":[] }, 
+    {"name":"put","parameterTypes":["java.lang.Object","java.lang.Object"] }, 
+    {"name":"putAll","parameterTypes":["java.util.Map"] }, 
+    {"name":"remove","parameterTypes":["java.lang.Object"] }, 
+    {"name":"size","parameterTypes":[] }, 
+    {"name":"values","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.util.JavaEightUtil"},
+  "name":"java.util.Optional",
+  "methods":[{"name":"empty","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.Set$MockitoMock$2lmnom2op99200N"},
+  "name":"java.util.Set",
+  "methods":[
+    {"name":"add","parameterTypes":["java.lang.Object"] }, 
+    {"name":"addAll","parameterTypes":["java.util.Collection"] }, 
+    {"name":"clear","parameterTypes":[] }, 
+    {"name":"contains","parameterTypes":["java.lang.Object"] }, 
+    {"name":"containsAll","parameterTypes":["java.util.Collection"] }, 
+    {"name":"isEmpty","parameterTypes":[] }, 
+    {"name":"iterator","parameterTypes":[] }, 
+    {"name":"remove","parameterTypes":["java.lang.Object"] }, 
+    {"name":"removeAll","parameterTypes":["java.util.Collection"] }, 
+    {"name":"retainAll","parameterTypes":["java.util.Collection"] }, 
+    {"name":"size","parameterTypes":[] }, 
+    {"name":"toArray","parameterTypes":[] }, 
+    {"name":"toArray","parameterTypes":["java.lang.Object[]"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.Stream$MockitoMock$e1gq1n1op99200N"},
+  "name":"java.util.stream.BaseStream",
+  "methods":[
+    {"name":"close","parameterTypes":[] }, 
+    {"name":"isParallel","parameterTypes":[] }, 
+    {"name":"iterator","parameterTypes":[] }, 
+    {"name":"onClose","parameterTypes":["java.lang.Runnable"] }, 
+    {"name":"parallel","parameterTypes":[] }, 
+    {"name":"sequential","parameterTypes":[] }, 
+    {"name":"spliterator","parameterTypes":[] }, 
+    {"name":"unordered","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.Stream$MockitoMock$e1gq1n1op99200N"},
+  "name":"java.util.stream.Stream",
+  "methods":[
+    {"name":"allMatch","parameterTypes":["java.util.function.Predicate"] }, 
+    {"name":"anyMatch","parameterTypes":["java.util.function.Predicate"] }, 
+    {"name":"collect","parameterTypes":["java.util.function.Supplier","java.util.function.BiConsumer","java.util.function.BiConsumer"] }, 
+    {"name":"collect","parameterTypes":["java.util.stream.Collector"] }, 
+    {"name":"count","parameterTypes":[] }, 
+    {"name":"distinct","parameterTypes":[] }, 
+    {"name":"filter","parameterTypes":["java.util.function.Predicate"] }, 
+    {"name":"findAny","parameterTypes":[] }, 
+    {"name":"findFirst","parameterTypes":[] }, 
+    {"name":"flatMap","parameterTypes":["java.util.function.Function"] }, 
+    {"name":"flatMapToDouble","parameterTypes":["java.util.function.Function"] }, 
+    {"name":"flatMapToInt","parameterTypes":["java.util.function.Function"] }, 
+    {"name":"flatMapToLong","parameterTypes":["java.util.function.Function"] }, 
+    {"name":"forEach","parameterTypes":["java.util.function.Consumer"] }, 
+    {"name":"forEachOrdered","parameterTypes":["java.util.function.Consumer"] }, 
+    {"name":"limit","parameterTypes":["long"] }, 
+    {"name":"map","parameterTypes":["java.util.function.Function"] }, 
+    {"name":"mapToDouble","parameterTypes":["java.util.function.ToDoubleFunction"] }, 
+    {"name":"mapToInt","parameterTypes":["java.util.function.ToIntFunction"] }, 
+    {"name":"mapToLong","parameterTypes":["java.util.function.ToLongFunction"] }, 
+    {"name":"max","parameterTypes":["java.util.Comparator"] }, 
+    {"name":"min","parameterTypes":["java.util.Comparator"] }, 
+    {"name":"noneMatch","parameterTypes":["java.util.function.Predicate"] }, 
+    {"name":"peek","parameterTypes":["java.util.function.Consumer"] }, 
+    {"name":"reduce","parameterTypes":["java.lang.Object","java.util.function.BiFunction","java.util.function.BinaryOperator"] }, 
+    {"name":"reduce","parameterTypes":["java.lang.Object","java.util.function.BinaryOperator"] }, 
+    {"name":"reduce","parameterTypes":["java.util.function.BinaryOperator"] }, 
+    {"name":"skip","parameterTypes":["long"] }, 
+    {"name":"sorted","parameterTypes":[] }, 
+    {"name":"sorted","parameterTypes":["java.util.Comparator"] }, 
+    {"name":"toArray","parameterTypes":[] }, 
+    {"name":"toArray","parameterTypes":["java.util.function.IntFunction"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.DataSource$MockitoMock$tnibii1op99200N"},
+  "name":"javax.sql.CommonDataSource",
+  "methods":[{"name":"getParentLogger","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.DataSource$MockitoMock$tnibii1op99200N"},
+  "name":"javax.sql.DataSource",
+  "methods":[
+    {"name":"getConnection","parameterTypes":[] }, 
+    {"name":"getConnection","parameterTypes":["java.lang.String","java.lang.String"] }, 
+    {"name":"getLogWriter","parameterTypes":[] }, 
+    {"name":"getLoginTimeout","parameterTypes":[] }, 
+    {"name":"setLogWriter","parameterTypes":["java.io.PrintWriter"] }, 
+    {"name":"setLoginTimeout","parameterTypes":["int"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.util.KotlinInlineClassUtil"},
+  "name":"kotlin.jvm.JvmInline"
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineDelegateByteBuddyMockMaker"},
+  "name":"net.bytebuddy.agent.Installer",
+  "methods":[{"name":"getInstrumentation","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"net.bytebuddy.asm.Advice$AllArguments",
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"nullIfEmpty","parameterTypes":[] }, 
+    {"name":"readOnly","parameterTypes":[] }, 
+    {"name":"typing","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"net.bytebuddy.asm.Advice$Argument",
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"optional","parameterTypes":[] }, 
+    {"name":"readOnly","parameterTypes":[] }, 
+    {"name":"typing","parameterTypes":[] }, 
+    {"name":"value","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"net.bytebuddy.asm.Advice$Enter",
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"readOnly","parameterTypes":[] }, 
+    {"name":"typing","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"net.bytebuddy.asm.Advice$Exit",
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"net.bytebuddy.asm.Advice$Local",
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"net.bytebuddy.asm.Advice$OnMethodEnter",
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"inline","parameterTypes":[] }, 
+    {"name":"prependLineNumber","parameterTypes":[] }, 
+    {"name":"skipOn","parameterTypes":[] }, 
+    {"name":"suppress","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"net.bytebuddy.asm.Advice$OnMethodExit",
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"backupArguments","parameterTypes":[] }, 
+    {"name":"inline","parameterTypes":[] }, 
+    {"name":"onThrowable","parameterTypes":[] }, 
+    {"name":"repeatOn","parameterTypes":[] }, 
+    {"name":"suppress","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"net.bytebuddy.asm.Advice$Origin",
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"net.bytebuddy.asm.Advice$Return",
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"readOnly","parameterTypes":[] }, 
+    {"name":"typing","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"net.bytebuddy.asm.Advice$This",
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"optional","parameterTypes":[] }, 
+    {"name":"readOnly","parameterTypes":[] }, 
+    {"name":"typing","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"net.bytebuddy.asm.Advice$Thrown",
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"net.bytebuddy.description.method.MethodDescription$InDefinedShape$AbstractBase$Executable",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"net.bytebuddy.description.method.ParameterDescription$ForLoadedParameter$Parameter",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"net.bytebuddy.description.method.ParameterList$ForLoadedExecutable$Executable",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"net.bytebuddy.description.type.TypeDefinition$Sort$AnnotatedType",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"net.bytebuddy.description.type.TypeDescription$ForLoadedType$Dispatcher",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"net.bytebuddy.description.type.TypeDescription$Generic$AnnotationReader$Delegator$ForLoadedExecutableParameterType$Dispatcher",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"net.bytebuddy.description.type.TypeDescription$Generic$AnnotationReader$Delegator$ForLoadedMethodReturnType$Dispatcher",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"net.bytebuddy.description.type.TypeDescription$Generic$AnnotationReader$ForComponentType$AnnotatedParameterizedType",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"net.bytebuddy.implementation.bind.annotation.AllArguments",
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.SubclassBytecodeGenerator"},
+  "name":"net.bytebuddy.implementation.bind.annotation.AllArguments",
+  "methods":[
+    {"name":"includeSelf","parameterTypes":[] }, 
+    {"name":"nullIfEmpty","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"net.bytebuddy.implementation.bind.annotation.Argument",
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.SubclassBytecodeGenerator"},
+  "name":"net.bytebuddy.implementation.bind.annotation.Argument",
+  "methods":[
+    {"name":"bindingMechanic","parameterTypes":[] }, 
+    {"name":"value","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.SubclassBytecodeGenerator"},
+  "name":"net.bytebuddy.implementation.bind.annotation.Argument$BindingMechanic"
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"net.bytebuddy.implementation.bind.annotation.BindingPriority",
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.SubclassBytecodeGenerator"},
+  "name":"net.bytebuddy.implementation.bind.annotation.BindingPriority",
+  "methods":[{"name":"value","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"net.bytebuddy.implementation.bind.annotation.Default",
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"net.bytebuddy.implementation.bind.annotation.DefaultCall",
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"net.bytebuddy.implementation.bind.annotation.DefaultMethod",
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"net.bytebuddy.implementation.bind.annotation.FieldValue",
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.SubclassBytecodeGenerator"},
+  "name":"net.bytebuddy.implementation.bind.annotation.FieldValue",
+  "methods":[
+    {"name":"declaringType","parameterTypes":[] }, 
+    {"name":"value","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"net.bytebuddy.implementation.bind.annotation.Origin",
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.SubclassBytecodeGenerator"},
+  "name":"net.bytebuddy.implementation.bind.annotation.Origin",
+  "methods":[
+    {"name":"cache","parameterTypes":[] }, 
+    {"name":"privileged","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.SubclassBytecodeGenerator"},
+  "name":"net.bytebuddy.implementation.bind.annotation.StubValue"
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"net.bytebuddy.implementation.bind.annotation.Super",
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"net.bytebuddy.implementation.bind.annotation.SuperCall",
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.SubclassBytecodeGenerator"},
+  "name":"net.bytebuddy.implementation.bind.annotation.SuperCall",
+  "methods":[
+    {"name":"fallbackToDefault","parameterTypes":[] }, 
+    {"name":"nullIfImpossible","parameterTypes":[] }, 
+    {"name":"serializableProxy","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"net.bytebuddy.implementation.bind.annotation.SuperMethod",
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"net.bytebuddy.implementation.bind.annotation.This",
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"net.bytebuddy.implementation.bytecode.assign.Assigner$Typing"
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"net.bytebuddy.utility.Invoker",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"net.bytebuddy.utility.Invoker$Dispatcher",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineDelegateByteBuddyMockMaker"},
+  "name":"org.apache.shardingsphere.driver.executor.batch.BatchPreparedStatementExecutor",
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":["org.apache.shardingsphere.mode.metadata.MetaDataContexts","org.apache.shardingsphere.infra.executor.sql.execute.engine.driver.jdbc.JDBCExecutor","java.lang.String","org.apache.shardingsphere.infra.util.eventbus.EventBusContext"] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.runners.DefaultInternalRunner$1$1"},
+  "name":"org.apache.shardingsphere.driver.executor.batch.BatchPreparedStatementExecutor",
+  "fields":[
+    {"name":"batchCount"}, 
+    {"name":"batchExecutionUnits"}, 
+    {"name":"executionGroupContext"}
+  ],
+  "methods":[{"name":"executeBatch","parameterTypes":["org.apache.shardingsphere.infra.binder.statement.SQLStatementContext"] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.util.reflection.ReflectionMemberAccessor"},
+  "name":"org.apache.shardingsphere.driver.executor.batch.BatchPreparedStatementExecutor",
+  "methods":[{"name":"executeBatch","parameterTypes":["org.apache.shardingsphere.infra.binder.statement.SQLStatementContext"] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.Mockito"},
+  "name":"org.apache.shardingsphere.driver.jdbc.context.JDBCContext",
+  "methods":[{"name":"<init>","parameterTypes":["java.util.Map"] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.runners.DefaultInternalRunner$1$1"},
+  "name":"org.apache.shardingsphere.driver.jdbc.context.JDBCContext",
+  "methods":[{"name":"getCachedDatabaseMetaData","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.runners.DefaultInternalRunner$1$1"},
+  "name":"org.apache.shardingsphere.driver.jdbc.core.connection.ConnectionManager",
+  "methods":[
+    {"name":"getRandomConnection","parameterTypes":[] }, 
+    {"name":"getRandomPhysicalDataSourceName","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.configuration.MockAnnotationProcessor"},
+  "name":"org.apache.shardingsphere.driver.jdbc.core.connection.ShardingSphereConnection",
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.String","org.apache.shardingsphere.mode.manager.ContextManager","org.apache.shardingsphere.driver.jdbc.context.JDBCContext"] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.runners.DefaultInternalRunner$1$1"},
+  "name":"org.apache.shardingsphere.driver.jdbc.core.connection.ShardingSphereConnection",
+  "methods":[
+    {"name":"getConnectionManager","parameterTypes":[] }, 
+    {"name":"getContextManager","parameterTypes":[] }, 
+    {"name":"getDatabaseName","parameterTypes":[] }, 
+    {"name":"getJdbcContext","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.util.reflection.ReflectionMemberAccessor"},
+  "name":"org.apache.shardingsphere.infra.binder.segment.table.TablesContext",
+  "methods":[{"name":"getTableNames","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.SQLStatementContext$MockitoMock$gq9mvv0op99200N"},
+  "name":"org.apache.shardingsphere.infra.binder.statement.SQLStatementContext",
+  "methods":[
+    {"name":"getDatabaseType","parameterTypes":[] }, 
+    {"name":"getSqlStatement","parameterTypes":[] }, 
+    {"name":"getTablesContext","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.DataSourceMetaData$MockitoMock$5ls0la1op99200N"},
+  "name":"org.apache.shardingsphere.infra.database.metadata.DataSourceMetaData",
+  "methods":[
+    {"name":"getCatalog","parameterTypes":[] }, 
+    {"name":"getDefaultQueryProperties","parameterTypes":[] }, 
+    {"name":"getHostname","parameterTypes":[] }, 
+    {"name":"getPort","parameterTypes":[] }, 
+    {"name":"getQueryProperties","parameterTypes":[] }, 
+    {"name":"getSchema","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.DatabaseType$MockitoMock$rldqbq1op99200N"},
+  "name":"org.apache.shardingsphere.infra.database.type.DatabaseType",
+  "methods":[
+    {"name":"getDataSourceMetaData","parameterTypes":["java.lang.String","java.lang.String"] }, 
+    {"name":"getJdbcUrlPrefixes","parameterTypes":[] }, 
+    {"name":"getQuoteCharacter","parameterTypes":[] }, 
+    {"name":"getSystemDatabaseSchemaMap","parameterTypes":[] }, 
+    {"name":"getSystemSchemas","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.runners.DefaultInternalRunner$1$1"},
+  "name":"org.apache.shardingsphere.infra.instance.ComputeNodeInstance",
+  "methods":[{"name":"getState","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.runners.DefaultInternalRunner$1$1"},
+  "name":"org.apache.shardingsphere.infra.instance.InstanceContext",
+  "methods":[
+    {"name":"generateWorkerId","parameterTypes":["java.util.Properties"] }, 
+    {"name":"getInstance","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.MergedResult$MockitoMock$vk5h731op99200N"},
+  "name":"org.apache.shardingsphere.infra.merge.result.MergedResult",
+  "methods":[
+    {"name":"getCalendarValue","parameterTypes":["int","java.lang.Class","java.util.Calendar"] }, 
+    {"name":"getInputStream","parameterTypes":["int","java.lang.String"] }, 
+    {"name":"getValue","parameterTypes":["int","java.lang.Class"] }, 
+    {"name":"next","parameterTypes":[] }, 
+    {"name":"wasNull","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.runners.DefaultInternalRunner$1$1"},
+  "name":"org.apache.shardingsphere.infra.metadata.ShardingSphereMetaData",
+  "methods":[
+    {"name":"getDatabase","parameterTypes":["java.lang.String"] }, 
+    {"name":"getGlobalRuleMetaData","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.util.reflection.ReflectionMemberAccessor"},
+  "name":"org.apache.shardingsphere.infra.metadata.ShardingSphereMetaData",
+  "methods":[{"name":"getDatabase","parameterTypes":["java.lang.String"] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.runners.DefaultInternalRunner$1$1"},
+  "name":"org.apache.shardingsphere.infra.metadata.database.ShardingSphereDatabase",
+  "methods":[
+    {"name":"getProtocolType","parameterTypes":[] }, 
+    {"name":"getResourceMetaData","parameterTypes":[] }, 
+    {"name":"getRuleMetaData","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.util.reflection.ReflectionMemberAccessor"},
+  "name":"org.apache.shardingsphere.infra.metadata.database.ShardingSphereDatabase",
+  "methods":[
+    {"name":"getProtocolType","parameterTypes":[] }, 
+    {"name":"getResourceMetaData","parameterTypes":[] }, 
+    {"name":"getRuleMetaData","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.runners.DefaultInternalRunner$1$1"},
+  "name":"org.apache.shardingsphere.infra.metadata.database.resource.ShardingSphereResourceMetaData",
+  "methods":[
+    {"name":"getDataSourceMetaData","parameterTypes":["java.lang.String"] }, 
+    {"name":"getStorageTypes","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.util.reflection.ReflectionMemberAccessor"},
+  "name":"org.apache.shardingsphere.infra.metadata.database.resource.ShardingSphereResourceMetaData",
+  "methods":[{"name":"getStorageTypes","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.Mockito"},
+  "name":"org.apache.shardingsphere.infra.metadata.database.rule.ShardingSphereRuleMetaData",
+  "methods":[{"name":"<init>","parameterTypes":["java.util.Collection"] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.runners.DefaultInternalRunner$1$1"},
+  "name":"org.apache.shardingsphere.infra.metadata.database.rule.ShardingSphereRuleMetaData",
+  "methods":[
+    {"name":"getRules","parameterTypes":[] }, 
+    {"name":"getSingleRule","parameterTypes":["java.lang.Class"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.util.reflection.ReflectionMemberAccessor"},
+  "name":"org.apache.shardingsphere.infra.metadata.database.rule.ShardingSphereRuleMetaData",
+  "methods":[{"name":"getRules","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.DataNodeContainedRule$MockitoMock$743aut2op99200N"},
+  "name":"org.apache.shardingsphere.infra.rule.ShardingSphereRule",
+  "methods":[
+    {"name":"getConfiguration","parameterTypes":[] }, 
+    {"name":"getType","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.DataNodeContainedRule$MockitoMock$743aut2op99200N"},
+  "name":"org.apache.shardingsphere.infra.rule.identifier.type.DataNodeContainedRule",
+  "methods":[
+    {"name":"findActualTableByCatalog","parameterTypes":["java.lang.String","java.lang.String"] }, 
+    {"name":"findFirstActualTable","parameterTypes":["java.lang.String"] }, 
+    {"name":"findLogicTableByActualTable","parameterTypes":["java.lang.String"] }, 
+    {"name":"getAllDataNodes","parameterTypes":[] }, 
+    {"name":"getAllTables","parameterTypes":[] }, 
+    {"name":"getDataNodesByTableName","parameterTypes":["java.lang.String"] }, 
+    {"name":"isNeedAccumulate","parameterTypes":["java.util.Collection"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.runners.DefaultInternalRunner$1$1"},
+  "name":"org.apache.shardingsphere.infra.util.props.TypedProperties",
+  "methods":[{"name":"getProps","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.Mockito"},
+  "name":"org.apache.shardingsphere.mode.manager.ContextManager",
+  "methods":[{"name":"<init>","parameterTypes":["org.apache.shardingsphere.mode.metadata.MetaDataContexts","org.apache.shardingsphere.infra.instance.InstanceContext"] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.configuration.MockAnnotationProcessor"},
+  "name":"org.apache.shardingsphere.mode.manager.ContextManager",
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":["org.apache.shardingsphere.mode.metadata.MetaDataContexts","org.apache.shardingsphere.infra.instance.InstanceContext"] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.runners.DefaultInternalRunner$1$1"},
+  "name":"org.apache.shardingsphere.mode.manager.ContextManager",
+  "methods":[
+    {"name":"getDataSourceMap","parameterTypes":["java.lang.String"] }, 
+    {"name":"getInstanceContext","parameterTypes":[] }, 
+    {"name":"getMetaDataContexts","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.configuration.MockAnnotationProcessor"},
+  "name":"org.apache.shardingsphere.mode.metadata.MetaDataContexts",
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":["org.apache.shardingsphere.mode.metadata.persist.MetaDataPersistService","org.apache.shardingsphere.infra.metadata.ShardingSphereMetaData"] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.runners.DefaultInternalRunner$1$1"},
+  "name":"org.apache.shardingsphere.mode.metadata.MetaDataContexts",
+  "methods":[
+    {"name":"getMetaData","parameterTypes":[] }, 
+    {"name":"getPersistService","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.util.reflection.ReflectionMemberAccessor"},
+  "name":"org.apache.shardingsphere.mode.metadata.MetaDataContexts",
+  "methods":[{"name":"getMetaData","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.runners.DefaultInternalRunner$1$1"},
+  "name":"org.apache.shardingsphere.mode.metadata.persist.MetaDataPersistService",
+  "methods":[{"name":"getShardingSphereDataPersistService","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.runners.DefaultInternalRunner$1$1"},
+  "name":"org.apache.shardingsphere.sharding.algorithm.keygen.SnowflakeKeyGenerateAlgorithm",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.runners.DefaultInternalRunner$1$1"},
+  "name":"org.apache.shardingsphere.sharding.algorithm.keygen.UUIDKeyGenerateAlgorithm",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.runners.DefaultInternalRunner$1$1"},
+  "name":"org.apache.shardingsphere.sharding.cosid.algorithm.keygen.CosIdKeyGenerateAlgorithm",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.runners.DefaultInternalRunner$1$1"},
+  "name":"org.apache.shardingsphere.sharding.cosid.algorithm.keygen.CosIdSnowflakeKeyGenerateAlgorithm",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.runners.DefaultInternalRunner$1$1"},
+  "name":"org.apache.shardingsphere.sharding.nanoid.algorithm.keygen.NanoIdKeyGenerateAlgorithm",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.runners.DefaultInternalRunner$1$1"},
+  "name":"org.apache.shardingsphere.sharding.rule.ShardingRule",
+  "methods":[
+    {"name":"findLogicTableByActualTable","parameterTypes":["java.lang.String"] }, 
+    {"name":"isNeedAccumulate","parameterTypes":["java.util.Collection"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.util.reflection.ReflectionMemberAccessor"},
+  "name":"org.apache.shardingsphere.sharding.rule.ShardingRule",
+  "methods":[{"name":"isNeedAccumulate","parameterTypes":["java.util.Collection"] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.SQLStatement$MockitoMock$r19pnr1op99200N"},
+  "name":"org.apache.shardingsphere.sql.parser.sql.common.statement.SQLStatement",
+  "methods":[{"name":"getParameterCount","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.Mockito"},
+  "name":"org.apache.shardingsphere.traffic.rule.TrafficRule",
+  "methods":[{"name":"<init>","parameterTypes":["org.apache.shardingsphere.traffic.api.config.TrafficRuleConfiguration"] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.runners.DefaultInternalRunner$1$1"},
+  "name":"org.apache.shardingsphere.traffic.rule.TrafficRule",
+  "methods":[{"name":"getStrategyRules","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.runners.DefaultInternalRunner$1$1"},
+  "name":"org.apache.shardingsphere.transaction.ShardingSphereTransactionManagerEngine",
+  "methods":[{"name":"getTransactionManager","parameterTypes":["org.apache.shardingsphere.transaction.api.TransactionType"] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.Mockito"},
+  "name":"org.apache.shardingsphere.transaction.rule.TransactionRule",
+  "methods":[{"name":"<init>","parameterTypes":["org.apache.shardingsphere.transaction.config.TransactionRuleConfiguration","java.util.Map"] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.runners.DefaultInternalRunner$1$1"},
+  "name":"org.apache.shardingsphere.transaction.rule.TransactionRule",
+  "methods":[
+    {"name":"getDefaultType","parameterTypes":[] }, 
+    {"name":"getResource","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.ShardingSphereTransactionManager$MockitoMock$p0nu4v2op99200N"},
+  "name":"org.apache.shardingsphere.transaction.spi.ShardingSphereTransactionManager",
+  "methods":[
+    {"name":"begin","parameterTypes":[] }, 
+    {"name":"begin","parameterTypes":["int"] }, 
+    {"name":"commit","parameterTypes":["boolean"] }, 
+    {"name":"getConnection","parameterTypes":["java.lang.String","java.lang.String"] }, 
+    {"name":"getTransactionType","parameterTypes":[] }, 
+    {"name":"init","parameterTypes":["java.util.Map","java.util.Map","java.lang.String"] }, 
+    {"name":"isInTransaction","parameterTypes":[] }, 
+    {"name":"rollback","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.Mockito"},
+  "name":"org.mockito.codegen.Connection$MockitoMock$a3lier1op99200N",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.Statement$MockitoMock$3jsmh53op99200N"},
+  "name":"org.mockito.codegen.Connection$MockitoMock$a3lier1op99200N",
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.configuration.MockAnnotationProcessor"},
+  "name":"org.mockito.codegen.Connection$MockitoMock$a3lier1op99200N",
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.Mockito"},
+  "name":"org.mockito.codegen.DataSource$MockitoMock$tnibii1op99200N",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.configuration.MockAnnotationProcessor"},
+  "name":"org.mockito.codegen.DataSource$MockitoMock$tnibii1op99200N",
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.configuration.MockAnnotationProcessor"},
+  "name":"org.mockito.codegen.DatabaseMetaData$MockitoMock$mjdo3d0op99200N",
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.Set$MockitoMock$2lmnom2op99200N"},
+  "name":"org.mockito.codegen.Iterator$MockitoMock$ehklse0op99200N",
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.Mockito"},
+  "name":"org.mockito.codegen.ResultSet$MockitoMock$pvsved3op99200N",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.configuration.MockAnnotationProcessor"},
+  "name":"org.mockito.codegen.ResultSet$MockitoMock$pvsved3op99200N",
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.Mockito"},
+  "name":"org.mockito.codegen.ResultSetMetaData$MockitoMock$8jfcd82op99200N",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.configuration.MockAnnotationProcessor"},
+  "name":"org.mockito.codegen.ResultSetMetaData$MockitoMock$8jfcd82op99200N",
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.configuration.MockAnnotationProcessor"},
+  "name":"org.mockito.codegen.SQLStatementContext$MockitoMock$gq9mvv0op99200N",
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.Map$MockitoMock$ssgnom2op99200N"},
+  "name":"org.mockito.codegen.Set$MockitoMock$2lmnom2op99200N",
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.codegen.Connection$MockitoMock$a3lier1op99200N"},
+  "name":"org.mockito.codegen.Statement$MockitoMock$3jsmh53op99200N",
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.configuration.ClassPathLoader"},
+  "name":"org.mockito.configuration.MockitoConfiguration"
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.configuration.plugins.DefaultMockitoPlugins"},
+  "name":"org.mockito.internal.configuration.DefaultDoNotMockEnforcer",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.configuration.plugins.DefaultMockitoPlugins"},
+  "name":"org.mockito.internal.configuration.InjectingAnnotationEngine",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.configuration.plugins.DefaultMockitoPlugins"},
+  "name":"org.mockito.internal.configuration.plugins.DefaultPluginSwitch",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.configuration.plugins.PluginInitializer"},
+  "name":"org.mockito.internal.creation.bytebuddy.InlineByteBuddyMockMaker",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.SubclassBytecodeGenerator"},
+  "name":"org.mockito.internal.creation.bytebuddy.MockAccess"
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"org.mockito.internal.creation.bytebuddy.MockMethodAdvice",
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"org.mockito.internal.creation.bytebuddy.MockMethodAdvice$ForEquals",
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"org.mockito.internal.creation.bytebuddy.MockMethodAdvice$ForHashCode",
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"org.mockito.internal.creation.bytebuddy.MockMethodAdvice$ForReadObject",
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"org.mockito.internal.creation.bytebuddy.MockMethodAdvice$ForStatic",
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.SubclassBytecodeGenerator"},
+  "name":"org.mockito.internal.creation.bytebuddy.MockMethodAdvice$Identifier"
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.SubclassBytecodeGenerator"},
+  "name":"org.mockito.internal.creation.bytebuddy.MockMethodInterceptor$DispatcherDefaultingToRealMethod",
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.SubclassBytecodeGenerator"},
+  "name":"org.mockito.internal.creation.bytebuddy.MockMethodInterceptor$ForEquals",
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.SubclassBytecodeGenerator"},
+  "name":"org.mockito.internal.creation.bytebuddy.MockMethodInterceptor$ForHashCode",
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.SubclassBytecodeGenerator"},
+  "name":"org.mockito.internal.creation.bytebuddy.MockMethodInterceptor$ForWriteReplace",
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+  "name":"org.mockito.internal.creation.bytebuddy.inject.MockMethodDispatcher"
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineDelegateByteBuddyMockMaker"},
+  "name":"org.mockito.internal.creation.bytebuddy.inject.MockMethodDispatcher"
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.configuration.plugins.DefaultMockitoPlugins"},
+  "name":"org.mockito.internal.creation.instance.DefaultInstantiatorProvider",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.configuration.plugins.DefaultMockitoPlugins"},
+  "name":"org.mockito.internal.exceptions.stacktrace.DefaultStackTraceCleanerProvider",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.runners.util.RunnerProvider"},
+  "name":"org.mockito.internal.runners.DefaultInternalRunner",
+  "queryAllPublicConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Class","org.mockito.internal.util.Supplier"] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.configuration.plugins.DefaultMockitoPlugins"},
+  "name":"org.mockito.internal.util.ConsoleMockitoLogger",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.configuration.plugins.DefaultMockitoPlugins"},
+  "name":"org.mockito.internal.util.reflection.ReflectionMemberAccessor",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.exceptions.stacktrace.StackTraceFilter"},
+  "name":"sun.misc.SharedSecrets"
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.stubbing.answers.AbstractThrowsException"},
+  "name":"sun.reflect.ReflectionFactory",
+  "methods":[
+    {"name":"getReflectionFactory","parameterTypes":[] }, 
+    {"name":"newConstructorForSerialization","parameterTypes":["java.lang.Class","java.lang.reflect.Constructor"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineDelegateByteBuddyMockMaker"},
+  "name":"sun.security.provider.NativePRNG",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.mockito.internal.runners.DefaultInternalRunner$1$1"},
+  "name":"sun.security.provider.NativePRNG",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+}
+]

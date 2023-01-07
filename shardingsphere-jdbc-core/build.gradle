@@ -29,11 +29,6 @@ test {
 }
 
 graalvmNative {
-    binaries {
-        test {
-            buildArgs.add('--report-unsupported-elements-at-runtime')
-        }
-    }
     agent {
         defaultMode = "conditional"
         modes {

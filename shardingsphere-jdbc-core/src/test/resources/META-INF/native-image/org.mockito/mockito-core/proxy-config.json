@@ -1,0 +1,34 @@
+[
+  {
+    "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+    "interfaces":["net.bytebuddy.description.method.MethodDescription$InDefinedShape$AbstractBase$Executable"]
+  },
+  {
+    "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+    "interfaces":["net.bytebuddy.description.method.ParameterDescription$ForLoadedParameter$Parameter"]
+  },
+  {
+    "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+    "interfaces":["net.bytebuddy.description.method.ParameterList$ForLoadedExecutable$Executable"]
+  },
+  {
+    "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+    "interfaces":["net.bytebuddy.description.type.TypeDefinition$Sort$AnnotatedType"]
+  },
+  {
+    "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+    "interfaces":["net.bytebuddy.description.type.TypeDescription$ForLoadedType$Dispatcher"]
+  },
+  {
+    "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+    "interfaces":["net.bytebuddy.description.type.TypeDescription$Generic$AnnotationReader$Delegator$ForLoadedExecutableParameterType$Dispatcher"]
+  },
+  {
+    "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+    "interfaces":["net.bytebuddy.description.type.TypeDescription$Generic$AnnotationReader$Delegator$ForLoadedMethodReturnType$Dispatcher"]
+  },
+  {
+    "condition":{"typeReachable":"org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator"},
+    "interfaces":["net.bytebuddy.description.type.TypeDescription$Generic$AnnotationReader$ForComponentType$AnnotatedParameterizedType"]
+  }
+]
