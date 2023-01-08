@@ -62,7 +62,6 @@ public class TestRetryLoop extends BaseClassForTests {
                     retryLoop.takeException(e);
                 }
             }
-
             assertThat(loopCount).isGreaterThanOrEqualTo(2);
         }
     }
