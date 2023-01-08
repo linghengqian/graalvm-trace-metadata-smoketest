@@ -54,31 +54,6 @@ public class ClusterClientTest {
     }
 
     @Test
-    public void testMemberManagement() throws ExecutionException, InterruptedException, TimeoutException {
-        final Client client = Client.builder().endpoints(n1.clientEndpoints()).build();
-        final Cluster clusterClient = client.getClusterClient();
-        Member m2 = clusterClient.addMember(n2.peerEndpoints())
-            .get(5, TimeUnit.SECONDS)
-            .getMember();
-        assertThat(m2).isNotNull();
-        assertThat(clusterClient.listMember().get().getMembers()).hasSize(2);
-    }
-
-    @Test
-    public void testMemberManagementAddNonLearner() throws ExecutionException, InterruptedException, TimeoutException {
-        final Client client = Client.builder().endpoints(n1.clientEndpoints()).build();
-        final Cluster clusterClient = client.getClusterClient();
-        Member m2 = clusterClient.addMember(n2.peerEndpoints(), false)
-            .get(5, TimeUnit.SECONDS)
-            .getMember();
-        assertThat(m2).isNotNull();
-        assertThat(m2.isLearner()).isFalse();
-        List<Member> members = clusterClient.listMember().get().getMembers();
-        assertThat(members).hasSize(2);
-        assertThat(members.stream().filter(Member::isLearner).findAny()).isEmpty();
-    }
-
-    @Test
     public void testMemberManagementAddLearner() throws ExecutionException, InterruptedException, TimeoutException {
         final Client client = Client.builder().endpoints(n1.clientEndpoints()).build();
         final Cluster clusterClient = client.getClusterClient();

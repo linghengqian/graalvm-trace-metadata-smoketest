@@ -32,6 +32,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
+import java.util.stream.IntStream;
 
 import static com.google.common.base.Charsets.UTF_8;
 import static com.lingh.impl.TestUtil.bytesOf;
@@ -62,7 +63,6 @@ public class KVTest {
     public void testByteSequence() {
         ByteSequence prefix = bytesOf("/test-service/");
         ByteSequence subPrefix = bytesOf("uuids/");
-
         String keyString = randomString();
         ByteSequence key = bytesOf(keyString);
         ByteSequence prefixedKey = prefix.concat(subPrefix).concat(key);
@@ -254,15 +254,9 @@ public class KVTest {
                 .build()) {
             ByteSequence key = ByteSequence.from("retry_dummy_key", StandardCharsets.UTF_8);
             int putCount = 1000;
-
             ScheduledExecutorService executor = Executors.newScheduledThreadPool(2);
-            executor.submit(() -> {
-                for (int i = 0; i < putCount; ++i) {
-                    ByteSequence value = ByteSequence
-                            .from(Integer.toString(i), StandardCharsets.UTF_8);
-                    customClient.getKVClient().put(key, value).join();
-                }
-            });
+            executor.submit(() -> IntStream.range(0, putCount).mapToObj(i -> ByteSequence
+                    .from(Integer.toString(i), StandardCharsets.UTF_8)).forEach(value -> customClient.getKVClient().put(key, value).join()));
             executor.schedule(cluster::restart, 100, TimeUnit.MILLISECONDS);
             executor.shutdown();
             assertThat(executor.awaitTermination(30, TimeUnit.SECONDS)).isTrue();
