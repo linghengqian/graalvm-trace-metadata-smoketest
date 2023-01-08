@@ -21,18 +21,32 @@ import com.google.protobuf.UInt32Value;
 import com.google.protobuf.UInt64Value;
 import com.google.protobuf.Value;
 import com.google.protobuf.util.JsonFormat.TypeRegistry;
-import com.google.protobuf.util.proto.JsonTestProto.*;
+import com.google.protobuf.util.proto.JsonTestProto.TestAllTypes;
 import com.google.protobuf.util.proto.JsonTestProto.TestAllTypes.AliasedEnum;
 import com.google.protobuf.util.proto.JsonTestProto.TestAllTypes.NestedEnum;
 import com.google.protobuf.util.proto.JsonTestProto.TestAllTypes.NestedMessage;
+import com.google.protobuf.util.proto.JsonTestProto.TestAny;
+import com.google.protobuf.util.proto.JsonTestProto.TestCustomJsonName;
+import com.google.protobuf.util.proto.JsonTestProto.TestDuration;
+import com.google.protobuf.util.proto.JsonTestProto.TestFieldMask;
+import com.google.protobuf.util.proto.JsonTestProto.TestMap;
+import com.google.protobuf.util.proto.JsonTestProto.TestOneof;
+import com.google.protobuf.util.proto.JsonTestProto.TestRecursive;
+import com.google.protobuf.util.proto.JsonTestProto.TestStruct;
+import com.google.protobuf.util.proto.JsonTestProto.TestTimestamp;
+import com.google.protobuf.util.proto.JsonTestProto.TestWrappers;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.Reader;
-import java.io.*;
+import java.io.Reader;
+import java.io.StringReader;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Collections;
@@ -126,8 +140,7 @@ public class JsonFormatTest {
         assertThat(parsedMessage.toString()).isEqualTo(message.toString());
     }
 
-    private void assertRoundTripEquals(Message message, com.google.protobuf.TypeRegistry registry)
-            throws Exception {
+    private void assertRoundTripEquals(Message message, com.google.protobuf.TypeRegistry registry) throws Exception {
         JsonFormat.Printer printer = JsonFormat.printer().usingTypeRegistry(registry);
         JsonFormat.Parser parser = JsonFormat.parser().usingTypeRegistry(registry);
         Message.Builder builder = message.newBuilderForType();
@@ -152,8 +165,7 @@ public class JsonFormatTest {
         JsonFormat.parser().merge(json, builder);
     }
 
-    private void mergeFromJsonIgnoringUnknownFields(String json, Message.Builder builder)
-            throws IOException {
+    private void mergeFromJsonIgnoringUnknownFields(String json, Message.Builder builder) throws IOException {
         JsonFormat.parser().ignoringUnknownFields().merge(json, builder);
     }
 
@@ -162,53 +174,50 @@ public class JsonFormatTest {
         TestAllTypes.Builder builder = TestAllTypes.newBuilder();
         setAllFields(builder);
         TestAllTypes message = builder.build();
-
-        assertThat(toJsonString(message))
-                .isEqualTo(
-                        """
-                                {
-                                  "optionalInt32": 1234,
-                                  "optionalInt64": "1234567890123456789",
-                                  "optionalUint32": 5678,
-                                  "optionalUint64": "2345678901234567890",
-                                  "optionalSint32": 9012,
-                                  "optionalSint64": "3456789012345678901",
-                                  "optionalFixed32": 3456,
-                                  "optionalFixed64": "4567890123456789012",
-                                  "optionalSfixed32": 7890,
-                                  "optionalSfixed64": "5678901234567890123",
-                                  "optionalFloat": 1.5,
-                                  "optionalDouble": 1.25,
-                                  "optionalBool": true,
-                                  "optionalString": "Hello world!",
-                                  "optionalBytes": "AAEC",
-                                  "optionalNestedMessage": {
-                                    "value": 100
-                                  },
-                                  "optionalNestedEnum": "BAR",
-                                  "repeatedInt32": [1234, 234],
-                                  "repeatedInt64": ["1234567890123456789", "234567890123456789"],
-                                  "repeatedUint32": [5678, 678],
-                                  "repeatedUint64": ["2345678901234567890", "345678901234567890"],
-                                  "repeatedSint32": [9012, 10],
-                                  "repeatedSint64": ["3456789012345678901", "456789012345678901"],
-                                  "repeatedFixed32": [3456, 456],
-                                  "repeatedFixed64": ["4567890123456789012", "567890123456789012"],
-                                  "repeatedSfixed32": [7890, 890],
-                                  "repeatedSfixed64": ["5678901234567890123", "678901234567890123"],
-                                  "repeatedFloat": [1.5, 11.5],
-                                  "repeatedDouble": [1.25, 11.25],
-                                  "repeatedBool": [true, true],
-                                  "repeatedString": ["Hello world!", "ello world!"],
-                                  "repeatedBytes": ["AAEC", "AQI="],
-                                  "repeatedNestedMessage": [{
-                                    "value": 100
-                                  }, {
-                                    "value": 200
-                                  }],
-                                  "repeatedNestedEnum": ["BAR", "BAZ"]
-                                }""");
-
+        assertThat(toJsonString(message)).isEqualTo(
+                """
+                        {
+                          "optionalInt32": 1234,
+                          "optionalInt64": "1234567890123456789",
+                          "optionalUint32": 5678,
+                          "optionalUint64": "2345678901234567890",
+                          "optionalSint32": 9012,
+                          "optionalSint64": "3456789012345678901",
+                          "optionalFixed32": 3456,
+                          "optionalFixed64": "4567890123456789012",
+                          "optionalSfixed32": 7890,
+                          "optionalSfixed64": "5678901234567890123",
+                          "optionalFloat": 1.5,
+                          "optionalDouble": 1.25,
+                          "optionalBool": true,
+                          "optionalString": "Hello world!",
+                          "optionalBytes": "AAEC",
+                          "optionalNestedMessage": {
+                            "value": 100
+                          },
+                          "optionalNestedEnum": "BAR",
+                          "repeatedInt32": [1234, 234],
+                          "repeatedInt64": ["1234567890123456789", "234567890123456789"],
+                          "repeatedUint32": [5678, 678],
+                          "repeatedUint64": ["2345678901234567890", "345678901234567890"],
+                          "repeatedSint32": [9012, 10],
+                          "repeatedSint64": ["3456789012345678901", "456789012345678901"],
+                          "repeatedFixed32": [3456, 456],
+                          "repeatedFixed64": ["4567890123456789012", "567890123456789012"],
+                          "repeatedSfixed32": [7890, 890],
+                          "repeatedSfixed64": ["5678901234567890123", "678901234567890123"],
+                          "repeatedFloat": [1.5, 11.5],
+                          "repeatedDouble": [1.25, 11.25],
+                          "repeatedBool": [true, true],
+                          "repeatedString": ["Hello world!", "ello world!"],
+                          "repeatedBytes": ["AAEC", "AQI="],
+                          "repeatedNestedMessage": [{
+                            "value": 100
+                          }, {
+                            "value": 200
+                          }],
+                          "repeatedNestedEnum": ["BAR", "BAZ"]
+                        }""");
         assertRoundTripEquals(message);
     }
 
@@ -220,28 +229,25 @@ public class JsonFormatTest {
                         .addRepeatedNestedEnumValue(12345)
                         .addRepeatedNestedEnumValue(0)
                         .build();
-        assertThat(toJsonString(message))
-                .isEqualTo(
-                        """
-                                {
-                                  "optionalNestedEnum": 12345,
-                                  "repeatedNestedEnum": [12345, "FOO"]
-                                }""");
+        assertThat(toJsonString(message)).isEqualTo(
+                """
+                        {
+                          "optionalNestedEnum": 12345,
+                          "repeatedNestedEnum": [12345, "FOO"]
+                        }""");
         assertRoundTripEquals(message);
-
         TestMap.Builder mapBuilder = TestMap.newBuilder();
         mapBuilder.putInt32ToEnumMapValue(1, 0);
         mapBuilder.putInt32ToEnumMapValue(2, 12345);
         TestMap mapMessage = mapBuilder.build();
-        assertThat(toJsonString(mapMessage))
-                .isEqualTo(
-                        """
-                                {
-                                  "int32ToEnumMap": {
-                                    "1": "FOO",
-                                    "2": 12345
-                                  }
-                                }""");
+        assertThat(toJsonString(mapMessage)).isEqualTo(
+                """
+                        {
+                          "int32ToEnumMap": {
+                            "1": "FOO",
+                            "2": 12345
+                          }
+                        }""");
         assertRoundTripEquals(mapMessage);
     }
 

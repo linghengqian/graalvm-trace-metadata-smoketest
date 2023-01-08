@@ -17,7 +17,7 @@ import static com.google.common.truth.Truth.assertThat;
 @RunWith(JUnit4.class)
 public class FieldMaskTreeTest {
   @Test
-  public void testAddFieldPath() throws Exception {
+  public void testAddFieldPath() {
     FieldMaskTree tree = new FieldMaskTree();
     assertThat(tree.toString()).isEmpty();
     tree.addFieldPath("");
@@ -37,7 +37,7 @@ public class FieldMaskTreeTest {
   }
 
   @Test
-  public void testMergeFromFieldMask() throws Exception {
+  public void testMergeFromFieldMask() {
     FieldMaskTree tree = new FieldMaskTree(FieldMaskUtil.fromString("foo,bar.baz,bar.quz"));
     assertThat(tree.toString()).isEqualTo("bar.baz,bar.quz,foo");
     tree.mergeFromFieldMask(FieldMaskUtil.fromString("foo.bar,bar"));
@@ -45,7 +45,7 @@ public class FieldMaskTreeTest {
   }
 
   @Test
-  public void testRemoveFieldPath() throws Exception {
+  public void testRemoveFieldPath() {
     String initialTreeString = "bar.baz,bar.quz.bar,foo";
     FieldMaskTree tree;
     tree = new FieldMaskTree(FieldMaskUtil.fromString(initialTreeString));
@@ -69,7 +69,7 @@ public class FieldMaskTreeTest {
   }
 
   @Test
-  public void testRemoveFromFieldMask() throws Exception {
+  public void testRemoveFromFieldMask() {
     FieldMaskTree tree = new FieldMaskTree(FieldMaskUtil.fromString("foo,bar.baz,bar.quz"));
     assertThat(tree.toString()).isEqualTo("bar.baz,bar.quz,foo");
     tree.removeFromFieldMask(FieldMaskUtil.fromString("foo.bar,bar"));
@@ -77,7 +77,7 @@ public class FieldMaskTreeTest {
   }
 
   @Test
-  public void testIntersectFieldPath() throws Exception {
+  public void testIntersectFieldPath() {
     FieldMaskTree tree = new FieldMaskTree(FieldMaskUtil.fromString("foo,bar.baz,bar.quz"));
     FieldMaskTree result = new FieldMaskTree();
     tree.intersectFieldPath("", result);
@@ -127,19 +127,13 @@ public class FieldMaskTreeTest {
     FieldMaskUtil.MergeOptions options = new FieldMaskUtil.MergeOptions();
     TestRequiredMessage.Builder builder = TestRequiredMessage.newBuilder();
     merge(new FieldMaskTree().addFieldPath("required_message.a"),
-        source,
-        builder,
-        options,
-        useDynamicMessage);
+        source, builder, options, useDynamicMessage);
     assertThat(builder.hasRequiredMessage()).isTrue();
     assertThat(builder.getRequiredMessage().hasA()).isTrue();
     assertThat(builder.getRequiredMessage().hasB()).isFalse();
     assertThat(builder.getRequiredMessage().hasC()).isFalse();
     merge(new FieldMaskTree().addFieldPath("required_message.b").addFieldPath("required_message.c"),
-        source,
-        builder,
-        options,
-        useDynamicMessage);
+        source, builder, options, useDynamicMessage);
     try {
       assertThat(source).isEqualTo(builder.build());
     } catch (UninitializedMessageException e) {

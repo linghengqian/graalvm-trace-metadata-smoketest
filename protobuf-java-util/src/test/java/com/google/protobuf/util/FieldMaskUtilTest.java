@@ -14,7 +14,7 @@ import static com.google.common.truth.Truth.assertWithMessage;
 @RunWith(JUnit4.class)
 public class FieldMaskUtilTest {
     @Test
-    public void testIsValid() throws Exception {
+    public void testIsValid() {
         assertThat(FieldMaskUtil.isValid(NestedTestAllTypes.class, "payload")).isTrue();
         assertThat(FieldMaskUtil.isValid(NestedTestAllTypes.class, "nonexist")).isFalse();
         assertThat(FieldMaskUtil.isValid(NestedTestAllTypes.class, "payload.optional_int32")).isTrue();
@@ -35,7 +35,7 @@ public class FieldMaskUtilTest {
     }
 
     @Test
-    public void testToString() throws Exception {
+    public void testToString() {
         assertThat(FieldMaskUtil.toString(FieldMask.getDefaultInstance())).isEmpty();
         FieldMask mask = FieldMask.newBuilder().addPaths("foo").build();
         assertThat(FieldMaskUtil.toString(mask)).isEqualTo("foo");
@@ -46,7 +46,7 @@ public class FieldMaskUtilTest {
     }
 
     @Test
-    public void testFromString() throws Exception {
+    public void testFromString() {
         FieldMask mask = FieldMaskUtil.fromString("");
         assertThat(mask.getPathsCount()).isEqualTo(0);
         mask = FieldMaskUtil.fromString("foo");
@@ -69,7 +69,7 @@ public class FieldMaskUtilTest {
     }
 
     @Test
-    public void testFromFieldNumbers() throws Exception {
+    public void testFromFieldNumbers() {
         FieldMask mask = FieldMaskUtil.fromFieldNumbers(TestAllTypes.class);
         assertThat(mask.getPathsCount()).isEqualTo(0);
         mask = FieldMaskUtil.fromFieldNumbers(TestAllTypes.class, TestAllTypes.OPTIONAL_INT32_FIELD_NUMBER);
@@ -91,7 +91,7 @@ public class FieldMaskUtilTest {
     }
 
     @Test
-    public void testToJsonString() throws Exception {
+    public void testToJsonString() {
         FieldMask mask = FieldMask.getDefaultInstance();
         assertThat(FieldMaskUtil.toJsonString(mask)).isEmpty();
         mask = FieldMask.newBuilder().addPaths("foo").build();
@@ -103,7 +103,7 @@ public class FieldMaskUtilTest {
     }
 
     @Test
-    public void testFromJsonString() throws Exception {
+    public void testFromJsonString() {
         FieldMask mask = FieldMaskUtil.fromJsonString("");
         assertThat(mask.getPathsCount()).isEqualTo(0);
         mask = FieldMaskUtil.fromJsonString("foo");
@@ -119,7 +119,7 @@ public class FieldMaskUtilTest {
     }
 
     @Test
-    public void testFromStringList() throws Exception {
+    public void testFromStringList() {
         FieldMask mask = FieldMaskUtil.fromStringList(NestedTestAllTypes.class, ImmutableList.of("payload.repeated_nested_message", "child"));
         assertThat(mask).isEqualTo(FieldMask.newBuilder()
                 .addPaths("payload.repeated_nested_message")
@@ -135,7 +135,7 @@ public class FieldMaskUtilTest {
     }
 
     @Test
-    public void testUnion() throws Exception {
+    public void testUnion() {
         FieldMask mask1 = FieldMaskUtil.fromString("foo,bar.baz,bar.quz");
         FieldMask mask2 = FieldMaskUtil.fromString("foo.bar,bar");
         FieldMask result = FieldMaskUtil.union(mask1, mask2);
@@ -143,7 +143,7 @@ public class FieldMaskUtilTest {
     }
 
     @Test
-    public void testUnion_usingVarArgs() throws Exception {
+    public void testUnion_usingVarArgs() {
         FieldMask mask1 = FieldMaskUtil.fromString("foo");
         FieldMask mask2 = FieldMaskUtil.fromString("foo.bar,bar.quz");
         FieldMask mask3 = FieldMaskUtil.fromString("bar.quz");
@@ -153,7 +153,7 @@ public class FieldMaskUtilTest {
     }
 
     @Test
-    public void testSubstract() throws Exception {
+    public void testSubstract() {
         FieldMask mask1 = FieldMaskUtil.fromString("foo,bar.baz,bar.quz");
         FieldMask mask2 = FieldMaskUtil.fromString("foo.bar,bar");
         FieldMask result = FieldMaskUtil.subtract(mask1, mask2);
@@ -161,7 +161,7 @@ public class FieldMaskUtilTest {
     }
 
     @Test
-    public void testSubstract_usingVarArgs() throws Exception {
+    public void testSubstract_usingVarArgs() {
         FieldMask mask1 = FieldMaskUtil.fromString("foo,bar.baz,bar.quz.bar");
         FieldMask mask2 = FieldMaskUtil.fromString("foo.bar,bar.baz.quz");
         FieldMask mask3 = FieldMaskUtil.fromString("bar.quz");
@@ -171,7 +171,7 @@ public class FieldMaskUtilTest {
     }
 
     @Test
-    public void testIntersection() throws Exception {
+    public void testIntersection() {
         FieldMask mask1 = FieldMaskUtil.fromString("foo,bar.baz,bar.quz");
         FieldMask mask2 = FieldMaskUtil.fromString("foo.bar,bar");
         FieldMask result = FieldMaskUtil.intersection(mask1, mask2);
@@ -179,7 +179,7 @@ public class FieldMaskUtilTest {
     }
 
     @Test
-    public void testMerge() throws Exception {
+    public void testMerge() {
         NestedTestAllTypes source = NestedTestAllTypes.newBuilder().setPayload(TestAllTypes.newBuilder().setOptionalInt32(1234)).build();
         NestedTestAllTypes.Builder builder = NestedTestAllTypes.newBuilder();
         FieldMaskUtil.merge(FieldMaskUtil.fromString("payload"), source, builder);
@@ -187,9 +187,8 @@ public class FieldMaskUtilTest {
     }
 
     @Test
-    public void testTrim() throws Exception {
-        NestedTestAllTypes source = NestedTestAllTypes.newBuilder().setPayload(
-                        TestAllTypes.newBuilder()
+    public void testTrim() {
+        NestedTestAllTypes source = NestedTestAllTypes.newBuilder().setPayload(TestAllTypes.newBuilder()
                                 .setOptionalInt32(1234)
                                 .setOptionalString("1234")
                                 .setOptionalBool(true))
