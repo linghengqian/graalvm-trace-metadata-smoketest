@@ -102,11 +102,9 @@ public class ElectionTest {
     public void testRetryCampaignWithDifferentValue() throws Exception {
         ByteSequence electionName = ByteSequence.from(randomString(), StandardCharsets.UTF_8);
         long leaseId = leaseClient.grant(10).get().getID();
-
         ByteSequence firstProposal = ByteSequence.from("proposal1", StandardCharsets.UTF_8);
         CampaignResponse campaignResponse1 = electionClient.campaign(electionName, leaseId, firstProposal)
                 .get(OPERATION_TIMEOUT, TimeUnit.SECONDS);
-
         ByteSequence secondProposal = ByteSequence.from("proposal2", StandardCharsets.UTF_8);
         CampaignResponse campaignResponse2 = electionClient.campaign(electionName, leaseId, secondProposal)
                 .get(OPERATION_TIMEOUT, TimeUnit.SECONDS);

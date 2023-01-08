@@ -51,6 +51,7 @@ public class WatchTest {
                 arguments(TestUtil.client(cluster).namespace(namespace).build()),
                 arguments(TestUtil.client(cluster).build()));
     }
+
     @Test
     public void testNamespacedAndNotNamespacedClient() throws Exception {
         final ByteSequence key = randomByteSequence();
@@ -92,7 +93,6 @@ public class WatchTest {
         final CountDownLatch latch = new CountDownLatch(2);
         final ByteSequence value = randomByteSequence();
         final List<WatchResponse> res = Collections.synchronizedList(new ArrayList<>(2));
-
         try (Watcher ignored = client.getWatchClient().watch(key, res::add);
              Watcher ignored1 = client.getWatchClient().watch(key, res::add)) {
             client.getKVClient().put(key, value).get();
@@ -220,19 +220,14 @@ public class WatchTest {
         final ByteSequence key = randomByteSequence();
         final ByteSequence value = randomByteSequence();
         final AtomicReference<KeyValue> ref = new AtomicReference<>();
-        final Consumer<WatchResponse> consumer = response -> {
-            for (WatchEvent event : response.getEvents()) {
-                if (event.getEventType() == EventType.PUT) {
-                    ByteSequence key1 = event.getKeyValue().getKey();
-
-                    client.getKVClient().get(key1).whenComplete((r, t) -> {
-                        if (!r.getKvs().isEmpty()) {
-                            ref.set(r.getKvs().get(0));
-                        }
-                    });
-                }
-            }
-        };
+        final Consumer<WatchResponse> consumer = response -> response.getEvents().stream()
+                .filter(event -> event.getEventType() == EventType.PUT)
+                .map(event -> event.getKeyValue().getKey())
+                .forEach(key1 -> client.getKVClient().get(key1).whenComplete((r, t) -> {
+                    if (!r.getKvs().isEmpty()) {
+                        ref.set(r.getKvs().get(0));
+                    }
+                }));
         try (Watcher ignored = client.getWatchClient().watch(key, consumer)) {
             client.getKVClient().put(key, value).get();
             await().atMost(TIME_OUT_SECONDS, TimeUnit.SECONDS).untilAsserted(() -> assertThat(ref.get()).isNotNull());

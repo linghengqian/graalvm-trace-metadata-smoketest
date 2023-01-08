@@ -54,7 +54,6 @@ public class ClientBuilderTest {
         final ClientBuilder builder = Client.builder().endpoints(new URI("http://127.0.0.1:2379")).maxInboundMessageSize(value);
         final VertxChannelBuilder channelBuilder = (VertxChannelBuilder) new ClientConnectionManager(builder)
             .defaultChannelBuilder();
-
         assertThat(channelBuilder.nettyBuilder()).hasFieldOrPropertyWithValue("maxInboundMessageSize", value);
     }
 
