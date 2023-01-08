@@ -19,13 +19,13 @@ import static com.lingh.impl.TestUtil.bytesOf;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+@SuppressWarnings("resource")
 @Timeout(value = 30)
 public class AuthClientTest {
     @RegisterExtension
     public static final EtcdClusterExtension cluster = EtcdClusterExtension.builder()
             .withNodes(1)
             .build();
-
     private static final String rootString = "root";
     private static final ByteSequence rootPass = bytesOf("123");
     private static final String rootRoleString = "root";

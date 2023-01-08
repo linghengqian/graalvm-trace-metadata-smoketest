@@ -18,6 +18,7 @@ import static com.lingh.impl.TestUtil.bytesOf;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+@SuppressWarnings("resource")
 public class ClientBuilderTest {
     static Stream<Arguments> namespaceProvider() {
         return Stream.of(
@@ -59,7 +60,6 @@ public class ClientBuilderTest {
 
     @Test
     public void testDefaultNamespace() throws URISyntaxException {
-        // test default namespace setting
         final ClientBuilder builder = Client.builder().endpoints(new URI("http://127.0.0.1:2379"));
         final ClientConnectionManager connectionManager = new ClientConnectionManager(builder);
         assertThat(connectionManager.getNamespace()).isEqualTo(ByteSequence.EMPTY);

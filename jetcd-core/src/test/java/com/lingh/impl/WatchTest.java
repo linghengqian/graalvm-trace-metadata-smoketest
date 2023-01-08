@@ -35,6 +35,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.awaitility.Awaitility.await;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
+@SuppressWarnings({"resource", "ResultOfMethodCallIgnored"})
 @Timeout(value = 30)
 public class WatchTest {
     private static final long TIME_OUT_SECONDS = 30;
@@ -175,9 +176,7 @@ public class WatchTest {
             activeWatcherEventRef.set(null);
             emptyWatcherEventRef.set(null);
             client.getKVClient().put(key, value).get();
-            await().atMost(TIME_OUT_SECONDS, TimeUnit.SECONDS).untilAsserted(() -> {
-                assertThat(activeWatcherEventRef.get()).isNotNull();
-            });
+            await().atMost(TIME_OUT_SECONDS, TimeUnit.SECONDS).untilAsserted(() -> assertThat(activeWatcherEventRef.get()).isNotNull());
             activeEvent = activeWatcherEventRef.get();
             emptyEvent = emptyWatcherEventRef.get();
             assertThat(emptyEvent).isNull();
@@ -260,9 +259,7 @@ public class WatchTest {
         final WatchOption options = WatchOption.newBuilder().withRevision(revision).build();
         final AtomicReference<Throwable> ref = new AtomicReference<>();
         final AtomicReference<Boolean> completed = new AtomicReference<>();
-        Watch.Listener listener = Watch.listener(TestUtil::noOpWatchResponseConsumer, ref::set, () -> {
-            completed.set(Boolean.TRUE);
-        });
+        Watch.Listener listener = Watch.listener(TestUtil::noOpWatchResponseConsumer, ref::set, () -> completed.set(Boolean.TRUE));
         try (Watcher ignored = wc.watch(key, options, listener)) {
             await().atMost(TIME_OUT_SECONDS, TimeUnit.SECONDS).untilAsserted(() -> assertThat(ref.get()).isNotNull());
             assertThat(ref.get().getClass()).isEqualTo(CompactedException.class);

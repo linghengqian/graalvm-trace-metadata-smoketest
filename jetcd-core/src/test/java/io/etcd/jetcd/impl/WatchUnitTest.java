@@ -46,6 +46,7 @@ import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.Mockito.timeout;
 import static org.mockito.Mockito.verify;
 
+@SuppressWarnings({"SameParameterValue", "ResultOfMethodCallIgnored"})
 @Timeout(value = 30)
 @ExtendWith(MockitoExtension.class)
 public class WatchUnitTest {

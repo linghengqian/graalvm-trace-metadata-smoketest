@@ -6,7 +6,12 @@ import io.etcd.jetcd.api.AuthGrpc;
 import io.etcd.jetcd.api.AuthenticateResponse;
 import io.etcd.jetcd.api.KVGrpc;
 import io.etcd.jetcd.api.PutResponse;
-import io.grpc.*;
+import io.grpc.ForwardingServerCall;
+import io.grpc.Metadata;
+import io.grpc.Server;
+import io.grpc.ServerCall;
+import io.grpc.ServerCallHandler;
+import io.grpc.ServerInterceptor;
 import io.grpc.netty.NettyServerBuilder;
 import io.grpc.util.MutableHandlerRegistry;
 import org.junit.jupiter.api.Disabled;
@@ -37,7 +42,6 @@ public class AuthUnitTest {
             public void authenticate(
                     io.etcd.jetcd.api.AuthenticateRequest request,
                     io.grpc.stub.StreamObserver<AuthenticateResponse> responseObserver) {
-
                 responseObserver.onNext(
                         AuthenticateResponse.newBuilder().setToken("token").build());
             }
@@ -47,7 +51,6 @@ public class AuthUnitTest {
             public void put(
                     io.etcd.jetcd.api.PutRequest request,
                     io.grpc.stub.StreamObserver<PutResponse> responseObserver) {
-
                 responseObserver.onNext(
                         PutResponse.newBuilder().build());
             }
@@ -67,16 +70,13 @@ public class AuthUnitTest {
                             if (AUTHENTICATE_METHOD_NAME.equals(call.getMethodDescriptor().getFullMethodName())) {
                                 intercepted.merge(headers);
                             }
-                            return next.startCall(
-                                    new ForwardingServerCall.SimpleForwardingServerCall<>(call) {
-                                    },
-                                    headers);
+                            return next.startCall(new ForwardingServerCall.SimpleForwardingServerCall<>(call) {
+                            }, headers);
                         }
                     })
                     .directExecutor()
                     .build()
                     .start();
-
             client = Client.builder()
                     .endpoints(new URI("http://127.0.0.1:" + server.getPort()))
                     .user(user)

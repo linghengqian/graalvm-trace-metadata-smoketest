@@ -32,9 +32,9 @@ public class WatchTokenExpireTest {
     public static final EtcdClusterExtension cluster = EtcdClusterExtension.builder()
             .withNodes(1)
             .withSsl(true)
-            .withAdditionalArgs(Arrays.asList("--auth-token", "jwt,pub-key=/etc/ssl/etcd/server.pem,priv-key=/etc/ssl/etcd/server-key.pem,sign-method=RS256,ttl=1s"))
+            .withAdditionalArgs(Arrays.asList("--auth-token",
+                    "jwt,pub-key=/etc/ssl/etcd/server.pem,priv-key=/etc/ssl/etcd/server-key.pem,sign-method=RS256,ttl=1s"))
             .build();
-
     private static final ByteSequence key = TestUtil.randomByteSequence();
     private static final ByteSequence user = TestUtil.bytesOf("root");
     private static final ByteSequence password = TestUtil.randomByteSequence();
@@ -72,9 +72,7 @@ public class WatchTokenExpireTest {
         authKVClient.put(key, TestUtil.randomByteSequence()).get(1, TimeUnit.SECONDS);
         Thread.sleep(3000);
         AtomicInteger modifications = new AtomicInteger();
-        Watch.Watcher watcher = authWatchClient.watch(key, response -> {
-            modifications.incrementAndGet();
-        });
+        Watch.Watcher watcher = authWatchClient.watch(key, response -> modifications.incrementAndGet());
         ExecutorService executor = Executors.newFixedThreadPool(1);
         List<Future<?>> futures;
         Client anotherClient = createAuthClient();

@@ -22,12 +22,18 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.concurrent.*;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingQueue;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.Fail.fail;
 
+@SuppressWarnings("FieldCanBeLocal")
 @Timeout(value = 30)
 public class MaintenanceUnitTest {
     private MutableHandlerRegistry serviceRegistry;
@@ -41,7 +47,6 @@ public class MaintenanceUnitTest {
     public void setUp() throws IOException, URISyntaxException {
         observerQueue = new LinkedBlockingQueue<>();
         executor = Executors.newFixedThreadPool(2);
-
         serviceRegistry = new MutableHandlerRegistry();
         serviceRegistry.addService(new MaintenanceImplBase() {
             @Override

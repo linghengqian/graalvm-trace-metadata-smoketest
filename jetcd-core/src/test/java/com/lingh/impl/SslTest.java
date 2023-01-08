@@ -36,11 +36,7 @@ public class SslTest {
         try (InputStream is = Objects.nonNull(capath)
                 ? new FileInputStream(capath)
                 : getClass().getResourceAsStream(DEFAULT_SSL_CA_PATH)) {
-            Client client = Client.builder()
-                    .endpoints(endpoint)
-                    .authority(authority)
-                    .sslContext(b -> b.trustManager(is))
-                    .build();
+            Client client = Client.builder().endpoints(endpoint).authority(authority).sslContext(b -> b.trustManager(is)).build();
             KV kv = client.getKVClient();
             kv.put(key, val).join();
             assertThat(kv.get(key).join().getCount()).isEqualTo(1);

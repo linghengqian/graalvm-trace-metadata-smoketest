@@ -27,13 +27,13 @@ import java.util.concurrent.atomic.AtomicLong;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Fail.fail;
 
+@SuppressWarnings({"FieldCanBeLocal", "deprecation", "ResultOfMethodCallIgnored"})
 @Timeout(value = 30)
 public class MaintenanceTest {
     @RegisterExtension
     public static final EtcdClusterExtension cluster = EtcdClusterExtension.builder()
             .withNodes(3)
             .build();
-
     private static Client client;
     private static Maintenance maintenance;
     private static List<URI> endpoints;

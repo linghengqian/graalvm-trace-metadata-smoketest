@@ -35,6 +35,7 @@ import static com.lingh.impl.TestUtil.byteStringOf;
 import static com.lingh.impl.TestUtil.bytesOf;
 import static org.assertj.core.api.Assertions.assertThat;
 
+@SuppressWarnings("resource")
 @Timeout(value = 30)
 public class KVNamespaceTest {
     private static final ByteSequence END_KEY = ByteSequence.from(new byte[]{0});

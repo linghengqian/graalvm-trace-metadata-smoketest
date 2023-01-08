@@ -10,7 +10,11 @@ import io.etcd.jetcd.support.Observers;
 import io.etcd.jetcd.test.GrpcServerExtension;
 import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import org.mockito.ArgumentMatcher;
@@ -29,11 +33,11 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.Mockito.*;
 
+@SuppressWarnings({"AccessStaticViaInstance", "rawtypes", "SameParameterValue"})
 @Disabled("TODO: does not seems to add much value")
 @Timeout(value = 1, unit = TimeUnit.MINUTES)
 @ExtendWith(MockitoExtension.class)
 public class LeaseUnitTest {
-
     private Lease leaseCli;
     private AtomicReference<StreamObserver<LeaseKeepAliveResponse>> responseObserverRef;
     private static final long LEASE_ID_1 = 1;
@@ -97,7 +101,7 @@ public class LeaseUnitTest {
     }
 
     @Test
-    public void testKeepAliveAfterFirstKeepAliveTimeout() throws InterruptedException {
+    public void testKeepAliveAfterFirstKeepAliveTimeout() {
         final StreamObserver<io.etcd.jetcd.lease.LeaseKeepAliveResponse> observer = Observers.observer(response -> {
         });
         try (CloseableClient ignored = this.leaseCli.keepAlive(LEASE_ID_1, observer)) {

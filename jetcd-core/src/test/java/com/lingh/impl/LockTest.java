@@ -8,7 +8,11 @@ import io.etcd.jetcd.Lock;
 import io.etcd.jetcd.lease.LeaseGrantResponse;
 import io.etcd.jetcd.lock.LockResponse;
 import io.etcd.jetcd.test.EtcdClusterExtension;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -24,6 +28,7 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+@SuppressWarnings("resource")
 @Timeout(value = 2, unit = TimeUnit.MINUTES)
 public class LockTest {
     @RegisterExtension
@@ -33,7 +38,6 @@ public class LockTest {
     private Lock lockClient;
     private static Lease leaseClient;
     private Set<ByteSequence> locksToRelease;
-
     private static final ByteSequence SAMPLE_NAME = ByteSequence.from("sample_name", Charsets.UTF_8);
     private static final ByteSequence namespace = ByteSequence.from("test-ns/", Charsets.UTF_8);
     private static final ByteSequence namespace2 = ByteSequence.from("test-ns2/", Charsets.UTF_8);
@@ -75,7 +79,6 @@ public class LockTest {
         CompletableFuture<LockResponse> feature = lockClient.lock(SAMPLE_NAME, 0);
         LockResponse response = feature.get();
         locksToRelease.add(response.getKey());
-
         assertThat(response.getHeader()).isNotNull();
         assertThat(response.getKey()).isNotNull();
     }
@@ -158,8 +161,7 @@ public class LockTest {
         assertThat(response3.getKey().startsWith(SAMPLE_NAME)).isTrue();
         assertThat(response3.getKey()).isNotEqualTo(response2.getKey());
         assertThat((timestamp3 - timestamp2) <= 1000)
-                .withFailMessage(
-                        String.format("wait time for requiring the lock was too long (%dms)", timestamp3 - timestamp2))
+                .withFailMessage(String.format("wait time for requiring the lock was too long (%dms)", timestamp3 - timestamp2))
                 .isTrue();
         locksToRelease.add(ByteSequence.from(namespace2.concat(response3.getKey()).getBytes()));
     }

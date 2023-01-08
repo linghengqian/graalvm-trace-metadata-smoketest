@@ -1,7 +1,16 @@
 package com.lingh.impl;
 
-import io.etcd.jetcd.*;
-import io.etcd.jetcd.election.*;
+import io.etcd.jetcd.ByteSequence;
+import io.etcd.jetcd.Client;
+import io.etcd.jetcd.Election;
+import io.etcd.jetcd.KV;
+import io.etcd.jetcd.KeyValue;
+import io.etcd.jetcd.Lease;
+import io.etcd.jetcd.election.CampaignResponse;
+import io.etcd.jetcd.election.LeaderKey;
+import io.etcd.jetcd.election.LeaderResponse;
+import io.etcd.jetcd.election.NoLeaderException;
+import io.etcd.jetcd.election.NotLeaderException;
 import io.etcd.jetcd.options.GetOption;
 import io.etcd.jetcd.test.EtcdClusterExtension;
 import org.junit.jupiter.api.BeforeAll;
@@ -13,14 +22,20 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.concurrent.*;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.IntStream;
 
 import static com.lingh.impl.TestUtil.randomByteSequence;
 import static com.lingh.impl.TestUtil.randomString;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.fail;
 
+@SuppressWarnings({"resource", "CatchMayIgnoreException", "ResultOfMethodCallIgnored"})
 @Timeout(value = 30)
 public class ElectionTest {
     private static final int OPERATION_TIMEOUT = 5;
@@ -172,8 +187,7 @@ public class ElectionTest {
         }
         ExecutorService executor = Executors.newFixedThreadPool(threadCount);
         List<Future<?>> futures = new ArrayList<>(threadCount);
-        for (int i = 0; i < threadCount; ++i) {
-            final int id = i;
+        IntStream.range(0, threadCount).forEach(id -> {
             final ByteSequence proposal = ByteSequence.from(Integer.toString(id), StandardCharsets.UTF_8);
             futures.add(executor.submit(() -> {
                 try {
@@ -188,7 +202,7 @@ public class ElectionTest {
                     fail("Unexpected error in thread {}: {}", id, e);
                 }
             }));
-        }
+        });
         executor.shutdown();
         executor.awaitTermination(threadCount * OPERATION_TIMEOUT, TimeUnit.SECONDS);
         futures.forEach(f -> assertThat(f).isDone());

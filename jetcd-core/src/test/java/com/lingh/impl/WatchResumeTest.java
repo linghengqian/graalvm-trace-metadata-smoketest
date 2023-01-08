@@ -20,7 +20,6 @@ import static org.awaitility.Awaitility.await;
 
 @Timeout(value = 30)
 public class WatchResumeTest {
-
     @RegisterExtension
     public static final EtcdClusterExtension cluster = EtcdClusterExtension.builder()
         .withNodes(3)

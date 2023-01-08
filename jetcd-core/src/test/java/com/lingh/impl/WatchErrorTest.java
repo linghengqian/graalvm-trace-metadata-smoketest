@@ -20,6 +20,7 @@ import static com.lingh.impl.TestUtil.randomByteSequence;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.awaitility.Awaitility.await;
 
+@SuppressWarnings({"resource", "JUnitMalformedDeclaration"})
 @Timeout(value = 30)
 public class WatchErrorTest {
     @RegisterExtension

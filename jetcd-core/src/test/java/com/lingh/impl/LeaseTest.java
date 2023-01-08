@@ -28,6 +28,7 @@ import java.util.concurrent.atomic.AtomicReference;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
+@SuppressWarnings({"JUnitMalformedDeclaration", "ResultOfMethodCallIgnored"})
 @Timeout(value = 30)
 public class LeaseTest {
     @RegisterExtension
@@ -107,7 +108,7 @@ public class LeaseTest {
             responseRef.set(response);
             latch.countDown();
         });
-        try (CloseableClient c = leaseClient.keepAlive(leaseID, observer)) {
+        try (CloseableClient ignored = leaseClient.keepAlive(leaseID, observer)) {
             latch.await(5, TimeUnit.SECONDS);
             LeaseKeepAliveResponse response = responseRef.get();
             assertThat(response.getTTL()).isGreaterThan(0);

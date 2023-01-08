@@ -16,6 +16,7 @@ import java.util.concurrent.TimeoutException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@SuppressWarnings("resource")
 @Timeout(value = 30)
 public class ClusterClientTest {
     private static final Network NETWORK = Network.newNetwork();

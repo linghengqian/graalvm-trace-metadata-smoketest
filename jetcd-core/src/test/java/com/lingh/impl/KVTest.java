@@ -26,7 +26,12 @@ import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
-import java.util.concurrent.*;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 import static com.google.common.base.Charsets.UTF_8;
 import static com.lingh.impl.TestUtil.bytesOf;
@@ -34,6 +39,7 @@ import static com.lingh.impl.TestUtil.randomString;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 
+@SuppressWarnings("resource")
 @Timeout(value = 2, unit = TimeUnit.MINUTES)
 public class KVTest {
     @RegisterExtension
@@ -257,7 +263,7 @@ public class KVTest {
                     customClient.getKVClient().put(key, value).join();
                 }
             });
-            executor.schedule(() -> cluster.restart(), 100, TimeUnit.MILLISECONDS);
+            executor.schedule(cluster::restart, 100, TimeUnit.MILLISECONDS);
             executor.shutdown();
             assertThat(executor.awaitTermination(30, TimeUnit.SECONDS)).isTrue();
             GetResponse getResponse = kvClient.get(key).join();

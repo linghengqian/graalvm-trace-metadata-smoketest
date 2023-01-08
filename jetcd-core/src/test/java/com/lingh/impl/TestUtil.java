@@ -14,6 +14,7 @@ import java.net.ServerSocket;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
+@SuppressWarnings({"unused", "BusyWait"})
 public class TestUtil {
     public static ByteSequence bytesOf(final String string) {
         return ByteSequence.from(string, UTF_8);
@@ -51,9 +52,9 @@ public class TestUtil {
     }
 
     public static void waitForCondition(final TestCondition testCondition, final long maxWaitMs,
-        String conditionDetails) throws InterruptedException {
+                                        String conditionDetails) throws InterruptedException {
         final long startTime = System.currentTimeMillis();
-        boolean testConditionMet = false;
+        boolean testConditionMet;
         while (!(testConditionMet = testCondition.conditionMet()) && (System.currentTimeMillis() - startTime) < maxWaitMs) {
             Thread.sleep(Math.min(maxWaitMs, 500L));
         }

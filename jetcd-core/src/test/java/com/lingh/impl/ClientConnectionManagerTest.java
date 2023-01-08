@@ -8,7 +8,13 @@ import io.etcd.jetcd.auth.AuthDisableResponse;
 import io.etcd.jetcd.kv.PutResponse;
 import io.etcd.jetcd.launcher.Etcd;
 import io.etcd.jetcd.test.EtcdClusterExtension;
-import io.grpc.*;
+import io.grpc.CallOptions;
+import io.grpc.Channel;
+import io.grpc.ClientCall;
+import io.grpc.ClientInterceptor;
+import io.grpc.ForwardingClientCall;
+import io.grpc.Metadata;
+import io.grpc.MethodDescriptor;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
@@ -19,13 +25,12 @@ import java.util.concurrent.*;
 import static com.lingh.impl.TestUtil.bytesOf;
 import static org.assertj.core.api.Assertions.assertThat;
 
-@Timeout(value = 30, unit = TimeUnit.SECONDS)
+@SuppressWarnings({"resource", "ResultOfMethodCallIgnored"})
+@Timeout(value = 30)
 public class ClientConnectionManagerTest {
-
     private final static String ROOT_STRING = "root";
     private final static ByteSequence ROOT = bytesOf(ROOT_STRING);
     private final static ByteSequence ROOT_PASS = bytesOf("123");
-
     @RegisterExtension
     public static final EtcdClusterExtension cluster = EtcdClusterExtension.builder()
             .withNodes(1)
@@ -42,7 +47,6 @@ public class ClientConnectionManagerTest {
     @Test
     public void testEndpointsWithDns() throws InterruptedException, ExecutionException, TimeoutException {
         final int port = cluster.cluster().containers().get(0).getMappedPort(Etcd.ETCD_CLIENT_PORT);
-
         try (Client client = Client.builder().target("dns:///etcd0:" + port).build()) {
             client.getKVClient().put(bytesOf("sample_key"), bytesOf("sample_key")).get(15, TimeUnit.SECONDS);
         }
@@ -51,7 +55,6 @@ public class ClientConnectionManagerTest {
     @Test
     public void testHeaders() throws InterruptedException, ExecutionException {
         final CountDownLatch latch = new CountDownLatch(1);
-
         final ClientBuilder builder = TestUtil.client(cluster)
                 .header("MyHeader1", "MyHeaderVal1")
                 .header("MyHeader2", "MyHeaderVal2")
@@ -59,7 +62,7 @@ public class ClientConnectionManagerTest {
                     @Override
                     public <ReqT, RespT> ClientCall<ReqT, RespT> interceptCall(MethodDescriptor<ReqT, RespT> method,
                                                                                CallOptions callOptions, Channel next) {
-                        return new ForwardingClientCall.SimpleForwardingClientCall<ReqT, RespT>(
+                        return new ForwardingClientCall.SimpleForwardingClientCall<>(
                                 next.newCall(method, callOptions)) {
                             @Override
                             public void start(Listener<RespT> responseListener, Metadata headers) {

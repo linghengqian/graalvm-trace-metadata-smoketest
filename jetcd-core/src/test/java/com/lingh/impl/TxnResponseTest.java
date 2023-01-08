@@ -10,23 +10,20 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
 
-import java.util.concurrent.TimeUnit;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Timeout(value = 30)
 public class TxnResponseTest {
-
     private TxnResponse txnResponse;
 
     @BeforeEach
     public void setUp() {
         io.etcd.jetcd.api.TxnResponse response = io.etcd.jetcd.api.TxnResponse.newBuilder()
-            .addResponses(ResponseOp.newBuilder().setResponsePut(PutResponse.getDefaultInstance()))
-            .addResponses(ResponseOp.newBuilder().setResponseDeleteRange(DeleteRangeResponse.getDefaultInstance()))
-            .addResponses(ResponseOp.newBuilder().setResponseRange(RangeResponse.getDefaultInstance()))
-            .addResponses(ResponseOp.newBuilder().setResponseTxn(io.etcd.jetcd.api.TxnResponse.getDefaultInstance()))
-            .build();
+                .addResponses(ResponseOp.newBuilder().setResponsePut(PutResponse.getDefaultInstance()))
+                .addResponses(ResponseOp.newBuilder().setResponseDeleteRange(DeleteRangeResponse.getDefaultInstance()))
+                .addResponses(ResponseOp.newBuilder().setResponseRange(RangeResponse.getDefaultInstance()))
+                .addResponses(ResponseOp.newBuilder().setResponseTxn(io.etcd.jetcd.api.TxnResponse.getDefaultInstance()))
+                .build();
         txnResponse = new TxnResponse(response, ByteSequence.EMPTY);
     }
 
