@@ -13,6 +13,7 @@ import protobuf_unittest.UnittestProto.TestAllTypes;
 import static com.google.common.truth.Truth.assertThat;
 import static com.google.common.truth.Truth.assertWithMessage;
 
+@SuppressWarnings("UnusedAssignment")
 @RunWith(JUnit4.class)
 public class FieldMaskUtilTest {
     @Test

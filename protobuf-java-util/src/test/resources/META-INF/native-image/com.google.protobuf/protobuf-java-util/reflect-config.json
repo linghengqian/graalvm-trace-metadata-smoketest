@@ -1762,13 +1762,13 @@
 {
   "condition":{"typeReachable":"com.google.protobuf.util.FieldMaskTreeTest"},
   "name":"protobuf_unittest.UnittestProto$TestRequired",
-  "allPublicMethods": true,
+  "allPublicMethods":true,
   "methods":[{"name":"newBuilder","parameterTypes":[] }]
 },
 {
   "condition":{"typeReachable":"com.google.protobuf.util.FieldMaskTreeTest"},
   "name":"protobuf_unittest.UnittestProto$TestRequired$Builder",
-  "allPublicMethods": true,
+  "allPublicMethods":true,
   "methods":[
     {"name":"setA","parameterTypes":["int"] }, 
     {"name":"setB","parameterTypes":["int"] }, 
