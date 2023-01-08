@@ -1,9 +1,5 @@
-package com.lingh;
+package org.apache.curator;
 
-import com.lingh.utils.RetryLoopImpl;
-import org.apache.curator.CuratorZookeeperClient;
-import org.apache.curator.RetryLoop;
-import org.apache.curator.RetryPolicy;
 import org.apache.curator.retry.RetryOneTime;
 import org.apache.curator.utils.EnsurePath;
 import org.apache.zookeeper.ZooKeeper;
@@ -28,7 +24,6 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
-@SuppressWarnings("deprecation")
 public class TestEnsurePath {
     @Test
     public void testBasic() throws Exception {
@@ -43,7 +38,7 @@ public class TestEnsurePath {
         when(client.exists(Mockito.any(), anyBoolean())).thenReturn(fakeStat);
         EnsurePath ensurePath = new EnsurePath("/one/two/three");
         ensurePath.ensure(curator);
-        verify(client, times(3)).exists(Mockito.any(), anyBoolean());
+        verify(client, times(3)).exists(Mockito.<String>any(), anyBoolean());
         ensurePath.ensure(curator);
         verifyNoMoreInteractions(client);
         ensurePath.ensure(curator);
@@ -63,11 +58,12 @@ public class TestEnsurePath {
         final CountDownLatch startedLatch = new CountDownLatch(2);
         final CountDownLatch finishedLatch = new CountDownLatch(2);
         final Semaphore semaphore = new Semaphore(0);
-        when(client.exists(Mockito.any(), anyBoolean())).thenAnswer
-                ((Answer<Stat>) invocation -> {
+        when(client.exists(Mockito.any(), anyBoolean())).thenAnswer(
+                (Answer<Stat>) invocation -> {
                     semaphore.acquire();
                     return fakeStat;
-                });
+                }
+        );
         final EnsurePath ensurePath = new EnsurePath("/one/two/three");
         ExecutorService service = Executors.newCachedThreadPool();
         IntStream.range(0, 2).mapToObj(i -> (Callable<Void>) () -> {
@@ -79,7 +75,7 @@ public class TestEnsurePath {
         assertTrue(startedLatch.await(10, TimeUnit.SECONDS));
         semaphore.release(3);
         assertTrue(finishedLatch.await(10, TimeUnit.SECONDS));
-        verify(client, times(3)).exists(Mockito.any(), anyBoolean());
+        verify(client, times(3)).exists(Mockito.<String>any(), anyBoolean());
         ensurePath.ensure(curator);
         verifyNoMoreInteractions(client);
         ensurePath.ensure(curator);
