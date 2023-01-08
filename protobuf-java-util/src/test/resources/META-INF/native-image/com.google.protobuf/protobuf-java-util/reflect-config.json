@@ -1,148 +1,363 @@
 [
-{
-  "condition":{"typeReachable":"com.google.protobuf.util.JsonFormat$PrinterImpl"},
-  "name":"com.google.protobuf.Any",
-  "methods":[{"name":"getTypeUrl","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"com.google.protobuf.util.JsonFormat$ParserImpl"},
-  "name":"com.google.protobuf.Any$Builder",
-  "methods":[
-    {"name":"setTypeUrl","parameterTypes":["java.lang.String"] },
-    {"name":"setValue","parameterTypes":["com.google.protobuf.ByteString"] }
-  ]
-},
-{
-  "condition":{"typeReachable":"com.google.protobuf.util.JsonFormat$PrinterImpl"},
-  "name":"com.google.protobuf.BoolValue",
-  "methods":[{"name":"getValue","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"com.google.protobuf.util.JsonFormat$ParserImpl"},
-  "name":"com.google.protobuf.BoolValue$Builder",
-  "methods":[{"name":"setValue","parameterTypes":["boolean"] }]
-},
-{
-  "condition":{"typeReachable":"com.google.protobuf.util.JsonFormat$PrinterImpl"},
-  "name":"com.google.protobuf.BytesValue",
-  "methods":[{"name":"getValue","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"com.google.protobuf.util.JsonFormat$ParserImpl"},
-  "name":"com.google.protobuf.BytesValue$Builder",
-  "methods":[{"name":"setValue","parameterTypes":["com.google.protobuf.ByteString"] }]
-},
-{
-  "condition":{"typeReachable":"com.google.protobuf.util.JsonFormat$PrinterImpl"},
-  "name":"com.google.protobuf.DoubleValue",
-  "methods":[{"name":"getValue","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"com.google.protobuf.util.JsonFormat$ParserImpl"},
-  "name":"com.google.protobuf.DoubleValue$Builder",
-  "methods":[{"name":"setValue","parameterTypes":["double"] }]
-},
-{
-  "condition":{"typeReachable":"com.google.protobuf.util.JsonFormat$PrinterImpl"},
-  "name":"com.google.protobuf.FloatValue",
-  "methods":[{"name":"getValue","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"com.google.protobuf.util.JsonFormat$ParserImpl"},
-  "name":"com.google.protobuf.FloatValue$Builder",
-  "methods":[{"name":"setValue","parameterTypes":["float"] }]
-},
-{
-  "condition":{"typeReachable":"com.google.protobuf.util.JsonFormat$PrinterImpl"},
-  "name":"com.google.protobuf.Int32Value",
-  "methods":[{"name":"getValue","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"com.google.protobuf.util.JsonFormat$ParserImpl"},
-  "name":"com.google.protobuf.Int32Value$Builder",
-  "methods":[{"name":"setValue","parameterTypes":["int"] }]
-},
-{
-  "condition":{"typeReachable":"com.google.protobuf.util.JsonFormat$PrinterImpl"},
-  "name":"com.google.protobuf.Int64Value",
-  "methods":[{"name":"getValue","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"com.google.protobuf.util.JsonFormat$ParserImpl"},
-  "name":"com.google.protobuf.Int64Value$Builder",
-  "methods":[{"name":"setValue","parameterTypes":["long"] }]
-},
-
-{
-  "condition":{"typeReachable":"com.google.protobuf.util.JsonFormat$PrinterImpl"},
-  "name":"com.google.protobuf.ListValue",
-  "methods":[{"name":"getValuesList","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"com.google.protobuf.util.JsonFormat$ParserImpl"},
-  "name":"com.google.protobuf.ListValue$Builder",
-  "methods":[{"name":"addValues","parameterTypes":["com.google.protobuf.Value"] }]
-},
-{
-  "condition":{"typeReachable":"com.google.protobuf.util.JsonFormat$PrinterImpl"},
-  "name":"com.google.protobuf.StringValue",
-  "methods":[{"name":"getValue","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"com.google.protobuf.util.JsonFormat$ParserImpl"},
-  "name":"com.google.protobuf.StringValue$Builder",
-  "methods":[{"name":"setValue","parameterTypes":["java.lang.String"] }]
-},
-{
-  "condition":{"typeReachable":"com.google.protobuf.util.JsonFormat$PrinterImpl"},
-  "name":"com.google.protobuf.UInt32Value",
-  "methods":[{"name":"getValue","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"com.google.protobuf.util.JsonFormat$ParserImpl"},
-  "name":"com.google.protobuf.UInt32Value$Builder",
-  "methods":[{"name":"setValue","parameterTypes":["int"] }]
-},
-{
-  "condition":{"typeReachable":"com.google.protobuf.util.JsonFormat$PrinterImpl"},
-  "name":"com.google.protobuf.UInt64Value",
-  "methods":[{"name":"getValue","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"com.google.protobuf.util.JsonFormat$ParserImpl"},
-  "name":"com.google.protobuf.UInt64Value$Builder",
-  "methods":[{"name":"setValue","parameterTypes":["long"] }]
-},
-{
-  "condition":{"typeReachable":"com.google.protobuf.util.JsonFormat$ParserImpl"},
-  "name":"com.google.protobuf.Value",
-  "methods":[{"name":"newBuilder","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"com.google.protobuf.util.JsonFormat$PrinterImpl"},
-  "name":"com.google.protobuf.Value",
-  "methods":[
-    {"name":"getKindCase","parameterTypes":[] },
-    {"name":"getNullValueValue","parameterTypes":[] },
-    {"name":"getNumberValue","parameterTypes":[] }
-  ]
-},
-{
-  "condition":{"typeReachable":"com.google.protobuf.util.JsonFormat$PrinterImpl$7"},
-  "name":"com.google.protobuf.Value"
-},
-{
-  "condition":{"typeReachable":"com.google.protobuf.util.JsonFormat$ParserImpl"},
-  "name":"com.google.protobuf.Value$Builder",
-  "methods":[{"name":"setNumberValue","parameterTypes":["double"] }]
-},
-{
-  "condition":{"typeReachable":"com.google.protobuf.util.JsonFormat$PrinterImpl$GsonHolder"},
-  "name":"java.sql.Date"
-},
-{
-  "condition":{"typeReachable":"com.google.protobuf.util.JsonFormat$PrinterImpl$GsonHolder"},
-  "name":"sun.misc.Unsafe",
-  "fields":[{"name":"theUnsafe"}]
-}
+  {
+    "condition": {
+      "typeReachable": "com.google.protobuf.util.JsonFormat$PrinterImpl"
+    },
+    "name": "com.google.protobuf.Any",
+    "methods": [
+      {
+        "name": "getTypeUrl",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.protobuf.util.JsonFormat$ParserImpl"
+    },
+    "name": "com.google.protobuf.Any$Builder",
+    "methods": [
+      {
+        "name": "setTypeUrl",
+        "parameterTypes": [
+          "java.lang.String"
+        ]
+      },
+      {
+        "name": "setValue",
+        "parameterTypes": [
+          "com.google.protobuf.ByteString"
+        ]
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.protobuf.util.JsonFormat$PrinterImpl"
+    },
+    "name": "com.google.protobuf.BoolValue",
+    "methods": [
+      {
+        "name": "getValue",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.protobuf.util.JsonFormat$ParserImpl"
+    },
+    "name": "com.google.protobuf.BoolValue$Builder",
+    "methods": [
+      {
+        "name": "setValue",
+        "parameterTypes": [
+          "boolean"
+        ]
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.protobuf.util.JsonFormat$PrinterImpl"
+    },
+    "name": "com.google.protobuf.BytesValue",
+    "methods": [
+      {
+        "name": "getValue",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.protobuf.util.JsonFormat$ParserImpl"
+    },
+    "name": "com.google.protobuf.BytesValue$Builder",
+    "methods": [
+      {
+        "name": "setValue",
+        "parameterTypes": [
+          "com.google.protobuf.ByteString"
+        ]
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.protobuf.util.JsonFormat$PrinterImpl"
+    },
+    "name": "com.google.protobuf.DoubleValue",
+    "methods": [
+      {
+        "name": "getValue",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.protobuf.util.JsonFormat$ParserImpl"
+    },
+    "name": "com.google.protobuf.DoubleValue$Builder",
+    "methods": [
+      {
+        "name": "setValue",
+        "parameterTypes": [
+          "double"
+        ]
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.protobuf.util.JsonFormat$PrinterImpl"
+    },
+    "name": "com.google.protobuf.FloatValue",
+    "methods": [
+      {
+        "name": "getValue",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.protobuf.util.JsonFormat$ParserImpl"
+    },
+    "name": "com.google.protobuf.FloatValue$Builder",
+    "methods": [
+      {
+        "name": "setValue",
+        "parameterTypes": [
+          "float"
+        ]
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.protobuf.util.JsonFormat$PrinterImpl"
+    },
+    "name": "com.google.protobuf.Int32Value",
+    "methods": [
+      {
+        "name": "getValue",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.protobuf.util.JsonFormat$ParserImpl"
+    },
+    "name": "com.google.protobuf.Int32Value$Builder",
+    "methods": [
+      {
+        "name": "setValue",
+        "parameterTypes": [
+          "int"
+        ]
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.protobuf.util.JsonFormat$PrinterImpl"
+    },
+    "name": "com.google.protobuf.Int64Value",
+    "methods": [
+      {
+        "name": "getValue",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.protobuf.util.JsonFormat$ParserImpl"
+    },
+    "name": "com.google.protobuf.Int64Value$Builder",
+    "methods": [
+      {
+        "name": "setValue",
+        "parameterTypes": [
+          "long"
+        ]
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.protobuf.util.JsonFormat$PrinterImpl"
+    },
+    "name": "com.google.protobuf.ListValue",
+    "methods": [
+      {
+        "name": "getValuesList",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.protobuf.util.JsonFormat$ParserImpl"
+    },
+    "name": "com.google.protobuf.ListValue$Builder",
+    "methods": [
+      {
+        "name": "addValues",
+        "parameterTypes": [
+          "com.google.protobuf.Value"
+        ]
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.protobuf.util.JsonFormat$PrinterImpl"
+    },
+    "name": "com.google.protobuf.StringValue",
+    "methods": [
+      {
+        "name": "getValue",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.protobuf.util.JsonFormat$ParserImpl"
+    },
+    "name": "com.google.protobuf.StringValue$Builder",
+    "methods": [
+      {
+        "name": "setValue",
+        "parameterTypes": [
+          "java.lang.String"
+        ]
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.protobuf.util.JsonFormat$PrinterImpl"
+    },
+    "name": "com.google.protobuf.UInt32Value",
+    "methods": [
+      {
+        "name": "getValue",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.protobuf.util.JsonFormat$ParserImpl"
+    },
+    "name": "com.google.protobuf.UInt32Value$Builder",
+    "methods": [
+      {
+        "name": "setValue",
+        "parameterTypes": [
+          "int"
+        ]
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.protobuf.util.JsonFormat$PrinterImpl"
+    },
+    "name": "com.google.protobuf.UInt64Value",
+    "methods": [
+      {
+        "name": "getValue",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.protobuf.util.JsonFormat$ParserImpl"
+    },
+    "name": "com.google.protobuf.UInt64Value$Builder",
+    "methods": [
+      {
+        "name": "setValue",
+        "parameterTypes": [
+          "long"
+        ]
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.protobuf.util.JsonFormat$ParserImpl"
+    },
+    "name": "com.google.protobuf.Value",
+    "methods": [
+      {
+        "name": "newBuilder",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.protobuf.util.JsonFormat$PrinterImpl"
+    },
+    "name": "com.google.protobuf.Value",
+    "methods": [
+      {
+        "name": "getKindCase",
+        "parameterTypes": []
+      },
+      {
+        "name": "getNullValueValue",
+        "parameterTypes": []
+      },
+      {
+        "name": "getNumberValue",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.protobuf.util.JsonFormat$PrinterImpl$7"
+    },
+    "name": "com.google.protobuf.Value"
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.protobuf.util.JsonFormat$ParserImpl"
+    },
+    "name": "com.google.protobuf.Value$Builder",
+    "methods": [
+      {
+        "name": "setNumberValue",
+        "parameterTypes": [
+          "double"
+        ]
+      }
+    ]
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.protobuf.util.JsonFormat$PrinterImpl$GsonHolder"
+    },
+    "name": "java.sql.Date"
+  },
+  {
+    "condition": {
+      "typeReachable": "com.google.protobuf.util.JsonFormat$PrinterImpl$GsonHolder"
+    },
+    "name": "sun.misc.Unsafe",
+    "fields": [
+      {
+        "name": "theUnsafe"
+      }
+    ]
+  }
 ]
