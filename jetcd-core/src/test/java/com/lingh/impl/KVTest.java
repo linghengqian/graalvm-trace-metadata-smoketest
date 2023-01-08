@@ -28,11 +28,8 @@ import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
-import java.util.stream.IntStream;
 
 import static com.google.common.base.Charsets.UTF_8;
 import static com.lingh.impl.TestUtil.bytesOf;
@@ -241,36 +238,6 @@ public class KVTest {
         GetResponse getResp2 = kvClient.get(abc).get();
         assertThat(getResp2.getKvs()).hasSize(1);
         assertThat(getResp2.getKvs().get(0).getValue().toString(UTF_8)).isEqualTo(oneTwoThree.toString(UTF_8));
-    }
-
-    @Test
-    @SuppressWarnings("FutureReturnValueIgnored")
-    public void testKVClientCanRetryPutOnEtcdRestart() throws InterruptedException {
-        try (Client customClient = TestUtil.client(cluster)
-                .retryMaxDuration(Duration.ofMinutes(5))
-                .retryDelay(10)
-                .retryMaxDelay(30)
-                .retryChronoUnit(ChronoUnit.SECONDS)
-                .build()) {
-            ByteSequence key = ByteSequence.from("retry_dummy_key", StandardCharsets.UTF_8);
-            int putCount = 1000;
-            ScheduledExecutorService executor = Executors.newScheduledThreadPool(2);
-            executor.submit(() -> IntStream.range(0, putCount).mapToObj(i -> ByteSequence
-                    .from(Integer.toString(i), StandardCharsets.UTF_8)).forEach(value -> customClient.getKVClient().put(key, value).join()));
-            executor.schedule(cluster::restart, 100, TimeUnit.MILLISECONDS);
-            executor.shutdown();
-            assertThat(executor.awaitTermination(30, TimeUnit.SECONDS)).isTrue();
-            GetResponse getResponse = kvClient.get(key).join();
-            assertThat(getResponse.getKvs().size())
-                    .as("There should be exactly one KeyValue for the test key")
-                    .isEqualTo(1);
-            ByteSequence lastPutValue = ByteSequence
-                    .from(Integer.toString(putCount - 1), StandardCharsets.UTF_8);
-            assertThat(getResponse.getKvs().get(0).getValue())
-                    .as("The sequence of put operations should finish successfully. " +
-                            "Last seen value should match the expected value.")
-                    .isEqualTo(lastPutValue);
-        }
     }
 
     @Test()

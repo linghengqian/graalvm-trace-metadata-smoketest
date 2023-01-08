@@ -32,10 +32,6 @@
     },
     {
       "name":"java.util.concurrent.locks.ReentrantLock$Sync"
-    },
-    {
-      "name":"org.mockito.codegen.StreamObserver$MockitoMock$eehrlm3op99200N",
-      "customTargetConstructorClass":"java.lang.Object"
     }
   ],
   "lambdaCapturingTypes":[
