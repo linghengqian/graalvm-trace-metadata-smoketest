@@ -5,7 +5,7 @@ package protobuf_unittest_import;
 option optimize_for = SPEED;
 option cc_enable_arenas = true;
 
-option java_package = "com.google.protobuf.test";
+option java_package = "com.lingh";
 
 import public "com/lingh/unittest_import_public.proto";
 
