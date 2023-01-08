@@ -1,6 +1,6 @@
 {
   "rules": [
     {"excludeClasses": "**"},
-    {"includeClasses": "io.etcd.**"}
+    {"includeClasses": "io.etcd.jetcd.**"}
   ]
 }

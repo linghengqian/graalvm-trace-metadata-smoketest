@@ -6,7 +6,6 @@ import io.etcd.jetcd.Client;
 import io.etcd.jetcd.ClientBuilder;
 import io.etcd.jetcd.auth.AuthDisableResponse;
 import io.etcd.jetcd.kv.PutResponse;
-import io.etcd.jetcd.launcher.Etcd;
 import io.etcd.jetcd.test.EtcdClusterExtension;
 import io.grpc.CallOptions;
 import io.grpc.Channel;
@@ -15,12 +14,15 @@ import io.grpc.ClientInterceptor;
 import io.grpc.ForwardingClientCall;
 import io.grpc.Metadata;
 import io.grpc.MethodDescriptor;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.api.extension.RegisterExtension;
 
-import java.util.concurrent.*;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 import static com.lingh.impl.TestUtil.bytesOf;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -39,15 +41,6 @@ public class ClientConnectionManagerTest {
     @Test
     public void testEndpoints() throws InterruptedException, ExecutionException, TimeoutException {
         try (Client client = Client.builder().endpoints(cluster.clientEndpoints()).build()) {
-            client.getKVClient().put(bytesOf("sample_key"), bytesOf("sample_key")).get(15, TimeUnit.SECONDS);
-        }
-    }
-
-    @Disabled("Need to add a DNS server")
-    @Test
-    public void testEndpointsWithDns() throws InterruptedException, ExecutionException, TimeoutException {
-        final int port = cluster.cluster().containers().get(0).getMappedPort(Etcd.ETCD_CLIENT_PORT);
-        try (Client client = Client.builder().target("dns:///etcd0:" + port).build()) {
             client.getKVClient().put(bytesOf("sample_key"), bytesOf("sample_key")).get(15, TimeUnit.SECONDS);
         }
     }
