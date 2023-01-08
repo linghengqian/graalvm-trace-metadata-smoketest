@@ -1,0 +1,2190 @@
+[
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"[B"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"[Lcom.github.dockerjava.api.model.Bind;"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"[Lcom.github.dockerjava.api.model.Capability;"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"[Lcom.github.dockerjava.api.model.Device;"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"[Lcom.github.dockerjava.api.model.ExposedPort;"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"[Lcom.github.dockerjava.api.model.Link;"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"[Lcom.github.dockerjava.api.model.LxcConf;"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"[Lcom.github.dockerjava.api.model.PortBinding;"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"[Lcom.github.dockerjava.api.model.Ports$Binding;"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"[Lcom.github.dockerjava.api.model.Ulimit;"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"[Lcom.github.dockerjava.api.model.Volume;"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"[Lcom.github.dockerjava.api.model.VolumeBind;"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"[Lcom.github.dockerjava.api.model.VolumeRW;"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdClusterImpl"},
+  "name":"[Lcom.github.dockerjava.api.model.VolumesFrom;"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"[Lcom.github.dockerjava.api.model.VolumesFrom;"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"[Lcom.github.dockerjava.api.model.VolumesFrom;"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.op.TxnImpl"},
+  "name":"[Ljava.lang.Object;"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdClusterImpl"},
+  "name":"[Ljava.lang.String;"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"[Ljava.lang.String;"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"[Ljava.lang.String;"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"[Lorg.testcontainers.shaded.com.fasterxml.jackson.databind.deser.BeanDeserializerModifier;"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"[Lorg.testcontainers.shaded.com.google.common.collect.ImmutableMapEntry;"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.impl.KVImpl"},
+  "name":"android.app.Application"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"com.github.dockerjava.api.command.AsyncDockerCmd",
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.command.CreateContainerCmd",
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"com.github.dockerjava.api.command.CreateContainerResponse",
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"setId","parameterTypes":["java.lang.String"] }, 
+    {"name":"setWarnings","parameterTypes":["java.lang.String[]"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.command.CreateContainerResponse",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"setId","parameterTypes":["java.lang.String"] }, 
+    {"name":"setWarnings","parameterTypes":["java.lang.String[]"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.command.CreateNetworkCmd",
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.command.CreateNetworkResponse",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"setId","parameterTypes":["java.lang.String"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"com.github.dockerjava.api.command.DockerCmd",
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.command.DockerCmd",
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"com.github.dockerjava.api.command.ExecCreateCmd",
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"com.github.dockerjava.api.command.ExecCreateCmdResponse",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"com.github.dockerjava.api.command.ExecStartCmd",
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdClusterImpl"},
+  "name":"com.github.dockerjava.api.command.GraphData",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"com.github.dockerjava.api.command.GraphData",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.command.GraphData",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdClusterImpl"},
+  "name":"com.github.dockerjava.api.command.GraphDriver",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"com.github.dockerjava.api.command.GraphDriver",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.command.GraphDriver",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.command.HealthState",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.command.HealthStateLog",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdClusterImpl"},
+  "name":"com.github.dockerjava.api.command.InspectContainerResponse",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"com.github.dockerjava.api.command.InspectContainerResponse",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.command.InspectContainerResponse",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdClusterImpl"},
+  "name":"com.github.dockerjava.api.command.InspectContainerResponse$ContainerState",
+  "methods":[{"name":"<init>","parameterTypes":["com.github.dockerjava.api.command.InspectContainerResponse"] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"com.github.dockerjava.api.command.InspectContainerResponse$ContainerState",
+  "methods":[{"name":"<init>","parameterTypes":["com.github.dockerjava.api.command.InspectContainerResponse"] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.command.InspectContainerResponse$ContainerState",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "queryAllPublicConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":["com.github.dockerjava.api.command.InspectContainerResponse"] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdClusterImpl"},
+  "name":"com.github.dockerjava.api.command.InspectContainerResponse$Mount",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"com.github.dockerjava.api.command.InspectContainerResponse$Mount",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.command.InspectContainerResponse$Mount",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.command.InspectContainerResponse$Node",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "queryAllPublicConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"com.github.dockerjava.api.command.InspectExecResponse",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"com.github.dockerjava.api.command.InspectExecResponse$Container",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "queryAllPublicConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"com.github.dockerjava.api.command.InspectExecResponse$ProcessConfig",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "queryAllPublicConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":["com.github.dockerjava.api.command.InspectExecResponse"] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"com.github.dockerjava.api.command.SyncDockerCmd",
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.command.SyncDockerCmd",
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.AccessMode",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"com.github.dockerjava.api.model.AuthConfig",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"getAuth","parameterTypes":[] }, 
+    {"name":"getEmail","parameterTypes":[] }, 
+    {"name":"getIdentitytoken","parameterTypes":[] }, 
+    {"name":"getPassword","parameterTypes":[] }, 
+    {"name":"getRegistryAddress","parameterTypes":[] }, 
+    {"name":"getRegistrytoken","parameterTypes":[] }, 
+    {"name":"getStackOrchestrator","parameterTypes":[] }, 
+    {"name":"getUsername","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.AuthConfig",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"getAuth","parameterTypes":[] }, 
+    {"name":"getEmail","parameterTypes":[] }, 
+    {"name":"getIdentitytoken","parameterTypes":[] }, 
+    {"name":"getPassword","parameterTypes":[] }, 
+    {"name":"getRegistryAddress","parameterTypes":[] }, 
+    {"name":"getRegistrytoken","parameterTypes":[] }, 
+    {"name":"getStackOrchestrator","parameterTypes":[] }, 
+    {"name":"getUsername","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.Bind",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.BindOptions",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.BindPropagation",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdClusterImpl"},
+  "name":"com.github.dockerjava.api.model.Binds",
+  "methods":[{"name":"fromPrimitive","parameterTypes":["java.lang.String[]"] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"com.github.dockerjava.api.model.Binds",
+  "methods":[
+    {"name":"fromPrimitive","parameterTypes":["java.lang.String[]"] }, 
+    {"name":"toPrimitive","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.Binds",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"fromPrimitive","parameterTypes":["java.lang.String[]"] }, 
+    {"name":"toPrimitive","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.BlkioRateDevice",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.BlkioWeightDevice",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.Capability",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.ClusterInfo",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdClusterImpl"},
+  "name":"com.github.dockerjava.api.model.ContainerConfig",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"com.github.dockerjava.api.model.ContainerConfig",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.ContainerConfig",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdClusterImpl"},
+  "name":"com.github.dockerjava.api.model.ContainerNetwork",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"com.github.dockerjava.api.model.ContainerNetwork",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"getAliases","parameterTypes":[] }, 
+    {"name":"getEndpointId","parameterTypes":[] }, 
+    {"name":"getGateway","parameterTypes":[] }, 
+    {"name":"getGlobalIPv6Address","parameterTypes":[] }, 
+    {"name":"getGlobalIPv6PrefixLen","parameterTypes":[] }, 
+    {"name":"getIpAddress","parameterTypes":[] }, 
+    {"name":"getIpPrefixLen","parameterTypes":[] }, 
+    {"name":"getIpV6Gateway","parameterTypes":[] }, 
+    {"name":"getIpamConfig","parameterTypes":[] }, 
+    {"name":"getMacAddress","parameterTypes":[] }, 
+    {"name":"getNetworkID","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.ContainerNetwork",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.ContainerNetwork$Ipam",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.Device",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.DeviceRequest",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"com.github.dockerjava.api.model.DockerObject",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "methods":[{"name":"getRawValues","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.DockerObject",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "methods":[{"name":"getRawValues","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.Driver",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.ExposedPort",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdClusterImpl"},
+  "name":"com.github.dockerjava.api.model.ExposedPorts",
+  "methods":[{"name":"fromPrimitive","parameterTypes":["java.util.Map"] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"com.github.dockerjava.api.model.ExposedPorts",
+  "methods":[
+    {"name":"fromPrimitive","parameterTypes":["java.util.Map"] }, 
+    {"name":"toPrimitive","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.ExposedPorts",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"fromPrimitive","parameterTypes":["java.util.Map"] }, 
+    {"name":"toPrimitive","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.ExternalCA",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.ExternalCAProtocol",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.HealthCheck",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdClusterImpl"},
+  "name":"com.github.dockerjava.api.model.HostConfig",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"com.github.dockerjava.api.model.HostConfig",
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"getAutoRemove","parameterTypes":[] }, 
+    {"name":"getBlkioDeviceReadBps","parameterTypes":[] }, 
+    {"name":"getBlkioDeviceReadIOps","parameterTypes":[] }, 
+    {"name":"getBlkioDeviceWriteBps","parameterTypes":[] }, 
+    {"name":"getBlkioDeviceWriteIOps","parameterTypes":[] }, 
+    {"name":"getBlkioWeight","parameterTypes":[] }, 
+    {"name":"getBlkioWeightDevice","parameterTypes":[] }, 
+    {"name":"getCapAdd","parameterTypes":[] }, 
+    {"name":"getCapDrop","parameterTypes":[] }, 
+    {"name":"getCgroup","parameterTypes":[] }, 
+    {"name":"getCgroupParent","parameterTypes":[] }, 
+    {"name":"getCgroupnsMode","parameterTypes":[] }, 
+    {"name":"getConsoleSize","parameterTypes":[] }, 
+    {"name":"getContainerIDFile","parameterTypes":[] }, 
+    {"name":"getCpuCount","parameterTypes":[] }, 
+    {"name":"getCpuPercent","parameterTypes":[] }, 
+    {"name":"getCpuPeriod","parameterTypes":[] }, 
+    {"name":"getCpuQuota","parameterTypes":[] }, 
+    {"name":"getCpuRealtimePeriod","parameterTypes":[] }, 
+    {"name":"getCpuRealtimeRuntime","parameterTypes":[] }, 
+    {"name":"getCpuShares","parameterTypes":[] }, 
+    {"name":"getCpusetCpus","parameterTypes":[] }, 
+    {"name":"getCpusetMems","parameterTypes":[] }, 
+    {"name":"getDeviceCgroupRules","parameterTypes":[] }, 
+    {"name":"getDeviceRequests","parameterTypes":[] }, 
+    {"name":"getDevices","parameterTypes":[] }, 
+    {"name":"getDiskQuota","parameterTypes":[] }, 
+    {"name":"getDns","parameterTypes":[] }, 
+    {"name":"getDnsOptions","parameterTypes":[] }, 
+    {"name":"getDnsSearch","parameterTypes":[] }, 
+    {"name":"getExtraHosts","parameterTypes":[] }, 
+    {"name":"getGroupAdd","parameterTypes":[] }, 
+    {"name":"getInit","parameterTypes":[] }, 
+    {"name":"getIoMaximumBandwidth","parameterTypes":[] }, 
+    {"name":"getIoMaximumIOps","parameterTypes":[] }, 
+    {"name":"getIpcMode","parameterTypes":[] }, 
+    {"name":"getIsolation","parameterTypes":[] }, 
+    {"name":"getKernelMemory","parameterTypes":[] }, 
+    {"name":"getLxcConf","parameterTypes":[] }, 
+    {"name":"getMemory","parameterTypes":[] }, 
+    {"name":"getMemoryReservation","parameterTypes":[] }, 
+    {"name":"getMemorySwap","parameterTypes":[] }, 
+    {"name":"getMemorySwappiness","parameterTypes":[] }, 
+    {"name":"getMounts","parameterTypes":[] }, 
+    {"name":"getNanoCPUs","parameterTypes":[] }, 
+    {"name":"getNetworkMode","parameterTypes":[] }, 
+    {"name":"getOomKillDisable","parameterTypes":[] }, 
+    {"name":"getOomScoreAdj","parameterTypes":[] }, 
+    {"name":"getPidMode","parameterTypes":[] }, 
+    {"name":"getPidsLimit","parameterTypes":[] }, 
+    {"name":"getPortBindings","parameterTypes":[] }, 
+    {"name":"getPrivileged","parameterTypes":[] }, 
+    {"name":"getPublishAllPorts","parameterTypes":[] }, 
+    {"name":"getReadonlyRootfs","parameterTypes":[] }, 
+    {"name":"getRestartPolicy","parameterTypes":[] }, 
+    {"name":"getRuntime","parameterTypes":[] }, 
+    {"name":"getSecurityOpts","parameterTypes":[] }, 
+    {"name":"getShmSize","parameterTypes":[] }, 
+    {"name":"getStorageOpt","parameterTypes":[] }, 
+    {"name":"getSysctls","parameterTypes":[] }, 
+    {"name":"getTmpFs","parameterTypes":[] }, 
+    {"name":"getUlimits","parameterTypes":[] }, 
+    {"name":"getUsernsMode","parameterTypes":[] }, 
+    {"name":"getUtSMode","parameterTypes":[] }, 
+    {"name":"getVolumeDriver","parameterTypes":[] }, 
+    {"name":"getVolumesFrom","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.HostConfig",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"getAutoRemove","parameterTypes":[] }, 
+    {"name":"getBlkioDeviceReadBps","parameterTypes":[] }, 
+    {"name":"getBlkioDeviceReadIOps","parameterTypes":[] }, 
+    {"name":"getBlkioDeviceWriteBps","parameterTypes":[] }, 
+    {"name":"getBlkioDeviceWriteIOps","parameterTypes":[] }, 
+    {"name":"getBlkioWeight","parameterTypes":[] }, 
+    {"name":"getBlkioWeightDevice","parameterTypes":[] }, 
+    {"name":"getCapAdd","parameterTypes":[] }, 
+    {"name":"getCapDrop","parameterTypes":[] }, 
+    {"name":"getCgroup","parameterTypes":[] }, 
+    {"name":"getCgroupParent","parameterTypes":[] }, 
+    {"name":"getCgroupnsMode","parameterTypes":[] }, 
+    {"name":"getConsoleSize","parameterTypes":[] }, 
+    {"name":"getContainerIDFile","parameterTypes":[] }, 
+    {"name":"getCpuCount","parameterTypes":[] }, 
+    {"name":"getCpuPercent","parameterTypes":[] }, 
+    {"name":"getCpuPeriod","parameterTypes":[] }, 
+    {"name":"getCpuQuota","parameterTypes":[] }, 
+    {"name":"getCpuRealtimePeriod","parameterTypes":[] }, 
+    {"name":"getCpuRealtimeRuntime","parameterTypes":[] }, 
+    {"name":"getCpuShares","parameterTypes":[] }, 
+    {"name":"getCpusetCpus","parameterTypes":[] }, 
+    {"name":"getCpusetMems","parameterTypes":[] }, 
+    {"name":"getDeviceCgroupRules","parameterTypes":[] }, 
+    {"name":"getDeviceRequests","parameterTypes":[] }, 
+    {"name":"getDevices","parameterTypes":[] }, 
+    {"name":"getDiskQuota","parameterTypes":[] }, 
+    {"name":"getDns","parameterTypes":[] }, 
+    {"name":"getDnsOptions","parameterTypes":[] }, 
+    {"name":"getDnsSearch","parameterTypes":[] }, 
+    {"name":"getExtraHosts","parameterTypes":[] }, 
+    {"name":"getGroupAdd","parameterTypes":[] }, 
+    {"name":"getInit","parameterTypes":[] }, 
+    {"name":"getIoMaximumBandwidth","parameterTypes":[] }, 
+    {"name":"getIoMaximumIOps","parameterTypes":[] }, 
+    {"name":"getIpcMode","parameterTypes":[] }, 
+    {"name":"getIsolation","parameterTypes":[] }, 
+    {"name":"getKernelMemory","parameterTypes":[] }, 
+    {"name":"getLxcConf","parameterTypes":[] }, 
+    {"name":"getMemory","parameterTypes":[] }, 
+    {"name":"getMemoryReservation","parameterTypes":[] }, 
+    {"name":"getMemorySwap","parameterTypes":[] }, 
+    {"name":"getMemorySwappiness","parameterTypes":[] }, 
+    {"name":"getMounts","parameterTypes":[] }, 
+    {"name":"getNanoCPUs","parameterTypes":[] }, 
+    {"name":"getNetworkMode","parameterTypes":[] }, 
+    {"name":"getOomKillDisable","parameterTypes":[] }, 
+    {"name":"getOomScoreAdj","parameterTypes":[] }, 
+    {"name":"getPidMode","parameterTypes":[] }, 
+    {"name":"getPidsLimit","parameterTypes":[] }, 
+    {"name":"getPortBindings","parameterTypes":[] }, 
+    {"name":"getPrivileged","parameterTypes":[] }, 
+    {"name":"getPublishAllPorts","parameterTypes":[] }, 
+    {"name":"getReadonlyRootfs","parameterTypes":[] }, 
+    {"name":"getRestartPolicy","parameterTypes":[] }, 
+    {"name":"getRuntime","parameterTypes":[] }, 
+    {"name":"getSecurityOpts","parameterTypes":[] }, 
+    {"name":"getShmSize","parameterTypes":[] }, 
+    {"name":"getStorageOpt","parameterTypes":[] }, 
+    {"name":"getSysctls","parameterTypes":[] }, 
+    {"name":"getTmpFs","parameterTypes":[] }, 
+    {"name":"getUlimits","parameterTypes":[] }, 
+    {"name":"getUsernsMode","parameterTypes":[] }, 
+    {"name":"getUtSMode","parameterTypes":[] }, 
+    {"name":"getVolumeDriver","parameterTypes":[] }, 
+    {"name":"getVolumesFrom","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.Image",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.Info",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.InfoRegistryConfig",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.InfoRegistryConfig$IndexConfig",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.InternetProtocol",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdClusterImpl"},
+  "name":"com.github.dockerjava.api.model.Isolation",
+  "methods":[{"name":"fromValue","parameterTypes":["java.lang.String"] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"com.github.dockerjava.api.model.Isolation",
+  "methods":[{"name":"fromValue","parameterTypes":["java.lang.String"] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.Isolation",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "methods":[{"name":"fromValue","parameterTypes":["java.lang.String"] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.Link",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"com.github.dockerjava.api.model.Links",
+  "methods":[{"name":"toPrimitive","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.Links",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"toPrimitive","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.LocalNodeState",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "methods":[{"name":"forValue","parameterTypes":["java.lang.String"] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdClusterImpl"},
+  "name":"com.github.dockerjava.api.model.LogConfig",
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"setType","parameterTypes":["com.github.dockerjava.api.model.LogConfig$LoggingType"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"com.github.dockerjava.api.model.LogConfig",
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"setType","parameterTypes":["com.github.dockerjava.api.model.LogConfig$LoggingType"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.LogConfig",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"setType","parameterTypes":["com.github.dockerjava.api.model.LogConfig$LoggingType"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdClusterImpl"},
+  "name":"com.github.dockerjava.api.model.LogConfig$LoggingType",
+  "methods":[{"name":"fromValue","parameterTypes":["java.lang.String"] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"com.github.dockerjava.api.model.LogConfig$LoggingType",
+  "methods":[{"name":"fromValue","parameterTypes":["java.lang.String"] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.LogConfig$LoggingType",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "methods":[{"name":"fromValue","parameterTypes":["java.lang.String"] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.LxcConf",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.Mount",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.MountType",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdClusterImpl"},
+  "name":"com.github.dockerjava.api.model.NetworkSettings",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"com.github.dockerjava.api.model.NetworkSettings",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.NetworkSettings",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.PeerNode",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdClusterImpl"},
+  "name":"com.github.dockerjava.api.model.Ports",
+  "methods":[{"name":"fromPrimitive","parameterTypes":["java.util.Map"] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"com.github.dockerjava.api.model.Ports",
+  "methods":[
+    {"name":"fromPrimitive","parameterTypes":["java.util.Map"] }, 
+    {"name":"toPrimitive","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.Ports",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"fromPrimitive","parameterTypes":["java.util.Map"] }, 
+    {"name":"toPrimitive","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.Ports$Binding",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.PropagationMode",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.ResourceVersion",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdClusterImpl"},
+  "name":"com.github.dockerjava.api.model.RestartPolicy",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"com.github.dockerjava.api.model.RestartPolicy",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.RestartPolicy",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.SELContext",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.SwarmCAConfig",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.SwarmDispatcherConfig",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.SwarmInfo",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.SwarmOrchestration",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.SwarmRaftConfig",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.SwarmSpec",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.TaskDefaults",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.TmpfsOptions",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.Ulimit",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.Version",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.VersionComponent",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.VersionPlatform",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdClusterImpl"},
+  "name":"com.github.dockerjava.api.model.Volume",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.String"] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"com.github.dockerjava.api.model.Volume",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.String"] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.Volume",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.String"] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.VolumeBind",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.VolumeBinds",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.VolumeOptions",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.VolumeRW",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"com.github.dockerjava.api.model.Volumes",
+  "methods":[{"name":"toPrimitive","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.Volumes",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"toPrimitive","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.VolumesFrom",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"com.github.dockerjava.api.model.VolumesRW",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.api.AuthRoleAddRequest"},
+  "name":"com.google.protobuf.ExtensionRegistry",
+  "methods":[{"name":"getEmptyRegistry","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"com.sun.crypto.provider.AESCipher$General",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"com.sun.crypto.provider.ARCFOURCipher",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"com.sun.crypto.provider.ChaCha20Cipher$ChaCha20Poly1305",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"com.sun.crypto.provider.DESCipher",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"com.sun.crypto.provider.DESedeCipher",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"com.sun.crypto.provider.DHParameters",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"com.sun.crypto.provider.GaloisCounterMode$AESGCM",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"com.sun.crypto.provider.TlsMasterSecretGenerator",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.impl.WatchUnitTest"},
+  "name":"io.etcd.jetcd.common.exception.CompactedException",
+  "methods":[{"name":"getCompactedRevision","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.impl.ClientConnectionManager"},
+  "name":"io.grpc.census.InternalCensusStatsAccessor"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.GrpcServerExtension"},
+  "name":"io.grpc.census.InternalCensusStatsAccessor"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.impl.ClientConnectionManager"},
+  "name":"io.grpc.census.InternalCensusTracingAccessor"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.GrpcServerExtension"},
+  "name":"io.grpc.census.InternalCensusTracingAccessor"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.impl.ClientBuilderTest"},
+  "name":"io.grpc.internal.AbstractManagedChannelImplBuilder",
+  "fields":[{"name":"maxInboundMessageSize"}]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.impl.KVImpl"},
+  "name":"io.grpc.internal.DnsNameResolverProvider"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.impl.KVImpl"},
+  "name":"io.grpc.internal.PickFirstLoadBalancerProvider"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.resolver.AbstractNameResolver"},
+  "name":"io.grpc.netty.WriteBufferingAndExceptionHandler",
+  "methods":[
+    {"name":"channelInactive","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"channelRead","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object"] }, 
+    {"name":"close","parameterTypes":["io.netty.channel.ChannelHandlerContext","io.netty.channel.ChannelPromise"] }, 
+    {"name":"connect","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.net.SocketAddress","java.net.SocketAddress","io.netty.channel.ChannelPromise"] }, 
+    {"name":"exceptionCaught","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Throwable"] }, 
+    {"name":"flush","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"write","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object","io.netty.channel.ChannelPromise"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterNameResolver"},
+  "name":"io.grpc.netty.WriteBufferingAndExceptionHandler",
+  "methods":[
+    {"name":"channelInactive","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"channelRead","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object"] }, 
+    {"name":"close","parameterTypes":["io.netty.channel.ChannelHandlerContext","io.netty.channel.ChannelPromise"] }, 
+    {"name":"connect","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.net.SocketAddress","java.net.SocketAddress","io.netty.channel.ChannelPromise"] }, 
+    {"name":"exceptionCaught","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Throwable"] }, 
+    {"name":"flush","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"write","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object","io.netty.channel.ChannelPromise"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.impl.KVImpl"},
+  "name":"io.grpc.util.SecretRoundRobinLoadBalancerProvider$Provider"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterNameResolver"},
+  "name":"io.netty.buffer.AbstractByteBufAllocator",
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterNameResolver"},
+  "name":"io.netty.buffer.AbstractReferenceCountedByteBuf",
+  "fields":[{"name":"refCnt"}]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.resolver.AbstractNameResolver"},
+  "name":"io.netty.channel.ChannelDuplexHandler",
+  "methods":[
+    {"name":"bind","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.net.SocketAddress","io.netty.channel.ChannelPromise"] }, 
+    {"name":"deregister","parameterTypes":["io.netty.channel.ChannelHandlerContext","io.netty.channel.ChannelPromise"] }, 
+    {"name":"disconnect","parameterTypes":["io.netty.channel.ChannelHandlerContext","io.netty.channel.ChannelPromise"] }, 
+    {"name":"read","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterNameResolver"},
+  "name":"io.netty.channel.ChannelDuplexHandler",
+  "methods":[
+    {"name":"bind","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.net.SocketAddress","io.netty.channel.ChannelPromise"] }, 
+    {"name":"deregister","parameterTypes":["io.netty.channel.ChannelHandlerContext","io.netty.channel.ChannelPromise"] }, 
+    {"name":"disconnect","parameterTypes":["io.netty.channel.ChannelHandlerContext","io.netty.channel.ChannelPromise"] }, 
+    {"name":"read","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.resolver.AbstractNameResolver"},
+  "name":"io.netty.channel.ChannelInboundHandlerAdapter",
+  "methods":[
+    {"name":"channelActive","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"channelReadComplete","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"channelRegistered","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"channelUnregistered","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"channelWritabilityChanged","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"userEventTriggered","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterNameResolver"},
+  "name":"io.netty.channel.ChannelInboundHandlerAdapter",
+  "methods":[
+    {"name":"channelActive","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"channelReadComplete","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"channelRegistered","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"channelUnregistered","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"channelWritabilityChanged","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"userEventTriggered","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.resolver.AbstractNameResolver"},
+  "name":"io.netty.channel.DefaultChannelPipeline$HeadContext",
+  "methods":[
+    {"name":"bind","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.net.SocketAddress","io.netty.channel.ChannelPromise"] }, 
+    {"name":"channelActive","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"channelInactive","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"channelRead","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object"] }, 
+    {"name":"channelReadComplete","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"channelRegistered","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"channelUnregistered","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"channelWritabilityChanged","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"close","parameterTypes":["io.netty.channel.ChannelHandlerContext","io.netty.channel.ChannelPromise"] }, 
+    {"name":"connect","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.net.SocketAddress","java.net.SocketAddress","io.netty.channel.ChannelPromise"] }, 
+    {"name":"deregister","parameterTypes":["io.netty.channel.ChannelHandlerContext","io.netty.channel.ChannelPromise"] }, 
+    {"name":"disconnect","parameterTypes":["io.netty.channel.ChannelHandlerContext","io.netty.channel.ChannelPromise"] }, 
+    {"name":"exceptionCaught","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Throwable"] }, 
+    {"name":"flush","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"read","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"userEventTriggered","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object"] }, 
+    {"name":"write","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object","io.netty.channel.ChannelPromise"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterNameResolver"},
+  "name":"io.netty.channel.DefaultChannelPipeline$HeadContext",
+  "methods":[
+    {"name":"bind","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.net.SocketAddress","io.netty.channel.ChannelPromise"] }, 
+    {"name":"channelActive","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"channelInactive","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"channelRead","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object"] }, 
+    {"name":"channelReadComplete","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"channelRegistered","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"channelUnregistered","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"channelWritabilityChanged","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"close","parameterTypes":["io.netty.channel.ChannelHandlerContext","io.netty.channel.ChannelPromise"] }, 
+    {"name":"connect","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.net.SocketAddress","java.net.SocketAddress","io.netty.channel.ChannelPromise"] }, 
+    {"name":"deregister","parameterTypes":["io.netty.channel.ChannelHandlerContext","io.netty.channel.ChannelPromise"] }, 
+    {"name":"disconnect","parameterTypes":["io.netty.channel.ChannelHandlerContext","io.netty.channel.ChannelPromise"] }, 
+    {"name":"exceptionCaught","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Throwable"] }, 
+    {"name":"flush","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"read","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"userEventTriggered","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object"] }, 
+    {"name":"write","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object","io.netty.channel.ChannelPromise"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.resolver.AbstractNameResolver"},
+  "name":"io.netty.channel.DefaultChannelPipeline$TailContext",
+  "methods":[
+    {"name":"channelActive","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"channelInactive","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"channelRead","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object"] }, 
+    {"name":"channelReadComplete","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"channelRegistered","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"channelUnregistered","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"channelWritabilityChanged","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"exceptionCaught","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Throwable"] }, 
+    {"name":"userEventTriggered","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterNameResolver"},
+  "name":"io.netty.channel.DefaultChannelPipeline$TailContext",
+  "methods":[
+    {"name":"channelActive","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"channelInactive","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"channelRead","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object"] }, 
+    {"name":"channelReadComplete","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"channelRegistered","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"channelUnregistered","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"channelWritabilityChanged","parameterTypes":["io.netty.channel.ChannelHandlerContext"] }, 
+    {"name":"exceptionCaught","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Throwable"] }, 
+    {"name":"userEventTriggered","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.impl.KVImpl"},
+  "name":"io.netty.channel.epoll.Epoll"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.resolver.AbstractNameResolver"},
+  "name":"io.netty.channel.epoll.Epoll"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterNameResolver"},
+  "name":"io.netty.channel.epoll.Epoll"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.impl.KVImpl"},
+  "name":"io.netty.channel.socket.nio.NioSocketChannel",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"io.netty.internal.tcnative.SSLContext"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.impl.KVImpl"},
+  "name":"io.netty.util.internal.shaded.org.jctools.queues.BaseMpscLinkedArrayQueueColdProducerFields",
+  "fields":[{"name":"producerLimit"}]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.impl.KVImpl"},
+  "name":"io.netty.util.internal.shaded.org.jctools.queues.BaseMpscLinkedArrayQueueConsumerFields",
+  "fields":[{"name":"consumerIndex"}]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.impl.KVImpl"},
+  "name":"io.netty.util.internal.shaded.org.jctools.queues.BaseMpscLinkedArrayQueueProducerFields",
+  "fields":[{"name":"producerIndex"}]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterNameResolver"},
+  "name":"io.perfmark.impl.SecretPerfMarkImpl$PerfMarkImpl"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.impl.KVImpl"},
+  "name":"io.vertx.core.logging.SLF4JLogDelegateFactory",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"java.io.Closeable",
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"java.io.Closeable",
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"java.io.FilePermission"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"java.io.Serializable",
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"java.io.Serializable",
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"java.lang.AutoCloseable",
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"java.lang.AutoCloseable",
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"java.lang.Boolean",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"java.lang.Class",
+  "methods":[{"name":"getModule","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"java.lang.Comparable",
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"java.lang.Enum",
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"java.lang.Integer",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"java.lang.Long",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"java.lang.Module",
+  "methods":[{"name":"getDescriptor","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"java.lang.Number",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdClusterImpl"},
+  "name":"java.lang.Object",
+  "allDeclaredFields":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"java.lang.Object",
+  "allDeclaredFields":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"java.lang.Object",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterNameResolver"},
+  "name":"java.lang.ProcessHandle",
+  "methods":[
+    {"name":"current","parameterTypes":[] }, 
+    {"name":"pid","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"java.lang.RuntimePermission"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.impl.WatchImpl$$Lambda$1028/0x0000000801217290"},
+  "name":"java.lang.StackWalker",
+  "methods":[{"name":"walk","parameterTypes":["java.util.function.Function"] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.impl.WatchImpl$WatcherImpl"},
+  "name":"java.lang.StackWalker",
+  "methods":[{"name":"walk","parameterTypes":["java.util.function.Function"] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.impl.WatchUnitTest"},
+  "name":"java.lang.StackWalker",
+  "methods":[{"name":"walk","parameterTypes":["java.util.function.Function"] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.impl.WatchImpl$$Lambda$1028/0x0000000801217290"},
+  "name":"java.lang.StackWalker$StackFrame",
+  "methods":[{"name":"getClassName","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.impl.WatchImpl$WatcherImpl"},
+  "name":"java.lang.StackWalker$StackFrame",
+  "methods":[{"name":"getClassName","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.impl.WatchUnitTest"},
+  "name":"java.lang.StackWalker$StackFrame",
+  "methods":[{"name":"getClassName","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"java.lang.constant.Constable",
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"java.lang.constant.ConstantDesc",
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.impl.KVImpl"},
+  "name":"java.lang.management.ManagementFactory",
+  "methods":[{"name":"getRuntimeMXBean","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.impl.KVImpl"},
+  "name":"java.lang.management.RuntimeMXBean",
+  "methods":[{"name":"getInputArguments","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"java.net.NetPermission"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"java.net.SocketPermission"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"java.net.URLPermission",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.String","java.lang.String"] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"java.net.UnixDomainSocketAddress",
+  "methods":[{"name":"of","parameterTypes":["java.lang.String"] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"java.net.UnixDomainSocketAddress",
+  "methods":[{"name":"of","parameterTypes":["java.lang.String"] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.impl.KVImpl"},
+  "name":"java.nio.Bits",
+  "methods":[{"name":"unaligned","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.api.AuthRoleAddRequest"},
+  "name":"java.nio.Buffer",
+  "fields":[{"name":"address"}]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.impl.KVImpl"},
+  "name":"java.nio.Buffer",
+  "fields":[{"name":"address"}]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.impl.KVImpl"},
+  "name":"java.nio.ByteBuffer",
+  "methods":[{"name":"alignedSlice","parameterTypes":["int"] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.impl.KVImpl"},
+  "name":"java.nio.DirectByteBuffer",
+  "methods":[{"name":"<init>","parameterTypes":["long","int"] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterNameResolver"},
+  "name":"java.nio.channels.spi.SelectorProvider",
+  "methods":[{"name":"openSocketChannel","parameterTypes":["java.net.ProtocolFamily"] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"java.security.AlgorithmParametersSpi"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"java.security.AllPermission"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"java.security.KeyStoreSpi"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"java.security.SecureRandomParameters"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.Etcd$Builder"},
+  "name":"java.security.SecureRandomParameters"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"java.security.SecureRandomParameters"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"java.security.SecureRandomParameters"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"java.security.SecurityPermission"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"java.util.ArrayList",
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"java.util.HashMap",
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"java.util.LinkedHashMap",
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"java.util.PropertyPermission"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.GrpcServerExtension"},
+  "name":"java.util.concurrent.ScheduledThreadPoolExecutor",
+  "methods":[{"name":"setRemoveOnCancelPolicy","parameterTypes":["boolean"] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.impl.ClientConnectionManager"},
+  "name":"java.util.concurrent.atomic.LongAdder",
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"add","parameterTypes":["long"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.impl.KVImpl"},
+  "name":"java.util.concurrent.atomic.LongAdder",
+  "queryAllPublicConstructors":true,
+  "methods":[
+    {"name":"add","parameterTypes":["long"] }, 
+    {"name":"sum","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.impl.WatchUnitTest"},
+  "name":"java.util.concurrent.atomic.LongAdder",
+  "methods":[{"name":"add","parameterTypes":["long"] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.resolver.AbstractNameResolver"},
+  "name":"java.util.concurrent.atomic.LongAdder",
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"add","parameterTypes":["long"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterNameResolver"},
+  "name":"java.util.concurrent.atomic.LongAdder",
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"add","parameterTypes":["long"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.GrpcServerExtension"},
+  "name":"java.util.concurrent.atomic.LongAdder",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"javax.net.ssl.SSLEngine",
+  "methods":[
+    {"name":"getApplicationProtocol","parameterTypes":[] }, 
+    {"name":"getHandshakeApplicationProtocol","parameterTypes":[] }, 
+    {"name":"getHandshakeApplicationProtocolSelector","parameterTypes":[] }, 
+    {"name":"setHandshakeApplicationProtocolSelector","parameterTypes":["java.util.function.BiFunction"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"javax.net.ssl.SSLParameters",
+  "methods":[{"name":"setApplicationProtocols","parameterTypes":["java.lang.String[]"] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"javax.security.auth.x500.X500Principal",
+  "fields":[{"name":"thisX500Name"}],
+  "methods":[{"name":"<init>","parameterTypes":["sun.security.x509.X500Name"] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"javax.smartcardio.CardPermission"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.impl.KVImpl"},
+  "name":"jdk.internal.misc.Unsafe",
+  "methods":[{"name":"getUnsafe","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ByteSequence"},
+  "name":"libcore.io.Memory"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"org.eclipse.jetty.alpn.ALPN"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"org.eclipse.jetty.npn.NextProtoNego"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.impl.WatchImpl$$Lambda$1028/0x0000000801217290"},
+  "name":"org.mockito.configuration.MockitoConfiguration"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.impl.WatchUnitTest"},
+  "name":"org.mockito.configuration.MockitoConfiguration"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ByteSequence"},
+  "name":"org.robolectric.Robolectric"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"org.testcontainers.dockerclient.UnixSocketClientProviderStrategy",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"org.testcontainers.shaded.com.fasterxml.jackson.databind.ext.Java7SupportImpl",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"org.testcontainers.shaded.com.github.dockerjava.core.DockerConfigFile",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"org.testcontainers.shaded.com.github.dockerjava.core.command.AbstrAsyncDockerCmd",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdClusterImpl"},
+  "name":"org.testcontainers.shaded.com.github.dockerjava.core.command.AbstrDockerCmd",
+  "allDeclaredFields":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"org.testcontainers.shaded.com.github.dockerjava.core.command.AbstrDockerCmd",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"org.testcontainers.shaded.com.github.dockerjava.core.command.AbstrDockerCmd",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"org.testcontainers.shaded.com.github.dockerjava.core.command.CopyArchiveFromContainerCmdImpl",
+  "allDeclaredFields":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"org.testcontainers.shaded.com.github.dockerjava.core.command.CreateContainerCmdImpl",
+  "allDeclaredFields":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"org.testcontainers.shaded.com.github.dockerjava.core.command.CreateContainerCmdImpl",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"org.testcontainers.shaded.com.github.dockerjava.core.command.CreateContainerCmdImpl$NetworkingConfig",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"getEndpointsConfig","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"org.testcontainers.shaded.com.github.dockerjava.core.command.CreateNetworkCmdImpl",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"getAttachable","parameterTypes":[] }, 
+    {"name":"getCheckDuplicate","parameterTypes":[] }, 
+    {"name":"getDriver","parameterTypes":[] }, 
+    {"name":"getEnableIPv6","parameterTypes":[] }, 
+    {"name":"getInternal","parameterTypes":[] }, 
+    {"name":"getIpam","parameterTypes":[] }, 
+    {"name":"getLabels","parameterTypes":[] }, 
+    {"name":"getName","parameterTypes":[] }, 
+    {"name":"getOptions","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"org.testcontainers.shaded.com.github.dockerjava.core.command.ExecCreateCmdImpl",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"getContainerId","parameterTypes":[] }, 
+    {"name":"getEnv","parameterTypes":[] }, 
+    {"name":"getPrivileged","parameterTypes":[] }, 
+    {"name":"getUser","parameterTypes":[] }, 
+    {"name":"getWorkingDir","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"org.testcontainers.shaded.com.github.dockerjava.core.command.ExecStartCmdImpl",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"org.testcontainers.shaded.com.github.dockerjava.core.command.InfoCmdImpl",
+  "allDeclaredFields":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdClusterImpl"},
+  "name":"org.testcontainers.shaded.com.github.dockerjava.core.command.InspectContainerCmdImpl",
+  "allDeclaredFields":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"org.testcontainers.shaded.com.github.dockerjava.core.command.InspectContainerCmdImpl",
+  "allDeclaredFields":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"org.testcontainers.shaded.com.github.dockerjava.core.command.InspectContainerCmdImpl",
+  "allDeclaredFields":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"org.testcontainers.shaded.com.github.dockerjava.core.command.InspectExecCmdImpl",
+  "allDeclaredFields":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdClusterImpl"},
+  "name":"org.testcontainers.shaded.com.github.dockerjava.core.command.KillContainerCmdImpl",
+  "allDeclaredFields":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"org.testcontainers.shaded.com.github.dockerjava.core.command.KillContainerCmdImpl",
+  "allDeclaredFields":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"org.testcontainers.shaded.com.github.dockerjava.core.command.ListImagesCmdImpl",
+  "allDeclaredFields":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdClusterImpl"},
+  "name":"org.testcontainers.shaded.com.github.dockerjava.core.command.RemoveContainerCmdImpl",
+  "allDeclaredFields":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"org.testcontainers.shaded.com.github.dockerjava.core.command.RemoveContainerCmdImpl",
+  "allDeclaredFields":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"org.testcontainers.shaded.com.github.dockerjava.core.command.StartContainerCmdImpl",
+  "allDeclaredFields":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"org.testcontainers.shaded.com.github.dockerjava.core.command.StartContainerCmdImpl",
+  "allDeclaredFields":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"org.testcontainers.shaded.com.github.dockerjava.core.command.VersionCmdImpl",
+  "allDeclaredFields":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"org.testcontainers.shaded.org.awaitility.core.ConditionFactory$1",
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"org.testcontainers.shaded.org.awaitility.core.ConditionFactory$1",
+  "queryAllDeclaredMethods":true
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"sun.misc.Unsafe",
+  "methods":[{"name":"invokeCleaner","parameterTypes":["java.nio.ByteBuffer"] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.api.AuthRoleAddRequest"},
+  "name":"sun.misc.Unsafe",
+  "allDeclaredFields":true,
+  "methods":[
+    {"name":"arrayBaseOffset","parameterTypes":["java.lang.Class"] }, 
+    {"name":"arrayIndexScale","parameterTypes":["java.lang.Class"] }, 
+    {"name":"copyMemory","parameterTypes":["long","long","long"] }, 
+    {"name":"copyMemory","parameterTypes":["java.lang.Object","long","java.lang.Object","long","long"] }, 
+    {"name":"getBoolean","parameterTypes":["java.lang.Object","long"] }, 
+    {"name":"getByte","parameterTypes":["long"] }, 
+    {"name":"getByte","parameterTypes":["java.lang.Object","long"] }, 
+    {"name":"getDouble","parameterTypes":["java.lang.Object","long"] }, 
+    {"name":"getFloat","parameterTypes":["java.lang.Object","long"] }, 
+    {"name":"getInt","parameterTypes":["long"] }, 
+    {"name":"getInt","parameterTypes":["java.lang.Object","long"] }, 
+    {"name":"getLong","parameterTypes":["long"] }, 
+    {"name":"getLong","parameterTypes":["java.lang.Object","long"] }, 
+    {"name":"getObject","parameterTypes":["java.lang.Object","long"] }, 
+    {"name":"objectFieldOffset","parameterTypes":["java.lang.reflect.Field"] }, 
+    {"name":"putBoolean","parameterTypes":["java.lang.Object","long","boolean"] }, 
+    {"name":"putByte","parameterTypes":["long","byte"] }, 
+    {"name":"putByte","parameterTypes":["java.lang.Object","long","byte"] }, 
+    {"name":"putDouble","parameterTypes":["java.lang.Object","long","double"] }, 
+    {"name":"putFloat","parameterTypes":["java.lang.Object","long","float"] }, 
+    {"name":"putInt","parameterTypes":["long","int"] }, 
+    {"name":"putInt","parameterTypes":["java.lang.Object","long","int"] }, 
+    {"name":"putLong","parameterTypes":["long","long"] }, 
+    {"name":"putLong","parameterTypes":["java.lang.Object","long","long"] }, 
+    {"name":"putObject","parameterTypes":["java.lang.Object","long","java.lang.Object"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.impl.KVImpl"},
+  "name":"sun.misc.Unsafe",
+  "fields":[{"name":"theUnsafe"}],
+  "methods":[
+    {"name":"copyMemory","parameterTypes":["java.lang.Object","long","java.lang.Object","long","long"] }, 
+    {"name":"getAndAddLong","parameterTypes":["java.lang.Object","long","long"] }, 
+    {"name":"getAndSetObject","parameterTypes":["java.lang.Object","long","java.lang.Object"] }, 
+    {"name":"invokeCleaner","parameterTypes":["java.nio.ByteBuffer"] }, 
+    {"name":"storeFence","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.impl.KVImpl"},
+  "name":"sun.misc.VM"
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.impl.ClientConnectionManager"},
+  "name":"sun.nio.ch.SelectorImpl",
+  "fields":[
+    {"name":"publicSelectedKeys"}, 
+    {"name":"selectedKeys"}
+  ]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"sun.security.pkcs12.PKCS12KeyStore",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"sun.security.pkcs12.PKCS12KeyStore$DualFormatPKCS12",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"sun.security.provider.DSA$SHA224withDSA",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"sun.security.provider.DSA$SHA256withDSA",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"sun.security.provider.JavaKeyStore$JKS",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"sun.security.provider.NativePRNG",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.Etcd$Builder"},
+  "name":"sun.security.provider.NativePRNG",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
+  "name":"sun.security.provider.NativePRNG",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
+  "name":"sun.security.provider.NativePRNG$NonBlocking",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"sun.security.provider.SHA",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.launcher.Etcd$Builder"},
+  "name":"sun.security.provider.SHA",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"sun.security.provider.SHA2$SHA224",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"sun.security.provider.SHA2$SHA256",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"sun.security.provider.SHA5$SHA384",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"sun.security.provider.SHA5$SHA512",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"sun.security.provider.X509Factory",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"sun.security.rsa.PSSParameters",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"sun.security.rsa.RSAKeyFactory$Legacy",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"sun.security.rsa.RSAPSSSignature",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"sun.security.rsa.RSASignature$SHA224withRSA",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"sun.security.ssl.SSLContextImpl$TLSContext",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"sun.security.ssl.TrustManagerFactoryImpl$PKIXFactory",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"sun.security.x509.AuthorityInfoAccessExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"sun.security.x509.AuthorityKeyIdentifierExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"sun.security.x509.BasicConstraintsExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"sun.security.x509.CRLDistributionPointsExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"sun.security.x509.CertificatePoliciesExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"sun.security.x509.ExtendedKeyUsageExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"sun.security.x509.IssuerAlternativeNameExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"sun.security.x509.KeyUsageExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"sun.security.x509.NetscapeCertTypeExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"sun.security.x509.PrivateKeyUsageExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"sun.security.x509.SubjectAlternativeNameExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
+  "name":"sun.security.x509.SubjectKeyIdentifierExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+}
+]
