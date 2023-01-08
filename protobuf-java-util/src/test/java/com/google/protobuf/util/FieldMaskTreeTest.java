@@ -3,8 +3,6 @@ package com.google.protobuf.util;
 import com.google.protobuf.DynamicMessage;
 import com.google.protobuf.Message;
 import com.google.protobuf.UninitializedMessageException;
-import com.google.protobuf.util.FieldMaskTree;
-import com.google.protobuf.util.FieldMaskUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;

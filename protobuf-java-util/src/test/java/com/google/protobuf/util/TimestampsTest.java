@@ -4,8 +4,6 @@ import com.google.common.collect.Lists;
 import com.google.common.truth.Truth;
 import com.google.protobuf.Duration;
 import com.google.protobuf.Timestamp;
-import com.google.protobuf.util.Durations;
-import com.google.protobuf.util.Timestamps;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
