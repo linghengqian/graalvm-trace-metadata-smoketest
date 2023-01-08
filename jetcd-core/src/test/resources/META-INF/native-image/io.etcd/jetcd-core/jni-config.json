@@ -1,6 +1,9 @@
 [
 {
-  "condition":{"typeReachable":"io.etcd.jetcd.impl.KVImpl"},
+  "name":"java.lang.Boolean",
+  "methods":[{"name":"getBoolean","parameterTypes":["java.lang.String"] }]
+},
+{
   "name":"sun.management.VMManagementImpl",
   "fields":[
     {"name":"compTimeMonitoringSupport"}, 

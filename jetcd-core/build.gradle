@@ -34,7 +34,7 @@ graalvmNative {
         }
     }
     agent {
-        defaultMode = "conditional"
+        defaultMode = "standard"
         modes {
             conditional {
                 userCodeFilterPath = "user-code-filter.json"
@@ -43,12 +43,11 @@ graalvmNative {
         metadataCopy {
             mergeWithExisting = true
             inputTaskNames.add("test")
-//            outputDirectories.add("src/test/resources/META-INF/native-image/io.etcd/jetcd-core")
-            outputDirectories.add("src/test/resources/META-INF/native-image/org.mockito/mockito-core")
+            outputDirectories.add("src/test/resources/META-INF/native-image/io.etcd/jetcd-core")
         }
     }
-//    metadataRepository {
-//        enabled = true
-//        version = "0.2.5"
-//    }
+    metadataRepository {
+        enabled = true
+        version = "0.2.5"
+    }
 }
