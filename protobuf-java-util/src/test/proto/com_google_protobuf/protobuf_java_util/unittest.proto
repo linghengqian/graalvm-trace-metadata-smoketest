@@ -7,7 +7,7 @@ option java_generic_services = true;
 option py_generic_services = true;
 option cc_enable_arenas = true;
 
-import "com/lingh/unittest_import.proto";
+import "com_google_protobuf/protobuf_java_util/unittest_import.proto";
 
 package protobuf_unittest;
 

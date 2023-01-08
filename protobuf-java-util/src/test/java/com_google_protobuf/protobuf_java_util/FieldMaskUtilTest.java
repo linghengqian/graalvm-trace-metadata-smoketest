@@ -1,4 +1,4 @@
-package com.lingh;
+package com_google_protobuf.protobuf_java_util;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.truth.Truth;

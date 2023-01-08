@@ -471,7 +471,7 @@
 },
 {
   "condition":{"typeReachable":"com.google.protobuf.util.JsonFormatTest"},
-  "name":"com.lingh.JsonTestProto$TestAllTypes",
+  "name":"com_google_protobuf.protobuf_java_util.JsonTestProto$TestAllTypes",
   "methods":[
     {"name":"getOptionalAliasedEnum","parameterTypes":[] }, 
     {"name":"getOptionalAliasedEnumValue","parameterTypes":[] }, 
@@ -551,7 +551,7 @@
 },
 {
   "condition":{"typeReachable":"com.google.protobuf.util.JsonFormatTest"},
-  "name":"com.lingh.JsonTestProto$TestAllTypes$AliasedEnum",
+  "name":"com_google_protobuf.protobuf_java_util.JsonTestProto$TestAllTypes$AliasedEnum",
   "methods":[
     {"name":"getValueDescriptor","parameterTypes":[] }, 
     {"name":"valueOf","parameterTypes":["com.google.protobuf.Descriptors$EnumValueDescriptor"] }
@@ -559,7 +559,7 @@
 },
 {
   "condition":{"typeReachable":"com.google.protobuf.util.JsonFormatTest"},
-  "name":"com.lingh.JsonTestProto$TestAllTypes$Builder",
+  "name":"com_google_protobuf.protobuf_java_util.JsonTestProto$TestAllTypes$Builder",
   "methods":[
     {"name":"addRepeatedBool","parameterTypes":["boolean"] }, 
     {"name":"addRepeatedBytes","parameterTypes":["com.google.protobuf.ByteString"] }, 
@@ -569,9 +569,9 @@
     {"name":"addRepeatedFloat","parameterTypes":["float"] }, 
     {"name":"addRepeatedInt32","parameterTypes":["int"] }, 
     {"name":"addRepeatedInt64","parameterTypes":["long"] }, 
-    {"name":"addRepeatedNestedEnum","parameterTypes":["com.lingh.JsonTestProto$TestAllTypes$NestedEnum"] }, 
+    {"name":"addRepeatedNestedEnum","parameterTypes":["com_google_protobuf.protobuf_java_util.JsonTestProto$TestAllTypes$NestedEnum"] }, 
     {"name":"addRepeatedNestedEnumValue","parameterTypes":["int"] }, 
-    {"name":"addRepeatedNestedMessage","parameterTypes":["com.lingh.JsonTestProto$TestAllTypes$NestedMessage"] }, 
+    {"name":"addRepeatedNestedMessage","parameterTypes":["com_google_protobuf.protobuf_java_util.JsonTestProto$TestAllTypes$NestedMessage"] }, 
     {"name":"addRepeatedSfixed32","parameterTypes":["int"] }, 
     {"name":"addRepeatedSfixed64","parameterTypes":["long"] }, 
     {"name":"addRepeatedSint32","parameterTypes":["int"] }, 
@@ -690,7 +690,7 @@
     {"name":"getRepeatedUint64Count","parameterTypes":[] }, 
     {"name":"getRepeatedUint64List","parameterTypes":[] }, 
     {"name":"hasOptionalNestedMessage","parameterTypes":[] }, 
-    {"name":"setOptionalAliasedEnum","parameterTypes":["com.lingh.JsonTestProto$TestAllTypes$AliasedEnum"] }, 
+    {"name":"setOptionalAliasedEnum","parameterTypes":["com_google_protobuf.protobuf_java_util.JsonTestProto$TestAllTypes$AliasedEnum"] }, 
     {"name":"setOptionalAliasedEnumValue","parameterTypes":["int"] }, 
     {"name":"setOptionalBool","parameterTypes":["boolean"] }, 
     {"name":"setOptionalBytes","parameterTypes":["com.google.protobuf.ByteString"] }, 
@@ -700,9 +700,9 @@
     {"name":"setOptionalFloat","parameterTypes":["float"] }, 
     {"name":"setOptionalInt32","parameterTypes":["int"] }, 
     {"name":"setOptionalInt64","parameterTypes":["long"] }, 
-    {"name":"setOptionalNestedEnum","parameterTypes":["com.lingh.JsonTestProto$TestAllTypes$NestedEnum"] }, 
+    {"name":"setOptionalNestedEnum","parameterTypes":["com_google_protobuf.protobuf_java_util.JsonTestProto$TestAllTypes$NestedEnum"] }, 
     {"name":"setOptionalNestedEnumValue","parameterTypes":["int"] }, 
-    {"name":"setOptionalNestedMessage","parameterTypes":["com.lingh.JsonTestProto$TestAllTypes$NestedMessage"] }, 
+    {"name":"setOptionalNestedMessage","parameterTypes":["com_google_protobuf.protobuf_java_util.JsonTestProto$TestAllTypes$NestedMessage"] }, 
     {"name":"setOptionalSfixed32","parameterTypes":["int"] }, 
     {"name":"setOptionalSfixed64","parameterTypes":["long"] }, 
     {"name":"setOptionalSint32","parameterTypes":["int"] }, 
@@ -719,9 +719,9 @@
     {"name":"setRepeatedFloat","parameterTypes":["int","float"] }, 
     {"name":"setRepeatedInt32","parameterTypes":["int","int"] }, 
     {"name":"setRepeatedInt64","parameterTypes":["int","long"] }, 
-    {"name":"setRepeatedNestedEnum","parameterTypes":["int","com.lingh.JsonTestProto$TestAllTypes$NestedEnum"] }, 
+    {"name":"setRepeatedNestedEnum","parameterTypes":["int","com_google_protobuf.protobuf_java_util.JsonTestProto$TestAllTypes$NestedEnum"] }, 
     {"name":"setRepeatedNestedEnumValue","parameterTypes":["int","int"] }, 
-    {"name":"setRepeatedNestedMessage","parameterTypes":["int","com.lingh.JsonTestProto$TestAllTypes$NestedMessage"] }, 
+    {"name":"setRepeatedNestedMessage","parameterTypes":["int","com_google_protobuf.protobuf_java_util.JsonTestProto$TestAllTypes$NestedMessage"] }, 
     {"name":"setRepeatedSfixed32","parameterTypes":["int","int"] }, 
     {"name":"setRepeatedSfixed64","parameterTypes":["int","long"] }, 
     {"name":"setRepeatedSint32","parameterTypes":["int","int"] }, 
@@ -733,7 +733,7 @@
 },
 {
   "condition":{"typeReachable":"com.google.protobuf.util.JsonFormatTest"},
-  "name":"com.lingh.JsonTestProto$TestAllTypes$NestedEnum",
+  "name":"com_google_protobuf.protobuf_java_util.JsonTestProto$TestAllTypes$NestedEnum",
   "methods":[
     {"name":"getValueDescriptor","parameterTypes":[] }, 
     {"name":"valueOf","parameterTypes":["com.google.protobuf.Descriptors$EnumValueDescriptor"] }
@@ -741,7 +741,7 @@
 },
 {
   "condition":{"typeReachable":"com.google.protobuf.util.JsonFormatTest"},
-  "name":"com.lingh.JsonTestProto$TestAllTypes$NestedMessage",
+  "name":"com_google_protobuf.protobuf_java_util.JsonTestProto$TestAllTypes$NestedMessage",
   "methods":[
     {"name":"getValue","parameterTypes":[] }, 
     {"name":"newBuilder","parameterTypes":[] }
@@ -749,7 +749,7 @@
 },
 {
   "condition":{"typeReachable":"com.google.protobuf.util.JsonFormatTest"},
-  "name":"com.lingh.JsonTestProto$TestAllTypes$NestedMessage$Builder",
+  "name":"com_google_protobuf.protobuf_java_util.JsonTestProto$TestAllTypes$NestedMessage$Builder",
   "methods":[
     {"name":"clearValue","parameterTypes":[] }, 
     {"name":"getValue","parameterTypes":[] }, 
@@ -758,7 +758,7 @@
 },
 {
   "condition":{"typeReachable":"com.google.protobuf.util.JsonFormatTest"},
-  "name":"com.lingh.JsonTestProto$TestAny",
+  "name":"com_google_protobuf.protobuf_java_util.JsonTestProto$TestAny",
   "methods":[
     {"name":"getAnyValue","parameterTypes":[] }, 
     {"name":"getDefaultInstance","parameterTypes":[] }, 
@@ -767,7 +767,7 @@
 },
 {
   "condition":{"typeReachable":"com.google.protobuf.util.JsonFormatTest"},
-  "name":"com.lingh.JsonTestProto$TestAny$Builder",
+  "name":"com_google_protobuf.protobuf_java_util.JsonTestProto$TestAny$Builder",
   "methods":[
     {"name":"clearAnyValue","parameterTypes":[] }, 
     {"name":"getAnyValue","parameterTypes":[] }, 
@@ -778,12 +778,12 @@
 },
 {
   "condition":{"typeReachable":"com.google.protobuf.util.JsonFormatTest"},
-  "name":"com.lingh.JsonTestProto$TestCustomJsonName",
+  "name":"com_google_protobuf.protobuf_java_util.JsonTestProto$TestCustomJsonName",
   "methods":[{"name":"getValue","parameterTypes":[] }]
 },
 {
   "condition":{"typeReachable":"com.google.protobuf.util.JsonFormatTest"},
-  "name":"com.lingh.JsonTestProto$TestCustomJsonName$Builder",
+  "name":"com_google_protobuf.protobuf_java_util.JsonTestProto$TestCustomJsonName$Builder",
   "methods":[
     {"name":"clearValue","parameterTypes":[] }, 
     {"name":"getValue","parameterTypes":[] }, 
@@ -792,7 +792,7 @@
 },
 {
   "condition":{"typeReachable":"com.google.protobuf.util.JsonFormatTest"},
-  "name":"com.lingh.JsonTestProto$TestDuration",
+  "name":"com_google_protobuf.protobuf_java_util.JsonTestProto$TestDuration",
   "methods":[
     {"name":"getDurationValue","parameterTypes":[] }, 
     {"name":"hasDurationValue","parameterTypes":[] }
@@ -800,7 +800,7 @@
 },
 {
   "condition":{"typeReachable":"com.google.protobuf.util.JsonFormatTest"},
-  "name":"com.lingh.JsonTestProto$TestDuration$Builder",
+  "name":"com_google_protobuf.protobuf_java_util.JsonTestProto$TestDuration$Builder",
   "methods":[
     {"name":"clearDurationValue","parameterTypes":[] }, 
     {"name":"getDurationValue","parameterTypes":[] }, 
@@ -811,7 +811,7 @@
 },
 {
   "condition":{"typeReachable":"com.google.protobuf.util.JsonFormatTest"},
-  "name":"com.lingh.JsonTestProto$TestFieldMask",
+  "name":"com_google_protobuf.protobuf_java_util.JsonTestProto$TestFieldMask",
   "methods":[
     {"name":"getFieldMaskValue","parameterTypes":[] }, 
     {"name":"hasFieldMaskValue","parameterTypes":[] }
@@ -819,7 +819,7 @@
 },
 {
   "condition":{"typeReachable":"com.google.protobuf.util.JsonFormatTest"},
-  "name":"com.lingh.JsonTestProto$TestFieldMask$Builder",
+  "name":"com_google_protobuf.protobuf_java_util.JsonTestProto$TestFieldMask$Builder",
   "methods":[
     {"name":"clearFieldMaskValue","parameterTypes":[] }, 
     {"name":"getFieldMaskValue","parameterTypes":[] }, 
@@ -830,12 +830,12 @@
 },
 {
   "condition":{"typeReachable":"com.google.protobuf.util.JsonFormatTest"},
-  "name":"com.lingh.JsonTestProto$TestMap",
+  "name":"com_google_protobuf.protobuf_java_util.JsonTestProto$TestMap",
   "methods":[{"name":"getDefaultInstance","parameterTypes":[] }]
 },
 {
   "condition":{"typeReachable":"com.google.protobuf.util.JsonFormatTest"},
-  "name":"com.lingh.JsonTestProto$TestOneof",
+  "name":"com_google_protobuf.protobuf_java_util.JsonTestProto$TestOneof",
   "methods":[
     {"name":"getOneofFieldCase","parameterTypes":[] }, 
     {"name":"getOneofInt32","parameterTypes":[] }, 
@@ -846,12 +846,12 @@
 },
 {
   "condition":{"typeReachable":"com.google.protobuf.util.JsonFormat$ParserImpl"},
-  "name":"com.lingh.JsonTestProto$TestOneof$Builder",
+  "name":"com_google_protobuf.protobuf_java_util.JsonTestProto$TestOneof$Builder",
   "methods":[{"name":"getOneofFieldCase","parameterTypes":[] }]
 },
 {
   "condition":{"typeReachable":"com.google.protobuf.util.JsonFormatTest"},
-  "name":"com.lingh.JsonTestProto$TestOneof$Builder",
+  "name":"com_google_protobuf.protobuf_java_util.JsonTestProto$TestOneof$Builder",
   "methods":[
     {"name":"clearOneofField","parameterTypes":[] }, 
     {"name":"clearOneofInt32","parameterTypes":[] }, 
@@ -864,14 +864,14 @@
     {"name":"getOneofNullValue","parameterTypes":[] }, 
     {"name":"getOneofNullValueValue","parameterTypes":[] }, 
     {"name":"setOneofInt32","parameterTypes":["int"] }, 
-    {"name":"setOneofNestedMessage","parameterTypes":["com.lingh.JsonTestProto$TestAllTypes$NestedMessage"] }, 
+    {"name":"setOneofNestedMessage","parameterTypes":["com_google_protobuf.protobuf_java_util.JsonTestProto$TestAllTypes$NestedMessage"] }, 
     {"name":"setOneofNullValue","parameterTypes":["com.google.protobuf.NullValue"] }, 
     {"name":"setOneofNullValueValue","parameterTypes":["int"] }
   ]
 },
 {
   "condition":{"typeReachable":"com.google.protobuf.util.JsonFormatTest"},
-  "name":"com.lingh.JsonTestProto$TestRecursive",
+  "name":"com_google_protobuf.protobuf_java_util.JsonTestProto$TestRecursive",
   "methods":[
     {"name":"getNested","parameterTypes":[] }, 
     {"name":"getValue","parameterTypes":[] }, 
@@ -881,7 +881,7 @@
 },
 {
   "condition":{"typeReachable":"com.google.protobuf.util.JsonFormatTest"},
-  "name":"com.lingh.JsonTestProto$TestRecursive$Builder",
+  "name":"com_google_protobuf.protobuf_java_util.JsonTestProto$TestRecursive$Builder",
   "methods":[
     {"name":"clearNested","parameterTypes":[] }, 
     {"name":"clearValue","parameterTypes":[] }, 
@@ -889,13 +889,13 @@
     {"name":"getNestedBuilder","parameterTypes":[] }, 
     {"name":"getValue","parameterTypes":[] }, 
     {"name":"hasNested","parameterTypes":[] }, 
-    {"name":"setNested","parameterTypes":["com.lingh.JsonTestProto$TestRecursive"] }, 
+    {"name":"setNested","parameterTypes":["com_google_protobuf.protobuf_java_util.JsonTestProto$TestRecursive"] }, 
     {"name":"setValue","parameterTypes":["int"] }
   ]
 },
 {
   "condition":{"typeReachable":"com.google.protobuf.util.JsonFormatTest"},
-  "name":"com.lingh.JsonTestProto$TestStruct",
+  "name":"com_google_protobuf.protobuf_java_util.JsonTestProto$TestStruct",
   "methods":[
     {"name":"getListValue","parameterTypes":[] }, 
     {"name":"getStructValue","parameterTypes":[] }, 
@@ -907,7 +907,7 @@
 },
 {
   "condition":{"typeReachable":"com.google.protobuf.util.JsonFormatTest"},
-  "name":"com.lingh.JsonTestProto$TestStruct$Builder",
+  "name":"com_google_protobuf.protobuf_java_util.JsonTestProto$TestStruct$Builder",
   "methods":[
     {"name":"clearListValue","parameterTypes":[] }, 
     {"name":"clearStructValue","parameterTypes":[] }, 
@@ -928,7 +928,7 @@
 },
 {
   "condition":{"typeReachable":"com.google.protobuf.util.JsonFormatTest"},
-  "name":"com.lingh.JsonTestProto$TestTimestamp",
+  "name":"com_google_protobuf.protobuf_java_util.JsonTestProto$TestTimestamp",
   "methods":[
     {"name":"getTimestampValue","parameterTypes":[] }, 
     {"name":"hasTimestampValue","parameterTypes":[] }
@@ -936,7 +936,7 @@
 },
 {
   "condition":{"typeReachable":"com.google.protobuf.util.JsonFormatTest"},
-  "name":"com.lingh.JsonTestProto$TestTimestamp$Builder",
+  "name":"com_google_protobuf.protobuf_java_util.JsonTestProto$TestTimestamp$Builder",
   "methods":[
     {"name":"clearTimestampValue","parameterTypes":[] }, 
     {"name":"getTimestampValue","parameterTypes":[] }, 
@@ -947,7 +947,7 @@
 },
 {
   "condition":{"typeReachable":"com.google.protobuf.util.JsonFormatTest"},
-  "name":"com.lingh.JsonTestProto$TestWrappers",
+  "name":"com_google_protobuf.protobuf_java_util.JsonTestProto$TestWrappers",
   "methods":[
     {"name":"getBoolValue","parameterTypes":[] }, 
     {"name":"getBytesValue","parameterTypes":[] }, 
@@ -971,7 +971,7 @@
 },
 {
   "condition":{"typeReachable":"com.google.protobuf.util.JsonFormatTest"},
-  "name":"com.lingh.JsonTestProto$TestWrappers$Builder",
+  "name":"com_google_protobuf.protobuf_java_util.JsonTestProto$TestWrappers$Builder",
   "methods":[
     {"name":"clearBoolValue","parameterTypes":[] }, 
     {"name":"clearBytesValue","parameterTypes":[] }, 
@@ -1022,7 +1022,7 @@
 },
 {
   "condition":{"typeReachable":"com.google.protobuf.util.FieldMaskTreeTest"},
-  "name":"com.lingh.UnittestImport$ImportEnum",
+  "name":"com_google_protobuf.protobuf_java_util.UnittestImport$ImportEnum",
   "methods":[
     {"name":"getValueDescriptor","parameterTypes":[] }, 
     {"name":"valueOf","parameterTypes":["com.google.protobuf.Descriptors$EnumValueDescriptor"] }
@@ -1030,12 +1030,12 @@
 },
 {
   "condition":{"typeReachable":"com.google.protobuf.util.FieldMaskTreeTest"},
-  "name":"com.lingh.UnittestImport$ImportMessage",
+  "name":"com_google_protobuf.protobuf_java_util.UnittestImport$ImportMessage",
   "methods":[{"name":"newBuilder","parameterTypes":[] }]
 },
 {
   "condition":{"typeReachable":"com.google.protobuf.util.FieldMaskTreeTest"},
-  "name":"com.lingh.UnittestImportPublic$PublicImportMessage",
+  "name":"com_google_protobuf.protobuf_java_util.UnittestImportPublic$PublicImportMessage",
   "methods":[{"name":"newBuilder","parameterTypes":[] }]
 },
 {
@@ -1347,8 +1347,8 @@
     {"name":"addRepeatedForeignEnum","parameterTypes":["protobuf_unittest.UnittestProto$ForeignEnum"] }, 
     {"name":"addRepeatedForeignMessage","parameterTypes":["protobuf_unittest.UnittestProto$ForeignMessage"] }, 
     {"name":"addRepeatedGroup","parameterTypes":["protobuf_unittest.UnittestProto$TestAllTypes$RepeatedGroup"] }, 
-    {"name":"addRepeatedImportEnum","parameterTypes":["com.lingh.UnittestImport$ImportEnum"] }, 
-    {"name":"addRepeatedImportMessage","parameterTypes":["com.lingh.UnittestImport$ImportMessage"] }, 
+    {"name":"addRepeatedImportEnum","parameterTypes":["com_google_protobuf.protobuf_java_util.UnittestImport$ImportEnum"] }, 
+    {"name":"addRepeatedImportMessage","parameterTypes":["com_google_protobuf.protobuf_java_util.UnittestImport$ImportMessage"] }, 
     {"name":"addRepeatedInt32","parameterTypes":["int"] }, 
     {"name":"addRepeatedInt64","parameterTypes":["long"] }, 
     {"name":"addRepeatedLazyMessage","parameterTypes":["protobuf_unittest.UnittestProto$TestAllTypes$NestedMessage"] }, 
@@ -1646,7 +1646,7 @@
     {"name":"setDefaultFixed64","parameterTypes":["long"] }, 
     {"name":"setDefaultFloat","parameterTypes":["float"] }, 
     {"name":"setDefaultForeignEnum","parameterTypes":["protobuf_unittest.UnittestProto$ForeignEnum"] }, 
-    {"name":"setDefaultImportEnum","parameterTypes":["com.lingh.UnittestImport$ImportEnum"] }, 
+    {"name":"setDefaultImportEnum","parameterTypes":["com_google_protobuf.protobuf_java_util.UnittestImport$ImportEnum"] }, 
     {"name":"setDefaultInt32","parameterTypes":["int"] }, 
     {"name":"setDefaultInt64","parameterTypes":["long"] }, 
     {"name":"setDefaultNestedEnum","parameterTypes":["protobuf_unittest.UnittestProto$TestAllTypes$NestedEnum"] }, 
@@ -1676,14 +1676,14 @@
     {"name":"setOptionalForeignEnum","parameterTypes":["protobuf_unittest.UnittestProto$ForeignEnum"] }, 
     {"name":"setOptionalForeignMessage","parameterTypes":["protobuf_unittest.UnittestProto$ForeignMessage"] }, 
     {"name":"setOptionalGroup","parameterTypes":["protobuf_unittest.UnittestProto$TestAllTypes$OptionalGroup"] }, 
-    {"name":"setOptionalImportEnum","parameterTypes":["com.lingh.UnittestImport$ImportEnum"] }, 
-    {"name":"setOptionalImportMessage","parameterTypes":["com.lingh.UnittestImport$ImportMessage"] }, 
+    {"name":"setOptionalImportEnum","parameterTypes":["com_google_protobuf.protobuf_java_util.UnittestImport$ImportEnum"] }, 
+    {"name":"setOptionalImportMessage","parameterTypes":["com_google_protobuf.protobuf_java_util.UnittestImport$ImportMessage"] }, 
     {"name":"setOptionalInt32","parameterTypes":["int"] }, 
     {"name":"setOptionalInt64","parameterTypes":["long"] }, 
     {"name":"setOptionalLazyMessage","parameterTypes":["protobuf_unittest.UnittestProto$TestAllTypes$NestedMessage"] }, 
     {"name":"setOptionalNestedEnum","parameterTypes":["protobuf_unittest.UnittestProto$TestAllTypes$NestedEnum"] }, 
     {"name":"setOptionalNestedMessage","parameterTypes":["protobuf_unittest.UnittestProto$TestAllTypes$NestedMessage"] }, 
-    {"name":"setOptionalPublicImportMessage","parameterTypes":["com.lingh.UnittestImportPublic$PublicImportMessage"] }, 
+    {"name":"setOptionalPublicImportMessage","parameterTypes":["com_google_protobuf.protobuf_java_util.UnittestImportPublic$PublicImportMessage"] }, 
     {"name":"setOptionalSfixed32","parameterTypes":["int"] }, 
     {"name":"setOptionalSfixed64","parameterTypes":["long"] }, 
     {"name":"setOptionalSint32","parameterTypes":["int"] }, 
@@ -1705,8 +1705,8 @@
     {"name":"setRepeatedForeignEnum","parameterTypes":["int","protobuf_unittest.UnittestProto$ForeignEnum"] }, 
     {"name":"setRepeatedForeignMessage","parameterTypes":["int","protobuf_unittest.UnittestProto$ForeignMessage"] }, 
     {"name":"setRepeatedGroup","parameterTypes":["int","protobuf_unittest.UnittestProto$TestAllTypes$RepeatedGroup"] }, 
-    {"name":"setRepeatedImportEnum","parameterTypes":["int","com.lingh.UnittestImport$ImportEnum"] }, 
-    {"name":"setRepeatedImportMessage","parameterTypes":["int","com.lingh.UnittestImport$ImportMessage"] }, 
+    {"name":"setRepeatedImportEnum","parameterTypes":["int","com_google_protobuf.protobuf_java_util.UnittestImport$ImportEnum"] }, 
+    {"name":"setRepeatedImportMessage","parameterTypes":["int","com_google_protobuf.protobuf_java_util.UnittestImport$ImportMessage"] }, 
     {"name":"setRepeatedInt32","parameterTypes":["int","int"] }, 
     {"name":"setRepeatedInt64","parameterTypes":["int","long"] }, 
     {"name":"setRepeatedLazyMessage","parameterTypes":["int","protobuf_unittest.UnittestProto$TestAllTypes$NestedMessage"] }, 

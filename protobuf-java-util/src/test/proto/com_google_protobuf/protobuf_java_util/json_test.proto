@@ -9,7 +9,7 @@ import "google/protobuf/struct.proto";
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/wrappers.proto";
 
-option java_package = "com.lingh";
+option java_package = "com_google_protobuf.protobuf_java_util";
 option java_outer_classname = "JsonTestProto";
 
 message TestAllTypes {
