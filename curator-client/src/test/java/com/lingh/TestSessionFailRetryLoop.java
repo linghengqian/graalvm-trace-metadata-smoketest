@@ -42,8 +42,7 @@ public class TestSessionFailRetryLoop extends BaseClassForTests {
                                 return null;
                             }
                     );
-                    RetryLoop.callWithRetry(client,
-                            (Callable<Void>) () -> {
+                    RetryLoop.callWithRetry(client, (Callable<Void>) () -> {
                                 assertFalse(firstTime.get());
                                 assertNull(client.getZooKeeper().exists("/foo/bar", false));
                                 secondWasDone.set(true);
@@ -71,8 +70,7 @@ public class TestSessionFailRetryLoop extends BaseClassForTests {
             final AtomicBoolean secondWasDone = new AtomicBoolean(false);
             final AtomicBoolean firstTime = new AtomicBoolean(true);
             SessionFailRetryLoop.callWithRetry(client, SessionFailRetryLoop.Mode.RETRY, () -> {
-                        RetryLoop.callWithRetry(client,
-                                (Callable<Void>) () -> {
+                        RetryLoop.callWithRetry(client, (Callable<Void>) () -> {
                                     if (firstTime.compareAndSet(true, false)) {
                                         assertNull(client.getZooKeeper().exists("/foo/bar", false));
                                         client.getZooKeeper().getTestable().injectSessionExpiration();
@@ -101,7 +99,8 @@ public class TestSessionFailRetryLoop extends BaseClassForTests {
     @Test
     public void testBasic() throws Exception {
         final Timing timing = new Timing();
-        final CuratorZookeeperClient client = new CuratorZookeeperClient(server.getConnectString(), timing.session(), timing.connection(), null, new ExponentialBackoffRetry(100, 3));
+        final CuratorZookeeperClient client = new CuratorZookeeperClient(server.getConnectString(),
+                timing.session(), timing.connection(), null, new ExponentialBackoffRetry(100, 3));
         SessionFailRetryLoop retryLoop = client.newSessionFailRetryLoop(SessionFailRetryLoop.Mode.FAIL);
         try (retryLoop) {
             retryLoop.start();
@@ -133,25 +132,24 @@ public class TestSessionFailRetryLoop extends BaseClassForTests {
     @Test
     public void testBasicStatic() throws Exception {
         Timing timing = new Timing();
-        final CuratorZookeeperClient client = new CuratorZookeeperClient(server.getConnectString(), timing.session(), timing.connection(), null, new ExponentialBackoffRetry(100, 3));
+        final CuratorZookeeperClient client = new CuratorZookeeperClient(server.getConnectString(),
+                timing.session(), timing.connection(), null, new ExponentialBackoffRetry(100, 3));
         SessionFailRetryLoop retryLoop = client.newSessionFailRetryLoop(SessionFailRetryLoop.Mode.FAIL);
         try (retryLoop) {
             retryLoop.start();
             client.start();
             try {
                 SessionFailRetryLoop.callWithRetry(client, SessionFailRetryLoop.Mode.FAIL, () -> {
-                            RetryLoop.callWithRetry
-                                    (client,
-                                            (Callable<Void>) () -> {
-                                                assertNull(client.getZooKeeper().exists("/foo/bar", false));
-                                                client.getZooKeeper().getTestable().injectSessionExpiration();
+                            RetryLoop.callWithRetry(client, (Callable<Void>) () -> {
+                                        assertNull(client.getZooKeeper().exists("/foo/bar", false));
+                                        client.getZooKeeper().getTestable().injectSessionExpiration();
 
-                                                client.getZooKeeper();
-                                                client.blockUntilConnectedOrTimedOut();
-                                                assertNull(client.getZooKeeper().exists("/foo/bar", false));
-                                                return null;
-                                            }
-                                    );
+                                        client.getZooKeeper();
+                                        client.blockUntilConnectedOrTimedOut();
+                                        assertNull(client.getZooKeeper().exists("/foo/bar", false));
+                                        return null;
+                                    }
+                            );
                             return null;
                         }
                 );

@@ -52,8 +52,7 @@ public class BasicTests extends BaseClassForTests {
         try (client) {
             client.start();
             final AtomicBoolean firstTime = new AtomicBoolean(true);
-            RetryLoop.callWithRetry(client,
-                    () -> {
+            RetryLoop.callWithRetry(client, () -> {
                         if (firstTime.compareAndSet(true, false)) {
                             try {
                                 client.getZooKeeper().create("/foo", new byte[0], ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);

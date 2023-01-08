@@ -105,7 +105,8 @@ public class TestRetryLoop extends BaseClassForTests {
     public void testRetryForeverWithSessionFailed() throws Exception {
         final Timing timing = new Timing();
         final RetryPolicy retryPolicy = new SessionFailedRetryPolicy(new RetryForever(1000));
-        final CuratorZookeeperClient client = new CuratorZookeeperClient(server.getConnectString(), timing.session(), timing.connection(), null, retryPolicy);
+        final CuratorZookeeperClient client = new CuratorZookeeperClient(server.getConnectString(),
+                timing.session(), timing.connection(), null, retryPolicy);
         try (client) {
             client.start();
             int loopCount = 0;

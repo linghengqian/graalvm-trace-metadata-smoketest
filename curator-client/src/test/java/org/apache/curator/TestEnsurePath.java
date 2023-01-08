@@ -59,12 +59,10 @@ public class TestEnsurePath {
         final CountDownLatch startedLatch = new CountDownLatch(2);
         final CountDownLatch finishedLatch = new CountDownLatch(2);
         final Semaphore semaphore = new Semaphore(0);
-        when(client.exists(Mockito.any(), anyBoolean())).thenAnswer(
-                (Answer<Stat>) invocation -> {
-                    semaphore.acquire();
-                    return fakeStat;
-                }
-        );
+        when(client.exists(Mockito.any(), anyBoolean())).thenAnswer((Answer<Stat>) invocation -> {
+            semaphore.acquire();
+            return fakeStat;
+        });
         final EnsurePath ensurePath = new EnsurePath("/one/two/three");
         ExecutorService service = Executors.newCachedThreadPool();
         IntStream.range(0, 2).mapToObj(i -> (Callable<Void>) () -> {
