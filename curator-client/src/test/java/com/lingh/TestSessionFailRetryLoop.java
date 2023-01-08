@@ -31,15 +31,13 @@ public class TestSessionFailRetryLoop extends BaseClassForTests {
             final AtomicBoolean firstTime = new AtomicBoolean(true);
             while (retryLoop.shouldContinue()) {
                 try {
-                    RetryLoop.callWithRetry(client,
-                            (Callable<Void>) () -> {
+                    RetryLoop.callWithRetry(client, (Callable<Void>) () -> {
                                 if (firstTime.compareAndSet(true, false)) {
                                     assertNull(client.getZooKeeper().exists("/foo/bar", false));
                                     client.getZooKeeper().getTestable().injectSessionExpiration();
                                     client.getZooKeeper();
                                     client.blockUntilConnectedOrTimedOut();
                                 }
-
                                 assertNull(client.getZooKeeper().exists("/foo/bar", false));
                                 return null;
                             }
@@ -72,9 +70,7 @@ public class TestSessionFailRetryLoop extends BaseClassForTests {
             client.start();
             final AtomicBoolean secondWasDone = new AtomicBoolean(false);
             final AtomicBoolean firstTime = new AtomicBoolean(true);
-            SessionFailRetryLoop.callWithRetry(client,
-                    SessionFailRetryLoop.Mode.RETRY,
-                    () -> {
+            SessionFailRetryLoop.callWithRetry(client, SessionFailRetryLoop.Mode.RETRY, () -> {
                         RetryLoop.callWithRetry(client,
                                 (Callable<Void>) () -> {
                                     if (firstTime.compareAndSet(true, false)) {
@@ -87,13 +83,12 @@ public class TestSessionFailRetryLoop extends BaseClassForTests {
                                     return null;
                                 }
                         );
-                        RetryLoop.callWithRetry(client,
-                                (Callable<Void>) () -> {
-                                    assertFalse(firstTime.get());
-                                    assertNull(client.getZooKeeper().exists("/foo/bar", false));
-                                    secondWasDone.set(true);
-                                    return null;
-                                });
+                        RetryLoop.callWithRetry(client, (Callable<Void>) () -> {
+                            assertFalse(firstTime.get());
+                            assertNull(client.getZooKeeper().exists("/foo/bar", false));
+                            secondWasDone.set(true);
+                            return null;
+                        });
                         return null;
                     }
             );
@@ -114,18 +109,15 @@ public class TestSessionFailRetryLoop extends BaseClassForTests {
             try {
                 while (retryLoop.shouldContinue()) {
                     try {
-                        RetryLoop.callWithRetry(client,
-                                (Callable<Void>) () -> {
-                                    assertNull(client.getZooKeeper().exists("/foo/bar", false));
-                                    client.getZooKeeper().getTestable().injectSessionExpiration();
-
-                                    timing.sleepABit();
-
-                                    client.getZooKeeper();
-                                    client.blockUntilConnectedOrTimedOut();
-                                    assertNull(client.getZooKeeper().exists("/foo/bar", false));
-                                    return null;
-                                });
+                        RetryLoop.callWithRetry(client, (Callable<Void>) () -> {
+                            assertNull(client.getZooKeeper().exists("/foo/bar", false));
+                            client.getZooKeeper().getTestable().injectSessionExpiration();
+                            timing.sleepABit();
+                            client.getZooKeeper();
+                            client.blockUntilConnectedOrTimedOut();
+                            assertNull(client.getZooKeeper().exists("/foo/bar", false));
+                            return null;
+                        });
                     } catch (Exception e) {
                         retryLoop.takeException(e);
                     }
@@ -147,25 +139,22 @@ public class TestSessionFailRetryLoop extends BaseClassForTests {
             retryLoop.start();
             client.start();
             try {
-                SessionFailRetryLoop.callWithRetry
-                        (client,
-                                SessionFailRetryLoop.Mode.FAIL,
-                                () -> {
-                                    RetryLoop.callWithRetry
-                                            (client,
-                                                    (Callable<Void>) () -> {
-                                                        assertNull(client.getZooKeeper().exists("/foo/bar", false));
-                                                        client.getZooKeeper().getTestable().injectSessionExpiration();
+                SessionFailRetryLoop.callWithRetry(client, SessionFailRetryLoop.Mode.FAIL, () -> {
+                            RetryLoop.callWithRetry
+                                    (client,
+                                            (Callable<Void>) () -> {
+                                                assertNull(client.getZooKeeper().exists("/foo/bar", false));
+                                                client.getZooKeeper().getTestable().injectSessionExpiration();
 
-                                                        client.getZooKeeper();
-                                                        client.blockUntilConnectedOrTimedOut();
-                                                        assertNull(client.getZooKeeper().exists("/foo/bar", false));
-                                                        return null;
-                                                    }
-                                            );
-                                    return null;
-                                }
-                        );
+                                                client.getZooKeeper();
+                                                client.blockUntilConnectedOrTimedOut();
+                                                assertNull(client.getZooKeeper().exists("/foo/bar", false));
+                                                return null;
+                                            }
+                                    );
+                            return null;
+                        }
+                );
             } catch (SessionFailRetryLoop.SessionFailedException ignored) {
             }
         } finally {
