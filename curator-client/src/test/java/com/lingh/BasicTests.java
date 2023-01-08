@@ -58,7 +58,6 @@ public class BasicTests extends BaseClassForTests {
                             try {
                                 client.getZooKeeper().create("/foo", new byte[0], ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
                             } catch (KeeperException.NodeExistsException ignore) {
-                                // ignore
                             }
                             client.getZooKeeper().getTestable().injectSessionExpiration();
                             assertTrue(timing.awaitLatch(latch));
