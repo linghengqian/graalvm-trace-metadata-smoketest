@@ -49,19 +49,6 @@
   ]
 },
 {
-  "name":"com.lingh.TestEnsurePath",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"testBasic","parameterTypes":[] }, 
-    {"name":"testSimultaneous","parameterTypes":[] }
-  ]
-},
-{
   "name":"com.lingh.TestIs37",
   "allDeclaredFields":true,
   "allDeclaredClasses":true,
@@ -103,12 +90,6 @@
     {"name":"testRetry","parameterTypes":[] }, 
     {"name":"testRetryStatic","parameterTypes":[] }
   ]
-},
-{
-  "name":"com.lingh.utils.RetryLoopImpl",
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true
 },
 {
   "name":"com.lingh.utils.TestCloseableExecutorService",
@@ -776,17 +757,24 @@
   ]
 },
 {
-  "name":"org.apache.curator.RetryLoop",
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true
-},
-{
   "name":"org.apache.curator.RetrySleeper",
   "queryAllDeclaredMethods":true,
   "queryAllPublicMethods":true,
   "queryAllDeclaredConstructors":true,
   "methods":[{"name":"sleepFor","parameterTypes":["long","java.util.concurrent.TimeUnit"] }]
+},
+{
+  "name":"org.apache.curator.TestEnsurePath",
+  "allDeclaredFields":true,
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"testBasic","parameterTypes":[] }, 
+    {"name":"testSimultaneous","parameterTypes":[] }
+  ]
 },
 {
   "name":"org.apache.curator.test.BaseClassForTests",
