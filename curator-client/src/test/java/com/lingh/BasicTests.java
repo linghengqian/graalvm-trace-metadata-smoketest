@@ -47,7 +47,8 @@ public class BasicTests extends BaseClassForTests {
                 latch.countDown();
             }
         };
-        final CuratorZookeeperClient client = new CuratorZookeeperClient(server.getConnectString(), timing.session(), timing.connection(), watcher, new RetryOneTime(2));
+        final CuratorZookeeperClient client = new CuratorZookeeperClient(server.getConnectString(),
+                timing.session(), timing.connection(), watcher, new RetryOneTime(2));
         try (client) {
             client.start();
             final AtomicBoolean firstTime = new AtomicBoolean(true);
@@ -73,7 +74,8 @@ public class BasicTests extends BaseClassForTests {
 
     @Test
     public void testReconnect() throws Exception {
-        CuratorZookeeperClient client = new CuratorZookeeperClient(server.getConnectString(), 10000, 10000, null, new RetryOneTime(1));
+        CuratorZookeeperClient client = new CuratorZookeeperClient(server.getConnectString(),
+                10000, 10000, null, new RetryOneTime(1));
         try (client) {
             client.start();
             client.blockUntilConnectedOrTimedOut();

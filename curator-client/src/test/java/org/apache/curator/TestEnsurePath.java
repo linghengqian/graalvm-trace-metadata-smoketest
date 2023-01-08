@@ -39,7 +39,7 @@ public class TestEnsurePath {
         when(client.exists(Mockito.any(), anyBoolean())).thenReturn(fakeStat);
         EnsurePath ensurePath = new EnsurePath("/one/two/three");
         ensurePath.ensure(curator);
-        verify(client, times(3)).exists(Mockito.<String>any(), anyBoolean());
+        verify(client, times(3)).exists(Mockito.any(), anyBoolean());
         ensurePath.ensure(curator);
         verifyNoMoreInteractions(client);
         ensurePath.ensure(curator);
@@ -76,7 +76,7 @@ public class TestEnsurePath {
         assertTrue(startedLatch.await(10, TimeUnit.SECONDS));
         semaphore.release(3);
         assertTrue(finishedLatch.await(10, TimeUnit.SECONDS));
-        verify(client, times(3)).exists(Mockito.<String>any(), anyBoolean());
+        verify(client, times(3)).exists(Mockito.any(), anyBoolean());
         ensurePath.ensure(curator);
         verifyNoMoreInteractions(client);
         ensurePath.ensure(curator);

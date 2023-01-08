@@ -17,6 +17,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import java.util.concurrent.TimeUnit;
+import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -24,15 +25,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.Mockito.times;
 
-@SuppressWarnings("OverflowingLoopIndex")
 public class TestRetryLoop extends BaseClassForTests {
     @Test
     public void testExponentialBackoffRetryLimit() {
         RetrySleeper sleeper = (time, unit) -> assertTrue(unit.toMillis(time) <= 100);
         ExponentialBackoffRetry retry = new ExponentialBackoffRetry(1, Integer.MAX_VALUE, 100);
-        for (int i = 0; i >= 0; ++i) {
-            retry.allowRetry(i, 0, sleeper);
-        }
+        IntStream.iterate(0, i -> i >= 0, i -> i + 1).forEach(i -> retry.allowRetry(i, 0, sleeper));
     }
 
     @Test
@@ -117,7 +115,6 @@ public class TestRetryLoop extends BaseClassForTests {
                 if (++loopCount > 1) {
                     break;
                 }
-
                 try {
                     client.getZooKeeper().getTestable().injectSessionExpiration();
                     client.getZooKeeper().create("/test", new byte[]{1, 2, 3}, ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);

@@ -21,7 +21,8 @@ public class TestSessionFailRetryLoop extends BaseClassForTests {
     @Test
     public void testRetry() throws Exception {
         Timing timing = new Timing();
-        final CuratorZookeeperClient client = new CuratorZookeeperClient(server.getConnectString(), timing.session(), timing.connection(), null, new ExponentialBackoffRetry(100, 3));
+        final CuratorZookeeperClient client = new CuratorZookeeperClient(server.getConnectString(),
+                timing.session(), timing.connection(), null, new ExponentialBackoffRetry(100, 3));
         SessionFailRetryLoop retryLoop = client.newSessionFailRetryLoop(SessionFailRetryLoop.Mode.RETRY);
         try (retryLoop) {
             retryLoop.start();
@@ -130,8 +131,7 @@ public class TestSessionFailRetryLoop extends BaseClassForTests {
                     }
                 }
                 fail();
-            } catch (SessionFailRetryLoop.SessionFailedException dummy) {
-                // correct
+            } catch (SessionFailRetryLoop.SessionFailedException ignored) {
             }
         } finally {
             CloseableUtils.closeQuietly(client);
@@ -166,8 +166,7 @@ public class TestSessionFailRetryLoop extends BaseClassForTests {
                                     return null;
                                 }
                         );
-            } catch (SessionFailRetryLoop.SessionFailedException dummy) {
-                // correct
+            } catch (SessionFailRetryLoop.SessionFailedException ignored) {
             }
         } finally {
             CloseableUtils.closeQuietly(client);
