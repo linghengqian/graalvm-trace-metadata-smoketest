@@ -1518,7 +1518,7 @@
   "name":"java.lang.RuntimePermission"
 },
 {
-  "condition":{"typeReachable":"io.etcd.jetcd.impl.WatchImpl$$Lambda$1028/0x0000000801217290"},
+  "condition":{"typeReachable":"io.etcd.jetcd.impl.WatchImpl$$Lambda$1029/0x0000000801217b40"},
   "name":"java.lang.StackWalker",
   "methods":[{"name":"walk","parameterTypes":["java.util.function.Function"] }]
 },
@@ -1533,7 +1533,7 @@
   "methods":[{"name":"walk","parameterTypes":["java.util.function.Function"] }]
 },
 {
-  "condition":{"typeReachable":"io.etcd.jetcd.impl.WatchImpl$$Lambda$1028/0x0000000801217290"},
+  "condition":{"typeReachable":"io.etcd.jetcd.impl.WatchImpl$$Lambda$1029/0x0000000801217b40"},
   "name":"java.lang.StackWalker$StackFrame",
   "methods":[{"name":"getClassName","parameterTypes":[] }]
 },
@@ -1682,10 +1682,7 @@
 {
   "condition":{"typeReachable":"io.etcd.jetcd.impl.ClientConnectionManager"},
   "name":"java.util.concurrent.atomic.LongAdder",
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"add","parameterTypes":["long"] }
-  ]
+  "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
   "condition":{"typeReachable":"io.etcd.jetcd.impl.KVImpl"},
@@ -1765,7 +1762,7 @@
   "name":"org.eclipse.jetty.npn.NextProtoNego"
 },
 {
-  "condition":{"typeReachable":"io.etcd.jetcd.impl.WatchImpl$$Lambda$1028/0x0000000801217290"},
+  "condition":{"typeReachable":"io.etcd.jetcd.impl.WatchImpl$$Lambda$1029/0x0000000801217b40"},
   "name":"org.mockito.configuration.MockitoConfiguration"
 },
 {
