@@ -2,20 +2,12 @@
   "resources":{
   "includes":[
     {
-      "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
-      "pattern":"\\QMETA-INF/services/ch.qos.logback.classic.spi.Configurator\\E"
-    }, 
-    {
       "condition":{"typeReachable":"io.etcd.jetcd.impl.KVImpl"},
       "pattern":"\\QMETA-INF/services/io.grpc.LoadBalancerProvider\\E"
     }, 
     {
       "condition":{"typeReachable":"io.etcd.jetcd.impl.KVImpl"},
       "pattern":"\\QMETA-INF/services/io.grpc.NameResolverProvider\\E"
-    }, 
-    {
-      "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
-      "pattern":"\\QMETA-INF/services/org.slf4j.spi.SLF4JServiceProvider\\E"
     }, 
     {
       "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},

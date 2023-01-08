@@ -1405,6 +1405,11 @@
 },
 {
   "condition":{"typeReachable":"io.etcd.jetcd.impl.KVImpl"},
+  "name":"io.vertx.core.logging.Log4j2LogDelegateFactory",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"io.etcd.jetcd.impl.KVImpl"},
   "name":"io.vertx.core.logging.SLF4JLogDelegateFactory",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
@@ -1417,10 +1422,6 @@
   "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
   "name":"java.io.Closeable",
   "queryAllDeclaredMethods":true
-},
-{
-  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
-  "name":"java.io.FilePermission"
 },
 {
   "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
@@ -1450,11 +1451,6 @@
   "queryAllDeclaredConstructors":true
 },
 {
-  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
-  "name":"java.lang.Class",
-  "methods":[{"name":"getModule","parameterTypes":[] }]
-},
-{
   "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
   "name":"java.lang.Comparable",
   "queryAllDeclaredMethods":true
@@ -1479,30 +1475,14 @@
   "queryAllDeclaredConstructors":true
 },
 {
-  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
-  "name":"java.lang.Module",
-  "methods":[{"name":"getDescriptor","parameterTypes":[] }]
-},
-{
   "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
   "name":"java.lang.Number",
   "allDeclaredFields":true,
   "queryAllDeclaredMethods":true
 },
 {
-  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdClusterImpl"},
-  "name":"java.lang.Object",
-  "allDeclaredFields":true
-},
-{
-  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
-  "name":"java.lang.Object",
-  "allDeclaredFields":true
-},
-{
   "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
   "name":"java.lang.Object",
-  "allDeclaredFields":true,
   "queryAllDeclaredMethods":true
 },
 {
@@ -1514,11 +1494,7 @@
   ]
 },
 {
-  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
-  "name":"java.lang.RuntimePermission"
-},
-{
-  "condition":{"typeReachable":"io.etcd.jetcd.impl.WatchImpl$$Lambda$1029/0x0000000801217b40"},
+  "condition":{"typeReachable":"io.etcd.jetcd.impl.WatchImpl$$Lambda$1022/0x000000080120c400"},
   "name":"java.lang.StackWalker",
   "methods":[{"name":"walk","parameterTypes":["java.util.function.Function"] }]
 },
@@ -1533,7 +1509,7 @@
   "methods":[{"name":"walk","parameterTypes":["java.util.function.Function"] }]
 },
 {
-  "condition":{"typeReachable":"io.etcd.jetcd.impl.WatchImpl$$Lambda$1029/0x0000000801217b40"},
+  "condition":{"typeReachable":"io.etcd.jetcd.impl.WatchImpl$$Lambda$1022/0x000000080120c400"},
   "name":"java.lang.StackWalker$StackFrame",
   "methods":[{"name":"getClassName","parameterTypes":[] }]
 },
@@ -1566,19 +1542,6 @@
   "condition":{"typeReachable":"io.etcd.jetcd.impl.KVImpl"},
   "name":"java.lang.management.RuntimeMXBean",
   "methods":[{"name":"getInputArguments","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
-  "name":"java.net.NetPermission"
-},
-{
-  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
-  "name":"java.net.SocketPermission"
-},
-{
-  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
-  "name":"java.net.URLPermission",
-  "methods":[{"name":"<init>","parameterTypes":["java.lang.String","java.lang.String"] }]
 },
 {
   "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
@@ -1625,10 +1588,6 @@
   "name":"java.security.AlgorithmParametersSpi"
 },
 {
-  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
-  "name":"java.security.AllPermission"
-},
-{
   "condition":{"typeReachable":"io.etcd.jetcd.ClientBuilder"},
   "name":"java.security.KeyStoreSpi"
 },
@@ -1649,10 +1608,6 @@
   "name":"java.security.SecureRandomParameters"
 },
 {
-  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
-  "name":"java.security.SecurityPermission"
-},
-{
   "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
   "name":"java.util.ArrayList",
   "queryAllDeclaredMethods":true,
@@ -1669,10 +1624,6 @@
   "name":"java.util.LinkedHashMap",
   "queryAllDeclaredMethods":true,
   "queryAllDeclaredConstructors":true
-},
-{
-  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
-  "name":"java.util.PropertyPermission"
 },
 {
   "condition":{"typeReachable":"io.etcd.jetcd.test.GrpcServerExtension"},
@@ -1741,10 +1692,6 @@
   "methods":[{"name":"<init>","parameterTypes":["sun.security.x509.X500Name"] }]
 },
 {
-  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
-  "name":"javax.smartcardio.CardPermission"
-},
-{
   "condition":{"typeReachable":"io.etcd.jetcd.impl.KVImpl"},
   "name":"jdk.internal.misc.Unsafe",
   "methods":[{"name":"getUnsafe","parameterTypes":[] }]
@@ -1762,7 +1709,7 @@
   "name":"org.eclipse.jetty.npn.NextProtoNego"
 },
 {
-  "condition":{"typeReachable":"io.etcd.jetcd.impl.WatchImpl$$Lambda$1029/0x0000000801217b40"},
+  "condition":{"typeReachable":"io.etcd.jetcd.impl.WatchImpl$$Lambda$1022/0x000000080120c400"},
   "name":"org.mockito.configuration.MockitoConfiguration"
 },
 {
@@ -1798,11 +1745,6 @@
   "queryAllDeclaredMethods":true
 },
 {
-  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdClusterImpl"},
-  "name":"org.testcontainers.shaded.com.github.dockerjava.core.command.AbstrDockerCmd",
-  "allDeclaredFields":true
-},
-{
   "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
   "name":"org.testcontainers.shaded.com.github.dockerjava.core.command.AbstrDockerCmd",
   "allDeclaredFields":true,
@@ -1813,16 +1755,6 @@
   "name":"org.testcontainers.shaded.com.github.dockerjava.core.command.AbstrDockerCmd",
   "allDeclaredFields":true,
   "queryAllDeclaredMethods":true
-},
-{
-  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
-  "name":"org.testcontainers.shaded.com.github.dockerjava.core.command.CopyArchiveFromContainerCmdImpl",
-  "allDeclaredFields":true
-},
-{
-  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
-  "name":"org.testcontainers.shaded.com.github.dockerjava.core.command.CreateContainerCmdImpl",
-  "allDeclaredFields":true
 },
 {
   "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
@@ -1877,71 +1809,6 @@
   "allDeclaredFields":true,
   "queryAllDeclaredMethods":true,
   "queryAllDeclaredConstructors":true
-},
-{
-  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
-  "name":"org.testcontainers.shaded.com.github.dockerjava.core.command.InfoCmdImpl",
-  "allDeclaredFields":true
-},
-{
-  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdClusterImpl"},
-  "name":"org.testcontainers.shaded.com.github.dockerjava.core.command.InspectContainerCmdImpl",
-  "allDeclaredFields":true
-},
-{
-  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
-  "name":"org.testcontainers.shaded.com.github.dockerjava.core.command.InspectContainerCmdImpl",
-  "allDeclaredFields":true
-},
-{
-  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
-  "name":"org.testcontainers.shaded.com.github.dockerjava.core.command.InspectContainerCmdImpl",
-  "allDeclaredFields":true
-},
-{
-  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
-  "name":"org.testcontainers.shaded.com.github.dockerjava.core.command.InspectExecCmdImpl",
-  "allDeclaredFields":true
-},
-{
-  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdClusterImpl"},
-  "name":"org.testcontainers.shaded.com.github.dockerjava.core.command.KillContainerCmdImpl",
-  "allDeclaredFields":true
-},
-{
-  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
-  "name":"org.testcontainers.shaded.com.github.dockerjava.core.command.KillContainerCmdImpl",
-  "allDeclaredFields":true
-},
-{
-  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
-  "name":"org.testcontainers.shaded.com.github.dockerjava.core.command.ListImagesCmdImpl",
-  "allDeclaredFields":true
-},
-{
-  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdClusterImpl"},
-  "name":"org.testcontainers.shaded.com.github.dockerjava.core.command.RemoveContainerCmdImpl",
-  "allDeclaredFields":true
-},
-{
-  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
-  "name":"org.testcontainers.shaded.com.github.dockerjava.core.command.RemoveContainerCmdImpl",
-  "allDeclaredFields":true
-},
-{
-  "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
-  "name":"org.testcontainers.shaded.com.github.dockerjava.core.command.StartContainerCmdImpl",
-  "allDeclaredFields":true
-},
-{
-  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
-  "name":"org.testcontainers.shaded.com.github.dockerjava.core.command.StartContainerCmdImpl",
-  "allDeclaredFields":true
-},
-{
-  "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
-  "name":"org.testcontainers.shaded.com.github.dockerjava.core.command.VersionCmdImpl",
-  "allDeclaredFields":true
 },
 {
   "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
