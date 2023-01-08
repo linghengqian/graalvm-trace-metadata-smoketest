@@ -24,6 +24,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
+@SuppressWarnings("deprecation")
 public class TestEnsurePath {
     @Test
     public void testBasic() throws Exception {
