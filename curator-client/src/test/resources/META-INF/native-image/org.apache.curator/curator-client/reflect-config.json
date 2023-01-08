@@ -92,24 +92,6 @@
   ]
 },
 {
-  "name":"com.lingh.utils.TestCloseableExecutorService",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setup","parameterTypes":[] }, 
-    {"name":"tearDown","parameterTypes":[] }, 
-    {"name":"testBasicCallable","parameterTypes":[] }, 
-    {"name":"testBasicRunnable","parameterTypes":[] }, 
-    {"name":"testListeningCallable","parameterTypes":[] }, 
-    {"name":"testListeningRunnable","parameterTypes":[] }, 
-    {"name":"testPartialRunnable","parameterTypes":[] }
-  ]
-},
-{
   "name":"com.lingh.utils.TestCloseableScheduledExecutorService",
   "allDeclaredFields":true,
   "allDeclaredClasses":true,
@@ -795,15 +777,29 @@
   "queryAllPublicMethods":true
 },
 {
-  "name":"org.apache.curator.utils.CloseableExecutorService",
-  "methods":[{"name":"size","parameterTypes":[] }]
-},
-{
   "name":"org.apache.curator.utils.DebugUtils",
   "fields":[
     {"name":"PROPERTY_DONT_LOG_CONNECTION_ISSUES"}, 
     {"name":"PROPERTY_REMOVE_WATCHERS_IN_FOREGROUND"}, 
     {"name":"PROPERTY_VALIDATE_NAMESPACE_WATCHER_MAP_EMPTY"}
+  ]
+},
+{
+  "name":"org.apache.curator.utils.TestCloseableExecutorService",
+  "allDeclaredFields":true,
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"setup","parameterTypes":[] }, 
+    {"name":"tearDown","parameterTypes":[] }, 
+    {"name":"testBasicCallable","parameterTypes":[] }, 
+    {"name":"testBasicRunnable","parameterTypes":[] }, 
+    {"name":"testListeningCallable","parameterTypes":[] }, 
+    {"name":"testListeningRunnable","parameterTypes":[] }, 
+    {"name":"testPartialRunnable","parameterTypes":[] }
   ]
 },
 {
