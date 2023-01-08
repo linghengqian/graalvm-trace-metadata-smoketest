@@ -1,8 +1,11 @@
 package com.google.protobuf.util;
 
 import com.google.common.collect.Lists;
+import com.google.common.truth.Truth;
 import com.google.protobuf.Duration;
 import com.google.protobuf.Timestamp;
+import com.google.protobuf.util.Durations;
+import com.google.protobuf.util.Timestamps;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -41,7 +44,7 @@ public class TimestampsTest {
 
     @Test
     public void testMinMaxAreValid() {
-        assertThat(Timestamps.isValid(Timestamps.MAX_VALUE)).isTrue();
+        Truth.assertThat(Timestamps.isValid(Timestamps.MAX_VALUE)).isTrue();
         assertThat(Timestamps.isValid(Timestamps.MIN_VALUE)).isTrue();
     }
 
@@ -180,8 +183,7 @@ public class TimestampsTest {
     @Test
     public void testTimestampInvalidFormatValueTooSmall() {
         try {
-            Timestamp value =
-                    Timestamp.newBuilder().setSeconds(Timestamps.TIMESTAMP_SECONDS_MIN - 1).build();
+            Timestamp value = Timestamp.newBuilder().setSeconds(Timestamps.TIMESTAMP_SECONDS_MIN - 1).build();
             Timestamps.toString(value);
             assertWithMessage("IllegalArgumentException is expected.").fail();
         } catch (IllegalArgumentException expected) {
@@ -191,8 +193,7 @@ public class TimestampsTest {
     @Test
     public void testTimestampInvalidFormatValueTooLarge() {
         try {
-            Timestamp value =
-                    Timestamp.newBuilder().setSeconds(Timestamps.TIMESTAMP_SECONDS_MAX + 1).build();
+            Timestamp value = Timestamp.newBuilder().setSeconds(Timestamps.TIMESTAMP_SECONDS_MAX + 1).build();
             Timestamps.toString(value);
             assertWithMessage("IllegalArgumentException is expected.").fail();
         } catch (IllegalArgumentException expected) {
@@ -432,7 +433,7 @@ public class TimestampsTest {
         Timestamp end = Timestamps.parse("9999-12-31T23:59:59.999999999Z");
 
         Duration duration = Timestamps.between(start, end);
-        assertThat(Durations.toString(duration)).isEqualTo("315537897599.999999999s");
+        Truth.assertThat(Durations.toString(duration)).isEqualTo("315537897599.999999999s");
         Timestamp value = Timestamps.add(start, duration);
         assertThat(value).isEqualTo(end);
         value = Timestamps.subtract(end, duration);

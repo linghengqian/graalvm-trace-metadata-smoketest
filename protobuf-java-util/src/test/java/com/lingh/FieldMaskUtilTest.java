@@ -1,7 +1,9 @@
-package com.google.protobuf.util;
+package com.lingh;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.truth.Truth;
 import com.google.protobuf.FieldMask;
+import com.google.protobuf.util.FieldMaskUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -15,7 +17,7 @@ import static com.google.common.truth.Truth.assertWithMessage;
 public class FieldMaskUtilTest {
     @Test
     public void testIsValid() {
-        assertThat(FieldMaskUtil.isValid(NestedTestAllTypes.class, "payload")).isTrue();
+        Truth.assertThat(FieldMaskUtil.isValid(NestedTestAllTypes.class, "payload")).isTrue();
         assertThat(FieldMaskUtil.isValid(NestedTestAllTypes.class, "nonexist")).isFalse();
         assertThat(FieldMaskUtil.isValid(NestedTestAllTypes.class, "payload.optional_int32")).isTrue();
         assertThat(FieldMaskUtil.isValid(NestedTestAllTypes.class, "payload.repeated_int32")).isTrue();

@@ -1,6 +1,7 @@
 package com.google.protobuf.util;
 
 import com.google.common.collect.Lists;
+import com.google.common.truth.Truth;
 import com.google.protobuf.Duration;
 import com.google.protobuf.Timestamp;
 import org.junit.Test;
@@ -23,7 +24,7 @@ public class DurationsTest {
 
     @Test
     public void testIsPositive() {
-        assertThat(Durations.isPositive(Durations.ZERO)).isFalse();
+        Truth.assertThat(Durations.isPositive(Durations.ZERO)).isFalse();
         assertThat(Durations.isPositive(Durations.fromNanos(-1))).isFalse();
         assertThat(Durations.isPositive(Durations.fromNanos(1))).isTrue();
     }

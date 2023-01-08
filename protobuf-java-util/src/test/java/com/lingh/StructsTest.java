@@ -1,6 +1,10 @@
-package com.google.protobuf.util;
+package com.lingh;
 
+import com.google.common.truth.Truth;
 import com.google.protobuf.Struct;
+import com.google.protobuf.util.JsonFormat;
+import com.google.protobuf.util.Structs;
+import com.google.protobuf.util.Values;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -13,7 +17,7 @@ public final class StructsTest {
     public void test1pair_constructsObject() throws Exception {
         Struct.Builder expected = Struct.newBuilder();
         JsonFormat.parser().merge("{\"k1\": 1}", expected);
-        assertThat(Structs.of("k1", Values.of(1))).isEqualTo(expected.build());
+        Truth.assertThat(Structs.of("k1", Values.of(1))).isEqualTo(expected.build());
     }
 
     @Test

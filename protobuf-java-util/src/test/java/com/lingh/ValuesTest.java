@@ -1,9 +1,11 @@
-package com.google.protobuf.util;
+package com.lingh;
 
+import com.google.common.truth.Truth;
 import com.google.protobuf.ListValue;
 import com.google.protobuf.NullValue;
 import com.google.protobuf.Struct;
 import com.google.protobuf.Value;
+import com.google.protobuf.util.Values;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -17,7 +19,7 @@ import static com.google.common.truth.Truth.assertThat;
 public final class ValuesTest {
     @Test
     public void testOfNull_IsNullValue() {
-        assertThat(Values.ofNull()).isEqualTo(Value.newBuilder().setNullValue(NullValue.NULL_VALUE).build());
+        Truth.assertThat(Values.ofNull()).isEqualTo(Value.newBuilder().setNullValue(NullValue.NULL_VALUE).build());
     }
 
     @Test
