@@ -38,7 +38,7 @@
       "pattern":"\\QMETA-INF/services/com.hazelcast.spi.impl.servicemanager.ServiceDescriptorProvider\\E"
     }, 
     {
-      "condition":{"typeReachable":"com.hazelcast.client.config.XmlClientConfigBuilder"},
+      "condition":{"typeReachable":"com.hazelcast.config.AbstractXmlConfigHelper"},
       "pattern":"hazelcast-client-config-[0-9.-]+xsd"
     }, 
     {
@@ -50,16 +50,20 @@
       "pattern":"\\Qhazelcast-client-default.xml\\E"
     }, 
     {
-      "condition":{"typeReachable":"com.hazelcast.config.XmlConfigBuilder"},
-      "pattern":"hazelcast-config-[0-9.-]+xsd"
-    }, 
-    {
       "condition":{"typeReachable":"com.hazelcast.internal.config.XmlConfigLocator"},
       "pattern":"\\Qhazelcast-default.xml\\E"
     }, 
     {
       "condition":{"typeReachable":"com.hazelcast.internal.util.phonehome.BuildInfoCollector"},
       "pattern":"\\Qhazelcast-download.properties\\E"
+    }, 
+    {
+      "condition":{"typeReachable":"com.hazelcast.client.config.XmlClientConfigBuilder"},
+      "pattern":"hazelcast-client-config-[0-9.-]+xsd"
+    }, 
+    {
+      "condition":{"typeReachable":"com.hazelcast.config.XmlConfigBuilder"},
+      "pattern":"hazelcast-config-[0-9.-]+xsd"
     }
   ]},
   "bundles":[
