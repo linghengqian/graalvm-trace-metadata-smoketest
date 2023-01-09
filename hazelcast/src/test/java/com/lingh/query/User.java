@@ -1,4 +1,4 @@
-package com.lingh;
+package com.lingh.query;
 
 import com.hazelcast.nio.serialization.Portable;
 import com.hazelcast.nio.serialization.PortableReader;
@@ -7,14 +7,14 @@ import com.hazelcast.nio.serialization.PortableWriter;
 import java.io.IOException;
 import java.util.Objects;
 
-class User implements Portable {
+public class User implements Portable {
     public static final int CLASS_ID = 1;
 
     public String username;
     public int age;
     public boolean active;
 
-    User(String username, int age, boolean active) {
+    public User(String username, int age, boolean active) {
         this.username = username;
         this.age = age;
         this.active = active;

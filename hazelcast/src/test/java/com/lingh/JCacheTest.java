@@ -4,6 +4,8 @@ import com.hazelcast.cache.HazelcastCachingProvider;
 import com.hazelcast.config.Config;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import javax.cache.Cache;
@@ -16,6 +18,18 @@ import javax.cache.spi.CachingProvider;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class JCacheTest {
+    static HazelcastInstance hazelcastInstance;
+
+    @BeforeAll
+    static void beforeAll() {
+        hazelcastInstance = Hazelcast.newHazelcastInstance();
+    }
+
+    @AfterAll
+    static void afterAll() {
+        hazelcastInstance.shutdown();
+    }
+
     @Test
     void testJCacheOrigin() {
         HazelcastInstance hazelcastInstance = Hazelcast.newHazelcastInstance(new Config());

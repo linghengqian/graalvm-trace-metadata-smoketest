@@ -26,33 +26,5 @@
         ]
       }
     ]
-  },
-  {
-    "condition": {
-      "typeReachable": "com.hazelcast.internal.metrics.impl.MetricsService"
-    },
-    "name": "java.util.Arrays",
-    "methods": [
-      {
-        "name": "asList",
-        "parameterTypes": [
-          "java.lang.Object[]"
-        ]
-      }
-    ]
-  },
-  {
-    "condition": {
-      "typeReachable": "com.hazelcast.internal.metrics.jmx.JmxPublisher"
-    },
-    "name": "java.util.Arrays",
-    "methods": [
-      {
-        "name": "asList",
-        "parameterTypes": [
-          "java.lang.Object[]"
-        ]
-      }
-    ]
   }
 ]

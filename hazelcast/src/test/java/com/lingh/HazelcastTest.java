@@ -5,12 +5,23 @@ import com.hazelcast.cache.ICache;
 import com.hazelcast.client.HazelcastClient;
 import com.hazelcast.client.config.ClientConfig;
 import com.hazelcast.config.Config;
+import com.hazelcast.config.GlobalSerializerConfig;
+import com.hazelcast.config.SerializerConfig;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
+import com.hazelcast.cp.IAtomicLong;
 import com.hazelcast.map.IMap;
 import com.hazelcast.multimap.MultiMap;
 import com.hazelcast.replicatedmap.ReplicatedMap;
+import com.hazelcast.ringbuffer.Ringbuffer;
 import com.hazelcast.topic.ITopic;
+import com.lingh.customSerializer.CustomSerializable;
+import com.lingh.customSerializer.CustomSerializer;
+import com.lingh.globalSerializer.GlobalSerializer;
+import com.lingh.identifiedDataSerializable.SampleDataSerializableFactory;
+import com.lingh.portableSerializable.SamplePortableFactory;
+import com.lingh.query.ThePortableFactory;
+import com.lingh.query.User;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -29,33 +40,58 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.stream.IntStream;
 
-import static com.hazelcast.query.Predicates.*;
+import static com.hazelcast.query.Predicates.and;
+import static com.hazelcast.query.Predicates.between;
+import static com.hazelcast.query.Predicates.equal;
+import static com.hazelcast.query.Predicates.sql;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class HazelcastTest {
     static HazelcastInstance hazelcastInstance;
 
     @BeforeAll
-    static void before() {
+    static void beforeAll() {
         hazelcastInstance = Hazelcast.newHazelcastInstance(new Config());
     }
 
     @AfterAll
-    static void after() {
-        Hazelcast.shutdownAll();
+    static void afterAll() {
+        hazelcastInstance.shutdown();
     }
 
     @Test
-    void testMap() {
+    void testAtomicLong() {
         HazelcastInstance client = HazelcastClient.newHazelcastClient();
-        IMap<String, String> map = client.getMap("my-distributed-map");
-        map.put("key", "value");
-        map.get("key");
-        map.putIfAbsent("someKey", "someValue");
-        map.replace("key", "value", "newValue");
-        assertThat(map.get("someKey")).isEqualTo("someValue");
-        assertThat(map.get("key")).isEqualTo("newValue");
+        IAtomicLong counter = client.getCPSubsystem().getAtomicLong("counter");
+        counter.addAndGet(3);
+        assertThat(counter.get()).isEqualTo(3);
         client.shutdown();
+    }
+
+    @Test
+    void testCustomSerializer() {
+        ClientConfig clientConfig = new ClientConfig();
+        clientConfig.getSerializationConfig().addSerializerConfig(new SerializerConfig()
+                .setImplementation(new CustomSerializer())
+                .setTypeClass(CustomSerializable.class));
+        HazelcastInstance hz = HazelcastClient.newHazelcastClient(clientConfig);
+        hz.shutdown();
+    }
+
+    @Test
+    void testGlobalSerializer() {
+        ClientConfig clientConfig = new ClientConfig();
+        clientConfig.getSerializationConfig().setGlobalSerializerConfig(new GlobalSerializerConfig().setImplementation(new GlobalSerializer()));
+        HazelcastInstance hz = HazelcastClient.newHazelcastClient(clientConfig);
+        hz.shutdown();
+    }
+
+    @Test
+    void testIdentifiedDataSerializable() {
+        ClientConfig clientConfig = new ClientConfig();
+        clientConfig.getSerializationConfig().addDataSerializableFactory(SampleDataSerializableFactory.FACTORY_ID, new SampleDataSerializableFactory());
+        HazelcastInstance hz = HazelcastClient.newHazelcastClient(clientConfig);
+        hz.shutdown();
     }
 
     @SuppressWarnings("unchecked")
@@ -77,11 +113,46 @@ class HazelcastTest {
     }
 
     @Test
-    void testReplicatedMap() {
+    void testList() {
         HazelcastInstance client = HazelcastClient.newHazelcastClient();
-        ReplicatedMap<String, String> map = client.getReplicatedMap("my-replicated-map");
-        assertThat(map.put("key", "value")).isNull();
-        assertThat(map.get("key")).isEqualTo("value");
+        List<Object> list = client.getList("my-distributed-list");
+        list.add("item1");
+        list.add("item2");
+        assertThat(list.remove(0)).isEqualTo("item1");
+        assertThat(list.size()).isEqualTo(1);
+        list.clear();
+        client.shutdown();
+    }
+
+    @Test
+    void testLock() {
+        HazelcastInstance client = HazelcastClient.newHazelcastClient();
+        Lock lock = client.getCPSubsystem().getLock("my-distributed-lock");
+        lock.lock();
+        try {
+            IMap<String, String> map = client.getMap("lock-distributed-map");
+            map.put("key", "value");
+            map.get("key");
+            map.putIfAbsent("someKey", "someValue");
+            map.replace("key", "value", "newValue");
+            assertThat(map.get("someKey")).isEqualTo("someValue");
+            assertThat(map.get("key")).isEqualTo("newValue");
+        } finally {
+            lock.unlock();
+        }
+        client.shutdown();
+    }
+
+    @Test
+    void testMap() {
+        HazelcastInstance client = HazelcastClient.newHazelcastClient();
+        IMap<String, String> map = client.getMap("my-distributed-map");
+        map.put("key", "value");
+        map.get("key");
+        map.putIfAbsent("someKey", "someValue");
+        map.replace("key", "value", "newValue");
+        assertThat(map.get("someKey")).isEqualTo("someValue");
+        assertThat(map.get("key")).isEqualTo("newValue");
         client.shutdown();
     }
 
@@ -99,48 +170,10 @@ class HazelcastTest {
     }
 
     @Test
-    void testSet() {
-        HazelcastInstance client = HazelcastClient.newHazelcastClient();
-        Set<String> set = client.getSet("my-distributed-set");
-        set.add("item1");
-        set.add("item2");
-        set.add("item3");
-        assertThat(set).contains("item1", "item2", "item3");
-        assertThat(set.size()).isEqualTo(3);
-        client.shutdown();
-    }
-
-    @Test
-    void testList() {
-        HazelcastInstance client = HazelcastClient.newHazelcastClient();
-        List<Object> list = client.getList("my-distributed-list");
-        list.add("item1");
-        list.add("item2");
-        assertThat(list.remove(0)).isEqualTo("item1");
-        assertThat(list.size()).isEqualTo(1);
-        list.clear();
-        client.shutdown();
-    }
-
-    @Test
-    void testQueue() throws InterruptedException {
-        HazelcastInstance client = HazelcastClient.newHazelcastClient();
-        BlockingQueue<String> queue = client.getQueue("my-distributed-queue");
-        assertThat(queue.offer("item")).isTrue();
-        queue.poll();
-        assertThat(queue.offer("anotherItem", 500, TimeUnit.MILLISECONDS)).isTrue();
-        queue.poll(5, TimeUnit.SECONDS);
-        queue.put("yetAnotherItem");
-        assertThat(queue.take()).isEqualTo("yetAnotherItem");
-        client.shutdown();
-    }
-
-    @Test
-    void testTopic() {
-        HazelcastInstance client = HazelcastClient.newHazelcastClient();
-        ITopic<Object> topic = client.getTopic("my-distributed-topic");
-        topic.addMessageListener(message -> assertThat(message.getMessageObject()).isEqualTo("Hello to distributed world"));
-        IntStream.range(0, 3).mapToObj(i -> "Hello to distributed world").forEach(topic::publish);
+    void testPortableSerializable() {
+        ClientConfig clientConfig = new ClientConfig();
+        clientConfig.getSerializationConfig().addPortableFactory(SamplePortableFactory.FACTORY_ID, new SamplePortableFactory());
+        HazelcastInstance client = HazelcastClient.newHazelcastClient(clientConfig);
         client.shutdown();
     }
 
@@ -163,21 +196,58 @@ class HazelcastTest {
     }
 
     @Test
-    void testLock() {
+    void testQueue() throws InterruptedException {
         HazelcastInstance client = HazelcastClient.newHazelcastClient();
-        Lock lock = client.getCPSubsystem().getLock("my-distributed-lock");
-        lock.lock();
-        try {
-            IMap<String, String> map = client.getMap("lock-distributed-map");
-            map.put("key", "value");
-            map.get("key");
-            map.putIfAbsent("someKey", "someValue");
-            map.replace("key", "value", "newValue");
-            assertThat(map.get("someKey")).isEqualTo("someValue");
-            assertThat(map.get("key")).isEqualTo("newValue");
-        } finally {
-            lock.unlock();
-        }
+        BlockingQueue<String> queue = client.getQueue("my-distributed-queue");
+        assertThat(queue.offer("item")).isTrue();
+        queue.poll();
+        assertThat(queue.offer("anotherItem", 500, TimeUnit.MILLISECONDS)).isTrue();
+        queue.poll(5, TimeUnit.SECONDS);
+        queue.put("yetAnotherItem");
+        assertThat(queue.take()).isEqualTo("yetAnotherItem");
+        client.shutdown();
+    }
+
+    @Test
+    void testReplicatedMap() {
+        HazelcastInstance client = HazelcastClient.newHazelcastClient();
+        ReplicatedMap<String, String> map = client.getReplicatedMap("my-replicated-map");
+        assertThat(map.put("key", "value")).isNull();
+        assertThat(map.get("key")).isEqualTo("value");
+        client.shutdown();
+    }
+
+    @Test
+    void testRingBuffer() throws InterruptedException {
+        HazelcastInstance client = HazelcastClient.newHazelcastClient();
+        Ringbuffer<Long> rb = client.getRingbuffer("rb");
+        rb.add(100L);
+        rb.add(200L);
+        long sequence = rb.headSequence();
+        assertThat(rb.readOne(sequence)).isEqualTo(100);
+        sequence++;
+        assertThat(rb.readOne(sequence)).isEqualTo(200);
+        client.shutdown();
+    }
+
+    @Test
+    void testSet() {
+        HazelcastInstance client = HazelcastClient.newHazelcastClient();
+        Set<String> set = client.getSet("my-distributed-set");
+        set.add("item1");
+        set.add("item2");
+        set.add("item3");
+        assertThat(set).contains("item1", "item2", "item3");
+        assertThat(set.size()).isEqualTo(3);
+        client.shutdown();
+    }
+
+    @Test
+    void testTopic() {
+        HazelcastInstance client = HazelcastClient.newHazelcastClient();
+        ITopic<Object> topic = client.getTopic("my-distributed-topic");
+        topic.addMessageListener(message -> assertThat(message.getMessageObject()).isEqualTo("Hello to distributed world"));
+        IntStream.range(0, 3).mapToObj(i -> "Hello to distributed world").forEach(topic::publish);
         client.shutdown();
     }
 }
