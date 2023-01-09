@@ -39,6 +39,7 @@ cd ./dynamic-datasource-spring-boot-starter/
 cd ./curator-client/
 cd ./jetcd-core/
 cd ./protobuf-java-util/
+cd ./opengauss-jdbc/
 ```
 
 - exec.
