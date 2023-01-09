@@ -20,6 +20,7 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    jvmArgs = Arrays.asList("-Xmx4g")
 }
 
 
