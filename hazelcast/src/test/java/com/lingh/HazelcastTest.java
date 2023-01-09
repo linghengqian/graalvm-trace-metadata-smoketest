@@ -58,7 +58,7 @@ class HazelcastTest {
         process = new ProcessBuilder("docker", "run", "--rm", "-p", "5701:5701",
                 "-e", "JAVA_OPTS=-Xmx1024M", "hazelcast/hazelcast:5.2.1")
                 .redirectOutput(new File("hazelcast-stdout.txt")).redirectError(new File("hazelcast-stderr.txt")).start();
-        await().atMost(java.time.Duration.ofMinutes(1)).ignoreExceptions().until(() -> {
+        await().atMost(java.time.Duration.ofMinutes(5)).ignoreExceptions().until(() -> {
             HazelcastClient.newHazelcastClient().shutdown();
             return true;
         });
