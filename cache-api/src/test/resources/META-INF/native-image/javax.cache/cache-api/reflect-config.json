@@ -1,0 +1,12 @@
+[
+{
+  "condition":{"typeReachable":"javax.cache.configuration.FactoryBuilder$ClassFactory"},
+  "name":"com.lingh.core.stepbystep.MyCacheEntryListener",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"javax.cache.configuration.FactoryBuilder$ClassFactory"},
+  "name":"com.lingh.core.stepbystep.SimpleTest$MyCacheEntryListener",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+}
+]
