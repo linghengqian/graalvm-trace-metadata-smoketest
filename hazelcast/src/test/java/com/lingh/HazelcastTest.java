@@ -58,7 +58,6 @@ class HazelcastTest {
 
     @AfterAll
     static void afterAll() {
-        HazelcastClient.shutdown(hazelcastInstance);
         hazelcastInstance.shutdown();
     }
 
@@ -68,7 +67,7 @@ class HazelcastTest {
         IAtomicLong counter = client.getCPSubsystem().getAtomicLong("counter");
         counter.addAndGet(3);
         assertThat(counter.get()).isEqualTo(3);
-
+        client.shutdown();
     }
 
     @Test
@@ -77,21 +76,24 @@ class HazelcastTest {
         clientConfig.getSerializationConfig().addSerializerConfig(new SerializerConfig()
                 .setImplementation(new CustomSerializer())
                 .setTypeClass(CustomSerializable.class));
-        HazelcastClient.newHazelcastClient(clientConfig);
+        HazelcastInstance hz = HazelcastClient.newHazelcastClient(clientConfig);
+        hz.shutdown();
     }
 
     @Test
     void testGlobalSerializer() {
         ClientConfig clientConfig = new ClientConfig();
         clientConfig.getSerializationConfig().setGlobalSerializerConfig(new GlobalSerializerConfig().setImplementation(new GlobalSerializer()));
-        HazelcastClient.newHazelcastClient(clientConfig);
+        HazelcastInstance hz = HazelcastClient.newHazelcastClient(clientConfig);
+        hz.shutdown();
     }
 
     @Test
     void testIdentifiedDataSerializable() {
         ClientConfig clientConfig = new ClientConfig();
         clientConfig.getSerializationConfig().addDataSerializableFactory(SampleDataSerializableFactory.FACTORY_ID, new SampleDataSerializableFactory());
-        HazelcastClient.newHazelcastClient(clientConfig);
+        HazelcastInstance hz = HazelcastClient.newHazelcastClient(clientConfig);
+        hz.shutdown();
     }
 
     @SuppressWarnings("unchecked")
@@ -121,6 +123,7 @@ class HazelcastTest {
         assertThat(list.remove(0)).isEqualTo("item1");
         assertThat(list.size()).isEqualTo(1);
         list.clear();
+        client.shutdown();
     }
 
     @Test
@@ -139,6 +142,7 @@ class HazelcastTest {
         } finally {
             lock.unlock();
         }
+        client.shutdown();
     }
 
     @Test
@@ -151,6 +155,7 @@ class HazelcastTest {
         map.replace("key", "value", "newValue");
         assertThat(map.get("someKey")).isEqualTo("someValue");
         assertThat(map.get("key")).isEqualTo("newValue");
+        client.shutdown();
     }
 
     @Test
@@ -163,13 +168,15 @@ class HazelcastTest {
         assertThat(multiMap.get("my-key").toString()).contains("value2", "value1", "value3");
         multiMap.remove("my-key", "value2");
         assertThat(multiMap.get("my-key").toString()).contains("value1", "value3");
+        client.shutdown();
     }
 
     @Test
     void testPortableSerializable() {
         ClientConfig clientConfig = new ClientConfig();
         clientConfig.getSerializationConfig().addPortableFactory(SamplePortableFactory.FACTORY_ID, new SamplePortableFactory());
-        HazelcastClient.newHazelcastClient(clientConfig);
+        HazelcastInstance client = HazelcastClient.newHazelcastClient(clientConfig);
+        client.shutdown();
     }
 
     @Test
@@ -187,6 +194,7 @@ class HazelcastTest {
         Collection<User> result2 = users.values(and(equal("active", true), between("age", 18, 21)));
         assertThat(result1).contains(rod, jane);
         assertThat(result2).contains(rod, jane);
+        client.shutdown();
     }
 
     @Test
@@ -199,6 +207,7 @@ class HazelcastTest {
         queue.poll(5, TimeUnit.SECONDS);
         queue.put("yetAnotherItem");
         assertThat(queue.take()).isEqualTo("yetAnotherItem");
+        client.shutdown();
     }
 
     @Test
@@ -207,6 +216,7 @@ class HazelcastTest {
         ReplicatedMap<String, String> map = client.getReplicatedMap("my-replicated-map");
         assertThat(map.put("key", "value")).isNull();
         assertThat(map.get("key")).isEqualTo("value");
+        client.shutdown();
     }
 
     @Test
@@ -219,6 +229,7 @@ class HazelcastTest {
         assertThat(rb.readOne(sequence)).isEqualTo(100);
         sequence++;
         assertThat(rb.readOne(sequence)).isEqualTo(200);
+        client.shutdown();
     }
 
     @Test
@@ -230,6 +241,7 @@ class HazelcastTest {
         set.add("item3");
         assertThat(set).contains("item1", "item2", "item3");
         assertThat(set.size()).isEqualTo(3);
+        client.shutdown();
     }
 
     @Test
@@ -238,6 +250,7 @@ class HazelcastTest {
         ITopic<Object> topic = client.getTopic("my-distributed-topic");
         topic.addMessageListener(message -> assertThat(message.getMessageObject()).isEqualTo("Hello to distributed world"));
         IntStream.range(0, 3).mapToObj(i -> "Hello to distributed world").forEach(topic::publish);
+        client.shutdown();
     }
 
     @Test
