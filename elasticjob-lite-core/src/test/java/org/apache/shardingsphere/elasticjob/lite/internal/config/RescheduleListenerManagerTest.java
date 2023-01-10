@@ -1,9 +1,8 @@
 package org.apache.shardingsphere.elasticjob.lite.internal.config;
 
+import com.lingh.fixture.LiteYamlConstants;
 import com.lingh.util.ReflectionUtils;
 import org.apache.shardingsphere.elasticjob.infra.handler.sharding.JobInstance;
-import com.lingh.fixture.LiteYamlConstants;
-import org.apache.shardingsphere.elasticjob.lite.internal.config.RescheduleListenerManager;
 import org.apache.shardingsphere.elasticjob.lite.internal.schedule.JobRegistry;
 import org.apache.shardingsphere.elasticjob.lite.internal.schedule.JobScheduleController;
 import org.apache.shardingsphere.elasticjob.lite.internal.storage.JobNodeStorage;

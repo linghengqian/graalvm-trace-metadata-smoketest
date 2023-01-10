@@ -1,18 +1,17 @@
 package org.apache.shardingsphere.elasticjob.lite.internal.schedule;
 
 import com.google.common.collect.Lists;
+import com.lingh.api.listener.fixture.ElasticJobListenerCaller;
+import com.lingh.api.listener.fixture.TestElasticJobListener;
+import com.lingh.util.ReflectionUtils;
 import org.apache.shardingsphere.elasticjob.api.JobConfiguration;
 import org.apache.shardingsphere.elasticjob.infra.exception.JobExecutionEnvironmentException;
 import org.apache.shardingsphere.elasticjob.infra.listener.ShardingContexts;
-import com.lingh.api.listener.fixture.ElasticJobListenerCaller;
-import com.lingh.api.listener.fixture.TestElasticJobListener;
 import org.apache.shardingsphere.elasticjob.lite.internal.config.ConfigurationService;
 import org.apache.shardingsphere.elasticjob.lite.internal.failover.FailoverService;
-import org.apache.shardingsphere.elasticjob.lite.internal.schedule.LiteJobFacade;
 import org.apache.shardingsphere.elasticjob.lite.internal.sharding.ExecutionContextService;
 import org.apache.shardingsphere.elasticjob.lite.internal.sharding.ExecutionService;
 import org.apache.shardingsphere.elasticjob.lite.internal.sharding.ShardingService;
-import com.lingh.util.ReflectionUtils;
 import org.apache.shardingsphere.elasticjob.tracing.JobTracingEventBus;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,7 +24,9 @@ import java.util.Collections;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public final class LiteJobFacadeTest {

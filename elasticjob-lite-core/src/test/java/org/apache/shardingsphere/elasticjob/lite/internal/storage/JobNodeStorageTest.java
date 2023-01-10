@@ -2,7 +2,6 @@ package org.apache.shardingsphere.elasticjob.lite.internal.storage;
 
 import com.lingh.util.ReflectionUtils;
 import org.apache.shardingsphere.elasticjob.lite.internal.listener.ListenerNotifierManager;
-import org.apache.shardingsphere.elasticjob.lite.internal.storage.JobNodeStorage;
 import org.apache.shardingsphere.elasticjob.reg.base.CoordinatorRegistryCenter;
 import org.apache.shardingsphere.elasticjob.reg.base.transaction.TransactionOperation;
 import org.apache.shardingsphere.elasticjob.reg.exception.RegException;
@@ -29,6 +28,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+@SuppressWarnings("unchecked")
 @RunWith(MockitoJUnitRunner.class)
 public final class JobNodeStorageTest {
     @Mock
