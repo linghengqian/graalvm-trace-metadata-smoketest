@@ -37,4 +37,7 @@ graalvmNative {
             outputDirectories.add("src/test/resources/META-INF/native-image/org.apache.shardingsphere.elasticjob/elasticjob-lite-core")
         }
     }
+    metadataRepository {
+        enabled = true
+    }
 }
