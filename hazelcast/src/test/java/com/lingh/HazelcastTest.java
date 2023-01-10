@@ -4,8 +4,10 @@ import com.hazelcast.cache.HazelcastCachingProvider;
 import com.hazelcast.cache.ICache;
 import com.hazelcast.client.HazelcastClient;
 import com.hazelcast.client.config.ClientConfig;
+import com.hazelcast.config.Config;
 import com.hazelcast.config.GlobalSerializerConfig;
 import com.hazelcast.config.SerializerConfig;
+import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.cp.IAtomicLong;
 import com.hazelcast.map.IMap;
@@ -32,8 +34,6 @@ import javax.cache.configuration.MutableConfiguration;
 import javax.cache.expiry.AccessedExpiryPolicy;
 import javax.cache.expiry.Duration;
 import javax.cache.spi.CachingProvider;
-import java.io.File;
-import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
@@ -47,30 +47,18 @@ import static com.hazelcast.query.Predicates.between;
 import static com.hazelcast.query.Predicates.equal;
 import static com.hazelcast.query.Predicates.sql;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.awaitility.Awaitility.await;
 
 class HazelcastTest {
-    private static Process process;
+    static HazelcastInstance hazelcastInstance;
 
     @BeforeAll
-    static void beforeAll() throws IOException {
-        System.out.println("Starting Hazelcast ...");
-        process = new ProcessBuilder("docker", "run", "--rm", "-p", "5701:5701",
-                "-e", "JAVA_OPTS=-Xmx1024M", "hazelcast/hazelcast:5.2.1")
-                .redirectOutput(new File("hazelcast-stdout.txt")).redirectError(new File("hazelcast-stderr.txt")).start();
-        await().atMost(java.time.Duration.ofMinutes(5)).ignoreExceptions().until(() -> {
-            HazelcastClient.newHazelcastClient().shutdown();
-            return true;
-        });
-        System.out.println("Hazelcast started");
+    static void beforeAll() {
+        hazelcastInstance = Hazelcast.newHazelcastInstance(new Config());
     }
 
     @AfterAll
     static void afterAll() {
-        if (process != null && process.isAlive()) {
-            System.out.println("Shutting down Hazelcast");
-            process.destroy();
-        }
+        hazelcastInstance.shutdown();
     }
 
     @Test
