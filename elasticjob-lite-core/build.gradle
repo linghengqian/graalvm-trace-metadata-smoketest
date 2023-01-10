@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+    id 'org.graalvm.buildtools.native' version '0.9.19'
+    id "io.freefair.lombok" version "6.6-rc1"
+}
+
+group 'com.lingh'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.apache.shardingsphere.elasticjob:elasticjob-lite-core:3.0.2'
+    testImplementation 'org.junit.vintage:junit-vintage-engine:5.9.1'
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.apache.curator:curator-test:5.4.0'
+    testImplementation 'org.mockito:mockito-inline:4.11.0'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+graalvmNative {
+    agent {
+        defaultMode = "conditional"
+        modes {
+            conditional {
+                userCodeFilterPath = "user-code-filter.json"
+            }
+        }
+        metadataCopy {
+            mergeWithExisting = true
+            inputTaskNames.add("test")
+            outputDirectories.add("src/test/resources/META-INF/native-image/org.apache.shardingsphere.elasticjob/elasticjob-lite-core")
+        }
+    }
+}

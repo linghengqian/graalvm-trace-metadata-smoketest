@@ -41,6 +41,7 @@ cd ./jetcd-core/
 cd ./protobuf-java-util/
 cd ./opengauss-jdbc/
 cd ./cache-api/
+cd ./elasticjob-lite-core/
 ```
 
 - exec.
