@@ -40,6 +40,7 @@ cd ./curator-client/
 cd ./jetcd-core/
 cd ./protobuf-java-util/
 cd ./opengauss-jdbc/
+cd ./cache-api/
 ```
 
 - exec.
