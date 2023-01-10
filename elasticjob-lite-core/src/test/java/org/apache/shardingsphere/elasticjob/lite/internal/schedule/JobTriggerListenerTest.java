@@ -1,5 +1,6 @@
 package org.apache.shardingsphere.elasticjob.lite.internal.schedule;
 
+import org.apache.shardingsphere.elasticjob.lite.internal.schedule.JobTriggerListener;
 import org.apache.shardingsphere.elasticjob.lite.internal.sharding.ExecutionService;
 import org.apache.shardingsphere.elasticjob.lite.internal.sharding.ShardingService;
 import org.junit.Before;

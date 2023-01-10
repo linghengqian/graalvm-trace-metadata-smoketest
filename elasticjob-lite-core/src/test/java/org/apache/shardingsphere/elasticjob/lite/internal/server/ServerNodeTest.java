@@ -2,6 +2,7 @@ package org.apache.shardingsphere.elasticjob.lite.internal.server;
 
 import org.apache.shardingsphere.elasticjob.infra.handler.sharding.JobInstance;
 import org.apache.shardingsphere.elasticjob.lite.internal.schedule.JobRegistry;
+import org.apache.shardingsphere.elasticjob.lite.internal.server.ServerNode;
 import org.junit.BeforeClass;
 import org.junit.Test;
 

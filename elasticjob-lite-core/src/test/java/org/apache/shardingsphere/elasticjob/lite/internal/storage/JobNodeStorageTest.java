@@ -1,7 +1,8 @@
 package org.apache.shardingsphere.elasticjob.lite.internal.storage;
 
+import com.lingh.util.ReflectionUtils;
 import org.apache.shardingsphere.elasticjob.lite.internal.listener.ListenerNotifierManager;
-import org.apache.shardingsphere.elasticjob.lite.util.ReflectionUtils;
+import org.apache.shardingsphere.elasticjob.lite.internal.storage.JobNodeStorage;
 import org.apache.shardingsphere.elasticjob.reg.base.CoordinatorRegistryCenter;
 import org.apache.shardingsphere.elasticjob.reg.base.transaction.TransactionOperation;
 import org.apache.shardingsphere.elasticjob.reg.exception.RegException;

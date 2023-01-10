@@ -1,5 +1,6 @@
 package org.apache.shardingsphere.elasticjob.lite.internal.election;
 
+import org.apache.shardingsphere.elasticjob.lite.internal.election.LeaderNode;
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;

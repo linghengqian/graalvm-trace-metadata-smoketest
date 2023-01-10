@@ -1,5 +1,6 @@
 package org.apache.shardingsphere.elasticjob.lite.internal.listener;
 
+import org.apache.shardingsphere.elasticjob.lite.internal.listener.ListenerNotifierManager;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;

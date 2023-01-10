@@ -1,10 +1,12 @@
 package org.apache.shardingsphere.elasticjob.lite.internal.trigger;
 
+import com.lingh.util.ReflectionUtils;
 import org.apache.shardingsphere.elasticjob.infra.handler.sharding.JobInstance;
 import org.apache.shardingsphere.elasticjob.lite.internal.schedule.JobRegistry;
 import org.apache.shardingsphere.elasticjob.lite.internal.schedule.JobScheduleController;
 import org.apache.shardingsphere.elasticjob.lite.internal.storage.JobNodeStorage;
-import org.apache.shardingsphere.elasticjob.lite.util.ReflectionUtils;
+import org.apache.shardingsphere.elasticjob.lite.internal.trigger.TriggerListenerManager;
+import org.apache.shardingsphere.elasticjob.lite.internal.trigger.TriggerService;
 import org.apache.shardingsphere.elasticjob.reg.base.CoordinatorRegistryCenter;
 import org.apache.shardingsphere.elasticjob.reg.listener.DataChangedEvent;
 import org.junit.Before;

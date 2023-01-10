@@ -1,5 +1,6 @@
 package org.apache.shardingsphere.elasticjob.lite.internal.setup;
 
+import com.lingh.util.ReflectionUtils;
 import org.apache.shardingsphere.elasticjob.api.ElasticJob;
 import org.apache.shardingsphere.elasticjob.api.JobConfiguration;
 import org.apache.shardingsphere.elasticjob.infra.handler.sharding.JobInstance;
@@ -10,7 +11,7 @@ import org.apache.shardingsphere.elasticjob.lite.internal.listener.ListenerManag
 import org.apache.shardingsphere.elasticjob.lite.internal.reconcile.ReconcileService;
 import org.apache.shardingsphere.elasticjob.lite.internal.schedule.JobRegistry;
 import org.apache.shardingsphere.elasticjob.lite.internal.server.ServerService;
-import org.apache.shardingsphere.elasticjob.lite.util.ReflectionUtils;
+import org.apache.shardingsphere.elasticjob.lite.internal.setup.SetUpFacade;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

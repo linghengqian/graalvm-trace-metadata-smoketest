@@ -1,7 +1,7 @@
 package org.apache.shardingsphere.elasticjob.lite.internal.snapshot;
 
+import com.lingh.fixture.job.DetailedFooJob;
 import lombok.SneakyThrows;
-import org.apache.shardingsphere.elasticjob.lite.fixture.job.DetailedFooJob;
 import org.junit.Test;
 
 import java.io.IOException;

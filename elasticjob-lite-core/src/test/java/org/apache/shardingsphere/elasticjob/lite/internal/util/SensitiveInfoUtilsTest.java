@@ -1,5 +1,7 @@
 package org.apache.shardingsphere.elasticjob.lite.internal.util;
 
+import org.apache.shardingsphere.elasticjob.lite.internal.util.SensitiveInfoUtils;
+import org.hamcrest.MatcherAssert;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -12,7 +14,7 @@ public final class SensitiveInfoUtilsTest {
     @Test
     public void assertFilterContentWithoutIp() {
         List<String> actual = Arrays.asList("/simpleElasticDemoJob/servers", "/simpleElasticDemoJob/leader");
-        assertThat(SensitiveInfoUtils.filterSensitiveIps(actual), is(actual));
+        MatcherAssert.assertThat(SensitiveInfoUtils.filterSensitiveIps(actual), is(actual));
     }
 
     @Test

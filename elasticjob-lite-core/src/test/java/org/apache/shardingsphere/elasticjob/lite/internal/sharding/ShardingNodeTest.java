@@ -1,5 +1,6 @@
 package org.apache.shardingsphere.elasticjob.lite.internal.sharding;
 
+import org.apache.shardingsphere.elasticjob.lite.internal.sharding.ShardingNode;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;

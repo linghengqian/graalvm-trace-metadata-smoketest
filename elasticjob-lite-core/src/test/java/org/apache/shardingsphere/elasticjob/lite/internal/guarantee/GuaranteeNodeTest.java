@@ -1,5 +1,6 @@
 package org.apache.shardingsphere.elasticjob.lite.internal.guarantee;
 
+import org.apache.shardingsphere.elasticjob.lite.internal.guarantee.GuaranteeNode;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;

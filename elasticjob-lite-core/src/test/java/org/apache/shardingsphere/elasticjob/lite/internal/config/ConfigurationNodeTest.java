@@ -1,5 +1,6 @@
 package org.apache.shardingsphere.elasticjob.lite.internal.config;
 
+import org.apache.shardingsphere.elasticjob.lite.internal.config.ConfigurationNode;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;

@@ -1,7 +1,9 @@
 package org.apache.shardingsphere.elasticjob.lite.internal.schedule;
 
+import com.lingh.util.ReflectionUtils;
 import org.apache.shardingsphere.elasticjob.infra.handler.sharding.JobInstance;
-import org.apache.shardingsphere.elasticjob.lite.util.ReflectionUtils;
+import org.apache.shardingsphere.elasticjob.lite.internal.schedule.JobRegistry;
+import org.apache.shardingsphere.elasticjob.lite.internal.schedule.JobScheduleController;
 import org.apache.shardingsphere.elasticjob.reg.base.CoordinatorRegistryCenter;
 import org.junit.Test;
 

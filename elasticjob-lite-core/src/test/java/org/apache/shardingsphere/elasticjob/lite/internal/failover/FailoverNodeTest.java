@@ -1,5 +1,6 @@
 package org.apache.shardingsphere.elasticjob.lite.internal.failover;
 
+import org.apache.shardingsphere.elasticjob.lite.internal.failover.FailoverNode;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;

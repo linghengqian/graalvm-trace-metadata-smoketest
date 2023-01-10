@@ -1,6 +1,6 @@
 package org.apache.shardingsphere.elasticjob.lite.internal.snapshot;
 
-import org.apache.shardingsphere.elasticjob.lite.fixture.job.DetailedFooJob;
+import com.lingh.fixture.job.DetailedFooJob;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
