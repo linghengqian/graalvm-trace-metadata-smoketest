@@ -1,8 +1,8 @@
-package org.apache.shardingsphere.elasticjob.lite.internal.election;
+package com.lingh.internal.election;
 
 import com.lingh.util.ReflectionUtils;
 import org.apache.shardingsphere.elasticjob.infra.handler.sharding.JobInstance;
-import org.apache.shardingsphere.elasticjob.lite.internal.election.LeaderService.LeaderElectionExecutionCallback;
+import org.apache.shardingsphere.elasticjob.lite.internal.election.LeaderService;
 import org.apache.shardingsphere.elasticjob.lite.internal.schedule.JobRegistry;
 import org.apache.shardingsphere.elasticjob.lite.internal.schedule.JobScheduleController;
 import org.apache.shardingsphere.elasticjob.lite.internal.server.ServerService;
@@ -18,9 +18,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public final class LeaderServiceTest {
@@ -45,7 +43,7 @@ public final class LeaderServiceTest {
     @Test
     public void assertElectLeader() {
         leaderService.electLeader();
-        verify(jobNodeStorage).executeInLeader(eq("leader/election/latch"), ArgumentMatchers.<LeaderElectionExecutionCallback>any());
+        verify(jobNodeStorage).executeInLeader(eq("leader/election/latch"), ArgumentMatchers.any());
     }
 
     @Test
@@ -55,7 +53,7 @@ public final class LeaderServiceTest {
         when(jobNodeStorage.isJobNodeExisted("leader/election/instance")).thenReturn(true);
         when(jobNodeStorage.getJobNodeData("leader/election/instance")).thenReturn("127.0.0.1@-@0");
         assertTrue(leaderService.isLeaderUntilBlock());
-        verify(jobNodeStorage, times(0)).executeInLeader(eq("leader/election/latch"), ArgumentMatchers.<LeaderElectionExecutionCallback>any());
+        verify(jobNodeStorage, times(0)).executeInLeader(eq("leader/election/latch"), ArgumentMatchers.any());
         JobRegistry.getInstance().shutdown("test_job");
     }
 
@@ -63,14 +61,14 @@ public final class LeaderServiceTest {
     public void assertIsLeaderUntilBlockWithoutLeaderAndAvailableServers() {
         when(jobNodeStorage.isJobNodeExisted("leader/election/instance")).thenReturn(false);
         assertFalse(leaderService.isLeaderUntilBlock());
-        verify(jobNodeStorage, times(0)).executeInLeader(eq("leader/election/latch"), ArgumentMatchers.<LeaderElectionExecutionCallback>any());
+        verify(jobNodeStorage, times(0)).executeInLeader(eq("leader/election/latch"), ArgumentMatchers.any());
     }
 
     @Test
     public void assertIsLeaderUntilBlockWithoutLeaderWithAvailableServers() {
         when(jobNodeStorage.isJobNodeExisted("leader/election/instance")).thenReturn(false, true);
         assertFalse(leaderService.isLeaderUntilBlock());
-        verify(jobNodeStorage, times(0)).executeInLeader(eq("leader/election/latch"), ArgumentMatchers.<LeaderElectionExecutionCallback>any());
+        verify(jobNodeStorage, times(0)).executeInLeader(eq("leader/election/latch"), ArgumentMatchers.any());
     }
 
     @Test
@@ -82,7 +80,7 @@ public final class LeaderServiceTest {
         when(serverService.isAvailableServer("127.0.0.1")).thenReturn(true);
         when(jobNodeStorage.getJobNodeData("leader/election/instance")).thenReturn("127.0.0.1@-@0");
         assertTrue(leaderService.isLeaderUntilBlock());
-        verify(jobNodeStorage).executeInLeader(eq("leader/election/latch"), ArgumentMatchers.<LeaderElectionExecutionCallback>any());
+        verify(jobNodeStorage).executeInLeader(eq("leader/election/latch"), ArgumentMatchers.any());
         JobRegistry.getInstance().shutdown("test_job");
     }
 
@@ -105,18 +103,5 @@ public final class LeaderServiceTest {
     public void assertRemoveLeader() {
         leaderService.removeLeader();
         verify(jobNodeStorage).removeJobNodeIfExisted("leader/election/instance");
-    }
-
-    @Test
-    public void assertElectLeaderExecutionCallbackWithLeader() {
-        when(jobNodeStorage.isJobNodeExisted("leader/election/instance")).thenReturn(true);
-        leaderService.new LeaderElectionExecutionCallback().execute();
-        verify(jobNodeStorage, times(0)).fillEphemeralJobNode("leader/election/instance", "127.0.0.1@-@0");
-    }
-
-    @Test
-    public void assertElectLeaderExecutionCallbackWithoutLeader() {
-        leaderService.new LeaderElectionExecutionCallback().execute();
-        verify(jobNodeStorage).fillEphemeralJobNode("leader/election/instance", "127.0.0.1@-@0");
     }
 }

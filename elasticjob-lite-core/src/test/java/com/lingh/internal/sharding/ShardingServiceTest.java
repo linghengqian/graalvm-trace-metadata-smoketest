@@ -1,15 +1,19 @@
-package org.apache.shardingsphere.elasticjob.lite.internal.sharding;
+package com.lingh.internal.sharding;
 
 import com.lingh.util.ReflectionUtils;
 import org.apache.shardingsphere.elasticjob.api.JobConfiguration;
 import org.apache.shardingsphere.elasticjob.infra.handler.sharding.JobInstance;
 import org.apache.shardingsphere.elasticjob.lite.internal.config.ConfigurationService;
+import org.apache.shardingsphere.elasticjob.lite.internal.election.LeaderNode;
 import org.apache.shardingsphere.elasticjob.lite.internal.election.LeaderService;
 import org.apache.shardingsphere.elasticjob.lite.internal.instance.InstanceNode;
 import org.apache.shardingsphere.elasticjob.lite.internal.instance.InstanceService;
 import org.apache.shardingsphere.elasticjob.lite.internal.schedule.JobRegistry;
 import org.apache.shardingsphere.elasticjob.lite.internal.schedule.JobScheduleController;
 import org.apache.shardingsphere.elasticjob.lite.internal.server.ServerService;
+import org.apache.shardingsphere.elasticjob.lite.internal.sharding.ExecutionService;
+import org.apache.shardingsphere.elasticjob.lite.internal.sharding.ShardingNode;
+import org.apache.shardingsphere.elasticjob.lite.internal.sharding.ShardingService;
 import org.apache.shardingsphere.elasticjob.lite.internal.storage.JobNodeStorage;
 import org.apache.shardingsphere.elasticjob.reg.base.CoordinatorRegistryCenter;
 import org.junit.jupiter.api.BeforeEach;
@@ -96,14 +100,14 @@ public final class ShardingServiceTest {
     @Test
     public void assertShardingWhenUnnecessary() {
         shardingService.shardingIfNecessary();
-        verify(jobNodeStorage, times(0)).fillEphemeralJobNode(ShardingNode.PROCESSING, "");
+        verify(jobNodeStorage, times(0)).fillEphemeralJobNode(LeaderNode.ROOT + "/" + ShardingNode.ROOT + "/processing", "");
     }
 
     @Test
     public void assertShardingWithoutAvailableJobInstances() {
         when(jobNodeStorage.isJobNodeExisted("leader/sharding/necessary")).thenReturn(true);
         shardingService.shardingIfNecessary();
-        verify(jobNodeStorage, times(0)).fillEphemeralJobNode(ShardingNode.PROCESSING, "");
+        verify(jobNodeStorage, times(0)).fillEphemeralJobNode(LeaderNode.ROOT + "/" + ShardingNode.ROOT + "/processing", "");
     }
 
     @Test
@@ -113,7 +117,7 @@ public final class ShardingServiceTest {
         when(leaderService.isLeaderUntilBlock()).thenReturn(false);
         when(jobNodeStorage.isJobNodeExisted("leader/sharding/processing")).thenReturn(true, false);
         shardingService.shardingIfNecessary();
-        verify(jobNodeStorage, times(0)).fillEphemeralJobNode(ShardingNode.PROCESSING, "");
+        verify(jobNodeStorage, times(0)).fillEphemeralJobNode(LeaderNode.ROOT + "/" + ShardingNode.ROOT + "/processing", "");
     }
 
     @Test

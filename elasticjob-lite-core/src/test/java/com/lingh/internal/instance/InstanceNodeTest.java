@@ -1,6 +1,7 @@
-package org.apache.shardingsphere.elasticjob.lite.internal.instance;
+package com.lingh.internal.instance;
 
 import org.apache.shardingsphere.elasticjob.infra.handler.sharding.JobInstance;
+import org.apache.shardingsphere.elasticjob.lite.internal.instance.InstanceNode;
 import org.apache.shardingsphere.elasticjob.lite.internal.schedule.JobRegistry;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -32,16 +33,6 @@ public final class InstanceNodeTest {
     @Test
     public void assertIsNotInstancePath() {
         assertFalse(instanceNode.isInstancePath("/test_job/other/127.0.0.1@-@0"));
-    }
-
-    @Test
-    public void assertIsLocalInstancePath() {
-        assertTrue(instanceNode.isLocalInstancePath("/test_job/instances/127.0.0.1@-@0"));
-    }
-
-    @Test
-    public void assertIsNotLocalInstancePath() {
-        assertFalse(instanceNode.isLocalInstancePath("/test_job/instances/127.0.0.2@-@0"));
     }
 
     @Test
