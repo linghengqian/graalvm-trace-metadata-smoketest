@@ -4,9 +4,9 @@ import com.lingh.fixture.job.DetailedFooJob;
 import com.lingh.integrate.BaseIntegrateTest;
 import org.apache.shardingsphere.elasticjob.api.JobConfiguration;
 import org.apache.shardingsphere.elasticjob.infra.concurrent.BlockUtils;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public final class ScheduleEnabledJobIntegrateTest extends EnabledJobIntegrateTest {
     public ScheduleEnabledJobIntegrateTest() {

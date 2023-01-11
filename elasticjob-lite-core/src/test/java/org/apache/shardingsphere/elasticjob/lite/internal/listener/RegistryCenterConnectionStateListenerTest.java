@@ -10,42 +10,40 @@ import org.apache.shardingsphere.elasticjob.lite.internal.sharding.ExecutionServ
 import org.apache.shardingsphere.elasticjob.lite.internal.sharding.ShardingService;
 import org.apache.shardingsphere.elasticjob.reg.base.CoordinatorRegistryCenter;
 import org.apache.shardingsphere.elasticjob.reg.listener.ConnectionStateChangedEventListener.State;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Arrays;
 
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public final class RegistryCenterConnectionStateListenerTest {
-    
+
     @Mock
     private CoordinatorRegistryCenter regCenter;
-    
+
     @Mock
     private ServerService serverService;
-    
+
     @Mock
     private InstanceService instanceService;
-    
+
     @Mock
     private ShardingService shardingService;
-    
+
     @Mock
     private ExecutionService executionService;
-    
+
     @Mock
     private JobScheduleController jobScheduleController;
-    
+
     private RegistryCenterConnectionStateListener regCenterConnectionStateListener;
-    
-    @Before
+
+    @BeforeEach
     public void setUp() {
         JobRegistry.getInstance().addJobInstance("test_job", new JobInstance("127.0.0.1@-@0", null, "127.0.0.1"));
         regCenterConnectionStateListener = new RegistryCenterConnectionStateListener(null, "test_job");
@@ -54,7 +52,7 @@ public final class RegistryCenterConnectionStateListenerTest {
         ReflectionUtils.setFieldValue(regCenterConnectionStateListener, "shardingService", shardingService);
         ReflectionUtils.setFieldValue(regCenterConnectionStateListener, "executionService", executionService);
     }
-    
+
     @Test
     public void assertConnectionLostListenerWhenConnectionStateIsLost() {
         JobRegistry.getInstance().registerRegistryCenter("test_job", regCenter);
@@ -63,14 +61,14 @@ public final class RegistryCenterConnectionStateListenerTest {
         verify(jobScheduleController).pauseJob();
         JobRegistry.getInstance().shutdown("test_job");
     }
-    
+
     @Test
     public void assertConnectionLostListenerWhenConnectionStateIsLostButIsShutdown() {
         regCenterConnectionStateListener.onStateChanged(null, State.UNAVAILABLE);
         verify(jobScheduleController, times(0)).pauseJob();
         verify(jobScheduleController, times(0)).resumeJob();
     }
-    
+
     @Test
     public void assertConnectionLostListenerWhenConnectionStateIsReconnected() {
         JobRegistry.getInstance().registerRegistryCenter("test_job", regCenter);
@@ -83,14 +81,14 @@ public final class RegistryCenterConnectionStateListenerTest {
         verify(jobScheduleController).resumeJob();
         JobRegistry.getInstance().shutdown("test_job");
     }
-    
+
     @Test
     public void assertConnectionLostListenerWhenConnectionStateIsReconnectedButIsShutdown() {
         regCenterConnectionStateListener.onStateChanged(null, State.RECONNECTED);
         verify(jobScheduleController, times(0)).pauseJob();
         verify(jobScheduleController, times(0)).resumeJob();
     }
-    
+
     @Test
     public void assertConnectionLostListenerWhenConnectionStateIsOther() {
         JobRegistry.getInstance().registerRegistryCenter("test_job", regCenter);

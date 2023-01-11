@@ -8,11 +8,12 @@ import org.apache.shardingsphere.elasticjob.infra.listener.ShardingContexts;
 import org.apache.shardingsphere.elasticjob.lite.internal.config.ConfigurationService;
 import org.apache.shardingsphere.elasticjob.lite.internal.schedule.JobRegistry;
 import org.apache.shardingsphere.elasticjob.lite.internal.storage.JobNodeStorage;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -21,36 +22,34 @@ import java.util.Map;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public final class ExecutionContextServiceTest {
-    
     @Mock
     private JobNodeStorage jobNodeStorage;
-    
+
     @Mock
     private ConfigurationService configService;
-    
+
     private final ExecutionContextService executionContextService = new ExecutionContextService(null, "test_job");
-    
-    @Before
+
+    @BeforeEach
     public void setUp() {
         ReflectionUtils.setFieldValue(executionContextService, "jobNodeStorage", jobNodeStorage);
         ReflectionUtils.setFieldValue(executionContextService, "configService", configService);
         JobRegistry.getInstance().addJobInstance("test_job", new JobInstance("127.0.0.1@-@0"));
     }
-    
+
     @Test
     public void assertGetShardingContextWhenNotAssignShardingItem() {
         when(configService.load(false)).thenReturn(JobConfiguration.newBuilder("test_job", 3)
                 .cron("0/1 * * * * ?").setProperty("streaming.process", Boolean.TRUE.toString()).monitorExecution(false).build());
         ShardingContexts shardingContexts = executionContextService.getJobShardingContext(Collections.emptyList());
-        assertTrue(shardingContexts.getTaskId().startsWith("test_job@-@@-@READY@-@"));
+        Assertions.assertTrue(shardingContexts.getTaskId().startsWith("test_job@-@@-@READY@-@"));
         assertThat(shardingContexts.getShardingTotalCount(), is(3));
     }
-    
+
     @Test
     public void assertGetShardingContextWhenAssignShardingItems() {
         when(configService.load(false)).thenReturn(JobConfiguration.newBuilder("test_job", 3)
@@ -61,7 +60,7 @@ public final class ExecutionContextServiceTest {
         ShardingContexts expected = new ShardingContexts("fake_task_id", "test_job", 3, "", map);
         assertShardingContext(executionContextService.getJobShardingContext(Arrays.asList(0, 1)), expected);
     }
-    
+
     @Test
     public void assertGetShardingContextWhenHasRunningItems() {
         when(configService.load(false)).thenReturn(JobConfiguration.newBuilder("test_job", 3)
@@ -73,7 +72,7 @@ public final class ExecutionContextServiceTest {
         ShardingContexts expected = new ShardingContexts("fake_task_id", "test_job", 3, "", map);
         assertShardingContext(executionContextService.getJobShardingContext(Lists.newArrayList(0, 1)), expected);
     }
-    
+
     private void assertShardingContext(final ShardingContexts actual, final ShardingContexts expected) {
         assertThat(actual.getJobName(), is(expected.getJobName()));
         assertThat(actual.getShardingTotalCount(), is(expected.getShardingTotalCount()));

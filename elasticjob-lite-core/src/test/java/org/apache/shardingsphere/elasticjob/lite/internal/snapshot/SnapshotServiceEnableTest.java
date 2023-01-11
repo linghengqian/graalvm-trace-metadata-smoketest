@@ -1,31 +1,30 @@
 package org.apache.shardingsphere.elasticjob.lite.internal.snapshot;
 
 import com.lingh.fixture.job.DetailedFooJob;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public final class SnapshotServiceEnableTest extends BaseSnapshotServiceTest {
-    
     public SnapshotServiceEnableTest() {
         super(new DetailedFooJob());
     }
-    
-    @Before
+
+    @BeforeEach
     public void listenMonitor() {
         getSnapshotService().listen();
     }
-    
-    @After
+
+    @AfterEach
     public void closeMonitor() {
         getSnapshotService().close();
     }
-    
+
     @Test
     public void assertMonitorWithCommand() throws IOException {
         assertNotNull(SocketUtils.sendCommand(SnapshotService.DUMP_COMMAND + getJobName(), DUMP_PORT));

@@ -2,7 +2,7 @@ package com.lingh.integrate.disable;
 
 import org.apache.shardingsphere.elasticjob.api.JobConfiguration;
 import org.apache.shardingsphere.elasticjob.infra.concurrent.BlockUtils;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public final class OneOffDisabledJobIntegrateTest extends DisabledJobIntegrateTest {
     

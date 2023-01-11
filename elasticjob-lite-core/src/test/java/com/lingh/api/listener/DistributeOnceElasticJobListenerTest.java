@@ -1,44 +1,43 @@
 package com.lingh.api.listener;
 
 import com.google.common.collect.Sets;
+import com.lingh.api.listener.fixture.ElasticJobListenerCaller;
+import com.lingh.api.listener.fixture.TestDistributeOnceElasticJobListener;
 import com.lingh.util.ReflectionUtils;
 import org.apache.shardingsphere.elasticjob.infra.env.TimeService;
 import org.apache.shardingsphere.elasticjob.infra.exception.JobSystemException;
 import org.apache.shardingsphere.elasticjob.infra.listener.ShardingContexts;
-import com.lingh.api.listener.fixture.ElasticJobListenerCaller;
-import com.lingh.api.listener.fixture.TestDistributeOnceElasticJobListener;
 import org.apache.shardingsphere.elasticjob.lite.internal.guarantee.GuaranteeService;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.*;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public final class DistributeOnceElasticJobListenerTest {
-    
+
     @Mock
     private GuaranteeService guaranteeService;
 
     @Mock
     private TimeService timeService;
-    
+
     @Mock
     private ElasticJobListenerCaller elasticJobListenerCaller;
-    
+
     private ShardingContexts shardingContexts;
-    
+
     private TestDistributeOnceElasticJobListener distributeOnceElasticJobListener;
-    
-    @Before
+
+    @BeforeEach
     public void setUp() {
         distributeOnceElasticJobListener = new TestDistributeOnceElasticJobListener(elasticJobListenerCaller);
         distributeOnceElasticJobListener.setGuaranteeService(guaranteeService);
@@ -48,7 +47,7 @@ public final class DistributeOnceElasticJobListenerTest {
         map.put(1, "");
         shardingContexts = new ShardingContexts("fake_task_id", "test_job", 10, "", map);
     }
-    
+
     @Test
     public void assertBeforeJobExecutedWhenIsAllStarted() {
         when(guaranteeService.isRegisterStartSuccess(Sets.newHashSet(0, 1))).thenReturn(true);
@@ -58,7 +57,7 @@ public final class DistributeOnceElasticJobListenerTest {
         verify(elasticJobListenerCaller).before();
         verify(guaranteeService).clearAllStartedInfo();
     }
-    
+
     @Test
     public void assertBeforeJobExecutedWhenIsNotAllStartedAndNotTimeout() {
         when(guaranteeService.isRegisterStartSuccess(Sets.newHashSet(0, 1))).thenReturn(true);
@@ -68,17 +67,19 @@ public final class DistributeOnceElasticJobListenerTest {
         verify(guaranteeService).registerStart(Sets.newHashSet(0, 1));
         verify(guaranteeService, times(0)).clearAllStartedInfo();
     }
-    
-    @Test(expected = JobSystemException.class)
+
+    @Test
     public void assertBeforeJobExecutedWhenIsNotAllStartedAndTimeout() {
-        when(guaranteeService.isRegisterStartSuccess(Sets.newHashSet(0, 1))).thenReturn(true);
-        when(guaranteeService.isAllStarted()).thenReturn(false);
-        when(timeService.getCurrentMillis()).thenReturn(0L, 2L);
-        distributeOnceElasticJobListener.beforeJobExecuted(shardingContexts);
-        verify(guaranteeService).registerStart(Arrays.asList(0, 1));
-        verify(guaranteeService, times(0)).clearAllStartedInfo();
+        assertThrows(JobSystemException.class, () -> {
+            when(guaranteeService.isRegisterStartSuccess(Sets.newHashSet(0, 1))).thenReturn(true);
+            when(guaranteeService.isAllStarted()).thenReturn(false);
+            when(timeService.getCurrentMillis()).thenReturn(0L, 2L);
+            distributeOnceElasticJobListener.beforeJobExecuted(shardingContexts);
+            verify(guaranteeService).registerStart(Arrays.asList(0, 1));
+            verify(guaranteeService, times(0)).clearAllStartedInfo();
+        });
     }
-    
+
     @Test
     public void assertAfterJobExecutedWhenIsAllCompleted() {
         when(guaranteeService.isRegisterCompleteSuccess(Sets.newHashSet(0, 1))).thenReturn(true);
@@ -88,7 +89,7 @@ public final class DistributeOnceElasticJobListenerTest {
         verify(elasticJobListenerCaller).after();
         verify(guaranteeService).clearAllCompletedInfo();
     }
-    
+
     @Test
     public void assertAfterJobExecutedWhenIsAllCompletedAndNotTimeout() {
         when(guaranteeService.isRegisterCompleteSuccess(Sets.newHashSet(0, 1))).thenReturn(true);
@@ -98,14 +99,16 @@ public final class DistributeOnceElasticJobListenerTest {
         verify(guaranteeService).registerComplete(Sets.newHashSet(0, 1));
         verify(guaranteeService, times(0)).clearAllCompletedInfo();
     }
-    
-    @Test(expected = JobSystemException.class)
+
+    @Test
     public void assertAfterJobExecutedWhenIsAllCompletedAndTimeout() {
-        when(guaranteeService.isRegisterCompleteSuccess(Sets.newHashSet(0, 1))).thenReturn(true);
-        when(guaranteeService.isAllCompleted()).thenReturn(false);
-        when(timeService.getCurrentMillis()).thenReturn(0L, 2L);
-        distributeOnceElasticJobListener.afterJobExecuted(shardingContexts);
-        verify(guaranteeService).registerComplete(Arrays.asList(0, 1));
-        verify(guaranteeService, times(0)).clearAllCompletedInfo();
+        assertThrows(JobSystemException.class, () -> {
+            when(guaranteeService.isRegisterCompleteSuccess(Sets.newHashSet(0, 1))).thenReturn(true);
+            when(guaranteeService.isAllCompleted()).thenReturn(false);
+            when(timeService.getCurrentMillis()).thenReturn(0L, 2L);
+            distributeOnceElasticJobListener.afterJobExecuted(shardingContexts);
+            verify(guaranteeService).registerComplete(Arrays.asList(0, 1));
+            verify(guaranteeService, times(0)).clearAllCompletedInfo();
+        });
     }
 }

@@ -11,11 +11,11 @@ import org.apache.shardingsphere.elasticjob.lite.internal.listener.ListenerManag
 import org.apache.shardingsphere.elasticjob.lite.internal.reconcile.ReconcileService;
 import org.apache.shardingsphere.elasticjob.lite.internal.schedule.JobRegistry;
 import org.apache.shardingsphere.elasticjob.lite.internal.server.ServerService;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Collections;
 
@@ -24,30 +24,29 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public final class SetUpFacadeTest {
-    
     @Mock
     private ConfigurationService configService;
-    
+
     @Mock
     private LeaderService leaderService;
-    
+
     @Mock
     private ServerService serverService;
-    
+
     @Mock
     private InstanceService instanceService;
-    
+
     @Mock
     private ReconcileService reconcileService;
-    
+
     @Mock
     private ListenerManager listenerManager;
-    
+
     private SetUpFacade setUpFacade;
-    
-    @Before
+
+    @BeforeEach
     public void setUp() {
         JobRegistry.getInstance().addJobInstance("test_job", new JobInstance("127.0.0.1@-@0"));
         setUpFacade = new SetUpFacade(null, "test_job", Collections.emptyList());
@@ -58,7 +57,7 @@ public final class SetUpFacadeTest {
         ReflectionUtils.setFieldValue(setUpFacade, "reconcileService", reconcileService);
         ReflectionUtils.setFieldValue(setUpFacade, "listenerManager", listenerManager);
     }
-    
+
     @Test
     public void assertSetUpJobConfiguration() {
         JobConfiguration jobConfig = JobConfiguration.newBuilder("test_job", 3)
@@ -67,7 +66,7 @@ public final class SetUpFacadeTest {
         assertThat(setUpFacade.setUpJobConfiguration(ElasticJob.class.getName(), jobConfig), is(jobConfig));
         verify(configService).setUpJobConfiguration(ElasticJob.class.getName(), jobConfig);
     }
-    
+
     @Test
     public void assertRegisterStartUpInfo() {
         setUpFacade.registerStartUpInfo(true);
@@ -75,7 +74,7 @@ public final class SetUpFacadeTest {
         verify(leaderService).electLeader();
         verify(serverService).persistOnline(true);
     }
-    
+
     @Test
     public void assertTearDown() {
         when(reconcileService.isRunning()).thenReturn(true);

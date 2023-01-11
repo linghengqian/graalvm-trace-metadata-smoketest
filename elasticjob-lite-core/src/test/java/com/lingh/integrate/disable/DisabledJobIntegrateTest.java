@@ -12,15 +12,15 @@ import org.apache.shardingsphere.elasticjob.lite.internal.schedule.JobRegistry;
 import org.apache.shardingsphere.elasticjob.lite.internal.server.ServerStatus;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertNull;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public abstract class DisabledJobIntegrateTest extends BaseIntegrateTest {
-    
+
     public DisabledJobIntegrateTest(final TestType type) {
         super(type, new DetailedFooJob());
     }
-    
+
     protected final void assertDisabledRegCenterInfo() {
         assertThat(JobRegistry.getInstance().getCurrentShardingTotalCount(getJobName()), is(3));
         assertThat(JobRegistry.getInstance().getJobInstance(getJobName()).getServerIp(), is(IpUtils.getIp()));

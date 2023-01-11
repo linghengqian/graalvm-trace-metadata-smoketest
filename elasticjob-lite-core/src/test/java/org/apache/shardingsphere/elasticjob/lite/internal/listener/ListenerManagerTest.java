@@ -10,52 +10,51 @@ import org.apache.shardingsphere.elasticjob.lite.internal.sharding.MonitorExecut
 import org.apache.shardingsphere.elasticjob.lite.internal.sharding.ShardingListenerManager;
 import org.apache.shardingsphere.elasticjob.lite.internal.storage.JobNodeStorage;
 import org.apache.shardingsphere.elasticjob.lite.internal.trigger.TriggerListenerManager;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Collections;
 
 import static org.mockito.Mockito.verify;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public final class ListenerManagerTest {
-    
     @Mock
     private JobNodeStorage jobNodeStorage;
-    
+
     @Mock
     private ElectionListenerManager electionListenerManager;
-    
+
     @Mock
     private ShardingListenerManager shardingListenerManager;
-    
+
     @Mock
     private FailoverListenerManager failoverListenerManager;
-    
+
     @Mock
     private MonitorExecutionListenerManager monitorExecutionListenerManager;
-    
+
     @Mock
     private ShutdownListenerManager shutdownListenerManager;
-    
+
     @Mock
     private TriggerListenerManager triggerListenerManager;
-    
+
     @Mock
     private RescheduleListenerManager rescheduleListenerManager;
-    
+
     @Mock
     private GuaranteeListenerManager guaranteeListenerManager;
-    
+
     @Mock
     private RegistryCenterConnectionStateListener regCenterConnectionStateListener;
-    
+
     private final ListenerManager listenerManager = new ListenerManager(null, "test_job", Collections.emptyList());
-    
-    @Before
+
+    @BeforeEach
     public void setUp() {
         ReflectionUtils.setFieldValue(listenerManager, "jobNodeStorage", jobNodeStorage);
         ReflectionUtils.setFieldValue(listenerManager, "electionListenerManager", electionListenerManager);
@@ -68,7 +67,7 @@ public final class ListenerManagerTest {
         ReflectionUtils.setFieldValue(listenerManager, "guaranteeListenerManager", guaranteeListenerManager);
         ReflectionUtils.setFieldValue(listenerManager, "regCenterConnectionStateListener", regCenterConnectionStateListener);
     }
-    
+
     @Test
     public void assertStartAllListeners() {
         listenerManager.startAllListeners();

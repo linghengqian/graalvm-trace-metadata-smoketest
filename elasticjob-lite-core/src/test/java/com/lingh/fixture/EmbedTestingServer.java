@@ -11,7 +11,6 @@ import java.io.IOException;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class EmbedTestingServer {
     private static final int PORT = 7181;
-    
     private static volatile TestingServer testingServer;
 
     public static String getConnectionString() {

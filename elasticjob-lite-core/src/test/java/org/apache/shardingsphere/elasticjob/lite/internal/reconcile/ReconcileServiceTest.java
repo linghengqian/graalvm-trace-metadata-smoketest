@@ -8,31 +8,25 @@ import org.apache.shardingsphere.elasticjob.lite.internal.config.ConfigurationSe
 import org.apache.shardingsphere.elasticjob.lite.internal.schedule.JobRegistry;
 import org.apache.shardingsphere.elasticjob.lite.internal.sharding.ShardingService;
 import org.apache.shardingsphere.elasticjob.reg.base.CoordinatorRegistryCenter;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public final class ReconcileServiceTest {
-
     @Mock
     private ConfigurationService configService;
-
     @Mock
     private ShardingService shardingService;
-
     @Mock
     private CoordinatorRegistryCenter regCenter;
-
     private ReconcileService reconcileService;
 
-    @Before
+    @BeforeEach
     public void setup() {
         JobRegistry.getInstance().addJobInstance("test_job", new JobInstance("127.0.0.1@-@0"));
         reconcileService = new ReconcileService(regCenter, "test_job");
