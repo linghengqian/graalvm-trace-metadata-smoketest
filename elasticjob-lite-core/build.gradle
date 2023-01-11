@@ -1,7 +1,6 @@
 plugins {
     id 'java'
     id 'org.graalvm.buildtools.native' version '0.9.19'
-    id "io.freefair.lombok" version "6.6-rc1"
 }
 
 group 'com.lingh'
