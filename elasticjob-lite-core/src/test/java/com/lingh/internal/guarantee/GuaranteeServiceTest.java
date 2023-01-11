@@ -1,8 +1,9 @@
-package org.apache.shardingsphere.elasticjob.lite.internal.guarantee;
+package com.lingh.internal.guarantee;
 
 import com.lingh.util.ReflectionUtils;
 import org.apache.shardingsphere.elasticjob.api.JobConfiguration;
 import org.apache.shardingsphere.elasticjob.lite.internal.config.ConfigurationService;
+import org.apache.shardingsphere.elasticjob.lite.internal.guarantee.GuaranteeService;
 import org.apache.shardingsphere.elasticjob.lite.internal.storage.JobNodeStorage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

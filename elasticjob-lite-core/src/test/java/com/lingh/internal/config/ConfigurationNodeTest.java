@@ -1,5 +1,6 @@
-package org.apache.shardingsphere.elasticjob.lite.internal.config;
+package com.lingh.internal.config;
 
+import org.apache.shardingsphere.elasticjob.lite.internal.config.ConfigurationNode;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
