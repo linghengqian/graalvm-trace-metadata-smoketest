@@ -1,7 +1,6 @@
 package com.lingh.internal.snapshot;
 
 import com.lingh.fixture.job.DetailedFooJob;
-import lombok.SneakyThrows;
 import org.apache.shardingsphere.elasticjob.lite.internal.snapshot.SnapshotService;
 import org.junit.jupiter.api.Test;
 
@@ -32,14 +31,17 @@ public final class SnapshotServiceDisableTest extends BaseSnapshotServiceTest {
     }
 
     @Test
-    @SneakyThrows
     public void assertListenException() {
-        ServerSocket serverSocket = new ServerSocket(9898);
-        SnapshotService snapshotService = new SnapshotService(getREG_CENTER(), 9898);
-        snapshotService.listen();
-        serverSocket.close();
-        Field field = snapshotService.getClass().getDeclaredField("serverSocket");
-        field.setAccessible(true);
-        assertNull(field.get(snapshotService));
+        try {
+            ServerSocket serverSocket = new ServerSocket(9898);
+            SnapshotService snapshotService = new SnapshotService(getREG_CENTER(), 9898);
+            snapshotService.listen();
+            serverSocket.close();
+            Field field = snapshotService.getClass().getDeclaredField("serverSocket");
+            field.setAccessible(true);
+            assertNull(field.get(snapshotService));
+        } catch (IOException | NoSuchFieldException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

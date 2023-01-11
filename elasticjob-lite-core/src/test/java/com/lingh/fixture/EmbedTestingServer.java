@@ -1,17 +1,17 @@
 package com.lingh.fixture;
 
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
 import org.apache.curator.test.TestingServer;
 import org.apache.shardingsphere.elasticjob.reg.exception.RegExceptionHandler;
 
 import java.io.File;
 import java.io.IOException;
 
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class EmbedTestingServer {
     private static final int PORT = 7181;
     private static volatile TestingServer testingServer;
+
+    private EmbedTestingServer() {
+    }
 
     public static String getConnectionString() {
         return "localhost:" + PORT;

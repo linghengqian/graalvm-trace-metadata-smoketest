@@ -1,10 +1,8 @@
 package com.lingh.api.listener.fixture;
 
-import lombok.RequiredArgsConstructor;
 import org.apache.shardingsphere.elasticjob.infra.listener.ElasticJobListener;
 import org.apache.shardingsphere.elasticjob.infra.listener.ShardingContexts;
 
-@RequiredArgsConstructor
 public final class TestElasticJobListener implements ElasticJobListener {
     private final ElasticJobListenerCaller caller;
     private final String name;
@@ -13,6 +11,13 @@ public final class TestElasticJobListener implements ElasticJobListener {
 
     public TestElasticJobListener() {
         this(null, null, 0, new StringBuilder());
+    }
+
+    public TestElasticJobListener(ElasticJobListenerCaller caller, String name, int order, StringBuilder orderResult) {
+        this.caller = caller;
+        this.name = name;
+        this.order = order;
+        this.orderResult = orderResult;
     }
 
     @Override
