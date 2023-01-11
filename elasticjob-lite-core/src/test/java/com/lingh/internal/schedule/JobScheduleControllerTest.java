@@ -1,7 +1,8 @@
-package org.apache.shardingsphere.elasticjob.lite.internal.schedule;
+package com.lingh.internal.schedule;
 
 import com.lingh.util.ReflectionUtils;
 import org.apache.shardingsphere.elasticjob.infra.exception.JobSystemException;
+import org.apache.shardingsphere.elasticjob.lite.internal.schedule.JobScheduleController;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

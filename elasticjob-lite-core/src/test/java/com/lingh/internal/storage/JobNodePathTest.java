@@ -1,5 +1,6 @@
-package org.apache.shardingsphere.elasticjob.lite.internal.storage;
+package com.lingh.internal.storage;
 
+import org.apache.shardingsphere.elasticjob.lite.internal.storage.JobNodePath;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.is;

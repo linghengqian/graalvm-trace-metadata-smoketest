@@ -1,7 +1,8 @@
-package org.apache.shardingsphere.elasticjob.lite.internal.snapshot;
+package com.lingh.internal.snapshot;
 
 import com.lingh.fixture.job.DetailedFooJob;
 import lombok.SneakyThrows;
+import org.apache.shardingsphere.elasticjob.lite.internal.snapshot.SnapshotService;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;

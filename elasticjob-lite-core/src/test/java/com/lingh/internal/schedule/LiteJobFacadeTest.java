@@ -1,4 +1,4 @@
-package org.apache.shardingsphere.elasticjob.lite.internal.schedule;
+package com.lingh.internal.schedule;
 
 import com.google.common.collect.Lists;
 import com.lingh.api.listener.fixture.ElasticJobListenerCaller;
@@ -9,6 +9,7 @@ import org.apache.shardingsphere.elasticjob.infra.exception.JobExecutionEnvironm
 import org.apache.shardingsphere.elasticjob.infra.listener.ShardingContexts;
 import org.apache.shardingsphere.elasticjob.lite.internal.config.ConfigurationService;
 import org.apache.shardingsphere.elasticjob.lite.internal.failover.FailoverService;
+import org.apache.shardingsphere.elasticjob.lite.internal.schedule.LiteJobFacade;
 import org.apache.shardingsphere.elasticjob.lite.internal.sharding.ExecutionContextService;
 import org.apache.shardingsphere.elasticjob.lite.internal.sharding.ExecutionService;
 import org.apache.shardingsphere.elasticjob.lite.internal.sharding.ShardingService;

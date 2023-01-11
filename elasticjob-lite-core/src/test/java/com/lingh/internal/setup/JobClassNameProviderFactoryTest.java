@@ -1,5 +1,7 @@
-package org.apache.shardingsphere.elasticjob.lite.internal.setup;
+package com.lingh.internal.setup;
 
+import org.apache.shardingsphere.elasticjob.lite.internal.setup.DefaultJobClassNameProvider;
+import org.apache.shardingsphere.elasticjob.lite.internal.setup.JobClassNameProviderFactory;
 import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.Test;
 

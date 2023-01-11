@@ -1,4 +1,4 @@
-package org.apache.shardingsphere.elasticjob.lite.internal.snapshot;
+package com.lingh.internal.snapshot;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;

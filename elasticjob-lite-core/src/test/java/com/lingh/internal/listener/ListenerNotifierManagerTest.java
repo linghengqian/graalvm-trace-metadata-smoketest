@@ -1,5 +1,6 @@
-package org.apache.shardingsphere.elasticjob.lite.internal.listener;
+package com.lingh.internal.listener;
 
+import org.apache.shardingsphere.elasticjob.lite.internal.listener.ListenerNotifierManager;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;

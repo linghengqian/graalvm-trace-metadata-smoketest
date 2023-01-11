@@ -1,6 +1,7 @@
-package org.apache.shardingsphere.elasticjob.lite.internal.snapshot;
+package com.lingh.internal.snapshot;
 
 import com.lingh.fixture.job.DetailedFooJob;
+import org.apache.shardingsphere.elasticjob.lite.internal.snapshot.SnapshotService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

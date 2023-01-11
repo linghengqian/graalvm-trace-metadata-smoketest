@@ -1,5 +1,6 @@
-package org.apache.shardingsphere.elasticjob.lite.internal.util;
+package com.lingh.internal.util;
 
+import org.apache.shardingsphere.elasticjob.lite.internal.util.SensitiveInfoUtils;
 import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.Test;
 

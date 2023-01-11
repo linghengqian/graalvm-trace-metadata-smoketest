@@ -1,7 +1,9 @@
-package org.apache.shardingsphere.elasticjob.lite.internal.setup;
+package com.lingh.internal.setup;
 
 import com.lingh.fixture.job.DetailedFooJob;
 import com.lingh.fixture.job.FooJob;
+import org.apache.shardingsphere.elasticjob.lite.internal.setup.DefaultJobClassNameProvider;
+import org.apache.shardingsphere.elasticjob.lite.internal.setup.JobClassNameProvider;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -21,6 +23,6 @@ public final class DefaultJobClassNameProviderTest {
         FooJob lambdaFooJob = shardingContext -> {
         };
         String result = jobClassNameProvider.getJobClassName(lambdaFooJob);
-        assertThat(result, is("org.apache.shardingsphere.elasticjob.lite.internal.setup.DefaultJobClassNameProviderTest$$Lambda$"));
+        assertThat(result, is("com.lingh.internal.setup.DefaultJobClassNameProviderTest$$Lambda$"));
     }
 }
