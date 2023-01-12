@@ -1,8 +1,8 @@
 {
   "resources":{
   "includes":[{
-      "condition":{"typeReachable":"org.mockito.internal.configuration.plugins.PluginInitializer"},
-      "pattern":"\\Qmockito-extensions/org.mockito.plugins.MockMaker\\E"
+      "condition":{"typeReachable":"io.etcd.jetcd.impl.ClientBuilderTest"},
+      "pattern":"\\QMETA-INF/services/io.grpc.NameResolverProvider\\E"
     }]},
   "bundles":[]
 }

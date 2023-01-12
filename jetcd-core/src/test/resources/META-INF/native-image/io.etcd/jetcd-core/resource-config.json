@@ -4,11 +4,7 @@
     {
       "condition":{"typeReachable":"io.etcd.jetcd.test.GrpcServerExtension"},
       "pattern":"\\QMETA-INF/services/io.grpc.LoadBalancerProvider\\E"
-    }, 
-    {
-      "condition":{"typeReachable":"io.etcd.jetcd.impl.ClientBuilderTest"},
-      "pattern":"\\QMETA-INF/services/io.grpc.NameResolverProvider\\E"
-    }, 
+    },
     {
       "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
       "pattern":"\\QMETA-INF/services/org.testcontainers.dockerclient.DockerClientProviderStrategy\\E"
