@@ -33,7 +33,7 @@ public abstract class BaseIntegrateTest {
         leaderService = new LeaderService(REGISTRY_CENTER, jobName);
     }
 
-    protected abstract JobConfiguration getJobConfiguration(String var1);
+    protected abstract JobConfiguration getJobConfiguration(String jobName);
 
     private JobBootstrap createJobBootstrap(final TestType type, final ElasticJob elasticJob) {
         return switch (type) {
