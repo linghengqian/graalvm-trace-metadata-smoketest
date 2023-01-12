@@ -27,11 +27,6 @@ test {
 }
 
 graalvmNative {
-    binaries {
-        test {
-            buildArgs.add('-H:+ReportExceptionStackTraces')
-        }
-    }
     agent {
         defaultMode = "conditional"
         modes {
