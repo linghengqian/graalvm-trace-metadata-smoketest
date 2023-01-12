@@ -4,6 +4,7 @@ import io.etcd.jetcd.Client;
 import io.etcd.jetcd.Cluster;
 import io.etcd.jetcd.cluster.Member;
 import io.etcd.jetcd.test.EtcdClusterExtension;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.api.extension.RegisterExtension;
@@ -51,6 +52,33 @@ public class ClusterClientTest {
         try (Client client = TestUtil.client(cluster).build()) {
             assertThat(client.getClusterClient().listMember().get().getMembers()).hasSize(3);
         }
+    }
+
+    @Test
+    @Disabled("io.etcd.jetcd.common.exception.EtcdException: etcdserver: member ID already exist")
+    public void testMemberManagement() throws ExecutionException, InterruptedException, TimeoutException {
+        final Client client = Client.builder().endpoints(n1.clientEndpoints()).build();
+        final Cluster clusterClient = client.getClusterClient();
+        Member m2 = clusterClient.addMember(n2.peerEndpoints())
+                .get(5, TimeUnit.SECONDS)
+                .getMember();
+        assertThat(m2).isNotNull();
+        assertThat(clusterClient.listMember().get().getMembers()).hasSize(2);
+    }
+
+    @Test
+    @Disabled("io.etcd.jetcd.common.exception.EtcdException: etcdserver: member ID already exist")
+    public void testMemberManagementAddNonLearner() throws ExecutionException, InterruptedException, TimeoutException {
+        final Client client = Client.builder().endpoints(n1.clientEndpoints()).build();
+        final Cluster clusterClient = client.getClusterClient();
+        Member m2 = clusterClient.addMember(n2.peerEndpoints(), false)
+                .get(5, TimeUnit.SECONDS)
+                .getMember();
+        assertThat(m2).isNotNull();
+        assertThat(m2.isLearner()).isFalse();
+        List<Member> members = clusterClient.listMember().get().getMembers();
+        assertThat(members).hasSize(2);
+        assertThat(members.stream().filter(Member::isLearner).findAny()).isEmpty();
     }
 
     @Test

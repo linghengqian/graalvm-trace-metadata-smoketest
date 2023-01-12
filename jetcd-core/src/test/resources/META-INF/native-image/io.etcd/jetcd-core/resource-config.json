@@ -20,6 +20,9 @@
       "pattern":"\\Qcom/github/dockerjava/zerodep/shaded/org/apache/hc/client5/version.properties\\E"
     }, 
     {
+      "pattern":"\\Qmockito-extensions/org.mockito.plugins.MockMaker\\E"
+    }, 
+    {
       "pattern":"\\Qorg/slf4j/impl/StaticLoggerBinder.class\\E"
     }, 
     {

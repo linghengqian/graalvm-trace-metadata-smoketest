@@ -11,13 +11,16 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
     testImplementation 'io.etcd:jetcd-core:0.7.5'
     testImplementation 'io.etcd:jetcd-test:0.7.5'
     testImplementation 'org.assertj:assertj-core:3.22.0'
     testImplementation 'commons-io:commons-io:2.11.0'
     testImplementation 'org.awaitility:awaitility:4.2.0'
+    testImplementation 'ch.qos.logback:logback-classic:1.2.11'
+    testImplementation 'org.mockito:mockito-core:4.11.0'
+    testImplementation 'org.mockito:mockito-junit-jupiter:4.11.0'
 }
 
 test {
@@ -27,7 +30,7 @@ test {
 graalvmNative {
     binaries {
         test {
-            buildArgs.add('--initialize-at-build-time=org.slf4j.LoggerFactory')
+//            buildArgs.add('--initialize-at-build-time=org.junit.jupiter.api.Timeout')
             buildArgs.add('-H:+ReportExceptionStackTraces')
         }
     }
