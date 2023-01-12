@@ -6,7 +6,6 @@ import io.etcd.jetcd.cluster.Member;
 import io.etcd.jetcd.test.EtcdClusterExtension;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import org.testcontainers.containers.Network;
 
@@ -18,7 +17,7 @@ import java.util.concurrent.TimeoutException;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SuppressWarnings("resource")
-@Timeout(value = 30)
+// `@org.junit.jupiter.api.Timeout(value = 30)` can't be used in the nativeTest GraalVM CE 22.3
 public class ClusterClientTest {
     private static final Network NETWORK = Network.newNetwork();
 

@@ -10,7 +10,6 @@ import io.etcd.jetcd.auth.Permission;
 import io.etcd.jetcd.test.EtcdClusterExtension;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.api.extension.RegisterExtension;
 
 import java.util.List;
@@ -20,7 +19,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @SuppressWarnings("resource")
-@Timeout(value = 30)
+// `@org.junit.jupiter.api.Timeout(value = 30)` can't be used in the nativeTest GraalVM CE 22.3
 public class AuthClientTest {
     @RegisterExtension
     public static final EtcdClusterExtension cluster = EtcdClusterExtension.builder()

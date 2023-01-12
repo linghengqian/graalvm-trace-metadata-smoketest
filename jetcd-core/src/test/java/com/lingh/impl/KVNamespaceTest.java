@@ -19,7 +19,6 @@ import io.etcd.jetcd.support.Util;
 import io.etcd.jetcd.test.EtcdClusterExtension;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -36,7 +35,7 @@ import static com.lingh.impl.TestUtil.bytesOf;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SuppressWarnings("resource")
-@Timeout(value = 30)
+// `@org.junit.jupiter.api.Timeout(value = 30)` can't be used in the nativeTest GraalVM CE 22.3
 public class KVNamespaceTest {
     private static final ByteSequence END_KEY = ByteSequence.from(new byte[]{0});
 

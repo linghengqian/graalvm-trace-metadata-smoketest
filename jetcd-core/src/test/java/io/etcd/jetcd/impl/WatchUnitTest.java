@@ -20,8 +20,8 @@ import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import org.mockito.ArgumentMatcher;
@@ -47,7 +47,7 @@ import static org.mockito.Mockito.timeout;
 import static org.mockito.Mockito.verify;
 
 @SuppressWarnings({"SameParameterValue", "ResultOfMethodCallIgnored"})
-@Timeout(value = 30)
+// `@org.junit.jupiter.api.Timeout(value = 30)` can't be used in the nativeTest GraalVM CE 22.3
 @ExtendWith(MockitoExtension.class)
 public class WatchUnitTest {
     private static final ByteSequence KEY = bytesOf("test_key");
@@ -122,6 +122,10 @@ public class WatchUnitTest {
     }
 
     @Test
+    @Disabled("""
+            java.lang.NoSuchMethodError: Method 'matches(T)' not found in ArgumentMatcher: io.etcd.jetcd.impl.WatchUnitTest$$Lambda$a88e68baede6e66eff0f2a28b8835d22591864c6@7d664aac !
+            Please file a bug with this stack trace at: https://github.com/mockito/mockito/issues/new
+            """)
     public void testWatchOnSendingWatchCreateRequest() {
         try (Watch.Watcher ignored = watchClient.watch(
                 KEY,

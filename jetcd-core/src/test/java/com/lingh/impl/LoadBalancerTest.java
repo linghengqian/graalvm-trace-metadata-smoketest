@@ -7,7 +7,6 @@ import io.etcd.jetcd.Response;
 import io.etcd.jetcd.kv.PutResponse;
 import io.etcd.jetcd.test.EtcdClusterExtension;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.api.extension.RegisterExtension;
 
 import java.net.URI;
@@ -16,7 +15,7 @@ import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@Timeout(value = 30)
+// `@org.junit.jupiter.api.Timeout(value = 30)` can't be used in the nativeTest GraalVM CE 22.3
 public class LoadBalancerTest {
     @RegisterExtension
     public static final EtcdClusterExtension cluster = EtcdClusterExtension.builder()

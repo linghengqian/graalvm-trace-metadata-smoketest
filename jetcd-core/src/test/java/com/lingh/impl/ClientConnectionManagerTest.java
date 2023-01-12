@@ -15,7 +15,6 @@ import io.grpc.ForwardingClientCall;
 import io.grpc.Metadata;
 import io.grpc.MethodDescriptor;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.api.extension.RegisterExtension;
 
 import java.util.concurrent.CompletableFuture;
@@ -28,7 +27,7 @@ import static com.lingh.impl.TestUtil.bytesOf;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SuppressWarnings({"resource", "ResultOfMethodCallIgnored"})
-@Timeout(value = 30)
+// `@org.junit.jupiter.api.Timeout(value = 30)` can't be used in the nativeTest GraalVM CE 22.3
 public class ClientConnectionManagerTest {
     private final static String ROOT_STRING = "root";
     private final static ByteSequence ROOT = bytesOf(ROOT_STRING);

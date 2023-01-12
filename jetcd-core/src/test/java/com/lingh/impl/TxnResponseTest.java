@@ -8,11 +8,10 @@ import io.etcd.jetcd.api.ResponseOp;
 import io.etcd.jetcd.kv.TxnResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Timeout;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@Timeout(value = 30)
+// `@org.junit.jupiter.api.Timeout(value = 30)` can't be used in the nativeTest GraalVM CE 22.3
 public class TxnResponseTest {
     private TxnResponse txnResponse;
 

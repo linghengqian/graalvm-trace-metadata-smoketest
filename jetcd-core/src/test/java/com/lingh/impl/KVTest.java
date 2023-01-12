@@ -19,7 +19,6 @@ import io.etcd.jetcd.options.PutOption;
 import io.etcd.jetcd.test.EtcdClusterExtension;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.api.extension.RegisterExtension;
 
 import java.nio.charset.StandardCharsets;
@@ -41,7 +40,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 
 @SuppressWarnings("resource")
-@Timeout(value = 2, unit = TimeUnit.MINUTES)
+// `@org.junit.jupiter.api.Timeout(value = 2, unit = TimeUnit.MINUTES)` can't be used in the nativeTest GraalVM CE 22.3
 public class KVTest {
     @RegisterExtension
     public static final EtcdClusterExtension cluster = EtcdClusterExtension.builder()
