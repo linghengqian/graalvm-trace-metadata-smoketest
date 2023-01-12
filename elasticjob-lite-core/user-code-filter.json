@@ -1,6 +1,6 @@
 {
   "rules": [
     {"excludeClasses": "**"},
-    {"includeClasses": "org.apache.shardingsphere.elasticjob.lite.**"}
+    {"includeClasses": "org.apache.shardingsphere.elasticjob.**"}
   ]
 }
