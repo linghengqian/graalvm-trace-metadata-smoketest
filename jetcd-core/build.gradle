@@ -35,7 +35,7 @@ graalvmNative {
         }
     }
     agent {
-        defaultMode = "standard"
+        defaultMode = "conditional"
         modes {
             conditional {
                 userCodeFilterPath = "user-code-filter.json"
@@ -44,7 +44,7 @@ graalvmNative {
         metadataCopy {
             mergeWithExisting = true
             inputTaskNames.add("test")
-            outputDirectories.add("src/test/resources/META-INF/native-image/io.etcd/jetcd-core")
+            outputDirectories.add("src/test/resources/META-INF/native-image/jetcd-core-test-metadata")
         }
     }
     metadataRepository {

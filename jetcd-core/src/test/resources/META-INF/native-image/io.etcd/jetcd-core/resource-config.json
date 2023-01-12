@@ -2,40 +2,28 @@
   "resources":{
   "includes":[
     {
+      "condition":{"typeReachable":"io.etcd.jetcd.impl.KVImpl"},
       "pattern":"\\QMETA-INF/services/io.grpc.LoadBalancerProvider\\E"
     }, 
     {
+      "condition":{"typeReachable":"io.etcd.jetcd.impl.KVImpl"},
       "pattern":"\\QMETA-INF/services/io.grpc.NameResolverProvider\\E"
     }, 
     {
-      "pattern":"\\QMETA-INF/services/org.junit.platform.engine.TestEngine\\E"
-    }, 
-    {
-      "pattern":"\\QMETA-INF/services/org.junit.platform.launcher.TestExecutionListener\\E"
-    }, 
-    {
+      "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
       "pattern":"\\QMETA-INF/services/org.testcontainers.dockerclient.DockerClientProviderStrategy\\E"
     }, 
     {
+      "condition":{"typeReachable":"io.etcd.jetcd.test.EtcdClusterExtension"},
       "pattern":"\\Qcom/github/dockerjava/zerodep/shaded/org/apache/hc/client5/version.properties\\E"
     }, 
     {
-      "pattern":"\\Qmockito-extensions/org.mockito.plugins.MockMaker\\E"
-    }, 
-    {
+      "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
       "pattern":"\\Qorg/slf4j/impl/StaticLoggerBinder.class\\E"
     }, 
     {
+      "condition":{"typeReachable":"io.etcd.jetcd.launcher.EtcdContainer"},
       "pattern":"\\Qorg/testcontainers/utility/ResourceReaper.class\\E"
-    }, 
-    {
-      "pattern":"\\Qssl/cert/ca.pem\\E"
-    }, 
-    {
-      "pattern":"\\Qssl/cert/etcd0-key.pem\\E"
-    }, 
-    {
-      "pattern":"\\Qssl/cert/etcd0.pem\\E"
     }
   ]},
   "bundles":[]
