@@ -1,6 +1,6 @@
 [
 {
-  "condition":{"typeReachable":"io.etcd.jetcd.impl.KVImpl"},
+  "condition":{"typeReachable":"io.etcd.jetcd.impl.ClientBuilderTest"},
   "name":"sun.management.VMManagementImpl",
   "fields":[
     {"name":"compTimeMonitoringSupport"}, 

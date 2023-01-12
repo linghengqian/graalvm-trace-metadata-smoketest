@@ -1,4 +1,4 @@
-package com.lingh.impl;
+package io_etcd.jetcd_core.impl;
 
 import com.google.protobuf.ByteString;
 import io.etcd.jetcd.ByteSequence;
@@ -30,8 +30,8 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
 
-import static com.lingh.impl.TestUtil.byteStringOf;
-import static com.lingh.impl.TestUtil.bytesOf;
+import static io_etcd.jetcd_core.impl.TestUtil.byteStringOf;
+import static io_etcd.jetcd_core.impl.TestUtil.bytesOf;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SuppressWarnings("resource")

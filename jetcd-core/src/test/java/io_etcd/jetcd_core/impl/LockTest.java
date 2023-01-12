@@ -1,4 +1,4 @@
-package com.lingh.impl;
+package io_etcd.jetcd_core.impl;
 
 import com.google.common.base.Charsets;
 import io.etcd.jetcd.ByteSequence;

@@ -1,4 +1,4 @@
-package com.lingh.impl;
+package io_etcd.jetcd_core.impl;
 
 import io.etcd.jetcd.support.Errors;
 import io.grpc.Status;

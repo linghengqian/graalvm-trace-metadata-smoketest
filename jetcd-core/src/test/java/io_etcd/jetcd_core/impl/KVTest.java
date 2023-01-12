@@ -1,4 +1,4 @@
-package com.lingh.impl;
+package io_etcd.jetcd_core.impl;
 
 import io.etcd.jetcd.ByteSequence;
 import io.etcd.jetcd.Client;
@@ -34,8 +34,8 @@ import java.util.concurrent.TimeoutException;
 import java.util.stream.IntStream;
 
 import static com.google.common.base.Charsets.UTF_8;
-import static com.lingh.impl.TestUtil.bytesOf;
-import static com.lingh.impl.TestUtil.randomString;
+import static io_etcd.jetcd_core.impl.TestUtil.bytesOf;
+import static io_etcd.jetcd_core.impl.TestUtil.randomString;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 

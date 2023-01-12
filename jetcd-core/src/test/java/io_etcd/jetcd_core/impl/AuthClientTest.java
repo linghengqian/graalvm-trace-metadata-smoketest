@@ -1,4 +1,4 @@
-package com.lingh.impl;
+package io_etcd.jetcd_core.impl;
 
 import io.etcd.jetcd.Auth;
 import io.etcd.jetcd.ByteSequence;
@@ -14,7 +14,7 @@ import org.junit.jupiter.api.extension.RegisterExtension;
 
 import java.util.List;
 
-import static com.lingh.impl.TestUtil.bytesOf;
+import static io_etcd.jetcd_core.impl.TestUtil.bytesOf;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 

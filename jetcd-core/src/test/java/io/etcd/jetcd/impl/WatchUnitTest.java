@@ -1,6 +1,6 @@
 package io.etcd.jetcd.impl;
 
-import com.lingh.impl.TestUtil;
+import io_etcd.jetcd_core.impl.TestUtil;
 import io.etcd.jetcd.ByteSequence;
 import io.etcd.jetcd.Client;
 import io.etcd.jetcd.KeyValue;
@@ -38,7 +38,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 
-import static com.lingh.impl.TestUtil.bytesOf;
+import static io_etcd.jetcd_core.impl.TestUtil.bytesOf;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.awaitility.Awaitility.await;

@@ -1,4 +1,4 @@
-package com.lingh.impl;
+package io_etcd.jetcd_core.impl;
 
 import com.google.protobuf.ByteString;
 import io.etcd.jetcd.Client;

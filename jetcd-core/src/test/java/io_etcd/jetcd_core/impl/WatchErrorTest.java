@@ -1,4 +1,4 @@
-package com.lingh.impl;
+package io_etcd.jetcd_core.impl;
 
 import io.etcd.jetcd.ByteSequence;
 import io.etcd.jetcd.Client;
@@ -14,8 +14,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import static com.lingh.impl.TestUtil.bytesOf;
-import static com.lingh.impl.TestUtil.randomByteSequence;
+import static io_etcd.jetcd_core.impl.TestUtil.bytesOf;
+import static io_etcd.jetcd_core.impl.TestUtil.randomByteSequence;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.awaitility.Awaitility.await;
 

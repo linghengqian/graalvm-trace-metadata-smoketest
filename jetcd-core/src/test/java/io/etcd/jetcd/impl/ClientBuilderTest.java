@@ -14,7 +14,7 @@ import java.net.URISyntaxException;
 import java.util.Random;
 import java.util.stream.Stream;
 
-import static com.lingh.impl.TestUtil.bytesOf;
+import static io_etcd.jetcd_core.impl.TestUtil.bytesOf;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 

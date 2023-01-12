@@ -1,4 +1,4 @@
-package com.lingh.impl;
+package io_etcd.jetcd_core.impl;
 
 import io.etcd.jetcd.Auth;
 import io.etcd.jetcd.ByteSequence;
@@ -23,7 +23,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-import static com.lingh.impl.TestUtil.bytesOf;
+import static io_etcd.jetcd_core.impl.TestUtil.bytesOf;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SuppressWarnings({"resource", "ResultOfMethodCallIgnored"})

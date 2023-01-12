@@ -3,7 +3,7 @@ package io.etcd.jetcd.op;
 import io.etcd.jetcd.options.PutOption;
 import org.junit.jupiter.api.Test;
 
-import static com.lingh.impl.TestUtil.bytesOf;
+import static io_etcd.jetcd_core.impl.TestUtil.bytesOf;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class TxnTest {
