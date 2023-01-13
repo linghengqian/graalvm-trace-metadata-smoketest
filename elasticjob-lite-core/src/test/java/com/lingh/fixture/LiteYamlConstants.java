@@ -1,5 +1,9 @@
 package com.lingh.fixture;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class LiteYamlConstants {
     private static final String JOB_YAML = """
             jobName: test_job
@@ -17,9 +21,6 @@ public final class LiteYamlConstants {
     private static final boolean DEFAULT_FAILOVER = true;
     private static final boolean DEFAULT_MONITOR_EXECUTION = true;
     private static final int DEFAULT_MAX_TIME_DIFF_SECONDS = 1000;
-
-    private LiteYamlConstants() {
-    }
 
     public static String getJobYaml() {
         return String.format(JOB_YAML, DEFAULT_FAILOVER, DEFAULT_MONITOR_EXECUTION, DEFAULT_MAX_TIME_DIFF_SECONDS);

@@ -1,6 +1,7 @@
 package com.lingh.api.bootstrap.impl;
 
 import com.lingh.fixture.EmbedTestingServer;
+import lombok.SneakyThrows;
 import org.apache.shardingsphere.elasticjob.api.JobConfiguration;
 import org.apache.shardingsphere.elasticjob.lite.api.bootstrap.impl.OneOffJobBootstrap;
 import org.apache.shardingsphere.elasticjob.lite.internal.schedule.JobScheduleController;
@@ -23,7 +24,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@SuppressWarnings("BusyWait")
 public final class OneOffJobBootstrapTest {
 
     private static final ZookeeperConfiguration ZOOKEEPER_CONFIGURATION = new ZookeeperConfiguration(EmbedTestingServer.getConnectionString(), OneOffJobBootstrapTest.class.getSimpleName());
@@ -76,35 +76,27 @@ public final class OneOffJobBootstrapTest {
         assertTrue(getScheduler(oneOffJobBootstrap).isShutdown());
     }
 
+    @SneakyThrows
     private JobScheduler getJobScheduler(final OneOffJobBootstrap oneOffJobBootstrap) {
-        try {
-            Field field = OneOffJobBootstrap.class.getDeclaredField("jobScheduler");
-            field.setAccessible(true);
-            return (JobScheduler) field.get(oneOffJobBootstrap);
-        } catch (NoSuchFieldException | IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
+        Field field = OneOffJobBootstrap.class.getDeclaredField("jobScheduler");
+        field.setAccessible(true);
+        return (JobScheduler) field.get(oneOffJobBootstrap);
     }
 
+    @SneakyThrows
     private Scheduler getScheduler(final OneOffJobBootstrap oneOffJobBootstrap) {
-        try {
-            JobScheduler jobScheduler = getJobScheduler(oneOffJobBootstrap);
-            Field schedulerField = JobScheduleController.class.getDeclaredField("scheduler");
-            schedulerField.setAccessible(true);
-            return (Scheduler) schedulerField.get(jobScheduler.getJobScheduleController());
-        } catch (NoSuchFieldException | IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
+        JobScheduler jobScheduler = getJobScheduler(oneOffJobBootstrap);
+        Field schedulerField = JobScheduleController.class.getDeclaredField("scheduler");
+        schedulerField.setAccessible(true);
+        return (Scheduler) schedulerField.get(jobScheduler.getJobScheduleController());
     }
 
+    @SuppressWarnings("BusyWait")
+    @SneakyThrows
     private void blockUtilFinish(final OneOffJobBootstrap oneOffJobBootstrap, final AtomicInteger counter) {
-        try {
-            Scheduler scheduler = getScheduler(oneOffJobBootstrap);
-            while (0 == counter.get() || !scheduler.getCurrentlyExecutingJobs().isEmpty()) {
-                Thread.sleep(100);
-            }
-        } catch (SchedulerException | InterruptedException e) {
-            throw new RuntimeException(e);
+        Scheduler scheduler = getScheduler(oneOffJobBootstrap);
+        while (0 == counter.get() || !scheduler.getCurrentlyExecutingJobs().isEmpty()) {
+            Thread.sleep(100);
         }
     }
 }

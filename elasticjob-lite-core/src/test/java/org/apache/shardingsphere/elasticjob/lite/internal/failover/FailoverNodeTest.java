@@ -1,6 +1,5 @@
-package com.lingh.internal.failover;
+package org.apache.shardingsphere.elasticjob.lite.internal.failover;
 
-import org.apache.shardingsphere.elasticjob.lite.internal.failover.FailoverNode;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -11,6 +10,16 @@ public final class FailoverNodeTest {
     private final FailoverNode failoverNode = new FailoverNode("test_job");
 
     @Test
+    public void assertGetItemsNode() {
+        assertThat(FailoverNode.getItemsNode(0), is("leader/failover/items/0"));
+    }
+
+    @Test
+    public void assertGetExecutionFailoverNode() {
+        assertThat(FailoverNode.getExecutionFailoverNode(0), is("sharding/0/failover"));
+    }
+
+    @Test
     public void assertGetItemWhenNotExecutionFailoverPath() {
         assertNull(failoverNode.getItemByExecutionFailoverPath("/test_job/sharding/0/completed"));
     }
@@ -18,5 +27,10 @@ public final class FailoverNodeTest {
     @Test
     public void assertGetItemByExecutionFailoverPath() {
         assertThat(failoverNode.getItemByExecutionFailoverPath("/test_job/sharding/0/failover"), is(0));
+    }
+
+    @Test
+    public void assertGetProcessingFailoverNode() {
+        assertThat(FailoverNode.getExecutingFailoverNode(0), is("sharding/0/failovering"));
     }
 }

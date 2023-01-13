@@ -1,6 +1,5 @@
-package com.lingh.internal.sharding;
+package org.apache.shardingsphere.elasticjob.lite.internal.sharding;
 
-import org.apache.shardingsphere.elasticjob.lite.internal.sharding.ShardingNode;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -14,6 +13,11 @@ public final class ShardingNodeTest {
     @Test
     public void assertGetRunningNode() {
         assertThat(ShardingNode.getRunningNode(0), is("sharding/0/running"));
+    }
+
+    @Test
+    public void assertGetMisfireNode() {
+        assertThat(ShardingNode.getMisfireNode(0), is("sharding/0/misfire"));
     }
 
     @Test

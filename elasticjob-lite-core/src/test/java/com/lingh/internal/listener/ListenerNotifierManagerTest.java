@@ -2,12 +2,15 @@ package com.lingh.internal.listener;
 
 import org.apache.shardingsphere.elasticjob.lite.internal.listener.ListenerNotifierManager;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.concurrent.Executor;
 
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 
+@ExtendWith(MockitoExtension.class)
 public class ListenerNotifierManagerTest {
 
     @Test
