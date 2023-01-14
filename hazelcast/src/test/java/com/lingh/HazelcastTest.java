@@ -47,13 +47,23 @@ import static com.hazelcast.query.Predicates.between;
 import static com.hazelcast.query.Predicates.equal;
 import static com.hazelcast.query.Predicates.sql;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.awaitility.Awaitility.await;
 
 class HazelcastTest {
+    static Integer PORT = 45739;
     static HazelcastInstance hazelcastInstance;
 
     @BeforeAll
     static void beforeAll() {
-        hazelcastInstance = Hazelcast.newHazelcastInstance(new Config());
+        Config config = new Config();
+        config.getNetworkConfig().setPort(PORT);
+        hazelcastInstance = Hazelcast.newHazelcastInstance(config);
+        await().atMost(java.time.Duration.ofMinutes(1)).ignoreExceptions().until(() -> {
+            ClientConfig clientConfig = new ClientConfig();
+            clientConfig.getNetworkConfig().addAddress("localhost:" + PORT);
+            HazelcastClient.newHazelcastClient(clientConfig).shutdown();
+            return true;
+        });
     }
 
     @AfterAll
@@ -63,7 +73,9 @@ class HazelcastTest {
 
     @Test
     void testAtomicLong() {
-        HazelcastInstance client = HazelcastClient.newHazelcastClient();
+        ClientConfig clientConfig = new ClientConfig();
+        clientConfig.getNetworkConfig().addAddress("localhost:" + PORT);
+        HazelcastInstance client = HazelcastClient.newHazelcastClient(clientConfig);
         IAtomicLong counter = client.getCPSubsystem().getAtomicLong("counter");
         counter.addAndGet(3);
         assertThat(counter.get()).isEqualTo(3);
@@ -73,6 +85,7 @@ class HazelcastTest {
     @Test
     void testCustomSerializer() {
         ClientConfig clientConfig = new ClientConfig();
+        clientConfig.getNetworkConfig().addAddress("localhost:" + PORT);
         clientConfig.getSerializationConfig().addSerializerConfig(new SerializerConfig()
                 .setImplementation(new CustomSerializer())
                 .setTypeClass(CustomSerializable.class));
@@ -83,6 +96,7 @@ class HazelcastTest {
     @Test
     void testGlobalSerializer() {
         ClientConfig clientConfig = new ClientConfig();
+        clientConfig.getNetworkConfig().addAddress("localhost:" + PORT);
         clientConfig.getSerializationConfig().setGlobalSerializerConfig(new GlobalSerializerConfig().setImplementation(new GlobalSerializer()));
         HazelcastInstance hz = HazelcastClient.newHazelcastClient(clientConfig);
         hz.shutdown();
@@ -91,6 +105,7 @@ class HazelcastTest {
     @Test
     void testIdentifiedDataSerializable() {
         ClientConfig clientConfig = new ClientConfig();
+        clientConfig.getNetworkConfig().addAddress("localhost:" + PORT);
         clientConfig.getSerializationConfig().addDataSerializableFactory(SampleDataSerializableFactory.FACTORY_ID, new SampleDataSerializableFactory());
         HazelcastInstance hz = HazelcastClient.newHazelcastClient(clientConfig);
         hz.shutdown();
@@ -99,7 +114,7 @@ class HazelcastTest {
     @SuppressWarnings("unchecked")
     @Test
     void testJCache() {
-        System.setProperty("hazelcast.jcache.provider.type", "client");
+        System.setProperty("hazelcast.jcache.provider.type", "member");
         CacheManager manager = Caching.getCachingProvider(HazelcastCachingProvider.class.getName()).getCacheManager();
         MutableConfiguration<String, String> configuration = new MutableConfiguration<>();
         configuration.setExpiryPolicyFactory(AccessedExpiryPolicy.factoryOf(Duration.ONE_MINUTE));
@@ -116,7 +131,9 @@ class HazelcastTest {
 
     @Test
     void testList() {
-        HazelcastInstance client = HazelcastClient.newHazelcastClient();
+        ClientConfig clientConfig = new ClientConfig();
+        clientConfig.getNetworkConfig().addAddress("localhost:" + PORT);
+        HazelcastInstance client = HazelcastClient.newHazelcastClient(clientConfig);
         List<Object> list = client.getList("my-distributed-list");
         list.add("item1");
         list.add("item2");
@@ -128,7 +145,9 @@ class HazelcastTest {
 
     @Test
     void testLock() {
-        HazelcastInstance client = HazelcastClient.newHazelcastClient();
+        ClientConfig clientConfig = new ClientConfig();
+        clientConfig.getNetworkConfig().addAddress("localhost:" + PORT);
+        HazelcastInstance client = HazelcastClient.newHazelcastClient(clientConfig);
         Lock lock = client.getCPSubsystem().getLock("my-distributed-lock");
         lock.lock();
         try {
@@ -147,7 +166,9 @@ class HazelcastTest {
 
     @Test
     void testMap() {
-        HazelcastInstance client = HazelcastClient.newHazelcastClient();
+        ClientConfig clientConfig = new ClientConfig();
+        clientConfig.getNetworkConfig().addAddress("localhost:" + PORT);
+        HazelcastInstance client = HazelcastClient.newHazelcastClient(clientConfig);
         IMap<String, String> map = client.getMap("my-distributed-map");
         map.put("key", "value");
         map.get("key");
@@ -160,7 +181,9 @@ class HazelcastTest {
 
     @Test
     void testMultiMap() {
-        HazelcastInstance client = HazelcastClient.newHazelcastClient();
+        ClientConfig clientConfig = new ClientConfig();
+        clientConfig.getNetworkConfig().addAddress("localhost:" + PORT);
+        HazelcastInstance client = HazelcastClient.newHazelcastClient(clientConfig);
         MultiMap<String, String> multiMap = client.getMultiMap("my-distributed-multimap");
         multiMap.put("my-key", "value1");
         multiMap.put("my-key", "value2");
@@ -174,6 +197,7 @@ class HazelcastTest {
     @Test
     void testPortableSerializable() {
         ClientConfig clientConfig = new ClientConfig();
+        clientConfig.getNetworkConfig().addAddress("localhost:" + PORT);
         clientConfig.getSerializationConfig().addPortableFactory(SamplePortableFactory.FACTORY_ID, new SamplePortableFactory());
         HazelcastInstance client = HazelcastClient.newHazelcastClient(clientConfig);
         client.shutdown();
@@ -182,6 +206,7 @@ class HazelcastTest {
     @Test
     void testQuery() {
         ClientConfig clientConfig = new ClientConfig();
+        clientConfig.getNetworkConfig().addAddress("localhost:" + PORT);
         clientConfig.getSerializationConfig().addPortableFactory(ThePortableFactory.FACTORY_ID, new ThePortableFactory());
         HazelcastInstance client = HazelcastClient.newHazelcastClient(clientConfig);
         IMap<String, User> users = client.getMap("users");
@@ -199,7 +224,9 @@ class HazelcastTest {
 
     @Test
     void testQueue() throws InterruptedException {
-        HazelcastInstance client = HazelcastClient.newHazelcastClient();
+        ClientConfig clientConfig = new ClientConfig();
+        clientConfig.getNetworkConfig().addAddress("localhost:" + PORT);
+        HazelcastInstance client = HazelcastClient.newHazelcastClient(clientConfig);
         BlockingQueue<String> queue = client.getQueue("my-distributed-queue");
         assertThat(queue.offer("item")).isTrue();
         queue.poll();
@@ -212,7 +239,9 @@ class HazelcastTest {
 
     @Test
     void testReplicatedMap() {
-        HazelcastInstance client = HazelcastClient.newHazelcastClient();
+        ClientConfig clientConfig = new ClientConfig();
+        clientConfig.getNetworkConfig().addAddress("localhost:" + PORT);
+        HazelcastInstance client = HazelcastClient.newHazelcastClient(clientConfig);
         ReplicatedMap<String, String> map = client.getReplicatedMap("my-replicated-map");
         assertThat(map.put("key", "value")).isNull();
         assertThat(map.get("key")).isEqualTo("value");
@@ -221,7 +250,9 @@ class HazelcastTest {
 
     @Test
     void testRingBuffer() throws InterruptedException {
-        HazelcastInstance client = HazelcastClient.newHazelcastClient();
+        ClientConfig clientConfig = new ClientConfig();
+        clientConfig.getNetworkConfig().addAddress("localhost:" + PORT);
+        HazelcastInstance client = HazelcastClient.newHazelcastClient(clientConfig);
         Ringbuffer<Long> rb = client.getRingbuffer("rb");
         rb.add(100L);
         rb.add(200L);
@@ -234,7 +265,9 @@ class HazelcastTest {
 
     @Test
     void testSet() {
-        HazelcastInstance client = HazelcastClient.newHazelcastClient();
+        ClientConfig clientConfig = new ClientConfig();
+        clientConfig.getNetworkConfig().addAddress("localhost:" + PORT);
+        HazelcastInstance client = HazelcastClient.newHazelcastClient(clientConfig);
         Set<String> set = client.getSet("my-distributed-set");
         set.add("item1");
         set.add("item2");
@@ -246,7 +279,9 @@ class HazelcastTest {
 
     @Test
     void testTopic() {
-        HazelcastInstance client = HazelcastClient.newHazelcastClient();
+        ClientConfig clientConfig = new ClientConfig();
+        clientConfig.getNetworkConfig().addAddress("localhost:" + PORT);
+        HazelcastInstance client = HazelcastClient.newHazelcastClient(clientConfig);
         ITopic<Object> topic = client.getTopic("my-distributed-topic");
         topic.addMessageListener(message -> assertThat(message.getMessageObject()).isEqualTo("Hello to distributed world"));
         IntStream.range(0, 3).mapToObj(i -> "Hello to distributed world").forEach(topic::publish);
@@ -255,6 +290,7 @@ class HazelcastTest {
 
     @Test
     void testJCacheOrigin() {
+        System.setProperty("hazelcast.jcache.provider.type", "member");
         CachingProvider cachingProvider = Caching.getCachingProvider(HazelcastCachingProvider.class.getName());
         CacheManager cacheManager = cachingProvider.getCacheManager();
         CompleteConfiguration<String, String> config = new MutableConfiguration<String, String>()
