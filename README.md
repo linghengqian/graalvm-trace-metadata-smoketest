@@ -5,7 +5,7 @@
 
 - https://github.com/linghengqian/graalvm-trace-metadata-smoketest/issues/1
 
-# start demo
+# Start nativeTest
 
 - In Windows 11, Jetbrains IntelliJ IDEA Ultimate installed by Jetbrains Toolbox AppImage under WSLg. 
 
@@ -52,7 +52,7 @@ cd ./elasticjob-lite-core/
 ./gradlew metadataCopy --task test
 ./gradlew clean nativeTest
 ```
-
+### Extra tips
 - All submitted GraalVM reachability metadata, if the MBean-related part is unnecessary, should actively remove the
   GraalVM reachability metadata related to the MBean, because this part of the metadata can always make the boot process
   of the MBean server, using a different code path from the normal flow, which often leads to unreasonable nativeTest
@@ -63,4 +63,10 @@ jdk.management.**
 com.sun.management.**
 sun.management.**
 javax.management.**
+```
+- The main three commands submitted upstream.
+```shell
+./gradlew scaffold --coordinates io.jsonwebtoken:jjwt-jackson:0.11.5
+./gradlew :spotlessApply
+./gradlew clean test -Pcoordinates=io.jsonwebtoken:jjwt-jackson:0.11.5
 ```
