@@ -7,7 +7,7 @@
 
 # start demo
 
-- In Windows 11, IntelliJ IDEA installed by Jetbrains Toolbox AppImage under WSLg.
+- In Windows 11, Jetbrains IntelliJ IDEA Ultimate installed by Jetbrains Toolbox AppImage under WSLg. 
 
 ```shell
 cd /tmp
@@ -19,6 +19,7 @@ sdk use java 22.3.r17-grl
 gu install native-image
 sudo apt-get install build-essential libz-dev zlib1g-dev -y
 gu install js espresso
+
 ```
 
 - select one.
@@ -50,4 +51,16 @@ cd ./elasticjob-lite-core/
 ./gradlew -Pagent clean test
 ./gradlew metadataCopy --task test
 ./gradlew clean nativeTest
+```
+
+- All submitted GraalVM reachability metadata, if the MBean-related part is unnecessary, should actively remove the
+  GraalVM reachability metadata related to the MBean, because this part of the metadata can always make the boot process
+  of the MBean server, using a different code path from the normal flow, which often leads to unreasonable nativeTest
+  results. This includes the following five packages.
+```
+java.lang.management.**
+jdk.management.**
+com.sun.management.**
+sun.management.**
+javax.management.**
 ```
