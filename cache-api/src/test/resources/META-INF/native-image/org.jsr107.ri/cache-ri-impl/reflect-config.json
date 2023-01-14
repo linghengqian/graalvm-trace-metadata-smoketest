@@ -1,0 +1,392 @@
+[
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"[B"
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"[C"
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"[D"
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"[F"
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"[I"
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"[J"
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"[Ljava.lang.String;"
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"[Ljavax.management.openmbean.CompositeData;"
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"[S"
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"[Z"
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.event.RICacheEntryListenerRegistration"},
+  "name":"com.lingh.core.stepbystep.MyCacheEntryListener",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.event.RICacheEntryListenerRegistration"},
+  "name":"com.lingh.core.stepbystep.SimpleTest$MyCacheEntryListener",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"com.sun.management.GarbageCollectorMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"com.sun.management.GcInfo",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"com.sun.management.HotSpotDiagnosticMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"com.sun.management.ThreadMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"com.sun.management.UnixOperatingSystemMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"com.sun.management.VMOption",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"com.sun.management.internal.GarbageCollectorExtImpl",
+  "queryAllPublicConstructors":true
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"com.sun.management.internal.HotSpotDiagnostic",
+  "queryAllPublicConstructors":true
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"com.sun.management.internal.HotSpotThreadImpl",
+  "queryAllPublicConstructors":true
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"com.sun.management.internal.OperatingSystemImpl",
+  "queryAllPublicConstructors":true
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"java.lang.Boolean",
+  "fields":[{"name":"TYPE"}]
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"java.lang.Byte",
+  "fields":[{"name":"TYPE"}]
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"java.lang.Character",
+  "fields":[{"name":"TYPE"}]
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"java.lang.Deprecated",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"java.lang.Double",
+  "fields":[{"name":"TYPE"}]
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"java.lang.Float",
+  "fields":[{"name":"TYPE"}]
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.RISerializingInternalConverter$CustomizedClassLoaderObjectInputStream"},
+  "name":"java.lang.Integer"
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"java.lang.Integer",
+  "fields":[{"name":"TYPE"}]
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"java.lang.Long",
+  "fields":[{"name":"TYPE"}]
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.RISerializingInternalConverter$CustomizedClassLoaderObjectInputStream"},
+  "name":"java.lang.Number"
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"java.lang.Short",
+  "fields":[{"name":"TYPE"}]
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"java.lang.StackTraceElement",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"java.lang.String"
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"java.lang.Void",
+  "fields":[{"name":"TYPE"}]
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"java.lang.management.BufferPoolMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"java.lang.management.ClassLoadingMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"java.lang.management.CompilationMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"java.lang.management.LockInfo",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"java.lang.management.ManagementPermission",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.String"] }]
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"java.lang.management.MemoryMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"java.lang.management.MemoryManagerMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"java.lang.management.MemoryPoolMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"java.lang.management.MemoryUsage",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"java.lang.management.MonitorInfo",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"java.lang.management.PlatformLoggingMXBean",
+  "queryAllPublicMethods":true,
+  "methods":[
+    {"name":"getLoggerLevel","parameterTypes":["java.lang.String"] }, 
+    {"name":"getLoggerNames","parameterTypes":[] }, 
+    {"name":"getParentLoggerName","parameterTypes":["java.lang.String"] }, 
+    {"name":"setLoggerLevel","parameterTypes":["java.lang.String","java.lang.String"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"java.lang.management.RuntimeMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"java.lang.management.ThreadInfo",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"java.math.BigDecimal"
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"java.math.BigInteger"
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"java.util.Date"
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"java.util.PropertyPermission",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.String","java.lang.String"] }]
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"java.util.logging.LogManager",
+  "methods":[{"name":"getLoggingMXBean","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"java.util.logging.LoggingMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"javax.cache.management.CacheStatisticsMXBean",
+  "queryAllPublicMethods":true,
+  "methods":[
+    {"name":"getAverageGetTime","parameterTypes":[] },
+    {"name":"getAveragePutTime","parameterTypes":[] },
+    {"name":"getAverageRemoveTime","parameterTypes":[] },
+    {"name":"getCacheEvictions","parameterTypes":[] },
+    {"name":"getCacheGets","parameterTypes":[] },
+    {"name":"getCacheHitPercentage","parameterTypes":[] },
+    {"name":"getCacheHits","parameterTypes":[] },
+    {"name":"getCacheMissPercentage","parameterTypes":[] },
+    {"name":"getCacheMisses","parameterTypes":[] },
+    {"name":"getCachePuts","parameterTypes":[] },
+    {"name":"getCacheRemovals","parameterTypes":[] }
+  ]
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"javax.management.MBeanOperationInfo",
+  "queryAllPublicMethods":true,
+  "methods":[{"name":"getSignature","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"javax.management.MBeanServerBuilder",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"javax.management.MXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"javax.management.ObjectName"
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"javax.management.openmbean.CompositeData"
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"javax.management.openmbean.OpenMBeanOperationInfoSupport"
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"javax.management.openmbean.TabularData"
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"jdk.management.jfr.ConfigurationInfo",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"jdk.management.jfr.EventTypeInfo",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"jdk.management.jfr.FlightRecorderMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"jdk.management.jfr.FlightRecorderMXBeanImpl",
+  "queryAllPublicConstructors":true
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"jdk.management.jfr.RecordingInfo",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"jdk.management.jfr.SettingDescriptorInfo",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"org.jsr107.ri.management.RICacheStatisticsMXBean",
+  "queryAllPublicConstructors":true
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"sun.management.ClassLoadingImpl",
+  "queryAllPublicConstructors":true
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"sun.management.CompilationImpl",
+  "queryAllPublicConstructors":true
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"sun.management.ManagementFactoryHelper$1",
+  "queryAllPublicConstructors":true
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"sun.management.ManagementFactoryHelper$PlatformLoggingImpl",
+  "queryAllPublicConstructors":true
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"sun.management.MemoryImpl",
+  "queryAllPublicConstructors":true
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"sun.management.MemoryManagerImpl",
+  "queryAllPublicConstructors":true
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"sun.management.MemoryPoolImpl",
+  "queryAllPublicConstructors":true
+},
+{
+  "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
+  "name":"sun.management.RuntimeImpl",
+  "queryAllPublicConstructors":true
+}
+]
