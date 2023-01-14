@@ -36,16 +36,6 @@
   "name":"[Z"
 },
 {
-  "condition":{"typeReachable":"org.jsr107.ri.event.RICacheEntryListenerRegistration"},
-  "name":"com.lingh.core.stepbystep.MyCacheEntryListener",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"org.jsr107.ri.event.RICacheEntryListenerRegistration"},
-  "name":"com.lingh.core.stepbystep.SimpleTest$MyCacheEntryListener",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
   "condition":{"typeReachable":"org.jsr107.ri.management.MBeanServerRegistrationUtility"},
   "name":"java.lang.Boolean",
   "fields":[{"name":"TYPE"}]
