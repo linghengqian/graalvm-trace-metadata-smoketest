@@ -3,15 +3,19 @@
   "proxies": [],
   "types": [
     {
+      "condition":{"typeReachable":"java.lang.Object"},
       "name": "javax.cache.configuration.FactoryBuilder$SingletonFactory"
     },
     {
+      "condition":{"typeReachable":"java.lang.Object"},
       "name": "javax.cache.expiry.AccessedExpiryPolicy"
     },
     {
+      "condition":{"typeReachable":"java.lang.Object"},
       "name": "javax.cache.expiry.Duration"
     },
     {
+      "condition":{"typeReachable":"java.lang.Object"},
       "name": "javax.cache.expiry.EternalExpiryPolicy"
     }
   ]
