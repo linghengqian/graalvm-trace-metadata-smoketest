@@ -122,10 +122,7 @@ public class WatchUnitTest {
     }
 
     @Test
-    @Disabled("""
-            java.lang.NoSuchMethodError: Method 'matches(T)' not found in ArgumentMatcher: io.etcd.jetcd.impl.WatchUnitTest$$Lambda$a88e68baede6e66eff0f2a28b8835d22591864c6@7d664aac !
-            Please file a bug with this stack trace at: https://github.com/mockito/mockito/issues/new
-            """)
+    @Disabled("https://github.com/mockito/mockito/issues/2862")
     public void testWatchOnSendingWatchCreateRequest() {
         try (Watch.Watcher ignored = watchClient.watch(
                 KEY,
