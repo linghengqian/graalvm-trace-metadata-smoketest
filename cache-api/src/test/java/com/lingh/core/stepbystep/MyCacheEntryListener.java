@@ -15,7 +15,6 @@ public class MyCacheEntryListener implements CacheEntryCreatedListener<String, S
         }
     }
 
-
     @Override
     public void onUpdated(Iterable<CacheEntryEvent<? extends String, ? extends String>> cacheEntryEvents)
             throws CacheEntryListenerException {

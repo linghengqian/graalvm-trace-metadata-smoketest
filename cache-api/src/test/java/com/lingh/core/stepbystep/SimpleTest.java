@@ -9,10 +9,6 @@ import javax.cache.configuration.CacheEntryListenerConfiguration;
 import javax.cache.configuration.FactoryBuilder;
 import javax.cache.configuration.MutableCacheEntryListenerConfiguration;
 import javax.cache.configuration.MutableConfiguration;
-import javax.cache.event.CacheEntryCreatedListener;
-import javax.cache.event.CacheEntryEvent;
-import javax.cache.event.CacheEntryListenerException;
-import javax.cache.event.CacheEntryUpdatedListener;
 import javax.cache.processor.EntryProcessorException;
 import javax.cache.processor.MutableEntry;
 import javax.cache.spi.CachingProvider;
@@ -44,23 +40,5 @@ public class SimpleTest {
         });
         assertThat(result).isEqualTo("BONJOUR");
         assertThat(cache.get("message")).isEqualTo("bonjour");
-    }
-
-    public static class MyCacheEntryListener implements CacheEntryCreatedListener<String, String>, CacheEntryUpdatedListener<String, String> {
-        @Override
-        public void onCreated(Iterable<CacheEntryEvent<? extends String, ? extends String>> cacheEntryEvents)
-                throws CacheEntryListenerException {
-            for (CacheEntryEvent<? extends String, ? extends String> entryEvent : cacheEntryEvents) {
-                System.out.println("Created: " + entryEvent.getKey() + " with value: " + entryEvent.getValue());
-            }
-        }
-
-        @Override
-        public void onUpdated(Iterable<CacheEntryEvent<? extends String, ? extends String>> cacheEntryEvents)
-                throws CacheEntryListenerException {
-            for (CacheEntryEvent<? extends String, ? extends String> entryEvent : cacheEntryEvents) {
-                System.out.println("Updated: " + entryEvent.getKey() + " with value: " + entryEvent.getValue());
-            }
-        }
     }
 }
