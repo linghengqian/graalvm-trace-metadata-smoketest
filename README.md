@@ -43,6 +43,7 @@ cd ./protobuf-java-util/
 cd ./opengauss-jdbc/
 cd ./cache-api/
 cd ./elasticjob-lite-core/
+cd ./caffeine/
 ```
 
 - exec.
