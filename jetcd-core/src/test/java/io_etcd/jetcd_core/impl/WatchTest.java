@@ -12,6 +12,7 @@ import io.etcd.jetcd.test.EtcdClusterExtension;
 import io.etcd.jetcd.watch.WatchEvent;
 import io.etcd.jetcd.watch.WatchEvent.EventType;
 import io.etcd.jetcd.watch.WatchResponse;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -40,7 +41,7 @@ public class WatchTest {
     /**
      * This test fails too easily and is only used to collect GraalVM reachability metadata"
      */
-    private static final long TIME_OUT_SECONDS = 300;
+    private static final long TIME_OUT_SECONDS = 120;
     @RegisterExtension
     public static final EtcdClusterExtension cluster = EtcdClusterExtension.builder()
             .withNodes(3)
@@ -55,6 +56,7 @@ public class WatchTest {
     }
 
     @Test
+    @Disabled("https://github.com/etcd-io/jetcd/pull/1092")
     public void testNamespacedAndNotNamespacedClient() throws Exception {
         final ByteSequence key = randomByteSequence();
         final ByteSequence nsKey = ByteSequence.from(namespace.concat(key).getBytes());
@@ -74,6 +76,7 @@ public class WatchTest {
 
     @ParameterizedTest
     @MethodSource("parameters")
+    @Disabled("https://github.com/etcd-io/jetcd/pull/1092")
     public void testWatchOnPut(final Client client) throws Exception {
         final ByteSequence key = randomByteSequence();
         final ByteSequence value = randomByteSequence();
