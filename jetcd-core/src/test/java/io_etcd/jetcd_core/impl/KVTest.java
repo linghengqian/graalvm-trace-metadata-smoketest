@@ -18,7 +18,6 @@ import io.etcd.jetcd.options.GetOption.SortTarget;
 import io.etcd.jetcd.options.PutOption;
 import io.etcd.jetcd.test.EtcdClusterExtension;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 
@@ -244,15 +243,10 @@ public class KVTest {
     }
 
     @Test
-    @Disabled("This test fails too easily and is only used to collect GraalVM reachability metadata")
     @SuppressWarnings("FutureReturnValueIgnored")
     public void testKVClientCanRetryPutOnEtcdRestart() throws InterruptedException {
-        try (Client customClient = TestUtil.client(cluster)
-                .retryMaxDuration(Duration.ofMinutes(5))
-                .retryDelay(10)
-                .retryMaxDelay(30)
-                .retryChronoUnit(ChronoUnit.SECONDS)
-                .build()) {
+        try (Client customClient = TestUtil.client(cluster).retryMaxDuration(Duration.ofMinutes(5)).retryDelay(10).retryMaxDelay(30)
+                .retryChronoUnit(ChronoUnit.SECONDS).build()) {
             ByteSequence key = ByteSequence.from("retry_dummy_key", StandardCharsets.UTF_8);
             int putCount = 1000;
             ScheduledExecutorService executor = Executors.newScheduledThreadPool(2);
@@ -262,15 +256,10 @@ public class KVTest {
             executor.shutdown();
             assertThat(executor.awaitTermination(30, TimeUnit.SECONDS)).isTrue();
             GetResponse getResponse = kvClient.get(key).join();
-            assertThat(getResponse.getKvs().size())
-                    .as("There should be exactly one KeyValue for the test key")
-                    .isEqualTo(1);
-            ByteSequence lastPutValue = ByteSequence
-                    .from(Integer.toString(putCount - 1), StandardCharsets.UTF_8);
-            assertThat(getResponse.getKvs().get(0).getValue())
-                    .as("The sequence of put operations should finish successfully. " +
-                            "Last seen value should match the expected value.")
-                    .isEqualTo(lastPutValue);
+            assertThat(getResponse.getKvs().size()).as("There should be exactly one KeyValue for the test key").isEqualTo(1);
+            ByteSequence lastPutValue = ByteSequence.from(Integer.toString(putCount - 1), StandardCharsets.UTF_8);
+            assertThat(getResponse.getKvs().get(0).getValue()).as("The sequence of put operations should finish successfully. " +
+                    "Last seen value should match the expected value.").isEqualTo(lastPutValue);
         }
     }
 

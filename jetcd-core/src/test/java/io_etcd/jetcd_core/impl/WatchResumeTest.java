@@ -26,7 +26,7 @@ public class WatchResumeTest {
             .build();
 
     @Test
-    @Disabled("java.util.concurrent.TimeoutException")
+    @Disabled("This test fails too easily and is only used to collect GraalVM reachability metadata")
     public void testWatchOnPut() throws Exception {
         try (Client client = TestUtil.client(cluster).build()) {
             Watch watchClient = client.getWatchClient();

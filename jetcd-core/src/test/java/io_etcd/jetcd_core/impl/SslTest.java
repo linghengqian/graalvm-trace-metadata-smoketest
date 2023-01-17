@@ -17,12 +17,7 @@ import static io_etcd.jetcd_core.impl.TestUtil.bytesOf;
 import static org.assertj.core.api.Assertions.assertThat;
 
 // `@org.junit.jupiter.api.Timeout(value = 30)` can't be used in the nativeTest GraalVM CE 22.3
-@Disabled("""
-        In GraalVM NativeTest
-        Caused by: com.github.dockerjava.api.exception.InternalServerErrorException:
-        Status 500: {
-            "message":"invalid volume specification: '/run/desktop/mnt/host/wsl/docker-desktop-bind-mounts/Ubuntu/50d7fe6694e258046ac7013d5655848f757350994873447d00fd542c7b936e6d:/ssl/cert/etcd0.pem:/etc/ssl/etcd/server.pem:ro,z'"
-        }""")
+@Disabled("https://github.com/etcd-io/jetcd/pull/1092")
 public class SslTest {
     @RegisterExtension
     public static final EtcdClusterExtension cluster = EtcdClusterExtension.builder()
