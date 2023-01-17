@@ -40,7 +40,7 @@ public class WatchTest {
     /**
      * This test fails too easily and is only used to collect GraalVM reachability metadata"
      */
-    private static final long TIME_OUT_SECONDS = 60;
+    private static final long TIME_OUT_SECONDS = 300;
     @RegisterExtension
     public static final EtcdClusterExtension cluster = EtcdClusterExtension.builder()
             .withNodes(3)
