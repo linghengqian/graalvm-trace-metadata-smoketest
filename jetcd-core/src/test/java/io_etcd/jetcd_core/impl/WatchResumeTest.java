@@ -8,7 +8,6 @@ import io.etcd.jetcd.Watch.Watcher;
 import io.etcd.jetcd.test.EtcdClusterExtension;
 import io.etcd.jetcd.watch.WatchEvent.EventType;
 import io.etcd.jetcd.watch.WatchResponse;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 
@@ -26,7 +25,6 @@ public class WatchResumeTest {
             .build();
 
     @Test
-    @Disabled("This test fails too easily and is only used to collect GraalVM reachability metadata")
     public void testWatchOnPut() throws Exception {
         try (Client client = TestUtil.client(cluster).build()) {
             Watch watchClient = client.getWatchClient();
