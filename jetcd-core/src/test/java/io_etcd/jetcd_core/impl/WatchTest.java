@@ -37,7 +37,10 @@ import static org.junit.jupiter.params.provider.Arguments.arguments;
 @SuppressWarnings({"resource", "ResultOfMethodCallIgnored"})
 // `@org.junit.jupiter.api.Timeout(value = 30)` can't be used in the nativeTest GraalVM CE 22.3
 public class WatchTest {
-    private static final long TIME_OUT_SECONDS = 30;
+    /**
+     * This test fails too easily and is only used to collect GraalVM reachability metadata"
+     */
+    private static final long TIME_OUT_SECONDS = 60;
     @RegisterExtension
     public static final EtcdClusterExtension cluster = EtcdClusterExtension.builder()
             .withNodes(3)
