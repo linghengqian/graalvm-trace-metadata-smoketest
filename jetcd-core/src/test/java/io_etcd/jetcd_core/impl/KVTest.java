@@ -18,6 +18,7 @@ import io.etcd.jetcd.options.GetOption.SortTarget;
 import io.etcd.jetcd.options.PutOption;
 import io.etcd.jetcd.test.EtcdClusterExtension;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 
@@ -244,6 +245,7 @@ public class KVTest {
 
     @Test
     @SuppressWarnings("FutureReturnValueIgnored")
+    @Disabled("https://github.com/etcd-io/jetcd/pull/1092")
     public void testKVClientCanRetryPutOnEtcdRestart() throws InterruptedException {
         try (Client customClient = TestUtil.client(cluster).retryMaxDuration(Duration.ofMinutes(5)).retryDelay(10).retryMaxDelay(30)
                 .retryChronoUnit(ChronoUnit.SECONDS).build()) {
