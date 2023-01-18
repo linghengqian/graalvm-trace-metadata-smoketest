@@ -10,13 +10,12 @@ import com.google.common.collect.Sets;
 import org.mockito.Mockito;
 
 import java.util.*;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
-
 
 public final class CacheGenerator {
     private static final ImmutableList<Map.Entry<Int, Int>> INTS = makeInts();
     private static final int BASE = 1_000;
-
     private final Options options;
     private final CacheSpec cacheSpec;
     private final boolean isAsyncOnly;
@@ -24,8 +23,7 @@ public final class CacheGenerator {
     private final boolean isGuavaCompatible;
 
     public CacheGenerator(CacheSpec cacheSpec) {
-        this(cacheSpec, Options.fromSystemProperties(),
-                /* isLoadingOnly */ false, /* isAsyncOnly */ false, /* isGuavaCompatible */ true);
+        this(cacheSpec, Options.fromSystemProperties(), false,  false,  true);
     }
 
     public CacheGenerator(CacheSpec cacheSpec, Options options,
@@ -37,13 +35,8 @@ public final class CacheGenerator {
         this.options = options;
     }
 
-    /**
-     * Returns a lazy stream so that the test case is GC-able after use.
-     */
     public Stream<CacheContext> generate() {
-        return combinations().stream()
-                .map(this::newCacheContext)
-                .filter(this::isCompatible);
+        return combinations().stream().map(this::newCacheContext).filter(this::isCompatible);
     }
 
 
@@ -60,7 +53,6 @@ public final class CacheGenerator {
         var statistics = filterTypes(options.stats(), cacheSpec.stats());
         var computations = filterTypes(options.compute(), cacheSpec.compute());
         var implementations = filterTypes(options.implementation(), cacheSpec.implementation());
-
         if (isAsyncOnly) {
             values = values.contains(ReferenceType.STRONG)
                     ? ImmutableSet.of(ReferenceType.STRONG)
@@ -73,11 +65,9 @@ public final class CacheGenerator {
         if (computations.equals(ImmutableSet.of(Compute.SYNC))) {
             asyncLoader = ImmutableSet.of(false);
         }
-
         if (isLoadingOnly) {
             loaders = Sets.difference(loaders, Set.of(Loader.DISABLED)).immutableCopy();
         }
-
         if (computations.isEmpty() || implementations.isEmpty()
                 || keys.isEmpty() || values.isEmpty()) {
             return ImmutableSet.of();
@@ -110,9 +100,6 @@ public final class CacheGenerator {
                 : ImmutableSet.copyOf(options);
     }
 
-    /**
-     * Returns a new cache context based on the combination.
-     */
     private CacheContext newCacheContext(List<Object> combination) {
         int index = 0;
         return new CacheContext(
@@ -138,9 +125,6 @@ public final class CacheGenerator {
                 cacheSpec);
     }
 
-    /**
-     * Returns if the context is a viable configuration.
-     */
     private boolean isCompatible(CacheContext context) {
         boolean asyncIncompatible = context.isAsync()
                 && (!context.isCaffeine() || !context.isStrongValues());
@@ -167,9 +151,6 @@ public final class CacheGenerator {
         return !skip;
     }
 
-    /**
-     * Creates a new cache based on the context's configuration.
-     */
     private static <K, V> Cache<K, V> newCache(CacheContext context) {
         if (context.isCaffeine()) {
             return CaffeineCacheFromContext.newCaffeineCache(context);
@@ -179,27 +160,19 @@ public final class CacheGenerator {
         throw new IllegalStateException();
     }
 
-    /**
-     * Fills the cache up to the population size.
-     */
     @SuppressWarnings({"PreferJavaTimeOverload", "unchecked"})
     private static void populate(CacheContext context, Cache<Int, Int> cache) {
         if (context.population.size() == 0) {
             return;
         }
-
         int maximum = (int) Math.min(context.maximumSize(), context.population.size());
         int first = BASE + (int) Math.min(0, context.population.size());
         int last = BASE + maximum - 1;
         int middle = Math.max(first, BASE + ((last - first) / 2));
-
-        for (int i = 0; i < maximum; i++) {
+        IntStream.range(0, maximum).forEach(i -> {
             Map.Entry<Int, Int> entry = INTS.get(i);
-
-            // Reference caching (weak, soft) require unique instances for identity comparison
             var key = context.isStrongKeys() ? entry.getKey() : new Int(BASE + i);
             var value = context.isStrongValues() ? entry.getValue() : new Int(-key.intValue());
-
             if (key.intValue() == first) {
                 context.firstKey = key;
             }
@@ -211,7 +184,7 @@ public final class CacheGenerator {
             }
             cache.put(key, value);
             context.original.put(key, value);
-        }
+        });
         if (context.executorType() != CacheExecutor.DIRECT) {
             cache.cleanUp();
         }
@@ -220,18 +193,10 @@ public final class CacheGenerator {
         }
     }
 
-    /**
-     * Returns a cache of integers and their negation.
-     */
     private static ImmutableList<Map.Entry<Int, Int>> makeInts() {
-        int size = Stream.of(Population.values())
-                .mapToInt(population -> Math.toIntExact(population.size()))
-                .max().getAsInt();
+        int size = Stream.of(Population.values()).mapToInt(population -> Math.toIntExact(population.size())).max().getAsInt();
         var builder = new ImmutableList.Builder<Map.Entry<Int, Int>>();
-        for (int i = 0; i < size; i++) {
-            Int value = Int.valueOf(BASE + i);
-            builder.add(Map.entry(value, value.negate()));
-        }
+        IntStream.range(0, size).mapToObj(i -> Int.valueOf(BASE + i)).map(value -> Map.entry(value, value.negate())).forEach(builder::add);
         return builder.build();
     }
 }

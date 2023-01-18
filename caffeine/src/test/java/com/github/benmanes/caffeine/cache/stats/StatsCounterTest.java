@@ -6,6 +6,8 @@ import com.github.benmanes.caffeine.testing.ConcurrentTestHarness;
 import org.mockito.Mockito;
 import org.testng.annotations.Test;
 
+import java.util.Arrays;
+
 import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
@@ -26,10 +28,7 @@ public final class StatsCounterTest {
         counter.recordLoadFailure(1);
         assertThat(counter.snapshot()).isEqualTo(CacheStats.of(0, 0, 0, 0, 0, 0, 0));
         assertThat(counter.toString()).isEqualTo(CacheStats.of(0, 0, 0, 0, 0, 0, 0).toString());
-
-        for (var type : DisabledStatsCounter.values()) {
-            assertThat(DisabledStatsCounter.valueOf(type.name())).isEqualTo(counter);
-        }
+        Arrays.stream(DisabledStatsCounter.values()).forEach(type -> assertThat(DisabledStatsCounter.valueOf(type.name())).isEqualTo(counter));
     }
 
     @Test

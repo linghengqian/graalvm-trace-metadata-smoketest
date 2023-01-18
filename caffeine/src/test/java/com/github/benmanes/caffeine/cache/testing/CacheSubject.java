@@ -138,7 +138,6 @@ public final class CacheSubject extends Subject {
                     GcFinalization.awaitFullGc();
                 }
                 actual.cleanUp();
-
                 long size = actual.estimatedSize();
                 if (size == expectedSize) {
                     return;

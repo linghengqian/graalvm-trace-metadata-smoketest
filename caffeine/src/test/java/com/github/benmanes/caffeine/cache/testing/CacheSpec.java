@@ -2,7 +2,6 @@
 package com.github.benmanes.caffeine.cache.testing;
 
 import com.github.benmanes.caffeine.cache.*;
-import com.github.benmanes.caffeine.cache.testing.RemovalListeners.ConsumingRemovalListener;
 import com.github.benmanes.caffeine.testing.ConcurrentTestHarness;
 import com.github.benmanes.caffeine.testing.Int;
 import com.google.common.util.concurrent.MoreExecutors;
@@ -15,6 +14,7 @@ import java.lang.annotation.Target;
 import java.util.*;
 import java.util.concurrent.*;
 import java.util.function.Supplier;
+import java.util.stream.IntStream;
 
 import static com.github.benmanes.caffeine.cache.testing.CacheContext.intern;
 import static com.github.benmanes.caffeine.testing.ConcurrentTestHarness.scheduledExecutor;
@@ -31,12 +31,6 @@ import static org.mockito.Mockito.when;
 @Target(METHOD)
 @Retention(RUNTIME)
 public @interface CacheSpec {
-
-    /* --------------- Compute --------------- */
-
-    /**
-     * Indicates whether the test supports a cache allowing for asynchronous computations.
-     */
     Compute[] compute() default {
             Compute.ASYNC,
             Compute.SYNC
@@ -62,29 +56,11 @@ public @interface CacheSpec {
             InitialCapacity.DEFAULT
     };
 
-    /**
-     * The initial capacities, each resulting in a new combination.
-     */
     enum InitialCapacity {
-        /**
-         * A flag indicating that the initial capacity is not configured.
-         */
         DEFAULT(16),
-        /**
-         * A configuration where the table grows on the first addition.
-         */
         ZERO(0),
-        /**
-         * A configuration where the table grows on the second addition.
-         */
         ONE(1),
-        /**
-         * A configuration where the table grows after the {@link Population#FULL} count.
-         */
         FULL(50),
-        /**
-         * A configuration where the table grows after the 10 x {@link Population#FULL} count.
-         */
         EXCESSIVE(100);
 
         private final int size;
@@ -98,8 +74,6 @@ public @interface CacheSpec {
         }
     }
 
-    /* --------------- Statistics --------------- */
-
     Stats[] stats() default {
             Stats.ENABLED,
             Stats.DISABLED
@@ -110,44 +84,18 @@ public @interface CacheSpec {
         DISABLED
     }
 
-    /* --------------- Maximum size --------------- */
-
-    /**
-     * The maximum size, each resulting in a new combination.
-     */
     Maximum[] maximumSize() default {
             Maximum.DISABLED,
             Maximum.UNREACHABLE
     };
 
     enum Maximum {
-        /**
-         * A flag indicating that entries are not evicted due to a maximum threshold.
-         */
         DISABLED(Long.MAX_VALUE),
-        /**
-         * A configuration where entries are evicted immediately.
-         */
         ZERO(0),
-        /**
-         * A configuration that holds a single unit.
-         */
         ONE(1),
-        /**
-         * A configuration that holds 10 units.
-         */
         TEN(10),
-        /**
-         * A configuration that holds 150 units.
-         */
         ONE_FIFTY(150),
-        /**
-         * A configuration that holds the {@link Population#FULL} unit count.
-         */
         FULL(InitialCapacity.FULL.size()),
-        /**
-         * A configuration where the threshold is too high for eviction to occur.
-         */
         UNREACHABLE(Long.MAX_VALUE);
 
         private final long max;
@@ -161,11 +109,6 @@ public @interface CacheSpec {
         }
     }
 
-    /* --------------- Weigher --------------- */
-
-    /**
-     * The weigher, each resulting in a new combination.
-     */
     CacheWeigher[] weigher() default {
             CacheWeigher.DISABLED,
             CacheWeigher.ZERO,
@@ -211,52 +154,32 @@ public @interface CacheSpec {
         }
     }
 
-    /* --------------- Expiration --------------- */
-
-    /**
-     * Indicates that the combination must have any of the expiration settings.
-     */
     Expiration[] mustExpireWithAnyOf() default {};
 
     enum Expiration {
         AFTER_WRITE, AFTER_ACCESS, VARIABLE
     }
 
-    /**
-     * The expiration time-to-idle setting, each resulting in a new combination.
-     */
     Expire[] expireAfterAccess() default {
             Expire.DISABLED,
             Expire.FOREVER
     };
 
-    /**
-     * The expiration time-to-live setting, each resulting in a new combination.
-     */
     Expire[] expireAfterWrite() default {
             Expire.DISABLED,
             Expire.FOREVER
     };
 
-    /**
-     * The refresh setting, each resulting in a new combination.
-     */
     Expire[] refreshAfterWrite() default {
             Expire.DISABLED,
             Expire.FOREVER
     };
 
-    /**
-     * The variable expiration setting, each resulting in a new combination.
-     */
     CacheExpiry[] expiry() default {
             CacheExpiry.DISABLED,
             CacheExpiry.ACCESS
     };
 
-    /**
-     * The fixed duration for the expiry.
-     */
     Expire expiryTime() default Expire.FOREVER;
 
     enum CacheExpiry {
@@ -312,21 +235,9 @@ public @interface CacheSpec {
     }
 
     enum Expire {
-        /**
-         * A flag indicating that entries are not evicted due to expiration.
-         */
         DISABLED(Long.MIN_VALUE),
-        /**
-         * A configuration where entries are evicted immediately.
-         */
         IMMEDIATELY(0),
-        /**
-         * A configuration where entries are evicted almost immediately.
-         */
         ONE_MILLISECOND(TimeUnit.MILLISECONDS.toNanos(1)),
-        /**
-         * A configuration where entries are after a time duration.
-         */
         ONE_MINUTE(TimeUnit.MINUTES.toNanos(1)),
         FOREVER(Long.MAX_VALUE);
 
@@ -341,64 +252,30 @@ public @interface CacheSpec {
         }
     }
 
-    /* --------------- Reference-based --------------- */
-
-    /**
-     * Indicates that the combination must have a weak or soft reference collection setting.
-     */
     boolean requiresWeakOrSoft() default false;
 
-    /**
-     * The reference type of that the cache holds a key with (strong or weak only).
-     */
     ReferenceType[] keys() default {
             ReferenceType.STRONG,
             ReferenceType.WEAK
     };
 
-    /**
-     * The reference type of that the cache holds a value with (strong, soft, or weak).
-     */
     ReferenceType[] values() default {
             ReferenceType.STRONG,
             ReferenceType.WEAK,
             ReferenceType.SOFT
     };
 
-    /**
-     * The reference type of cache keys and/or values.
-     */
     enum ReferenceType {
-        /**
-         * Prevents referent from being reclaimed by the garbage collector.
-         */
         STRONG,
-
-        /**
-         * The referent is reclaimed when there are no strong or soft references.
-         */
         WEAK,
-
-        /**
-         * The referent is reclaimed in an LRU fashion when the JVM runs low on memory and there are no
-         * strong references.
-         */
         SOFT
     }
 
-    /* --------------- Removal --------------- */
-
-    /**
-     * The removal listeners, each resulting in a new combination.
-     */
     Listener[] removalListener() default {
             Listener.CONSUMING,
             Listener.DISABLED,
     };
 
-    /**
-     * The eviction listeners, each resulting in a new combination.
-     */
     Listener[] evictionListener() default {
             Listener.CONSUMING,
             Listener.DISABLED,
@@ -406,21 +283,9 @@ public @interface CacheSpec {
 
     @SuppressWarnings("unchecked")
     enum Listener {
-        /**
-         * A flag indicating that no removal listener is configured.
-         */
         DISABLED(() -> null),
-        /**
-         * A removal listener that rejects all notifications.
-         */
         REJECTING(RemovalListeners::rejecting),
-        /**
-         * A {@link ConsumingRemovalListener} retains all notifications for evaluation by the test.
-         */
         CONSUMING(RemovalListeners::consuming),
-        /**
-         * A removal listener that records interactions.
-         */
         MOCKITO(() -> Mockito.mock(RemovalListener.class));
 
         private final Supplier<RemovalListener<Object, Object>> factory;
@@ -434,38 +299,24 @@ public @interface CacheSpec {
         }
     }
 
-    /* --------------- CacheLoader --------------- */
-
     Loader[] loader() default {
             Loader.DISABLED,
             Loader.NEGATIVE,
     };
 
-    /**
-     * The {@link CacheLoader} for constructing the {@link LoadingCache}.
-     */
     enum Loader implements CacheLoader<Int, Int> {
-        /**
-         * A flag indicating that a loader should not be configured.
-         */
         DISABLED {
             @Override
             public Int load(Int key) {
                 throw new AssertionError();
             }
         },
-        /**
-         * A loader that always returns null (no mapping).
-         */
         NULL {
             @Override
             public Int load(Int key) {
                 return null;
             }
         },
-        /**
-         * A loader that returns the key.
-         */
         IDENTITY {
             @Override
             public Int load(Int key) {
@@ -473,47 +324,31 @@ public @interface CacheSpec {
                 return intern(key);
             }
         },
-        /**
-         * A loader that returns the key's negation.
-         */
         NEGATIVE {
             @Override
             public Int load(Int key) {
-                // Intern the loader's return value so that it is retained on a refresh
+
                 return intern(key, k -> new Int(-k.intValue()));
             }
         },
-        /**
-         * A loader that always throws a runtime exception.
-         */
         EXCEPTIONAL {
             @Override
             public Int load(Int key) {
                 throw new IllegalStateException();
             }
         },
-        /**
-         * A loader that always throws a checked exception.
-         */
         CHECKED_EXCEPTIONAL {
             @Override
             public Int load(Int key) throws ExecutionException {
                 throw new ExecutionException(null);
             }
         },
-        /**
-         * A loader that always throws an interrupted exception.
-         */
         INTERRUPTED {
             @Override
             public Int load(Int key) throws InterruptedException {
                 throw new InterruptedException();
             }
         },
-
-        /**
-         * A loader that always returns null (no mapping).
-         */
         BULK_NULL {
             @Override
             public Int load(Int key) {
@@ -558,9 +393,6 @@ public @interface CacheSpec {
                 return result;
             }
         },
-        /**
-         * A bulk-only loader that loads only keys that were not requested.
-         */
         BULK_DIFFERENT {
             @Override
             public Int load(Int key) {
@@ -573,9 +405,6 @@ public @interface CacheSpec {
                         key -> intern(intern(key).negate()), identity()));
             }
         },
-        /**
-         * A bulk-only loader that loads more than requested.
-         */
         BULK_NEGATIVE_EXCEEDS {
             @Override
             public Int load(Int key) {
@@ -587,15 +416,10 @@ public @interface CacheSpec {
                     Set<? extends Int> keys) throws Exception {
                 var moreKeys = new LinkedHashSet<Int>(keys.size() + 10);
                 moreKeys.addAll(keys);
-                for (int i = 0; i < 10; i++) {
-                    moreKeys.add(Int.valueOf(ThreadLocalRandom.current().nextInt()));
-                }
+                IntStream.range(0, 10).mapToObj(i -> Int.valueOf(ThreadLocalRandom.current().nextInt())).forEach(moreKeys::add);
                 return BULK_NEGATIVE.loadAll(moreKeys);
             }
         },
-        /**
-         * A bulk-only loader that always throws a runtime exception.
-         */
         BULK_EXCEPTIONAL {
             @Override
             public Int load(Int key) {
@@ -607,9 +431,6 @@ public @interface CacheSpec {
                 throw new IllegalStateException();
             }
         },
-        /**
-         * A bulk-only loader that always throws a checked exception.
-         */
         BULK_CHECKED_EXCEPTIONAL {
             @Override
             public Int load(Int key) {
@@ -621,9 +442,6 @@ public @interface CacheSpec {
                 throw new ExecutionException(null);
             }
         },
-        /**
-         * A bulk-only loader that always throws an interrupted exception.
-         */
         BULK_INTERRUPTED {
             @Override
             public Int load(Int key) {
@@ -635,9 +453,6 @@ public @interface CacheSpec {
                 throw new InterruptedException();
             }
         },
-        /**
-         * A bulk loader that tries to modify the keys.
-         */
         BULK_MODIFY_KEYS {
             @Override
             public Int load(Int key) {
@@ -650,10 +465,6 @@ public @interface CacheSpec {
                 return Map.of();
             }
         },
-
-        /**
-         * A loader that always throws a runtime exception.
-         */
         ASYNC_EXCEPTIONAL {
             @Override
             public Int load(Int key) {
@@ -665,9 +476,6 @@ public @interface CacheSpec {
                 throw new IllegalStateException();
             }
         },
-        /**
-         * A loader that always throws a checked exception.
-         */
         ASYNC_CHECKED_EXCEPTIONAL {
             @Override
             public Int load(Int key) {
@@ -680,9 +488,6 @@ public @interface CacheSpec {
                 throw new ExecutionException(null);
             }
         },
-        /**
-         * An async loader that returns a incomplete future.
-         */
         ASYNC_INCOMPLETE {
             @Override
             public Int load(Int key) {
@@ -704,9 +509,6 @@ public @interface CacheSpec {
                 return new CompletableFuture<>();
             }
         },
-        /**
-         * A loader that always throws an interrupted exception.
-         */
         ASYNC_INTERRUPTED {
             @Override
             public Int load(Int key) {
@@ -719,9 +521,6 @@ public @interface CacheSpec {
                 throw new InterruptedException();
             }
         },
-        /**
-         * A loader that always throws a runtime exception.
-         */
         ASYNC_BULK_EXCEPTIONAL {
             @Override
             public Int load(Int key) {
@@ -734,9 +533,6 @@ public @interface CacheSpec {
                 throw new IllegalStateException();
             }
         },
-        /**
-         * A loader that always throws a checked exception.
-         */
         ASYNC_BULK_CHECKED_EXCEPTIONAL {
             @Override
             public Int load(Int key) {
@@ -749,9 +545,6 @@ public @interface CacheSpec {
                 throw new ExecutionException(null);
             }
         },
-        /**
-         * An async bulk loader that tries to modify the keys.
-         */
         ASYNC_BULK_MODIFY_KEYS {
             @Override
             public Int load(Int key) {
@@ -765,9 +558,6 @@ public @interface CacheSpec {
                 return CompletableFuture.completedFuture(Map.of());
             }
         },
-        /**
-         * A loader that always throws an interrupted exception.
-         */
         ASYNC_BULK_INTERRUPTED {
             @Override
             public Int load(Int key) {
@@ -781,9 +571,6 @@ public @interface CacheSpec {
             }
         },
 
-        /**
-         * A loader that always throws a runtime exception.
-         */
         REFRESH_EXCEPTIONAL {
             @Override
             public Int load(Int key) {
@@ -801,9 +588,6 @@ public @interface CacheSpec {
                 throw new IllegalStateException();
             }
         },
-        /**
-         * A loader that always throws a checked exception.
-         */
         REFRESH_CHECKED_EXCEPTIONAL {
             @Override
             public Int load(Int key) throws ExecutionException {
@@ -822,9 +606,6 @@ public @interface CacheSpec {
                 throw new ExecutionException(null);
             }
         },
-        /**
-         * A loader that always throws an interrupted exception.
-         */
         REFRESH_INTERRUPTED {
             @Override
             public Int load(Int key) throws InterruptedException {
@@ -858,9 +639,6 @@ public @interface CacheSpec {
             return bulk;
         }
 
-        /**
-         * Returns a serializable view restricted to the {@link AsyncCacheLoader} interface.
-         */
         public AsyncCacheLoader<Int, Int> async() {
             return asyncLoader;
         }
@@ -906,37 +684,21 @@ public @interface CacheSpec {
         }
     }
 
-    /* --------------- Executor --------------- */
-
-    /**
-     * The executors retrieved from a supplier, each resulting in a new combination.
-     */
     CacheExecutor[] executor() default {
             CacheExecutor.DIRECT,
     };
 
-    /**
-     * If the executor is allowed to have failures.
-     */
     ExecutorFailure executorFailure() default ExecutorFailure.DISALLOWED;
 
     enum ExecutorFailure {
         EXPECTED, DISALLOWED, IGNORED
     }
 
-    /**
-     * The executors that the cache can be configured with.
-     */
     enum CacheExecutor {
-        // Use with caution as may be unpredictable during tests if awaiting completion
-        DEFAULT(() -> null), // fork-join common pool
-        // Cache implementations must avoid deadlocks by incorrectly assuming async execution
+        DEFAULT(() -> null),
         DIRECT(() -> new TrackingExecutor(MoreExecutors.newDirectExecutorService())),
-        // Cache implementations must continue to evict if the maintenance task is lost
         DISCARDING(() -> new TrackingExecutor(TestingExecutors.noOpScheduledExecutor())),
-        // Use with caution as may be unpredictable during tests if awaiting completion
         THREADED(() -> new TrackingExecutor(ConcurrentTestHarness.executor)),
-        // Cache implementations must avoid corrupting internal state due to rejections
         REJECTING(() -> new TrackingExecutor(new ForkJoinPool() {
             @Override
             public void execute(Runnable task) {
@@ -955,18 +717,10 @@ public @interface CacheSpec {
         }
     }
 
-    /* --------------- Scheduler --------------- */
-
-    /**
-     * The executors retrieved from a supplier, each resulting in a new combination.
-     */
     CacheScheduler[] scheduler() default {
             CacheScheduler.DISABLED,
     };
 
-    /**
-     * The scheduler that the cache can be configured with.
-     */
     enum CacheScheduler {
         DISABLED(() -> null),
         SYSTEM(Scheduler::systemScheduler),
@@ -984,14 +738,6 @@ public @interface CacheSpec {
         }
     }
 
-    /* --------------- Populated --------------- */
-
-    /**
-     * The number of entries to populate the cache with. The keys and values are integers starting
-     * from above the integer cache limit, with the value being the negated key. The cache will never
-     * be populated to exceed the maximum size, if defined, thereby ensuring that no evictions occur
-     * prior to the test. Each configuration results in a new combination.
-     */
     Population[] population() default {
             Population.EMPTY,
             Population.SINGLETON,
@@ -999,15 +745,11 @@ public @interface CacheSpec {
             Population.FULL
     };
 
-    /**
-     * The population scenarios.
-     */
     enum Population {
         EMPTY(0),
         SINGLETON(1),
         PARTIAL(InitialCapacity.FULL.size() / 2),
         FULL(InitialCapacity.FULL.size());
-
         private final long size;
 
         Population(long size) {

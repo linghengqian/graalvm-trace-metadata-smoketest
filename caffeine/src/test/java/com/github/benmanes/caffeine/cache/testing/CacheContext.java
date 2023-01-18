@@ -58,9 +58,7 @@ public final class CacheContext {
     final Expire refresh;
     final Loader loader;
     final Stats stats;
-
     final boolean isAsyncLoader;
-
     CacheBuilder<Object, Object> guava;
     Caffeine<Object, Object> caffeine;
     AsyncCache<?, ?> asyncCache;
@@ -70,8 +68,6 @@ public final class CacheContext {
     @Nullable Int middleKey;
     @Nullable Int lastKey;
     long initialSize;
-
-    // Generated on-demand
     Int absentKey;
     Int absentValue;
 
@@ -114,24 +110,15 @@ public final class CacheContext {
         this.expiry = expiryType.createExpiry(expiryTime);
     }
 
-    /**
-     * Returns a thread local interner for explicit caching.
-     */
     public static Map<Object, Object> interner() {
         return interner.get();
     }
 
-    /**
-     * Returns a thread local interned value.
-     */
     @SuppressWarnings("unchecked")
     public static <T> T intern(T o) {
         return (T) interner.get().computeIfAbsent(o, identity());
     }
 
-    /**
-     * Returns a thread local interned value.
-     */
     @SuppressWarnings("unchecked")
     public static <K, V> V intern(K key, Function<K, V> mappingFunction) {
         return (V) interner.get().computeIfAbsent(key, k -> mappingFunction.apply((K) k));
@@ -280,11 +267,8 @@ public final class CacheContext {
         return refresh;
     }
 
-    /**
-     * The initial entries in the cache, iterable in insertion order.
-     */
     public Map<Int, Int> original() {
-        initialSize(); // lazy initialize
+        initialSize();
         return original;
     }
 

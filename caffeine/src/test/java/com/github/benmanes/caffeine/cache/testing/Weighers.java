@@ -9,7 +9,6 @@ import java.util.concurrent.ThreadLocalRandom;
 import static java.util.Objects.requireNonNull;
 
 public final class Weighers {
-
     private Weighers() {
     }
 
@@ -24,7 +23,6 @@ public final class Weighers {
 
     static final class ConstantWeigher<K, V> implements Weigher<K, V>, Serializable {
         private static final long serialVersionUID = 1L;
-
         private final int weight;
 
         ConstantWeigher(int weight) {

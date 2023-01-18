@@ -4,6 +4,9 @@ package com.github.benmanes.caffeine.cache;
 import com.github.benmanes.caffeine.cache.LocalAsyncCache.AbstractCacheView;
 import org.jctools.util.UnsafeAccess;
 
+import java.util.Arrays;
+import java.util.stream.IntStream;
+
 public final class Reset {
     static final long PROBE = UnsafeAccess.fieldOffset(Thread.class, "threadLocalRandomProbe");
     static final long SEED = UnsafeAccess.fieldOffset(Thread.class, "threadLocalRandomSeed");
@@ -33,9 +36,7 @@ public final class Reset {
             var bounded = (BoundedLocalCache<Object, Object>) local;
             bounded.evictionLock.lock();
             try {
-                for (var node : bounded.data.values()) {
-                    destroyNode(bounded, node);
-                }
+                bounded.data.values().forEach(node -> destroyNode(bounded, node));
                 if (bounded.expiresVariable()) {
                     destroyTimerWheel(bounded);
                 }
@@ -64,11 +65,9 @@ public final class Reset {
     }
 
     private static void destroyTimerWheel(BoundedLocalCache<Object, Object> bounded) {
-        for (int i = 0; i < bounded.timerWheel().wheel.length; i++) {
-            for (var sentinel : bounded.timerWheel().wheel[i]) {
-                sentinel.setPreviousInVariableOrder(sentinel);
-                sentinel.setNextInVariableOrder(sentinel);
-            }
-        }
+        IntStream.range(0, bounded.timerWheel().wheel.length).forEach(i -> Arrays.stream(bounded.timerWheel().wheel[i]).forEach(sentinel -> {
+            sentinel.setPreviousInVariableOrder(sentinel);
+            sentinel.setNextInVariableOrder(sentinel);
+        }));
     }
 }

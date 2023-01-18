@@ -14,6 +14,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.stream.IntStream;
 
 import static com.github.benmanes.caffeine.testing.ConcurrentTestHarness.DAEMON_FACTORY;
 import static com.github.benmanes.caffeine.testing.ConcurrentTestHarness.timeTasks;
@@ -34,15 +35,11 @@ public final class Issue412Test {
     public void before() {
         executor = Executors.newCachedThreadPool(DAEMON_FACTORY);
         collected = new AtomicBoolean();
-        cache = Caffeine.newBuilder()
-                .expireAfterWrite(Duration.ofNanos(10))
-                .removalListener((k, v, cause) -> {
-                    if (cause == RemovalCause.COLLECTED) {
-                        collected.set(true);
-                    }
-                })
-                .executor(executor)
-                .build();
+        cache = Caffeine.newBuilder().expireAfterWrite(Duration.ofNanos(10)).removalListener((k, v, cause) -> {
+            if (cause == RemovalCause.COLLECTED) {
+                collected.set(true);
+            }
+        }).executor(executor).build();
         ints = generateSequence();
         random = new Random();
     }
@@ -67,9 +64,7 @@ public final class Issue412Test {
     private static Integer[] generateSequence() {
         var ints = new Integer[2 << 14];
         var generator = new ScrambledZipfianGenerator(ints.length / 3);
-        for (int i = 0; i < ints.length; i++) {
-            ints[i] = generator.nextValue().intValue();
-        }
+        IntStream.range(0, ints.length).forEach(i -> ints[i] = generator.nextValue().intValue());
         return ints;
     }
 }

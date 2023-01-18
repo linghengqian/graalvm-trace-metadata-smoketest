@@ -22,11 +22,10 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 
 @Command(mixinStandardHelpOptions = true)
 public final class Stresser implements Runnable {
-    private static final String[] STATUS =
-            {"Idle", "Required", "Processing -> Idle", "Processing -> Required"};
+    private static final String[] STATUS = {"Idle", "Required", "Processing -> Idle", "Processing -> Required"};
     private static final int MAX_THREADS = 2 * Runtime.getRuntime().availableProcessors();
-    private static final int WRITE_MAX_SIZE = (1 << 12); // 4,096
-    private static final int TOTAL_KEYS = (1 << 20); // 1,048,576
+    private static final int WRITE_MAX_SIZE = (1 << 12);
+    private static final int TOTAL_KEYS = (1 << 20);
     private static final int MASK = TOTAL_KEYS - 1;
     private static final int STATUS_INTERVAL = 5;
 
@@ -94,43 +93,34 @@ public final class Stresser implements Runnable {
         } finally {
             local.evictionLock.unlock();
         }
-
         var elapsedTime = LocalTime.ofSecondOfDay(stopwatch.elapsed(TimeUnit.SECONDS));
         System.out.printf(US, "---------- %s ----------%n", elapsedTime);
-        System.out.printf(US, "Pending reads: %,d; writes: %,d%n",
-                local.readBuffer.size(), pendingWrites);
+        System.out.printf(US, "Pending reads: %,d; writes: %,d%n", local.readBuffer.size(), pendingWrites);
         System.out.printf(US, "Drain status = %s (%s)%n", STATUS[drainStatus], drainStatus);
         System.out.printf(US, "Evictions = %,d%n", cache.stats().evictionCount());
         System.out.printf(US, "Size = %,d (max: %,d)%n", local.data.mappingCount(), workload.maxEntries);
         System.out.printf(US, "Lock = [%s%n", StringUtils.substringAfter(
                 local.evictionLock.toString(), "["));
         System.out.printf(US, "Pending reloads = %,d%n", local.refreshes.size());
-        System.out.printf(US, "Pending tasks = %,d%n",
-                ForkJoinPool.commonPool().getQueuedSubmissionCount());
-
+        System.out.printf(US, "Pending tasks = %,d%n", ForkJoinPool.commonPool().getQueuedSubmissionCount());
         long maxMemory = Runtime.getRuntime().maxMemory();
         long freeMemory = Runtime.getRuntime().freeMemory();
         long allocatedMemory = Runtime.getRuntime().totalMemory();
         System.out.printf(US, "Max Memory = %,d bytes%n", maxMemory);
         System.out.printf(US, "Free Memory = %,d bytes%n", freeMemory);
         System.out.printf(US, "Allocated Memory = %,d bytes%n", allocatedMemory);
-
         System.out.println();
     }
 
     public static void main(String[] args) {
-        new CommandLine(Stresser.class)
-                .setCommandName(Stresser.class.getSimpleName())
-                .setColorScheme(Help.defaultColorScheme(Help.Ansi.ON))
-                .setCaseInsensitiveEnumValuesAllowed(true)
-                .execute(args);
+        new CommandLine(Stresser.class).setCommandName(Stresser.class.getSimpleName()).setColorScheme(Help.defaultColorScheme(Help.Ansi.ON))
+                .setCaseInsensitiveEnumValuesAllowed(true).execute(args);
     }
 
     private enum Workload {
         READ(MAX_THREADS, TOTAL_KEYS),
         WRITE(MAX_THREADS, WRITE_MAX_SIZE),
         REFRESH(MAX_THREADS, TOTAL_KEYS / 4);
-
         private final int maxThreads;
         private final int maxEntries;
 

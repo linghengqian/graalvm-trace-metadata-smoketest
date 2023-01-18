@@ -92,8 +92,6 @@ public final class ReserializableSubject extends Subject {
         }
     }
 
-    /* --------------- Bounded --------------- */
-
     private void checkBoundedAsyncLocalLoadingCache(
             BoundedLocalAsyncLoadingCache<?, ?> original,
             BoundedLocalAsyncLoadingCache<?, ?> copy) {
@@ -101,8 +99,7 @@ public final class ReserializableSubject extends Subject {
         checkBoundedLocalCache(original.cache, copy.cache);
     }
 
-    private void checkBoundedLocalCache(
-            BoundedLocalCache<?, ?> original, BoundedLocalCache<?, ?> copy) {
+    private void checkBoundedLocalCache(BoundedLocalCache<?, ?> original, BoundedLocalCache<?, ?> copy) {
         check("nodeFactory").that(copy.nodeFactory).isInstanceOf(original.nodeFactory.getClass());
         checkEviction(original, copy);
         checkExpiresAfterAccess(original, copy);
@@ -212,8 +209,6 @@ public final class ReserializableSubject extends Subject {
         }
     }
 
-    /* --------------- Unbounded --------------- */
-
     private void checkUnboundedAsyncLocalLoadingCache(
             UnboundedLocalAsyncLoadingCache<?, ?> original,
             UnboundedLocalAsyncLoadingCache<?, ?> copy) {
@@ -225,7 +220,6 @@ public final class ReserializableSubject extends Subject {
             UnboundedLocalCache<?, ?> original, UnboundedLocalCache<?, ?> copy) {
         check("ticker").that(copy.ticker).isEqualTo(original.ticker);
         check("isRecordingStats").that(copy.isRecordingStats).isEqualTo(original.isRecordingStats);
-
         if (original.removalListener == null) {
             check("removalListener").that(copy.removalListener).isNull();
         } else if (copy.removalListener.getClass() != original.removalListener.getClass()) {

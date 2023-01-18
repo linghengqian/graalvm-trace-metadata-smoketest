@@ -17,7 +17,6 @@ import java.util.stream.Stream;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-
 public final class CacheProvider {
     private static final Class<?> BOUNDED_LOCAL_CACHE = classForName("com.github.benmanes.caffeine.cache.BoundedLocalCache");
     private static final ImmutableSet<Class<?>> GUAVA_INCOMPATIBLE = ImmutableSet.of(

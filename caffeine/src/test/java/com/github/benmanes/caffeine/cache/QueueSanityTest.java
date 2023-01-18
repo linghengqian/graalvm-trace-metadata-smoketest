@@ -9,6 +9,7 @@ import org.junit.Test;
 import java.util.Collection;
 import java.util.Queue;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.stream.IntStream;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -17,16 +18,13 @@ import static org.junit.Assume.assumeThat;
 
 @SuppressWarnings({"ThreadPriorityCheck"})
 public abstract class QueueSanityTest {
-
     public static final int SIZE = 8192 * 2;
-
     private final Queue<Integer> queue;
     private final Ordering ordering;
     private final boolean isBounded;
     private final int capacity;
 
-    protected QueueSanityTest(Queue<Integer> queue,
-                              Ordering ordering, int capacity, boolean isBounded) {
+    protected QueueSanityTest(Queue<Integer> queue, Ordering ordering, int capacity, boolean isBounded) {
         this.queue = queue;
         this.ordering = ordering;
         this.capacity = capacity;
@@ -40,10 +38,10 @@ public abstract class QueueSanityTest {
 
     @Test
     public void sanity() {
-        for (int i = 0; i < SIZE; i++) {
+        IntStream.range(0, SIZE).forEach(i -> {
             assertNull(queue.poll());
             assertThat(queue, emptyAndZeroSize());
-        }
+        });
         int i = 0;
         while (i < SIZE && queue.offer(i)) {
             i++;
@@ -51,7 +49,6 @@ public abstract class QueueSanityTest {
         int size = i;
         assertEquals(size, queue.size());
         if (ordering == Ordering.FIFO) {
-            // expect FIFO
             i = 0;
             Integer p;
             Integer e;
@@ -63,7 +60,6 @@ public abstract class QueueSanityTest {
             }
             assertEquals(size, i);
         } else {
-            // expect sum of elements is (size - 1) * size / 2 = 0 + 1 + .... + (size - 1)
             int sum = (size - 1) * size / 2;
             i = 0;
             Integer e;
@@ -89,27 +85,20 @@ public abstract class QueueSanityTest {
     @Test
     public void whenFirstInThenFirstOut() {
         assumeThat(ordering, is(Ordering.FIFO));
-
-        // Arrange
         int i = 0;
         while (i < SIZE && queue.offer(i)) {
             i++;
         }
         final int size = queue.size();
-
-        // Act
         i = 0;
         Integer prev;
         while ((prev = queue.peek()) != null) {
             final Integer item = queue.poll();
-
             assertThat(item, is(prev));
             assertThat(queue, hasSize(size - (i + 1)));
             assertThat(item, is(i));
             i++;
         }
-
-        // Assert
         assertThat(i, is(size));
     }
 
@@ -121,17 +110,12 @@ public abstract class QueueSanityTest {
     @Test
     public void whenOfferItemAndPollItemThenSameInstanceReturnedAndQueueIsEmpty() {
         assertThat(queue, emptyAndZeroSize());
-
-        // Act
         final Integer e = 1876876;
         queue.offer(e);
         assertFalse(queue.isEmpty());
         assertEquals(1, queue.size());
-
         final Integer oh = queue.poll();
         assertEquals(e, oh);
-
-        // Assert
         assertThat(oh, sameInstance(e));
         assertThat(queue, emptyAndZeroSize());
     }
@@ -140,10 +124,7 @@ public abstract class QueueSanityTest {
     public void testPowerOf2Capacity() {
         assumeThat(isBounded, is(true));
         int n = Pow2.roundToPowerOfTwo(capacity);
-
-        for (int i = 0; i < n; i++) {
-            assertTrue("Failed to insert:" + i, queue.offer(i));
-        }
+        IntStream.range(0, n).forEach(i -> assertTrue("Failed to insert:" + i, queue.offer(i)));
         assertFalse(queue.offer(n));
     }
 
@@ -164,8 +145,6 @@ public abstract class QueueSanityTest {
                     v.value = i;
                     q.offer(v);
                 }
-                // slow down the producer, this will make the queue mostly empty encouraging visibility
-                // issues.
                 Thread.yield();
             }
         });
@@ -181,7 +160,6 @@ public abstract class QueueSanityTest {
                 }
             }
         });
-
         t1.start();
         t2.start();
         Thread.sleep(1000);
@@ -189,7 +167,6 @@ public abstract class QueueSanityTest {
         t1.join();
         t2.join();
         assertEquals("reordering detected", 0, fail.value);
-
     }
 
     @Test
@@ -211,7 +188,6 @@ public abstract class QueueSanityTest {
                 }
             }
         });
-
         t1.start();
         t2.start();
         Thread.sleep(1000);
@@ -219,7 +195,6 @@ public abstract class QueueSanityTest {
         t1.join();
         t2.join();
         assertEquals("Unexpected size observed", 0, fail.value);
-
     }
 
     @Test
@@ -230,8 +205,6 @@ public abstract class QueueSanityTest {
         Thread t1 = new Thread(() -> {
             while (!stop.get()) {
                 q.offer(1);
-                // slow down the producer, this will make the queue mostly empty encouraging visibility
-                // issues.
                 Thread.yield();
             }
         });
@@ -242,7 +215,6 @@ public abstract class QueueSanityTest {
                 }
             }
         });
-
         t1.start();
         t2.start();
         Thread.sleep(1000);
@@ -250,7 +222,6 @@ public abstract class QueueSanityTest {
         t1.join();
         t2.join();
         assertEquals("Observed no element in non-empty queue", 0, fail.value);
-
     }
 
     public static Matcher<Collection<?>> emptyAndZeroSize() {

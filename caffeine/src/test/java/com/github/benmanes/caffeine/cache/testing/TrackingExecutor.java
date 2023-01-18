@@ -12,7 +12,6 @@ import static java.util.Objects.requireNonNull;
 
 public final class TrackingExecutor extends ForwardingExecutorService {
     private static final CountDownLatch ZERO = new CountDownLatch(0);
-
     private final ExecutorService delegate;
     private final AtomicInteger submitted;
     private final AtomicInteger completed;

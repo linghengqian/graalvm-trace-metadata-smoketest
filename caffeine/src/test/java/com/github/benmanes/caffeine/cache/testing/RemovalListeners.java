@@ -17,16 +17,11 @@ public final class RemovalListeners {
     private RemovalListeners() {
     }
 
-    /**
-     * A removal listener that stores the notifications for inspection.
-     */
+
     public static <K, V> ConsumingRemovalListener<K, V> consuming() {
         return new ConsumingRemovalListener<>();
     }
 
-    /**
-     * A removal listener that throws an exception if a notification arrives.
-     */
     public static <K, V> RemovalListener<K, V> rejecting() {
         return new RejectingRemovalListener<>();
     }
@@ -42,14 +37,12 @@ public final class RemovalListeners {
     public static final class RejectingRemovalListener<K, V>
             implements RemovalListener<K, V>, Serializable {
         private static final long serialVersionUID = 1L;
-
         public boolean reject = true;
         public int rejected;
 
         @Override
         public void onRemoval(K key, V value, RemovalCause cause) {
             validate(key, value, cause);
-
             if (reject) {
                 rejected++;
                 throw new RejectedExecutionException("Rejected eviction of " +
@@ -61,7 +54,6 @@ public final class RemovalListeners {
     public static final class ConsumingRemovalListener<K, V>
             implements RemovalListener<K, V>, Serializable {
         private static final long serialVersionUID = 1L;
-
         private final CopyOnWriteArrayList<RemovalNotification<K, V>> removed;
 
         public ConsumingRemovalListener() {

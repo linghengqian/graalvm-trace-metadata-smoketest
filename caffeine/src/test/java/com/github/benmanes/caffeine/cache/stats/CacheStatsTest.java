@@ -18,7 +18,6 @@ public final class CacheStatsTest {
     public void empty() {
         var stats = CacheStats.of(0, 0, 0, 0, 0, 0, 0);
         checkStats(stats, 0, 0, 1.0, 0, 0.0, 0, 0, 0.0, 0, 0, 0.0, 0, 0);
-
         assertThat(stats).isEqualTo(CacheStats.empty());
         assertThat(stats.equals(null)).isFalse();
         assertThat(stats).isNotEqualTo(new Object());
@@ -32,12 +31,10 @@ public final class CacheStatsTest {
         var stats = CacheStats.of(11, 13, 17, 19, 23, 27, 54);
         checkStats(stats, 24, 11, 11.0 / 24, 13, 13.0 / 24,
                 17, 19, 19.0 / 36, 17 + 19, 23, 23.0 / (17 + 19), 27, 54);
-
         assertThat(stats.equals(stats)).isTrue();
         assertThat(stats).isNotEqualTo(CacheStats.empty());
         assertThat(stats.hashCode()).isNotEqualTo(CacheStats.empty().hashCode());
         assertThat(stats.toString()).isNotEqualTo(CacheStats.empty().toString());
-
         var expected = CacheStats.of(11, 13, 17, 19, 23, 27, 54);
         assertThat(stats.equals(expected)).isTrue();
         assertThat(stats.hashCode()).isEqualTo(expected.hashCode());
@@ -48,7 +45,6 @@ public final class CacheStatsTest {
     public void minus() {
         var one = CacheStats.of(11, 13, 17, 19, 23, 27, 54);
         var two = CacheStats.of(53, 47, 43, 41, 37, 31, 62);
-
         var diff = two.minus(one);
         checkStats(diff, 76, 42, 42.0 / 76, 34, 34.0 / 76,
                 26, 22, 22.0 / 48, 26 + 22, 14, 14.0 / (26 + 22), 4, 8);
@@ -59,11 +55,9 @@ public final class CacheStatsTest {
     public void plus() {
         var one = CacheStats.of(11, 13, 15, 13, 11, 9, 18);
         var two = CacheStats.of(53, 47, 41, 39, 37, 35, 70);
-
         var sum = two.plus(one);
         checkStats(sum, 124, 64, 64.0 / 124, 60, 60.0 / 124,
                 56, 52, 52.0 / 108, 56 + 52, 48, 48.0 / (56 + 52), 44, 88);
-
         assertThat(sum).isEqualTo(one.plus(two));
     }
 

@@ -421,7 +421,7 @@ public final class AsyncLoadingCacheTest {
         cache.synchronous().refresh(context.absentKey());
     }
 
-    @Test(dataProvider = "caches", timeOut = 5_000) // Issue #69
+    @Test(dataProvider = "caches", timeOut = 5_000)
     @CacheSpec(population = Population.EMPTY,
             compute = Compute.ASYNC, executor = CacheExecutor.THREADED)
     public void refresh_deadlock(CacheContext context) {
@@ -558,8 +558,7 @@ public final class AsyncLoadingCacheTest {
     @Test
     public void bulk_function_present() throws Exception {
         AsyncCacheLoader<Int, Int> loader = AsyncCacheLoader.bulk(keys -> keys.stream().collect(toImmutableMap(identity(), identity())));
-        assertThat(loader.asyncLoadAll(Int.setOf(1, 2), Runnable::run))
-                .succeedsWith(Int.mapOf(1, 1, 2, 2));
+        assertThat(loader.asyncLoadAll(Int.setOf(1, 2), Runnable::run)).succeedsWith(Int.mapOf(1, 1, 2, 2));
         assertThat(loader.asyncLoad(Int.valueOf(1), Runnable::run)).succeedsWith(1);
     }
 
@@ -572,8 +571,7 @@ public final class AsyncLoadingCacheTest {
 
     @Test
     public void bulk_absent() throws Exception {
-        BiFunction<Set<? extends Int>, Executor, CompletableFuture<Map<Int, Int>>> f =
-                (keys, executor) -> CompletableFuture.completedFuture(Map.of());
+        BiFunction<Set<? extends Int>, Executor, CompletableFuture<Map<Int, Int>>> f = (keys, executor) -> CompletableFuture.completedFuture(Map.of());
         var loader = AsyncCacheLoader.bulk(f);
         assertThat(loader.asyncLoadAll(Set.of(), Runnable::run)).succeedsWith(Map.of());
         assertThat(loader.asyncLoad(Int.valueOf(1), Runnable::run)).succeedsWithNull();
@@ -581,12 +579,10 @@ public final class AsyncLoadingCacheTest {
 
     @Test
     public void bulk_present() throws Exception {
-        BiFunction<Set<? extends Int>, Executor, CompletableFuture<Map<Int, Int>>> f =
-                (keys, executor) -> {
-                    ImmutableMap<Int, Int> results = keys.stream()
-                            .collect(toImmutableMap(identity(), identity()));
-                    return CompletableFuture.completedFuture(results);
-                };
+        BiFunction<Set<? extends Int>, Executor, CompletableFuture<Map<Int, Int>>> f = (keys, executor) -> {
+            ImmutableMap<Int, Int> results = keys.stream().collect(toImmutableMap(identity(), identity()));
+            return CompletableFuture.completedFuture(results);
+        };
         var loader = AsyncCacheLoader.bulk(f);
         assertThat(loader.asyncLoadAll(Int.setOf(1, 2), Runnable::run))
                 .succeedsWith(Int.mapOf(1, 1, 2, 2));

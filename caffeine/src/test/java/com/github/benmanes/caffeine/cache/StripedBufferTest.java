@@ -16,7 +16,6 @@ import static com.github.benmanes.caffeine.cache.StripedBuffer.MAXIMUM_TABLE_SIZ
 import static com.github.benmanes.caffeine.cache.StripedBuffer.NCPU;
 import static com.google.common.truth.Truth.assertThat;
 
-
 public final class StripedBufferTest {
     static final Integer ELEMENT = 1;
 
@@ -44,24 +43,20 @@ public final class StripedBufferTest {
     @SuppressWarnings("ThreadPriorityCheck")
     public void expand_concurrent() {
         var buffer = new FakeBuffer<Boolean>(Buffer.FAILED);
-        ConcurrentTestHarness.timeTasks(10 * NCPU, () -> {
-            IntStream.range(0, 1000).forEach(i -> {
-                buffer.offer(Boolean.TRUE);
-                Thread.yield();
-            });
-        });
+        ConcurrentTestHarness.timeTasks(10 * NCPU, () -> IntStream.range(0, 1000).forEach(i -> {
+            buffer.offer(Boolean.TRUE);
+            Thread.yield();
+        }));
         assertThat(buffer.table).hasLength(MAXIMUM_TABLE_SIZE);
     }
 
     @Test(dataProvider = "buffers")
     @SuppressWarnings("ThreadPriorityCheck")
     public void produce(FakeBuffer<Integer> buffer) {
-        ConcurrentTestHarness.timeTasks(NCPU, () -> {
-            IntStream.range(0, 10).forEach(i -> {
-                buffer.offer(ELEMENT);
-                Thread.yield();
-            });
-        });
+        ConcurrentTestHarness.timeTasks(NCPU, () -> IntStream.range(0, 10).forEach(i -> {
+            buffer.offer(ELEMENT);
+            Thread.yield();
+        }));
         assertThat(buffer.table.length).isAtMost(MAXIMUM_TABLE_SIZE);
     }
 
@@ -79,11 +74,7 @@ public final class StripedBufferTest {
     @DataProvider(name = "buffers")
     public Object[] providesBuffers() {
         var results = List.of(Buffer.SUCCESS, Buffer.FAILED, Buffer.FULL);
-        var buffers = new ArrayList<Buffer<Integer>>();
-        for (var result : results) {
-            buffers.add(new FakeBuffer<>(result));
-        }
-        return buffers.toArray();
+        return results.stream().<Buffer<Integer>>map(FakeBuffer::new).toArray();
     }
 
     static final class FakeBuffer<E> extends StripedBuffer<E> {

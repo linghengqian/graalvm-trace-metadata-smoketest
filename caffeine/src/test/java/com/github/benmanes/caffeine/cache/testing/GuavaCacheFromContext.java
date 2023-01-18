@@ -106,7 +106,6 @@ public final class GuavaCacheFromContext {
 
     static class GuavaCache<K, V> implements Cache<K, V>, Serializable {
         private static final long serialVersionUID = 1L;
-
         private final com.google.common.cache.Cache<K, V> cache;
         private final boolean isRecordingStats;
         private final boolean canSnapshot;

@@ -1,13 +1,10 @@
 
 package com.github.benmanes.caffeine.cache.testing;
 
-import com.github.benmanes.caffeine.cache.AsyncCache;
-import com.github.benmanes.caffeine.cache.Cache;
-import com.github.benmanes.caffeine.cache.Caffeine;
+import com.github.benmanes.caffeine.cache.*;
 import com.github.benmanes.caffeine.cache.Policy.Eviction;
 import com.github.benmanes.caffeine.cache.Policy.FixedExpiration;
 import com.github.benmanes.caffeine.cache.Policy.VarExpiration;
-import com.github.benmanes.caffeine.cache.Reset;
 import com.github.benmanes.caffeine.cache.testing.CacheSpec.CacheExecutor;
 import com.github.benmanes.caffeine.cache.testing.CacheSpec.CacheExpiry;
 import com.github.benmanes.caffeine.cache.testing.CacheSpec.CacheScheduler;
@@ -22,6 +19,7 @@ import org.testng.internal.TestResult;
 import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.stream.IntStream;
 
 import static com.github.benmanes.caffeine.cache.testing.AsyncCacheSubject.assertThat;
 import static com.github.benmanes.caffeine.cache.testing.CacheContextSubject.assertThat;
@@ -100,7 +98,6 @@ public final class CacheValidationListener implements ISuiteListener, IInvokedMe
                 .findFirst().orElse(null);
         if (context != null) {
             awaitExecutor(context);
-
             checkCache(context);
             checkNoStats(testResult, context);
             checkExecutor(testResult, context);
@@ -206,26 +203,21 @@ public final class CacheValidationListener implements ISuiteListener, IInvokedMe
 
     @SuppressWarnings("unchecked")
     private void resetMocks(ITestResult testResult) {
-        for (Object param : testResult.getParameters()) {
-            if (param instanceof CacheContext context) {
-                if (context.expiryType() == CacheExpiry.MOCKITO) {
-                    Mockito.clearInvocations(context.expiry());
-                }
-                if (context.cacheScheduler == CacheScheduler.MOCKITO) {
-                    Mockito.clearInvocations(context.scheduler());
-                }
+        Arrays.stream(testResult.getParameters()).filter(param -> param instanceof CacheContext).map(param -> (CacheContext) param).forEach(context -> {
+            if (context.expiryType() == CacheExpiry.MOCKITO) {
+                Mockito.clearInvocations(context.expiry());
             }
-        }
+            if (context.cacheScheduler == CacheScheduler.MOCKITO) {
+                Mockito.clearInvocations(context.scheduler());
+            }
+        });
     }
 
     private void resetCache(ITestResult testResult) {
-        for (Object param : testResult.getParameters()) {
-            if (param instanceof CacheContext context) {
-                if (context.isCaffeine()) {
-                    Reset.destroy(context.cache());
-                }
-            }
-        }
+        Arrays.stream(testResult.getParameters())
+                .filter(param -> param instanceof CacheContext)
+                .map(param -> (CacheContext) param)
+                .filter(CacheContext::isCaffeine).map(CacheContext::cache).forEach(Reset::destroy);
     }
 
     private void clearTestResults(ITestResult testResult) {
@@ -236,11 +228,11 @@ public final class CacheValidationListener implements ISuiteListener, IInvokedMe
 
     private void stringifyParams(ITestResult testResult, boolean briefParams) {
         Object[] params = testResult.getParameters();
-        for (int i = 0; i < params.length; i++) {
+        IntStream.range(0, params.length).forEach(i -> {
             Object param = params[i];
             if ((param instanceof AsyncCache<?, ?>) || (param instanceof Cache<?, ?>)
-                    || (param instanceof Map<?, ?>) || (param instanceof Eviction<?, ?>)
-                    || (param instanceof FixedExpiration<?, ?>) || (param instanceof VarExpiration<?, ?>)
+                    || (param instanceof Map<?, ?>) || (param instanceof Policy.Eviction<?, ?>)
+                    || (param instanceof Policy.FixedExpiration<?, ?>) || (param instanceof Policy.VarExpiration<?, ?>)
                     || ((param instanceof CacheContext) && briefParams)) {
                 params[i] = simpleNames.get(param.getClass(), key -> ((Class<?>) key).getSimpleName());
             } else if (param instanceof CacheContext) {
@@ -248,6 +240,6 @@ public final class CacheValidationListener implements ISuiteListener, IInvokedMe
             } else {
                 params[i] = Objects.toString(param);
             }
-        }
+        });
     }
 }

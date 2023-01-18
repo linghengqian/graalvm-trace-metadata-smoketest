@@ -19,13 +19,11 @@ import static java.util.Locale.US;
 public final class Solr10141Test {
     static final int blocksInTest = 400;
     static final int maxEntries = blocksInTest / 2;
-
     static final int nThreads = 64;
     static final int nReads = 10000000;
     static final int readsPerThread = nReads / nThreads;
     static final int readLastBlockOdds = 10;
     static final boolean updateAnyway = true;
-
     final Random rnd = new Random();
 
     @Test
@@ -41,13 +39,11 @@ public final class Solr10141Test {
             }
             removals.incrementAndGet();
         };
-
         Cache<Long, Val> cache = Caffeine.newBuilder()
                 .executor(ConcurrentTestHarness.executor)
                 .removalListener(listener)
                 .maximumSize(maxEntries)
                 .build();
-
         var lastBlock = new AtomicLong();
         var failed = new AtomicBoolean();
         var maxObservedSize = new AtomicLong();
@@ -77,7 +73,6 @@ public final class Solr10141Test {
                     hits.incrementAndGet();
                     assertThat(k).isEqualTo(v.key);
                 }
-
                 if ((v == null) || (updateAnyway && r.nextBoolean())) {
                     v = new Val();
                     v.key = k;
@@ -91,8 +86,7 @@ public final class Solr10141Test {
             }
         });
         await().until(() -> (inserts.get() - removals.get()) == cache.estimatedSize());
-        System.out.printf(US, "Done!%n"
-                        + "entries=%,d inserts=%,d removals=%,d hits=%,d maxEntries=%,d maxObservedSize=%,d%n",
+        System.out.printf(US, "Done!%n" + "entries=%,d inserts=%,d removals=%,d hits=%,d maxEntries=%,d maxObservedSize=%,d%n",
                 cache.estimatedSize(), inserts.get(), removals.get(),
                 hits.get(), maxEntries, maxObservedSize.get());
         assertThat(failed.get()).isFalse();
@@ -138,7 +132,6 @@ public final class Solr10141Test {
                     cache.put(k, v);
                     inserts.incrementAndGet();
                 }
-
                 if (r.nextInt(10) == 0) {
                     cache.asMap().clear();
                 }
