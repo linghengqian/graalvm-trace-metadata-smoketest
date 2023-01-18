@@ -14,6 +14,7 @@ import org.testng.annotations.Test;
 import java.util.*;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.stream.IntStream;
 
 import static com.github.benmanes.caffeine.cache.RemovalCause.*;
 import static com.github.benmanes.caffeine.cache.testing.CacheContext.intern;
@@ -108,8 +109,6 @@ public final class LoadingCacheTest {
         assertThat(context).stats().hits(3).misses(0).success(0).failures(0);
     }
 
-    /* --------------- getAll --------------- */
-
     @CheckNoEvictions
     @CacheSpec(removalListener = {Listener.DISABLED, Listener.REJECTING})
     @Test(dataProvider = "caches", expectedExceptions = NullPointerException.class)
@@ -182,7 +181,6 @@ public final class LoadingCacheTest {
             Assert.fail();
         } catch (CompletionException e) {
             assertThat(e).hasCauseThat().isInstanceOf(ExecutionException.class);
-
             int misses = context.absentKeys().size();
             int loadFailures = (context.loader().isBulk() || context.isSync()) ? 1 : misses;
             assertThat(context).stats().hits(0).misses(misses).success(0).failures(loadFailures);
@@ -214,7 +212,6 @@ public final class LoadingCacheTest {
                 assertThat(Thread.interrupted()).isTrue();
             }
             assertThat(e).hasCauseThat().isInstanceOf(InterruptedException.class);
-
             int misses = context.absentKeys().size();
             int loadFailures = (context.loader().isBulk() || context.isSync()) ? 1 : misses;
             assertThat(context).stats().hits(0).misses(misses).success(0).failures(loadFailures);
@@ -226,7 +223,6 @@ public final class LoadingCacheTest {
     @CacheSpec(loader = {Loader.NEGATIVE, Loader.BULK_NEGATIVE}, removalListener = {Listener.DISABLED, Listener.REJECTING})
     public void getAll_absent(LoadingCache<Int, Int> cache, CacheContext context) {
         var result = cache.getAll(context.absentKeys());
-
         int count = context.absentKeys().size();
         int loads = context.loader().isBulk() ? 1 : count;
         assertThat(result).hasSize(count);
@@ -242,7 +238,6 @@ public final class LoadingCacheTest {
         expect.put(context.middleKey(), context.middleKey().negate());
         expect.put(context.lastKey(), context.lastKey().negate());
         var result = cache.getAll(expect.keySet());
-
         assertThat(result).containsExactlyEntriesIn(expect);
         assertThat(context).stats().hits(expect.size()).misses(0).success(0).failures(0);
     }
@@ -261,7 +256,6 @@ public final class LoadingCacheTest {
     @CacheSpec(loader = Loader.BULK_NEGATIVE_EXCEEDS, removalListener = {Listener.DISABLED, Listener.REJECTING})
     public void getAll_exceeds(LoadingCache<Int, Int> cache, CacheContext context) {
         var result = cache.getAll(context.absentKeys());
-
         assertThat(result.keySet()).containsExactlyElementsIn(context.absentKeys());
         assertThat(cache).hasSizeGreaterThan(context.initialSize() + context.absentKeys().size());
         assertThat(context).stats().hits(0).misses(result.size()).success(1).failures(0);
@@ -272,7 +266,6 @@ public final class LoadingCacheTest {
     @CacheSpec(implementation = Implementation.Caffeine, loader = Loader.BULK_DIFFERENT, removalListener = {Listener.DISABLED, Listener.REJECTING})
     public void getAll_different(LoadingCache<Int, Int> cache, CacheContext context) {
         var result = cache.getAll(context.absentKeys());
-
         assertThat(result).isEmpty();
         assertThat(cache.asMap()).containsAtLeastEntriesIn(result);
         assertThat(context).stats().hits(0).misses(context.absent().size()).success(1).failures(0);
@@ -286,7 +279,6 @@ public final class LoadingCacheTest {
         var keys = Iterables.concat(absentKeys, absentKeys, context.original().keySet(), context.original().keySet());
         var result = cache.getAll(keys);
         assertThat(result).containsExactlyKeys(keys);
-
         int loads = context.loader().isBulk() ? 1 : absentKeys.size();
         assertThat(context).stats().hits(context.initialSize()).misses(absentKeys.size()).success(loads).failures(0);
     }
@@ -297,7 +289,6 @@ public final class LoadingCacheTest {
     public void getAll_present_ordered_absent(LoadingCache<Int, Int> cache, CacheContext context) {
         var keys = new ArrayList<>(context.absentKeys());
         Collections.shuffle(keys);
-
         assertThat(cache.getAll(keys).keySet()).containsExactlyElementsIn(keys).inOrder();
     }
 
@@ -308,7 +299,6 @@ public final class LoadingCacheTest {
         var keys = new ArrayList<>(context.original().keySet());
         keys.addAll(context.absentKeys());
         Collections.shuffle(keys);
-
         assertThat(cache.getAll(keys).keySet()).containsExactlyElementsIn(keys).inOrder();
     }
 
@@ -318,7 +308,6 @@ public final class LoadingCacheTest {
     public void getAll_present_ordered_present(LoadingCache<Int, Int> cache, CacheContext context) {
         var keys = new ArrayList<>(context.original().keySet());
         Collections.shuffle(keys);
-
         assertThat(cache.getAll(keys).keySet()).containsExactlyElementsIn(keys).inOrder();
     }
 
@@ -329,7 +318,6 @@ public final class LoadingCacheTest {
         var keys = new ArrayList<>(context.original().keySet());
         keys.addAll(context.absentKeys());
         Collections.shuffle(keys);
-
         var result = new ArrayList<>(cache.getAll(keys).keySet());
         assertThat(result.subList(0, keys.size())).containsExactlyElementsIn(keys).inOrder();
     }
@@ -341,15 +329,12 @@ public final class LoadingCacheTest {
         class Key {
             @Override
             public int hashCode() {
-                return 0; // to put keys in one bucket
+                return 0;
             }
         }
         LoadingCache<Object, Int> cache = context.build(key -> null);
-
         var keys = intern(new ArrayList<Key>());
-        for (int i = 0; i < Population.FULL.size(); i++) {
-            keys.add(new Key());
-        }
+        IntStream.iterate(0, i -> i < Population.FULL.size(), i -> i + 1).mapToObj(i -> new Key()).forEach(keys::add);
         Key key = Iterables.getLast(keys);
         Int value = context.absentValue();
         cache.put(key, value);
@@ -358,8 +343,6 @@ public final class LoadingCacheTest {
         assertThat(result).containsExactly(key, value);
         assertThat(result.values()).doesNotContain(null);
     }
-
-    /* --------------- refresh --------------- */
 
     @CheckNoEvictions
     @CacheSpec(removalListener = {Listener.DISABLED, Listener.REJECTING})
@@ -376,7 +359,6 @@ public final class LoadingCacheTest {
         var future1 = cache.refresh(key);
         var future2 = cache.refresh(key);
         assertThat(future1).isSameInstanceAs(future2);
-
         future1.complete(context.absentValue());
         assertThat(cache).containsEntry(key, context.absentValue());
     }
@@ -406,7 +388,6 @@ public final class LoadingCacheTest {
     @Test(dataProvider = "caches")
     @CacheSpec(population = {Population.SINGLETON, Population.PARTIAL, Population.FULL}, loader = Loader.EXCEPTIONAL, removalListener = {Listener.DISABLED, Listener.REJECTING})
     public void refresh_failure(LoadingCache<Int, Int> cache, CacheContext context) {
-        // Shouldn't leak exception to caller nor retain the future; should retain the stale entry
         var future1 = cache.refresh(context.absentKey());
         var future2 = cache.refresh(context.firstKey());
         var future3 = cache.refresh(context.lastKey());
@@ -449,7 +430,6 @@ public final class LoadingCacheTest {
         } catch (CompletionException e) {
             assertThat(Thread.interrupted()).isTrue();
             assertThat(e).hasCauseThat().isInstanceOf(InterruptedException.class);
-
             int failures = context.isGuava() ? 1 : 0;
             assertThat(context).stats().hits(0).misses(0).success(0).failures(failures);
         }
@@ -463,10 +443,8 @@ public final class LoadingCacheTest {
         var future1 = cache.refresh(key);
         assertThat(future1).isNotDone();
         future1.cancel(true);
-
         var future2 = cache.refresh(key);
         assertThat(future1).isNotSameInstanceAs(future2);
-
         future2.cancel(false);
         assertThat(cache).containsExactlyEntriesIn(context.original());
     }
@@ -497,17 +475,14 @@ public final class LoadingCacheTest {
     @CacheSpec(implementation = Implementation.Caffeine, loader = Loader.NULL, population = {Population.SINGLETON, Population.PARTIAL, Population.FULL})
     public void refresh_present_null(LoadingCache<Int, Int> cache, CacheContext context) {
         var removed = new HashMap<Int, Int>();
-        for (Int key : context.firstMiddleLastKeys()) {
+        context.firstMiddleLastKeys().forEach(key -> {
             var future = cache.refresh(key);
             assertThat(future).succeedsWithNull();
             removed.put(key, context.original().get(key));
-        }
+        });
         int count = context.firstMiddleLastKeys().size();
         assertThat(context).stats().hits(0).misses(0).success(0).failures(count);
-
-        for (Int key : context.firstMiddleLastKeys()) {
-            assertThat(cache).doesNotContainKey(key);
-        }
+        context.firstMiddleLastKeys().forEach(key -> assertThat(cache).doesNotContainKey(key));
         assertThat(cache).hasSize(context.initialSize() - count);
         assertThat(context).removalNotifications().withCause(EXPLICIT).contains(removed).exclusively();
     }
@@ -517,17 +492,14 @@ public final class LoadingCacheTest {
     @CacheSpec(population = {Population.SINGLETON, Population.PARTIAL, Population.FULL})
     public void refresh_present_sameValue(LoadingCache<Int, Int> cache, CacheContext context) {
         var replaced = new HashMap<Int, Int>();
-        for (Int key : context.firstMiddleLastKeys()) {
+        context.firstMiddleLastKeys().forEach(key -> {
             var future = cache.refresh(key);
             assertThat(future).succeedsWith(context.original().get(key));
             replaced.put(key, context.original().get(key));
-        }
+        });
         int count = context.firstMiddleLastKeys().size();
         assertThat(context).stats().hits(0).misses(0).success(count).failures(0);
-
-        for (Int key : context.firstMiddleLastKeys()) {
-            assertThat(cache).containsEntry(key, context.original().get(key));
-        }
+        context.firstMiddleLastKeys().forEach(key -> assertThat(cache).containsEntry(key, context.original().get(key)));
         assertThat(cache).hasSize(context.initialSize());
         assertThat(context).removalNotifications().withCause(REPLACED).contains(replaced).exclusively();
     }
@@ -538,12 +510,10 @@ public final class LoadingCacheTest {
     public void refresh_present_sameInstance(LoadingCache<Int, Int> cache, CacheContext context) {
         cache.put(context.absentKey(), context.absentKey());
         var future = cache.refresh(context.absentKey());
-
         assertThat(cache).hasSize(1);
         assertThat(future).succeedsWith(context.absentKey());
         assertThat(context).stats().hits(0).misses(0).success(1).failures(0);
         assertThat(cache).containsEntry(context.absentKey(), context.absentKey());
-
         if (context.isGuava()) {
             assertThat(context).removalNotifications().withCause(REPLACED).contains(context.absentKey(), context.absentKey()).exclusively();
         } else {
@@ -556,12 +526,12 @@ public final class LoadingCacheTest {
     @CacheSpec(loader = Loader.IDENTITY, population = {Population.SINGLETON, Population.PARTIAL, Population.FULL})
     public void refresh_present_differentValue(LoadingCache<Int, Int> cache, CacheContext context) {
         var replaced = new HashMap<Int, Int>();
-        for (Int key : context.firstMiddleLastKeys()) {
+        context.firstMiddleLastKeys().forEach(key -> {
             var future = cache.refresh(key);
             assertThat(future).succeedsWith(key);
             assertThat(cache).containsEntry(key, key);
             replaced.put(key, context.original().get(key));
-        }
+        });
         int count = context.firstMiddleLastKeys().size();
         assertThat(cache).hasSize(context.initialSize());
         assertThat(context).stats().hits(0).misses(0).success(count).failures(0);
@@ -581,11 +551,9 @@ public final class LoadingCacheTest {
             await().untilTrue(refresh);
             return refreshed;
         });
-
         cache.put(key, original);
         var future = cache.refresh(key);
         assertThat(cache.asMap().put(key, updated)).isEqualTo(original);
-
         refresh.set(true);
         if (context.isGuava()) {
             future.join();
@@ -593,7 +561,6 @@ public final class LoadingCacheTest {
             assertThat(future).succeedsWith(refreshed);
         }
         await().untilAsserted(() -> assertThat(context).removalNotifications().hasSize(2));
-
         assertThat(cache).containsEntry(key, updated);
         assertThat(context).stats().success(1).failures(0);
         assertThat(context).removalNotifications().withCause(REPLACED).contains(Map.entry(key, original), Map.entry(key, refreshed)).exclusively();
@@ -614,23 +581,18 @@ public final class LoadingCacheTest {
             await().untilTrue(refresh);
             return refreshed;
         });
-
         cache.put(key, original);
         assertThat(started.get()).isFalse();
-
         var future = cache.refresh(key);
         await().untilTrue(started);
         cache.put(key, updated);
         refresh.set(true);
-
         if (context.isGuava()) {
             future.join();
         } else {
             assertThat(future).succeedsWith(refreshed);
         }
-
         await().untilAsserted(() -> assertThat(context).removalNotifications().withCause(REPLACED).contains(key, refreshed));
-
         assertThat(context).stats().success(1).failures(0);
         assertThat(context).removalNotifications().withCause(REPLACED).contains(Map.entry(key, original), Map.entry(key, refreshed)).exclusively();
     }
@@ -649,25 +611,20 @@ public final class LoadingCacheTest {
             await().untilTrue(done);
             return refreshed;
         });
-
         cache.put(key, original);
         var future = cache.refresh(key);
         await().untilTrue(started);
-
         cache.invalidate(key);
         done.set(true);
-
         if (context.isGuava()) {
             future.join();
         } else {
             assertThat(future).succeedsWith(refreshed);
         }
-
         if (context.isGuava()) {
             await().untilAsserted(() -> assertThat(cache).containsEntry(key, refreshed));
             assertThat(context).removalNotifications().withCause(EXPLICIT).contains(key, original).exclusively();
         } else {
-            // linearizable
             await().untilAsserted(() -> assertThat(cache).doesNotContainKey(key));
             assertThat(context).removalNotifications().withCause(EXPLICIT).contains(Map.entry(key, original), Map.entry(key, refreshed)).exclusively();
         }
@@ -687,26 +644,21 @@ public final class LoadingCacheTest {
             await().untilTrue(done);
             return refreshed;
         });
-
         cache.put(key, original);
         var future = cache.refresh(key);
-
         await().untilTrue(started);
         context.ticker().advance(10, TimeUnit.MINUTES);
         assertThat(cache).doesNotContainKey(key);
-
         done.set(true);
         if (context.isGuava()) {
             future.join();
         } else {
             assertThat(future).succeedsWith(refreshed);
         }
-
         if (context.isGuava()) {
             await().untilAsserted(() -> assertThat(cache).containsEntry(key, refreshed));
             assertThat(context).removalNotifications().withCause(EXPIRED).contains(key, original).exclusively();
         } else {
-            // linearizable
             await().untilAsserted(() -> assertThat(cache).doesNotContainKey(key));
             assertThat(context).removalNotifications().withCause(EXPIRED).contains(key, original);
             assertThat(context).removalNotifications().withCause(EXPLICIT).contains(key, refreshed);
@@ -729,28 +681,23 @@ public final class LoadingCacheTest {
             await().forever().untilTrue(done);
             return refreshed;
         });
-
         cache.put(key1, original);
         var future = cache.refresh(key1);
-
         await().untilTrue(started);
         cache.put(key2, original);
         cache.cleanUp();
         assertThat(cache).doesNotContainKey(key1);
-
         done.set(true);
         if (context.isGuava()) {
             future.join();
         } else {
             assertThat(future).succeedsWith(refreshed);
         }
-
         if (context.isGuava()) {
             await().untilAsserted(() -> assertThat(cache).containsEntry(key1, refreshed));
             await().untilAsserted(() -> assertThat(cache).doesNotContainKey(key2));
             assertThat(context).removalNotifications().withCause(SIZE).contains(Map.of(key1, original, key2, original)).exclusively();
         } else {
-            // linearizable
             await().untilAsserted(() -> assertThat(cache).doesNotContainKey(key1));
             await().untilAsserted(() -> assertThat(cache).containsEntry(key2, original));
             assertThat(context).removalNotifications().withCause(SIZE).contains(key1, original);
@@ -858,8 +805,6 @@ public final class LoadingCacheTest {
         cache.refresh(context.absentKey());
     }
 
-    /* --------------- refreshAll --------------- */
-
     @CheckNoEvictions
     @CheckNoStats
     @CacheSpec(removalListener = {Listener.DISABLED, Listener.REJECTING})
@@ -893,7 +838,6 @@ public final class LoadingCacheTest {
         var result = cache.refreshAll(context.original().keySet()).join();
         int count = context.original().keySet().size();
         assertThat(result).hasSize(count);
-
         var expected = context.original().keySet().stream().collect(toImmutableMap(identity(), identity()));
         assertThat(cache).containsExactlyEntriesIn(expected);
     }
@@ -930,10 +874,8 @@ public final class LoadingCacheTest {
         var key = context.original().isEmpty() ? context.absentKey() : context.firstKey();
         var future1 = cache.refresh(key);
         var future2 = cache.refreshAll(List.of(key));
-
         assertThat(future1).isNotDone();
         future1.cancel(true);
-
         assertThat(future2).hasCompletedExceptionally();
         assertThat(cache).containsExactlyEntriesIn(context.original());
     }
@@ -972,8 +914,6 @@ public final class LoadingCacheTest {
         cache.put(context.absentKey(), context.absentValue());
         cache.refreshAll(context.absent().keySet());
     }
-
-    /* --------------- CacheLoader --------------- */
 
     @Test(expectedExceptions = UnsupportedOperationException.class)
     public void loadAll() throws Exception {
@@ -1070,7 +1010,6 @@ public final class LoadingCacheTest {
         var future1 = cache.refresh(key1);
         var future2 = cache.refresh(key2);
         assertThat(cache.policy().refreshes()).containsExactly(key1, future1, key2, future2);
-
         future1.complete(Int.valueOf(1));
         future2.cancel(true);
         assertThat(cache.policy().refreshes()).isExhaustivelyEmpty();

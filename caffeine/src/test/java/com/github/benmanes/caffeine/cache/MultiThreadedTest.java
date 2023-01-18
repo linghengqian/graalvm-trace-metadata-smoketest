@@ -33,6 +33,7 @@ public final class MultiThreadedTest {
     public void concurrent_unbounded(LoadingCache<Int, Int> cache, CacheContext context) {
         Threads.runTest(cache, operations);
     }
+
     @Test(dataProvider = "caches")
     @CacheSpec(maximumSize = Maximum.FULL, weigher = {CacheWeigher.DISABLED, CacheWeigher.RANDOM},
             stats = Stats.DISABLED, population = Population.EMPTY, removalListener = Listener.DISABLED,
@@ -123,8 +124,7 @@ public final class MultiThreadedTest {
             });
 
     @SuppressWarnings({"FutureReturnValueIgnored", "MethodReferenceUsage"})
-    List<BiConsumer<AsyncLoadingCache<Int, Int>, Int>> asyncOperations = List.of(
-            AsyncCache::getIfPresent,
+    List<BiConsumer<AsyncLoadingCache<Int, Int>, Int>> asyncOperations = List.of(AsyncCache::getIfPresent,
             (cache, key) -> cache.get(key, k -> key),
             (cache, key) -> cache.get(key, (k, e) -> CompletableFuture.completedFuture(key)),
             AsyncLoadingCache::get,
