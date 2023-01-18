@@ -45,18 +45,15 @@ public final class ReserializableSubject extends Subject {
             check("valid").about(cache()).that(copy).isValid();
             check("empty").about(cache()).that(copy).isEmpty();
         }
-        if (actual instanceof LocalLoadingCache<?, ?>) {
-            var original = (LocalLoadingCache<?, ?>) actual;
+        if (actual instanceof LocalLoadingCache<?, ?> original) {
             var copy = (LocalLoadingCache<?, ?>) reserialized;
             check("cacheLoader").that(copy.cacheLoader()).isEqualTo(original.cacheLoader());
         }
-        if (actual instanceof BoundedLocalManualCache<?, ?>) {
-            var original = (BoundedLocalManualCache<?, ?>) actual;
+        if (actual instanceof BoundedLocalManualCache<?, ?> original) {
             var copy = (BoundedLocalManualCache<?, ?>) reserialized;
             checkBoundedLocalCache(original.cache, copy.cache);
         }
-        if (actual instanceof UnboundedLocalManualCache<?, ?>) {
-            var original = (UnboundedLocalManualCache<?, ?>) actual;
+        if (actual instanceof UnboundedLocalManualCache<?, ?> original) {
             var copy = (UnboundedLocalManualCache<?, ?>) reserialized;
             checkUnboundedLocalCache(original.cache, copy.cache);
         }
@@ -68,8 +65,7 @@ public final class ReserializableSubject extends Subject {
             check("valid").about(asyncCache()).that(copy).isValid();
             check("empty").about(asyncCache()).that(copy).isEmpty();
         }
-        if (actual instanceof LocalAsyncLoadingCache<?, ?>) {
-            var original = (LocalAsyncLoadingCache<?, ?>) actual;
+        if (actual instanceof LocalAsyncLoadingCache<?, ?> original) {
             var copy = (LocalAsyncLoadingCache<?, ?>) reserialized;
             check("cacheLoader").that(copy.cacheLoader).isEqualTo(original.cacheLoader);
         }
@@ -86,13 +82,11 @@ public final class ReserializableSubject extends Subject {
                         (UnboundedLocalAsyncLoadingCache<?, ?>) copy);
             }
         }
-        if (actual instanceof BoundedLocalAsyncLoadingCache<?, ?>) {
-            var original = (BoundedLocalAsyncLoadingCache<?, ?>) actual;
+        if (actual instanceof BoundedLocalAsyncLoadingCache<?, ?> original) {
             var copy = (BoundedLocalAsyncLoadingCache<?, ?>) reserialized;
             checkBoundedLocalCache(original.cache, copy.cache);
         }
-        if (actual instanceof UnboundedLocalAsyncLoadingCache<?, ?>) {
-            var original = (UnboundedLocalAsyncLoadingCache<?, ?>) actual;
+        if (actual instanceof UnboundedLocalAsyncLoadingCache<?, ?> original) {
             var copy = (UnboundedLocalAsyncLoadingCache<?, ?>) reserialized;
             checkUnboundedLocalCache(original.cache, copy.cache);
         }

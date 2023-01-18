@@ -1,8 +1,6 @@
 
 package com.github.benmanes.caffeine.cache.testing;
 
-import com.github.benmanes.caffeine.cache.Policy.FixedExpiration;
-
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 

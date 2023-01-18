@@ -477,10 +477,7 @@ public final class AsyncCacheTest {
             AsyncCache<Int, Int> cache, CacheContext context) {
         var keys = new ArrayList<>(context.absentKeys());
         Collections.shuffle(keys);
-
-        var result = cache.getAll(keys, keysToLoad -> {
-            return keysToLoad.stream().collect(toImmutableMap(identity(), Int::negate));
-        }).join();
+        var result = cache.getAll(keys, keysToLoad -> keysToLoad.stream().collect(toImmutableMap(identity(), Int::negate))).join();
         assertThat(result).containsExactlyKeys(keys).inOrder();
     }
 
@@ -492,10 +489,7 @@ public final class AsyncCacheTest {
         var keys = new ArrayList<>(context.original().keySet());
         keys.addAll(context.absentKeys());
         Collections.shuffle(keys);
-
-        var result = cache.getAll(keys, keysToLoad -> {
-            return keysToLoad.stream().collect(toImmutableMap(identity(), Int::negate));
-        }).join();
+        var result = cache.getAll(keys, keysToLoad -> keysToLoad.stream().collect(toImmutableMap(identity(), Int::negate))).join();
         assertThat(result).containsExactlyKeys(keys).inOrder();
     }
 
@@ -506,7 +500,6 @@ public final class AsyncCacheTest {
             AsyncCache<Int, Int> cache, CacheContext context) {
         var keys = new ArrayList<>(context.original().keySet());
         Collections.shuffle(keys);
-
         var result = cache.getAll(keys, keysToLoad -> {
             throw new AssertionError();
         }).join();
@@ -520,7 +513,6 @@ public final class AsyncCacheTest {
         var keys = new ArrayList<>(context.original().keySet());
         keys.addAll(context.absentKeys());
         Collections.shuffle(keys);
-
         var result = cache.getAll(keys, keysToLoad -> {
             var moreKeys = new ArrayList<Int>(keysToLoad);
             for (int i = 0; i < 10; i++) {
@@ -540,8 +532,6 @@ public final class AsyncCacheTest {
                 .failsWith(CompletionException.class).hasCauseThat().isInstanceOf(LoadAllException.class);
         assertThat(cache).hasSize(context.initialSize());
     }
-
-    /* --------------- getAllBiFunc --------------- */
 
     @CheckNoStats
     @Test(dataProvider = "caches", expectedExceptions = NullPointerException.class)
@@ -602,10 +592,8 @@ public final class AsyncCacheTest {
     @CacheSpec
     @Test(dataProvider = "caches", expectedExceptions = UnsupportedOperationException.class)
     public void getAllBifunction_immutable_result(AsyncCache<Int, Int> cache, CacheContext context) {
-        var result = cache.getAll(context.absentKeys(), (keys, executor) -> {
-            return CompletableFuture.completedFuture(
-                    keys.stream().collect(toImmutableMap(identity(), identity())));
-        }).join();
+        var result = cache.getAll(context.absentKeys(), (keys, executor) -> CompletableFuture.completedFuture(
+                keys.stream().collect(toImmutableMap(identity(), identity())))).join();
         result.clear();
     }
 
@@ -714,9 +702,7 @@ public final class AsyncCacheTest {
     @CacheSpec(removalListener = {Listener.DISABLED, Listener.REJECTING})
     public void getAllBifunction_different(AsyncCache<Int, Int> cache, CacheContext context) {
         var actual = context.absentKeys().stream().collect(toImmutableMap(Int::negate, identity()));
-        var result = cache.getAll(context.absentKeys(), (keys, executor) -> {
-            return CompletableFuture.completedFuture(actual);
-        }).join();
+        var result = cache.getAll(context.absentKeys(), (keys, executor) -> CompletableFuture.completedFuture(actual)).join();
 
         assertThat(result).isEmpty();
         assertThat(cache).hasSize(context.initialSize() + actual.size());
@@ -863,8 +849,6 @@ public final class AsyncCacheTest {
         }
     }
 
-    /* --------------- put --------------- */
-
     @CacheSpec(removalListener = {Listener.DISABLED, Listener.REJECTING})
     @Test(dataProvider = "caches", expectedExceptions = NullPointerException.class)
     public void put_nullKey(AsyncCache<Int, Int> cache, CacheContext context) {
@@ -966,13 +950,10 @@ public final class AsyncCacheTest {
             assertThat(cache).containsEntry(key, newValue);
             replaced.put(key, context.original().get(key));
         }
-
         assertThat(cache).hasSize(context.initialSize());
         assertThat(context).removalNotifications().withCause(REPLACED)
                 .contains(replaced).exclusively();
     }
-
-    /* --------------- misc --------------- */
 
     @Test(dataProvider = "caches")
     @CacheSpec(population = Population.EMPTY, removalListener = Listener.MOCKITO)

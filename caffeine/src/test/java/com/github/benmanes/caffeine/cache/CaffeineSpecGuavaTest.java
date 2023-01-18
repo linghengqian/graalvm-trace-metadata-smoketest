@@ -68,7 +68,6 @@ public class CaffeineSpecGuavaTest extends TestCase {
             parse("maximumSize=10, maximumSize=20");
             fail("Expected exception");
         } catch (IllegalArgumentException expected) {
-            // expected
         }
     }
 
@@ -90,7 +89,6 @@ public class CaffeineSpecGuavaTest extends TestCase {
             parse("maximumWeight=10, maximumWeight=20");
             fail("Expected exception");
         } catch (IllegalArgumentException expected) {
-            // expected
         }
     }
 
@@ -99,7 +97,6 @@ public class CaffeineSpecGuavaTest extends TestCase {
             parse("maximumSize=10, maximumWeight=20");
             fail("Expected exception");
         } catch (IllegalArgumentException expected) {
-            // expected
         }
     }
 
@@ -113,8 +110,7 @@ public class CaffeineSpecGuavaTest extends TestCase {
         assertNull(spec.expireAfterWrite);
         assertNull(spec.expireAfterAccess);
         assertNull(spec.refreshAfterWrite);
-        assertCaffeineEquivalence(
-                Caffeine.newBuilder().weakKeys(), Caffeine.from(spec));
+        assertCaffeineEquivalence(Caffeine.newBuilder().weakKeys(), Caffeine.from(spec));
     }
 
     public void testParse_weakKeysCannotHaveValue() {
@@ -358,8 +354,12 @@ public class CaffeineSpecGuavaTest extends TestCase {
     }
 
     public void testParse_whitespaceAllowed() {
-        CaffeineSpec spec = parse(" initialCapacity=10,\nmaximumSize=20,\t\r"
-                + "weakKeys \t ,softValues \n , \r  expireAfterWrite \t =  15s\n\n");
+        CaffeineSpec spec = parse("""
+                 initialCapacity=10,
+                maximumSize=20,\t\rweakKeys \t ,softValues\s
+                 , \r  expireAfterWrite \t =  15s
+
+                """);
         assertEquals(10, spec.initialCapacity);
         assertEquals(20, spec.maximumSize);
         assertEquals(spec.maximumWeight, UNSET_INT);

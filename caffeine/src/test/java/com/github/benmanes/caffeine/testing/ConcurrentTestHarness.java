@@ -55,7 +55,7 @@ public final class ConcurrentTestHarness {
         startGate.countDown();
         Uninterruptibles.awaitUninterruptibly(endGate);
         long end = System.nanoTime();
-        return new TestResult<T>(end - start, toList(results));
+        return new TestResult<>(end - start, toList(results));
     }
 
     private static <T> List<T> toList(AtomicReferenceArray<T> data) {
@@ -66,21 +66,6 @@ public final class ConcurrentTestHarness {
         return list;
     }
 
-    public static final class TestResult<T> {
-        private final long executionTime;
-        private final List<T> results;
-
-        public TestResult(long executionTime, List<T> results) {
-            this.executionTime = executionTime;
-            this.results = results;
-        }
-
-        public long executionTime() {
-            return executionTime;
-        }
-
-        public List<T> results() {
-            return results;
-        }
+    public record TestResult<T>(long executionTime, List<T> results) {
     }
 }

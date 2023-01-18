@@ -34,7 +34,6 @@ import static com.google.common.base.Functions.identity;
 import static com.google.common.truth.Truth.assertThat;
 import static com.google.common.truth.Truth8.assertThat;
 import static java.util.Map.entry;
-import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 import static uk.org.lidalia.slf4jext.Level.WARN;
 
@@ -450,7 +449,7 @@ public final class ExpirationTest {
             expireAfterAccess = {Expire.DISABLED, Expire.ONE_MINUTE},
             expireAfterWrite = {Expire.DISABLED, Expire.ONE_MINUTE})
     public void get_async(AsyncCache<Int, Int> cache, CacheContext context) {
-        var future = cache.get(context.absentKey(), (k, e) -> new CompletableFuture<Int>());
+        var future = cache.get(context.absentKey(), (k, e) -> new CompletableFuture<>());
         context.ticker().advance(2, TimeUnit.MINUTES);
         cache.synchronous().cleanUp();
 
@@ -1419,10 +1418,10 @@ public final class ExpirationTest {
     public void keySet_inFlight(AsyncCache<Int, Int> cache, CacheContext context) {
         var future = new CompletableFuture<Int>();
         cache.put(context.absentKey(), future);
-        assertThat(cache.asMap().keySet().contains(context.absentKey())).isTrue();
+        assertThat(cache.asMap().containsKey(context.absentKey())).isTrue();
 
         context.ticker().advance(5, TimeUnit.MINUTES);
-        assertThat(cache.asMap().keySet().contains(context.absentKey())).isTrue();
+        assertThat(cache.asMap().containsKey(context.absentKey())).isTrue();
         future.complete(null);
     }
 
@@ -1484,10 +1483,10 @@ public final class ExpirationTest {
     public void values_inFlight(AsyncCache<Int, Int> cache, CacheContext context) {
         var future = new CompletableFuture<Int>();
         cache.put(context.absentKey(), future);
-        assertThat(cache.asMap().values().contains(future)).isTrue();
+        assertThat(cache.asMap().containsValue(future)).isTrue();
 
         context.ticker().advance(5, TimeUnit.MINUTES);
-        assertThat(cache.asMap().values().contains(future)).isTrue();
+        assertThat(cache.asMap().containsValue(future)).isTrue();
         future.complete(null);
     }
 

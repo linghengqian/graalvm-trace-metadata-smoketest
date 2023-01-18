@@ -16,24 +16,10 @@ import com.github.valfirst.slf4jtest.TestLoggerFactory;
 import org.apache.commons.lang3.StringUtils;
 import org.joor.Reflect;
 import org.mockito.Mockito;
-import org.testng.Assert;
-import org.testng.IInvokedMethod;
-import org.testng.IInvokedMethodListener;
-import org.testng.ISuite;
-import org.testng.ISuiteListener;
-import org.testng.ITestContext;
-import org.testng.ITestResult;
-import org.testng.SuiteRunner;
-import org.testng.TestListenerAdapter;
-import org.testng.TestRunner;
+import org.testng.*;
 import org.testng.internal.TestResult;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -69,29 +55,21 @@ public final class CacheValidationListener implements ISuiteListener, IInvokedMe
 
     @Override
     public void beforeInvocation(IInvokedMethod method, ITestResult testResult) {
-        TestLoggerFactory.getAllTestLoggers().values().stream()
-                .forEach(logger -> logger.setEnabledLevels(TRACE_LEVELS));
+        TestLoggerFactory.getAllTestLoggers().values().forEach(logger -> logger.setEnabledLevels(TRACE_LEVELS));
         TestLoggerFactory.clear();
-
         if (beforeCleanup.get() || !beforeCleanup.compareAndSet(false, true)) {
             return;
         }
-
-        // Remove unused listener that retains all test results
-        // https://github.com/cbeust/testng/issues/2096#issuecomment-706643074
-        if (testResult.getTestContext() instanceof TestRunner) {
-            var runner = (TestRunner) testResult.getTestContext();
+        if (testResult.getTestContext() instanceof TestRunner runner) {
             runner.getTestListeners().stream()
                     .filter(listener -> listener.getClass() == TestListenerAdapter.class)
                     .flatMap(listener -> Reflect.on(listener).fields().values().stream())
                     .filter(field -> field.get() instanceof Collection)
                     .forEach(field -> resultQueues.add(field.get()));
-
             resultQueues.add(runner.getFailedButWithinSuccessPercentageTests().getAllResults());
             resultQueues.add(runner.getSkippedTests().getAllResults());
             resultQueues.add(runner.getPassedTests().getAllResults());
             resultQueues.add(runner.getFailedTests().getAllResults());
-
             var invokedMethods = Reflect.on(runner).fields().get("m_invokedMethods");
             if ((invokedMethods != null) && (invokedMethods.get() instanceof Collection)) {
                 resultQueues.add(invokedMethods.get());
@@ -115,9 +93,6 @@ public final class CacheValidationListener implements ISuiteListener, IInvokedMe
         }
     }
 
-    /**
-     * Validates the internal state of the cache.
-     */
     private void validate(ITestResult testResult) {
         CacheContext context = Arrays.stream(testResult.getParameters())
                 .filter(param -> param instanceof CacheContext)
@@ -134,9 +109,6 @@ public final class CacheValidationListener implements ISuiteListener, IInvokedMe
         checkLogger(testResult);
     }
 
-    /**
-     * Waits until the executor has completed all of the submitted work.
-     */
     private void awaitExecutor(CacheContext context) {
         if (context.executor() != null) {
             context.executor().resume();
@@ -150,24 +122,17 @@ public final class CacheValidationListener implements ISuiteListener, IInvokedMe
         }
     }
 
-    /**
-     * Returns the name of the executed test.
-     */
     private static String getTestName(IInvokedMethod method) {
         return StringUtils.substringAfterLast(method.getTestMethod().getTestClass().getName(), ".")
                 + "#" + method.getTestMethod().getConstructorOrMethod().getName();
     }
 
-    /**
-     * Checks whether the {@link TrackingExecutor} had unexpected failures.
-     */
     private static void checkExecutor(ITestResult testResult, CacheContext context) {
         var testMethod = testResult.getMethod().getConstructorOrMethod().getMethod();
         var cacheSpec = testMethod.getAnnotation(CacheSpec.class);
         if ((cacheSpec == null) || (context.executor() == null)) {
             return;
         }
-
         if (cacheSpec.executorFailure() == ExecutorFailure.EXPECTED) {
             assertThat(context.executor().failed()).isGreaterThan(0);
         } else if (cacheSpec.executorFailure() == ExecutorFailure.DISALLOWED) {
@@ -175,9 +140,6 @@ public final class CacheValidationListener implements ISuiteListener, IInvokedMe
         }
     }
 
-    /**
-     * Checks that the cache is in an valid state.
-     */
     private void checkCache(CacheContext context) {
         if (context.cache != null) {
             assertThat(context.cache).isValid();
@@ -188,9 +150,6 @@ public final class CacheValidationListener implements ISuiteListener, IInvokedMe
         }
     }
 
-    /**
-     * Checks the statistics if {@link CheckNoStats} is found.
-     */
     private static void checkNoStats(ITestResult testResult, CacheContext context) {
         var testMethod = testResult.getMethod().getConstructorOrMethod().getMethod();
         boolean checkNoStats = testMethod.isAnnotationPresent(CheckNoStats.class)
@@ -202,9 +161,6 @@ public final class CacheValidationListener implements ISuiteListener, IInvokedMe
         assertThat(context).stats().hits(0).misses(0).success(0).failures(0);
     }
 
-    /**
-     * Checks the statistics if {@link CheckNoEvictions} is found.
-     */
     private static void checkNoEvictions(ITestResult testResult, CacheContext context) {
         var testMethod = testResult.getMethod().getConstructorOrMethod().getMethod();
         boolean checkNoEvictions = testMethod.isAnnotationPresent(CheckNoEvictions.class)
@@ -212,14 +168,10 @@ public final class CacheValidationListener implements ISuiteListener, IInvokedMe
         if (!checkNoEvictions) {
             return;
         }
-
         assertThat(context).removalNotifications().hasNoEvictions();
         assertThat(context).evictionNotifications().isEmpty();
     }
 
-    /**
-     * Checks that no logs above the specified level were emitted.
-     */
     private static void checkLogger(ITestResult testResult) {
         var testMethod = testResult.getMethod().getConstructorOrMethod().getMethod();
         var checkMaxLogLevel = Optional.ofNullable(testMethod.getAnnotation(CheckMaxLogLevel.class))
@@ -232,20 +184,15 @@ public final class CacheValidationListener implements ISuiteListener, IInvokedMe
         }
     }
 
-    /**
-     * Free memory by clearing unused resources after test execution.
-     */
     private void cleanUp(ITestResult testResult) {
         resultQueues.forEach(Collection::clear);
         TestLoggerFactory.clear();
         resetMocks(testResult);
         resetCache(testResult);
-
         boolean briefParams = !detailedParams.get();
         if (testResult.isSuccess() && briefParams) {
             clearTestResults(testResult);
         }
-
         stringifyParams(testResult, briefParams);
         dedupTestName(testResult, briefParams);
         CacheContext.interner().clear();
@@ -260,8 +207,7 @@ public final class CacheValidationListener implements ISuiteListener, IInvokedMe
     @SuppressWarnings("unchecked")
     private void resetMocks(ITestResult testResult) {
         for (Object param : testResult.getParameters()) {
-            if (param instanceof CacheContext) {
-                var context = (CacheContext) param;
+            if (param instanceof CacheContext context) {
                 if (context.expiryType() == CacheExpiry.MOCKITO) {
                     Mockito.clearInvocations(context.expiry());
                 }
@@ -274,8 +220,7 @@ public final class CacheValidationListener implements ISuiteListener, IInvokedMe
 
     private void resetCache(ITestResult testResult) {
         for (Object param : testResult.getParameters()) {
-            if (param instanceof CacheContext) {
-                var context = (CacheContext) param;
+            if (param instanceof CacheContext context) {
                 if (context.isCaffeine()) {
                     Reset.destroy(context.cache());
                 }

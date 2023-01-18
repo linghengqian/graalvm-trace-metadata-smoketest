@@ -19,16 +19,12 @@ import java.util.List;
 import java.util.Queue;
 import java.util.function.Supplier;
 
-
 public final class LinkedDequeTests extends TestCase {
     static final LinkedValue a = new LinkedValue("a");
     static final LinkedValue b = new LinkedValue("b");
     static final LinkedValue c = new LinkedValue("c");
     static final LinkedValue d = new LinkedValue("d");
     static final LinkedValue e = new LinkedValue("e");
-
-    // Due to stateful elements, tests calling resetCollection() for a comparable iterator will
-    // cause unexpected mutations. Instead, a different collection type should be used for comparison
     static final ThreadLocal<Boolean> useTarget = ThreadLocal.withInitial(() -> false);
 
     public static Test suite() {
@@ -39,8 +35,7 @@ public final class LinkedDequeTests extends TestCase {
     }
 
     static Test suite(String name, Supplier<LinkedDeque<LinkedValue>> supplier) {
-        return QueueTestSuiteBuilder
-                .using(new TestLinkedValueGenerator() {
+        return QueueTestSuiteBuilder.using(new TestLinkedValueGenerator() {
                     @Override
                     public Queue<LinkedValue> create(LinkedValue[] elements) {
                         var deque = useTarget.get() ? supplier.get() : new ArrayDeque<LinkedValue>();
@@ -48,32 +43,23 @@ public final class LinkedDequeTests extends TestCase {
                         useTarget.set(false);
                         return deque;
                     }
-                })
-                .named(name)
-                .withFeatures(
+                }).named(name).withFeatures(
                         CollectionFeature.FAILS_FAST_ON_CONCURRENT_MODIFICATION,
                         CollectionFeature.ALLOWS_NULL_QUERIES,
                         CollectionFeature.GENERAL_PURPOSE,
                         CollectionFeature.KNOWN_ORDER,
                         CollectionSize.ANY)
                 .withSetUp(() -> useTarget.set(true))
-                .withTearDown(() -> {
-                    List.of(a, b, c, d, e).forEach(value -> {
-                        value.setNextInAccessOrder(null);
-                        value.setPreviousInAccessOrder(null);
-                    });
-                })
-                .createTestSuite();
+                .withTearDown(() -> List.of(a, b, c, d, e).forEach(value -> {
+                    value.setNextInAccessOrder(null);
+                    value.setPreviousInAccessOrder(null);
+                })).createTestSuite();
     }
 
-    /**
-     * See TestStringQueueGenerator
-     */
     abstract static class TestLinkedValueGenerator implements TestQueueGenerator<LinkedValue> {
-
         @Override
         public SampleElements<LinkedValue> samples() {
-            return new SampleElements<LinkedValue>(b, a, c, d, e);
+            return new SampleElements<>(b, a, c, d, e);
         }
 
         @Override
@@ -101,7 +87,6 @@ public final class LinkedDequeTests extends TestCase {
 
     static final class LinkedValue implements AccessOrder<LinkedValue>, WriteOrder<LinkedValue> {
         final String value;
-
         LinkedValue prev;
         LinkedValue next;
 

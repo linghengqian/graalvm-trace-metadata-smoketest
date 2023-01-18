@@ -48,41 +48,32 @@ public final class ExpiryBuilder {
     }
 
     public <K, V> Expiry<K, V> build() {
-        return new FixedExpiry<K, V>(createNanos, updateNanos, readNanos);
+        return new FixedExpiry<>(createNanos, updateNanos, readNanos);
     }
 
-    private static final class FixedExpiry<K, V> implements Expiry<K, V>, Serializable {
-        private static final long serialVersionUID = 1L;
-
-        private final long createNanos;
-        private final long updateNanos;
-        private final long readNanos;
-
-        FixedExpiry(long createNanos, long updateNanos, long readNanos) {
-            this.createNanos = createNanos;
-            this.updateNanos = updateNanos;
-            this.readNanos = readNanos;
-        }
+    private record FixedExpiry<K, V>(long createNanos, long updateNanos,
+                                     long readNanos) implements Expiry<K, V>, Serializable {
+            private static final long serialVersionUID = 1L;
 
         @Override
-        public long expireAfterCreate(K key, V value, long currentTime) {
-            requireNonNull(key);
-            requireNonNull(value);
-            return createNanos;
-        }
+            public long expireAfterCreate(K key, V value, long currentTime) {
+                requireNonNull(key);
+                requireNonNull(value);
+                return createNanos;
+            }
 
-        @Override
-        public long expireAfterUpdate(K key, V value, long currentTime, long currentDuration) {
-            requireNonNull(key);
-            requireNonNull(value);
-            return (updateNanos == UNSET) ? currentDuration : updateNanos;
-        }
+            @Override
+            public long expireAfterUpdate(K key, V value, long currentTime, long currentDuration) {
+                requireNonNull(key);
+                requireNonNull(value);
+                return (updateNanos == UNSET) ? currentDuration : updateNanos;
+            }
 
-        @Override
-        public long expireAfterRead(K key, V value, long currentTime, long currentDuration) {
-            requireNonNull(key);
-            requireNonNull(value);
-            return (readNanos == UNSET) ? currentDuration : readNanos;
+            @Override
+            public long expireAfterRead(K key, V value, long currentTime, long currentDuration) {
+                requireNonNull(key);
+                requireNonNull(value);
+                return (readNanos == UNSET) ? currentDuration : readNanos;
+            }
         }
-    }
 }

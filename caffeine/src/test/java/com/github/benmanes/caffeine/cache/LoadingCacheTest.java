@@ -1,10 +1,21 @@
-
 package com.github.benmanes.caffeine.cache;
 
-import static com.github.benmanes.caffeine.cache.RemovalCause.EXPIRED;
-import static com.github.benmanes.caffeine.cache.RemovalCause.EXPLICIT;
-import static com.github.benmanes.caffeine.cache.RemovalCause.REPLACED;
-import static com.github.benmanes.caffeine.cache.RemovalCause.SIZE;
+import com.github.benmanes.caffeine.cache.testing.*;
+import com.github.benmanes.caffeine.cache.testing.CacheSpec.*;
+import com.github.benmanes.caffeine.testing.Int;
+import com.github.valfirst.slf4jtest.TestLoggerFactory;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Iterables;
+import com.google.common.primitives.Ints;
+import org.testng.Assert;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicBoolean;
+
+import static com.github.benmanes.caffeine.cache.RemovalCause.*;
 import static com.github.benmanes.caffeine.cache.testing.CacheContext.intern;
 import static com.github.benmanes.caffeine.cache.testing.CacheContextSubject.assertThat;
 import static com.github.benmanes.caffeine.cache.testing.CacheSubject.assertThat;
@@ -18,45 +29,6 @@ import static com.google.common.truth.Truth.assertThat;
 import static java.util.function.Function.identity;
 import static uk.org.lidalia.slf4jext.Level.TRACE;
 import static uk.org.lidalia.slf4jext.Level.WARN;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Executor;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicBoolean;
-
-import org.testng.Assert;
-import org.testng.annotations.Listeners;
-import org.testng.annotations.Test;
-
-import com.github.benmanes.caffeine.cache.testing.CacheContext;
-import com.github.benmanes.caffeine.cache.testing.CacheProvider;
-import com.github.benmanes.caffeine.cache.testing.CacheSpec;
-import com.github.benmanes.caffeine.cache.testing.CacheSpec.CacheExecutor;
-import com.github.benmanes.caffeine.cache.testing.CacheSpec.CacheWeigher;
-import com.github.benmanes.caffeine.cache.testing.CacheSpec.Compute;
-import com.github.benmanes.caffeine.cache.testing.CacheSpec.Expire;
-import com.github.benmanes.caffeine.cache.testing.CacheSpec.Implementation;
-import com.github.benmanes.caffeine.cache.testing.CacheSpec.Listener;
-import com.github.benmanes.caffeine.cache.testing.CacheSpec.Loader;
-import com.github.benmanes.caffeine.cache.testing.CacheSpec.Maximum;
-import com.github.benmanes.caffeine.cache.testing.CacheSpec.Population;
-import com.github.benmanes.caffeine.cache.testing.CacheValidationListener;
-import com.github.benmanes.caffeine.cache.testing.CheckMaxLogLevel;
-import com.github.benmanes.caffeine.cache.testing.CheckNoEvictions;
-import com.github.benmanes.caffeine.cache.testing.CheckNoStats;
-import com.github.benmanes.caffeine.testing.Int;
-import com.github.valfirst.slf4jtest.TestLoggerFactory;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
-import com.google.common.primitives.Ints;
 
 @CheckMaxLogLevel(WARN)
 @Listeners(CacheValidationListener.class)
@@ -93,8 +65,7 @@ public final class LoadingCacheTest {
     @CheckNoEvictions
     @Test(dataProvider = "caches")
     @CacheSpec(loader = Loader.CHECKED_EXCEPTIONAL)
-    public void get_absent_throwsCheckedException(
-            LoadingCache<Int, Int> cache, CacheContext context) {
+    public void get_absent_throwsCheckedException(LoadingCache<Int, Int> cache, CacheContext context) {
         try {
             cache.get(context.absentKey());
             Assert.fail();
@@ -147,8 +118,7 @@ public final class LoadingCacheTest {
     }
 
     @CheckNoEvictions
-    @CacheSpec(loader = {Loader.NEGATIVE, Loader.BULK_NEGATIVE},
-            removalListener = {Listener.DISABLED, Listener.REJECTING})
+    @CacheSpec(loader = {Loader.NEGATIVE, Loader.BULK_NEGATIVE}, removalListener = {Listener.DISABLED, Listener.REJECTING})
     @Test(dataProvider = "caches", expectedExceptions = NullPointerException.class)
     public void getAll_iterable_nullKey(LoadingCache<Int, Int> cache, CacheContext context) {
         cache.getAll(Collections.singletonList(null));
@@ -156,8 +126,7 @@ public final class LoadingCacheTest {
 
     @CheckNoEvictions
     @Test(dataProvider = "caches")
-    @CacheSpec(loader = {Loader.NEGATIVE, Loader.BULK_NEGATIVE},
-            removalListener = {Listener.DISABLED, Listener.REJECTING})
+    @CacheSpec(loader = {Loader.NEGATIVE, Loader.BULK_NEGATIVE}, removalListener = {Listener.DISABLED, Listener.REJECTING})
     public void getAll_iterable_empty(LoadingCache<Int, Int> cache, CacheContext context) {
         assertThat(cache.getAll(List.of())).isExhaustivelyEmpty();
         assertThat(context).stats().hits(0).misses(0);
@@ -207,8 +176,7 @@ public final class LoadingCacheTest {
     @CheckNoEvictions
     @Test(dataProvider = "caches")
     @CacheSpec(loader = {Loader.CHECKED_EXCEPTIONAL, Loader.BULK_CHECKED_EXCEPTIONAL})
-    public void getAll_absent_throwsCheckedExecption(
-            LoadingCache<Int, Int> cache, CacheContext context) {
+    public void getAll_absent_throwsCheckedExecption(LoadingCache<Int, Int> cache, CacheContext context) {
         try {
             cache.getAll(context.absentKeys());
             Assert.fail();
@@ -224,8 +192,7 @@ public final class LoadingCacheTest {
     @CheckNoEvictions
     @CacheSpec(loader = {Loader.EXCEPTIONAL, Loader.BULK_EXCEPTIONAL})
     @Test(dataProvider = "caches", expectedExceptions = IllegalStateException.class)
-    public void getAll_absent_throwsExecption_iterable(
-            LoadingCache<Int, Int> cache, CacheContext context) {
+    public void getAll_absent_throwsExecption_iterable(LoadingCache<Int, Int> cache, CacheContext context) {
         try {
             cache.getAll(() -> context.absentKeys().iterator());
         } finally {
@@ -256,8 +223,7 @@ public final class LoadingCacheTest {
 
     @CheckNoEvictions
     @Test(dataProvider = "caches")
-    @CacheSpec(loader = {Loader.NEGATIVE, Loader.BULK_NEGATIVE},
-            removalListener = {Listener.DISABLED, Listener.REJECTING})
+    @CacheSpec(loader = {Loader.NEGATIVE, Loader.BULK_NEGATIVE}, removalListener = {Listener.DISABLED, Listener.REJECTING})
     public void getAll_absent(LoadingCache<Int, Int> cache, CacheContext context) {
         var result = cache.getAll(context.absentKeys());
 
@@ -269,9 +235,7 @@ public final class LoadingCacheTest {
 
     @CheckNoEvictions
     @Test(dataProvider = "caches")
-    @CacheSpec(loader = {Loader.NEGATIVE, Loader.BULK_NEGATIVE},
-            population = {Population.SINGLETON, Population.PARTIAL, Population.FULL},
-            removalListener = {Listener.DISABLED, Listener.REJECTING})
+    @CacheSpec(loader = {Loader.NEGATIVE, Loader.BULK_NEGATIVE}, population = {Population.SINGLETON, Population.PARTIAL, Population.FULL}, removalListener = {Listener.DISABLED, Listener.REJECTING})
     public void getAll_present_partial(LoadingCache<Int, Int> cache, CacheContext context) {
         var expect = new HashMap<Int, Int>();
         expect.put(context.firstKey(), context.firstKey().negate());
@@ -285,9 +249,7 @@ public final class LoadingCacheTest {
 
     @CheckNoEvictions
     @Test(dataProvider = "caches")
-    @CacheSpec(loader = {Loader.NEGATIVE, Loader.BULK_NEGATIVE},
-            population = {Population.SINGLETON, Population.PARTIAL, Population.FULL},
-            removalListener = {Listener.DISABLED, Listener.REJECTING})
+    @CacheSpec(loader = {Loader.NEGATIVE, Loader.BULK_NEGATIVE}, population = {Population.SINGLETON, Population.PARTIAL, Population.FULL}, removalListener = {Listener.DISABLED, Listener.REJECTING})
     public void getAll_present_full(LoadingCache<Int, Int> cache, CacheContext context) {
         var result = cache.getAll(context.original().keySet());
         assertThat(result).containsExactlyEntriesIn(context.original());
@@ -296,8 +258,7 @@ public final class LoadingCacheTest {
 
     @CheckNoEvictions
     @Test(dataProvider = "caches")
-    @CacheSpec(loader = Loader.BULK_NEGATIVE_EXCEEDS,
-            removalListener = {Listener.DISABLED, Listener.REJECTING})
+    @CacheSpec(loader = Loader.BULK_NEGATIVE_EXCEEDS, removalListener = {Listener.DISABLED, Listener.REJECTING})
     public void getAll_exceeds(LoadingCache<Int, Int> cache, CacheContext context) {
         var result = cache.getAll(context.absentKeys());
 
@@ -308,8 +269,7 @@ public final class LoadingCacheTest {
 
     @CheckNoEvictions
     @Test(dataProvider = "caches")
-    @CacheSpec(implementation = Implementation.Caffeine, loader = Loader.BULK_DIFFERENT,
-            removalListener = {Listener.DISABLED, Listener.REJECTING})
+    @CacheSpec(implementation = Implementation.Caffeine, loader = Loader.BULK_DIFFERENT, removalListener = {Listener.DISABLED, Listener.REJECTING})
     public void getAll_different(LoadingCache<Int, Int> cache, CacheContext context) {
         var result = cache.getAll(context.absentKeys());
 
@@ -320,29 +280,22 @@ public final class LoadingCacheTest {
 
     @CheckNoEvictions
     @Test(dataProvider = "caches")
-    @CacheSpec(loader = {Loader.NEGATIVE, Loader.BULK_NEGATIVE},
-            population = {Population.SINGLETON, Population.PARTIAL, Population.FULL},
-            removalListener = {Listener.DISABLED, Listener.REJECTING})
+    @CacheSpec(loader = {Loader.NEGATIVE, Loader.BULK_NEGATIVE}, population = {Population.SINGLETON, Population.PARTIAL, Population.FULL}, removalListener = {Listener.DISABLED, Listener.REJECTING})
     public void getAll_duplicates(LoadingCache<Int, Int> cache, CacheContext context) {
-        var absentKeys = ImmutableSet.copyOf(Iterables.limit(context.absentKeys(),
-                Ints.saturatedCast(context.maximum().max() - context.initialSize())));
-        var keys = Iterables.concat(absentKeys, absentKeys,
-                context.original().keySet(), context.original().keySet());
+        var absentKeys = ImmutableSet.copyOf(Iterables.limit(context.absentKeys(), Ints.saturatedCast(context.maximum().max() - context.initialSize())));
+        var keys = Iterables.concat(absentKeys, absentKeys, context.original().keySet(), context.original().keySet());
         var result = cache.getAll(keys);
         assertThat(result).containsExactlyKeys(keys);
 
         int loads = context.loader().isBulk() ? 1 : absentKeys.size();
-        assertThat(context).stats().hits(context.initialSize())
-                .misses(absentKeys.size()).success(loads).failures(0);
+        assertThat(context).stats().hits(context.initialSize()).misses(absentKeys.size()).success(loads).failures(0);
     }
 
     @CheckNoEvictions
     @Test(dataProvider = "caches")
-    @CacheSpec(loader = {Loader.NEGATIVE, Loader.BULK_NEGATIVE},
-            population = {Population.SINGLETON, Population.PARTIAL, Population.FULL},
-            removalListener = {Listener.DISABLED, Listener.REJECTING})
+    @CacheSpec(loader = {Loader.NEGATIVE, Loader.BULK_NEGATIVE}, population = {Population.SINGLETON, Population.PARTIAL, Population.FULL}, removalListener = {Listener.DISABLED, Listener.REJECTING})
     public void getAll_present_ordered_absent(LoadingCache<Int, Int> cache, CacheContext context) {
-        var keys = new ArrayList<Int>(context.absentKeys());
+        var keys = new ArrayList<>(context.absentKeys());
         Collections.shuffle(keys);
 
         assertThat(cache.getAll(keys).keySet()).containsExactlyElementsIn(keys).inOrder();
@@ -350,9 +303,7 @@ public final class LoadingCacheTest {
 
     @CheckNoEvictions
     @Test(dataProvider = "caches")
-    @CacheSpec(loader = {Loader.NEGATIVE, Loader.BULK_NEGATIVE},
-            population = {Population.SINGLETON, Population.PARTIAL},
-            removalListener = {Listener.DISABLED, Listener.REJECTING})
+    @CacheSpec(loader = {Loader.NEGATIVE, Loader.BULK_NEGATIVE}, population = {Population.SINGLETON, Population.PARTIAL}, removalListener = {Listener.DISABLED, Listener.REJECTING})
     public void getAll_present_ordered_partial(LoadingCache<Int, Int> cache, CacheContext context) {
         var keys = new ArrayList<>(context.original().keySet());
         keys.addAll(context.absentKeys());
@@ -363,9 +314,7 @@ public final class LoadingCacheTest {
 
     @CheckNoEvictions
     @Test(dataProvider = "caches")
-    @CacheSpec(loader = {Loader.NEGATIVE, Loader.BULK_NEGATIVE},
-            population = {Population.SINGLETON, Population.PARTIAL, Population.FULL},
-            removalListener = {Listener.DISABLED, Listener.REJECTING})
+    @CacheSpec(loader = {Loader.NEGATIVE, Loader.BULK_NEGATIVE}, population = {Population.SINGLETON, Population.PARTIAL, Population.FULL}, removalListener = {Listener.DISABLED, Listener.REJECTING})
     public void getAll_present_ordered_present(LoadingCache<Int, Int> cache, CacheContext context) {
         var keys = new ArrayList<>(context.original().keySet());
         Collections.shuffle(keys);
@@ -375,8 +324,7 @@ public final class LoadingCacheTest {
 
     @CheckNoEvictions
     @Test(dataProvider = "caches")
-    @CacheSpec(loader = Loader.BULK_NEGATIVE_EXCEEDS,
-            removalListener = {Listener.DISABLED, Listener.REJECTING})
+    @CacheSpec(loader = Loader.BULK_NEGATIVE_EXCEEDS, removalListener = {Listener.DISABLED, Listener.REJECTING})
     public void getAll_present_ordered_exceeds(LoadingCache<Int, Int> cache, CacheContext context) {
         var keys = new ArrayList<>(context.original().keySet());
         keys.addAll(context.absentKeys());
@@ -435,22 +383,18 @@ public final class LoadingCacheTest {
 
     @CheckNoEvictions
     @Test(dataProvider = "caches")
-    @CacheSpec(implementation = Implementation.Caffeine, loader = Loader.NULL,
-            population = {Population.SINGLETON, Population.PARTIAL, Population.FULL})
+    @CacheSpec(implementation = Implementation.Caffeine, loader = Loader.NULL, population = {Population.SINGLETON, Population.PARTIAL, Population.FULL})
     public void refresh_remove(LoadingCache<Int, Int> cache, CacheContext context) {
         var future = cache.refresh(context.firstKey());
         assertThat(future).succeedsWithNull();
         assertThat(cache).hasSize(context.initialSize() - 1);
         assertThat(cache).doesNotContainKey(context.firstKey());
-        assertThat(context).removalNotifications().withCause(EXPLICIT)
-                .contains(context.firstKey(), context.original().get(context.firstKey()))
-                .exclusively();
+        assertThat(context).removalNotifications().withCause(EXPLICIT).contains(context.firstKey(), context.original().get(context.firstKey())).exclusively();
     }
 
     @CheckNoEvictions
     @Test(dataProvider = "caches")
-    @CacheSpec(implementation = Implementation.Caffeine,
-            loader = Loader.NULL, population = Population.EMPTY)
+    @CacheSpec(implementation = Implementation.Caffeine, loader = Loader.NULL, population = Population.EMPTY)
     public void refresh_ignored(LoadingCache<Int, Int> cache, CacheContext context) {
         var future = cache.refresh(context.absentKey());
         assertThat(future).succeedsWithNull();
@@ -460,8 +404,7 @@ public final class LoadingCacheTest {
 
     @CheckNoEvictions
     @Test(dataProvider = "caches")
-    @CacheSpec(population = {Population.SINGLETON, Population.PARTIAL, Population.FULL},
-            loader = Loader.EXCEPTIONAL, removalListener = {Listener.DISABLED, Listener.REJECTING})
+    @CacheSpec(population = {Population.SINGLETON, Population.PARTIAL, Population.FULL}, loader = Loader.EXCEPTIONAL, removalListener = {Listener.DISABLED, Listener.REJECTING})
     public void refresh_failure(LoadingCache<Int, Int> cache, CacheContext context) {
         // Shouldn't leak exception to caller nor retain the future; should retain the stale entry
         var future1 = cache.refresh(context.absentKey());
@@ -514,8 +457,7 @@ public final class LoadingCacheTest {
 
     @CheckNoEvictions
     @Test(dataProvider = "caches")
-    @CacheSpec(implementation = Implementation.Caffeine, loader = Loader.ASYNC_INCOMPLETE,
-            removalListener = {Listener.DISABLED, Listener.REJECTING})
+    @CacheSpec(implementation = Implementation.Caffeine, loader = Loader.ASYNC_INCOMPLETE, removalListener = {Listener.DISABLED, Listener.REJECTING})
     public void refresh_cancel(LoadingCache<Int, Int> cache, CacheContext context) {
         var key = context.original().isEmpty() ? context.absentKey() : context.firstKey();
         var future1 = cache.refresh(key);
@@ -540,9 +482,7 @@ public final class LoadingCacheTest {
 
     @CheckNoEvictions
     @Test(dataProvider = "caches")
-    @CacheSpec(
-            maximumSize = Maximum.UNREACHABLE,
-            removalListener = {Listener.DISABLED, Listener.REJECTING}, population = Population.SINGLETON)
+    @CacheSpec(maximumSize = Maximum.UNREACHABLE, removalListener = {Listener.DISABLED, Listener.REJECTING}, population = Population.SINGLETON)
     public void refresh_absent(LoadingCache<Int, Int> cache, CacheContext context) {
         Int key = context.absentKey();
         var future = cache.refresh(key);
@@ -554,8 +494,7 @@ public final class LoadingCacheTest {
 
     @CheckNoEvictions
     @Test(dataProvider = "caches")
-    @CacheSpec(implementation = Implementation.Caffeine, loader = Loader.NULL,
-            population = {Population.SINGLETON, Population.PARTIAL, Population.FULL})
+    @CacheSpec(implementation = Implementation.Caffeine, loader = Loader.NULL, population = {Population.SINGLETON, Population.PARTIAL, Population.FULL})
     public void refresh_present_null(LoadingCache<Int, Int> cache, CacheContext context) {
         var removed = new HashMap<Int, Int>();
         for (Int key : context.firstMiddleLastKeys()) {
@@ -570,8 +509,7 @@ public final class LoadingCacheTest {
             assertThat(cache).doesNotContainKey(key);
         }
         assertThat(cache).hasSize(context.initialSize() - count);
-        assertThat(context).removalNotifications().withCause(EXPLICIT)
-                .contains(removed).exclusively();
+        assertThat(context).removalNotifications().withCause(EXPLICIT).contains(removed).exclusively();
     }
 
     @CheckNoEvictions
@@ -591,8 +529,7 @@ public final class LoadingCacheTest {
             assertThat(cache).containsEntry(key, context.original().get(key));
         }
         assertThat(cache).hasSize(context.initialSize());
-        assertThat(context).removalNotifications().withCause(REPLACED)
-                .contains(replaced).exclusively();
+        assertThat(context).removalNotifications().withCause(REPLACED).contains(replaced).exclusively();
     }
 
     @CheckNoEvictions
@@ -608,9 +545,7 @@ public final class LoadingCacheTest {
         assertThat(cache).containsEntry(context.absentKey(), context.absentKey());
 
         if (context.isGuava()) {
-            assertThat(context).removalNotifications().withCause(REPLACED)
-                    .contains(context.absentKey(), context.absentKey())
-                    .exclusively();
+            assertThat(context).removalNotifications().withCause(REPLACED).contains(context.absentKey(), context.absentKey()).exclusively();
         } else {
             assertThat(context).removalNotifications().isEmpty();
         }
@@ -618,8 +553,7 @@ public final class LoadingCacheTest {
 
     @CheckNoEvictions
     @Test(dataProvider = "caches")
-    @CacheSpec(loader = Loader.IDENTITY,
-            population = {Population.SINGLETON, Population.PARTIAL, Population.FULL})
+    @CacheSpec(loader = Loader.IDENTITY, population = {Population.SINGLETON, Population.PARTIAL, Population.FULL})
     public void refresh_present_differentValue(LoadingCache<Int, Int> cache, CacheContext context) {
         var replaced = new HashMap<Int, Int>();
         for (Int key : context.firstMiddleLastKeys()) {
@@ -631,14 +565,12 @@ public final class LoadingCacheTest {
         int count = context.firstMiddleLastKeys().size();
         assertThat(cache).hasSize(context.initialSize());
         assertThat(context).stats().hits(0).misses(0).success(count).failures(0);
-        assertThat(context).removalNotifications().withCause(REPLACED)
-                .contains(replaced).exclusively();
+        assertThat(context).removalNotifications().withCause(REPLACED).contains(replaced).exclusively();
     }
 
     @CheckNoEvictions
     @Test(dataProvider = "caches")
-    @CacheSpec(population = Population.EMPTY,
-            executor = CacheExecutor.THREADED, removalListener = Listener.CONSUMING)
+    @CacheSpec(population = Population.EMPTY, executor = CacheExecutor.THREADED, removalListener = Listener.CONSUMING)
     public void refresh_conflict(CacheContext context) {
         var refresh = new AtomicBoolean();
         Int key = context.absentKey();
@@ -664,15 +596,12 @@ public final class LoadingCacheTest {
 
         assertThat(cache).containsEntry(key, updated);
         assertThat(context).stats().success(1).failures(0);
-        assertThat(context).removalNotifications().withCause(REPLACED)
-                .contains(Map.entry(key, original), Map.entry(key, refreshed))
-                .exclusively();
+        assertThat(context).removalNotifications().withCause(REPLACED).contains(Map.entry(key, original), Map.entry(key, refreshed)).exclusively();
     }
 
     @CheckNoEvictions
     @Test(dataProvider = "caches")
-    @CacheSpec(population = Population.EMPTY, executor = CacheExecutor.THREADED,
-            removalListener = Listener.CONSUMING)
+    @CacheSpec(population = Population.EMPTY, executor = CacheExecutor.THREADED, removalListener = Listener.CONSUMING)
     public void refresh_put(CacheContext context) {
         var started = new AtomicBoolean();
         var refresh = new AtomicBoolean();
@@ -700,20 +629,15 @@ public final class LoadingCacheTest {
             assertThat(future).succeedsWith(refreshed);
         }
 
-        await().untilAsserted(() -> {
-            assertThat(context).removalNotifications().withCause(REPLACED).contains(key, refreshed);
-        });
+        await().untilAsserted(() -> assertThat(context).removalNotifications().withCause(REPLACED).contains(key, refreshed));
 
         assertThat(context).stats().success(1).failures(0);
-        assertThat(context).removalNotifications().withCause(REPLACED)
-                .contains(Map.entry(key, original), Map.entry(key, refreshed))
-                .exclusively();
+        assertThat(context).removalNotifications().withCause(REPLACED).contains(Map.entry(key, original), Map.entry(key, refreshed)).exclusively();
     }
 
     @CheckNoEvictions
     @Test(dataProvider = "caches")
-    @CacheSpec(population = Population.EMPTY, executor = CacheExecutor.THREADED,
-            removalListener = Listener.CONSUMING)
+    @CacheSpec(population = Population.EMPTY, executor = CacheExecutor.THREADED, removalListener = Listener.CONSUMING)
     public void refresh_invalidate(CacheContext context) {
         var started = new AtomicBoolean();
         var done = new AtomicBoolean();
@@ -741,21 +665,17 @@ public final class LoadingCacheTest {
 
         if (context.isGuava()) {
             await().untilAsserted(() -> assertThat(cache).containsEntry(key, refreshed));
-            assertThat(context).removalNotifications().withCause(EXPLICIT)
-                    .contains(key, original).exclusively();
+            assertThat(context).removalNotifications().withCause(EXPLICIT).contains(key, original).exclusively();
         } else {
             // linearizable
             await().untilAsserted(() -> assertThat(cache).doesNotContainKey(key));
-            assertThat(context).removalNotifications().withCause(EXPLICIT)
-                    .contains(Map.entry(key, original), Map.entry(key, refreshed))
-                    .exclusively();
+            assertThat(context).removalNotifications().withCause(EXPLICIT).contains(Map.entry(key, original), Map.entry(key, refreshed)).exclusively();
         }
         assertThat(context).stats().success(1).failures(0);
     }
 
     @Test(dataProvider = "caches")
-    @CacheSpec(population = Population.EMPTY, executor = CacheExecutor.THREADED,
-            expireAfterWrite = Expire.ONE_MINUTE, removalListener = Listener.CONSUMING)
+    @CacheSpec(population = Population.EMPTY, executor = CacheExecutor.THREADED, expireAfterWrite = Expire.ONE_MINUTE, removalListener = Listener.CONSUMING)
     public void refresh_expired(CacheContext context) {
         var started = new AtomicBoolean();
         var done = new AtomicBoolean();
@@ -784,8 +704,7 @@ public final class LoadingCacheTest {
 
         if (context.isGuava()) {
             await().untilAsserted(() -> assertThat(cache).containsEntry(key, refreshed));
-            assertThat(context).removalNotifications().withCause(EXPIRED)
-                    .contains(key, original).exclusively();
+            assertThat(context).removalNotifications().withCause(EXPIRED).contains(key, original).exclusively();
         } else {
             // linearizable
             await().untilAsserted(() -> assertThat(cache).doesNotContainKey(key));
@@ -797,9 +716,7 @@ public final class LoadingCacheTest {
     }
 
     @Test(dataProvider = "caches")
-    @CacheSpec(population = Population.EMPTY, executor = CacheExecutor.THREADED,
-            maximumSize = Maximum.ONE, weigher = CacheWeigher.DISABLED,
-            removalListener = Listener.CONSUMING)
+    @CacheSpec(population = Population.EMPTY, executor = CacheExecutor.THREADED, maximumSize = Maximum.ONE, weigher = CacheWeigher.DISABLED, removalListener = Listener.CONSUMING)
     public void refresh_evicted(CacheContext context) {
         var started = new AtomicBoolean();
         var done = new AtomicBoolean();
@@ -831,8 +748,7 @@ public final class LoadingCacheTest {
         if (context.isGuava()) {
             await().untilAsserted(() -> assertThat(cache).containsEntry(key1, refreshed));
             await().untilAsserted(() -> assertThat(cache).doesNotContainKey(key2));
-            assertThat(context).removalNotifications().withCause(SIZE)
-                    .contains(Map.of(key1, original, key2, original)).exclusively();
+            assertThat(context).removalNotifications().withCause(SIZE).contains(Map.of(key1, original, key2, original)).exclusively();
         } else {
             // linearizable
             await().untilAsserted(() -> assertThat(cache).doesNotContainKey(key1));
@@ -862,9 +778,7 @@ public final class LoadingCacheTest {
                 return future;
             }
         };
-        LoadingCache<Int, Int> cache = context.isAsync()
-                ? context.buildAsync(cacheLoader).synchronous()
-                : context.build(cacheLoader);
+        LoadingCache<Int, Int> cache = context.isAsync() ? context.buildAsync(cacheLoader).synchronous() : context.build(cacheLoader);
         cache.refresh(context.absentKey());
         assertThat(TestLoggerFactory.getLoggingEvents()).isEmpty();
     }
@@ -888,9 +802,7 @@ public final class LoadingCacheTest {
                 return future;
             }
         };
-        LoadingCache<Int, Int> cache = context.isAsync()
-                ? context.buildAsync(cacheLoader).synchronous()
-                : context.build(cacheLoader);
+        LoadingCache<Int, Int> cache = context.isAsync() ? context.buildAsync(cacheLoader).synchronous() : context.build(cacheLoader);
         cache.refresh(context.absentKey());
         assertThat(TestLoggerFactory.getLoggingEvents()).isEmpty();
     }
@@ -904,9 +816,7 @@ public final class LoadingCacheTest {
         CacheLoader<Int, Int> cacheLoader = key -> {
             throw expected;
         };
-        LoadingCache<Int, Int> cache = context.isAsync()
-                ? context.buildAsync(cacheLoader).synchronous()
-                : context.build(cacheLoader);
+        LoadingCache<Int, Int> cache = context.isAsync() ? context.buildAsync(cacheLoader).synchronous() : context.build(cacheLoader);
         cache.refresh(context.absentKey());
         var event = Iterables.getOnlyElement(TestLoggerFactory.getLoggingEvents());
         assertThat(event.getThrowable().orElseThrow()).hasCauseThat().isSameInstanceAs(expected);
@@ -940,8 +850,7 @@ public final class LoadingCacheTest {
             }
 
             @Override
-            public CompletableFuture<Int> asyncReload(
-                    Int key, Int oldValue, Executor executor) {
+            public CompletableFuture<Int> asyncReload(Int key, Int oldValue, Executor executor) {
                 return null;
             }
         });
@@ -979,25 +888,21 @@ public final class LoadingCacheTest {
 
     @CheckNoEvictions
     @Test(dataProvider = "caches")
-    @CacheSpec(population = Population.FULL, loader = Loader.IDENTITY,
-            removalListener = {Listener.DISABLED, Listener.REJECTING})
+    @CacheSpec(population = Population.FULL, loader = Loader.IDENTITY, removalListener = {Listener.DISABLED, Listener.REJECTING})
     public void refreshAll_present(LoadingCache<Int, Int> cache, CacheContext context) {
         var result = cache.refreshAll(context.original().keySet()).join();
         int count = context.original().keySet().size();
         assertThat(result).hasSize(count);
 
-        var expected = context.original().keySet().stream()
-                .collect(toImmutableMap(identity(), identity()));
+        var expected = context.original().keySet().stream().collect(toImmutableMap(identity(), identity()));
         assertThat(cache).containsExactlyEntriesIn(expected);
     }
 
     @CheckNoEvictions
     @Test(dataProvider = "caches")
-    @CacheSpec(population = {Population.SINGLETON, Population.PARTIAL, Population.FULL},
-            loader = Loader.EXCEPTIONAL, removalListener = {Listener.DISABLED, Listener.REJECTING})
+    @CacheSpec(population = {Population.SINGLETON, Population.PARTIAL, Population.FULL}, loader = Loader.EXCEPTIONAL, removalListener = {Listener.DISABLED, Listener.REJECTING})
     public void refreshAll_failure(LoadingCache<Int, Int> cache, CacheContext context) {
-        var future = cache.refreshAll(List.of(
-                context.absentKey(), context.firstKey(), context.lastKey()));
+        var future = cache.refreshAll(List.of(context.absentKey(), context.firstKey(), context.lastKey()));
         assertThat(future).hasCompletedExceptionally();
         assertThat(cache).hasSize(context.initialSize());
     }
@@ -1020,8 +925,7 @@ public final class LoadingCacheTest {
 
     @CheckNoEvictions
     @Test(dataProvider = "caches")
-    @CacheSpec(implementation = Implementation.Caffeine, loader = Loader.ASYNC_INCOMPLETE,
-            removalListener = {Listener.DISABLED, Listener.REJECTING})
+    @CacheSpec(implementation = Implementation.Caffeine, loader = Loader.ASYNC_INCOMPLETE, removalListener = {Listener.DISABLED, Listener.REJECTING})
     public void refreshAll_cancel(LoadingCache<Int, Int> cache, CacheContext context) {
         var key = context.original().isEmpty() ? context.absentKey() : context.firstKey();
         var future1 = cache.refresh(key);
@@ -1061,8 +965,7 @@ public final class LoadingCacheTest {
             }
 
             @Override
-            public CompletableFuture<Int> asyncReload(
-                    Int key, Int oldValue, Executor executor) {
+            public CompletableFuture<Int> asyncReload(Int key, Int oldValue, Executor executor) {
                 return null;
             }
         });
@@ -1090,8 +993,7 @@ public final class LoadingCacheTest {
         CacheLoader<Int, Int> loader = key -> {
             throw e;
         };
-        assertThat(loader.asyncLoad(Int.valueOf(1), Runnable::run))
-                .failsWith(CompletionException.class).hasCauseThat().isSameInstanceAs(e);
+        assertThat(loader.asyncLoad(Int.valueOf(1), Runnable::run)).failsWith(CompletionException.class).hasCauseThat().isSameInstanceAs(e);
     }
 
     @Test
@@ -1114,16 +1016,13 @@ public final class LoadingCacheTest {
                 throw e;
             }
         };
-        assertThat(loader.asyncLoadAll(Int.setOf(1), Runnable::run))
-                .failsWith(CompletionException.class).hasCauseThat().isSameInstanceAs(e);
+        assertThat(loader.asyncLoadAll(Int.setOf(1), Runnable::run)).failsWith(CompletionException.class).hasCauseThat().isSameInstanceAs(e);
     }
 
     @Test
     public void asyncLoadAll() throws Throwable {
         CacheLoader<Object, ?> loader = key -> key;
-        assertThat(loader.asyncLoadAll(Set.of(), Runnable::run))
-                .failsWith(CompletionException.class)
-                .hasCauseThat().isInstanceOf(UnsupportedOperationException.class);
+        assertThat(loader.asyncLoadAll(Set.of(), Runnable::run)).failsWith(CompletionException.class).hasCauseThat().isInstanceOf(UnsupportedOperationException.class);
     }
 
     @Test
@@ -1132,8 +1031,7 @@ public final class LoadingCacheTest {
             CacheLoader<Int, Int> loader = key -> {
                 throw e;
             };
-            assertThat(loader.asyncReload(Int.valueOf(1), Int.valueOf(1), Runnable::run))
-                    .failsWith(CompletionException.class).hasCauseThat().isSameInstanceAs(e);
+            assertThat(loader.asyncReload(Int.valueOf(1), Int.valueOf(1), Runnable::run)).failsWith(CompletionException.class).hasCauseThat().isSameInstanceAs(e);
         }
     }
 
@@ -1159,22 +1057,16 @@ public final class LoadingCacheTest {
 
     @Test
     public void bulk_present() throws Exception {
-        CacheLoader<Int, Int> loader = CacheLoader.bulk(keys -> {
-            return keys.stream().collect(toImmutableMap(identity(), identity()));
-        });
+        CacheLoader<Int, Int> loader = CacheLoader.bulk(keys -> keys.stream().collect(toImmutableMap(identity(), identity())));
         assertThat(loader.loadAll(Int.setOf(1, 2))).containsExactlyEntriesIn(Int.mapOf(1, 1, 2, 2));
         assertThat(loader.load(Int.valueOf(1))).isEqualTo(1);
     }
-
-    /* --------------- Policy: refreshes --------------- */
 
     @Test(dataProvider = "caches")
     @CacheSpec(implementation = Implementation.Caffeine, loader = Loader.ASYNC_INCOMPLETE)
     public void refreshes(LoadingCache<Int, Int> cache, CacheContext context) {
         var key1 = Iterables.get(context.absentKeys(), 0);
-        var key2 = context.original().isEmpty()
-                ? Iterables.get(context.absentKeys(), 1)
-                : context.firstKey();
+        var key2 = context.original().isEmpty() ? Iterables.get(context.absentKeys(), 1) : context.firstKey();
         var future1 = cache.refresh(key1);
         var future2 = cache.refresh(key2);
         assertThat(cache.policy().refreshes()).containsExactly(key1, future1, key2, future2);

@@ -22,7 +22,6 @@ import static org.testng.Assert.fail;
 
 public final class Threads {
     private static final Logger logger = Logger.getLogger(Threads.class);
-
     public static final int ITERATIONS = 40_000;
     public static final int NTHREADS = 20;
     public static final int TIMEOUT = 30;
@@ -32,7 +31,7 @@ public final class Threads {
 
     public static <A> void runTest(A collection, List<BiConsumer<A, Int>> operations) {
         var failures = new ConcurrentLinkedQueue<String>();
-        var thrasher = new Thrasher<A>(collection, failures, operations);
+        var thrasher = new Thrasher<>(collection, failures, operations);
         Threads.executeWithTimeOut(failures, () ->
                 ConcurrentTestHarness.timeTasks(Threads.NTHREADS, thrasher));
         assertThat(failures).isEmpty();
@@ -54,18 +53,16 @@ public final class Threads {
     }
 
     public static void handleTimout(Queue<String> failures, ExecutorService es, TimeoutException e) {
-        for (var trace : Thread.getAllStackTraces().values()) {
+        Thread.getAllStackTraces().values().forEach(trace -> {
             for (var element : trace) {
                 logger.info("\tat " + element);
             }
             if (trace.length > 0) {
                 logger.info("------");
             }
-        }
+        });
         MoreExecutors.shutdownAndAwaitTermination(es, 10, TimeUnit.SECONDS);
-        for (String failure : failures) {
-            logger.debug(failure);
-        }
+        failures.forEach(logger::debug);
         fail("Spun forever", e);
     }
 
@@ -79,11 +76,11 @@ public final class Threads {
 
     private static <T> List<List<T>> shuffle(int samples, List<T> baseline) {
         var workingSets = new ArrayList<List<T>>(samples);
-        var workingSet = new ArrayList<T>(baseline);
-        for (int i = 0; i < samples; i++) {
+        var workingSet = new ArrayList<>(baseline);
+        IntStream.range(0, samples).forEach(i -> {
             Collections.shuffle(workingSet);
             workingSets.add(List.copyOf(workingSet));
-        }
+        });
         return List.copyOf(workingSets);
     }
 
@@ -105,7 +102,7 @@ public final class Threads {
         @Override
         public void run() {
             int id = index.getAndIncrement();
-            for (Int e : sets.get(id)) {
+            sets.get(id).forEach(e -> {
                 var operation = operations.get(ThreadLocalRandom.current().nextInt(operations.size()));
                 try {
                     operation.accept(collection, e);
@@ -114,7 +111,7 @@ public final class Threads {
                             e, operation, Throwables.getStackTraceAsString(t)));
                     throw t;
                 }
-            }
+            });
         }
     }
 }

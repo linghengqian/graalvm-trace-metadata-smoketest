@@ -206,7 +206,7 @@ public final class AsMapTest {
     @Test(dataProvider = "caches")
     @CacheSpec(removalListener = {Listener.DISABLED, Listener.REJECTING})
     public void forEach_scan(Map<Int, Int> map, CacheContext context) {
-        var remaining = new HashMap<Int, Int>(context.original());
+        var remaining = new HashMap<>(context.original());
         map.forEach((key, value) -> {
             assertThat(key).isNotNull();
             assertThat(value).isNotNull();
@@ -386,7 +386,7 @@ public final class AsMapTest {
     @Test(dataProvider = "caches")
     @CacheSpec(population = {Population.SINGLETON, Population.PARTIAL, Population.FULL})
     public void putAll_replace(Map<Int, Int> map, CacheContext context) {
-        var entries = new LinkedHashMap<Int, Int>(context.original());
+        var entries = new LinkedHashMap<>(context.original());
         entries.replaceAll((key, value) -> key);
         map.putAll(entries);
         assertThat(map).isEqualTo(entries);
@@ -924,9 +924,7 @@ public final class AsMapTest {
     @Test(dataProvider = "caches")
     public void replaceAll_differentValue(Map<Int, Int> map, CacheContext context) {
         map.replaceAll((key, value) -> key);
-        map.forEach((key, value) -> {
-            assertThat(value).isEqualTo(key);
-        });
+        map.forEach((key, value) -> assertThat(value).isEqualTo(key));
         assertThat(context).removalNotifications().withCause(REPLACED)
                 .contains(context.original()).exclusively();
     }
@@ -1735,7 +1733,7 @@ public final class AsMapTest {
     @Test(dataProvider = "caches")
     @CacheSpec(removalListener = {Listener.DISABLED, Listener.REJECTING})
     public void keySet_contains_absent(Map<Int, Int> map, CacheContext context) {
-        assertThat(map.keySet().contains(context.absentKey())).isFalse();
+        assertThat(map.containsKey(context.absentKey())).isFalse();
     }
 
     @CheckNoStats
@@ -1743,7 +1741,7 @@ public final class AsMapTest {
     @CacheSpec(population = Population.FULL,
             removalListener = {Listener.DISABLED, Listener.REJECTING})
     public void keySet_contains_present(Map<Int, Int> map, CacheContext context) {
-        assertThat(map.keySet().contains(context.firstKey())).isTrue();
+        assertThat(map.containsKey(context.firstKey())).isTrue();
     }
 
     @CheckNoStats
@@ -2145,7 +2143,7 @@ public final class AsMapTest {
     @Test(dataProvider = "caches")
     @CacheSpec(removalListener = {Listener.DISABLED, Listener.REJECTING})
     public void values_contains_absent(Map<Int, Int> map, CacheContext context) {
-        assertThat(map.values().contains(context.absentValue())).isFalse();
+        assertThat(map.containsValue(context.absentValue())).isFalse();
     }
 
     @CheckNoStats
@@ -2153,7 +2151,7 @@ public final class AsMapTest {
     @CacheSpec(population = Population.FULL,
             removalListener = {Listener.DISABLED, Listener.REJECTING})
     public void values_contains_present(Map<Int, Int> map, CacheContext context) {
-        assertThat(map.values().contains(context.original().get(context.firstKey()))).isTrue();
+        assertThat(map.containsValue(context.original().get(context.firstKey()))).isTrue();
     }
 
     @CheckNoStats

@@ -17,8 +17,6 @@ import static com.github.benmanes.caffeine.testing.Awaits.await;
 import static com.google.common.truth.Truth.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
 
 
@@ -91,13 +89,10 @@ public final class AsyncTest {
     public void asyncExpiry_pending() {
         var expiry = makeAsyncExpiry(ONE_MINUTE, ONE_MINUTE, ONE_MINUTE);
         var future = new CompletableFuture<Integer>();
-
         assertThat(expiry.expireAfterCreate(0, future, 1)).isEqualTo(ASYNC_EXPIRY);
         verify(expiry.delegate, never()).expireAfterCreate(any(), any(), anyLong());
-
         assertThat(expiry.expireAfterUpdate(0, future, 1, 2)).isEqualTo(ASYNC_EXPIRY);
         verify(expiry.delegate, never()).expireAfterUpdate(any(), any(), anyLong(), anyLong());
-
         assertThat(expiry.expireAfterRead(0, future, 1, 2)).isEqualTo(ASYNC_EXPIRY);
         verify(expiry.delegate, never()).expireAfterRead(any(), any(), anyLong(), anyLong());
     }
@@ -106,13 +101,10 @@ public final class AsyncTest {
     public void asyncExpiry_completed() {
         var expiry = makeAsyncExpiry(ONE_MINUTE, 2 * ONE_MINUTE, 3 * ONE_MINUTE);
         var future = CompletableFuture.completedFuture(100);
-
         assertThat(expiry.expireAfterCreate(0, future, 1)).isEqualTo(ONE_MINUTE);
         verify(expiry.delegate).expireAfterCreate(0, 100, 1);
-
         assertThat(expiry.expireAfterUpdate(0, future, 1, 2)).isEqualTo(2 * ONE_MINUTE);
         verify(expiry.delegate).expireAfterUpdate(0, 100, 1, 2);
-
         assertThat(expiry.expireAfterRead(0, future, 1, 2)).isEqualTo(3 * ONE_MINUTE);
         verify(expiry.delegate).expireAfterRead(0, 100, 1, 2);
     }
@@ -121,7 +113,6 @@ public final class AsyncTest {
     public void asyncExpiry_bounded() {
         var expiry = makeAsyncExpiry(Long.MAX_VALUE, Long.MAX_VALUE, Long.MAX_VALUE);
         var future = CompletableFuture.completedFuture(100);
-
         assertThat(expiry.expireAfterCreate(0, future, 1)).isEqualTo(MAXIMUM_EXPIRY);
         assertThat(expiry.expireAfterUpdate(0, future, 1, 2)).isEqualTo(MAXIMUM_EXPIRY);
         assertThat(expiry.expireAfterRead(0, future, 1, 2)).isEqualTo(MAXIMUM_EXPIRY);

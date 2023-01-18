@@ -170,15 +170,11 @@ public final class EvictionTest {
         cache.put(Int.valueOf(9), Int.valueOf(9));
         cache.put(Int.valueOf(1), Int.valueOf(1));
         assertThat(cache).hasSize(2);
-        cache.policy().eviction().ifPresent(eviction -> {
-            assertThat(context).hasWeightedSize(10);
-        });
+        cache.policy().eviction().ifPresent(eviction -> assertThat(context).hasWeightedSize(10));
 
         cache.put(Int.valueOf(20), Int.valueOf(20));
         assertThat(cache).hasSize(2);
-        cache.policy().eviction().ifPresent(eviction -> {
-            assertThat(context).hasWeightedSize(10);
-        });
+        cache.policy().eviction().ifPresent(eviction -> assertThat(context).hasWeightedSize(10));
         assertThat(context).notifications().withCause(SIZE)
                 .contains(Int.valueOf(20), Int.valueOf(20)).exclusively();
         if (context.isCaffeine()) {

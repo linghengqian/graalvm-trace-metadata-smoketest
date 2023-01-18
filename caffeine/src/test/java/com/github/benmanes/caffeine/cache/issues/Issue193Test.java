@@ -27,9 +27,7 @@ public final class Issue193Test {
     private final AsyncCacheLoader<String, Long> loader = (key, exec) -> {
         loadingTask = ListenableFutureTask.create(counter::getAndIncrement);
         var f = new CompletableFuture<Long>();
-        loadingTask.addListener(() -> {
-            f.complete(Futures.getUnchecked(loadingTask));
-        }, exec);
+        loadingTask.addListener(() -> f.complete(Futures.getUnchecked(loadingTask)), exec);
         return f;
     };
 
@@ -44,7 +42,7 @@ public final class Issue193Test {
     }
 
     @Test
-    public void invalidateDuringRefreshRemovalCheck() throws Exception {
+    public void invalidateDuringRefreshRemovalCheck() {
         var removed = new ArrayList<Long>();
         AsyncLoadingCache<String, Long> cache = Caffeine.newBuilder()
                 .removalListener((String key, Long value, RemovalCause reason) -> removed.add(value))

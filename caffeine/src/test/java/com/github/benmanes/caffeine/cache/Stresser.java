@@ -76,15 +76,9 @@ public final class Stresser implements Runnable {
             for (; ; ) {
                 Integer key = ints[index++ & MASK];
                 switch (workload) {
-                    case READ:
-                        cache.getIfPresent(key);
-                        break;
-                    case WRITE:
-                        cache.put(key, key);
-                        break;
-                    case REFRESH:
-                        cache.refresh(key);
-                        break;
+                    case READ -> cache.getIfPresent(key);
+                    case WRITE -> cache.put(key, key);
+                    case REFRESH -> cache.refresh(key);
                 }
             }
         });

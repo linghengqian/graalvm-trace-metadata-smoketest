@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.stream.IntStream;
 
 import static com.github.benmanes.caffeine.cache.StripedBuffer.MAXIMUM_TABLE_SIZE;
 import static com.github.benmanes.caffeine.cache.StripedBuffer.NCPU;
@@ -22,7 +23,6 @@ public final class StripedBufferTest {
     @Test(dataProvider = "buffers")
     public void init(FakeBuffer<Integer> buffer) {
         assertThat(buffer.table).isNull();
-
         var result = buffer.offer(ELEMENT);
         assertThat(buffer.table).hasLength(1);
         assertThat(result).isEqualTo(Buffer.SUCCESS);
@@ -32,12 +32,10 @@ public final class StripedBufferTest {
     public void expand() {
         var buffer = new FakeBuffer<Integer>(Buffer.FAILED);
         assertThat(buffer.offer(ELEMENT)).isEqualTo(Buffer.SUCCESS);
-
-        for (int i = 0; i < 64; i++) {
-            int result = buffer.offer(ELEMENT);
-            if (result == Buffer.SUCCESS) {
-                return;
-            }
+        if (IntStream.range(0, 64)
+                .map(i -> buffer.offer(ELEMENT))
+                .anyMatch(result -> result == Buffer.SUCCESS)) {
+            return;
         }
         Assert.fail();
     }
@@ -47,10 +45,10 @@ public final class StripedBufferTest {
     public void expand_concurrent() {
         var buffer = new FakeBuffer<Boolean>(Buffer.FAILED);
         ConcurrentTestHarness.timeTasks(10 * NCPU, () -> {
-            for (int i = 0; i < 1000; i++) {
+            IntStream.range(0, 1000).forEach(i -> {
                 buffer.offer(Boolean.TRUE);
                 Thread.yield();
-            }
+            });
         });
         assertThat(buffer.table).hasLength(MAXIMUM_TABLE_SIZE);
     }
@@ -59,10 +57,10 @@ public final class StripedBufferTest {
     @SuppressWarnings("ThreadPriorityCheck")
     public void produce(FakeBuffer<Integer> buffer) {
         ConcurrentTestHarness.timeTasks(NCPU, () -> {
-            for (int i = 0; i < 10; i++) {
+            IntStream.range(0, 10).forEach(i -> {
                 buffer.offer(ELEMENT);
                 Thread.yield();
-            }
+            });
         });
         assertThat(buffer.table.length).isAtMost(MAXIMUM_TABLE_SIZE);
     }
@@ -72,8 +70,6 @@ public final class StripedBufferTest {
         buffer.drainTo(e -> {
         });
         assertThat(buffer.drains).isEqualTo(0);
-
-        // Expand and drain
         buffer.offer(ELEMENT);
         buffer.drainTo(e -> {
         });
@@ -100,7 +96,7 @@ public final class StripedBufferTest {
 
         @Override
         protected Buffer<E> create(E e) {
-            return new Buffer<E>() {
+            return new Buffer<>() {
                 @Override
                 public int offer(E e) {
                     return result;

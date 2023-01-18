@@ -62,10 +62,8 @@ public final class CacheContextSubject extends Subject {
      */
     public void hasWeightedSize(long expectedSize) {
         checkArgument(expectedSize >= 0, "expectedSize (%s) must be >= 0", expectedSize);
-        actual.cache().policy().eviction().ifPresentOrElse(policy -> {
-            check("weightedSize()").about(optionalLongs())
-                    .that(policy.weightedSize()).hasValue(expectedSize);
-        }, () -> {
+        actual.cache().policy().eviction().ifPresentOrElse(policy -> check("weightedSize()").about(optionalLongs())
+                .that(policy.weightedSize()).hasValue(expectedSize), () -> {
             long weight = actual.cache().asMap().entrySet().stream()
                     .mapToLong(entry -> actual.weigher().weigh(entry.getKey(), entry.getValue()))
                     .sum();
@@ -147,9 +145,7 @@ public final class CacheContextSubject extends Subject {
     private void checkWeight(CacheEntry<Int, Int> entry) {
         @SuppressWarnings("unchecked")
         var cache = (Cache<Int, Int>) actual.cache();
-        cache.policy().eviction().ifPresent(policy -> {
-            check("weight").that(entry.weight()).isEqualTo(policy.weightOf(entry.getKey()).orElse(1));
-        });
+        cache.policy().eviction().ifPresent(policy -> check("weight").that(entry.weight()).isEqualTo(policy.weightOf(entry.getKey()).orElse(1)));
     }
 
     private void checkExpiresAt(CacheEntry<Int, Int> entry) {
@@ -314,9 +310,7 @@ public final class CacheContextSubject extends Subject {
          * Fails if the number of notifications does not have the given size.
          */
         public void hasSize(long expectedSize) {
-            awaitUntil((type, listener) -> {
-                check(type).that(listener.removed()).hasSize(Math.toIntExact(expectedSize));
-            });
+            awaitUntil((type, listener) -> check(type).that(listener.removed()).hasSize(Math.toIntExact(expectedSize)));
         }
 
         /**
@@ -363,10 +357,8 @@ public final class CacheContextSubject extends Subject {
             }
 
             public Exclusive contains(Int key, Int value) {
-                awaitUntil((type, listener) -> {
-                    check(type).withMessage("%s", cause)
-                            .that(listener.removed()).contains(new RemovalNotification<>(key, value, cause));
-                });
+                awaitUntil((type, listener) -> check(type).withMessage("%s", cause)
+                        .that(listener.removed()).contains(new RemovalNotification<>(key, value, cause)));
                 return new Exclusive(1);
             }
 

@@ -7,7 +7,6 @@ import com.github.benmanes.caffeine.cache.RemovalCause;
 import com.github.benmanes.caffeine.testing.ConcurrentTestHarness;
 import org.testng.annotations.Test;
 
-import java.lang.ref.Reference;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;

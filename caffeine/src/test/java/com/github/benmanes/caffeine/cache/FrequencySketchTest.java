@@ -128,8 +128,6 @@ public final class FrequencySketchTest {
                 sketch.increment((double) i);
             }
         }
-
-        // A perfect popularity count yields an array [0, 0, 2, 0, 4, 0, 6, 0, 8, 0]
         int[] popularity = new int[10];
         for (int i = 0; i < 10; i++) {
             popularity[i] = sketch.frequency((double) i);

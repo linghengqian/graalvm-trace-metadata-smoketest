@@ -19,8 +19,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 
 public final class CacheProvider {
-    private static final Class<?> BOUNDED_LOCAL_CACHE =
-            classForName("com.github.benmanes.caffeine.cache.BoundedLocalCache");
+    private static final Class<?> BOUNDED_LOCAL_CACHE = classForName("com.github.benmanes.caffeine.cache.BoundedLocalCache");
     private static final ImmutableSet<Class<?>> GUAVA_INCOMPATIBLE = ImmutableSet.of(
             AsyncCache.class, AsyncLoadingCache.class, BOUNDED_LOCAL_CACHE, Policy.Eviction.class,
             Policy.FixedExpiration.class, Policy.VarExpiration.class, Policy.FixedRefresh.class);
@@ -33,17 +32,11 @@ public final class CacheProvider {
         this.testMethod = testMethod;
     }
 
-    /**
-     * Returns the lazily generated test parameters.
-     */
     @DataProvider(name = "caches")
     public static Iterator<Object[]> providesCaches(Method testMethod) {
         return new CacheProvider(testMethod).getTestCases();
     }
 
-    /**
-     * Returns the parameters for the test case scenarios.
-     */
     private Iterator<Object[]> getTestCases() {
         return scenarios()
                 .map(this::asTestCases)
@@ -51,9 +44,6 @@ public final class CacheProvider {
                 .iterator();
     }
 
-    /**
-     * Returns the test scenarios.
-     */
     private Stream<CacheContext> scenarios() {
         var cacheSpec = checkNotNull(testMethod.getAnnotation(CacheSpec.class), "@CacheSpec not found");
         var generator = new CacheGenerator(cacheSpec, Options.fromSystemProperties(),
@@ -61,10 +51,6 @@ public final class CacheProvider {
         return generator.generate();
     }
 
-    /**
-     * Returns the test case parameters based on the method parameter types or an empty array if
-     * incompatible.
-     */
     private Object[] asTestCases(CacheContext context) {
         boolean intern = true;
         CacheGenerator.initialize(context);
@@ -105,23 +91,15 @@ public final class CacheProvider {
             }
         }
         if (intern) {
-            // Retain a strong reference to the context throughout the test execution so that the
-            // cache entries are not collected due to the test not accepting the context parameter
             CacheContext.intern(context);
         }
         return params;
     }
 
-    /**
-     * Returns if the test parameters requires an asynchronous cache.
-     */
     private boolean isAsyncOnly() {
         return hasParameterOfType(AsyncCache.class);
     }
 
-    /**
-     * Returns if the test parameters requires a loading cache.
-     */
     private boolean isLoadingOnly() {
         return hasParameterOfType(AsyncLoadingCache.class) || hasParameterOfType(LoadingCache.class);
     }

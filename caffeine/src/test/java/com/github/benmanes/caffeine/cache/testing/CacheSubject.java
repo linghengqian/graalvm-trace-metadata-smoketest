@@ -37,132 +37,82 @@ public final class CacheSubject extends Subject {
         return assertAbout(cache()).that(actual);
     }
 
-    /**
-     * Fails if the cache is not empty.
-     */
     public void isEmpty() {
         check("cache").about(map()).that(actual.asMap()).isExhaustivelyEmpty();
         hasSize(0);
-
-        actual.policy().eviction().ifPresent(policy -> {
-            policy.weightedSize().ifPresent(weightedSize -> {
-                check("weightedSize()").that(weightedSize).isEqualTo(0);
-            });
-        });
+        actual.policy().eviction().ifPresent(policy -> policy.weightedSize().ifPresent(weightedSize -> check("weightedSize()").that(weightedSize).isEqualTo(0)));
     }
 
-    /**
-     * Fails if the cache does not have the given size.
-     */
     public void hasSize(long expectedSize) {
         checkArgument(expectedSize >= 0, "expectedSize (%s) must be >= 0", expectedSize);
         check("estimatedSize()").that(actual.estimatedSize()).isEqualTo(expectedSize);
     }
 
-    /**
-     * Fails if the cache does not have less than the given size.
-     */
     public void hasSizeLessThan(long other) {
         checkArgument(other >= 0, "expectedSize (%s) must be >= 0", other);
         check("estimatedSize()").that(actual.estimatedSize()).isLessThan(other);
     }
 
-    /**
-     * Fails if the cache does not have more than the given size.
-     */
     public void hasSizeGreaterThan(long other) {
         checkArgument(other >= 0, "expectedSize (%s) must be >= 0", other);
         check("estimatedSize()").that(actual.estimatedSize()).isGreaterThan(other);
     }
 
-    /**
-     * Fails if the cache does not contain the given key.
-     */
     public void containsKey(Object key) {
         check("cache").that(actual.asMap()).containsKey(key);
     }
 
-    /**
-     * Fails if the cache does not contain the given keys, where duplicate keys are ignored.
-     */
     public Ordered containsExactlyKeys(Iterable<?> keys) {
         return check("containsKeys").about(map()).that(actual.asMap()).containsExactlyKeys(keys);
     }
 
-    /**
-     * Fails if the map contains the given key.
-     */
     public void doesNotContainKey(Object key) {
         check("cache").that(actual.asMap()).doesNotContainKey(key);
     }
 
-    /**
-     * Fails if the cache does not contain the given value.
-     */
     public void containsValue(Object value) {
         check("cache").about(map()).that(actual.asMap()).containsValue(value);
     }
 
-    /**
-     * Fails if the cache does contain the given value.
-     */
     public void doesNotContainValue(Object value) {
         check("cache").about(map()).that(actual.asMap()).doesNotContainValue(value);
     }
 
-    /**
-     * Fails if the cache does not contain the given entry.
-     */
     public void containsEntry(Object key, Object value) {
         check("cache").that(actual.asMap())
                 .comparingValuesUsing(EQUALITY)
                 .containsEntry(key, value);
     }
 
-    /**
-     * Fails if the cache contains the given entry.
-     */
     public final void doesNotContainEntry(Object key, Object value) {
         check("cache").that(actual.asMap())
                 .comparingValuesUsing(EQUALITY)
                 .doesNotContainEntry(key, value);
     }
 
-    /**
-     * Fails if the cache does not contain exactly the given set of entries in the given map.
-     */
     public void containsExactlyEntriesIn(Map<?, ?> expectedMap) {
         check("cache").that(actual.asMap())
                 .comparingValuesUsing(EQUALITY)
                 .containsExactlyEntriesIn(expectedMap);
     }
 
-    /**
-     * Fails if the cache is not correctly serialized.
-     */
     public void isReserialize() {
         check("reserializable").about(syncReserializable()).that(actual).isReserialize();
     }
 
-    /**
-     * Fails if the cache is in an inconsistent state.
-     */
     public void isValid() {
         check("cache").about(syncLocal()).that(actual).isValid();
     }
 
-    /**
-     * Propositions for the cache's size after fully cleaned up.
-     */
     public CleanUpSubject whenCleanedUp() {
         return check("cleanUp()").about(CLEANUP_FACTORY).that(actual);
     }
 
     private static boolean tolerantEquals(Object o1, Object o2) {
         if ((o1 instanceof Integer) && (o2 instanceof Long)) {
-            return ((Integer) o1).longValue() == ((Long) o2).longValue();
+            return ((Integer) o1).longValue() == (Long) o2;
         } else if ((o1 instanceof Long) && (o2 instanceof Integer)) {
-            return ((Long) o1).longValue() == ((Integer) o2).longValue();
+            return (Long) o1 == ((Integer) o2).longValue();
         }
         return Objects.equals(o1, o2);
     }
@@ -183,7 +133,6 @@ public final class CacheSubject extends Subject {
         }
 
         public void hasSize(long expectedSize) {
-            // Ensures that all of the pending work is performed (Guava limits work per cycle)
             for (int i = 0; i < 100; i++) {
                 if ((i > 0) && ((i % 10) == 0)) {
                     GcFinalization.awaitFullGc();

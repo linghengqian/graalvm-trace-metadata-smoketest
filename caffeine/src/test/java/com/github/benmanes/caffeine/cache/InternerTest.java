@@ -1,21 +1,6 @@
 
 package com.github.benmanes.caffeine.cache;
 
-import static com.github.benmanes.caffeine.cache.LocalCacheSubject.mapLocal;
-import static com.github.benmanes.caffeine.cache.testing.CacheSubject.assertThat;
-import static com.github.benmanes.caffeine.testing.MapSubject.assertThat;
-import static com.google.common.truth.Truth.assertAbout;
-import static com.google.common.truth.Truth.assertThat;
-
-import java.lang.ref.WeakReference;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Set;
-
-import org.testng.Assert;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
-
 import com.github.benmanes.caffeine.cache.References.WeakKeyEqualsReference;
 import com.github.benmanes.caffeine.testing.Int;
 import com.google.common.collect.testing.SetTestSuiteBuilder;
@@ -24,16 +9,27 @@ import com.google.common.collect.testing.features.CollectionFeature;
 import com.google.common.collect.testing.features.CollectionSize;
 import com.google.common.testing.GcFinalization;
 import com.google.common.testing.NullPointerTester;
-
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import org.testng.Assert;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import java.lang.ref.WeakReference;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Set;
+
+import static com.github.benmanes.caffeine.cache.LocalCacheSubject.mapLocal;
+import static com.github.benmanes.caffeine.cache.testing.CacheSubject.assertThat;
+import static com.github.benmanes.caffeine.testing.MapSubject.assertThat;
+import static com.google.common.truth.Truth.assertAbout;
+import static com.google.common.truth.Truth.assertThat;
 
 
 public final class InternerTest extends TestCase {
-
     public static TestSuite suite() {
-        return SetTestSuiteBuilder
-                .using(new TestStringSetGenerator() {
+        return SetTestSuiteBuilder.using(new TestStringSetGenerator() {
                     @Override
                     protected Set<String> create(String[] elements) {
                         var set = Collections.newSetFromMap(new WeakInterner<String>().cache);
@@ -41,11 +37,7 @@ public final class InternerTest extends TestCase {
                         return set;
                     }
                 })
-                .named("Interner")
-                .withFeatures(
-                        CollectionSize.ANY,
-                        CollectionFeature.GENERAL_PURPOSE)
-                .createTestSuite();
+                .named("Interner").withFeatures(CollectionSize.ANY, CollectionFeature.GENERAL_PURPOSE).createTestSuite();
     }
 
     @Test(dataProvider = "interners", expectedExceptions = NullPointerException.class)
@@ -57,11 +49,9 @@ public final class InternerTest extends TestCase {
     public void intern(Interner<Int> interner) {
         var canonical = new Int(1);
         var other = new Int(1);
-
         assertThat(interner.intern(canonical)).isSameInstanceAs(canonical);
         assertThat(interner.intern(other)).isSameInstanceAs(canonical);
         checkSize(interner, 1);
-
         var next = new Int(2);
         assertThat(interner.intern(next)).isSameInstanceAs(next);
         checkSize(interner, 2);
@@ -72,13 +62,10 @@ public final class InternerTest extends TestCase {
     public void intern_weak_replace() {
         var canonical = new Int(1);
         var other = new Int(1);
-
         Interner<Int> interner = Interner.newWeakInterner();
         assertThat(interner.intern(canonical)).isSameInstanceAs(canonical);
-
         var signal = new WeakReference<>(canonical);
         canonical = null;
-
         GcFinalization.awaitClear(signal);
         assertThat(interner.intern(other)).isSameInstanceAs(other);
         checkSize(interner, 1);
@@ -89,13 +76,10 @@ public final class InternerTest extends TestCase {
     public void intern_weak_remove() {
         var canonical = new Int(1);
         var next = new Int(2);
-
         Interner<Int> interner = Interner.newWeakInterner();
         assertThat(interner.intern(canonical)).isSameInstanceAs(canonical);
-
         var signal = new WeakReference<>(canonical);
         canonical = null;
-
         GcFinalization.awaitClear(signal);
         assertThat(interner.intern(next)).isSameInstanceAs(next);
         checkSize(interner, 1);
@@ -106,11 +90,9 @@ public final class InternerTest extends TestCase {
     public void intern_weak_cleanup() {
         var interner = (WeakInterner<Int>) Interner.<Int>newWeakInterner();
         interner.cache.drainStatus = BoundedLocalCache.REQUIRED;
-
         var canonical = new Int(1);
         interner.intern(canonical);
         assertThat(interner.cache.drainStatus).isEqualTo(BoundedLocalCache.IDLE);
-
         interner.cache.drainStatus = BoundedLocalCache.REQUIRED;
         interner.intern(canonical);
         assertThat(interner.cache.drainStatus).isEqualTo(BoundedLocalCache.IDLE);
@@ -129,10 +111,8 @@ public final class InternerTest extends TestCase {
         assertThat(node.newNode(null, null, null, 1, 1)).isInstanceOf(Interned.class);
         assertThat(node.newReferenceKey(new Object(), null)).isInstanceOf(WeakKeyEqualsReference.class);
         assertThat(node.isRetired()).isFalse();
-
         node.retire();
         assertThat(node.isRetired()).isTrue();
-
         node.die();
         assertThat(node.isDead()).isTrue();
     }

@@ -23,7 +23,6 @@ import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.SettableFuture;
 import com.google.common.util.concurrent.UncheckedExecutionException;
 
-import java.io.InvalidObjectException;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.util.AbstractMap.SimpleImmutableEntry;
@@ -43,16 +42,11 @@ public final class GuavaCacheFromContext {
 
     private static final ThreadLocal<Throwable> error = new ThreadLocal<>();
 
-    /**
-     * Returns a Guava-backed cache.
-     */
     @SuppressWarnings("CheckReturnValue")
     public static <K, V> Cache<K, V> newGuavaCache(CacheContext context) {
         checkState(!context.isAsync(), "Guava caches are synchronous only");
-
         var builder = CacheBuilder.newBuilder();
         context.guava = builder;
-
         builder.concurrencyLevel(1);
         if (context.initialCapacity() != InitialCapacity.DEFAULT) {
             builder.initialCapacity(context.initialCapacity().size());
@@ -99,10 +93,10 @@ public final class GuavaCacheFromContext {
         if (context.loader() == Loader.DISABLED) {
             context.cache = new GuavaCache<>(builder.<Int, Int>build(), context);
         } else if (context.loader().isBulk()) {
-            var loader = new BulkLoader<Int, Int>(context.loader());
+            var loader = new BulkLoader<>(context.loader());
             context.cache = new GuavaLoadingCache<>(builder.build(loader), context);
         } else {
-            var loader = new SingleLoader<Int, Int>(context.loader());
+            var loader = new SingleLoader<>(context.loader());
             context.cache = new GuavaLoadingCache<>(builder.build(loader), context);
         }
         @SuppressWarnings("unchecked")
@@ -172,20 +166,17 @@ public final class GuavaCacheFromContext {
                 ? extends Map<? extends K, ? extends V>> mappingFunction) {
             keys.forEach(Objects::requireNonNull);
             requireNonNull(mappingFunction);
-
             Map<K, V> found = getAllPresent(keys);
             Set<K> keysToLoad = Sets.difference(ImmutableSet.copyOf(keys), found.keySet());
             if (keysToLoad.isEmpty()) {
                 return found;
             }
-
             long start = ticker.read();
             try {
                 var loaded = mappingFunction.apply(keysToLoad);
                 loaded.forEach(cache::put);
                 long end = ticker.read();
                 statsCounter.recordLoadSuccess(end - start);
-
                 Map<K, V> result = new LinkedHashMap<>();
                 for (K key : keys) {
                     V value = found.get(key);
@@ -417,7 +408,7 @@ public final class GuavaCacheFromContext {
             }
 
             @SuppressWarnings({"UnusedMethod", "UnusedVariable"})
-            private void readObject(ObjectInputStream stream) throws InvalidObjectException {
+            private void readObject(ObjectInputStream stream) {
                 statsCounter = new SimpleStatsCounter();
             }
 
@@ -570,7 +561,6 @@ public final class GuavaCacheFromContext {
             if (futures.isEmpty()) {
                 return CompletableFuture.completedFuture(Map.of());
             }
-            @SuppressWarnings("rawtypes")
             CompletableFuture<?>[] array = futures.values().toArray(new CompletableFuture[0]);
             return CompletableFuture.allOf(array).thenApply(ignored -> {
                 Map<K, V> result = new LinkedHashMap<>(futures.size());
@@ -585,14 +575,9 @@ public final class GuavaCacheFromContext {
         }
     }
 
-    static final class GuavaWeigher<K, V> implements Weigher<K, V>, Serializable {
+    record GuavaWeigher<K, V>(
+            com.github.benmanes.caffeine.cache.Weigher<K, V> weigher) implements Weigher<K, V>, Serializable {
         private static final long serialVersionUID = 1L;
-
-        final com.github.benmanes.caffeine.cache.Weigher<K, V> weigher;
-
-        GuavaWeigher(com.github.benmanes.caffeine.cache.Weigher<K, V> weigher) {
-            this.weigher = weigher;
-        }
 
         @Override
         public int weigh(K key, V value) {
@@ -600,23 +585,14 @@ public final class GuavaCacheFromContext {
         }
     }
 
-    static final class GuavaRemovalListener<K, V> implements RemovalListener<K, V>, Serializable {
+    record GuavaRemovalListener<K, V>(boolean translateZeroExpire,
+                                      com.github.benmanes.caffeine.cache.RemovalListener<K, V> delegate) implements RemovalListener<K, V>, Serializable {
         private static final long serialVersionUID = 1L;
-
-        final com.github.benmanes.caffeine.cache.RemovalListener<K, V> delegate;
-        final boolean translateZeroExpire;
-
-        GuavaRemovalListener(boolean translateZeroExpire,
-                             com.github.benmanes.caffeine.cache.RemovalListener<K, V> delegate) {
-            this.translateZeroExpire = translateZeroExpire;
-            this.delegate = delegate;
-        }
 
         @Override
         public void onRemoval(RemovalNotification<K, V> notification) {
             RemovalCause cause = RemovalCause.valueOf(notification.getCause().name());
             if (translateZeroExpire && (cause == RemovalCause.SIZE)) {
-                // Guava internally uses sizing logic for null cache case
                 cause = RemovalCause.EXPIRED;
             }
             delegate.onRemoval(notification.getKey(), notification.getValue(), cause);
@@ -625,7 +601,6 @@ public final class GuavaCacheFromContext {
 
     static class SingleLoader<K, V> extends CacheLoader<K, V> implements Serializable {
         private static final long serialVersionUID = 1L;
-
         final com.github.benmanes.caffeine.cache.CacheLoader<K, V> delegate;
 
         SingleLoader(com.github.benmanes.caffeine.cache.CacheLoader<K, V> delegate) {

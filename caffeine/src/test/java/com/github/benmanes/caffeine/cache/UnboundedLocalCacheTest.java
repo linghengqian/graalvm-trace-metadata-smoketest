@@ -1,8 +1,16 @@
 
 package com.github.benmanes.caffeine.cache;
 
-import com.github.benmanes.caffeine.cache.testing.*;
-import com.github.benmanes.caffeine.cache.testing.CacheSpec.*;
+import com.github.benmanes.caffeine.cache.testing.CacheContext;
+import com.github.benmanes.caffeine.cache.testing.CacheProvider;
+import com.github.benmanes.caffeine.cache.testing.CacheSpec;
+import com.github.benmanes.caffeine.cache.testing.CacheSpec.CacheWeigher;
+import com.github.benmanes.caffeine.cache.testing.CacheSpec.Expire;
+import com.github.benmanes.caffeine.cache.testing.CacheSpec.Maximum;
+import com.github.benmanes.caffeine.cache.testing.CacheSpec.Population;
+import com.github.benmanes.caffeine.cache.testing.CacheSpec.ReferenceType;
+import com.github.benmanes.caffeine.cache.testing.CacheValidationListener;
+import com.github.benmanes.caffeine.cache.testing.CheckMaxLogLevel;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -13,7 +21,6 @@ import static uk.org.lidalia.slf4jext.Level.TRACE;
 @Listeners(CacheValidationListener.class)
 @Test(dataProviderClass = CacheProvider.class)
 public final class UnboundedLocalCacheTest {
-
     @CacheSpec(population = Population.EMPTY, refreshAfterWrite = Expire.DISABLED,
             expireAfterAccess = Expire.DISABLED, expireAfterWrite = Expire.DISABLED,
             maximumSize = Maximum.DISABLED, weigher = CacheWeigher.DISABLED,

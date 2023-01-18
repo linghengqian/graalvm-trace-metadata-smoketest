@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
 
-
 @RunWith(Parameterized.class)
 public final class MpscGrowableQueueSanityTest extends QueueSanityTest {
 
@@ -20,9 +19,7 @@ public final class MpscGrowableQueueSanityTest extends QueueSanityTest {
     @Parameterized.Parameters
     public static List<Object[]> parameters() {
         var list = new ArrayList<Object[]>();
-        // MPSC size: 1
         list.add(new Object[]{new MpscGrowableArrayQueue<>(2, 4), Ordering.FIFO, 4, true});
-        // MPSC size: SIZE
         list.add(new Object[]{new MpscGrowableArrayQueue<>(8, SIZE), Ordering.FIFO, SIZE, true});
         return list;
     }

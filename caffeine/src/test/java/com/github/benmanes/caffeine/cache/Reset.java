@@ -26,8 +26,7 @@ public final class Reset {
         var local = (cache instanceof AbstractCacheView<?, ?>)
                 ? ((AbstractCacheView<?, ?>) cache).asyncCache().cache()
                 : (LocalCache<?, ?>) cache.asMap();
-        if (local instanceof UnboundedLocalCache) {
-            var unbounded = (UnboundedLocalCache<?, ?>) local;
+        if (local instanceof UnboundedLocalCache<?, ?> unbounded) {
             unbounded.data.clear();
         } else if (local instanceof BoundedLocalCache) {
             @SuppressWarnings("unchecked")

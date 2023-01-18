@@ -1,4 +1,3 @@
-
 package com.github.benmanes.caffeine.cache;
 
 import com.github.benmanes.caffeine.cache.Async.AsyncWeigher;
@@ -60,37 +59,30 @@ public final class LocalCacheSubject extends Subject {
         } else if (actual instanceof BoundedLocalAsyncCache<?, ?>) {
             var bounded = (BoundedLocalAsyncCache) actual;
             checkBounded(bounded.cache);
-        } else if (actual instanceof UnboundedLocalCache<?, ?>) {
-            var unbounded = (UnboundedLocalCache<?, ?>) actual;
+        } else if (actual instanceof UnboundedLocalCache<?, ?> unbounded) {
             checkUnbounded(unbounded);
-        } else if (actual instanceof UnboundedLocalAsyncCache<?, ?>) {
-            var unbounded = (UnboundedLocalAsyncCache<?, ?>) actual;
+        } else if (actual instanceof UnboundedLocalAsyncCache<?, ?> unbounded) {
             checkUnbounded(unbounded.cache);
-        } else if (actual instanceof UnboundedLocalManualCache<?, ?>) {
-            var unbounded = (UnboundedLocalManualCache<?, ?>) actual;
+        } else if (actual instanceof UnboundedLocalManualCache<?, ?> unbounded) {
             checkUnbounded(unbounded.cache);
         } else if (actual instanceof LoadingCacheView) {
             var async = ((LoadingCacheView<?, ?>) actual).asyncCache();
             if (async instanceof BoundedLocalAsyncLoadingCache<?, ?>) {
                 var bounded = (BoundedLocalAsyncLoadingCache) async;
                 checkBounded(bounded.cache);
-            } else if (async instanceof UnboundedLocalAsyncLoadingCache<?, ?>) {
-                var unbounded = (UnboundedLocalAsyncLoadingCache<?, ?>) async;
+            } else if (async instanceof UnboundedLocalAsyncLoadingCache<?, ?> unbounded) {
                 checkUnbounded(unbounded.cache);
             }
-        } else if (actual instanceof LocalAsyncCache.AsMapView<?, ?>) {
-            var asMap = (LocalAsyncCache.AsMapView<?, ?>) actual;
+        } else if (actual instanceof LocalAsyncCache.AsMapView<?, ?> asMap) {
             if (asMap.delegate instanceof BoundedLocalCache<?, ?>) {
                 var bounded = (BoundedLocalCache) asMap.delegate;
                 checkBounded(bounded);
-            } else if (asMap.delegate instanceof UnboundedLocalCache<?, ?>) {
-                var unbounded = (UnboundedLocalCache<?, ?>) asMap.delegate;
+            } else if (asMap.delegate instanceof UnboundedLocalCache<?, ?> unbounded) {
                 checkUnbounded(unbounded);
             }
         }
     }
 
-    /* --------------- Bounded --------------- */
 
     private void checkBounded(BoundedLocalCache<Object, Object> bounded) {
         drain(bounded);
@@ -105,12 +97,11 @@ public final class LocalCacheSubject extends Subject {
         long adjustment = 0;
         for (; ; ) {
             bounded.cleanUp();
-
             if (!bounded.writeBuffer.isEmpty()) {
-                continue; // additional writes to drain
+                continue;
             } else if (bounded.evicts() && (bounded.adjustment() != adjustment)) {
                 adjustment = bounded.adjustment();
-                continue; // finish climbing
+                continue;
             }
             break;
         }
@@ -144,16 +135,13 @@ public final class LocalCacheSubject extends Subject {
             }
         }
 
-        check("size").withMessage("cache.size() equal to data.size()")
-                .that(bounded).hasSize(bounded.data.size());
+        check("size").withMessage("cache.size() equal to data.size()").that(bounded).hasSize(bounded.data.size());
         if (bounded.evicts()) {
             bounded.evictionLock.lock();
             try {
                 check("weightedSize()").that(bounded.weightedSize()).isAtMost(bounded.maximum());
-                check("windowWeightedSize()").that(bounded.windowWeightedSize())
-                        .isAtMost(bounded.windowMaximum());
-                check("mainProtectedWeightedSize()").that(bounded.mainProtectedWeightedSize())
-                        .isAtMost(bounded.mainProtectedMaximum());
+                check("windowWeightedSize()").that(bounded.windowWeightedSize()).isAtMost(bounded.windowMaximum());
+                check("mainProtectedWeightedSize()").that(bounded.mainProtectedWeightedSize()).isAtMost(bounded.mainProtectedMaximum());
             } finally {
                 bounded.evictionLock.unlock();
             }
@@ -180,12 +168,8 @@ public final class LocalCacheSubject extends Subject {
             for (int j = 0; j < bounded.timerWheel().wheel[i].length; j++) {
                 var sentinel = bounded.timerWheel().wheel[i][j];
                 check("first").that(sentinel).isInstanceOf(Sentinel.class);
-                check("previousInVariableOrder")
-                        .that(sentinel.getPreviousInVariableOrder().getNextInVariableOrder())
-                        .isSameInstanceAs(sentinel);
-                check("nextInVariableOrder")
-                        .that(sentinel.getNextInVariableOrder().getPreviousInVariableOrder())
-                        .isSameInstanceAs(sentinel);
+                check("previousInVariableOrder").that(sentinel.getPreviousInVariableOrder().getNextInVariableOrder()).isSameInstanceAs(sentinel);
+                check("nextInVariableOrder").that(sentinel.getNextInVariableOrder().getPreviousInVariableOrder()).isSameInstanceAs(sentinel);
 
                 var node = sentinel.getNextInVariableOrder();
                 while (node != sentinel) {
@@ -227,35 +211,24 @@ public final class LocalCacheSubject extends Subject {
 
     private void checkEvictionDeque(BoundedLocalCache<Object, Object> bounded) {
         if (bounded.evicts()) {
-            long mainProbation = bounded.weightedSize()
-                    - bounded.windowWeightedSize() - bounded.mainProtectedWeightedSize();
-            var deques = new ImmutableTable.Builder<String, Long, LinkedDeque<Node<Object, Object>>>()
-                    .put("window", bounded.windowWeightedSize(), bounded.accessOrderWindowDeque())
-                    .put("probation", mainProbation, bounded.accessOrderProbationDeque())
-                    .put("protected", bounded.mainProtectedWeightedSize(), bounded.accessOrderProtectedDeque())
-                    .build();
+            long mainProbation = bounded.weightedSize() - bounded.windowWeightedSize() - bounded.mainProtectedWeightedSize();
+            var deques = new ImmutableTable.Builder<String, Long, LinkedDeque<Node<Object, Object>>>().put("window", bounded.windowWeightedSize(), bounded.accessOrderWindowDeque()).put("probation", mainProbation, bounded.accessOrderProbationDeque()).put("protected", bounded.mainProtectedWeightedSize(), bounded.accessOrderProtectedDeque()).build();
             checkLinks(bounded, deques);
-            check("accessOrderWindowDeque()").about(deque())
-                    .that(bounded.accessOrderWindowDeque()).isValid();
-            check("accessOrderProbationDeque()").about(deque())
-                    .that(bounded.accessOrderProbationDeque()).isValid();
+            check("accessOrderWindowDeque()").about(deque()).that(bounded.accessOrderWindowDeque()).isValid();
+            check("accessOrderProbationDeque()").about(deque()).that(bounded.accessOrderProbationDeque()).isValid();
         } else if (bounded.expiresAfterAccess()) {
-            checkLinks(bounded, ImmutableTable.of("window",
-                    bounded.estimatedSize(), bounded.accessOrderWindowDeque()));
-            check("accessOrderWindowDeque()").about(deque())
-                    .that(bounded.accessOrderWindowDeque()).isValid();
+            checkLinks(bounded, ImmutableTable.of("window", bounded.estimatedSize(), bounded.accessOrderWindowDeque()));
+            check("accessOrderWindowDeque()").about(deque()).that(bounded.accessOrderWindowDeque()).isValid();
         }
 
         if (bounded.expiresAfterWrite()) {
             long expectedSize = bounded.evicts() ? bounded.weightedSize() : bounded.estimatedSize();
             checkLinks(bounded, ImmutableTable.of("writeOrder", expectedSize, bounded.writeOrderDeque()));
-            check("writeOrderDeque()").about(deque())
-                    .that(bounded.writeOrderDeque()).isValid();
+            check("writeOrderDeque()").about(deque()).that(bounded.writeOrderDeque()).isValid();
         }
     }
 
-    private void checkLinks(BoundedLocalCache<Object, Object> bounded,
-                            ImmutableTable<String, Long, LinkedDeque<Node<Object, Object>>> deques) {
+    private void checkLinks(BoundedLocalCache<Object, Object> bounded, ImmutableTable<String, Long, LinkedDeque<Node<Object, Object>>> deques) {
         if (!doLinksMatch(bounded, deques.values())) {
             await().pollInSameThread().until(() -> doLinksMatch(bounded, deques.values()));
         }
@@ -273,14 +246,12 @@ public final class LocalCacheSubject extends Subject {
         check("totalSize").withMessage("cache.size() == deque.size()").that(bounded).hasSize(totalSize);
 
         if (bounded.evicts()) {
-            check("linkWeight").withMessage("weightedSize != link weights")
-                    .that(totalWeightedSize).isEqualTo(bounded.weightedSize());
+            check("linkWeight").withMessage("weightedSize != link weights").that(totalWeightedSize).isEqualTo(bounded.weightedSize());
             check("nonNegativeWeight").that(totalWeightedSize).isAtLeast(0);
         }
     }
 
-    private boolean doLinksMatch(BoundedLocalCache<Object, Object> bounded,
-                                 Collection<LinkedDeque<Node<Object, Object>>> deques) {
+    private boolean doLinksMatch(BoundedLocalCache<Object, Object> bounded, Collection<LinkedDeque<Node<Object, Object>>> deques) {
         bounded.evictionLock.lock();
         try {
             Set<Node<Object, Object>> seen = Sets.newIdentityHashSet();
@@ -293,13 +264,11 @@ public final class LocalCacheSubject extends Subject {
         }
     }
 
-    private long scanLinks(BoundedLocalCache<Object, Object> bounded,
-                           LinkedDeque<Node<Object, Object>> deque, Set<Node<Object, Object>> seen) {
+    private long scanLinks(BoundedLocalCache<Object, Object> bounded, LinkedDeque<Node<Object, Object>> deque, Set<Node<Object, Object>> seen) {
         long weightedSize = 0;
         Node<?, ?> prev = null;
         for (var node : deque) {
-            check("scanLinks").withMessage("Loop detected: %s, saw %s in %s", node, seen, bounded)
-                    .that(seen.add(node)).isTrue();
+            check("scanLinks").withMessage("Loop detected: %s, saw %s in %s", node, seen, bounded).that(seen.add(node)).isTrue();
             check("getPolicyWeight()").that(node.getPolicyWeight()).isEqualTo(node.getWeight());
             check("getPrevious(node)").that(deque.getPrevious(node)).isEqualTo(prev);
             weightedSize += node.getWeight();
@@ -317,8 +286,7 @@ public final class LocalCacheSubject extends Subject {
         checkRefreshAfterWrite(bounded, node);
     }
 
-    private void checkKey(BoundedLocalCache<Object, Object> bounded,
-                          Node<Object, Object> node, Object key, Object value) {
+    private void checkKey(BoundedLocalCache<Object, Object> bounded, Node<Object, Object> node, Object key, Object value) {
         if (bounded.collectKeys()) {
             if ((key != null) && (value != null)) {
                 check("bounded").that(bounded).containsKey(key);
@@ -331,21 +299,18 @@ public final class LocalCacheSubject extends Subject {
         check("data").that(bounded.data).containsEntry(node.getKeyReference(), node);
     }
 
-    private void checkValue(BoundedLocalCache<Object, Object> bounded,
-                            Node<Object, Object> node, Object key, Object value) {
+    private void checkValue(BoundedLocalCache<Object, Object> bounded, Node<Object, Object> node, Object key, Object value) {
         if (!bounded.collectValues()) {
             check("value").that(value).isNotNull();
             if ((key != null) && !bounded.hasExpired(node, bounded.expirationTicker().read())) {
-                check("containsValue(value) for key %s", key)
-                        .about(map()).that(bounded).containsValue(value);
+                check("containsValue(value) for key %s", key).about(map()).that(bounded).containsValue(value);
             }
         }
         checkIfAsyncValue(value);
     }
 
     private void checkIfAsyncValue(Object value) {
-        if (value instanceof CompletableFuture<?>) {
-            var future = (CompletableFuture<?>) value;
+        if (value instanceof CompletableFuture<?> future) {
             if (!future.isDone() || future.isCompletedExceptionally()) {
                 failWithActual("future was not completed successfully", actual);
             }
@@ -353,15 +318,12 @@ public final class LocalCacheSubject extends Subject {
         }
     }
 
-    private void checkWeight(BoundedLocalCache<Object, Object> bounded,
-                             Node<Object, Object> node, Object key, Object value) {
+    private void checkWeight(BoundedLocalCache<Object, Object> bounded, Node<Object, Object> node, Object key, Object value) {
         check("node.getWeight").that(node.getWeight()).isAtLeast(0);
 
         var weigher = bounded.weigher;
         boolean canCheckWeight = (weigher == Weighers.random());
-        if (weigher instanceof AsyncWeigher) {
-            @SuppressWarnings("rawtypes")
-            var asyncWeigher = (AsyncWeigher) weigher;
+        if (weigher instanceof @SuppressWarnings("rawtypes")AsyncWeigher asyncWeigher) {
             canCheckWeight = (asyncWeigher.delegate == Weighers.random());
         }
         if (canCheckWeight) {
@@ -369,14 +331,11 @@ public final class LocalCacheSubject extends Subject {
         }
     }
 
-    private void checkRefreshAfterWrite(
-            BoundedLocalCache<Object, Object> bounded, Node<Object, Object> node) {
+    private void checkRefreshAfterWrite(BoundedLocalCache<Object, Object> bounded, Node<Object, Object> node) {
         if (bounded.refreshAfterWrite()) {
             check("node.getWriteTime()").that(node.getWriteTime()).isNotEqualTo(Long.MAX_VALUE);
         }
     }
-
-    /* --------------- Unbounded --------------- */
 
     public void checkUnbounded(UnboundedLocalCache<?, ?> unbounded) {
         if (unbounded.isEmpty()) {

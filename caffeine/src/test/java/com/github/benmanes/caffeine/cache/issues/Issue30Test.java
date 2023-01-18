@@ -16,13 +16,7 @@ import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.Executor;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 import static com.github.benmanes.caffeine.testing.Awaits.await;
 import static com.github.benmanes.caffeine.testing.FutureSubject.future;
@@ -34,17 +28,14 @@ import static java.util.Locale.US;
 @Listeners(CacheValidationListener.class)
 public final class Issue30Test {
     private static final boolean DEBUG = false;
-
     private static final String A_KEY = "foo";
     private static final String A_ORIGINAL = "foo0";
     private static final String A_UPDATE_1 = "foo1";
     private static final String A_UPDATE_2 = "foo2";
-
     private static final String B_KEY = "bar";
     private static final String B_ORIGINAL = "bar0";
     private static final String B_UPDATE_1 = "bar1";
     private static final String B_UPDATE_2 = "bar2";
-
     private static final int TTL = 100;
     private static final int EPSILON = 10;
     private static final int N_THREADS = 10;
@@ -81,7 +72,6 @@ public final class Issue30Test {
         source.put(A_KEY, A_ORIGINAL);
         source.put(B_KEY, B_ORIGINAL);
         lastLoad.clear();
-
         assertThat("should serve initial value", cache.get(A_KEY)).succeedsWith(A_ORIGINAL);
         assertThat("should serve initial value", cache.get(B_KEY)).succeedsWith(B_ORIGINAL);
     }
@@ -94,12 +84,9 @@ public final class Issue30Test {
         Thread.sleep(EPSILON);
         assertThat("still serve cached initial value", cache.get(A_KEY)).succeedsWith(A_ORIGINAL);
         assertThat("still serve cached initial value", cache.get(B_KEY)).succeedsWith(B_ORIGINAL);
-
         Thread.sleep(TTL + EPSILON);
         assertThat("now serve first updated value", cache.get(A_KEY)).succeedsWith(A_UPDATE_1);
-        await().untilAsserted(() -> {
-            assertThat("now serve first updated value", cache.get(B_KEY)).succeedsWith(B_UPDATE_1);
-        });
+        await().untilAsserted(() -> assertThat("now serve first updated value", cache.get(B_KEY)).succeedsWith(B_UPDATE_1));
     }
 
     private void secondUpdate(AsyncLoadingCache<String, String> cache, ConcurrentMap<String, String> source) throws InterruptedException {
@@ -116,15 +103,9 @@ public final class Issue30Test {
         return assertWithMessage(message).about(future()).that(actual);
     }
 
-    static final class Loader implements AsyncCacheLoader<String, String> {
+    record Loader(ConcurrentMap<String, String> source,
+                  ConcurrentMap<String, Instant> lastLoad) implements AsyncCacheLoader<String, String> {
         private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("hh:MM:ss.SSS", US);
-        final ConcurrentMap<String, String> source;
-        final ConcurrentMap<String, Instant> lastLoad;
-
-        Loader(ConcurrentMap<String, String> source, ConcurrentMap<String, Instant> lastLoad) {
-            this.source = source;
-            this.lastLoad = lastLoad;
-        }
 
         @Override
         public CompletableFuture<String> asyncLoad(String key, Executor executor) {
@@ -137,7 +118,6 @@ public final class Issue30Test {
             Instant now = Instant.now();
             Instant last = lastLoad.get(key);
             lastLoad.put(key, now);
-
             if (DEBUG) {
                 String time = FORMATTER.format(LocalDateTime.now(UTC));
                 if (last == null) {

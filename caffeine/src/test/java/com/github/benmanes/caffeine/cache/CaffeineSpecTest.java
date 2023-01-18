@@ -237,25 +237,22 @@ public final class CaffeineSpecTest {
         }
     }
 
-    static final class Epoch {
-        final TimeUnit unit;
-        final String symbol;
+    record Epoch(TimeUnit unit, String symbol) {
+            Epoch(TimeUnit unit, String symbol) {
+                this.symbol = requireNonNull(symbol);
+                this.unit = requireNonNull(unit);
+            }
 
-        public Epoch(TimeUnit unit, String symbol) {
-            this.symbol = requireNonNull(symbol);
-            this.unit = requireNonNull(unit);
-        }
+            long truncate(long nanos) {
+                return unit.toNanos(unit.convert(nanos, TimeUnit.NANOSECONDS));
+            }
 
-        long truncate(long nanos) {
-            return unit.toNanos(unit.convert(nanos, TimeUnit.NANOSECONDS));
-        }
+            public String toUnitString(long nanos) {
+                return unit.convert(nanos, TimeUnit.NANOSECONDS) + symbol;
+            }
 
-        public String toUnitString(long nanos) {
-            return unit.convert(nanos, TimeUnit.NANOSECONDS) + symbol;
+            public Duration toDuration(long nanos) {
+                return Duration.ofNanos(truncate(nanos));
+            }
         }
-
-        public Duration toDuration(long nanos) {
-            return Duration.ofNanos(truncate(nanos));
-        }
-    }
 }

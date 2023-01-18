@@ -148,7 +148,7 @@ public final class CaffeineTest {
 
     @Test
     public void calculateHashMapCapacity() {
-        Iterable<Integer> iterable = List.of(1, 2, 3)::iterator;
+        Iterable<Integer> iterable = List.of(1, 2, 3);
         assertThat(Caffeine.calculateHashMapCapacity(iterable)).isEqualTo(16);
         assertThat(Caffeine.calculateHashMapCapacity(List.of(1, 2, 3))).isEqualTo(4);
     }
@@ -184,7 +184,7 @@ public final class CaffeineTest {
     @Test
     public void asyncLoader_nullLoader() {
         try {
-            Caffeine.newBuilder().buildAsync((CacheLoader<Object, Object>) null);
+            Caffeine.newBuilder().buildAsync(null);
             Assert.fail();
         } catch (NullPointerException expected) {
         }

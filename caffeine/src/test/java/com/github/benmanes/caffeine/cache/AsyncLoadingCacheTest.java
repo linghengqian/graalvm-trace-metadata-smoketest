@@ -18,6 +18,7 @@ import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.BiFunction;
 import java.util.function.Function;
+import java.util.stream.IntStream;
 
 import static com.github.benmanes.caffeine.cache.RemovalCause.REPLACED;
 import static com.github.benmanes.caffeine.cache.testing.AsyncCacheSubject.assertThat;
@@ -38,9 +39,6 @@ import static uk.org.lidalia.slf4jext.Level.WARN;
 @Test(dataProviderClass = CacheProvider.class)
 @SuppressWarnings({"FutureReturnValueIgnored", "PreferJavaTimeOverload"})
 public final class AsyncLoadingCacheTest {
-
-    /* --------------- get --------------- */
-
     @CacheSpec
     @Test(dataProvider = "caches", expectedExceptions = NullPointerException.class)
     public void get_null(AsyncLoadingCache<Int, Int> cache, CacheContext context) {
@@ -67,11 +65,9 @@ public final class AsyncLoadingCacheTest {
         Int key = context.absentKey();
         var done = new AtomicBoolean();
         var valueFuture = cache.get(key).whenComplete((r, e) -> done.set(true));
-
         await().untilTrue(done);
         await().untilAsserted(() -> assertThat(cache).doesNotContainKey(key));
         await().untilAsserted(() -> assertThat(cache).hasSize(context.initialSize()));
-
         assertThat(valueFuture).hasCompletedExceptionally();
         assertThat(context).stats().hits(0).misses(1).success(0).failures(1);
     }
@@ -121,8 +117,6 @@ public final class AsyncLoadingCacheTest {
         assertThat(cache.get(context.lastKey())).succeedsWith(context.lastKey().negate());
         assertThat(context).stats().hits(3).misses(0).success(0).failures(0);
     }
-
-    /* --------------- getAll --------------- */
 
     @CheckNoStats
     @Test(dataProvider = "caches", expectedExceptions = NullPointerException.class)
@@ -231,7 +225,6 @@ public final class AsyncLoadingCacheTest {
             removalListener = {Listener.DISABLED, Listener.REJECTING})
     public void getAll_absent(AsyncLoadingCache<Int, Int> cache, CacheContext context) {
         var result = cache.getAll(context.absentKeys()).join();
-
         int count = context.absentKeys().size();
         int loads = context.loader().isBulk() ? 1 : count;
         assertThat(result).hasSize(count);
@@ -248,7 +241,6 @@ public final class AsyncLoadingCacheTest {
         expect.put(context.middleKey(), context.middleKey().negate());
         expect.put(context.lastKey(), context.lastKey().negate());
         var result = cache.getAll(expect.keySet()).join();
-
         assertThat(result).containsExactlyEntriesIn(expect);
         assertThat(context).stats().hits(expect.size()).misses(0).success(0).failures(0);
     }
@@ -258,7 +250,6 @@ public final class AsyncLoadingCacheTest {
             removalListener = {Listener.DISABLED, Listener.REJECTING})
     public void getAll_exceeds(AsyncLoadingCache<Int, Int> cache, CacheContext context) {
         var result = cache.getAll(context.absentKeys()).join();
-
         assertThat(result.keySet()).containsExactlyElementsIn(context.absentKeys());
         assertThat(cache).hasSizeGreaterThan(context.initialSize() + context.absentKeys().size());
         assertThat(context).stats().hits(0).misses(result.size()).success(1).failures(0);
@@ -269,7 +260,6 @@ public final class AsyncLoadingCacheTest {
             removalListener = {Listener.DISABLED, Listener.REJECTING})
     public void getAll_different(AsyncLoadingCache<Int, Int> cache, CacheContext context) {
         var result = cache.getAll(context.absentKeys()).join();
-
         assertThat(result).isEmpty();
         assertThat(cache.asMap()).containsAtLeastEntriesIn(result);
         assertThat(context).stats().hits(0).misses(context.absent().size()).success(1).failures(0);
@@ -286,7 +276,6 @@ public final class AsyncLoadingCacheTest {
                 context.original().keySet(), context.original().keySet());
         var result = cache.getAll(keys).join();
         assertThat(result).containsExactlyKeys(keys);
-
         int loads = context.loader().isBulk() ? 1 : absentKeys.size();
         assertThat(context).stats().hits(context.initialSize())
                 .misses(absentKeys.size()).success(loads).failures(0);
@@ -300,7 +289,6 @@ public final class AsyncLoadingCacheTest {
             AsyncLoadingCache<Int, Int> cache, CacheContext context) {
         var keys = new ArrayList<>(context.absentKeys());
         Collections.shuffle(keys);
-
         var result = cache.getAll(keys).join();
         assertThat(result).containsExactlyKeys(keys).inOrder();
     }
@@ -314,7 +302,6 @@ public final class AsyncLoadingCacheTest {
         var keys = new ArrayList<>(context.original().keySet());
         keys.addAll(context.absentKeys());
         Collections.shuffle(keys);
-
         var result = cache.getAll(keys).join();
         assertThat(result).containsExactlyKeys(keys).inOrder();
     }
@@ -327,7 +314,6 @@ public final class AsyncLoadingCacheTest {
             AsyncLoadingCache<Int, Int> cache, CacheContext context) {
         var keys = new ArrayList<>(context.original().keySet());
         Collections.shuffle(keys);
-
         var result = cache.getAll(keys).join();
         assertThat(result).containsExactlyKeys(keys).inOrder();
     }
@@ -340,7 +326,6 @@ public final class AsyncLoadingCacheTest {
         var keys = new ArrayList<>(context.original().keySet());
         keys.addAll(context.absentKeys());
         Collections.shuffle(keys);
-
         var result = cache.getAll(keys).join();
         assertThat(result).containsExactlyKeys(keys).inOrder();
     }
@@ -361,7 +346,6 @@ public final class AsyncLoadingCacheTest {
             }
         };
         var cache = context.buildAsync(loader);
-
         try {
             cache.getAll(context.absentKeys());
             Assert.fail();
@@ -373,8 +357,6 @@ public final class AsyncLoadingCacheTest {
     @SuppressWarnings("serial")
     private static final class LoadAllException extends RuntimeException {
     }
-
-    /* --------------- put --------------- */
 
     @Test(dataProvider = "caches")
     @CacheSpec(population = {Population.SINGLETON, Population.PARTIAL, Population.FULL})
@@ -391,8 +373,6 @@ public final class AsyncLoadingCacheTest {
                 .contains(replaced).exclusively();
     }
 
-    /* --------------- refresh --------------- */
-
     @Test(dataProvider = "caches")
     @CacheSpec(population = Population.EMPTY,
             compute = Compute.ASYNC, executor = CacheExecutor.THREADED)
@@ -402,17 +382,15 @@ public final class AsyncLoadingCacheTest {
             await().untilTrue(done);
             return key.negate();
         });
-
         Int key = Int.valueOf(1);
         cache.synchronous().put(key, key);
         var original = cache.get(key);
-        for (int i = 0; i < 10; i++) {
+        IntStream.range(0, 10).forEach(i -> {
             context.ticker().advance(1, TimeUnit.SECONDS);
             cache.synchronous().refresh(key);
-
             var next = cache.get(key);
             assertThat(next).isSameInstanceAs(original);
-        }
+        });
         done.set(true);
         await().untilAsserted(() -> assertThat(cache).containsEntry(key, key.negate()));
     }
@@ -449,10 +427,8 @@ public final class AsyncLoadingCacheTest {
     public void refresh_deadlock(CacheContext context) {
         var future = new CompletableFuture<Int>();
         var cache = context.buildAsync((Int k, Executor e) -> future);
-
         cache.synchronous().refresh(context.absentKey());
         var get = cache.get(context.absentKey());
-
         future.complete(context.absentValue());
         assertThat(get).succeedsWith(context.absentValue());
     }
@@ -480,7 +456,6 @@ public final class AsyncLoadingCacheTest {
             Assert.fail();
         } catch (CompletionException e) {
             assertThat(e).hasCauseThat().isInstanceOf(ExecutionException.class);
-
             int failures = context.isGuava() ? 1 : 0;
             assertThat(context).stats().hits(0).misses(0).success(0).failures(failures);
         }
@@ -496,7 +471,6 @@ public final class AsyncLoadingCacheTest {
         } catch (CompletionException e) {
             assertThat(Thread.interrupted()).isTrue();
             assertThat(e).hasCauseThat().isInstanceOf(InterruptedException.class);
-
             int failures = context.isGuava() ? 1 : 0;
             assertThat(context).stats().hits(0).misses(0).success(0).failures(failures);
         }
@@ -518,7 +492,6 @@ public final class AsyncLoadingCacheTest {
     public void refresh_current_sameInstance(CacheContext context) {
         var future = context.absentValue().asFuture();
         var cache = context.buildAsync((key, executor) -> future);
-
         cache.put(context.absentKey(), future);
         cache.synchronous().refresh(context.absentKey());
         assertThat(context).notifications().isEmpty();
@@ -529,10 +502,8 @@ public final class AsyncLoadingCacheTest {
     public void refresh_current_failed(AsyncLoadingCache<Int, Int> cache, CacheContext context) {
         var future = context.absentValue().asFuture();
         cache.put(context.absentKey(), future);
-
         future.obtrudeException(new Exception());
         assertThat(cache.asMap()).containsKey(context.absentKey());
-
         cache.synchronous().refresh(context.absentKey());
         assertThat(cache).containsEntry(context.absentKey(), context.absentValue());
     }
@@ -548,21 +519,14 @@ public final class AsyncLoadingCacheTest {
             await().untilTrue(done);
             return key;
         });
-
         cache.put(context.absentKey(), context.absentValue().asFuture());
         cache.synchronous().refresh(context.absentKey());
         await().untilTrue(started);
-
         cache.synchronous().invalidate(context.absentKey());
         done.set(true);
-
-        await().untilAsserted(() -> {
-            assertThat(context).removalNotifications().containsExactlyValues(
-                    context.absentKey(), context.absentValue());
-        });
+        await().untilAsserted(() -> assertThat(context).removalNotifications().containsExactlyValues(
+                context.absentKey(), context.absentValue()));
     }
-
-    /* --------------- AsyncCacheLoader --------------- */
 
     @Test(expectedExceptions = UnsupportedOperationException.class)
     public void asyncLoadAll() throws Exception {
@@ -593,9 +557,7 @@ public final class AsyncLoadingCacheTest {
 
     @Test
     public void bulk_function_present() throws Exception {
-        AsyncCacheLoader<Int, Int> loader = AsyncCacheLoader.bulk(keys -> {
-            return keys.stream().collect(toImmutableMap(identity(), identity()));
-        });
+        AsyncCacheLoader<Int, Int> loader = AsyncCacheLoader.bulk(keys -> keys.stream().collect(toImmutableMap(identity(), identity())));
         assertThat(loader.asyncLoadAll(Int.setOf(1, 2), Runnable::run))
                 .succeedsWith(Int.mapOf(1, 1, 2, 2));
         assertThat(loader.asyncLoad(Int.valueOf(1), Runnable::run)).succeedsWith(1);

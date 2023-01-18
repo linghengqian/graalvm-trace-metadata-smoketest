@@ -157,33 +157,27 @@ public abstract class QueueSanityTest {
         final AtomicBoolean stop = new AtomicBoolean();
         final Queue q = queue;
         final Val fail = new Val();
-        Thread t1 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (!stop.get()) {
-                    for (int i = 1; i <= 10; i++) {
-                        Val v = new Val();
-                        v.value = i;
-                        q.offer(v);
-                    }
-                    // slow down the producer, this will make the queue mostly empty encouraging visibility
-                    // issues.
-                    Thread.yield();
+        Thread t1 = new Thread(() -> {
+            while (!stop.get()) {
+                for (int i = 1; i <= 10; i++) {
+                    Val v = new Val();
+                    v.value = i;
+                    q.offer(v);
                 }
+                // slow down the producer, this will make the queue mostly empty encouraging visibility
+                // issues.
+                Thread.yield();
             }
         });
-        Thread t2 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (!stop.get()) {
-                    for (int i = 0; i < 10; i++) {
-                        Val v = (Val) q.peek();
-                        if (v != null && v.value == 0) {
-                            fail.value = 1;
-                            stop.set(true);
-                        }
-                        q.poll();
+        Thread t2 = new Thread(() -> {
+            while (!stop.get()) {
+                for (int i = 0; i < 10; i++) {
+                    Val v = (Val) q.peek();
+                    if (v != null && v.value == 0) {
+                        fail.value = 1;
+                        stop.set(true);
                     }
+                    q.poll();
                 }
             }
         });
@@ -203,23 +197,17 @@ public abstract class QueueSanityTest {
         final AtomicBoolean stop = new AtomicBoolean();
         final Queue<Integer> q = queue;
         final Val fail = new Val();
-        Thread t1 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (!stop.get()) {
-                    q.offer(1);
-                    q.poll();
-                }
+        Thread t1 = new Thread(() -> {
+            while (!stop.get()) {
+                q.offer(1);
+                q.poll();
             }
         });
-        Thread t2 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (!stop.get()) {
-                    int size = q.size();
-                    if (size != 0 && size != 1) {
-                        fail.value++;
-                    }
+        Thread t2 = new Thread(() -> {
+            while (!stop.get()) {
+                int size = q.size();
+                if (size != 0 && size != 1) {
+                    fail.value++;
                 }
             }
         });
@@ -239,24 +227,18 @@ public abstract class QueueSanityTest {
         final AtomicBoolean stop = new AtomicBoolean();
         final Queue<Integer> q = queue;
         final Val fail = new Val();
-        Thread t1 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (!stop.get()) {
-                    q.offer(1);
-                    // slow down the producer, this will make the queue mostly empty encouraging visibility
-                    // issues.
-                    Thread.yield();
-                }
+        Thread t1 = new Thread(() -> {
+            while (!stop.get()) {
+                q.offer(1);
+                // slow down the producer, this will make the queue mostly empty encouraging visibility
+                // issues.
+                Thread.yield();
             }
         });
-        Thread t2 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (!stop.get()) {
-                    if (!q.isEmpty() && q.poll() == null) {
-                        fail.value++;
-                    }
+        Thread t2 = new Thread(() -> {
+            while (!stop.get()) {
+                if (!q.isEmpty() && q.poll() == null) {
+                    fail.value++;
                 }
             }
         });

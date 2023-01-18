@@ -11,7 +11,6 @@ import static com.github.benmanes.caffeine.testing.Awaits.await;
 import static com.google.common.truth.Truth.assertThat;
 import static org.hamcrest.Matchers.is;
 
-
 public final class MpscGrowableArrayQueueTest {
     private static final int NUM_PRODUCERS = 10;
     private static final int PRODUCE = 100;
@@ -19,30 +18,27 @@ public final class MpscGrowableArrayQueueTest {
     private static final int POPULATED_SIZE = 10;
     private static final int FULL_SIZE = 32;
 
-    /* --------------- Constructor --------------- */
 
     @Test(expectedExceptions = IllegalArgumentException.class)
     public void constructor_initialCapacity_tooSmall() {
-        new MpscGrowableArrayQueue<Integer>(/* initialCapacity */ 1, /* maxCapacity */ 4);
+        new MpscGrowableArrayQueue<Integer>(1, 4);
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
     public void constructor_maxCapacity_tooSmall() {
-        new MpscGrowableArrayQueue<Integer>(/* initialCapacity */ 4, /* maxCapacity */ 1);
+        new MpscGrowableArrayQueue<Integer>(4, 1);
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
     public void constructor_inverted() {
-        new MpscGrowableArrayQueue<Integer>(/* initialCapacity */ 8, /* maxCapacity */ 4);
+        new MpscGrowableArrayQueue<Integer>(8, 4);
     }
 
     @Test
     public void constructor() {
-        var buffer = new MpscGrowableArrayQueue<Integer>(/* initialCapacity */ 4, /* maxCapacity */ 8);
+        var buffer = new MpscGrowableArrayQueue<Integer>(4, 8);
         assertThat(buffer.capacity()).isEqualTo(8);
     }
-
-    /* --------------- Size --------------- */
 
     @Test(dataProvider = "empty")
     public void size_whenEmpty(MpscGrowableArrayQueue<Integer> buffer) {
@@ -53,8 +49,6 @@ public final class MpscGrowableArrayQueueTest {
     public void size_whenPopulated(MpscGrowableArrayQueue<Integer> buffer) {
         assertThat(buffer.size()).isEqualTo(POPULATED_SIZE);
     }
-
-    /* --------------- Offer --------------- */
 
     @Test(dataProvider = "empty")
     public void offer_whenEmpty(MpscGrowableArrayQueue<Integer> buffer) {
@@ -92,8 +86,6 @@ public final class MpscGrowableArrayQueueTest {
         assertThat(buffer).hasSize(FULL_SIZE);
     }
 
-    /* --------------- Poll --------------- */
-
     @Test(dataProvider = "empty")
     public void poll_whenEmpty(MpscGrowableArrayQueue<Integer> buffer) {
         assertThat(buffer.poll()).isNull();
@@ -129,8 +121,6 @@ public final class MpscGrowableArrayQueueTest {
         }
         assertThat(buffer).isEmpty();
     }
-
-    /* --------------- Peek --------------- */
 
     @Test(dataProvider = "empty")
     public void peek_whenEmpty(MpscGrowableArrayQueue<Integer> buffer) {
@@ -172,8 +162,6 @@ public final class MpscGrowableArrayQueueTest {
         assertThat(buffer.relaxedPeek()).isNull();
     }
 
-    /* --------------- Miscellaneous --------------- */
-
     @SuppressWarnings("ReturnValueIgnored")
     @Test(dataProvider = "full", expectedExceptions = UnsupportedOperationException.class)
     public void iterator(MpscGrowableArrayQueue<Integer> buffer) {
@@ -186,13 +174,10 @@ public final class MpscGrowableArrayQueueTest {
         assertThat(buffer.currentProducerIndex()).isEqualTo(POPULATED_SIZE);
     }
 
-    /* --------------- Concurrency --------------- */
-
     @Test(dataProvider = "empty")
     public void oneProducer_oneConsumer(MpscGrowableArrayQueue<Integer> buffer) {
         var started = new AtomicInteger();
         var finished = new AtomicInteger();
-
         ConcurrentTestHarness.execute(() -> {
             started.incrementAndGet();
             await().untilAtomic(started, is(2));
@@ -211,7 +196,6 @@ public final class MpscGrowableArrayQueueTest {
             }
             finished.incrementAndGet();
         });
-
         await().untilAtomic(finished, is(2));
         assertThat(buffer).isEmpty();
     }
@@ -233,7 +217,6 @@ public final class MpscGrowableArrayQueueTest {
     public void manyProducers_oneConsumer(MpscGrowableArrayQueue<Integer> buffer) {
         var started = new AtomicInteger();
         var finished = new AtomicInteger();
-
         ConcurrentTestHarness.execute(() -> {
             started.incrementAndGet();
             await().untilAtomic(started, is(NUM_PRODUCERS + 1));
@@ -243,7 +226,6 @@ public final class MpscGrowableArrayQueueTest {
             }
             finished.incrementAndGet();
         });
-
         ConcurrentTestHarness.timeTasks(NUM_PRODUCERS, () -> {
             started.incrementAndGet();
             await().untilAtomic(started, is(NUM_PRODUCERS + 1));
@@ -257,8 +239,6 @@ public final class MpscGrowableArrayQueueTest {
         await().untilAtomic(finished, is(NUM_PRODUCERS + 1));
         assertThat(buffer).isEmpty();
     }
-
-    /* --------------- Providers --------------- */
 
     @DataProvider(name = "empty")
     public Object[][] providesEmpty() {
