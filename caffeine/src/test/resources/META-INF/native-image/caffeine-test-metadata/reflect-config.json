@@ -1,0 +1,302 @@
+[
+{
+  "name":"[Ljava.lang.Object;"
+},
+{
+  "name":"com.github.benmanes.caffeine.cache.AsyncCacheLoader",
+  "methods":[{"name":"asyncLoadAll","parameterTypes":["java.util.Set","java.util.concurrent.Executor"] }]
+},
+{
+  "name":"com.github.benmanes.caffeine.cache.BBHeader$ReadAndWriteCounterRef",
+  "fields":[{"name":"writeCounter"}]
+},
+{
+  "name":"com.github.benmanes.caffeine.cache.BBHeader$ReadCounterRef",
+  "fields":[{"name":"readCounter"}]
+},
+{
+  "name":"com.github.benmanes.caffeine.cache.BLCHeader$DrainStatusRef",
+  "fields":[{"name":"drainStatus"}]
+},
+{
+  "name":"com.github.benmanes.caffeine.cache.BaseMpscLinkedArrayQueueColdProducerFields",
+  "fields":[{"name":"producerLimit"}]
+},
+{
+  "name":"com.github.benmanes.caffeine.cache.BaseMpscLinkedArrayQueueConsumerFields",
+  "fields":[{"name":"consumerIndex"}]
+},
+{
+  "name":"com.github.benmanes.caffeine.cache.BaseMpscLinkedArrayQueueProducerFields",
+  "fields":[{"name":"producerIndex"}]
+},
+{
+  "name":"com.github.benmanes.caffeine.cache.BoundedLocalCache",
+  "fields":[{"name":"refreshes"}]
+},
+{
+  "name":"com.github.benmanes.caffeine.cache.CacheLoader",
+  "methods":[
+    {"name":"asyncLoadAll","parameterTypes":["java.util.Set","java.util.concurrent.Executor"] }, 
+    {"name":"loadAll","parameterTypes":["java.util.Set"] }
+  ]
+},
+{
+  "name":"com.github.benmanes.caffeine.cache.FS",
+  "fields":[
+    {"name":"key"}, 
+    {"name":"value"}
+  ],
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.benmanes.caffeine.cache.FW",
+  "fields":[{"name":"value"}],
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.benmanes.caffeine.cache.PD",
+  "fields":[{"name":"value"}],
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.benmanes.caffeine.cache.PS",
+  "fields":[
+    {"name":"key"}, 
+    {"name":"value"}
+  ]
+},
+{
+  "name":"com.github.benmanes.caffeine.cache.PSA",
+  "fields":[{"name":"accessTime"}],
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.benmanes.caffeine.cache.PSMS",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.benmanes.caffeine.cache.PSMW",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.benmanes.caffeine.cache.PSR",
+  "fields":[{"name":"writeTime"}]
+},
+{
+  "name":"com.github.benmanes.caffeine.cache.PSRMS",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.benmanes.caffeine.cache.PSW",
+  "fields":[{"name":"writeTime"}],
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.benmanes.caffeine.cache.PSWMS",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.benmanes.caffeine.cache.PSWMW",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.benmanes.caffeine.cache.PW",
+  "fields":[{"name":"value"}],
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.benmanes.caffeine.cache.SI",
+  "methods":[{"name":"<init>","parameterTypes":["com.github.benmanes.caffeine.cache.Caffeine","com.github.benmanes.caffeine.cache.AsyncCacheLoader","boolean"] }]
+},
+{
+  "name":"com.github.benmanes.caffeine.cache.SSA",
+  "methods":[{"name":"<init>","parameterTypes":["com.github.benmanes.caffeine.cache.Caffeine","com.github.benmanes.caffeine.cache.AsyncCacheLoader","boolean"] }]
+},
+{
+  "name":"com.github.benmanes.caffeine.cache.SSMS",
+  "methods":[{"name":"<init>","parameterTypes":["com.github.benmanes.caffeine.cache.Caffeine","com.github.benmanes.caffeine.cache.AsyncCacheLoader","boolean"] }]
+},
+{
+  "name":"com.github.benmanes.caffeine.cache.SSMSR",
+  "methods":[{"name":"<init>","parameterTypes":["com.github.benmanes.caffeine.cache.Caffeine","com.github.benmanes.caffeine.cache.AsyncCacheLoader","boolean"] }]
+},
+{
+  "name":"com.github.benmanes.caffeine.cache.SSMSW",
+  "methods":[{"name":"<init>","parameterTypes":["com.github.benmanes.caffeine.cache.Caffeine","com.github.benmanes.caffeine.cache.AsyncCacheLoader","boolean"] }]
+},
+{
+  "name":"com.github.benmanes.caffeine.cache.SSMW",
+  "methods":[{"name":"<init>","parameterTypes":["com.github.benmanes.caffeine.cache.Caffeine","com.github.benmanes.caffeine.cache.AsyncCacheLoader","boolean"] }]
+},
+{
+  "name":"com.github.benmanes.caffeine.cache.SSSMS",
+  "methods":[{"name":"<init>","parameterTypes":["com.github.benmanes.caffeine.cache.Caffeine","com.github.benmanes.caffeine.cache.AsyncCacheLoader","boolean"] }]
+},
+{
+  "name":"com.github.benmanes.caffeine.cache.SSSMWW",
+  "methods":[{"name":"<init>","parameterTypes":["com.github.benmanes.caffeine.cache.Caffeine","com.github.benmanes.caffeine.cache.AsyncCacheLoader","boolean"] }]
+},
+{
+  "name":"com.github.benmanes.caffeine.cache.SSW",
+  "methods":[{"name":"<init>","parameterTypes":["com.github.benmanes.caffeine.cache.Caffeine","com.github.benmanes.caffeine.cache.AsyncCacheLoader","boolean"] }]
+},
+{
+  "name":"com.github.benmanes.caffeine.cache.StripedBuffer",
+  "fields":[{"name":"tableBusy"}]
+},
+{
+  "name":"com.github.benmanes.caffeine.cache.UnboundedLocalCache",
+  "fields":[{"name":"refreshes"}]
+},
+{
+  "name":"com.github.benmanes.caffeine.cache.WI",
+  "methods":[{"name":"<init>","parameterTypes":["com.github.benmanes.caffeine.cache.Caffeine","com.github.benmanes.caffeine.cache.AsyncCacheLoader","boolean"] }]
+},
+{
+  "name":"com.github.benmanes.caffeine.cache.WS",
+  "methods":[{"name":"<init>","parameterTypes":["com.github.benmanes.caffeine.cache.Caffeine","com.github.benmanes.caffeine.cache.AsyncCacheLoader","boolean"] }]
+},
+{
+  "name":"com.lingh.CaffeineTest",
+  "allDeclaredFields":true,
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"testCleanup","parameterTypes":[] }, 
+    {"name":"testInterner","parameterTypes":[] }, 
+    {"name":"testRefresh","parameterTypes":[] }, 
+    {"name":"testSpecification","parameterTypes":[] }, 
+    {"name":"testStatistics","parameterTypes":[] }, 
+    {"name":"testTesting","parameterTypes":[] }
+  ]
+},
+{
+  "name":"com.lingh.ComputeTest",
+  "allDeclaredFields":true,
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"givenCacheUpdateOnMultipleKeys_writeBehindIsCalled","parameterTypes":[] }, 
+    {"name":"givenCacheUpdate_writeBehindIsCalled","parameterTypes":[] }, 
+    {"name":"givenMultipleCacheUpdatesOnSameKey_writeBehindIsCalledWithMostRecentTime","parameterTypes":[] }
+  ]
+},
+{
+  "name":"com.lingh.EvictionTest",
+  "allDeclaredFields":true,
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"testReferenceBased","parameterTypes":[] }, 
+    {"name":"testSizeBased","parameterTypes":[] }, 
+    {"name":"testTimeBased","parameterTypes":[] }
+  ]
+},
+{
+  "name":"com.lingh.PolicyTest",
+  "allDeclaredFields":true,
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"testSizeBased","parameterTypes":[] }, 
+    {"name":"testTimeBased","parameterTypes":[] }
+  ]
+},
+{
+  "name":"com.lingh.PopulationTest",
+  "allDeclaredFields":true,
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"testAsynchronousManual","parameterTypes":[] }, 
+    {"name":"testAsynchronouslyLoading","parameterTypes":[] }, 
+    {"name":"testLoading","parameterTypes":[] }, 
+    {"name":"testManual","parameterTypes":[] }
+  ]
+},
+{
+  "name":"com.lingh.RemovalTest",
+  "allDeclaredFields":true,
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"testExplicitRemovals","parameterTypes":[] }, 
+    {"name":"testRemovalListeners","parameterTypes":[] }
+  ]
+},
+{
+  "name":"com.lingh.WriteBehindCacheWriter",
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"com.lingh.WriteBehindCacheWriter$Builder",
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.lang.Enum"
+},
+{
+  "name":"java.lang.invoke.MethodHandle"
+},
+{
+  "name":"java.security.SecureRandomParameters"
+},
+{
+  "name":"java.util.HashSet"
+},
+{
+  "name":"java.util.LinkedHashSet"
+},
+{
+  "name":"java.util.concurrent.ArrayBlockingQueue"
+},
+{
+  "name":"java.util.concurrent.locks.AbstractOwnableSynchronizer"
+},
+{
+  "name":"java.util.concurrent.locks.AbstractQueuedSynchronizer"
+},
+{
+  "name":"java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject"
+},
+{
+  "name":"java.util.concurrent.locks.ReentrantLock"
+},
+{
+  "name":"java.util.concurrent.locks.ReentrantLock$NonfairSync"
+},
+{
+  "name":"java.util.concurrent.locks.ReentrantLock$Sync"
+},
+{
+  "name":"sun.security.provider.NativePRNG",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.provider.SHA",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+}
+]
