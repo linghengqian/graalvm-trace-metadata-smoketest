@@ -1,6 +1,6 @@
 package com.lingh;
 
-import io.reactivex.subjects.PublishSubject;
+import io.reactivex.rxjava3.subjects.PublishSubject;
 
 import java.util.AbstractMap.SimpleImmutableEntry;
 import java.util.Map;

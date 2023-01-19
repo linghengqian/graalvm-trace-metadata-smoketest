@@ -15,7 +15,7 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
     testImplementation 'com.github.ben-manes.caffeine:caffeine:3.1.2'
     testImplementation 'org.assertj:assertj-core:3.23.1'
-    testImplementation 'io.reactivex.rxjava2:rxjava:2.2.21'
+    testImplementation 'io.reactivex.rxjava3:rxjava:3.1.6'
     testImplementation 'org.awaitility:awaitility:4.2.0'
     testImplementation 'com.google.guava:guava-testlib:31.1-jre'
 }
