@@ -12,6 +12,7 @@ import java.util.function.Consumer;
 import static java.util.Objects.requireNonNull;
 import static java.util.stream.Collectors.toMap;
 
+@SuppressWarnings("ResultOfMethodCallIgnored")
 public final class WriteBehindCacheWriter<K, V> {
     private final PublishSubject<Entry<K, V>> subject;
 
