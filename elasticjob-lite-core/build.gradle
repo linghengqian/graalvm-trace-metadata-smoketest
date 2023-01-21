@@ -15,8 +15,8 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
     testImplementation 'org.apache.shardingsphere.elasticjob:elasticjob-lite-core:3.0.2'
-    testImplementation 'org.mockito:mockito-core:5.0.0'
-    testImplementation 'org.mockito:mockito-junit-jupiter:5.0.0'
+    testImplementation 'org.mockito:mockito-inline:4.11.0'
+    testImplementation 'org.mockito:mockito-junit-jupiter:4.11.0'
     testImplementation 'org.hamcrest:hamcrest:2.2'
     testImplementation 'org.awaitility:awaitility:4.2.0'
     testImplementation 'ch.qos.logback:logback-classic:1.2.11'
@@ -27,6 +27,21 @@ test {
 }
 
 graalvmNative {
+    binaries {
+        test {
+            buildArgs.add('--rerun-class-initialization-at-runtime=net.bytebuddy.ClassFileVersion')
+            buildArgs.add('--rerun-class-initialization-at-runtime=net.bytebuddy.utility.dispatcher.JavaDispatcher')
+            buildArgs.add('--rerun-class-initialization-at-runtime=net.bytebuddy.utility.Invoker\\$Dispatcher')
+            buildArgs.add('--initialize-at-build-time=net.bytebuddy.description.method.MethodDescription\\$InDefinedShape\\$AbstractBase\\$ForLoadedExecutable')
+            buildArgs.add('--initialize-at-build-time=net.bytebuddy.description.type.TypeDescription\\$AbstractBase')
+            buildArgs.add('--initialize-at-build-time=net.bytebuddy.description.type.TypeDescription\\$ForLoadedType')
+            buildArgs.add('--initialize-at-build-time=net.bytebuddy.description.method.MethodDescription\\$ForLoadedMethod')
+            buildArgs.add('--initialize-at-build-time=net.bytebuddy.implementation.bind.annotation.Argument\\$BindingMechanic')
+            buildArgs.add('--initialize-at-build-time=net.bytebuddy.implementation.bind.annotation.Argument\\$BindingMechanic\\$1')
+            buildArgs.add('--initialize-at-build-time=net.bytebuddy.implementation.bind.annotation.Argument\\$BindingMechanic\\$2')
+            buildArgs.add('--initialize-at-build-time=net.bytebuddy.implementation.bind.annotation.Super\\$Instantiation\\$2')
+        }
+    }
     agent {
         defaultMode = "standard"
         modes {
@@ -34,7 +49,7 @@ graalvmNative {
                 userCodeFilterPath = "user-code-filter.json"
             }
         }
-        enableExperimentalPredefinedClasses = true
+//        enableExperimentalPredefinedClasses = true
         metadataCopy {
             mergeWithExisting = true
             inputTaskNames.add("test")
