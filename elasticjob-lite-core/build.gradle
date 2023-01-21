@@ -29,9 +29,11 @@ test {
 graalvmNative {
     binaries {
         test {
-            buildArgs.add('--rerun-class-initialization-at-runtime=net.bytebuddy.ClassFileVersion')
-            buildArgs.add('--rerun-class-initialization-at-runtime=net.bytebuddy.utility.dispatcher.JavaDispatcher')
-            buildArgs.add('--rerun-class-initialization-at-runtime=net.bytebuddy.utility.Invoker\\$Dispatcher')
+            buildArgs.add('-H:ClassInitialization=net.bytebuddy.ClassFileVersion:rerun')
+            buildArgs.add('-H:ClassInitialization=net.bytebuddy.utility.dispatcher.JavaDispatcher:rerun')
+            buildArgs.add('-H:ClassInitialization=net.bytebuddy.utility.Invoker\\$Dispatcher:rerun')
+            buildArgs.add('-H:ClassInitialization=net.bytebuddy.utility.GraalImageCode:rerun')
+            buildArgs.add('-H:ClassInitialization=net.bytebuddy.utility.dispatcher.JavaDispatcher$DynamicClassLoader:rerun')
             buildArgs.add('--initialize-at-build-time=net.bytebuddy.description.method.MethodDescription\\$InDefinedShape\\$AbstractBase\\$ForLoadedExecutable')
             buildArgs.add('--initialize-at-build-time=net.bytebuddy.description.type.TypeDescription\\$AbstractBase')
             buildArgs.add('--initialize-at-build-time=net.bytebuddy.description.type.TypeDescription\\$ForLoadedType')
@@ -43,13 +45,12 @@ graalvmNative {
         }
     }
     agent {
-        defaultMode = "standard"
+        defaultMode = "conditional"
         modes {
             conditional {
                 userCodeFilterPath = "user-code-filter.json"
             }
         }
-//        enableExperimentalPredefinedClasses = true
         metadataCopy {
             mergeWithExisting = true
             inputTaskNames.add("test")
