@@ -19,6 +19,7 @@ dependencies {
     testImplementation 'org.mockito:mockito-junit-jupiter:5.0.0'
     testImplementation 'org.hamcrest:hamcrest:2.2'
     testImplementation 'org.awaitility:awaitility:4.2.0'
+    testImplementation 'ch.qos.logback:logback-classic:1.2.11'
 }
 
 test {
@@ -27,7 +28,7 @@ test {
 
 graalvmNative {
     agent {
-        defaultMode = "conditional"
+        defaultMode = "standard"
         modes {
             conditional {
                 userCodeFilterPath = "user-code-filter.json"
