@@ -45,7 +45,7 @@ graalvmNative {
         }
     }
     agent {
-        defaultMode = "conditional"
+        defaultMode = "standard"
         modes {
             conditional {
                 userCodeFilterPath = "user-code-filter.json"
@@ -56,6 +56,7 @@ graalvmNative {
             inputTaskNames.add("test")
             outputDirectories.add("src/test/resources/META-INF/native-image/org.apache.shardingsphere.elasticjob/elasticjob-lite-core")
         }
+        enableExperimentalPredefinedClasses = true
     }
     metadataRepository {
         enabled = true
