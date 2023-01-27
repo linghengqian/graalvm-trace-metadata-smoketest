@@ -86,9 +86,5 @@
 {
   "name":"org.mockito.junit.jupiter.MockitoExtension",
   "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"org.quartz.simpl.CascadingClassLoadHelper",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
 }
 ]

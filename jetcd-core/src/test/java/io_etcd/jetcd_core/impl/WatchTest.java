@@ -93,6 +93,7 @@ public class WatchTest {
 
     @ParameterizedTest
     @MethodSource("parameters")
+    @Disabled("https://github.com/etcd-io/jetcd/pull/1092")
     public void testMultipleWatch(final Client client) throws Exception {
         final ByteSequence key = randomByteSequence();
         final CountDownLatch latch = new CountDownLatch(2);
@@ -221,6 +222,7 @@ public class WatchTest {
 
     @ParameterizedTest
     @MethodSource("parameters")
+    @Disabled("https://github.com/etcd-io/jetcd/pull/1092")
     public void testWatchAndGet(final Client client) throws Exception {
         final ByteSequence key = randomByteSequence();
         final ByteSequence value = randomByteSequence();
