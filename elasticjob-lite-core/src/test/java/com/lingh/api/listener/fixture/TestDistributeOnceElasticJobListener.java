@@ -3,6 +3,7 @@ package com.lingh.api.listener.fixture;
 import org.apache.shardingsphere.elasticjob.infra.listener.ShardingContexts;
 import org.apache.shardingsphere.elasticjob.lite.api.listener.AbstractDistributeOnceElasticJobListener;
 
+@SuppressWarnings("unused")
 public final class TestDistributeOnceElasticJobListener extends AbstractDistributeOnceElasticJobListener {
     private final ElasticJobListenerCaller caller;
     

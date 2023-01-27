@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.apache.shardingsphere.elasticjob.infra.listener.ElasticJobListener;
 import org.apache.shardingsphere.elasticjob.infra.listener.ShardingContexts;
 
+@SuppressWarnings("unused")
 @RequiredArgsConstructor
 public final class TestElasticJobListener implements ElasticJobListener {
     private final ElasticJobListenerCaller caller;
