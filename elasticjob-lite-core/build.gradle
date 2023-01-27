@@ -28,7 +28,7 @@ test {
 
 graalvmNative {
     agent {
-        defaultMode = "standard"
+        defaultMode = "conditional"
         modes {
             conditional {
                 userCodeFilterPath = "user-code-filter.json"
@@ -37,8 +37,7 @@ graalvmNative {
         metadataCopy {
             mergeWithExisting = true
             inputTaskNames.add("test")
-//            outputDirectories.add("src/test/resources/META-INF/native-image/org.apache.shardingsphere.elasticjob/elasticjob-lite-core")
-            outputDirectories.add("src/test/resources/META-INF/native-image/elasticjob-test-metadata")
+            outputDirectories.add("src/test/resources/META-INF/native-image/org.apache.shardingsphere.elasticjob/elasticjob-lite-core")
         }
     }
     metadataRepository {

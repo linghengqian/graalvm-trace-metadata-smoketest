@@ -13,21 +13,6 @@
   "fields":[{"name":"instance"}]
 },
 {
-  "name":"org.apache.zookeeper.AddWatchMode"
-},
-{
-  "name":"org.apache.zookeeper.ClientCnxnSocketNIO",
-  "methods":[{"name":"<init>","parameterTypes":["org.apache.zookeeper.client.ZKClientConfig"] }]
-},
-{
-  "name":"org.apache.zookeeper.server.quorum.MultipleAddresses",
-  "methods":[{"name":"getReachableOrOne","parameterTypes":[] }]
-},
-{
-  "name":"org.apache.zookeeper.server.quorum.QuorumPeer$QuorumServer",
-  "fields":[{"name":"addr"}]
-},
-{
   "condition":{"typeReachable":"org.mockito.internal.invocation.TypeSafeMatching"},
   "name":"org.mockito.internal.matchers.Any",
   "queryAllPublicMethods":true
