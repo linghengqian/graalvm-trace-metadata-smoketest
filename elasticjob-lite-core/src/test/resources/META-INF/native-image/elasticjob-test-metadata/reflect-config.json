@@ -35,30 +35,6 @@
   "name":"org.mockito.configuration.MockitoConfiguration"
 },
 {
-  "name":"org.mockito.internal.configuration.DefaultDoNotMockEnforcer",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"org.mockito.internal.configuration.InjectingAnnotationEngine",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"org.mockito.internal.configuration.plugins.DefaultPluginSwitch",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"org.mockito.internal.creation.instance.DefaultInstantiatorProvider",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"org.mockito.internal.creation.proxy.ProxyMockMaker",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"org.mockito.internal.exceptions.stacktrace.DefaultStackTraceCleanerProvider",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
   "name":"org.mockito.internal.matchers.Any",
   "queryAllPublicMethods":true
 },
@@ -69,19 +45,6 @@
 {
   "name":"org.mockito.internal.matchers.InstanceOf",
   "queryAllPublicMethods":true
-},
-{
-  "name":"org.mockito.internal.util.ConsoleMockitoLogger",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"org.mockito.internal.util.reflection.InstrumentationMemberAccessor$Dispatcher",
-  "queryAllDeclaredMethods":true,
-  "queryAllDeclaredConstructors":true
-},
-{
-  "name":"org.mockito.internal.util.reflection.ModuleMemberAccessor",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
   "name":"org.mockito.junit.jupiter.MockitoExtension",
