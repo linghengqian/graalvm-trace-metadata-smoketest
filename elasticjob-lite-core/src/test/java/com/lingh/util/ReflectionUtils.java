@@ -6,6 +6,7 @@ import lombok.SneakyThrows;
 
 import java.lang.reflect.Field;
 
+@SuppressWarnings("unused")
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class ReflectionUtils {
     @SneakyThrows
