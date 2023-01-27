@@ -1691,5 +1691,14 @@
   "condition":{"typeReachable":"org.apache.shardingsphere.elasticjob.executor.ElasticJobExecutor"},
   "name":"sun.misc.Unsafe",
   "allDeclaredFields":true
+},
+{
+  "condition":{"typeReachable":"org.quartz.simpl.SimpleJobFactory"},
+  "name":"org.apache.shardingsphere.elasticjob.lite.internal.schedule.LiteJob",
+  "queryAllPublicMethods":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] },
+    {"name":"setJobExecutor","parameterTypes":["org.apache.shardingsphere.elasticjob.executor.ElasticJobExecutor"] }
+  ]
 }
 ]

@@ -1,23 +1,5 @@
 [
 {
-  "name":"[Ljava.lang.Object;"
-},
-{
-  "name":"com.google.common.util.concurrent.AbstractFuture",
-  "fields":[
-    {"name":"listeners"}, 
-    {"name":"value"}, 
-    {"name":"waiters"}
-  ]
-},
-{
-  "name":"com.google.common.util.concurrent.AbstractFuture$Waiter",
-  "fields":[
-    {"name":"next"}, 
-    {"name":"thread"}
-  ]
-},
-{
   "name":"com.lingh.api.bootstrap.impl.OneOffJobBootstrapTest",
   "allDeclaredFields":true,
   "allDeclaredClasses":true,
@@ -835,20 +817,6 @@
   "name":"org.apache.shardingsphere.elasticjob.lite.internal.schedule.JobShutdownHookPluginCustomizer"
 },
 {
-  "name":"org.apache.shardingsphere.elasticjob.lite.internal.schedule.LiteJob",
-  "queryAllPublicMethods":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setJobExecutor","parameterTypes":["org.apache.shardingsphere.elasticjob.executor.ElasticJobExecutor"] }
-  ]
-},
-{
-  "name":"org.apache.shardingsphere.elasticjob.lite.internal.schedule.LiteJobBeanInfo"
-},
-{
-  "name":"org.apache.shardingsphere.elasticjob.lite.internal.schedule.LiteJobCustomizer"
-},
-{
   "name":"org.apache.shardingsphere.elasticjob.lite.internal.server.ServerNodeTest",
   "allDeclaredFields":true,
   "allDeclaredClasses":true,
@@ -961,64 +929,6 @@
 },
 {
   "name":"org.quartz.simpl.CascadingClassLoadHelper",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"org.quartz.simpl.RAMJobStore",
-  "queryAllPublicMethods":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setInstanceId","parameterTypes":["java.lang.String"] }, 
-    {"name":"setInstanceName","parameterTypes":["java.lang.String"] }, 
-    {"name":"setMisfireThreshold","parameterTypes":["long"] }
-  ]
-},
-{
-  "name":"org.quartz.simpl.RAMJobStoreBeanInfo"
-},
-{
-  "name":"org.quartz.simpl.RAMJobStoreCustomizer"
-},
-{
-  "name":"org.quartz.simpl.SimpleThreadPool",
-  "queryAllPublicMethods":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setInstanceId","parameterTypes":["java.lang.String"] }, 
-    {"name":"setInstanceName","parameterTypes":["java.lang.String"] }, 
-    {"name":"setThreadCount","parameterTypes":["int"] }
-  ]
-},
-{
-  "name":"org.quartz.simpl.SimpleThreadPoolBeanInfo"
-},
-{
-  "name":"org.quartz.simpl.SimpleThreadPoolCustomizer"
-},
-{
-  "name":"sun.misc.SharedSecrets"
-},
-{
-  "name":"sun.misc.Unsafe",
-  "allDeclaredFields":true
-},
-{
-  "name":"sun.reflect.ReflectionFactory",
-  "methods":[
-    {"name":"getReflectionFactory","parameterTypes":[] }, 
-    {"name":"newConstructorForSerialization","parameterTypes":["java.lang.Class","java.lang.reflect.Constructor"] }
-  ]
-},
-{
-  "name":"sun.security.provider.ConfigFile",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"sun.security.provider.NativePRNG",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"sun.security.provider.SHA",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 }
 ]
