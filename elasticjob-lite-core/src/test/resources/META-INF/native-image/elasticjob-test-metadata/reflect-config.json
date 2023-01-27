@@ -43,86 +43,17 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "name":"org.apache.shardingsphere.elasticjob.api.ElasticJob",
-  "allDeclaredClasses":true,
-  "queryAllPublicMethods":true
-},
-{
-  "name":"org.apache.shardingsphere.elasticjob.error.handler.JobErrorHandlerReloadable",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"org.apache.shardingsphere.elasticjob.error.handler.general.LogJobErrorHandler",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"org.apache.shardingsphere.elasticjob.executor.item.JobItemExecutor",
-  "allDeclaredClasses":true,
-  "queryAllPublicMethods":true
-},
-{
-  "name":"org.apache.shardingsphere.elasticjob.executor.item.impl.ClassedJobItemExecutor",
-  "allDeclaredClasses":true,
-  "queryAllPublicMethods":true
-},
-{
-  "name":"org.apache.shardingsphere.elasticjob.infra.concurrent.ExecutorServiceReloadable",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"org.apache.shardingsphere.elasticjob.infra.handler.sharding.JobInstanceBeanInfo"
-},
-{
-  "name":"org.apache.shardingsphere.elasticjob.infra.handler.sharding.JobInstanceCustomizer"
-},
-{
-  "name":"org.apache.shardingsphere.elasticjob.infra.listener.ElasticJobListener",
-  "allDeclaredClasses":true,
-  "queryAllPublicMethods":true
-},
-{
-  "name":"org.apache.shardingsphere.elasticjob.infra.spi.TypedSPI",
-  "allDeclaredClasses":true,
-  "queryAllPublicMethods":true
-},
-{
-  "name":"org.apache.shardingsphere.elasticjob.lite.api.bootstrap.impl.OneOffJobBootstrap",
-  "fields":[{"name":"jobScheduler"}]
-},
-{
-  "name":"org.apache.shardingsphere.elasticjob.lite.api.listener.AbstractDistributeOnceElasticJobListener",
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true
-},
-{
-  "name":"org.apache.shardingsphere.elasticjob.lite.internal.schedule.JobRegistry",
-  "fields":[{"name":"instance"}]
-},
-{
+  "condition":{"typeReachable":"com.lingh.util.ReflectionUtils"},
   "name":"org.apache.shardingsphere.elasticjob.lite.internal.schedule.JobScheduleController",
   "fields":[
-    {"name":"jobDetail"}, 
+    {"name":"jobDetail"},
     {"name":"scheduler"}
   ]
 },
 {
-  "name":"org.apache.shardingsphere.elasticjob.lite.internal.schedule.JobShutdownHookPlugin",
-  "queryAllPublicMethods":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setCleanShutdown","parameterTypes":["boolean"] }
-  ]
-},
-{
-  "name":"org.apache.shardingsphere.elasticjob.lite.internal.schedule.JobShutdownHookPluginBeanInfo"
-},
-{
-  "name":"org.apache.shardingsphere.elasticjob.lite.internal.schedule.JobShutdownHookPluginCustomizer"
-},
-{
-  "name":"org.apache.shardingsphere.elasticjob.lite.internal.snapshot.SnapshotService",
-  "fields":[{"name":"serverSocket"}]
+  "condition":{"typeReachable":"com.lingh.util.ReflectionUtils"},
+  "name":"org.apache.shardingsphere.elasticjob.lite.internal.schedule.JobRegistry",
+  "fields":[{"name":"instance"}]
 },
 {
   "name":"org.apache.zookeeper.AddWatchMode"
