@@ -161,71 +161,6 @@
   "queryAllPublicMethods":true
 },
 {
-  "name":"org.apache.shardingsphere.elasticjob.lite.internal.election.LeaderNodeTest",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"assertIsLeaderInstancePath","parameterTypes":[] }, 
-    {"name":"assertIsNotLeaderInstancePath","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.shardingsphere.elasticjob.lite.internal.failover.FailoverNodeTest",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"assertGetExecutionFailoverNode","parameterTypes":[] }, 
-    {"name":"assertGetItemByExecutionFailoverPath","parameterTypes":[] }, 
-    {"name":"assertGetItemWhenNotExecutionFailoverPath","parameterTypes":[] }, 
-    {"name":"assertGetItemsNode","parameterTypes":[] }, 
-    {"name":"assertGetProcessingFailoverNode","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.shardingsphere.elasticjob.lite.internal.guarantee.GuaranteeNodeTest",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"assertGetCompletedNode","parameterTypes":[] }, 
-    {"name":"assertGetStartedNode","parameterTypes":[] }, 
-    {"name":"assertIsCompletedRootNode","parameterTypes":[] }, 
-    {"name":"assertIsNotCompletedRootNode","parameterTypes":[] }, 
-    {"name":"assertIsNotStartedRootNode","parameterTypes":[] }, 
-    {"name":"assertIsStartedRootNode","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.shardingsphere.elasticjob.lite.internal.instance.InstanceNodeTest",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"assertGetInstanceFullPath","parameterTypes":[] }, 
-    {"name":"assertGetInstancePath","parameterTypes":[] }, 
-    {"name":"assertGetLocalInstancePath","parameterTypes":[] }, 
-    {"name":"assertIsInstancePath","parameterTypes":[] }, 
-    {"name":"assertIsLocalInstancePath","parameterTypes":[] }, 
-    {"name":"assertIsNotInstancePath","parameterTypes":[] }, 
-    {"name":"assertIsNotLocalInstancePath","parameterTypes":[] }, 
-    {"name":"setUp","parameterTypes":[] }
-  ]
-},
-{
   "name":"org.apache.shardingsphere.elasticjob.lite.internal.schedule.JobRegistry",
   "fields":[{"name":"instance"}]
 },
@@ -249,38 +184,6 @@
 },
 {
   "name":"org.apache.shardingsphere.elasticjob.lite.internal.schedule.JobShutdownHookPluginCustomizer"
-},
-{
-  "name":"org.apache.shardingsphere.elasticjob.lite.internal.server.ServerNodeTest",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"assertGetServerNode","parameterTypes":[] }, 
-    {"name":"assertIsLocalServerPath","parameterTypes":[] }, 
-    {"name":"assertIsNotLocalServerPath","parameterTypes":[] }, 
-    {"name":"assertIsNotServerPath","parameterTypes":[] }, 
-    {"name":"assertIsServerPath","parameterTypes":[] }, 
-    {"name":"setUp","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.shardingsphere.elasticjob.lite.internal.sharding.ShardingNodeTest",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"assertGetItemByRunningItemPath","parameterTypes":[] }, 
-    {"name":"assertGetItemWhenNotRunningItemPath","parameterTypes":[] }, 
-    {"name":"assertGetMisfireNode","parameterTypes":[] }, 
-    {"name":"assertGetRunningNode","parameterTypes":[] }
-  ]
 },
 {
   "name":"org.apache.shardingsphere.elasticjob.lite.internal.snapshot.SnapshotService",
