@@ -340,9 +340,6 @@
   "queryAllPublicMethods":true
 },
 {
-  "name":"com.sun.tools.attach.VirtualMachine"
-},
-{
   "name":"net.bytebuddy.agent.Installer",
   "methods":[
     {"name":"agentmain","parameterTypes":["java.lang.String","java.lang.instrument.Instrumentation"] }, 
