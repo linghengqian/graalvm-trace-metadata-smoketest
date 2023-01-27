@@ -28,13 +28,6 @@
   "fields":[{"name":"addr"}]
 },
 {
-  "name":"org.mockito.Mock",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"org.mockito.configuration.MockitoConfiguration"
-},
-{
   "name":"org.mockito.internal.matchers.Any",
   "queryAllPublicMethods":true
 },
@@ -45,9 +38,5 @@
 {
   "name":"org.mockito.internal.matchers.InstanceOf",
   "queryAllPublicMethods":true
-},
-{
-  "name":"org.mockito.junit.jupiter.MockitoExtension",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
 }
 ]
