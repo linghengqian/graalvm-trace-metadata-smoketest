@@ -13,7 +13,6 @@ import org.apache.shardingsphere.elasticjob.lite.internal.server.ServerService;
 import org.apache.shardingsphere.elasticjob.lite.internal.storage.JobNodeStorage;
 import org.apache.shardingsphere.elasticjob.reg.base.CoordinatorRegistryCenter;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -28,6 +27,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.lenient;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -229,7 +229,6 @@ public final class ShardingServiceTest {
     }
 
     @Test
-    @Disabled //TODO
     public void assertGetCrashedShardingItemsWithEnabledServer() {
         JobRegistry.getInstance().registerRegistryCenter("test_job", regCenter);
         JobRegistry.getInstance().registerJob("test_job", jobScheduleController);
@@ -238,7 +237,7 @@ public final class ShardingServiceTest {
         when(jobNodeStorage.getJobNodeData("sharding/0/instance")).thenReturn("127.0.0.1@-@0");
         when(jobNodeStorage.isJobNodeExisted("sharding/0/running")).thenReturn(true);
         when(jobNodeStorage.getJobNodeData("sharding/2/instance")).thenReturn("127.0.0.1@-@0");
-        when(jobNodeStorage.isJobNodeExisted("sharding/2/running")).thenReturn(true);
+        lenient().when(jobNodeStorage.isJobNodeExisted("sharding/2/running")).thenReturn(true);
         assertThat(shardingService.getCrashedShardingItems("127.0.0.1@-@0"), is(Arrays.asList(0, 2)));
         JobRegistry.getInstance().shutdown("test_job");
     }

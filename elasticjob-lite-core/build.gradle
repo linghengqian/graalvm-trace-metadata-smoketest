@@ -27,25 +27,8 @@ test {
 }
 
 graalvmNative {
-    binaries {
-        test {
-            buildArgs.add('-H:ClassInitialization=net.bytebuddy.ClassFileVersion:rerun')
-            buildArgs.add('-H:ClassInitialization=net.bytebuddy.utility.dispatcher.JavaDispatcher:rerun')
-            buildArgs.add('-H:ClassInitialization=net.bytebuddy.utility.Invoker\\$Dispatcher:rerun')
-            buildArgs.add('-H:ClassInitialization=net.bytebuddy.utility.GraalImageCode:rerun')
-            buildArgs.add('-H:ClassInitialization=net.bytebuddy.utility.dispatcher.JavaDispatcher$DynamicClassLoader:rerun')
-            buildArgs.add('--initialize-at-build-time=net.bytebuddy.description.method.MethodDescription\\$InDefinedShape\\$AbstractBase\\$ForLoadedExecutable')
-            buildArgs.add('--initialize-at-build-time=net.bytebuddy.description.type.TypeDescription\\$AbstractBase')
-            buildArgs.add('--initialize-at-build-time=net.bytebuddy.description.type.TypeDescription\\$ForLoadedType')
-            buildArgs.add('--initialize-at-build-time=net.bytebuddy.description.method.MethodDescription\\$ForLoadedMethod')
-            buildArgs.add('--initialize-at-build-time=net.bytebuddy.implementation.bind.annotation.Argument\\$BindingMechanic')
-            buildArgs.add('--initialize-at-build-time=net.bytebuddy.implementation.bind.annotation.Argument\\$BindingMechanic\\$1')
-            buildArgs.add('--initialize-at-build-time=net.bytebuddy.implementation.bind.annotation.Argument\\$BindingMechanic\\$2')
-            buildArgs.add('--initialize-at-build-time=net.bytebuddy.implementation.bind.annotation.Super\\$Instantiation\\$2')
-        }
-    }
     agent {
-        defaultMode = "standard"
+        defaultMode = "conditional"
         modes {
             conditional {
                 userCodeFilterPath = "user-code-filter.json"

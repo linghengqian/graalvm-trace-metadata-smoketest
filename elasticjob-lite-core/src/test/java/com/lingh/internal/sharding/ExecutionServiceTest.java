@@ -10,7 +10,6 @@ import org.apache.shardingsphere.elasticjob.lite.internal.sharding.ExecutionServ
 import org.apache.shardingsphere.elasticjob.lite.internal.storage.JobNodeStorage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -26,6 +25,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.lenient;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -162,12 +162,11 @@ public final class ExecutionServiceTest {
     }
 
     @Test
-    @Disabled //TODO
     public void assertGetAllRunningItems() {
         when(configService.load(true)).thenReturn(JobConfiguration.newBuilder("test_job", 3).build());
         String jobInstanceId = "127.0.0.1@-@1";
         when(jobNodeStorage.getJobNodeData("sharding/0/running")).thenReturn(jobInstanceId);
-        when(jobNodeStorage.getJobNodeData("sharding/2/running")).thenReturn(jobInstanceId);
+        lenient().when(jobNodeStorage.getJobNodeData("sharding/2/running")).thenReturn(jobInstanceId);
         Map<Integer, JobInstance> actual = executionService.getAllRunningItems();
         assertThat(actual.size(), is(2));
         assertThat(actual.get(0), is(new JobInstance(jobInstanceId)));

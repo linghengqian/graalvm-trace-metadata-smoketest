@@ -10,7 +10,6 @@ import org.apache.shardingsphere.elasticjob.lite.internal.sharding.ShardingServi
 import org.apache.shardingsphere.elasticjob.lite.internal.storage.JobNodeStorage;
 import org.apache.shardingsphere.elasticjob.reg.base.CoordinatorRegistryCenter;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentMatchers;
@@ -24,6 +23,7 @@ import java.util.Map;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.lenient;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -232,12 +232,11 @@ public final class FailoverServiceTest {
     }
 
     @Test
-    @Disabled //TODO
     public void assertGetAllFailoveringItems() {
         when(configService.load(true)).thenReturn(JobConfiguration.newBuilder("test_job", 3).build());
         String jobInstanceId = "127.0.0.1@-@1";
         when(jobNodeStorage.getJobNodeData("sharding/0/failovering")).thenReturn(jobInstanceId);
-        when(jobNodeStorage.getJobNodeData("sharding/2/failovering")).thenReturn(jobInstanceId);
+        lenient().when(jobNodeStorage.getJobNodeData("sharding/2/failovering")).thenReturn(jobInstanceId);
         Map<Integer, JobInstance> actual = failoverService.getAllFailoveringItems();
         assertThat(actual.size(), is(2));
         assertThat(actual.get(0), is(new JobInstance(jobInstanceId)));
