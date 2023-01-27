@@ -1,0 +1,1024 @@
+[
+{
+  "name":"[Ljava.lang.Object;"
+},
+{
+  "name":"com.google.common.util.concurrent.AbstractFuture",
+  "fields":[
+    {"name":"listeners"}, 
+    {"name":"value"}, 
+    {"name":"waiters"}
+  ]
+},
+{
+  "name":"com.google.common.util.concurrent.AbstractFuture$Waiter",
+  "fields":[
+    {"name":"next"}, 
+    {"name":"thread"}
+  ]
+},
+{
+  "name":"com.lingh.api.bootstrap.impl.OneOffJobBootstrapTest",
+  "allDeclaredFields":true,
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"assertConfigFailedWithCron","parameterTypes":[] }, 
+    {"name":"assertExecute","parameterTypes":[] }, 
+    {"name":"assertShutdown","parameterTypes":[] }, 
+    {"name":"init","parameterTypes":[] }, 
+    {"name":"setUp","parameterTypes":[] }, 
+    {"name":"teardown","parameterTypes":[] }
+  ]
+},
+{
+  "name":"com.lingh.api.listener.fixture.ElasticJobListenerCaller"
+},
+{
+  "name":"com.lingh.api.listener.fixture.TestDistributeOnceElasticJobListener",
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"com.lingh.api.listener.fixture.TestElasticJobListener",
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"com.lingh.api.registry.JobInstanceRegistryTest",
+  "allDeclaredFields":true,
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"assertListenLabelNotMatch","parameterTypes":[] }, 
+    {"name":"assertListenOneOffJob","parameterTypes":[] }, 
+    {"name":"assertListenScheduleJob","parameterTypes":[] }, 
+    {"name":"assertListenWithoutConfigPath","parameterTypes":[] }
+  ]
+},
+{
+  "name":"com.lingh.fixture.EmbedTestingServer",
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"com.lingh.fixture.LiteYamlConstants",
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"com.lingh.fixture.executor.ClassedFooJobExecutor",
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"com.lingh.fixture.job.DetailedFooJob",
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"com.lingh.fixture.job.FooJob",
+  "allDeclaredClasses":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"com.lingh.integrate.BaseIntegrateTest",
+  "allDeclaredFields":true,
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "methods":[
+    {"name":"init","parameterTypes":[] }, 
+    {"name":"setUp","parameterTypes":[] }, 
+    {"name":"tearDown","parameterTypes":[] }
+  ]
+},
+{
+  "name":"com.lingh.integrate.BaseIntegrateTest$TestType",
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"com.lingh.integrate.disable.DisabledJobIntegrateTest",
+  "allDeclaredFields":true,
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"com.lingh.integrate.disable.OneOffDisabledJobIntegrateTest",
+  "allDeclaredFields":true,
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"assertJobRunning","parameterTypes":[] }
+  ]
+},
+{
+  "name":"com.lingh.integrate.disable.ScheduleDisabledJobIntegrateTest",
+  "allDeclaredFields":true,
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"assertJobRunning","parameterTypes":[] }
+  ]
+},
+{
+  "name":"com.lingh.integrate.enable.EnabledJobIntegrateTest",
+  "allDeclaredFields":true,
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "methods":[{"name":"assertEnabledRegCenterInfo","parameterTypes":[] }]
+},
+{
+  "name":"com.lingh.integrate.enable.OneOffEnabledJobIntegrateTest",
+  "allDeclaredFields":true,
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"assertJobInit","parameterTypes":[] }
+  ]
+},
+{
+  "name":"com.lingh.integrate.enable.ScheduleEnabledJobIntegrateTest",
+  "allDeclaredFields":true,
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"assertJobInit","parameterTypes":[] }
+  ]
+},
+{
+  "name":"com.lingh.integrate.listener.TestDistributeOnceElasticJobListener",
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.lingh.integrate.listener.TestElasticJobListener",
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.lingh.internal.config.ConfigurationNodeTest",
+  "allDeclaredFields":true,
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"assertIsConfigPath","parameterTypes":[] }
+  ]
+},
+{
+  "name":"com.lingh.internal.listener.ListenerNotifierManagerTest",
+  "allDeclaredFields":true,
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"assertRegisterAndGetJobNotifyExecutor","parameterTypes":[] }, 
+    {"name":"assertRemoveAndShutDownJobNotifyExecutor","parameterTypes":[] }
+  ]
+},
+{
+  "name":"com.lingh.internal.schedule.JobScheduleControllerTest",
+  "allDeclaredFields":true,
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"assertIsPauseJobIfShutdown","parameterTypes":[] }, 
+    {"name":"assertIsPausedFailure","parameterTypes":[] }, 
+    {"name":"assertIsPausedIfTriggerStateIsNormal","parameterTypes":[] }, 
+    {"name":"assertIsPausedIfTriggerStateIsPaused","parameterTypes":[] }, 
+    {"name":"assertPauseJobFailure","parameterTypes":[] }, 
+    {"name":"assertPauseJobIfShutdown","parameterTypes":[] }, 
+    {"name":"assertPauseJobSuccess","parameterTypes":[] }, 
+    {"name":"assertRescheduleJobFailure","parameterTypes":[] }, 
+    {"name":"assertRescheduleJobFailureForOneOffJob","parameterTypes":[] }, 
+    {"name":"assertRescheduleJobIfShutdown","parameterTypes":[] }, 
+    {"name":"assertRescheduleJobIfShutdownForOneOffJob","parameterTypes":[] }, 
+    {"name":"assertRescheduleJobSuccess","parameterTypes":[] }, 
+    {"name":"assertRescheduleJobSuccessForOneOffJob","parameterTypes":[] }, 
+    {"name":"assertRescheduleJobWhenTriggerIsNull","parameterTypes":[] }, 
+    {"name":"assertRescheduleJobWhenTriggerIsNullForOneOffJob","parameterTypes":[] }, 
+    {"name":"assertResumeJobFailure","parameterTypes":[] }, 
+    {"name":"assertResumeJobIfShutdown","parameterTypes":[] }, 
+    {"name":"assertResumeJobSuccess","parameterTypes":[] }, 
+    {"name":"assertShutdownFailure","parameterTypes":[] }, 
+    {"name":"assertShutdownJobIfShutdown","parameterTypes":[] }, 
+    {"name":"assertShutdownSuccess","parameterTypes":[] }, 
+    {"name":"assertTriggerJobFailure","parameterTypes":[] }, 
+    {"name":"assertTriggerJobIfShutdown","parameterTypes":[] }, 
+    {"name":"assertTriggerJobSuccess","parameterTypes":[] }, 
+    {"name":"assertTriggerOneOffJobSuccess","parameterTypes":[] }, 
+    {"name":"setUp","parameterTypes":[] }
+  ]
+},
+{
+  "name":"com.lingh.internal.setup.DefaultJobClassNameProviderTest",
+  "allDeclaredFields":true,
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"assertGetLambdaJobName","parameterTypes":[] }, 
+    {"name":"assertGetOrdinaryClassJobName","parameterTypes":[] }
+  ]
+},
+{
+  "name":"com.lingh.internal.setup.JobClassNameProviderFactoryTest",
+  "allDeclaredFields":true,
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"assertGetDefaultStrategy","parameterTypes":[] }
+  ]
+},
+{
+  "name":"com.lingh.internal.snapshot.BaseSnapshotServiceTest",
+  "allDeclaredFields":true,
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "methods":[
+    {"name":"init","parameterTypes":[] }, 
+    {"name":"setUp","parameterTypes":[] }, 
+    {"name":"tearDown","parameterTypes":[] }
+  ]
+},
+{
+  "name":"com.lingh.internal.snapshot.SnapshotServiceDisableTest",
+  "allDeclaredFields":true,
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"assertListenException","parameterTypes":[] }, 
+    {"name":"assertMonitorWithDumpCommand","parameterTypes":[] }, 
+    {"name":"assertPortInvalid","parameterTypes":[] }
+  ]
+},
+{
+  "name":"com.lingh.internal.snapshot.SnapshotServiceEnableTest",
+  "allDeclaredFields":true,
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"assertMonitorWithCommand","parameterTypes":[] }, 
+    {"name":"closeMonitor","parameterTypes":[] }, 
+    {"name":"listenMonitor","parameterTypes":[] }
+  ]
+},
+{
+  "name":"com.lingh.internal.snapshot.SocketUtils",
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"com.lingh.internal.storage.JobNodePathTest",
+  "allDeclaredFields":true,
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"assertGetFullPath","parameterTypes":[] }, 
+    {"name":"assertGetLeaderIpNodePath","parameterTypes":[] }, 
+    {"name":"assertGetServerNodePath","parameterTypes":[] }, 
+    {"name":"assertGetServerNodePathForServerIp","parameterTypes":[] }, 
+    {"name":"assertGetShardingNodePath","parameterTypes":[] }, 
+    {"name":"assertGetShardingNodePathWihItemAndNode","parameterTypes":[] }
+  ]
+},
+{
+  "name":"com.lingh.internal.util.SensitiveInfoUtilsTest",
+  "allDeclaredFields":true,
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"assertFilterContentWithSensitiveIp","parameterTypes":[] }, 
+    {"name":"assertFilterContentWithoutIp","parameterTypes":[] }
+  ]
+},
+{
+  "name":"com.lingh.util.ReflectionUtils",
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"com.sun.tools.attach.VirtualMachine"
+},
+{
+  "name":"java.beans.PropertyVetoException"
+},
+{
+  "name":"java.io.FilePermission"
+},
+{
+  "name":"java.io.Serializable",
+  "allDeclaredClasses":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.lang.Class",
+  "methods":[
+    {"name":"getAnnotatedInterfaces","parameterTypes":[] }, 
+    {"name":"getAnnotatedSuperclass","parameterTypes":[] }, 
+    {"name":"getModule","parameterTypes":[] }, 
+    {"name":"getNestHost","parameterTypes":[] }, 
+    {"name":"getNestMembers","parameterTypes":[] }, 
+    {"name":"getPermittedSubclasses","parameterTypes":[] }, 
+    {"name":"getRecordComponents","parameterTypes":[] }, 
+    {"name":"isNestmateOf","parameterTypes":["java.lang.Class"] }, 
+    {"name":"isRecord","parameterTypes":[] }, 
+    {"name":"isSealed","parameterTypes":[] }
+  ]
+},
+{
+  "name":"java.lang.ClassLoader",
+  "methods":[{"name":"getUnnamedModule","parameterTypes":[] }]
+},
+{
+  "name":"java.lang.Comparable",
+  "allDeclaredClasses":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.lang.Enum",
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.lang.Module",
+  "methods":[
+    {"name":"addExports","parameterTypes":["java.lang.String","java.lang.Module"] }, 
+    {"name":"canRead","parameterTypes":["java.lang.Module"] }, 
+    {"name":"isExported","parameterTypes":["java.lang.String"] }
+  ]
+},
+{
+  "name":"java.lang.Object",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"getClass","parameterTypes":[] }, 
+    {"name":"toString","parameterTypes":[] }
+  ]
+},
+{
+  "name":"java.lang.ObjectBeanInfo"
+},
+{
+  "name":"java.lang.ObjectCustomizer"
+},
+{
+  "name":"java.lang.ProcessHandle",
+  "methods":[
+    {"name":"current","parameterTypes":[] }, 
+    {"name":"pid","parameterTypes":[] }
+  ]
+},
+{
+  "name":"java.lang.Runtime",
+  "methods":[{"name":"version","parameterTypes":[] }]
+},
+{
+  "name":"java.lang.Runtime$Version",
+  "methods":[{"name":"feature","parameterTypes":[] }]
+},
+{
+  "name":"java.lang.RuntimePermission"
+},
+{
+  "name":"java.lang.StackWalker",
+  "methods":[
+    {"name":"getInstance","parameterTypes":["java.util.Set","int"] }, 
+    {"name":"walk","parameterTypes":["java.util.function.Function"] }
+  ]
+},
+{
+  "name":"java.lang.StackWalker$Option"
+},
+{
+  "name":"java.lang.StackWalker$StackFrame",
+  "methods":[
+    {"name":"getClassName","parameterTypes":[] }, 
+    {"name":"getFileName","parameterTypes":[] }, 
+    {"name":"getLineNumber","parameterTypes":[] }, 
+    {"name":"getMethodName","parameterTypes":[] }
+  ]
+},
+{
+  "name":"java.lang.System",
+  "methods":[{"name":"getSecurityManager","parameterTypes":[] }]
+},
+{
+  "name":"java.lang.Throwable",
+  "methods":[{"name":"getSuppressed","parameterTypes":[] }]
+},
+{
+  "name":"java.lang.constant.Constable",
+  "allDeclaredClasses":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.lang.invoke.MethodHandle",
+  "methods":[{"name":"invokeWithArguments","parameterTypes":["java.lang.Object[]"] }]
+},
+{
+  "name":"java.lang.invoke.MethodHandles",
+  "methods":[{"name":"lookup","parameterTypes":[] }]
+},
+{
+  "name":"java.lang.reflect.AccessibleObject",
+  "methods":[{"name":"setAccessible","parameterTypes":["boolean"] }]
+},
+{
+  "name":"java.lang.reflect.AnnotatedType",
+  "methods":[{"name":"getType","parameterTypes":[] }]
+},
+{
+  "name":"java.lang.reflect.Executable",
+  "methods":[
+    {"name":"getAnnotatedParameterTypes","parameterTypes":[] }, 
+    {"name":"getAnnotatedReceiverType","parameterTypes":[] }, 
+    {"name":"getParameterCount","parameterTypes":[] }, 
+    {"name":"getParameters","parameterTypes":[] }
+  ]
+},
+{
+  "name":"java.lang.reflect.InvocationHandler",
+  "methods":[{"name":"invokeDefault","parameterTypes":["java.lang.Object","java.lang.reflect.Method","java.lang.Object[]"] }]
+},
+{
+  "name":"java.lang.reflect.Method",
+  "methods":[{"name":"getAnnotatedReturnType","parameterTypes":[] }]
+},
+{
+  "name":"java.lang.reflect.Parameter",
+  "methods":[
+    {"name":"getModifiers","parameterTypes":[] }, 
+    {"name":"getName","parameterTypes":[] }, 
+    {"name":"isNamePresent","parameterTypes":[] }
+  ]
+},
+{
+  "name":"java.net.NetPermission"
+},
+{
+  "name":"java.net.SocketPermission"
+},
+{
+  "name":"java.net.URLPermission",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.String","java.lang.String"] }]
+},
+{
+  "name":"java.security.AccessController",
+  "methods":[{"name":"doPrivileged","parameterTypes":["java.security.PrivilegedAction"] }]
+},
+{
+  "name":"java.security.AllPermission"
+},
+{
+  "name":"java.security.SecureRandomParameters"
+},
+{
+  "name":"java.security.SecurityPermission"
+},
+{
+  "name":"java.sql.Date"
+},
+{
+  "name":"java.sql.Timestamp"
+},
+{
+  "name":"java.util.HashSet"
+},
+{
+  "name":"java.util.LinkedHashSet"
+},
+{
+  "name":"java.util.PropertyPermission"
+},
+{
+  "name":"java.util.concurrent.ArrayBlockingQueue"
+},
+{
+  "name":"java.util.concurrent.locks.AbstractOwnableSynchronizer"
+},
+{
+  "name":"java.util.concurrent.locks.AbstractQueuedSynchronizer"
+},
+{
+  "name":"java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject"
+},
+{
+  "name":"java.util.concurrent.locks.ReentrantLock"
+},
+{
+  "name":"java.util.concurrent.locks.ReentrantLock$NonfairSync"
+},
+{
+  "name":"java.util.concurrent.locks.ReentrantLock$Sync"
+},
+{
+  "name":"javax.smartcardio.CardPermission"
+},
+{
+  "name":"kotlin.jvm.JvmInline"
+},
+{
+  "name":"net.bytebuddy.agent.Installer",
+  "methods":[
+    {"name":"agentmain","parameterTypes":["java.lang.String","java.lang.instrument.Instrumentation"] }, 
+    {"name":"getInstrumentation","parameterTypes":[] }
+  ]
+},
+{
+  "name":"net.bytebuddy.description.method.MethodDescription$InDefinedShape$AbstractBase$Executable",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"net.bytebuddy.description.method.ParameterDescription$ForLoadedParameter$Parameter",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"net.bytebuddy.description.method.ParameterList$ForLoadedExecutable$Executable",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"net.bytebuddy.description.type.TypeDefinition$Sort$AnnotatedType",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"net.bytebuddy.description.type.TypeDescription$ForLoadedType$Dispatcher",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"net.bytebuddy.description.type.TypeDescription$Generic$AnnotationReader$Delegator$ForLoadedExecutableParameterType$Dispatcher",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"net.bytebuddy.description.type.TypeDescription$Generic$AnnotationReader$Delegator$ForLoadedMethodReturnType$Dispatcher",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"net.bytebuddy.utility.Invoker",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"net.bytebuddy.utility.Invoker$Dispatcher",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.shardingsphere.elasticjob.api.ElasticJob",
+  "allDeclaredClasses":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"org.apache.shardingsphere.elasticjob.error.handler.JobErrorHandlerReloadable",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.shardingsphere.elasticjob.error.handler.general.LogJobErrorHandler",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.shardingsphere.elasticjob.executor.item.JobItemExecutor",
+  "allDeclaredClasses":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"org.apache.shardingsphere.elasticjob.executor.item.impl.ClassedJobItemExecutor",
+  "allDeclaredClasses":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"org.apache.shardingsphere.elasticjob.infra.concurrent.ExecutorServiceReloadable",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.shardingsphere.elasticjob.infra.handler.sharding.JobInstance",
+  "allDeclaredFields":true,
+  "queryAllPublicMethods":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"getJobInstanceId","parameterTypes":[] }, 
+    {"name":"getLabels","parameterTypes":[] }, 
+    {"name":"getServerIp","parameterTypes":[] }, 
+    {"name":"setJobInstanceId","parameterTypes":["java.lang.String"] }, 
+    {"name":"setServerIp","parameterTypes":["java.lang.String"] }
+  ]
+},
+{
+  "name":"org.apache.shardingsphere.elasticjob.infra.handler.sharding.JobInstanceBeanInfo"
+},
+{
+  "name":"org.apache.shardingsphere.elasticjob.infra.handler.sharding.JobInstanceCustomizer"
+},
+{
+  "name":"org.apache.shardingsphere.elasticjob.infra.listener.ElasticJobListener",
+  "allDeclaredClasses":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"org.apache.shardingsphere.elasticjob.infra.pojo.JobConfigurationPOJO",
+  "allDeclaredFields":true,
+  "queryAllPublicMethods":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"getCron","parameterTypes":[] }, 
+    {"name":"getDescription","parameterTypes":[] }, 
+    {"name":"getJobErrorHandlerType","parameterTypes":[] }, 
+    {"name":"getJobExecutorServiceHandlerType","parameterTypes":[] }, 
+    {"name":"getJobExtraConfigurations","parameterTypes":[] }, 
+    {"name":"getJobListenerTypes","parameterTypes":[] }, 
+    {"name":"getJobName","parameterTypes":[] }, 
+    {"name":"getJobParameter","parameterTypes":[] }, 
+    {"name":"getJobShardingStrategyType","parameterTypes":[] }, 
+    {"name":"getLabel","parameterTypes":[] }, 
+    {"name":"getMaxTimeDiffSeconds","parameterTypes":[] }, 
+    {"name":"getProps","parameterTypes":[] }, 
+    {"name":"getReconcileIntervalMinutes","parameterTypes":[] }, 
+    {"name":"getShardingItemParameters","parameterTypes":[] }, 
+    {"name":"getShardingTotalCount","parameterTypes":[] }, 
+    {"name":"getTimeZone","parameterTypes":[] }, 
+    {"name":"isDisabled","parameterTypes":[] }, 
+    {"name":"isFailover","parameterTypes":[] }, 
+    {"name":"isMisfire","parameterTypes":[] }, 
+    {"name":"isMonitorExecution","parameterTypes":[] }, 
+    {"name":"isOverwrite","parameterTypes":[] }, 
+    {"name":"isStaticSharding","parameterTypes":[] }, 
+    {"name":"setCron","parameterTypes":["java.lang.String"] }, 
+    {"name":"setDescription","parameterTypes":["java.lang.String"] }, 
+    {"name":"setDisabled","parameterTypes":["boolean"] }, 
+    {"name":"setFailover","parameterTypes":["boolean"] }, 
+    {"name":"setJobListenerTypes","parameterTypes":["java.util.Collection"] }, 
+    {"name":"setJobName","parameterTypes":["java.lang.String"] }, 
+    {"name":"setJobParameter","parameterTypes":["java.lang.String"] }, 
+    {"name":"setLabel","parameterTypes":["java.lang.String"] }, 
+    {"name":"setMaxTimeDiffSeconds","parameterTypes":["int"] }, 
+    {"name":"setMisfire","parameterTypes":["boolean"] }, 
+    {"name":"setMonitorExecution","parameterTypes":["boolean"] }, 
+    {"name":"setOverwrite","parameterTypes":["boolean"] }, 
+    {"name":"setReconcileIntervalMinutes","parameterTypes":["int"] }, 
+    {"name":"setShardingItemParameters","parameterTypes":["java.lang.String"] }, 
+    {"name":"setShardingTotalCount","parameterTypes":["int"] }, 
+    {"name":"setStaticSharding","parameterTypes":["boolean"] }
+  ]
+},
+{
+  "name":"org.apache.shardingsphere.elasticjob.infra.pojo.JobConfigurationPOJOBeanInfo"
+},
+{
+  "name":"org.apache.shardingsphere.elasticjob.infra.pojo.JobConfigurationPOJOCustomizer"
+},
+{
+  "name":"org.apache.shardingsphere.elasticjob.infra.spi.TypedSPI",
+  "allDeclaredClasses":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"org.apache.shardingsphere.elasticjob.lite.api.bootstrap.impl.OneOffJobBootstrap",
+  "fields":[{"name":"jobScheduler"}]
+},
+{
+  "name":"org.apache.shardingsphere.elasticjob.lite.api.listener.AbstractDistributeOnceElasticJobListener",
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true
+},
+{
+  "name":"org.apache.shardingsphere.elasticjob.lite.internal.election.LeaderNodeTest",
+  "allDeclaredFields":true,
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"assertIsLeaderInstancePath","parameterTypes":[] }, 
+    {"name":"assertIsNotLeaderInstancePath","parameterTypes":[] }
+  ]
+},
+{
+  "name":"org.apache.shardingsphere.elasticjob.lite.internal.failover.FailoverNodeTest",
+  "allDeclaredFields":true,
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"assertGetExecutionFailoverNode","parameterTypes":[] }, 
+    {"name":"assertGetItemByExecutionFailoverPath","parameterTypes":[] }, 
+    {"name":"assertGetItemWhenNotExecutionFailoverPath","parameterTypes":[] }, 
+    {"name":"assertGetItemsNode","parameterTypes":[] }, 
+    {"name":"assertGetProcessingFailoverNode","parameterTypes":[] }
+  ]
+},
+{
+  "name":"org.apache.shardingsphere.elasticjob.lite.internal.guarantee.GuaranteeNodeTest",
+  "allDeclaredFields":true,
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"assertGetCompletedNode","parameterTypes":[] }, 
+    {"name":"assertGetStartedNode","parameterTypes":[] }, 
+    {"name":"assertIsCompletedRootNode","parameterTypes":[] }, 
+    {"name":"assertIsNotCompletedRootNode","parameterTypes":[] }, 
+    {"name":"assertIsNotStartedRootNode","parameterTypes":[] }, 
+    {"name":"assertIsStartedRootNode","parameterTypes":[] }
+  ]
+},
+{
+  "name":"org.apache.shardingsphere.elasticjob.lite.internal.instance.InstanceNodeTest",
+  "allDeclaredFields":true,
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"assertGetInstanceFullPath","parameterTypes":[] }, 
+    {"name":"assertGetInstancePath","parameterTypes":[] }, 
+    {"name":"assertGetLocalInstancePath","parameterTypes":[] }, 
+    {"name":"assertIsInstancePath","parameterTypes":[] }, 
+    {"name":"assertIsLocalInstancePath","parameterTypes":[] }, 
+    {"name":"assertIsNotInstancePath","parameterTypes":[] }, 
+    {"name":"assertIsNotLocalInstancePath","parameterTypes":[] }, 
+    {"name":"setUp","parameterTypes":[] }
+  ]
+},
+{
+  "name":"org.apache.shardingsphere.elasticjob.lite.internal.schedule.JobRegistry",
+  "fields":[{"name":"instance"}]
+},
+{
+  "name":"org.apache.shardingsphere.elasticjob.lite.internal.schedule.JobScheduleController",
+  "fields":[
+    {"name":"jobDetail"}, 
+    {"name":"scheduler"}
+  ]
+},
+{
+  "name":"org.apache.shardingsphere.elasticjob.lite.internal.schedule.JobShutdownHookPlugin",
+  "queryAllPublicMethods":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"setCleanShutdown","parameterTypes":["boolean"] }
+  ]
+},
+{
+  "name":"org.apache.shardingsphere.elasticjob.lite.internal.schedule.JobShutdownHookPluginBeanInfo"
+},
+{
+  "name":"org.apache.shardingsphere.elasticjob.lite.internal.schedule.JobShutdownHookPluginCustomizer"
+},
+{
+  "name":"org.apache.shardingsphere.elasticjob.lite.internal.schedule.LiteJob",
+  "queryAllPublicMethods":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"setJobExecutor","parameterTypes":["org.apache.shardingsphere.elasticjob.executor.ElasticJobExecutor"] }
+  ]
+},
+{
+  "name":"org.apache.shardingsphere.elasticjob.lite.internal.schedule.LiteJobBeanInfo"
+},
+{
+  "name":"org.apache.shardingsphere.elasticjob.lite.internal.schedule.LiteJobCustomizer"
+},
+{
+  "name":"org.apache.shardingsphere.elasticjob.lite.internal.server.ServerNodeTest",
+  "allDeclaredFields":true,
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"assertGetServerNode","parameterTypes":[] }, 
+    {"name":"assertIsLocalServerPath","parameterTypes":[] }, 
+    {"name":"assertIsNotLocalServerPath","parameterTypes":[] }, 
+    {"name":"assertIsNotServerPath","parameterTypes":[] }, 
+    {"name":"assertIsServerPath","parameterTypes":[] }, 
+    {"name":"setUp","parameterTypes":[] }
+  ]
+},
+{
+  "name":"org.apache.shardingsphere.elasticjob.lite.internal.sharding.ShardingNodeTest",
+  "allDeclaredFields":true,
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"assertGetItemByRunningItemPath","parameterTypes":[] }, 
+    {"name":"assertGetItemWhenNotRunningItemPath","parameterTypes":[] }, 
+    {"name":"assertGetMisfireNode","parameterTypes":[] }, 
+    {"name":"assertGetRunningNode","parameterTypes":[] }
+  ]
+},
+{
+  "name":"org.apache.shardingsphere.elasticjob.lite.internal.snapshot.SnapshotService",
+  "fields":[{"name":"serverSocket"}]
+},
+{
+  "name":"org.apache.zookeeper.AddWatchMode"
+},
+{
+  "name":"org.apache.zookeeper.ClientCnxnSocketNIO",
+  "methods":[{"name":"<init>","parameterTypes":["org.apache.zookeeper.client.ZKClientConfig"] }]
+},
+{
+  "name":"org.apache.zookeeper.server.quorum.MultipleAddresses",
+  "methods":[{"name":"getReachableOrOne","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.zookeeper.server.quorum.QuorumPeer$QuorumServer",
+  "fields":[{"name":"addr"}]
+},
+{
+  "name":"org.mockito.Mock",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"org.mockito.configuration.MockitoConfiguration"
+},
+{
+  "name":"org.mockito.internal.configuration.DefaultDoNotMockEnforcer",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.mockito.internal.configuration.InjectingAnnotationEngine",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.mockito.internal.configuration.plugins.DefaultPluginSwitch",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.mockito.internal.creation.instance.DefaultInstantiatorProvider",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.mockito.internal.creation.proxy.ProxyMockMaker",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.mockito.internal.exceptions.stacktrace.DefaultStackTraceCleanerProvider",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.mockito.internal.matchers.Any",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"org.mockito.internal.matchers.Equals",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"org.mockito.internal.matchers.InstanceOf",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"org.mockito.internal.util.ConsoleMockitoLogger",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.mockito.internal.util.reflection.InstrumentationMemberAccessor$Dispatcher",
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
+},
+{
+  "name":"org.mockito.internal.util.reflection.ModuleMemberAccessor",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.mockito.junit.jupiter.MockitoExtension",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.quartz.simpl.CascadingClassLoadHelper",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.quartz.simpl.RAMJobStore",
+  "queryAllPublicMethods":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"setInstanceId","parameterTypes":["java.lang.String"] }, 
+    {"name":"setInstanceName","parameterTypes":["java.lang.String"] }, 
+    {"name":"setMisfireThreshold","parameterTypes":["long"] }
+  ]
+},
+{
+  "name":"org.quartz.simpl.RAMJobStoreBeanInfo"
+},
+{
+  "name":"org.quartz.simpl.RAMJobStoreCustomizer"
+},
+{
+  "name":"org.quartz.simpl.SimpleThreadPool",
+  "queryAllPublicMethods":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"setInstanceId","parameterTypes":["java.lang.String"] }, 
+    {"name":"setInstanceName","parameterTypes":["java.lang.String"] }, 
+    {"name":"setThreadCount","parameterTypes":["int"] }
+  ]
+},
+{
+  "name":"org.quartz.simpl.SimpleThreadPoolBeanInfo"
+},
+{
+  "name":"org.quartz.simpl.SimpleThreadPoolCustomizer"
+},
+{
+  "name":"sun.misc.SharedSecrets"
+},
+{
+  "name":"sun.misc.Unsafe",
+  "allDeclaredFields":true
+},
+{
+  "name":"sun.reflect.ReflectionFactory",
+  "methods":[
+    {"name":"getReflectionFactory","parameterTypes":[] }, 
+    {"name":"newConstructorForSerialization","parameterTypes":["java.lang.Class","java.lang.reflect.Constructor"] }
+  ]
+},
+{
+  "name":"sun.security.provider.ConfigFile",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.provider.NativePRNG",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.provider.SHA",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+}
+]
