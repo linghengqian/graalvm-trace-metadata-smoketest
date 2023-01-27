@@ -7,19 +7,5 @@
     {"name":"loadClassAndCallPremain","parameterTypes":["java.lang.String","java.lang.String"] }, 
     {"name":"transform","parameterTypes":["java.lang.Module","java.lang.ClassLoader","java.lang.String","java.lang.Class","java.security.ProtectionDomain","byte[]","boolean"] }
   ]
-},
-{
-  "condition":{"typeReachable":"org.apache.shardingsphere.elasticjob.lite.api.bootstrap.impl.OneOffJobBootstrap"},
-  "name":"sun.management.VMManagementImpl",
-  "fields":[
-    {"name":"compTimeMonitoringSupport"}, 
-    {"name":"currentThreadCpuTimeSupport"}, 
-    {"name":"objectMonitorUsageSupport"}, 
-    {"name":"otherThreadCpuTimeSupport"}, 
-    {"name":"remoteDiagnosticCommandsSupport"}, 
-    {"name":"synchronizerUsageSupport"}, 
-    {"name":"threadAllocatedMemorySupport"}, 
-    {"name":"threadContentionMonitoringSupport"}
-  ]
 }
 ]
