@@ -70,19 +70,6 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "name":"org.apache.shardingsphere.elasticjob.infra.handler.sharding.JobInstance",
-  "allDeclaredFields":true,
-  "queryAllPublicMethods":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"getJobInstanceId","parameterTypes":[] }, 
-    {"name":"getLabels","parameterTypes":[] }, 
-    {"name":"getServerIp","parameterTypes":[] }, 
-    {"name":"setJobInstanceId","parameterTypes":["java.lang.String"] }, 
-    {"name":"setServerIp","parameterTypes":["java.lang.String"] }
-  ]
-},
-{
   "name":"org.apache.shardingsphere.elasticjob.infra.handler.sharding.JobInstanceBeanInfo"
 },
 {
@@ -92,12 +79,6 @@
   "name":"org.apache.shardingsphere.elasticjob.infra.listener.ElasticJobListener",
   "allDeclaredClasses":true,
   "queryAllPublicMethods":true
-},
-{
-  "name":"org.apache.shardingsphere.elasticjob.infra.pojo.JobConfigurationPOJOBeanInfo"
-},
-{
-  "name":"org.apache.shardingsphere.elasticjob.infra.pojo.JobConfigurationPOJOCustomizer"
 },
 {
   "name":"org.apache.shardingsphere.elasticjob.infra.spi.TypedSPI",
