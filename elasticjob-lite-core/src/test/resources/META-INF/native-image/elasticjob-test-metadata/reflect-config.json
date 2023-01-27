@@ -1,48 +1,5 @@
 [
 {
-  "name":"net.bytebuddy.agent.Installer",
-  "methods":[
-    {"name":"agentmain","parameterTypes":["java.lang.String","java.lang.instrument.Instrumentation"] }, 
-    {"name":"getInstrumentation","parameterTypes":[] }
-  ]
-},
-{
-  "name":"net.bytebuddy.description.method.MethodDescription$InDefinedShape$AbstractBase$Executable",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"net.bytebuddy.description.method.ParameterDescription$ForLoadedParameter$Parameter",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"net.bytebuddy.description.method.ParameterList$ForLoadedExecutable$Executable",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"net.bytebuddy.description.type.TypeDefinition$Sort$AnnotatedType",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"net.bytebuddy.description.type.TypeDescription$ForLoadedType$Dispatcher",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"net.bytebuddy.description.type.TypeDescription$Generic$AnnotationReader$Delegator$ForLoadedExecutableParameterType$Dispatcher",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"net.bytebuddy.description.type.TypeDescription$Generic$AnnotationReader$Delegator$ForLoadedMethodReturnType$Dispatcher",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"net.bytebuddy.utility.Invoker",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"net.bytebuddy.utility.Invoker$Dispatcher",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
   "condition":{"typeReachable":"com.lingh.util.ReflectionUtils"},
   "name":"org.apache.shardingsphere.elasticjob.lite.internal.schedule.JobScheduleController",
   "fields":[
