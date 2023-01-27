@@ -1,9 +1,0 @@
-{
-  "resources":{
-  "includes":[
-    {
-      "pattern":"\\Qmockito-extensions/org.mockito.plugins.MemberAccessor\\E"
-    }
-  ]},
-  "bundles":[]
-}
