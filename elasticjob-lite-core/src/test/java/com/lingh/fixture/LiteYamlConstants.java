@@ -3,6 +3,7 @@ package com.lingh.fixture;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
+@SuppressWarnings("unused")
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class LiteYamlConstants {
     private static final String JOB_YAML = """
