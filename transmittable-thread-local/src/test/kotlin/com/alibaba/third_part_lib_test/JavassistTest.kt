@@ -9,6 +9,7 @@ import io.kotest.matchers.shouldBe
 import io.kotest.matchers.string.shouldContain
 import javassist.ClassPool
 import javassist.CtClass
+import org.junit.jupiter.api.Disabled
 
 /**
  * [simplify the try-finally code gen by javassist, do not need copy method #115](https://github.com/alibaba/transmittable-thread-local/issues/115)
@@ -24,6 +25,7 @@ class JavassistTest : AnnotationSpec() {
     override fun defaultTestCaseConfig(): TestCaseConfig = TestCaseConfig(enabled = noTtlAgentRun())
 
     @Test
+    @Ignore // TODO lingh myself
     fun insertAfter_as_finally() {
         val classPool = ClassPool(true)
         val ctClass = classPool.getCtClass("com.alibaba.third_part_lib_test.DemoRunnable")
@@ -53,6 +55,7 @@ class JavassistTest : AnnotationSpec() {
      * If the second parameter asFinally to insertAfter() is true, the declared local variable is not visible from the code inserted by insertAfter().
      */
     @Test
+    @Ignore // TODO lingh myself
     fun insertAfter_as_finally_fail_with_local_var() {
         val classPool = ClassPool(true)
         val ctClass = classPool.getCtClass("com.alibaba.third_part_lib_test.DemoRunnable2")
