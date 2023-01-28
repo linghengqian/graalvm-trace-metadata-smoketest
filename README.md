@@ -44,6 +44,7 @@ cd ./opengauss-jdbc/
 cd ./cache-api/
 cd ./elasticjob-lite-core/
 cd ./caffeine/
+cd ./transmittable-thread-local/
 ```
 
 - exec.
