@@ -10,34 +10,21 @@ import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 
-/**
- * Test [Transmitter] from user code(different package)
- */
 class TransmittableThreadLocal_Transmitter_UserTest : AnnotationSpec() {
-
     @Test
     fun test_crr() {
         val ttl = TransmittableThreadLocal<String>()
         ttl.set(PARENT)
-
         val capture = Transmitter.capture()
-
         val future = executorService.submit {
             ttl.set(CHILD)
-
             val backup = Transmitter.replay(capture)
-
             assertEquals(PARENT, ttl.get())
-
             Transmitter.restore(backup)
-
             assertEquals(CHILD, ttl.get())
         }
-
         assertEquals(PARENT, ttl.get())
-
         future.get(1, TimeUnit.SECONDS)
-
         assertEquals(PARENT, ttl.get())
     }
 
@@ -45,23 +32,15 @@ class TransmittableThreadLocal_Transmitter_UserTest : AnnotationSpec() {
     fun test_clear_restore() {
         val ttl = TransmittableThreadLocal<String>()
         ttl.set(PARENT)
-
         val future = executorService.submit {
             ttl.set(CHILD)
-
             val backup = Transmitter.clear()
-
             assertNull(ttl.get())
-
             Transmitter.restore(backup)
-
             assertEquals(CHILD, ttl.get())
         }
-
         assertEquals(PARENT, ttl.get())
-
         future.get(1, TimeUnit.SECONDS)
-
         assertEquals(PARENT, ttl.get())
     }
 
@@ -69,9 +48,7 @@ class TransmittableThreadLocal_Transmitter_UserTest : AnnotationSpec() {
     fun test_runSupplierWithCaptured() {
         val ttl = TransmittableThreadLocal<String>()
         ttl.set(PARENT)
-
         val capture = Transmitter.capture()
-
         val future = executorService.submit {
             ttl.set("child")
             Transmitter.runSupplierWithCaptured(capture) {
@@ -79,11 +56,8 @@ class TransmittableThreadLocal_Transmitter_UserTest : AnnotationSpec() {
                 ttl.get()
             }
         }
-
         assertEquals(PARENT, ttl.get())
-
         future.get(1, TimeUnit.SECONDS)
-
         assertEquals(PARENT, ttl.get())
     }
 
@@ -91,7 +65,6 @@ class TransmittableThreadLocal_Transmitter_UserTest : AnnotationSpec() {
     fun test_runSupplierWithClear() {
         val ttl = TransmittableThreadLocal<String>()
         ttl.set(PARENT)
-
         val future = executorService.submit {
             ttl.set("child")
             Transmitter.runSupplierWithClear {
@@ -99,11 +72,8 @@ class TransmittableThreadLocal_Transmitter_UserTest : AnnotationSpec() {
                 ttl.get()
             }
         }
-
         assertEquals(PARENT, ttl.get())
-
         future.get(1, TimeUnit.SECONDS)
-
         assertEquals(PARENT, ttl.get())
     }
 
@@ -111,9 +81,7 @@ class TransmittableThreadLocal_Transmitter_UserTest : AnnotationSpec() {
     fun test_runCallableWithCaptured() {
         val ttl = TransmittableThreadLocal<String>()
         ttl.set(PARENT)
-
         val capture = Transmitter.capture()
-
         val future = executorService.submit {
             ttl.set("child")
             try {
@@ -125,11 +93,8 @@ class TransmittableThreadLocal_Transmitter_UserTest : AnnotationSpec() {
                 throw RuntimeException(e)
             }
         }
-
         assertEquals(PARENT, ttl.get())
-
         future.get(1, TimeUnit.SECONDS)
-
         assertEquals(PARENT, ttl.get())
     }
 
@@ -137,7 +102,6 @@ class TransmittableThreadLocal_Transmitter_UserTest : AnnotationSpec() {
     fun test_runCallableWithClear() {
         val ttl = TransmittableThreadLocal<String>()
         ttl.set(PARENT)
-
         val future = executorService.submit {
             ttl.set("child")
             try {
@@ -149,14 +113,10 @@ class TransmittableThreadLocal_Transmitter_UserTest : AnnotationSpec() {
                 throw RuntimeException(e)
             }
         }
-
         assertEquals(PARENT, ttl.get())
-
         future.get(1, TimeUnit.SECONDS)
-
         assertEquals(PARENT, ttl.get())
     }
-
 
     @AfterAll
     fun afterAll() {
@@ -167,7 +127,6 @@ class TransmittableThreadLocal_Transmitter_UserTest : AnnotationSpec() {
     companion object {
         private val PARENT = "parent: " + Date()
         private val CHILD = "child: " + Date()
-
         private val executorService: ExecutorService = Executors.newFixedThreadPool(3).also { expandThreadPool(it) }
     }
 }

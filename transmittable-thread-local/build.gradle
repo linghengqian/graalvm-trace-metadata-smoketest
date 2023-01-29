@@ -23,12 +23,12 @@ dependencies {
     testImplementation 'org.javassist:javassist:3.29.2-GA'
 }
 
-test {
-    useJUnitPlatform()
-}
-
 compileTestKotlin {
     kotlinOptions.jvmTarget = "17"
+}
+
+test {
+    useJUnitPlatform()
 }
 
 graalvmNative {

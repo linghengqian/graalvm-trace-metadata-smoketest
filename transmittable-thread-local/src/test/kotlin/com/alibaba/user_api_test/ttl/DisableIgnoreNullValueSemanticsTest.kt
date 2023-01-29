@@ -8,9 +8,6 @@ import java.util.concurrent.FutureTask
 import java.util.concurrent.atomic.AtomicInteger
 import kotlin.concurrent.thread
 
-/**
- * Test the "Ignore-Null-Value Semantics" of [TransmittableThreadLocal] from user code(different package)
- */
 class DisableIgnoreNullValueSemanticsTest {
     @Test
     fun test_TTL_not_disableIgnoreNullValueSemantics_defaultTtlBehavior() {
@@ -23,30 +20,18 @@ class DisableIgnoreNullValueSemanticsTest {
                 return "$parentValue + child"
             }
         }
-
         assertEquals("init", ttl.get())
         ttl.set(null)
-        // DO NOT `ttl.get()` !
-        //   `get` operation will re-init the value of ThreadLocal
-
         val task = FutureTask {
             ttl.get()
         }
         thread { task.run() }.join()
-
-        // `get` operation will re-init the value of ThreadLocal !
         assertEquals("init", ttl.get())
-        // "Ignore-Null-Value Semantics" will not transmit ThreadLocal with the null value,
-        // so the value in new thread is "init" value
         assertEquals("init", task.get())
-
-        //////////////////////////////////////
-
         val task2 = FutureTask {
             ttl.get()
         }
         thread { task2.run() }.join()
-
         assertEquals("init", ttl.get())
         assertEquals("init + child", task2.get())
     }
@@ -54,7 +39,6 @@ class DisableIgnoreNullValueSemanticsTest {
     @Test
     fun test_TTL_not_disableIgnoreNullValueSemantics_defaultTtlBehavior_getSafe_ForNullInit() {
         val count = AtomicInteger()
-
         val ttl = object : TransmittableThreadLocal<String?>() {
             override fun initialValue(): String? {
                 count.getAndIncrement()
@@ -66,10 +50,8 @@ class DisableIgnoreNullValueSemanticsTest {
                 return super.childValue(parentValue)
             }
         }
-
         assertNull(ttl.get())
         assertEquals(1, count.get())
-
         ttl.set(null)
         assertNull(ttl.get())
         assertEquals(2, count.get())
@@ -86,26 +68,19 @@ class DisableIgnoreNullValueSemanticsTest {
                 return "$parentValue + child"
             }
         }
-
         assertEquals("init", ttl.get())
         ttl.set(null)
         assertNull(ttl.get())
-
         val task = FutureTask {
             ttl.get()
         }
         thread { task.run() }.join()
-
         assertNull(ttl.get())
         assertEquals("null + child", task.get())
-
-        //////////////////////////////////////
-
         val task2 = FutureTask {
             ttl.get()
         }
         thread { task2.run() }.join()
-
         assertNull(ttl.get())
         assertEquals("null + child", task.get())
     }
@@ -121,26 +96,19 @@ class DisableIgnoreNullValueSemanticsTest {
                 return "$parentValue + child"
             }
         }
-
         assertEquals("init", ttl.get())
         ttl.set(null)
         assertNull(ttl.get())
-
         val task = FutureTask {
             ttl.get()
         }
         thread { task.run() }.join()
-
         assertNull(ttl.get())
         assertEquals("null + child", task.get())
-
-        //////////////////////////////////////
-
         val task2 = FutureTask {
             ttl.get()
         }
         thread { task2.run() }.join()
-
         assertNull(ttl.get())
         assertEquals("null + child", task.get())
     }

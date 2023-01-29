@@ -12,20 +12,16 @@ import java.util.concurrent.atomic.AtomicInteger
 import kotlin.concurrent.thread
 
 class TransmittableThreadLocal_withInit_Test : AnnotationSpec() {
-
     @Test
     fun test_withInit() {
         val ttl: TransmittableThreadLocal<Int> = TransmittableThreadLocal.withInitial { 42 }
-
         assertNotNull(ttl)
         assertEquals(42, ttl.get())
-
         val atomicInteger = AtomicInteger(-1)
         thread {
             atomicInteger.set(ttl.get())
         }.join()
         assertEquals(42, atomicInteger.get())
-
         atomicInteger.set(-1)
         executorService.submit {
             atomicInteger.set(ttl.get())
@@ -36,18 +32,16 @@ class TransmittableThreadLocal_withInit_Test : AnnotationSpec() {
     @Test
     fun test_withInitialAndCopier_2() {
         val ttl = TransmittableThreadLocal.withInitialAndCopier(
-            { 42 },
-            { it + 100 },
+                { 42 },
+                { it + 100 },
         )
         assertNotNull(ttl)
         assertEquals(42, ttl.get())
-
         val atomicInteger = AtomicInteger(-1)
         thread {
             atomicInteger.set(ttl.get())
         }.join()
         assertEquals(142, atomicInteger.get())
-
         atomicInteger.set(-1)
         executorService.submit {
             atomicInteger.set(ttl.get())
@@ -58,19 +52,17 @@ class TransmittableThreadLocal_withInit_Test : AnnotationSpec() {
     @Test
     fun test_withInitialAndCopier_3() {
         val ttl = TransmittableThreadLocal.withInitialAndCopier(
-            { 42 },
-            { it + 100 },
-            { it + 1000 },
+                { 42 },
+                { it + 100 },
+                { it + 1000 },
         )
         assertNotNull(ttl)
         assertEquals(42, ttl.get())
-
         val atomicInteger = AtomicInteger(-1)
         thread {
             atomicInteger.set(ttl.get())
         }.join()
         assertEquals(142, atomicInteger.get())
-
         atomicInteger.set(-1)
         executorService.submit {
             atomicInteger.set(ttl.get())
@@ -82,8 +74,8 @@ class TransmittableThreadLocal_withInit_Test : AnnotationSpec() {
     fun afterClass() {
         executorService.shutdown()
         assertTrue(
-            "Fail to shutdown thread pool",
-            executorService.awaitTermination(1, TimeUnit.SECONDS)
+                "Fail to shutdown thread pool",
+                executorService.awaitTermination(1, TimeUnit.SECONDS)
         )
     }
 

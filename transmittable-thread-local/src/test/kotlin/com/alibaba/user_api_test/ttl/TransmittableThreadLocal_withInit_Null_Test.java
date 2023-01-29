@@ -9,7 +9,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 public class TransmittableThreadLocal_withInit_Null_Test {
-
     @Test
     public void test_null__withInitial() {
         try {
@@ -28,7 +27,6 @@ public class TransmittableThreadLocal_withInit_Null_Test {
         } catch (NullPointerException e) {
             assertEquals("supplier is null", e.getMessage());
         }
-
         try {
             TransmittableThreadLocal.withInitialAndCopier((Supplier<String>) () -> null, null);
             fail();
@@ -45,14 +43,12 @@ public class TransmittableThreadLocal_withInit_Null_Test {
         } catch (NullPointerException e) {
             assertEquals("supplier is null", e.getMessage());
         }
-
         try {
             TransmittableThreadLocal.withInitialAndCopier((Supplier<String>) () -> null, null, null);
             fail();
         } catch (NullPointerException e) {
             assertEquals("ttl copier for child value is null", e.getMessage());
         }
-
         try {
             TransmittableThreadLocal.withInitialAndCopier((Supplier<String>) () -> null, parentValue -> null, null);
             fail();
