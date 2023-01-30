@@ -8,6 +8,9 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.DisabledInNativeImage;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
+
 public class SimpleGroovyShellTest {
     @Test
     @DisabledInNativeImage
@@ -24,17 +27,23 @@ public class SimpleGroovyShellTest {
         Value java_lang_Math = polyglot.getBindings("java").getMember(Math.class.getName());
         double sqrt2 = java_lang_Math.invokeMember("sqrt", 2).asDouble();
         double pi = java_lang_Math.getMember("PI").asDouble();
-        System.out.println(sqrt2);
-        System.out.println(pi);
+        assert sqrt2 == Math.sqrt(2);
+        assert pi == Math.PI;
     }
 
     @Test
-    @SuppressWarnings("resource")
     @Disabled
+    @DisabledInNativeImage
     void testGroovyShellInEspresso() {
-        Context polyglot = Context.newBuilder().allowNativeAccess(true).build();
-        Value groovyShell = polyglot.getBindings("java").getMember(GroovyShell.class.getName());
-        Script script = groovyShell.invokeMember("parse", "3*5").as(Script.class);
-        assert script != null;
+        try (Context polyglot = Context.newBuilder().allowNativeAccess(true).build()) {
+            Value inlineExpressionParser = polyglot.getBindings("java").getMember("com.lingh.InlineExpressionParser");
+            assert polyglot.getBindings("java").getMember("groovy.lang.GroovyShell") != null;
+            assert inlineExpressionParser != null;
+            assertThat(inlineExpressionParser.invokeMember("handlePlaceHolder", "t_$->{[\"new$->{1+2}\"]}").as(String.class),
+                    is("t_${[\"new${1+2}\"]}"));
+            assertThat(inlineExpressionParser.invokeMember("handlePlaceHolder", "t_${[\"new$->{1+2}\"]}").as(String.class),
+                    is("t_${[\"new${1+2}\"]}"));
+        }
+
     }
 }

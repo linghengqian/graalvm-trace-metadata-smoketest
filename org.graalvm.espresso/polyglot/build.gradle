@@ -33,6 +33,7 @@ graalvmNative {
     binaries {
         test {
             buildArgs.add('--report-unsupported-elements-at-runtime')
+            buildArgs.add('--language:java')
         }
     }
     agent {
@@ -47,7 +48,7 @@ graalvmNative {
         metadataCopy {
             mergeWithExisting = true
             inputTaskNames.add("test")
-            outputDirectories.add("src/test/resources/META-INF/native-image/org.apache.groovy/groovy")
+            outputDirectories.add("src/test/resources/META-INF/native-image/org.graalvm.espresso/polyglot")
         }
     }
 }
