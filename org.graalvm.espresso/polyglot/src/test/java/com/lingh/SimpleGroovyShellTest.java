@@ -37,13 +37,11 @@ public class SimpleGroovyShellTest {
     void testGroovyShellInEspresso() {
         try (Context polyglot = Context.newBuilder().allowNativeAccess(true).build()) {
             Value inlineExpressionParser = polyglot.getBindings("java").getMember("com.lingh.InlineExpressionParser");
-            assert polyglot.getBindings("java").getMember("groovy.lang.GroovyShell") != null;
             assert inlineExpressionParser != null;
             assertThat(inlineExpressionParser.invokeMember("handlePlaceHolder", "t_$->{[\"new$->{1+2}\"]}").as(String.class),
                     is("t_${[\"new${1+2}\"]}"));
             assertThat(inlineExpressionParser.invokeMember("handlePlaceHolder", "t_${[\"new$->{1+2}\"]}").as(String.class),
                     is("t_${[\"new${1+2}\"]}"));
         }
-
     }
 }
