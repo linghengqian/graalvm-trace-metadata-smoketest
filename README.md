@@ -26,9 +26,9 @@ gu install js espresso
 - select one.
 
 ```shell
-cd ./jjwt-jackson/
-cd ./jjwt-gson/
-cd ./jjwt-orgjson/
+cd ./io.jsonwebtoken/jjwt-jackson/
+cd ./io.jsonwebtoken/jjwt-gson/
+cd ./io.jsonwebtoken/jjwt-orgjson/
 cd ./zstd-jni/
 cd ./vertx-core/
 cd ./groovy/
