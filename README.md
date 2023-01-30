@@ -18,6 +18,7 @@ sdk install java 22.3.r17-grl
 sdk use java 22.3.r17-grl
 gu install native-image
 sudo apt-get install build-essential libz-dev zlib1g-dev -y
+sdk install gradle
 gu install js espresso
 
 ```
@@ -50,6 +51,7 @@ cd ./transmittable-thread-local/
 - exec.
 
 ```shell
+gradle wrapper
 ./gradlew -Pagent clean test
 ./gradlew metadataCopy --task test
 ./gradlew clean nativeTest
