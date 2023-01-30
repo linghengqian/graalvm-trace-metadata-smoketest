@@ -1,0 +1,53 @@
+plugins {
+    id 'java'
+    id 'org.graalvm.buildtools.native' version '0.9.19'
+}
+
+group 'com.lingh'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
+    testImplementation 'org.apache.groovy:groovy:4.0.8'
+    testImplementation 'com.google.guava:guava:31.1-jre'
+    testImplementation 'org.hamcrest:hamcrest-core:2.2'
+    testImplementation 'org.hamcrest:hamcrest-library:2.2'
+    implementation 'org.graalvm.sdk:graal-sdk:22.3.1'
+    implementation 'org.graalvm.truffle:truffle-api:22.3.1'
+    implementation 'org.graalvm.regex:regex:22.3.1'
+    implementation 'org.graalvm.espresso:polyglot:22.3.1'
+    implementation 'org.graalvm.espresso:hotswap:22.3.1'
+
+}
+
+test {
+    useJUnitPlatform()
+}
+
+graalvmNative {
+    binaries {
+        test {
+            buildArgs.add('--report-unsupported-elements-at-runtime')
+        }
+    }
+    agent {
+        defaultMode = "standard"
+        modes {
+            standard {
+            }
+            conditional {
+                userCodeFilterPath = "user-code-filter.json"
+            }
+        }
+        metadataCopy {
+            mergeWithExisting = true
+            inputTaskNames.add("test")
+            outputDirectories.add("src/test/resources/META-INF/native-image/org.apache.groovy/groovy")
+        }
+    }
+}
