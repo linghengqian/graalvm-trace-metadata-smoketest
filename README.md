@@ -38,7 +38,7 @@ cd ./hazelcast/
 cd ./ehcache/
 cd ./shardingsphere-jdbc-core/
 cd ./nashorn-core/
-cd ./js/
+cd ./org.graalvm.js/js/
 cd ./dynamic-datasource-spring-boot-starter/
 cd ./curator-client/
 cd ./jetcd-core/
