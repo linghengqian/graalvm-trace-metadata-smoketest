@@ -13,13 +13,15 @@ repositories {
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
-    implementation 'org.graalvm.sdk:graal-sdk:22.3.1'
+//    implementation 'org.graalvm.sdk:graal-sdk:22.3.1' // We didn't set compiler dir like https://www.graalvm.org/22.3/reference-manual/js/RunOnJDK/ at all, this dependency is meaningless
     implementation 'org.graalvm.js:js:22.3.1'
     implementation 'org.graalvm.js:js-scriptengine:22.3.1'
-    implementation 'org.graalvm.tools:profiler:22.3.1'
-    implementation 'org.graalvm.tools:chromeinspector:22.3.1'
+//    implementation 'org.graalvm.tools:profiler:22.3.1' // ASF does not allow GPL 2.0 dependencies
+//    implementation 'org.graalvm.tools:chromeinspector:22.3.1' // ASF does not allow GPL 2.0 dependencies
     testImplementation 'org.junit.vintage:junit-vintage-engine:5.9.2'
+    // TODO Note that this dependency prevents `./gradlew clean nativeTest`
     testImplementation 'org.openjdk.nashorn:nashorn-core:15.4'
+    // Only for test comparison, because JDK 17 no longer has Nashorn built in
 }
 
 test {
