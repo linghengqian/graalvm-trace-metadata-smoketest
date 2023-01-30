@@ -7,7 +7,8 @@
 
 # Start nativeTest
 
-- In Windows 11, Jetbrains IntelliJ IDEA Ultimate installed by Jetbrains Toolbox AppImage under WSLg. 
+- In Windows 11, Jetbrains IntelliJ IDEA Ultimate installed by Jetbrains Toolbox AppImage under WSLg.
+- Note, when executing unit tests implemented by GraalVM Truffle, be sure to additionally use `sdk use java 17.0.6-ms`
 
 ```shell
 cd /tmp
@@ -15,6 +16,7 @@ sudo apt install unzip zip curl sed -y
 curl -s "https://get.sdkman.io" | bash
 source "$HOME/.sdkman/bin/sdkman-init.sh"
 sdk install java 22.3.r17-grl
+sdk install java 17.0.6-ms
 sdk use java 22.3.r17-grl
 gu install native-image
 sudo apt-get install build-essential libz-dev zlib1g-dev -y
@@ -56,11 +58,14 @@ gradle wrapper
 ./gradlew metadataCopy --task test
 ./gradlew clean nativeTest
 ```
+
 ### Extra tips
+
 - All submitted GraalVM reachability metadata, if the MBean-related part is unnecessary, should actively remove the
   GraalVM reachability metadata related to the MBean, because this part of the metadata can always make the boot process
   of the MBean server, using a different code path from the normal flow, which often leads to unreasonable nativeTest
   results. This includes the following five packages.
+
 ```
 java.lang.management.**
 jdk.management.**
@@ -68,7 +73,9 @@ com.sun.management.**
 sun.management.**
 javax.management.**
 ```
+
 - The main three commands submitted upstream.
+
 ```shell
 ./gradlew scaffold --coordinates io.jsonwebtoken:jjwt-jackson:0.11.5
 ./gradlew :spotlessApply
