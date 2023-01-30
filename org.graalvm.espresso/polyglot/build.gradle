@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'org.graalvm.buildtools.native' version '0.9.19'
+    id "io.freefair.lombok" version "6.6-rc1"
 }
 
 group 'com.lingh'
@@ -17,11 +18,7 @@ dependencies {
     testImplementation 'com.google.guava:guava:31.1-jre'
     testImplementation 'org.hamcrest:hamcrest-core:2.2'
     testImplementation 'org.hamcrest:hamcrest-library:2.2'
-    implementation 'org.graalvm.sdk:graal-sdk:22.3.1'
     implementation 'org.graalvm.truffle:truffle-api:22.3.1'
-    implementation 'org.graalvm.regex:regex:22.3.1'
-    implementation 'org.graalvm.espresso:polyglot:22.3.1'
-    implementation 'org.graalvm.espresso:hotswap:22.3.1'
 
 }
 

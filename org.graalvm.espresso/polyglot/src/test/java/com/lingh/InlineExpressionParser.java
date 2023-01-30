@@ -6,6 +6,7 @@ import groovy.lang.Closure;
 import groovy.lang.GString;
 import groovy.lang.GroovyShell;
 import groovy.lang.Script;
+import lombok.RequiredArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -20,6 +21,7 @@ import java.util.stream.Collectors;
 /**
  * Inline expression parser.
  */
+@RequiredArgsConstructor
 public final class InlineExpressionParser {
 
     private static final char SPLITTER = ',';
@@ -29,10 +31,6 @@ public final class InlineExpressionParser {
     private static final GroovyShell SHELL = new GroovyShell();
 
     private final String inlineExpression;
-
-    public InlineExpressionParser(String inlineExpression) {
-        this.inlineExpression = inlineExpression;
-    }
 
     /**
      * Replace all inline expression placeholders.
