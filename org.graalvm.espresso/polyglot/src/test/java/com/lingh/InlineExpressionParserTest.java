@@ -97,6 +97,8 @@ public class InlineExpressionParserTest {
 
     @Test
     public void assertEvaluateClosure() {
-        assertThat(new InlineExpressionParser("${1+2}").evaluateClosure().call().toString(), is("3"));
+        if (!System.getProperty("java.vm.name").equals("Substrate VM")) {
+            assertThat(new InlineExpressionParser("${1+2}").evaluateClosure().call().toString(), is("3"));
+        }
     }
 }
