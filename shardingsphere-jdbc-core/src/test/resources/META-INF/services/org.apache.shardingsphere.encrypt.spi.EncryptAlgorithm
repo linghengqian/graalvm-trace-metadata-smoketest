@@ -1,2 +1,4 @@
-com.lingh.test.e2e.driver.fixture.encrypt.JDBCEncryptAlgorithmFixture
-com.lingh.test.e2e.driver.fixture.encrypt.JDBCQueryAssistedEncryptAlgorithmFixture
+
+
+org.apache.shardingsphere.test.e2e.driver.fixture.encrypt.JDBCEncryptAlgorithmFixture
+org.apache.shardingsphere.test.e2e.driver.fixture.encrypt.JDBCQueryAssistedEncryptAlgorithmFixture

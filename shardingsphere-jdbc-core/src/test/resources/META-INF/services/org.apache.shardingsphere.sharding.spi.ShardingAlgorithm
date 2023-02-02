@@ -1,1 +1,3 @@
-com.lingh.test.e2e.driver.fixture.sharding.JDBCStandardShardingAlgorithmFixture
+
+ 
+org.apache.shardingsphere.test.e2e.driver.fixture.sharding.JDBCStandardShardingAlgorithmFixture

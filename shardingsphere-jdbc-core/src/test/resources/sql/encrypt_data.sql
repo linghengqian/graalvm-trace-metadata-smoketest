@@ -1,3 +1,5 @@
+
+
 DELETE FROM t_encrypt;
 DELETE FROM t_query_encrypt;
 DELETE FROM t_encrypt_contains_column;

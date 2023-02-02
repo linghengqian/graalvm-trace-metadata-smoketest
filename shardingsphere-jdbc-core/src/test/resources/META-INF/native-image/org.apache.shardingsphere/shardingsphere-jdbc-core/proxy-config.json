@@ -1,6 +1,0 @@
-[
-  {
-    "condition":{"typeReachable":"org.apache.shardingsphere.driver.api.ShardingSphereDataSourceFactory"},
-    "interfaces":["net.bytebuddy.description.type.TypeDescription$Generic$AnnotationReader$ForOwnerType$AnnotatedType"]
-  }
-]

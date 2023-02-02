@@ -9,28 +9,50 @@ version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    mavenLocal()
 }
 
 dependencies {
-    // TODO Use https://github.com/apache/shardingsphere/commit/5bfff28e9be568a09f6d57618659160d9e68853f,
-    //  need to add ConnectionManagerTest and ShardingSphereResultSetTest, ShardingSphereDriverURLTest
-    testImplementation 'org.apache.shardingsphere:shardingsphere-jdbc-core:5.3.0'
-    testImplementation 'org.junit.vintage:junit-vintage-engine:5.9.1'
+    // TODO Use https://github.com/apache/shardingsphere/commit/0acb6ef1d06141ff420216e6b9488bbbee2a31fc
+    testImplementation 'org.apache.shardingsphere:shardingsphere-jdbc-core:5.3.2-SNAPSHOT'
+    testImplementation 'org.junit.vintage:junit-vintage-engine:5.9.2'
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'org.mockito:mockito-core:4.11.0'
     testImplementation 'com.h2database:h2:2.1.214'
-    testImplementation 'com.zaxxer:HikariCP:4.0.3'
+    testImplementation 'com.zaxxer:HikariCP:5.0.1'
     testImplementation 'ch.qos.logback:logback-classic:1.2.11'
-    testRuntimeOnly 'org.postgresql:postgresql:42.5.1'  // TODO why?
 }
 
 test {
     useJUnitPlatform()
+    jvmArgs = Arrays.asList("-Djava.vm.name='Substrate VM'")
 }
 
 graalvmNative {
+    binaries {
+        test {
+            buildArgs.add('--report-unsupported-elements-at-runtime')
+            buildArgs.add('--language:java')
+            buildArgs.add('--initialize-at-build-time=org.junit.validator.PublicClassValidator')
+            buildArgs.add('--initialize-at-build-time=org.junit.internal.runners.rules.RuleMemberValidator')
+            buildArgs.add('-H:+ReportExceptionStackTraces')
+            buildArgs.add('--rerun-class-initialization-at-runtime=net.bytebuddy.ClassFileVersion')
+            buildArgs.add('--rerun-class-initialization-at-runtime=net.bytebuddy.utility.dispatcher.JavaDispatcher')
+            buildArgs.add('--rerun-class-initialization-at-runtime=net.bytebuddy.utility.Invoker$Dispatcher')
+            buildArgs.add('--rerun-class-initialization-at-runtime=net.bytebuddy.utility.GraalImageCode')
+            buildArgs.add('--initialize-at-build-time=net.bytebuddy.description.method.MethodDescription$InDefinedShape$AbstractBase$ForLoadedExecutable')
+            buildArgs.add('--initialize-at-build-time=net.bytebuddy.description.type.TypeDescription$AbstractBase')
+            buildArgs.add('--initialize-at-build-time=net.bytebuddy.description.type.TypeDescription$ForLoadedType')
+            buildArgs.add('--initialize-at-build-time=net.bytebuddy.description.method.MethodDescription$ForLoadedMethod')
+            buildArgs.add('--initialize-at-build-time=net.bytebuddy.implementation.bind.annotation.Argument$BindingMechanic')
+            buildArgs.add('--initialize-at-build-time=net.bytebuddy.implementation.bind.annotation.Argument$BindingMechanic$1')
+            buildArgs.add('--initialize-at-build-time=net.bytebuddy.implementation.bind.annotation.Argument$BindingMechanic$2')
+            buildArgs.add('--initialize-at-build-time=net.bytebuddy.implementation.bind.annotation.Super$Instantiation$2')
+            buildArgs.add('--initialize-at-build-time=net.bytebuddy.utility.dispatcher.JavaDispatcher$DynamicClassLoader')
+        }
+    }
     agent {
-        defaultMode = "conditional"
+        defaultMode = "standard"
         modes {
             standard {
             }
@@ -43,8 +65,10 @@ graalvmNative {
             inputTaskNames.add("test")
             outputDirectories.add("src/test/resources/META-INF/native-image/org.apache.shardingsphere/shardingsphere-jdbc-core")
         }
+        enableExperimentalPredefinedClasses = true
     }
     metadataRepository {
         enabled = true
+        version = "0.2.6"
     }
 }
