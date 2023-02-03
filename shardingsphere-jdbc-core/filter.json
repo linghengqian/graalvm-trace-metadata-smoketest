@@ -1,0 +1,15 @@
+{
+  "rules": [
+    {
+      "excludeClasses": "groovy.**"
+    },
+    {
+      "excludeClasses": "org.apache.groovy.**"
+    },
+    {
+      "excludeClasses": "org.codehaus.groovy.**"
+    }
+  ],
+  "regexRules": [
+  ]
+}
