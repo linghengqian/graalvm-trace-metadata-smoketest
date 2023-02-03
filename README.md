@@ -36,7 +36,7 @@ cd ./vertx-core/
 cd ./groovy/
 cd ./hazelcast/
 cd ./ehcache/
-cd ./shardingsphere-jdbc-core/
+cd ./org.apache.shardingsphere/shardingsphere-jdbc-core/
 cd ./nashorn-core/
 cd ./org.graalvm.js/js/
 cd ./dynamic-datasource-spring-boot-starter/
