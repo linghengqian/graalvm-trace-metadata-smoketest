@@ -8,6 +8,10 @@ plugins {
 group 'com.lingh'
 version '1.0-SNAPSHOT'
 
+springBoot {
+    mainClass = 'com.lingh.AddRemoveDatasourceApplication'
+}
+
 repositories {
     mavenCentral()
 }
