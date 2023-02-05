@@ -41,6 +41,7 @@ cd ./nashorn-core/
 cd ./org.graalvm.js/js/
 cd ./dynamic-datasource-spring-boot-starter/
 cd ./org.apache.curator/curator-client/
+cd ./org.apache.curator/curator-framework/
 cd ./jetcd-core/
 cd ./protobuf-java-util/
 cd ./opengauss-jdbc/
