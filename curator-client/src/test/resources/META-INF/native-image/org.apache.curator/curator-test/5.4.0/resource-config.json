@@ -1,8 +1,0 @@
-{
-  "resources":{
-  "includes":[{
-      "condition":{"typeReachable":"org.apache.curator.test.BaseClassForTests"},
-      "pattern":"\\Qorg/slf4j/impl/StaticLoggerBinder.class\\E"
-    }]},
-  "bundles":[]
-}
