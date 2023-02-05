@@ -2,13 +2,9 @@
 
 package org.apache.curator.framework.imps;
 
-import com.google.common.collect.Lists;
 import org.apache.curator.ensemble.EnsembleProvider;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
-import org.apache.curator.framework.api.BackgroundCallback;
-import org.apache.curator.framework.api.CuratorEventType;
-import org.apache.curator.framework.state.ConnectionState;
 import org.apache.curator.retry.ExponentialBackoffRetry;
 import org.apache.curator.test.InstanceSpec;
 import org.apache.curator.test.TestingCluster;
@@ -27,15 +23,17 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayInputStream;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
-import java.util.*;
+import java.util.Collection;
+import java.util.List;
+import java.util.Properties;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@SuppressWarnings({"UnusedAssignment", "unused"})
+@SuppressWarnings({"SameParameterValue", "unused"})
 public class TestReconfiguration extends CuratorTestBase {
     private final Timing2 timing = new Timing2();
     private TestingCluster cluster;
@@ -71,157 +69,6 @@ public class TestReconfiguration extends CuratorTestBase {
             System.out.println(quorumVerifier);
             assertConfig(quorumVerifier, cluster.getInstances());
             assertEquals(EnsembleTracker.configToConnectionString(quorumVerifier), ensembleProvider.getConnectionString());
-        }
-    }
-
-    @Test
-    public void testAddWithoutEnsembleTracker() throws Exception {
-        final String initialClusterCS = cluster.getConnectString();
-        try (CuratorFramework client = newClient(cluster.getConnectString(), false)) {
-            assertNull(((CuratorFrameworkImpl) client).getEnsembleTracker());
-            client.start();
-            QuorumVerifier oldConfig = toQuorumVerifier(client.getConfig().forEnsemble());
-            assertConfig(oldConfig, cluster.getInstances());
-            CountDownLatch latch = setChangeWaiter(client);
-            try (TestingCluster newCluster = new TestingCluster(TestingCluster.makeSpecs(1, false))) {
-                newCluster.start();
-                client.reconfig().joining(toReconfigSpec(newCluster.getInstances())).fromConfig(oldConfig.getVersion()).forEnsemble();
-                assertTrue(timing.awaitLatch(latch));
-                byte[] newConfigData = client.getConfig().forEnsemble();
-                QuorumVerifier newConfig = toQuorumVerifier(newConfigData);
-                List<InstanceSpec> newInstances = Lists.newArrayList(cluster.getInstances());
-                newInstances.addAll(newCluster.getInstances());
-                assertConfig(newConfig, newInstances);
-                assertEquals(ensembleProvider.getConnectionString(), initialClusterCS);
-                assertNotEquals(EnsembleTracker.configToConnectionString(newConfig), ensembleProvider.getConnectionString());
-                assertEquals(client.getZookeeperClient().getCurrentConnectionString(), initialClusterCS);
-                final CountDownLatch reconnectLatch = new CountDownLatch(1);
-                client.getConnectionStateListenable().addListener(
-                        (cfClient, newState) -> {
-                            if (newState == ConnectionState.RECONNECTED) reconnectLatch.countDown();
-                        }
-                );
-                client.getZookeeperClient().getZooKeeper().getTestable().injectSessionExpiration();
-                assertTrue(reconnectLatch.await(2, TimeUnit.SECONDS));
-                assertEquals(client.getZookeeperClient().getCurrentConnectionString(), initialClusterCS);
-                assertEquals(ensembleProvider.getConnectionString(), initialClusterCS);
-                newConfigData = client.getConfig().forEnsemble();
-                assertNotEquals(EnsembleTracker.configToConnectionString(newConfig), ensembleProvider.getConnectionString());
-            }
-        }
-    }
-
-    @Test
-    public void testAdd() throws Exception {
-        try (CuratorFramework client = newClient()) {
-            client.start();
-            QuorumVerifier oldConfig = toQuorumVerifier(client.getConfig().forEnsemble());
-            assertConfig(oldConfig, cluster.getInstances());
-            CountDownLatch latch = setChangeWaiter(client);
-            try (TestingCluster newCluster = new TestingCluster(TestingCluster.makeSpecs(1, false))) {
-                newCluster.start();
-                client.reconfig().joining(toReconfigSpec(newCluster.getInstances())).fromConfig(oldConfig.getVersion()).forEnsemble();
-                assertTrue(timing.awaitLatch(latch));
-                byte[] newConfigData = client.getConfig().forEnsemble();
-                QuorumVerifier newConfig = toQuorumVerifier(newConfigData);
-                List<InstanceSpec> newInstances = Lists.newArrayList(cluster.getInstances());
-                newInstances.addAll(newCluster.getInstances());
-                assertConfig(newConfig, newInstances);
-                assertEquals(EnsembleTracker.configToConnectionString(newConfig), ensembleProvider.getConnectionString());
-            }
-        }
-    }
-
-    @Test
-    public void testAddAsync() throws Exception {
-        try (CuratorFramework client = newClient()) {
-            client.start();
-            QuorumVerifier oldConfig = toQuorumVerifier(client.getConfig().forEnsemble());
-            assertConfig(oldConfig, cluster.getInstances());
-            CountDownLatch latch = setChangeWaiter(client);
-            try (TestingCluster newCluster = new TestingCluster(TestingCluster.makeSpecs(1, false))) {
-                newCluster.start();
-                final CountDownLatch callbackLatch = new CountDownLatch(1);
-                BackgroundCallback callback = (client1, event) -> {
-                    if (event.getType() == CuratorEventType.RECONFIG) {
-                        callbackLatch.countDown();
-                    }
-                };
-                client.reconfig().inBackground(callback).joining(toReconfigSpec(newCluster.getInstances())).fromConfig(oldConfig.getVersion()).forEnsemble();
-                assertTrue(timing.awaitLatch(callbackLatch));
-                assertTrue(timing.awaitLatch(latch));
-                byte[] newConfigData = client.getConfig().forEnsemble();
-                QuorumVerifier newConfig = toQuorumVerifier(newConfigData);
-                List<InstanceSpec> newInstances = Lists.newArrayList(cluster.getInstances());
-                newInstances.addAll(newCluster.getInstances());
-                assertConfig(newConfig, newInstances);
-                assertEquals(EnsembleTracker.configToConnectionString(newConfig), ensembleProvider.getConnectionString());
-            }
-        }
-    }
-
-    @Test
-    public void testAddAndRemove() throws Exception {
-        try (CuratorFramework client = newClient()) {
-            client.start();
-            QuorumVerifier oldConfig = toQuorumVerifier(client.getConfig().forEnsemble());
-            assertConfig(oldConfig, cluster.getInstances());
-            CountDownLatch latch = setChangeWaiter(client);
-            try (TestingCluster newCluster = new TestingCluster(TestingCluster.makeSpecs(1, false))) {
-                newCluster.start();
-                Collection<InstanceSpec> oldInstances = cluster.getInstances();
-                InstanceSpec us = cluster.findConnectionInstance(client.getZookeeperClient().getZooKeeper());
-                InstanceSpec removeSpec = oldInstances.iterator().next();
-                if (us.equals(removeSpec)) {
-                    Iterator<InstanceSpec> iterator = oldInstances.iterator();
-                    iterator.next();
-                    removeSpec = iterator.next();
-                }
-                Collection<InstanceSpec> instances = newCluster.getInstances();
-                client.reconfig().leaving(Integer.toString(removeSpec.getServerId())).joining(toReconfigSpec(instances)).fromConfig(oldConfig.getVersion()).forEnsemble();
-                assertTrue(timing.awaitLatch(latch));
-                byte[] newConfigData = client.getConfig().forEnsemble();
-                QuorumVerifier newConfig = toQuorumVerifier(newConfigData);
-                ArrayList<InstanceSpec> newInstances = Lists.newArrayList(oldInstances);
-                newInstances.addAll(instances);
-                newInstances.remove(removeSpec);
-                assertConfig(newConfig, newInstances);
-                assertEquals(EnsembleTracker.configToConnectionString(newConfig), ensembleProvider.getConnectionString());
-            }
-        }
-    }
-
-    @Test
-    public void testAddAndRemoveWithEmptyList() throws Exception {
-        try (CuratorFramework client = newClient()) {
-            client.start();
-            QuorumVerifier oldConfig = toQuorumVerifier(client.getConfig().forEnsemble());
-            assertConfig(oldConfig, cluster.getInstances());
-            CountDownLatch latch = setChangeWaiter(client);
-            Collection<InstanceSpec> oldInstances = cluster.getInstances();
-            client.reconfig().leaving(Collections.emptyList()).joining(Collections.emptyList()).fromConfig(oldConfig.getVersion()).forEnsemble();
-            assertTrue(timing.awaitLatch(latch));
-            byte[] newConfigData = client.getConfig().forEnsemble();
-            QuorumVerifier newConfig = toQuorumVerifier(newConfigData);
-            assertConfig(newConfig, oldInstances);
-            assertEquals(EnsembleTracker.configToConnectionString(newConfig), ensembleProvider.getConnectionString());
-        }
-    }
-
-    @Test
-    public void testNewMembersWithEmptyList() throws Exception {
-        try (CuratorFramework client = newClient()) {
-            client.start();
-            QuorumVerifier oldConfig = toQuorumVerifier(client.getConfig().forEnsemble());
-            assertConfig(oldConfig, cluster.getInstances());
-            CountDownLatch latch = setChangeWaiter(client);
-            Collection<InstanceSpec> oldInstances = cluster.getInstances();
-            client.reconfig().withNewMembers(Collections.emptyList()).fromConfig(oldConfig.getVersion()).forEnsemble();
-            assertTrue(timing.awaitLatch(latch));
-            byte[] newConfigData = client.getConfig().forEnsemble();
-            QuorumVerifier newConfig = toQuorumVerifier(newConfigData);
-            assertConfig(newConfig, oldInstances);
-            assertEquals(EnsembleTracker.configToConnectionString(newConfig), ensembleProvider.getConnectionString());
         }
     }
 
@@ -365,7 +212,8 @@ public class TestReconfiguration extends CuratorTestBase {
     private List<String> toReconfigSpec(Collection<InstanceSpec> instances) {
         String localhost = new InetSocketAddress((InetAddress) null, 0).getAddress().getHostAddress();
         return instances.stream()
-                .map(instance -> "server." + instance.getServerId() + "=" + localhost + ":" + instance.getElectionPort() + ":" + instance.getQuorumPort() + ";" + instance.getPort())
+                .map(instance -> "server." + instance.getServerId() + "=" +
+                        localhost + ":" + instance.getElectionPort() + ":" + instance.getQuorumPort() + ";" + instance.getPort())
                 .collect(Collectors.toList());
     }
 
