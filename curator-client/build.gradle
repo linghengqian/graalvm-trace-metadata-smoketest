@@ -14,13 +14,13 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.1'
     // Use https://github.com/apache/curator/commit/9b3a145372d9a8bc9a71adb630a1ad9b71fd2889
-    // TODO We need to wait for the zookeeper version release that includes https://github.com/apache/zookeeper/pull/1942.
     testImplementation 'org.apache.curator:curator-client:5.4.0'
     testImplementation 'org.awaitility:awaitility:4.2.0'
     testImplementation 'org.mockito:mockito-core:4.11.0'
     testImplementation 'org.apache.curator:curator-test:5.4.0'
     testImplementation 'org.assertj:assertj-core:3.23.1'
     testImplementation 'ch.qos.logback:logback-classic:1.2.11'
+    implementation 'org.apache.zookeeper:zookeeper:3.8.1'
 }
 
 test {
@@ -46,5 +46,9 @@ graalvmNative {
             inputTaskNames.add("test")
             outputDirectories.add("src/test/resources/META-INF/native-image/org.apache.curator/curator-client")
         }
+    }
+    metadataRepository {
+        enabled = true
+        version = "0.2.6"
     }
 }

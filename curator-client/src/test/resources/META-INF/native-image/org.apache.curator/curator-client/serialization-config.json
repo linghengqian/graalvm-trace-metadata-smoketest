@@ -32,22 +32,6 @@
     },
     {
       "name":"java.util.concurrent.locks.ReentrantLock$Sync"
-    },
-    {
-      "name":"org.mockito.codegen.CuratorZookeeperClient$MockitoMock$fi03ej0op99200N",
-      "customTargetConstructorClass":"java.lang.Object"
-    },
-    {
-      "name":"org.mockito.codegen.RetrySleeper$MockitoMock$agu4v00op99200N",
-      "customTargetConstructorClass":"java.lang.Object"
-    },
-    {
-      "name":"org.mockito.codegen.Stat$MockitoMock$0m1m4h1op99200N",
-      "customTargetConstructorClass":"java.lang.Object"
-    },
-    {
-      "name":"org.mockito.codegen.ZooKeeper$MockitoMock$ku29fd0op99200N",
-      "customTargetConstructorClass":"java.lang.Object"
     }
   ],
   "lambdaCapturingTypes":[

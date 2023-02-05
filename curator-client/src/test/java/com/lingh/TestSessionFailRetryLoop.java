@@ -143,7 +143,6 @@ public class TestSessionFailRetryLoop extends BaseClassForTests {
                             RetryLoop.callWithRetry(client, (Callable<Void>) () -> {
                                         assertNull(client.getZooKeeper().exists("/foo/bar", false));
                                         client.getZooKeeper().getTestable().injectSessionExpiration();
-
                                         client.getZooKeeper();
                                         client.blockUntilConnectedOrTimedOut();
                                         assertNull(client.getZooKeeper().exists("/foo/bar", false));
