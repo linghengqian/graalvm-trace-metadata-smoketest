@@ -46,23 +46,6 @@
     "name":"java.util.PropertyPermission"
   },
   {
-    "condition":{"typeReachable":"org.apache.curator.test.BaseClassForTests"},
-    "name":"org.apache.curator.utils.DebugUtils",
-    "fields":[
-      {"name":"PROPERTY_DONT_LOG_CONNECTION_ISSUES"},
-      {"name":"PROPERTY_REMOVE_WATCHERS_IN_FOREGROUND"},
-      {"name":"PROPERTY_VALIDATE_NAMESPACE_WATCHER_MAP_EMPTY"}
-    ]
-  },
-  {
-    "condition":{"typeReachable":"org.apache.curator.test.ZooKeeperServerEmbeddedAdapter"},
-    "name":"org.apache.zookeeper.metrics.impl.DefaultMetricsProvider"
-  },
-  {
-    "condition":{"typeReachable":"org.apache.curator.test.TestingZooKeeperServer"},
-    "name":"org.apache.zookeeper.server.embedded.ZooKeeperServerEmbedded"
-  },
-  {
     "condition":{"typeReachable":"org.apache.curator.test.DirectoryUtils"},
     "name":"sun.security.provider.NativePRNG",
     "methods":[{"name":"<init>","parameterTypes":[] }]
