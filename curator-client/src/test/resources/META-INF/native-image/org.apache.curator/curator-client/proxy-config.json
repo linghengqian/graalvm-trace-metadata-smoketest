@@ -1,8 +1,0 @@
-[
-  {
-    "interfaces":[]
-  },
-  {
-    "interfaces":["org.apache.curator.RetrySleeper"]
-  }
-]

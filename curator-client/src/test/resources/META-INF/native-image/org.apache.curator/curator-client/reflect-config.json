@@ -1,217 +1,19 @@
 [
 {
-  "name":"[B"
-},
-{
-  "name":"[C"
-},
-{
-  "name":"[D"
-},
-{
-  "name":"[F"
-},
-{
-  "name":"[I"
-},
-{
-  "name":"[J"
-},
-{
-  "name":"[Ljava.lang.Object;"
-},
-{
-  "name":"[Ljava.lang.String;"
-},
-{
-  "name":"[Ljavax.management.openmbean.CompositeData;"
-},
-{
-  "name":"[S"
-},
-{
-  "name":"[Z"
-},
-{
-  "name":"com.lingh.BasicTests",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"testBackgroundConnect","parameterTypes":[] }, 
-    {"name":"testExpiredSession","parameterTypes":[] }, 
-    {"name":"testReconnect","parameterTypes":[] }, 
-    {"name":"testSimple","parameterTypes":[] }
-  ]
-},
-{
-  "name":"com.lingh.TestIs37",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"testIsZk37","parameterTypes":[] }
-  ]
-},
-{
-  "name":"com.lingh.TestRetryLoop",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"testExponentialBackoffRetryLimit","parameterTypes":[] }, 
-    {"name":"testRetryForever","parameterTypes":[] }, 
-    {"name":"testRetryForeverWithSessionFailed","parameterTypes":[] }, 
-    {"name":"testRetryLoop","parameterTypes":[] }, 
-    {"name":"testRetryLoopWithFailure","parameterTypes":[] }
-  ]
-},
-{
-  "name":"com.lingh.TestSessionFailRetryLoop",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"testBasic","parameterTypes":[] }, 
-    {"name":"testBasicStatic","parameterTypes":[] }, 
-    {"name":"testRetry","parameterTypes":[] }, 
-    {"name":"testRetryStatic","parameterTypes":[] }
-  ]
-},
-{
-  "name":"com.lingh.utils.TestCloseableScheduledExecutorService",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setup","parameterTypes":[] }, 
-    {"name":"tearDown","parameterTypes":[] }, 
-    {"name":"testCloseableScheduleWithFixedDelay","parameterTypes":[] }, 
-    {"name":"testCloseableScheduleWithFixedDelayAndAdditionalTasks","parameterTypes":[] }
-  ]
-},
-{
-  "name":"com.lingh.utils.TestZKPaths",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"testMakePath","parameterTypes":[] }, 
-    {"name":"testSplit","parameterTypes":[] }
-  ]
-},
-{
-  "name":"com.sun.management.GarbageCollectorMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"com.sun.management.GcInfo",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"com.sun.management.HotSpotDiagnosticMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"com.sun.management.ThreadMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"com.sun.management.UnixOperatingSystemMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"com.sun.management.VMOption",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"com.sun.management.internal.GarbageCollectorExtImpl",
-  "queryAllPublicConstructors":true
-},
-{
-  "name":"com.sun.management.internal.HotSpotDiagnostic",
-  "queryAllPublicConstructors":true
-},
-{
-  "name":"com.sun.management.internal.HotSpotThreadImpl",
-  "queryAllPublicConstructors":true
-},
-{
-  "name":"com.sun.management.internal.OperatingSystemImpl",
-  "queryAllPublicConstructors":true
-},
-{
+  "condition":{"typeReachable":"org.apache.curator.test.BaseClassForTests"},
   "name":"java.io.FilePermission"
 },
 {
-  "name":"java.lang.Boolean",
-  "fields":[{"name":"TYPE"}]
-},
-{
-  "name":"java.lang.Byte",
-  "fields":[{"name":"TYPE"}]
-},
-{
-  "name":"java.lang.Character",
-  "fields":[{"name":"TYPE"}]
-},
-{
-  "name":"java.lang.Deprecated",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"java.lang.Double",
-  "fields":[{"name":"TYPE"}]
-},
-{
-  "name":"java.lang.Enum"
-},
-{
-  "name":"java.lang.Float",
-  "fields":[{"name":"TYPE"}]
-},
-{
-  "name":"java.lang.Integer",
-  "fields":[{"name":"TYPE"}]
-},
-{
-  "name":"java.lang.Long",
-  "fields":[{"name":"TYPE"}]
-},
-{
+  "condition":{"typeReachable":"org.apache.curator.retry.RetryForever"},
   "name":"java.lang.Object",
   "methods":[{"name":"toString","parameterTypes":[] }]
 },
 {
+  "condition":{"typeReachable":"org.apache.curator.test.BaseClassForTests"},
   "name":"java.lang.RuntimePermission"
 },
 {
-  "name":"java.lang.Short",
-  "fields":[{"name":"TYPE"}]
-},
-{
-  "name":"java.lang.StackTraceElement",
-  "queryAllPublicMethods":true
-},
-{
+  "condition":{"typeReachable":"org.apache.curator.retry.RetryForever"},
   "name":"java.lang.StackWalker",
   "methods":[
     {"name":"getInstance","parameterTypes":["java.util.Set","int"] }, 
@@ -219,9 +21,11 @@
   ]
 },
 {
+  "condition":{"typeReachable":"org.apache.curator.retry.RetryForever"},
   "name":"java.lang.StackWalker$Option"
 },
 {
+  "condition":{"typeReachable":"org.apache.curator.retry.RetryForever"},
   "name":"java.lang.StackWalker$StackFrame",
   "methods":[
     {"name":"getClassName","parameterTypes":[] }, 
@@ -231,221 +35,45 @@
   ]
 },
 {
-  "name":"java.lang.String"
-},
-{
+  "condition":{"typeReachable":"org.apache.curator.test.ZooKeeperServerEmbeddedAdapter"},
   "name":"java.lang.Throwable",
   "methods":[{"name":"getSuppressed","parameterTypes":[] }]
 },
 {
-  "name":"java.lang.Void",
-  "fields":[{"name":"TYPE"}]
-},
-{
-  "name":"java.lang.invoke.MethodHandle"
-},
-{
-  "name":"java.lang.management.BufferPoolMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"java.lang.management.ClassLoadingMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"java.lang.management.CompilationMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"java.lang.management.LockInfo",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"java.lang.management.ManagementPermission",
-  "methods":[{"name":"<init>","parameterTypes":["java.lang.String"] }]
-},
-{
-  "name":"java.lang.management.MemoryMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"java.lang.management.MemoryManagerMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"java.lang.management.MemoryPoolMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"java.lang.management.MemoryUsage",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"java.lang.management.MonitorInfo",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"java.lang.management.PlatformLoggingMXBean",
-  "queryAllPublicMethods":true,
-  "methods":[
-    {"name":"getLoggerLevel","parameterTypes":["java.lang.String"] }, 
-    {"name":"getLoggerNames","parameterTypes":[] }, 
-    {"name":"getParentLoggerName","parameterTypes":["java.lang.String"] }, 
-    {"name":"setLoggerLevel","parameterTypes":["java.lang.String","java.lang.String"] }
-  ]
-},
-{
-  "name":"java.lang.management.RuntimeMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"java.lang.management.ThreadInfo",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"java.lang.reflect.InvocationHandler",
-  "methods":[{"name":"invokeDefault","parameterTypes":["java.lang.Object","java.lang.reflect.Method","java.lang.Object[]"] }]
-},
-{
-  "name":"java.math.BigDecimal"
-},
-{
-  "name":"java.math.BigInteger"
-},
-{
+  "condition":{"typeReachable":"org.apache.curator.test.BaseClassForTests"},
   "name":"java.net.NetPermission"
 },
 {
+  "condition":{"typeReachable":"org.apache.curator.test.BaseClassForTests"},
   "name":"java.net.SocketPermission"
 },
 {
+  "condition":{"typeReachable":"org.apache.curator.test.BaseClassForTests"},
   "name":"java.net.URLPermission",
   "methods":[{"name":"<init>","parameterTypes":["java.lang.String","java.lang.String"] }]
 },
 {
+  "condition":{"typeReachable":"org.apache.curator.test.BaseClassForTests"},
   "name":"java.security.AllPermission"
 },
 {
+  "condition":{"typeReachable":"org.apache.curator.test.DirectoryUtils"},
   "name":"java.security.SecureRandomParameters"
 },
 {
+  "condition":{"typeReachable":"org.apache.curator.test.QuorumConfigBuilder"},
+  "name":"java.security.SecureRandomParameters"
+},
+{
+  "condition":{"typeReachable":"org.apache.curator.test.BaseClassForTests"},
   "name":"java.security.SecurityPermission"
 },
 {
-  "name":"java.util.Date"
+  "condition":{"typeReachable":"org.apache.curator.test.BaseClassForTests"},
+  "name":"java.util.PropertyPermission"
 },
 {
-  "name":"java.util.HashSet"
-},
-{
-  "name":"java.util.LinkedHashSet"
-},
-{
-  "name":"java.util.PropertyPermission",
-  "methods":[{"name":"<init>","parameterTypes":["java.lang.String","java.lang.String"] }]
-},
-{
-  "name":"java.util.concurrent.ArrayBlockingQueue"
-},
-{
-  "name":"java.util.concurrent.locks.AbstractOwnableSynchronizer"
-},
-{
-  "name":"java.util.concurrent.locks.AbstractQueuedSynchronizer"
-},
-{
-  "name":"java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject"
-},
-{
-  "name":"java.util.concurrent.locks.ReentrantLock"
-},
-{
-  "name":"java.util.concurrent.locks.ReentrantLock$NonfairSync"
-},
-{
-  "name":"java.util.concurrent.locks.ReentrantLock$Sync"
-},
-{
-  "name":"java.util.logging.LogManager",
-  "methods":[{"name":"getLoggingMXBean","parameterTypes":[] }]
-},
-{
-  "name":"java.util.logging.LoggingMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"javax.management.MBeanOperationInfo",
-  "queryAllPublicMethods":true,
-  "methods":[{"name":"getSignature","parameterTypes":[] }]
-},
-{
-  "name":"javax.management.MBeanServerBuilder",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"javax.management.ObjectName"
-},
-{
-  "name":"javax.management.openmbean.CompositeData"
-},
-{
-  "name":"javax.management.openmbean.OpenMBeanOperationInfoSupport"
-},
-{
-  "name":"javax.management.openmbean.TabularData"
-},
-{
-  "name":"jdk.management.jfr.ConfigurationInfo",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"jdk.management.jfr.EventTypeInfo",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"jdk.management.jfr.FlightRecorderMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"jdk.management.jfr.FlightRecorderMXBeanImpl",
-  "queryAllPublicConstructors":true
-},
-{
-  "name":"jdk.management.jfr.RecordingInfo",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"jdk.management.jfr.SettingDescriptorInfo",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"org.apache.curator.TestEnsurePath",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"org.apache.curator.test.BaseClassForTests",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "methods":[
-    {"name":"setup","parameterTypes":[] }, 
-    {"name":"teardown","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.curator.test.compatibility.CuratorTestBase",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true
-},
-{
+  "condition":{"typeReachable":"org.apache.curator.test.BaseClassForTests"},
   "name":"org.apache.curator.utils.DebugUtils",
   "fields":[
     {"name":"PROPERTY_DONT_LOG_CONNECTION_ISSUES"}, 
@@ -454,146 +82,30 @@
   ]
 },
 {
-  "name":"org.apache.curator.utils.TestCloseableExecutorService",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setup","parameterTypes":[] }, 
-    {"name":"tearDown","parameterTypes":[] }, 
-    {"name":"testBasicCallable","parameterTypes":[] }, 
-    {"name":"testBasicRunnable","parameterTypes":[] }, 
-    {"name":"testListeningCallable","parameterTypes":[] }, 
-    {"name":"testListeningRunnable","parameterTypes":[] }, 
-    {"name":"testPartialRunnable","parameterTypes":[] }
-  ]
-},
-{
+  "condition":{"typeReachable":"org.apache.curator.utils.DefaultZookeeperFactory"},
   "name":"org.apache.zookeeper.ClientCnxnSocketNIO",
   "methods":[{"name":"<init>","parameterTypes":["org.apache.zookeeper.client.ZKClientConfig"] }]
 },
 {
-  "name":"org.apache.zookeeper.metrics.impl.DefaultMetricsProvider",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
+  "condition":{"typeReachable":"org.apache.curator.test.ZooKeeperServerEmbeddedAdapter"},
+  "name":"org.apache.zookeeper.metrics.impl.DefaultMetricsProvider"
 },
 {
-  "name":"org.apache.zookeeper.proto.WhoAmIResponse"
-},
-{
-  "name":"org.apache.zookeeper.server.ConnectionBean",
-  "queryAllPublicConstructors":true
-},
-{
-  "name":"org.apache.zookeeper.server.ConnectionMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"org.apache.zookeeper.server.DataTreeBean",
-  "queryAllPublicConstructors":true
-},
-{
-  "name":"org.apache.zookeeper.server.DataTreeMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"org.apache.zookeeper.server.NIOServerCnxnFactory",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"org.apache.zookeeper.server.ZooKeeperServerBean",
-  "queryAllPublicConstructors":true
-},
-{
-  "name":"org.apache.zookeeper.server.ZooKeeperServerMXBean",
-  "queryAllPublicMethods":true
-},
-{
+  "condition":{"typeReachable":"org.apache.curator.test.TestingZooKeeperServer"},
   "name":"org.apache.zookeeper.server.embedded.ZooKeeperServerEmbedded"
 },
 {
-  "name":"org.apache.zookeeper.server.watch.WatchManager",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"org.mockito.internal.configuration.DefaultDoNotMockEnforcer",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"org.mockito.internal.configuration.InjectingAnnotationEngine",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"org.mockito.internal.configuration.plugins.DefaultPluginSwitch",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"org.mockito.internal.creation.instance.DefaultInstantiatorProvider",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"org.mockito.internal.creation.proxy.ProxyMockMaker",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"org.mockito.internal.exceptions.stacktrace.DefaultStackTraceCleanerProvider",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"org.mockito.internal.matchers.Equals",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"org.mockito.internal.util.ConsoleMockitoLogger",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"org.mockito.internal.util.reflection.ReflectionMemberAccessor",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"sun.management.ClassLoadingImpl",
-  "queryAllPublicConstructors":true
-},
-{
-  "name":"sun.management.CompilationImpl",
-  "queryAllPublicConstructors":true
-},
-{
-  "name":"sun.management.ManagementFactoryHelper$1",
-  "queryAllPublicConstructors":true
-},
-{
-  "name":"sun.management.ManagementFactoryHelper$PlatformLoggingImpl",
-  "queryAllPublicConstructors":true
-},
-{
-  "name":"sun.management.MemoryImpl",
-  "queryAllPublicConstructors":true
-},
-{
-  "name":"sun.management.MemoryManagerImpl",
-  "queryAllPublicConstructors":true
-},
-{
-  "name":"sun.management.MemoryPoolImpl",
-  "queryAllPublicConstructors":true
-},
-{
-  "name":"sun.management.RuntimeImpl",
-  "queryAllPublicConstructors":true
-},
-{
-  "name":"sun.security.provider.ConfigFile",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
+  "condition":{"typeReachable":"org.apache.curator.test.DirectoryUtils"},
   "name":"sun.security.provider.NativePRNG",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "condition":{"typeReachable":"org.apache.curator.test.QuorumConfigBuilder"},
+  "name":"sun.security.provider.NativePRNG",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.curator.test.DirectoryUtils"},
   "name":"sun.security.provider.SHA",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 }

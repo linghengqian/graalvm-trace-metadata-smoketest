@@ -14,7 +14,6 @@ import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.ZooDefs;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
 import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
@@ -23,7 +22,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 public class TestRetryLoop extends BaseClassForTests {
     @Test
@@ -92,12 +93,12 @@ public class TestRetryLoop extends BaseClassForTests {
     @Test
     public void testRetryForever() throws Exception {
         int retryIntervalMs = 1;
-        RetrySleeper sleeper = Mockito.mock(RetrySleeper.class);
+        RetrySleeper sleeper = mock(RetrySleeper.class);
         RetryForever retryForever = new RetryForever(retryIntervalMs);
         for (int i = 0; i < 10; i++) {
             boolean allowed = retryForever.allowRetry(i, 0, sleeper);
             assertTrue(allowed);
-            Mockito.verify(sleeper, times(i + 1)).sleepFor(retryIntervalMs, TimeUnit.MILLISECONDS);
+            verify(sleeper, times(i + 1)).sleepFor(retryIntervalMs, TimeUnit.MILLISECONDS);
         }
     }
 
