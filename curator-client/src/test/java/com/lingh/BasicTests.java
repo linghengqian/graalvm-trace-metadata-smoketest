@@ -30,7 +30,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class BasicTests extends BaseClassForTests {
     @Test
-    @Disabled // TODO lingh myself
+    @Disabled("https://github.com/mockito/mockito/issues/2435")
     public void testFactory() throws Exception {
         final ZooKeeper mockZookeeper = Mockito.mock(ZooKeeper.class);
         ZookeeperFactory zookeeperFactory = (connectString, sessionTimeout, watcher, canBeReadOnly) -> mockZookeeper;
