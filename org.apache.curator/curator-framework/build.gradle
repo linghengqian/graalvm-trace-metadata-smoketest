@@ -28,6 +28,11 @@ test {
 }
 
 graalvmNative {
+    binaries {
+        test {
+            buildArgs.add('--initialize-at-build-time=org.junit.platform.engine.TestTag')
+        }
+    }
     agent {
         defaultMode = "standard"
         modes {
