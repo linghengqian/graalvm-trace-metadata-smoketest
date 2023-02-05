@@ -91,10 +91,9 @@ public class TestReadOnly extends BaseClassForTests {
             final CountDownLatch readOnlyLatch = new CountDownLatch(1);
             final CountDownLatch reconnectedLatch = new CountDownLatch(1);
             ConnectionStateListener listener = (client1, newState) -> {
-                if (newState == ConnectionState.READ_ONLY) {
-                    readOnlyLatch.countDown();
-                } else if (newState == ConnectionState.RECONNECTED) {
-                    reconnectedLatch.countDown();
+                switch (newState) {
+                    case READ_ONLY -> readOnlyLatch.countDown();
+                    case RECONNECTED -> reconnectedLatch.countDown();
                 }
             };
             client.getConnectionStateListenable().addListener(listener);

@@ -29,7 +29,7 @@ test {
 
 graalvmNative {
     agent {
-        defaultMode = "conditional"
+        defaultMode = "standard"
         modes {
             conditional {
                 userCodeFilterPath = "user-code-filter.json"
