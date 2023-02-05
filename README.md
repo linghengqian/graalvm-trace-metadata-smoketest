@@ -40,7 +40,7 @@ cd ./org.apache.shardingsphere/shardingsphere-jdbc-core/
 cd ./nashorn-core/
 cd ./org.graalvm.js/js/
 cd ./dynamic-datasource-spring-boot-starter/
-cd ./curator-client/
+cd ./org.apache.curator/curator-client/
 cd ./jetcd-core/
 cd ./protobuf-java-util/
 cd ./opengauss-jdbc/
