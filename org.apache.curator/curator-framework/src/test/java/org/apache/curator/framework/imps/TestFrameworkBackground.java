@@ -114,14 +114,14 @@ public class TestFrameworkBackground extends BaseClassForTests {
 
     @Test
     public void testRetries() throws Exception {
-        final int SLEEP = 1000;
-        final int TIMES = 5;
+        final int sleep = 1000;
+        final int timesFirst = 5;
         Timing timing = new Timing();
-        CuratorFramework client = CuratorFrameworkFactory.newClient(server.getConnectString(), timing.session(), timing.connection(), new RetryNTimes(TIMES, SLEEP));
+        CuratorFramework client = CuratorFrameworkFactory.newClient(server.getConnectString(), timing.session(), timing.connection(), new RetryNTimes(timesFirst, sleep));
         try {
             client.start();
             client.getZookeeperClient().blockUntilConnectedOrTimedOut();
-            final CountDownLatch latch = new CountDownLatch(TIMES);
+            final CountDownLatch latch = new CountDownLatch(timesFirst);
             final List<Long> times = Lists.newArrayList();
             final AtomicLong start = new AtomicLong(System.currentTimeMillis());
             ((CuratorFrameworkImpl) client).debugListener = data -> {
@@ -136,7 +136,7 @@ public class TestFrameworkBackground extends BaseClassForTests {
             client.create().inBackground().forPath("/one");
             latch.await();
             for (long elapsed : times.subList(1, times.size())) {
-                assertTrue(elapsed >= SLEEP, elapsed + ": " + times);
+                assertTrue(elapsed >= sleep, elapsed + ": " + times);
             }
         } finally {
             CloseableUtils.closeQuietly(client);

@@ -9,7 +9,6 @@ import java.util.Collections;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestZKPaths {
-    @SuppressWarnings("NullArgumentToVariableArgMethod")
     @Test
     public void testMakePath() {
         assertEquals(ZKPaths.makePath(null, "/"), "/");
@@ -46,8 +45,8 @@ public class TestZKPaths {
         assertEquals(ZKPaths.makePath("foo", "bar", "baz", "qux"), "/foo/bar/baz/qux");
         assertEquals(ZKPaths.makePath("/foo", "/bar", "/baz"), "/foo/bar/baz");
         assertEquals(ZKPaths.makePath("/foo/", "/bar/", "/baz/"), "/foo/bar/baz");
-        assertEquals(ZKPaths.makePath("foo", null, null), "/foo");
-        assertEquals(ZKPaths.makePath("foo", "bar", null), "/foo/bar");
+        assertEquals(ZKPaths.makePath("foo", null, ""), "/foo");
+        assertEquals(ZKPaths.makePath("foo", "bar", ""), "/foo/bar");
         assertEquals(ZKPaths.makePath("foo", null, "baz"), "/foo/baz");
     }
 

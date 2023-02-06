@@ -105,13 +105,13 @@ public class BasicTests extends BaseClassForTests {
 
     @Test
     public void testBackgroundConnect() throws Exception {
-        final int CONNECTION_TIMEOUT_MS = 4000;
+        final int connectionTimeoutMs = 4000;
         try (CuratorZookeeperClient client = new CuratorZookeeperClient(server.getConnectString(), 10000,
-                CONNECTION_TIMEOUT_MS, null, new RetryOneTime(1))) {
+                connectionTimeoutMs, null, new RetryOneTime(1))) {
             assertFalse(client.isConnected());
             client.start();
             Awaitility.await()
-                    .atMost(Duration.ofMillis(CONNECTION_TIMEOUT_MS))
+                    .atMost(Duration.ofMillis(connectionTimeoutMs))
                     .untilAsserted(() -> Assertions.assertTrue(client.isConnected()));
         }
     }
