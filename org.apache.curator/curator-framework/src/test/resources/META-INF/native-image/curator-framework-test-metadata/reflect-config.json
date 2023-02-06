@@ -30,36 +30,6 @@
     "methods":[{"name":"invokeDefault","parameterTypes":["java.lang.Object","java.lang.reflect.Method","java.lang.Object[]"] }]
   },
   {
-    "condition":{"typeReachable":"org.apache.curator.framework.imps.TestWatchesBuilder"},
-    "name":"org.apache.zookeeper.ClientCnxnSocketNIO",
-    "methods":[{"name":"<init>","parameterTypes":["org.apache.zookeeper.client.ZKClientConfig"] }]
-  },
-  {
-    "condition":{"typeReachable":"org.apache.curator.framework.imps.TestWatcherRemovalManager"},
-    "name":"org.apache.zookeeper.ZooKeeper",
-    "methods":[
-      {"name":"getChildWatches","parameterTypes":[] },
-      {"name":"getDataWatches","parameterTypes":[] },
-      {"name":"getExistWatches","parameterTypes":[] }
-    ]
-  },
-  {
-    "condition":{"typeReachable":"org.apache.curator.framework.imps.TestFailedDeleteManager"},
-    "name":"org.apache.zookeeper.metrics.impl.DefaultMetricsProvider"
-  },
-  {
-    "condition":{"typeReachable":"org.apache.curator.framework.imps.TestFrameworkBackground"},
-    "name":"org.apache.zookeeper.metrics.impl.DefaultMetricsProvider"
-  },
-  {
-    "condition":{"typeReachable":"org.apache.curator.framework.imps.TestFrameworkEdges"},
-    "name":"org.apache.zookeeper.metrics.impl.DefaultMetricsProvider"
-  },
-  {
-    "condition":{"typeReachable":"org.apache.curator.framework.imps.TestWatchesBuilder"},
-    "name":"org.apache.zookeeper.metrics.impl.DefaultMetricsProvider"
-  },
-  {
     "condition":{"typeReachable":"org.apache.curator.framework.imps.TestWatcherIdentity"},
     "name":"org.mockito.internal.configuration.DefaultDoNotMockEnforcer",
     "methods":[{"name":"<init>","parameterTypes":[] }]
