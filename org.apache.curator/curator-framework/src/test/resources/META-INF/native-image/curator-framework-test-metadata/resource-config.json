@@ -1,8 +1,0 @@
-{
-  "resources":{
-  "includes":[{
-      "condition":{"typeReachable":"org.apache.curator.framework.imps.TestWatcherIdentity"},
-      "pattern":"\\Qmockito-extensions/org.mockito.plugins.MockMaker\\E"
-    }]},
-  "bundles":[]
-}

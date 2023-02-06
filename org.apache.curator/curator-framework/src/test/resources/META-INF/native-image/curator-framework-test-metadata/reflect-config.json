@@ -28,50 +28,5 @@
     "condition":{"typeReachable":"org.apache.curator.framework.imps.TestWatcherIdentity"},
     "name":"java.lang.reflect.InvocationHandler",
     "methods":[{"name":"invokeDefault","parameterTypes":["java.lang.Object","java.lang.reflect.Method","java.lang.Object[]"] }]
-  },
-  {
-    "condition":{"typeReachable":"org.apache.curator.framework.imps.TestWatcherIdentity"},
-    "name":"org.mockito.internal.configuration.DefaultDoNotMockEnforcer",
-    "methods":[{"name":"<init>","parameterTypes":[] }]
-  },
-  {
-    "condition":{"typeReachable":"org.apache.curator.framework.imps.TestWatcherIdentity"},
-    "name":"org.mockito.internal.configuration.InjectingAnnotationEngine",
-    "methods":[{"name":"<init>","parameterTypes":[] }]
-  },
-  {
-    "condition":{"typeReachable":"org.apache.curator.framework.imps.TestWatcherIdentity"},
-    "name":"org.mockito.internal.configuration.plugins.DefaultPluginSwitch",
-    "methods":[{"name":"<init>","parameterTypes":[] }]
-  },
-  {
-    "condition":{"typeReachable":"org.apache.curator.framework.imps.TestWatcherIdentity"},
-    "name":"org.mockito.internal.creation.instance.DefaultInstantiatorProvider",
-    "methods":[{"name":"<init>","parameterTypes":[] }]
-  },
-  {
-    "condition":{"typeReachable":"org.apache.curator.framework.imps.TestWatcherIdentity"},
-    "name":"org.mockito.internal.creation.proxy.ProxyMockMaker",
-    "methods":[{"name":"<init>","parameterTypes":[] }]
-  },
-  {
-    "condition":{"typeReachable":"org.apache.curator.framework.imps.TestWatcherIdentity"},
-    "name":"org.mockito.internal.exceptions.stacktrace.DefaultStackTraceCleanerProvider",
-    "methods":[{"name":"<init>","parameterTypes":[] }]
-  },
-  {
-    "condition":{"typeReachable":"org.apache.curator.framework.imps.TestWatcherIdentity"},
-    "name":"org.mockito.internal.matchers.InstanceOf$VarArgAware",
-    "queryAllPublicMethods":true
-  },
-  {
-    "condition":{"typeReachable":"org.apache.curator.framework.imps.TestWatcherIdentity"},
-    "name":"org.mockito.internal.util.ConsoleMockitoLogger",
-    "methods":[{"name":"<init>","parameterTypes":[] }]
-  },
-  {
-    "condition":{"typeReachable":"org.apache.curator.framework.imps.TestWatcherIdentity"},
-    "name":"org.mockito.internal.util.reflection.ReflectionMemberAccessor",
-    "methods":[{"name":"<init>","parameterTypes":[] }]
   }
 ]
