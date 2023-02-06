@@ -21,6 +21,9 @@ dependencies {
     testImplementation 'org.apache.geronimo.components:geronimo-transaction:2.2.1'
     testImplementation 'com.h2database:h2:1.4.200'
     testImplementation 'org.hamcrest:hamcrest:2.2'
+    testImplementation 'tomcat:naming-common:5.0.28'
+    testImplementation 'ch.qos.logback:logback-classic:1.2.11'
+    testImplementation 'org.jboss.logging:jboss-logging:3.4.2.Final'
 }
 
 test {
