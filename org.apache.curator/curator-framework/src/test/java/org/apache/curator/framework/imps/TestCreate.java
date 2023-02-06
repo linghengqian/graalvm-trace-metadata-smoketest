@@ -25,7 +25,9 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.apache.zookeeper.ZooDefs.Ids.ANYONE_ID_UNSAFE;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SuppressWarnings({"FieldMayBeFinal", "deprecation", "unused", "OptionalGetWithoutIsPresent"})
 public class TestCreate extends BaseClassForTests {

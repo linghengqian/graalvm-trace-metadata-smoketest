@@ -1,138 +1,16 @@
 [
 {
-  "name":"[B"
-},
-{
-  "name":"[C"
-},
-{
-  "name":"[D"
-},
-{
-  "name":"[F"
-},
-{
-  "name":"[I"
-},
-{
-  "name":"[J"
-},
-{
-  "name":"[Ljava.lang.Object;"
-},
-{
-  "name":"[Ljava.lang.String;"
-},
-{
-  "name":"[Ljavax.management.openmbean.CompositeData;"
-},
-{
-  "name":"[Lorg.apache.zookeeper.server.util.MessageTracker$BufferedMessage;"
-},
-{
-  "name":"[S"
-},
-{
-  "name":"[Z"
-},
-{
+  "condition":{"typeReachable":"org.apache.curator.framework.schema.SchemaSetLoader"},
   "name":"com.fasterxml.jackson.databind.ext.Java7SupportImpl",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "name":"com.sun.management.GarbageCollectorMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"com.sun.management.GcInfo",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"com.sun.management.HotSpotDiagnosticMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"com.sun.management.ThreadMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"com.sun.management.UnixOperatingSystemMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"com.sun.management.VMOption",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"com.sun.management.internal.GarbageCollectorExtImpl",
-  "queryAllPublicConstructors":true
-},
-{
-  "name":"com.sun.management.internal.HotSpotDiagnostic",
-  "queryAllPublicConstructors":true
-},
-{
-  "name":"com.sun.management.internal.HotSpotThreadImpl",
-  "queryAllPublicConstructors":true
-},
-{
-  "name":"com.sun.management.internal.OperatingSystemImpl",
-  "queryAllPublicConstructors":true
-},
-{
-  "name":"java.io.FilePermission"
-},
-{
-  "name":"java.lang.Boolean",
-  "fields":[{"name":"TYPE"}]
-},
-{
-  "name":"java.lang.Byte",
-  "fields":[{"name":"TYPE"}]
-},
-{
-  "name":"java.lang.Character",
-  "fields":[{"name":"TYPE"}]
-},
-{
-  "name":"java.lang.Deprecated",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"java.lang.Double",
-  "fields":[{"name":"TYPE"}]
-},
-{
-  "name":"java.lang.Enum"
-},
-{
-  "name":"java.lang.Float",
-  "fields":[{"name":"TYPE"}]
-},
-{
-  "name":"java.lang.Integer",
-  "fields":[{"name":"TYPE"}]
-},
-{
-  "name":"java.lang.Long",
-  "fields":[{"name":"TYPE"}]
-},
-{
+  "condition":{"typeReachable":"org.apache.curator.framework.imps.NamespaceWatcher"},
   "name":"java.lang.Object",
   "methods":[{"name":"toString","parameterTypes":[] }]
 },
 {
-  "name":"java.lang.RuntimePermission"
-},
-{
-  "name":"java.lang.Short",
-  "fields":[{"name":"TYPE"}]
-},
-{
-  "name":"java.lang.StackTraceElement",
-  "queryAllPublicMethods":true
-},
-{
+  "condition":{"typeReachable":"org.apache.curator.framework.imps.NamespaceWatcher"},
   "name":"java.lang.StackWalker",
   "methods":[
     {"name":"getInstance","parameterTypes":["java.util.Set","int"] }, 
@@ -140,9 +18,16 @@
   ]
 },
 {
+  "condition":{"typeReachable":"org.apache.curator.framework.imps.TestWatcherIdentity"},
+  "name":"java.lang.StackWalker",
+  "methods":[{"name":"walk","parameterTypes":["java.util.function.Function"] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.curator.framework.imps.NamespaceWatcher"},
   "name":"java.lang.StackWalker$Option"
 },
 {
+  "condition":{"typeReachable":"org.apache.curator.framework.imps.NamespaceWatcher"},
   "name":"java.lang.StackWalker$StackFrame",
   "methods":[
     {"name":"getClassName","parameterTypes":[] }, 
@@ -152,836 +37,41 @@
   ]
 },
 {
-  "name":"java.lang.String"
+  "condition":{"typeReachable":"org.apache.curator.framework.imps.TestWatcherIdentity"},
+  "name":"java.lang.StackWalker$StackFrame",
+  "methods":[{"name":"getClassName","parameterTypes":[] }]
 },
 {
+  "condition":{"typeReachable":"org.apache.curator.framework.imps.CuratorFrameworkImpl"},
   "name":"java.lang.Throwable",
-  "methods":[
-    {"name":"addSuppressed","parameterTypes":["java.lang.Throwable"] }, 
-    {"name":"getSuppressed","parameterTypes":[] }
-  ]
+  "methods":[{"name":"getSuppressed","parameterTypes":[] }]
 },
 {
-  "name":"java.lang.Void",
-  "fields":[{"name":"TYPE"}]
+  "condition":{"typeReachable":"org.apache.curator.framework.imps.TestFailedDeleteManager"},
+  "name":"java.lang.Throwable",
+  "methods":[{"name":"getSuppressed","parameterTypes":[] }]
 },
 {
-  "name":"java.lang.invoke.MethodHandle"
+  "condition":{"typeReachable":"org.apache.curator.framework.imps.TestFrameworkEdges"},
+  "name":"java.lang.Throwable",
+  "methods":[{"name":"getSuppressed","parameterTypes":[] }]
 },
 {
-  "name":"java.lang.management.BufferPoolMXBean",
-  "queryAllPublicMethods":true
+  "condition":{"typeReachable":"org.apache.curator.framework.imps.TestFrameworkEdges$1"},
+  "name":"java.lang.Throwable",
+  "methods":[{"name":"getSuppressed","parameterTypes":[] }]
 },
 {
-  "name":"java.lang.management.ClassLoadingMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"java.lang.management.CompilationMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"java.lang.management.LockInfo",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"java.lang.management.ManagementPermission",
-  "methods":[{"name":"<init>","parameterTypes":["java.lang.String"] }]
-},
-{
-  "name":"java.lang.management.MemoryMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"java.lang.management.MemoryManagerMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"java.lang.management.MemoryPoolMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"java.lang.management.MemoryUsage",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"java.lang.management.MonitorInfo",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"java.lang.management.PlatformLoggingMXBean",
-  "queryAllPublicMethods":true,
-  "methods":[
-    {"name":"getLoggerLevel","parameterTypes":["java.lang.String"] }, 
-    {"name":"getLoggerNames","parameterTypes":[] }, 
-    {"name":"getParentLoggerName","parameterTypes":["java.lang.String"] }, 
-    {"name":"setLoggerLevel","parameterTypes":["java.lang.String","java.lang.String"] }
-  ]
-},
-{
-  "name":"java.lang.management.RuntimeMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"java.lang.management.ThreadInfo",
-  "queryAllPublicMethods":true
-},
-{
+  "condition":{"typeReachable":"org.apache.curator.framework.imps.TestWatcherIdentity"},
   "name":"java.lang.reflect.InvocationHandler",
   "methods":[{"name":"invokeDefault","parameterTypes":["java.lang.Object","java.lang.reflect.Method","java.lang.Object[]"] }]
 },
 {
-  "name":"java.math.BigDecimal"
-},
-{
-  "name":"java.math.BigInteger"
-},
-{
-  "name":"java.net.NetPermission"
-},
-{
-  "name":"java.net.SocketPermission"
-},
-{
-  "name":"java.net.URLPermission",
-  "methods":[{"name":"<init>","parameterTypes":["java.lang.String","java.lang.String"] }]
-},
-{
-  "name":"java.security.AllPermission"
-},
-{
+  "condition":{"typeReachable":"org.apache.curator.framework.imps.ProtectedMode"},
   "name":"java.security.SecureRandomParameters"
 },
 {
-  "name":"java.security.SecurityPermission"
-},
-{
-  "name":"java.sql.Date"
-},
-{
-  "name":"java.sql.Timestamp"
-},
-{
-  "name":"java.util.Date"
-},
-{
-  "name":"java.util.HashSet"
-},
-{
-  "name":"java.util.LinkedHashSet"
-},
-{
-  "name":"java.util.PropertyPermission",
-  "methods":[{"name":"<init>","parameterTypes":["java.lang.String","java.lang.String"] }]
-},
-{
-  "name":"java.util.concurrent.ArrayBlockingQueue"
-},
-{
-  "name":"java.util.concurrent.locks.AbstractOwnableSynchronizer"
-},
-{
-  "name":"java.util.concurrent.locks.AbstractQueuedSynchronizer"
-},
-{
-  "name":"java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject"
-},
-{
-  "name":"java.util.concurrent.locks.ReentrantLock"
-},
-{
-  "name":"java.util.concurrent.locks.ReentrantLock$NonfairSync"
-},
-{
-  "name":"java.util.concurrent.locks.ReentrantLock$Sync"
-},
-{
-  "name":"java.util.logging.LogManager",
-  "methods":[{"name":"getLoggingMXBean","parameterTypes":[] }]
-},
-{
-  "name":"java.util.logging.LoggingMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"javax.management.MBeanOperationInfo",
-  "queryAllPublicMethods":true,
-  "methods":[{"name":"getSignature","parameterTypes":[] }]
-},
-{
-  "name":"javax.management.MBeanServerBuilder",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"javax.management.ObjectName"
-},
-{
-  "name":"javax.management.openmbean.CompositeData"
-},
-{
-  "name":"javax.management.openmbean.OpenMBeanOperationInfoSupport"
-},
-{
-  "name":"javax.management.openmbean.TabularData"
-},
-{
-  "name":"jdk.management.jfr.ConfigurationInfo",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"jdk.management.jfr.EventTypeInfo",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"jdk.management.jfr.FlightRecorderMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"jdk.management.jfr.FlightRecorderMXBeanImpl",
-  "queryAllPublicConstructors":true
-},
-{
-  "name":"jdk.management.jfr.RecordingInfo",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"jdk.management.jfr.SettingDescriptorInfo",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"org.apache.curator.framework.ensemble.TestEnsembleProvider",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"testAfterSessionExpiration","parameterTypes":[] }, 
-    {"name":"testBasic","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.curator.framework.ensemble.TestEnsembleProvider$CountingEnsembleProvider"
-},
-{
-  "name":"org.apache.curator.framework.imps.TestBlockUntilConnected",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"testBlockUntilConnectedConnectTimeout","parameterTypes":[] }, 
-    {"name":"testBlockUntilConnectedCurrentlyAwaitingReconnect","parameterTypes":[] }, 
-    {"name":"testBlockUntilConnectedCurrentlyConnected","parameterTypes":[] }, 
-    {"name":"testBlockUntilConnectedCurrentlyNeverConnected","parameterTypes":[] }, 
-    {"name":"testBlockUntilConnectedInterrupt","parameterTypes":[] }, 
-    {"name":"testBlockUntilConnectedTightLoop","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.curator.framework.imps.TestCleanState",
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true
-},
-{
-  "name":"org.apache.curator.framework.imps.TestCompression",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"testCompressionProvider","parameterTypes":[] }, 
-    {"name":"testSetData","parameterTypes":[] }, 
-    {"name":"testSimple","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.curator.framework.imps.TestCompressionInTransactionNew",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"testCreateCompressedAndUncompressed","parameterTypes":[] }, 
-    {"name":"testSetCompressedAndUncompressed","parameterTypes":[] }, 
-    {"name":"testSetData","parameterTypes":[] }, 
-    {"name":"testSimple","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.curator.framework.imps.TestCompressionInTransactionOld",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"testCreateCompressedAndUncompressed","parameterTypes":[] }, 
-    {"name":"testSetCompressedAndUncompressed","parameterTypes":[] }, 
-    {"name":"testSetData","parameterTypes":[] }, 
-    {"name":"testSimple","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.curator.framework.imps.TestCreate",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"testBackgroundFaultInjectionHang","parameterTypes":[] }, 
-    {"name":"testCreateProtectedUtils","parameterTypes":[] }, 
-    {"name":"testCreateWithParentsWithAcl","parameterTypes":[] }, 
-    {"name":"testCreateWithParentsWithAclApplyToParents","parameterTypes":[] }, 
-    {"name":"testCreateWithParentsWithAclApplyToParentsInBackground","parameterTypes":[] }, 
-    {"name":"testCreateWithParentsWithAclInBackground","parameterTypes":[] }, 
-    {"name":"testCreateWithParentsWithoutAcl","parameterTypes":[] }, 
-    {"name":"testCreateWithParentsWithoutAclInBackground","parameterTypes":[] }, 
-    {"name":"testIdempotentCreate","parameterTypes":[] }, 
-    {"name":"testIdempotentCreateConnectionLoss","parameterTypes":[] }, 
-    {"name":"testProtectedUtils","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.curator.framework.imps.TestCreateReturningStat",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"testCreateReturningStat","parameterTypes":[] }, 
-    {"name":"testCreateReturningStatCompressed","parameterTypes":[] }, 
-    {"name":"testCreateReturningStatInBackground","parameterTypes":[] }, 
-    {"name":"testCreateReturningStatIncludingParents","parameterTypes":[] }, 
-    {"name":"testCreateReturningStatIncludingParentsReverse","parameterTypes":[] }, 
-    {"name":"testCreateReturningStatWithProtected","parameterTypes":[] }, 
-    {"name":"testIdempotentCreateReturningStat","parameterTypes":[] }, 
-    {"name":"testOrSetDataStoringStatIn","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.curator.framework.imps.TestDelete",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"testBackground","parameterTypes":[] }, 
-    {"name":"testBackgroundDelete","parameterTypes":[] }, 
-    {"name":"testBackgroundDeleteWithChildren","parameterTypes":[] }, 
-    {"name":"testDelete","parameterTypes":[] }, 
-    {"name":"testDeleteGuaranteedWithChildren","parameterTypes":[] }, 
-    {"name":"testDeleteWithChildren","parameterTypes":[] }, 
-    {"name":"testIdempotentDelete","parameterTypes":[] }, 
-    {"name":"testIdempotentDeleteConnectionLoss","parameterTypes":[] }, 
-    {"name":"testNormal","parameterTypes":[] }, 
-    {"name":"testQuietDelete","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.curator.framework.imps.TestEnabledSessionExpiredState",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setup","parameterTypes":[] }, 
-    {"name":"teardown","parameterTypes":[] }, 
-    {"name":"testInjectedWatchedEvent","parameterTypes":[] }, 
-    {"name":"testKillSession","parameterTypes":[] }, 
-    {"name":"testReconnectWithoutExpiration","parameterTypes":[] }, 
-    {"name":"testResetCausesLost","parameterTypes":[] }, 
-    {"name":"testSessionExpirationFromTimeout","parameterTypes":[] }, 
-    {"name":"testSessionExpirationFromTimeoutWithRestart","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.curator.framework.imps.TestEnsureContainers",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"testBasic","parameterTypes":[] }, 
-    {"name":"testSingleExecution","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.curator.framework.imps.TestExistsBuilder",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"testExistsWithParentsWithAclApplyToParents","parameterTypes":[] }, 
-    {"name":"testExistsWithParentsWithAclApplyToParentsInBackground","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.curator.framework.imps.TestFailedDeleteManager",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"testBasic","parameterTypes":[] }, 
-    {"name":"testGuaranteedDeleteOnNonExistentNodeInBackground","parameterTypes":[] }, 
-    {"name":"testGuaranteedDeleteOnNonExistentNodeInForeground","parameterTypes":[] }, 
-    {"name":"testLostSession","parameterTypes":[] }, 
-    {"name":"testWithNamespaceAndLostSession","parameterTypes":[] }, 
-    {"name":"testWithNamespaceAndLostSessionAlt","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.curator.framework.imps.TestFramework",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setup","parameterTypes":[] }, 
-    {"name":"teardown","parameterTypes":[] }, 
-    {"name":"testACLDeprecatedApis","parameterTypes":[] }, 
-    {"name":"testBackgroundCreate","parameterTypes":[] }, 
-    {"name":"testBackgroundGetDataWithWatch","parameterTypes":[] }, 
-    {"name":"testConfigurableZookeeper","parameterTypes":[] }, 
-    {"name":"testConnectionState","parameterTypes":[] }, 
-    {"name":"testCreateACLMultipleAuths","parameterTypes":[] }, 
-    {"name":"testCreateACLSingleAuth","parameterTypes":[] }, 
-    {"name":"testCreateACLWithReset","parameterTypes":[] }, 
-    {"name":"testCreateContainersUsingNamespace","parameterTypes":[] }, 
-    {"name":"testCreateContainersWithNamespace","parameterTypes":[] }, 
-    {"name":"testCreateModes","parameterTypes":[] }, 
-    {"name":"testCreateOrSetData","parameterTypes":[] }, 
-    {"name":"testCreateParentContainers","parameterTypes":[] }, 
-    {"name":"testCreateParents","parameterTypes":[] }, 
-    {"name":"testCreatingParentsTheSame","parameterTypes":[] }, 
-    {"name":"testCustomCallback","parameterTypes":[] }, 
-    {"name":"testEnsurePathWithNamespace","parameterTypes":[] }, 
-    {"name":"testExistsCreatingParents","parameterTypes":[] }, 
-    {"name":"testExistsCreatingParentsInBackground","parameterTypes":[] }, 
-    {"name":"testGetSequentialChildren","parameterTypes":[] }, 
-    {"name":"testNamespace","parameterTypes":[] }, 
-    {"name":"testNamespaceInBackground","parameterTypes":[] }, 
-    {"name":"testNamespaceWithWatcher","parameterTypes":[] }, 
-    {"name":"testOverrideCreateParentContainers","parameterTypes":[] }, 
-    {"name":"testSequentialWithTrailingSeparator","parameterTypes":[] }, 
-    {"name":"testSessionLossWithLongTimeout","parameterTypes":[] }, 
-    {"name":"testSimple","parameterTypes":[] }, 
-    {"name":"testSync","parameterTypes":[] }, 
-    {"name":"testSyncNew","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.curator.framework.imps.TestFrameworkBackground",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"testBasic","parameterTypes":[] }, 
-    {"name":"testCuratorCallbackOnError","parameterTypes":[] }, 
-    {"name":"testErrorListener","parameterTypes":[] }, 
-    {"name":"testListenerConnectedAtStart","parameterTypes":[] }, 
-    {"name":"testRetries","parameterTypes":[] }, 
-    {"name":"testShutdown","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.curator.framework.imps.TestFrameworkEdges",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"connectionLossWithBackgroundTest","parameterTypes":[] }, 
-    {"name":"setUpClass","parameterTypes":[] }, 
-    {"name":"testBackgroundFailure","parameterTypes":[] }, 
-    {"name":"testBackgroundLatencyUnSleep","parameterTypes":[] }, 
-    {"name":"testCreateContainersForBadConnect","parameterTypes":[] }, 
-    {"name":"testDeleteChildrenConcurrently","parameterTypes":[] }, 
-    {"name":"testFailure","parameterTypes":[] }, 
-    {"name":"testGetAclNoStat","parameterTypes":[] }, 
-    {"name":"testInjectSessionExpiration","parameterTypes":[] }, 
-    {"name":"testMissedResponseOnBackgroundESCreate","parameterTypes":[] }, 
-    {"name":"testMissedResponseOnESCreate","parameterTypes":[] }, 
-    {"name":"testNestedCalls","parameterTypes":[] }, 
-    {"name":"testNotStarted","parameterTypes":[] }, 
-    {"name":"testPathsFromProtectingInBackground","parameterTypes":[] }, 
-    {"name":"testProtectedCreateNodeDeletion","parameterTypes":[] }, 
-    {"name":"testProtectionWithKilledSession","parameterTypes":[] }, 
-    {"name":"testQuickClose","parameterTypes":[] }, 
-    {"name":"testReconnectAfterLoss","parameterTypes":[] }, 
-    {"name":"testRetry","parameterTypes":[] }, 
-    {"name":"testSessionKilled","parameterTypes":[] }, 
-    {"name":"testStopped","parameterTypes":[] }, 
-    {"name":"testValidateConnectionEventRaces","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.curator.framework.imps.TestGzipCompressionProvider",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"testDecompressCorrupt","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.curator.framework.imps.TestMultiClient",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"testNotify","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.curator.framework.imps.TestNamespaceFacade",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"testACL","parameterTypes":[] }, 
-    {"name":"testBasic","parameterTypes":[] }, 
-    {"name":"testCache","parameterTypes":[] }, 
-    {"name":"testGetNamespace","parameterTypes":[] }, 
-    {"name":"testInvalid","parameterTypes":[] }, 
-    {"name":"testIsStarted","parameterTypes":[] }, 
-    {"name":"testRootAccess","parameterTypes":[] }, 
-    {"name":"testSimultaneous","parameterTypes":[] }, 
-    {"name":"testUnfixForEmptyNamespace","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.curator.framework.imps.TestNeverConnected",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"testNeverConnected","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.curator.framework.imps.TestReadOnly",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setup","parameterTypes":[] }, 
-    {"name":"tearDown","parameterTypes":[] }, 
-    {"name":"testConnectionStateNewClient","parameterTypes":[] }, 
-    {"name":"testReadOnly","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.curator.framework.imps.TestReconfiguration",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setup","parameterTypes":[] }, 
-    {"name":"teardown","parameterTypes":[] }, 
-    {"name":"testBasicGetConfig","parameterTypes":[] }, 
-    {"name":"testConfigToConnectionStringIPv4NoClientAddr","parameterTypes":[] }, 
-    {"name":"testConfigToConnectionStringIPv4Normal","parameterTypes":[] }, 
-    {"name":"testConfigToConnectionStringIPv4WildcardClientAddr","parameterTypes":[] }, 
-    {"name":"testConfigToConnectionStringIPv6Normal","parameterTypes":[] }, 
-    {"name":"testConfigToConnectionStringNoClientAddrOrPort","parameterTypes":[] }, 
-    {"name":"testHostname","parameterTypes":[] }, 
-    {"name":"testIPv6Wildcard1","parameterTypes":[] }, 
-    {"name":"testIPv6Wildcard2","parameterTypes":[] }, 
-    {"name":"testMixedIPv1","parameterTypes":[] }, 
-    {"name":"testMixedIPv2","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.curator.framework.imps.TestSetData",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"testBackground","parameterTypes":[] }, 
-    {"name":"testIdempotentSet","parameterTypes":[] }, 
-    {"name":"testIdempotentSetConnectionLoss","parameterTypes":[] }, 
-    {"name":"testNormal","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.curator.framework.imps.TestTempFramework",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"testBasic","parameterTypes":[] }, 
-    {"name":"testInactivity","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.curator.framework.imps.TestTransactionsNew",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"testBackground","parameterTypes":[] }, 
-    {"name":"testBackgroundWithNamespace","parameterTypes":[] }, 
-    {"name":"testBasic","parameterTypes":[] }, 
-    {"name":"testCheckVersion","parameterTypes":[] }, 
-    {"name":"testErrors","parameterTypes":[] }, 
-    {"name":"testWithNamespace","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.curator.framework.imps.TestTransactionsOld",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"testBasic","parameterTypes":[] }, 
-    {"name":"testCheckVersion","parameterTypes":[] }, 
-    {"name":"testWithCompression","parameterTypes":[] }, 
-    {"name":"testWithNamespace","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.curator.framework.imps.TestTtlNodes",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setUpClass","parameterTypes":[] }, 
-    {"name":"setup","parameterTypes":[] }, 
-    {"name":"teardown","parameterTypes":[] }, 
-    {"name":"testBasic","parameterTypes":[] }, 
-    {"name":"testBasicInBackground","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.curator.framework.imps.TestWatcherIdentity",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"testCuratorWatcher","parameterTypes":[] }, 
-    {"name":"testSameCuratorWatcherPerZKDocs","parameterTypes":[] }, 
-    {"name":"testSameWatcherPerZKDocs","parameterTypes":[] }, 
-    {"name":"testSetAddition","parameterTypes":[] }, 
-    {"name":"testZKWatcher","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.curator.framework.imps.TestWatcherIdentity$CountZKWatcher"
-},
-{
-  "name":"org.apache.curator.framework.imps.TestWatcherRemovalManager",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"testBasic","parameterTypes":[] }, 
-    {"name":"testBasicNamespace1","parameterTypes":[] }, 
-    {"name":"testBasicNamespace2","parameterTypes":[] }, 
-    {"name":"testBasicNamespace3","parameterTypes":[] }, 
-    {"name":"testMissingNode","parameterTypes":[] }, 
-    {"name":"testMissingNodeInBackground","parameterTypes":[] }, 
-    {"name":"testResetFromWatcher","parameterTypes":[] }, 
-    {"name":"testSameWatcher","parameterTypes":[] }, 
-    {"name":"testSameWatcherDifferentKinds","parameterTypes":[] }, 
-    {"name":"testSameWatcherDifferentKinds1Triggered","parameterTypes":[] }, 
-    {"name":"testSameWatcherDifferentPaths","parameterTypes":[] }, 
-    {"name":"testSameWatcherDifferentPaths1Triggered","parameterTypes":[] }, 
-    {"name":"testTriggered","parameterTypes":[] }, 
-    {"name":"testWithRetry","parameterTypes":[] }, 
-    {"name":"testWithRetryInBackground","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.curator.framework.imps.TestWatchesBuilder",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"testGuaranteedRemoveWatch","parameterTypes":[] }, 
-    {"name":"testGuaranteedRemoveWatchInBackground","parameterTypes":[] }, 
-    {"name":"testPersistentRecursiveDefaultWatch","parameterTypes":[] }, 
-    {"name":"testPersistentRecursiveWatch","parameterTypes":[] }, 
-    {"name":"testPersistentRecursiveWatchInBackground","parameterTypes":[] }, 
-    {"name":"testPersistentWatch","parameterTypes":[] }, 
-    {"name":"testPersistentWatchInBackground","parameterTypes":[] }, 
-    {"name":"testRemoveAllChildWatches","parameterTypes":[] }, 
-    {"name":"testRemoveAllDataWatches","parameterTypes":[] }, 
-    {"name":"testRemoveAllWatches","parameterTypes":[] }, 
-    {"name":"testRemoveCuratorDefaultWatcher","parameterTypes":[] }, 
-    {"name":"testRemoveCuratorWatch","parameterTypes":[] }, 
-    {"name":"testRemoveLocalWatch","parameterTypes":[] }, 
-    {"name":"testRemoveLocalWatchInBackground","parameterTypes":[] }, 
-    {"name":"testRemoveUnregisteredWatcher","parameterTypes":[] }, 
-    {"name":"testRemoveUnregisteredWatcherQuietly","parameterTypes":[] }, 
-    {"name":"testRemoveWatch","parameterTypes":[] }, 
-    {"name":"testRemoveWatchInBackgroundWithCallback","parameterTypes":[] }, 
-    {"name":"testRemoveWatchInBackgroundWithNoCallback","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.curator.framework.imps.TestWatchesBuilder$BooleanWatcher"
-},
-{
-  "name":"org.apache.curator.framework.imps.TestWatchesBuilder$CountDownWatcher"
-},
-{
-  "name":"org.apache.curator.framework.imps.TestWithCluster",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"testSessionSurvives","parameterTypes":[] }, 
-    {"name":"testSplitBrain","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.curator.framework.schema.TestSchema",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"testBasics","parameterTypes":[] }, 
-    {"name":"testMulti","parameterTypes":[] }, 
-    {"name":"testOrdering","parameterTypes":[] }, 
-    {"name":"testSchemaValidator","parameterTypes":[] }, 
-    {"name":"testTransaction","parameterTypes":[] }, 
-    {"name":"testYaml","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.curator.framework.state.TestCircuitBreaker",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"tearDown","parameterTypes":[] }, 
-    {"name":"testBasic","parameterTypes":[] }, 
-    {"name":"testVariousOpenRetryFails","parameterTypes":[] }, 
-    {"name":"testWithRetryUntilElapsed","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.curator.framework.state.TestCircuitBreakingConnectionStateListener",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setup","parameterTypes":[] }, 
-    {"name":"tearDown","parameterTypes":[] }, 
-    {"name":"testBasic","parameterTypes":[] }, 
-    {"name":"testResetsAfterReconnect","parameterTypes":[] }, 
-    {"name":"testRetryNever","parameterTypes":[] }, 
-    {"name":"testRetryOnce","parameterTypes":[] }, 
-    {"name":"testSuspendedToLostRatcheting","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.curator.framework.state.TestCircuitBreakingConnectionStateListener$RecordingListener"
-},
-{
-  "name":"org.apache.curator.framework.state.TestCircuitBreakingConnectionStateListener$TestRetryPolicy"
-},
-{
-  "name":"org.apache.curator.framework.state.TestConnectionStateManager",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"testConnectionStateRecoversFromUnexpectedExpiredConnection","parameterTypes":[] }, 
-    {"name":"testSessionConnectionStateErrorPolicyWithExpirationPercent30","parameterTypes":[] }
-  ]
-},
-{
+  "condition":{"typeReachable":"org.apache.curator.framework.imps.NamespaceFacadeCache"},
   "name":"org.apache.curator.shaded.com.google.common.util.concurrent.AbstractFuture",
   "fields":[
     {"name":"listeners"}, 
@@ -990,6 +80,7 @@
   ]
 },
 {
+  "condition":{"typeReachable":"org.apache.curator.framework.imps.NamespaceFacadeCache"},
   "name":"org.apache.curator.shaded.com.google.common.util.concurrent.AbstractFuture$Waiter",
   "fields":[
     {"name":"next"}, 
@@ -997,236 +88,102 @@
   ]
 },
 {
-  "name":"org.apache.curator.test.BaseClassForTests",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "methods":[
-    {"name":"setup","parameterTypes":[] }, 
-    {"name":"teardown","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.curator.test.compatibility.CuratorTestBase",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true
-},
-{
-  "name":"org.apache.curator.utils.DebugUtils",
-  "fields":[
-    {"name":"PROPERTY_DONT_LOG_CONNECTION_ISSUES"}, 
-    {"name":"PROPERTY_REMOVE_WATCHERS_IN_FOREGROUND"}, 
-    {"name":"PROPERTY_VALIDATE_NAMESPACE_WATCHER_MAP_EMPTY"}
-  ]
-},
-{
+  "condition":{"typeReachable":"org.apache.curator.framework.imps.EnsembleTracker"},
   "name":"org.apache.zookeeper.AddWatchMode"
 },
 {
+  "condition":{"typeReachable":"org.apache.curator.framework.imps.TestWatchesBuilder"},
   "name":"org.apache.zookeeper.ClientCnxnSocketNIO",
   "methods":[{"name":"<init>","parameterTypes":["org.apache.zookeeper.client.ZKClientConfig"] }]
 },
 {
+  "condition":{"typeReachable":"org.apache.curator.framework.imps.TestWatcherRemovalManager"},
   "name":"org.apache.zookeeper.ZooKeeper",
   "methods":[
     {"name":"getChildWatches","parameterTypes":[] }, 
     {"name":"getDataWatches","parameterTypes":[] }, 
-    {"name":"getExistWatches","parameterTypes":[] }, 
-    {"name":"testableRemoteSocketAddress","parameterTypes":[] }
+    {"name":"getExistWatches","parameterTypes":[] }
   ]
 },
 {
-  "name":"org.apache.zookeeper.metrics.impl.DefaultMetricsProvider",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
+  "condition":{"typeReachable":"org.apache.curator.framework.imps.TestFailedDeleteManager"},
+  "name":"org.apache.zookeeper.metrics.impl.DefaultMetricsProvider"
 },
 {
-  "name":"org.apache.zookeeper.server.ConnectionBean",
-  "queryAllPublicConstructors":true
+  "condition":{"typeReachable":"org.apache.curator.framework.imps.TestFrameworkBackground"},
+  "name":"org.apache.zookeeper.metrics.impl.DefaultMetricsProvider"
 },
 {
-  "name":"org.apache.zookeeper.server.ConnectionMXBean",
-  "queryAllPublicMethods":true
+  "condition":{"typeReachable":"org.apache.curator.framework.imps.TestFrameworkEdges"},
+  "name":"org.apache.zookeeper.metrics.impl.DefaultMetricsProvider"
 },
 {
-  "name":"org.apache.zookeeper.server.DataTreeBean",
-  "queryAllPublicConstructors":true
+  "condition":{"typeReachable":"org.apache.curator.framework.imps.TestWatchesBuilder"},
+  "name":"org.apache.zookeeper.metrics.impl.DefaultMetricsProvider"
 },
 {
-  "name":"org.apache.zookeeper.server.DataTreeMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"org.apache.zookeeper.server.NIOServerCnxnFactory",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"org.apache.zookeeper.server.ZooKeeperServerBean",
-  "queryAllPublicConstructors":true
-},
-{
-  "name":"org.apache.zookeeper.server.ZooKeeperServerMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"org.apache.zookeeper.server.embedded.ZooKeeperServerEmbedded"
-},
-{
-  "name":"org.apache.zookeeper.server.quorum.FollowerBean",
-  "queryAllPublicConstructors":true
-},
-{
-  "name":"org.apache.zookeeper.server.quorum.FollowerMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"org.apache.zookeeper.server.quorum.LeaderBean",
-  "queryAllPublicConstructors":true
-},
-{
-  "name":"org.apache.zookeeper.server.quorum.LeaderElectionBean",
-  "queryAllPublicConstructors":true
-},
-{
-  "name":"org.apache.zookeeper.server.quorum.LeaderElectionMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"org.apache.zookeeper.server.quorum.LeaderMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"org.apache.zookeeper.server.quorum.LearnerHandlerBean",
-  "queryAllPublicConstructors":true
-},
-{
-  "name":"org.apache.zookeeper.server.quorum.LearnerHandlerMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"org.apache.zookeeper.server.quorum.LocalPeerBean",
-  "queryAllPublicConstructors":true
-},
-{
-  "name":"org.apache.zookeeper.server.quorum.LocalPeerMXBean",
-  "queryAllPublicMethods":true
-},
-{
+  "condition":{"typeReachable":"org.apache.curator.framework.imps.EnsembleTracker"},
   "name":"org.apache.zookeeper.server.quorum.MultipleAddresses",
   "methods":[{"name":"getReachableOrOne","parameterTypes":[] }]
 },
 {
-  "name":"org.apache.zookeeper.server.quorum.QuorumBean",
-  "queryAllPublicConstructors":true
-},
-{
-  "name":"org.apache.zookeeper.server.quorum.QuorumMXBean",
-  "queryAllPublicMethods":true
-},
-{
+  "condition":{"typeReachable":"org.apache.curator.framework.imps.EnsembleTracker"},
   "name":"org.apache.zookeeper.server.quorum.QuorumPeer$QuorumServer",
   "fields":[{"name":"addr"}]
 },
 {
-  "name":"org.apache.zookeeper.server.quorum.ReadOnlyBean",
-  "queryAllPublicConstructors":true
-},
-{
-  "name":"org.apache.zookeeper.server.quorum.RemotePeerBean",
-  "queryAllPublicConstructors":true
-},
-{
-  "name":"org.apache.zookeeper.server.quorum.RemotePeerMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"org.apache.zookeeper.server.watch.WatchManager",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
+  "condition":{"typeReachable":"org.apache.curator.framework.imps.TestWatcherIdentity"},
   "name":"org.mockito.internal.configuration.DefaultDoNotMockEnforcer",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "condition":{"typeReachable":"org.apache.curator.framework.imps.TestWatcherIdentity"},
   "name":"org.mockito.internal.configuration.InjectingAnnotationEngine",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "condition":{"typeReachable":"org.apache.curator.framework.imps.TestWatcherIdentity"},
   "name":"org.mockito.internal.configuration.plugins.DefaultPluginSwitch",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "condition":{"typeReachable":"org.apache.curator.framework.imps.TestWatcherIdentity"},
   "name":"org.mockito.internal.creation.instance.DefaultInstantiatorProvider",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "condition":{"typeReachable":"org.apache.curator.framework.imps.TestWatcherIdentity"},
   "name":"org.mockito.internal.creation.proxy.ProxyMockMaker",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "condition":{"typeReachable":"org.apache.curator.framework.imps.TestWatcherIdentity"},
   "name":"org.mockito.internal.exceptions.stacktrace.DefaultStackTraceCleanerProvider",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "condition":{"typeReachable":"org.apache.curator.framework.imps.TestWatcherIdentity"},
   "name":"org.mockito.internal.matchers.InstanceOf$VarArgAware",
   "queryAllPublicMethods":true
 },
 {
+  "condition":{"typeReachable":"org.apache.curator.framework.imps.TestWatcherIdentity"},
   "name":"org.mockito.internal.util.ConsoleMockitoLogger",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "condition":{"typeReachable":"org.apache.curator.framework.imps.TestWatcherIdentity"},
   "name":"org.mockito.internal.util.reflection.ReflectionMemberAccessor",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "name":"sun.management.ClassLoadingImpl",
-  "queryAllPublicConstructors":true
-},
-{
-  "name":"sun.management.CompilationImpl",
-  "queryAllPublicConstructors":true
-},
-{
-  "name":"sun.management.ManagementFactoryHelper$1",
-  "queryAllPublicConstructors":true
-},
-{
-  "name":"sun.management.ManagementFactoryHelper$PlatformLoggingImpl",
-  "queryAllPublicConstructors":true
-},
-{
-  "name":"sun.management.MemoryImpl",
-  "queryAllPublicConstructors":true
-},
-{
-  "name":"sun.management.MemoryManagerImpl",
-  "queryAllPublicConstructors":true
-},
-{
-  "name":"sun.management.MemoryPoolImpl",
-  "queryAllPublicConstructors":true
-},
-{
-  "name":"sun.management.RuntimeImpl",
-  "queryAllPublicConstructors":true
-},
-{
+  "condition":{"typeReachable":"org.apache.curator.framework.imps.NamespaceFacadeCache"},
   "name":"sun.misc.Unsafe",
   "allDeclaredFields":true
 },
 {
-  "name":"sun.security.provider.ConfigFile",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
+  "condition":{"typeReachable":"org.apache.curator.framework.imps.ProtectedMode"},
   "name":"sun.security.provider.NativePRNG",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"sun.security.provider.SHA",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 }
 ]

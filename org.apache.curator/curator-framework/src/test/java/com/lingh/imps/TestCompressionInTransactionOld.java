@@ -1,5 +1,5 @@
 
-package org.apache.curator.framework.imps;
+package com.lingh.imps;
 
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
@@ -8,7 +8,9 @@ import org.apache.curator.test.BaseClassForTests;
 import org.apache.curator.utils.CloseableUtils;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SuppressWarnings("deprecation")
 public class TestCompressionInTransactionOld extends BaseClassForTests {

@@ -1,5 +1,5 @@
 
-package org.apache.curator.framework.imps;
+package com.lingh.imps;
 
 import com.google.common.collect.Queues;
 import org.apache.curator.framework.CuratorFramework;

@@ -20,8 +20,13 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static org.apache.zookeeper.KeeperException.Code.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.apache.zookeeper.KeeperException.Code.BADVERSION;
+import static org.apache.zookeeper.KeeperException.Code.NONODE;
+import static org.apache.zookeeper.KeeperException.Code.OK;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SuppressWarnings({"deprecation", "FieldMayBeFinal"})
 public class TestDelete extends BaseClassForTests {

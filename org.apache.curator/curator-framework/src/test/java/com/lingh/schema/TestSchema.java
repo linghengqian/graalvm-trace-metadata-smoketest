@@ -1,5 +1,5 @@
 
-package org.apache.curator.framework.schema;
+package com.lingh.schema;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -10,6 +10,11 @@ import com.google.common.io.Resources;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.framework.api.transaction.CuratorOp;
+import org.apache.curator.framework.schema.Schema;
+import org.apache.curator.framework.schema.SchemaSet;
+import org.apache.curator.framework.schema.SchemaSetLoader;
+import org.apache.curator.framework.schema.SchemaValidator;
+import org.apache.curator.framework.schema.SchemaViolation;
 import org.apache.curator.retry.RetryOneTime;
 import org.apache.curator.test.BaseClassForTests;
 import org.apache.curator.utils.CloseableUtils;

@@ -1,10 +1,11 @@
 
 
-package org.apache.curator.framework.imps;
+package com.lingh.imps;
 
 import org.apache.curator.ensemble.EnsembleProvider;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
+import org.apache.curator.framework.imps.EnsembleTracker;
 import org.apache.curator.retry.ExponentialBackoffRetry;
 import org.apache.curator.test.InstanceSpec;
 import org.apache.curator.test.TestingCluster;
@@ -17,6 +18,7 @@ import org.apache.zookeeper.server.quorum.QuorumPeerConfig;
 import org.apache.zookeeper.server.quorum.flexible.QuorumMaj;
 import org.apache.zookeeper.server.quorum.flexible.QuorumVerifier;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -68,7 +70,7 @@ public class TestReconfiguration extends CuratorTestBase {
             QuorumVerifier quorumVerifier = toQuorumVerifier(configData);
             System.out.println(quorumVerifier);
             assertConfig(quorumVerifier, cluster.getInstances());
-            assertEquals(EnsembleTracker.configToConnectionString(quorumVerifier), ensembleProvider.getConnectionString());
+            Assertions.assertEquals(EnsembleTracker.configToConnectionString(quorumVerifier), ensembleProvider.getConnectionString());
         }
     }
 

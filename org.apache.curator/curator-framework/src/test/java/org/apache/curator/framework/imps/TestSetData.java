@@ -17,8 +17,12 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static org.apache.zookeeper.KeeperException.Code.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.apache.zookeeper.KeeperException.Code.BADVERSION;
+import static org.apache.zookeeper.KeeperException.Code.NONODE;
+import static org.apache.zookeeper.KeeperException.Code.OK;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SuppressWarnings({"FieldMayBeFinal", "deprecation", "unused"})
 public class TestSetData extends BaseClassForTests {

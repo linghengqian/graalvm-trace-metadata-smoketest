@@ -1,6 +1,6 @@
 
 
-package org.apache.curator.framework.imps;
+package com.lingh.imps;
 
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;

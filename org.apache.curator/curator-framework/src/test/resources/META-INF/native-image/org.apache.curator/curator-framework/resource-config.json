@@ -1,36 +1,8 @@
 {
   "resources":{
-  "includes":[
-    {
-      "pattern":"\\QMETA-INF/services/org.junit.platform.engine.TestEngine\\E"
-    }, 
-    {
-      "pattern":"\\QMETA-INF/services/org.junit.platform.launcher.TestExecutionListener\\E"
-    }, 
-    {
+  "includes":[{
+      "condition":{"typeReachable":"org.apache.curator.framework.imps.TestWatcherIdentity"},
       "pattern":"\\Qmockito-extensions/org.mockito.plugins.MockMaker\\E"
-    }, 
-    {
-      "pattern":"\\Qorg/slf4j/impl/StaticLoggerBinder.class\\E"
-    }, 
-    {
-      "pattern":"\\Qschema.yaml\\E"
-    }, 
-    {
-      "pattern":"\\Qschema1.json\\E"
-    }, 
-    {
-      "pattern":"\\Qschema2.json\\E"
-    }, 
-    {
-      "pattern":"\\Qschema3.json\\E"
-    }, 
-    {
-      "pattern":"\\Qschema4.json\\E"
-    }, 
-    {
-      "pattern":"\\Qschema5.json\\E"
-    }
-  ]},
+    }]},
   "bundles":[]
 }

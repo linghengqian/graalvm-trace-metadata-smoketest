@@ -1,5 +1,5 @@
 
-package org.apache.curator.framework.imps;
+package com.lingh.imps;
 
 import com.google.common.collect.Queues;
 import org.apache.curator.framework.CuratorFramework;
@@ -20,7 +20,9 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TestEnabledSessionExpiredState extends BaseClassForTests {
     private final Timing2 timing = new Timing2();

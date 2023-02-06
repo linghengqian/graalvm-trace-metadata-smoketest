@@ -1,5 +1,5 @@
 
-package org.apache.curator.framework.ensemble;
+package com.lingh.ensemble;
 
 import org.apache.curator.ensemble.EnsembleProvider;
 import org.apache.curator.framework.CuratorFramework;

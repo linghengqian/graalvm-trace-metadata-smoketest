@@ -1,8 +1,6 @@
 [
   {
-    "interfaces":[]
-  },
-  {
+    "condition":{"typeReachable":"org.apache.curator.framework.imps.TestWatcherIdentity"},
     "interfaces":["org.apache.curator.framework.api.CuratorWatcher"]
   }
 ]
