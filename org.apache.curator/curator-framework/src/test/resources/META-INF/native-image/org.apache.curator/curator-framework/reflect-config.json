@@ -80,6 +80,9 @@
   "queryAllPublicConstructors":true
 },
 {
+  "name":"java.io.FilePermission"
+},
+{
   "name":"java.lang.Boolean",
   "fields":[{"name":"TYPE"}]
 },
@@ -119,6 +122,9 @@
   "methods":[{"name":"toString","parameterTypes":[] }]
 },
 {
+  "name":"java.lang.RuntimePermission"
+},
+{
   "name":"java.lang.Short",
   "fields":[{"name":"TYPE"}]
 },
@@ -150,7 +156,10 @@
 },
 {
   "name":"java.lang.Throwable",
-  "methods":[{"name":"addSuppressed","parameterTypes":["java.lang.Throwable"] }]
+  "methods":[
+    {"name":"addSuppressed","parameterTypes":["java.lang.Throwable"] }, 
+    {"name":"getSuppressed","parameterTypes":[] }
+  ]
 },
 {
   "name":"java.lang.Void",
@@ -228,7 +237,23 @@
   "name":"java.math.BigInteger"
 },
 {
+  "name":"java.net.NetPermission"
+},
+{
+  "name":"java.net.SocketPermission"
+},
+{
+  "name":"java.net.URLPermission",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.String","java.lang.String"] }]
+},
+{
+  "name":"java.security.AllPermission"
+},
+{
   "name":"java.security.SecureRandomParameters"
+},
+{
+  "name":"java.security.SecurityPermission"
 },
 {
   "name":"java.sql.Date"
