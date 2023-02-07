@@ -2,20 +2,19 @@
 
 package org.apache.commons.dbcp2;
 
-import static org.junit.jupiter.api.Assertions.fail;
-
-import java.util.Hashtable;
-
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
-
 import org.apache.commons.dbcp2.datasources.PerUserPoolDataSource;
 import org.apache.commons.dbcp2.datasources.SharedPoolDataSource;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+import java.util.Hashtable;
+
+import static org.junit.jupiter.api.Assertions.fail;
 
 /**
  * Tests JNID bind and lookup for DataSource implementations.

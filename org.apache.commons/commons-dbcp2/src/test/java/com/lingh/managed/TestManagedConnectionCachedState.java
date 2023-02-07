@@ -1,7 +1,10 @@
 
-package org.apache.commons.dbcp2.managed;
+package com.lingh.managed;
 
 import org.apache.commons.dbcp2.*;
+import org.apache.commons.dbcp2.managed.LocalXAConnectionFactory;
+import org.apache.commons.dbcp2.managed.ManagedDataSource;
+import org.apache.commons.dbcp2.managed.XAConnectionFactory;
 import org.apache.commons.pool2.SwallowedExceptionListener;
 import org.apache.commons.pool2.impl.GenericObjectPool;
 import org.apache.geronimo.transaction.manager.TransactionManagerImpl;
