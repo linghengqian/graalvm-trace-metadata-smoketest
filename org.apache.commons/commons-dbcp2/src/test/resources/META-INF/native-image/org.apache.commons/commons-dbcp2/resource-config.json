@@ -2,28 +2,16 @@
   "resources":{
   "includes":[
     {
-      "pattern":"\\QConfigurationInfo.properties\\E"
-    }, 
-    {
+      "condition":{"typeReachable":"org.apache.commons.dbcp2.BasicDataSource"},
       "pattern":"\\QMETA-INF/services/java.sql.Driver\\E"
     }, 
     {
-      "pattern":"\\QMETA-INF/services/org.junit.platform.engine.TestEngine\\E"
-    }, 
-    {
-      "pattern":"\\QMETA-INF/services/org.junit.platform.launcher.TestExecutionListener\\E"
-    }, 
-    {
-      "pattern":"\\Qjbossts-properties.xml\\E"
-    }, 
-    {
+      "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingCallableStatement"},
       "pattern":"\\Qmockito-extensions/org.mockito.plugins.MockMaker\\E"
     }, 
     {
+      "condition":{"typeReachable":"org.apache.commons.dbcp2.DriverConnectionFactory"},
       "pattern":"\\Qorg/h2/util/data.zip\\E"
-    }, 
-    {
-      "pattern":"\\Qorg/slf4j/impl/StaticLoggerBinder.class\\E"
     }
   ]},
   "bundles":[

@@ -1,41 +1,58 @@
 [
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"[B"
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"[C"
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"[D"
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"[F"
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"[I"
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"[J"
 },
 {
-  "name":"[Ljava.lang.Object;"
-},
-{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"[Ljava.lang.String;"
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"[Ljavax.management.openmbean.CompositeData;"
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestBasicDataSource"},
+  "name":"[Ljavax.management.openmbean.CompositeData;"
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestBasicDataSourceFactory"},
+  "name":"[Ljavax.management.openmbean.CompositeData;"
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestPoolingDriver"},
+  "name":"[Ljavax.management.openmbean.CompositeData;"
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"[S"
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"[Z"
 },
 {
-  "name":"ch.qos.logback.classic.Logger"
-},
-{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.managed.TransactionRegistry"},
   "name":"com.arjuna.ats.arjuna.common.CoordinatorEnvironmentBean",
   "allDeclaredFields":true,
   "methods":[
@@ -105,827 +122,153 @@
   ]
 },
 {
-  "name":"com.arjuna.ats.arjuna.common.CoreEnvironmentBean",
-  "allDeclaredFields":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"getNodeIdentifier","parameterTypes":[] }, 
-    {"name":"getPid","parameterTypes":[] }, 
-    {"name":"getProcessImplementation","parameterTypes":[] }, 
-    {"name":"getProcessImplementationClassName","parameterTypes":[] }, 
-    {"name":"getSocketProcessIdMaxPorts","parameterTypes":[] }, 
-    {"name":"getSocketProcessIdPort","parameterTypes":[] }, 
-    {"name":"getTimeoutFactor","parameterTypes":[] }, 
-    {"name":"getVarDir","parameterTypes":[] }, 
-    {"name":"isAllowMultipleLastResources","parameterTypes":[] }, 
-    {"name":"isDisableMultipleLastResourcesWarning","parameterTypes":[] }, 
-    {"name":"setAllowMultipleLastResources","parameterTypes":["boolean"] }, 
-    {"name":"setDisableMultipleLastResourcesWarning","parameterTypes":["boolean"] }, 
-    {"name":"setNodeIdentifier","parameterTypes":["java.lang.String"] }, 
-    {"name":"setPid","parameterTypes":["int"] }, 
-    {"name":"setProcessImplementation","parameterTypes":["com.arjuna.ats.arjuna.utils.Process"] }, 
-    {"name":"setProcessImplementationClassName","parameterTypes":["java.lang.String"] }, 
-    {"name":"setSocketProcessIdMaxPorts","parameterTypes":["int"] }, 
-    {"name":"setSocketProcessIdPort","parameterTypes":["int"] }, 
-    {"name":"setTimeoutFactor","parameterTypes":["int"] }, 
-    {"name":"setVarDir","parameterTypes":["java.lang.String"] }
-  ]
-},
-{
-  "name":"com.arjuna.ats.arjuna.common.MetaObjectStoreEnvironmentBean",
-  "allDeclaredFields":true,
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"com.arjuna.ats.arjuna.common.ObjectStoreEnvironmentBean",
-  "allDeclaredFields":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"getCacheStoreHash","parameterTypes":[] }, 
-    {"name":"getCacheStoreRemovedItems","parameterTypes":[] }, 
-    {"name":"getCacheStoreScanPeriod","parameterTypes":[] }, 
-    {"name":"getCacheStoreSize","parameterTypes":[] }, 
-    {"name":"getCacheStoreWorkItems","parameterTypes":[] }, 
-    {"name":"getCreateTable","parameterTypes":[] }, 
-    {"name":"getDropTable","parameterTypes":[] }, 
-    {"name":"getExposeAllLogRecordsAsMBeans","parameterTypes":[] }, 
-    {"name":"getHashedDirectories","parameterTypes":[] }, 
-    {"name":"getHierarchyRetry","parameterTypes":[] }, 
-    {"name":"getHierarchyTimeout","parameterTypes":[] }, 
-    {"name":"getJdbcAccess","parameterTypes":[] }, 
-    {"name":"getJmxToolingMBeanName","parameterTypes":[] }, 
-    {"name":"getLocalOSRoot","parameterTypes":[] }, 
-    {"name":"getObjectStoreDir","parameterTypes":[] }, 
-    {"name":"getObjectStoreType","parameterTypes":[] }, 
-    {"name":"getPurgeTime","parameterTypes":[] }, 
-    {"name":"getShare","parameterTypes":[] }, 
-    {"name":"getTablePrefix","parameterTypes":[] }, 
-    {"name":"getTxLogSize","parameterTypes":[] }, 
-    {"name":"isCacheStoreSync","parameterTypes":[] }, 
-    {"name":"isIgnoreMBeanHeuristics","parameterTypes":[] }, 
-    {"name":"isObjectStoreSync","parameterTypes":[] }, 
-    {"name":"isScanZeroLengthFiles","parameterTypes":[] }, 
-    {"name":"isSynchronousRemoval","parameterTypes":[] }, 
-    {"name":"isTransactionSync","parameterTypes":[] }, 
-    {"name":"isVolatileStoreSupportAllObjUids","parameterTypes":[] }, 
-    {"name":"setCacheStoreHash","parameterTypes":["int"] }, 
-    {"name":"setCacheStoreRemovedItems","parameterTypes":["int"] }, 
-    {"name":"setCacheStoreScanPeriod","parameterTypes":["int"] }, 
-    {"name":"setCacheStoreSize","parameterTypes":["int"] }, 
-    {"name":"setCacheStoreSync","parameterTypes":["boolean"] }, 
-    {"name":"setCacheStoreWorkItems","parameterTypes":["int"] }, 
-    {"name":"setCreateTable","parameterTypes":["boolean"] }, 
-    {"name":"setDropTable","parameterTypes":["boolean"] }, 
-    {"name":"setExposeAllLogRecordsAsMBeans","parameterTypes":["boolean"] }, 
-    {"name":"setHashedDirectories","parameterTypes":["int"] }, 
-    {"name":"setHierarchyRetry","parameterTypes":["int"] }, 
-    {"name":"setHierarchyTimeout","parameterTypes":["int"] }, 
-    {"name":"setIgnoreMBeanHeuristics","parameterTypes":["boolean"] }, 
-    {"name":"setJdbcAccess","parameterTypes":["java.lang.String"] }, 
-    {"name":"setJmxToolingMBeanName","parameterTypes":["java.lang.String"] }, 
-    {"name":"setLocalOSRoot","parameterTypes":["java.lang.String"] }, 
-    {"name":"setObjectStoreDir","parameterTypes":["java.lang.String"] }, 
-    {"name":"setObjectStoreSync","parameterTypes":["boolean"] }, 
-    {"name":"setObjectStoreType","parameterTypes":["java.lang.String"] }, 
-    {"name":"setPurgeTime","parameterTypes":["long"] }, 
-    {"name":"setScanZeroLengthFiles","parameterTypes":["boolean"] }, 
-    {"name":"setShare","parameterTypes":["int"] }, 
-    {"name":"setSynchronousRemoval","parameterTypes":["boolean"] }, 
-    {"name":"setTablePrefix","parameterTypes":["java.lang.String"] }, 
-    {"name":"setTransactionSync","parameterTypes":["boolean"] }, 
-    {"name":"setTxLogSize","parameterTypes":["long"] }, 
-    {"name":"setVolatileStoreSupportAllObjUids","parameterTypes":["boolean"] }
-  ]
-},
-{
-  "name":"com.arjuna.ats.arjuna.common.RecoveryEnvironmentBean",
-  "allDeclaredFields":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"getExpiryScanInterval","parameterTypes":[] }, 
-    {"name":"getExpiryScannerClassNames","parameterTypes":[] }, 
-    {"name":"getExpiryScanners","parameterTypes":[] }, 
-    {"name":"getPeriodicRecoveryInitilizationOffset","parameterTypes":[] }, 
-    {"name":"getPeriodicRecoveryPeriod","parameterTypes":[] }, 
-    {"name":"getRecoveryActivatorClassNames","parameterTypes":[] }, 
-    {"name":"getRecoveryActivators","parameterTypes":[] }, 
-    {"name":"getRecoveryAddress","parameterTypes":[] }, 
-    {"name":"getRecoveryBackoffPeriod","parameterTypes":[] }, 
-    {"name":"getRecoveryModuleClassNames","parameterTypes":[] }, 
-    {"name":"getRecoveryModules","parameterTypes":[] }, 
-    {"name":"getRecoveryPort","parameterTypes":[] }, 
-    {"name":"getTransactionStatusManagerAddress","parameterTypes":[] }, 
-    {"name":"getTransactionStatusManagerExpiryTime","parameterTypes":[] }, 
-    {"name":"getTransactionStatusManagerPort","parameterTypes":[] }, 
-    {"name":"isRecoveryListener","parameterTypes":[] }, 
-    {"name":"isTimeoutSocket","parameterTypes":[] }, 
-    {"name":"setExpiryScanInterval","parameterTypes":["int"] }, 
-    {"name":"setExpiryScannerClassNames","parameterTypes":["java.util.List"] }, 
-    {"name":"setExpiryScanners","parameterTypes":["java.util.List"] }, 
-    {"name":"setPeriodicRecoveryInitilizationOffset","parameterTypes":["int"] }, 
-    {"name":"setPeriodicRecoveryPeriod","parameterTypes":["int"] }, 
-    {"name":"setRecoveryActivatorClassNames","parameterTypes":["java.util.List"] }, 
-    {"name":"setRecoveryActivators","parameterTypes":["java.util.List"] }, 
-    {"name":"setRecoveryAddress","parameterTypes":["java.lang.String"] }, 
-    {"name":"setRecoveryBackoffPeriod","parameterTypes":["int"] }, 
-    {"name":"setRecoveryListener","parameterTypes":["boolean"] }, 
-    {"name":"setRecoveryModuleClassNames","parameterTypes":["java.util.List"] }, 
-    {"name":"setRecoveryModules","parameterTypes":["java.util.List"] }, 
-    {"name":"setRecoveryPort","parameterTypes":["int"] }, 
-    {"name":"setTimeoutSocket","parameterTypes":["boolean"] }, 
-    {"name":"setTransactionStatusManagerAddress","parameterTypes":["java.lang.String"] }, 
-    {"name":"setTransactionStatusManagerExpiryTime","parameterTypes":["int"] }, 
-    {"name":"setTransactionStatusManagerPort","parameterTypes":["int"] }
-  ]
-},
-{
-  "name":"com.arjuna.ats.arjuna.logging.arjunaI18NLogger_$logger",
-  "methods":[{"name":"<init>","parameterTypes":["org.jboss.logging.Logger"] }]
-},
-{
-  "name":"com.arjuna.ats.arjuna.recovery.ActionStatusService",
-  "queryAllPublicConstructors":true,
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"com.arjuna.ats.internal.arjuna.coordinator.CheckedActionFactoryImple",
-  "queryAllPublicConstructors":true,
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"com.arjuna.ats.internal.arjuna.objectstore.ShadowNoFileLockStore",
-  "queryAllPublicConstructors":true,
-  "methods":[{"name":"<init>","parameterTypes":["com.arjuna.ats.arjuna.common.ObjectStoreEnvironmentBean"] }]
-},
-{
-  "name":"com.arjuna.ats.internal.arjuna.utils.SocketProcessId",
-  "queryAllPublicConstructors":true,
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.managed.TestBasicManagedDataSource"},
   "name":"com.arjuna.ats.internal.jta.transaction.arjunacore.TransactionManagerImple",
   "queryAllPublicConstructors":true,
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "name":"com.arjuna.ats.jta.common.JTAEnvironmentBean",
-  "allDeclaredFields":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"getAsyncCommitPoolSize","parameterTypes":[] }, 
-    {"name":"getCommitMarkableResourceJNDINames","parameterTypes":[] }, 
-    {"name":"getCommitMarkableResourceRecordDeleteBatchSize","parameterTypes":[] }, 
-    {"name":"getCommitMarkableResourceRecordDeleteBatchSizeMap","parameterTypes":[] }, 
-    {"name":"getCommitMarkableResourceTableNameMap","parameterTypes":[] }, 
-    {"name":"getLastResourceOptimisationInterface","parameterTypes":[] }, 
-    {"name":"getLastResourceOptimisationInterfaceClassName","parameterTypes":[] }, 
-    {"name":"getOrphanSafetyInterval","parameterTypes":[] }, 
-    {"name":"getPerformImmediateCleanupOfCommitMarkableResourceBranchesMap","parameterTypes":[] }, 
-    {"name":"getTransactionManager","parameterTypes":[] }, 
-    {"name":"getTransactionManagerClassName","parameterTypes":[] }, 
-    {"name":"getTransactionManagerJNDIContext","parameterTypes":[] }, 
-    {"name":"getTransactionSynchronizationRegistry","parameterTypes":[] }, 
-    {"name":"getTransactionSynchronizationRegistryClassName","parameterTypes":[] }, 
-    {"name":"getTransactionSynchronizationRegistryJNDIContext","parameterTypes":[] }, 
-    {"name":"getUserTransaction","parameterTypes":[] }, 
-    {"name":"getUserTransactionClassName","parameterTypes":[] }, 
-    {"name":"getUserTransactionJNDIContext","parameterTypes":[] }, 
-    {"name":"getUserTransactionOperationsProviderClassName","parameterTypes":[] }, 
-    {"name":"getXaRecoveryNodes","parameterTypes":[] }, 
-    {"name":"getXaResourceIsSameRMClassNames","parameterTypes":[] }, 
-    {"name":"getXaResourceMapClassNames","parameterTypes":[] }, 
-    {"name":"getXaResourceMaps","parameterTypes":[] }, 
-    {"name":"getXaResourceOrphanFilterClassNames","parameterTypes":[] }, 
-    {"name":"getXaResourceOrphanFilters","parameterTypes":[] }, 
-    {"name":"getXaResourceRecordWrappingPluginClassName","parameterTypes":[] }, 
-    {"name":"getXaResourceRecoveries","parameterTypes":[] }, 
-    {"name":"getXaResourceRecoveryClassNames","parameterTypes":[] }, 
-    {"name":"isNotifyCommitMarkableResourceRecoveryModuleOfCompleteBranches","parameterTypes":[] }, 
-    {"name":"isPerformImmediateCleanupOfCommitMarkableResourceBranches","parameterTypes":[] }, 
-    {"name":"isStrictJTA12DuplicateXAENDPROTOErr","parameterTypes":[] }, 
-    {"name":"isSupportSubtransactions","parameterTypes":[] }, 
-    {"name":"isTransactionToThreadListenersEnabled","parameterTypes":[] }, 
-    {"name":"isXaAssumeRecoveryComplete","parameterTypes":[] }, 
-    {"name":"isXaRollbackOptimization","parameterTypes":[] }, 
-    {"name":"isXaTransactionTimeoutEnabled","parameterTypes":[] }, 
-    {"name":"setAsyncCommitPoolSize","parameterTypes":["int"] }, 
-    {"name":"setCommitMarkableResourceJNDINames","parameterTypes":["java.util.List"] }, 
-    {"name":"setCommitMarkableResourceRecordDeleteBatchSize","parameterTypes":["int"] }, 
-    {"name":"setCommitMarkableResourceRecordDeleteBatchSizeMap","parameterTypes":["java.util.Map"] }, 
-    {"name":"setCommitMarkableResourceTableNameMap","parameterTypes":["java.util.Map"] }, 
-    {"name":"setLastResourceOptimisationInterface","parameterTypes":["java.lang.Class"] }, 
-    {"name":"setLastResourceOptimisationInterfaceClassName","parameterTypes":["java.lang.String"] }, 
-    {"name":"setNotifyCommitMarkableResourceRecoveryModuleOfCompleteBranches","parameterTypes":["boolean"] }, 
-    {"name":"setOrphanSafetyInterval","parameterTypes":["int"] }, 
-    {"name":"setPerformImmediateCleanupOfCommitMarkableResourceBranches","parameterTypes":["boolean"] }, 
-    {"name":"setPerformImmediateCleanupOfCommitMarkableResourceBranchesMap","parameterTypes":["java.util.Map"] }, 
-    {"name":"setStrictJTA12DuplicateXAENDPROTOErr","parameterTypes":["boolean"] }, 
-    {"name":"setSupportSubtransactions","parameterTypes":["boolean"] }, 
-    {"name":"setTransactionManager","parameterTypes":["javax.transaction.TransactionManager"] }, 
-    {"name":"setTransactionManagerClassName","parameterTypes":["java.lang.String"] }, 
-    {"name":"setTransactionManagerJNDIContext","parameterTypes":["java.lang.String"] }, 
-    {"name":"setTransactionSynchronizationRegistry","parameterTypes":["javax.transaction.TransactionSynchronizationRegistry"] }, 
-    {"name":"setTransactionSynchronizationRegistryClassName","parameterTypes":["java.lang.String"] }, 
-    {"name":"setTransactionSynchronizationRegistryJNDIContext","parameterTypes":["java.lang.String"] }, 
-    {"name":"setTransactionToThreadListenersEnabled","parameterTypes":["boolean"] }, 
-    {"name":"setUserTransaction","parameterTypes":["javax.transaction.UserTransaction"] }, 
-    {"name":"setUserTransactionClassName","parameterTypes":["java.lang.String"] }, 
-    {"name":"setUserTransactionJNDIContext","parameterTypes":["java.lang.String"] }, 
-    {"name":"setUserTransactionOperationsProviderClassName","parameterTypes":["java.lang.String"] }, 
-    {"name":"setXaAssumeRecoveryComplete","parameterTypes":["boolean"] }, 
-    {"name":"setXaRecoveryNodes","parameterTypes":["java.util.List"] }, 
-    {"name":"setXaResourceIsSameRMClassNames","parameterTypes":["java.util.List"] }, 
-    {"name":"setXaResourceMapClassNames","parameterTypes":["java.util.List"] }, 
-    {"name":"setXaResourceMaps","parameterTypes":["java.util.List"] }, 
-    {"name":"setXaResourceOrphanFilterClassNames","parameterTypes":["java.util.List"] }, 
-    {"name":"setXaResourceOrphanFilters","parameterTypes":["java.util.List"] }, 
-    {"name":"setXaResourceRecordWrappingPluginClassName","parameterTypes":["java.lang.String"] }, 
-    {"name":"setXaResourceRecoveries","parameterTypes":["java.util.List"] }, 
-    {"name":"setXaResourceRecoveryClassNames","parameterTypes":["java.util.List"] }, 
-    {"name":"setXaRollbackOptimization","parameterTypes":["boolean"] }, 
-    {"name":"setXaTransactionTimeoutEnabled","parameterTypes":["boolean"] }
-  ]
-},
-{
-  "name":"com.arjuna.ats.jta.logging.jtaI18NLogger_$logger",
-  "methods":[{"name":"<init>","parameterTypes":["org.jboss.logging.Logger"] }]
-},
-{
-  "name":"com.arjuna.common.logging.commonI18NLogger_$logger",
-  "methods":[{"name":"<init>","parameterTypes":["org.jboss.logging.Logger"] }]
-},
-{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.BasicDataSource"},
   "name":"com.lingh.StackMessageLog",
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
   "methods":[{"name":"<init>","parameterTypes":["java.lang.String"] }]
 },
 {
-  "name":"com.lingh.TestBasicDataSourceMXBean",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"testDefaultSchema","parameterTypes":[] }
-  ]
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.BasicDataSourceFactory"},
+  "name":"com.lingh.StackMessageLog",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.String"] }]
 },
 {
-  "name":"com.lingh.TestConstants",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"testConstants","parameterTypes":[] }
-  ]
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
+  "name":"com.lingh.StackMessageLog",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.String"] }]
 },
 {
-  "name":"com.lingh.TestDriverConnectionFactory",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"testCreateConnection","parameterTypes":[] }, 
-    {"name":"testDriverConnectionFactoryToString","parameterTypes":[] }
-  ]
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.PoolableConnectionFactory"},
+  "name":"com.lingh.StackMessageLog",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.String"] }]
 },
 {
-  "name":"com.lingh.TestListException",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"testExceptionList","parameterTypes":[] }, 
-    {"name":"testNulls","parameterTypes":[] }
-  ]
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.PoolingDataSource"},
+  "name":"com.lingh.StackMessageLog",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.String"] }]
 },
 {
-  "name":"com.lingh.TestPStmtKey",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"testCtorDifferentCatalog","parameterTypes":[] }, 
-    {"name":"testCtorDifferentSchema","parameterTypes":[] }, 
-    {"name":"testCtorEquals","parameterTypes":[] }, 
-    {"name":"testCtorStringStringArrayOfInts","parameterTypes":[] }, 
-    {"name":"testCtorStringStringArrayOfNullInts","parameterTypes":[] }, 
-    {"name":"testCtorStringStringArrayOfNullStrings","parameterTypes":[] }, 
-    {"name":"testCtorStringStringArrayOfStrings","parameterTypes":[] }, 
-    {"name":"testEquals","parameterTypes":[] }, 
-    {"name":"testGettersSetters","parameterTypes":[] }, 
-    {"name":"testToString","parameterTypes":[] }
-  ]
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestJndi"},
+  "name":"com.lingh.StackMessageLog",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.String"] }]
 },
 {
-  "name":"com.lingh.TestParallelCreationWithNoIdle",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setUp","parameterTypes":[] }, 
-    {"name":"setUpClass","parameterTypes":[] }, 
-    {"name":"testMassiveConcurrentInitBorrow","parameterTypes":[] }
-  ]
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.datasources.PerUserPoolDataSource"},
+  "name":"com.lingh.StackMessageLog",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.String"] }]
 },
 {
-  "name":"com.lingh.TestParallelCreationWithNoIdle$TestThread"
-},
-{
-  "name":"com.lingh.TestPoolableConnection",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setUp","parameterTypes":[] }, 
-    {"name":"tearDown","parameterTypes":[] }, 
-    {"name":"testClosingWrappedInDelegate","parameterTypes":[] }, 
-    {"name":"testConnectionPool","parameterTypes":[] }, 
-    {"name":"testFastFailValidation","parameterTypes":[] }, 
-    {"name":"testFastFailValidationCustomCodes","parameterTypes":[] }, 
-    {"name":"testPoolableConnectionLeak","parameterTypes":[] }
-  ]
-},
-{
-  "name":"com.lingh.TestPoolingDataSource",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setUp","parameterTypes":[] }, 
-    {"name":"tearDown","parameterTypes":[] }, 
-    {"name":"testClose","parameterTypes":[] }, 
-    {"name":"testFixFactoryConfig","parameterTypes":[] }, 
-    {"name":"testIsWrapperFor","parameterTypes":[] }, 
-    {"name":"testPoolGuardConnectionWrapperEqualInnermost","parameterTypes":[] }, 
-    {"name":"testPoolGuardConnectionWrapperEqualsFail","parameterTypes":[] }, 
-    {"name":"testPoolGuardConnectionWrapperEqualsNull","parameterTypes":[] }, 
-    {"name":"testPoolGuardConnectionWrapperEqualsReflexive","parameterTypes":[] }, 
-    {"name":"testPoolGuardConnectionWrapperEqualsSameDelegate","parameterTypes":[] }, 
-    {"name":"testPoolGuardConnectionWrapperEqualsType","parameterTypes":[] }, 
-    {"name":"testUnwrap","parameterTypes":[] }
-  ]
-},
-{
-  "name":"com.lingh.TestSQLExceptionList",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"testCause","parameterTypes":[] }, 
-    {"name":"testNullCause","parameterTypes":[] }
-  ]
-},
-{
-  "name":"com.lingh.TestUtils",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"testClassLoads","parameterTypes":[] }
-  ]
-},
-{
-  "name":"com.lingh.TesterClassLoader",
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true
-},
-{
-  "name":"com.lingh.TesterDatabaseMetaData",
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true
-},
-{
-  "name":"com.lingh.TesterPreparedStatement",
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true
-},
-{
-  "name":"com.lingh.TesterUtils",
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true
-},
-{
-  "name":"com.lingh.cpdsadapter.TestDriverAdapterCPDS",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setUp","parameterTypes":[] }, 
-    {"name":"testClosingWithUserName","parameterTypes":[] }, 
-    {"name":"testDbcp367","parameterTypes":[] }, 
-    {"name":"testGetObjectInstance","parameterTypes":[] }, 
-    {"name":"testGetObjectInstanceChangeDescription","parameterTypes":[] }, 
-    {"name":"testGetObjectInstanceNull","parameterTypes":[] }, 
-    {"name":"testGetParentLogger","parameterTypes":[] }, 
-    {"name":"testGetReference","parameterTypes":[] }, 
-    {"name":"testGettersAndSetters","parameterTypes":[] }, 
-    {"name":"testIncorrectPassword","parameterTypes":[] }, 
-    {"name":"testNullValidationQuery","parameterTypes":[] }, 
-    {"name":"testSetConnectionProperties","parameterTypes":[] }, 
-    {"name":"testSetConnectionPropertiesConnectionCalled","parameterTypes":[] }, 
-    {"name":"testSetConnectionPropertiesNull","parameterTypes":[] }, 
-    {"name":"testSetPasswordNull","parameterTypes":[] }, 
-    {"name":"testSetPasswordNullWithConnectionProperties","parameterTypes":[] }, 
-    {"name":"testSetPasswordThenModCharArray","parameterTypes":[] }, 
-    {"name":"testSetUserNull","parameterTypes":[] }, 
-    {"name":"testSetUserNullWithConnectionProperties","parameterTypes":[] }, 
-    {"name":"testSimple","parameterTypes":[] }, 
-    {"name":"testSimpleWithUsername","parameterTypes":[] }, 
-    {"name":"testToStringWithoutConnectionProperties","parameterTypes":[] }
-  ]
-},
-{
-  "name":"com.lingh.cpdsadapter.TestDriverAdapterCPDS$ThreadDbcp367"
-},
-{
-  "name":"com.lingh.datasources.ConnectionPoolDataSourceProxy",
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true
-},
-{
-  "name":"com.lingh.datasources.PooledConnectionProxy",
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true
-},
-{
-  "name":"com.lingh.datasources.TestFactory",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"testJNDI2Pools","parameterTypes":[] }
-  ]
-},
-{
-  "name":"com.lingh.datasources.TestSharedPoolDataSource",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setUp","parameterTypes":[] }, 
-    {"name":"testChangePassword","parameterTypes":[] }, 
-    {"name":"testClosePool","parameterTypes":[] }, 
-    {"name":"testClosing","parameterTypes":[] }, 
-    {"name":"testClosingWithUserName","parameterTypes":[] }, 
-    {"name":"testDbcp369","parameterTypes":[] }, 
-    {"name":"testIncorrectPassword","parameterTypes":[] }, 
-    {"name":"testMaxTotal","parameterTypes":[] }, 
-    {"name":"testMaxWaitMillis","parameterTypes":[] }, 
-    {"name":"testMultipleThreads1","parameterTypes":[] }, 
-    {"name":"testMultipleThreads2","parameterTypes":[] }, 
-    {"name":"testOpening","parameterTypes":[] }, 
-    {"name":"testPoolPrepareCall","parameterTypes":[] }, 
-    {"name":"testPoolPrepareStatement","parameterTypes":[] }, 
-    {"name":"testPoolPreparedCalls","parameterTypes":[] }, 
-    {"name":"testPoolPreparedStatements","parameterTypes":[] }, 
-    {"name":"testSimple","parameterTypes":[] }, 
-    {"name":"testSimple2","parameterTypes":[] }, 
-    {"name":"testSimpleWithUsername","parameterTypes":[] }, 
-    {"name":"testTransactionIsolationBehavior","parameterTypes":[] }
-  ]
-},
-{
-  "name":"com.lingh.datasources.TestSharedPoolDataSource$CscbString"
-},
-{
-  "name":"com.lingh.datasources.TestSharedPoolDataSource$CscbStringIntInt"
-},
-{
-  "name":"com.lingh.datasources.TestSharedPoolDataSource$CscbStringIntIntInt"
-},
-{
-  "name":"com.lingh.datasources.TestSharedPoolDataSource$PrepareCallCallback"
-},
-{
-  "name":"com.lingh.datasources.TestSharedPoolDataSource$PrepareStatementCallback"
-},
-{
-  "name":"com.lingh.datasources.TestSharedPoolDataSource$PscbString"
-},
-{
-  "name":"com.lingh.datasources.TestSharedPoolDataSource$PscbStringInt"
-},
-{
-  "name":"com.lingh.datasources.TestSharedPoolDataSource$PscbStringIntArray"
-},
-{
-  "name":"com.lingh.datasources.TestSharedPoolDataSource$PscbStringIntInt"
-},
-{
-  "name":"com.lingh.datasources.TestSharedPoolDataSource$PscbStringIntIntInt"
-},
-{
-  "name":"com.lingh.datasources.TestSharedPoolDataSource$PscbStringStringArray"
-},
-{
-  "name":"com.lingh.managed.TestConnectionWithNarayana",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setUp","parameterTypes":[] }, 
-    {"name":"tearDown","parameterTypes":[] }, 
-    {"name":"testConnectionCommitAfterTimeout","parameterTypes":[] }, 
-    {"name":"testConnectionInTimeout","parameterTypes":[] }, 
-    {"name":"testRepeatedGetConnectionInTimeout","parameterTypes":[] }
-  ]
-},
-{
-  "name":"com.lingh.managed.TestDataSourceXAConnectionFactory",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setUp","parameterTypes":[] }, 
-    {"name":"testPhysicalClose","parameterTypes":[] }
-  ]
-},
-{
-  "name":"com.lingh.managed.TestDataSourceXAConnectionFactory$XADataSourceHandle"
-},
-{
-  "name":"com.lingh.managed.TestManagedConnection",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setUp","parameterTypes":[] }, 
-    {"name":"tearDown","parameterTypes":[] }, 
-    {"name":"testConnectionReturnOnErrorWhenEnlistingXAResource","parameterTypes":[] }
-  ]
-},
-{
-  "name":"com.lingh.managed.TestManagedConnection$UncooperativeLocalXAConnectionFactory"
-},
-{
-  "name":"com.lingh.managed.TestManagedConnection$UncooperativeTransaction"
-},
-{
-  "name":"com.lingh.managed.TestManagedConnection$UncooperativeTransactionRegistry"
-},
-{
-  "name":"com.lingh.managed.TestManagedConnectionCachedState",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setUp","parameterTypes":[] }, 
-    {"name":"tearDown","parameterTypes":[] }, 
-    {"name":"testConnectionCachedState","parameterTypes":[] }
-  ]
-},
-{
-  "name":"com.lingh.managed.TestManagedConnectionCachedState$SwallowedExceptionRecorder"
-},
-{
-  "name":"com.lingh.managed.TestManagedDataSource",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setUp","parameterTypes":[] }, 
-    {"name":"tearDown","parameterTypes":[] }, 
-    {"name":"testAccessToUnderlyingConnectionAllowed","parameterTypes":[] }, 
-    {"name":"testConnectionReturnOnCommit","parameterTypes":[] }, 
-    {"name":"testManagedConnectionEqualInnermost","parameterTypes":[] }, 
-    {"name":"testManagedConnectionEqualsFail","parameterTypes":[] }, 
-    {"name":"testManagedConnectionEqualsNull","parameterTypes":[] }, 
-    {"name":"testManagedConnectionEqualsReflexive","parameterTypes":[] }, 
-    {"name":"testManagedConnectionEqualsSameDelegate","parameterTypes":[] }, 
-    {"name":"testManagedConnectionEqualsSameDelegateNoUnderlyingAccess","parameterTypes":[] }, 
-    {"name":"testManagedConnectionEqualsType","parameterTypes":[] }, 
-    {"name":"testNestedConnections","parameterTypes":[] }, 
-    {"name":"testSetNullTransactionRegistry","parameterTypes":[] }, 
-    {"name":"testSetTransactionRegistry","parameterTypes":[] }, 
-    {"name":"testSetTransactionRegistryAlreadySet","parameterTypes":[] }, 
-    {"name":"testSharedConnection","parameterTypes":[] }, 
-    {"name":"testTransactionRegistryNotInitialized","parameterTypes":[] }
-  ]
-},
-{
-  "name":"com.lingh.managed.TestPoolableManagedConnection",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setUp","parameterTypes":[] }, 
-    {"name":"tearDown","parameterTypes":[] }, 
-    {"name":"testManagedConnection","parameterTypes":[] }, 
-    {"name":"testPoolableConnection","parameterTypes":[] }, 
-    {"name":"testReallyClose","parameterTypes":[] }
-  ]
-},
-{
-  "name":"com.lingh.managed.TestSynchronizationOrder",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setup","parameterTypes":[] }, 
-    {"name":"tearDown","parameterTypes":[] }, 
-    {"name":"testInterposedSynchronization","parameterTypes":[] }, 
-    {"name":"testSessionSynchronization","parameterTypes":[] }
-  ]
-},
-{
-  "name":"com.lingh.transaction.TransactionAdapter",
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true
-},
-{
-  "name":"com.lingh.transaction.TransactionManagerAdapter",
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true
-},
-{
-  "name":"com.lingh.transaction.TransactionSynchronizationRegistryAdapter",
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true
-},
-{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"com.sun.management.GarbageCollectorMXBean",
   "queryAllPublicMethods":true
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"com.sun.management.GcInfo",
   "queryAllPublicMethods":true
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"com.sun.management.HotSpotDiagnosticMXBean",
   "queryAllPublicMethods":true
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"com.sun.management.ThreadMXBean",
   "queryAllPublicMethods":true
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"com.sun.management.UnixOperatingSystemMXBean",
   "queryAllPublicMethods":true
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"com.sun.management.VMOption",
   "queryAllPublicMethods":true
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"com.sun.management.internal.GarbageCollectorExtImpl",
   "queryAllPublicConstructors":true
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"com.sun.management.internal.HotSpotDiagnostic",
   "queryAllPublicConstructors":true
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"com.sun.management.internal.HotSpotThreadImpl",
   "queryAllPublicConstructors":true
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"com.sun.management.internal.OperatingSystemImpl",
   "queryAllPublicConstructors":true
 },
 {
-  "name":"com.sun.xml.internal.stream.XMLInputFactoryImpl",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"java.io.FilePermission"
-},
-{
-  "name":"java.io.Serializable",
-  "allDeclaredClasses":true,
-  "queryAllPublicMethods":true
-},
-{
-  "name":"java.lang.AutoCloseable",
-  "allDeclaredClasses":true,
-  "queryAllPublicMethods":true
-},
-{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"java.lang.Boolean",
   "fields":[{"name":"TYPE"}]
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"java.lang.Byte",
   "fields":[{"name":"TYPE"}]
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"java.lang.Character",
   "fields":[{"name":"TYPE"}]
 },
 {
-  "name":"java.lang.ClassLoader",
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true
-},
-{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"java.lang.Deprecated",
   "queryAllPublicMethods":true
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"java.lang.Double",
   "fields":[{"name":"TYPE"}]
 },
 {
-  "name":"java.lang.Enum"
-},
-{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"java.lang.Float",
   "fields":[{"name":"TYPE"}]
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"java.lang.Integer",
   "fields":[{"name":"TYPE"}]
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"java.lang.Long",
   "fields":[{"name":"TYPE"}]
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.DelegatingCallableStatement"},
   "name":"java.lang.Object",
   "methods":[{"name":"toString","parameterTypes":[] }]
 },
 {
-  "name":"java.lang.RuntimePermission"
-},
-{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"java.lang.Short",
   "fields":[{"name":"TYPE"}]
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"java.lang.StackTraceElement",
   "queryAllPublicMethods":true
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.DelegatingCallableStatement"},
   "name":"java.lang.StackWalker",
   "methods":[
     {"name":"getInstance","parameterTypes":["java.util.Set","int"] }, 
@@ -933,9 +276,61 @@
   ]
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.DelegatingDatabaseMetaData"},
+  "name":"java.lang.StackWalker",
+  "methods":[{"name":"walk","parameterTypes":["java.util.function.Function"] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.DelegatingPreparedStatement"},
+  "name":"java.lang.StackWalker",
+  "methods":[{"name":"walk","parameterTypes":["java.util.function.Function"] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.DelegatingResultSet"},
+  "name":"java.lang.StackWalker",
+  "methods":[{"name":"walk","parameterTypes":["java.util.function.Function"] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.DelegatingStatement"},
+  "name":"java.lang.StackWalker",
+  "methods":[{"name":"walk","parameterTypes":["java.util.function.Function"] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.Jdbc41Bridge"},
+  "name":"java.lang.StackWalker",
+  "methods":[{"name":"walk","parameterTypes":["java.util.function.Function"] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingCallableStatement"},
+  "name":"java.lang.StackWalker",
+  "methods":[{"name":"walk","parameterTypes":["java.util.function.Function"] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingDatabaseMetaData"},
+  "name":"java.lang.StackWalker",
+  "methods":[{"name":"walk","parameterTypes":["java.util.function.Function"] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingPreparedStatement"},
+  "name":"java.lang.StackWalker",
+  "methods":[{"name":"walk","parameterTypes":["java.util.function.Function"] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingResultSet"},
+  "name":"java.lang.StackWalker",
+  "methods":[{"name":"walk","parameterTypes":["java.util.function.Function"] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingStatement"},
+  "name":"java.lang.StackWalker",
+  "methods":[{"name":"walk","parameterTypes":["java.util.function.Function"] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.DelegatingCallableStatement"},
   "name":"java.lang.StackWalker$Option"
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.DelegatingCallableStatement"},
   "name":"java.lang.StackWalker$StackFrame",
   "methods":[
     {"name":"getClassName","parameterTypes":[] }, 
@@ -945,1973 +340,627 @@
   ]
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.DelegatingDatabaseMetaData"},
+  "name":"java.lang.StackWalker$StackFrame",
+  "methods":[{"name":"getClassName","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.DelegatingPreparedStatement"},
+  "name":"java.lang.StackWalker$StackFrame",
+  "methods":[{"name":"getClassName","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.DelegatingResultSet"},
+  "name":"java.lang.StackWalker$StackFrame",
+  "methods":[{"name":"getClassName","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.DelegatingStatement"},
+  "name":"java.lang.StackWalker$StackFrame",
+  "methods":[{"name":"getClassName","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.Jdbc41Bridge"},
+  "name":"java.lang.StackWalker$StackFrame",
+  "methods":[{"name":"getClassName","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingCallableStatement"},
+  "name":"java.lang.StackWalker$StackFrame",
+  "methods":[{"name":"getClassName","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingDatabaseMetaData"},
+  "name":"java.lang.StackWalker$StackFrame",
+  "methods":[{"name":"getClassName","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingPreparedStatement"},
+  "name":"java.lang.StackWalker$StackFrame",
+  "methods":[{"name":"getClassName","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingResultSet"},
+  "name":"java.lang.StackWalker$StackFrame",
+  "methods":[{"name":"getClassName","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingStatement"},
+  "name":"java.lang.StackWalker$StackFrame",
+  "methods":[{"name":"getClassName","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"java.lang.String"
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.BasicDataSource"},
   "name":"java.lang.Thread",
   "methods":[{"name":"getContextClassLoader","parameterTypes":[] }]
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"java.lang.Void",
   "fields":[{"name":"TYPE"}]
 },
 {
-  "name":"java.lang.invoke.MethodHandle"
-},
-{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"java.lang.management.BufferPoolMXBean",
   "queryAllPublicMethods":true
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"java.lang.management.ClassLoadingMXBean",
   "queryAllPublicMethods":true
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"java.lang.management.CompilationMXBean",
   "queryAllPublicMethods":true
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"java.lang.management.LockInfo",
   "queryAllPublicMethods":true
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"java.lang.management.MemoryMXBean",
   "queryAllPublicMethods":true
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"java.lang.management.MemoryManagerMXBean",
   "queryAllPublicMethods":true
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"java.lang.management.MemoryPoolMXBean",
   "queryAllPublicMethods":true
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"java.lang.management.MemoryUsage",
   "queryAllPublicMethods":true
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"java.lang.management.MonitorInfo",
   "queryAllPublicMethods":true
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"java.lang.management.PlatformLoggingMXBean",
   "queryAllPublicMethods":true
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"java.lang.management.RuntimeMXBean",
   "queryAllPublicMethods":true
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"java.lang.management.ThreadInfo",
   "queryAllPublicMethods":true
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingCallableStatement"},
   "name":"java.lang.reflect.InvocationHandler",
-  "allDeclaredClasses":true,
-  "queryAllPublicMethods":true,
   "methods":[{"name":"invokeDefault","parameterTypes":["java.lang.Object","java.lang.reflect.Method","java.lang.Object[]"] }]
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"java.math.BigDecimal"
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"java.math.BigInteger"
 },
 {
-  "name":"java.net.NetPermission"
-},
-{
-  "name":"java.net.SocketPermission"
-},
-{
-  "name":"java.net.URLPermission",
-  "methods":[{"name":"<init>","parameterTypes":["java.lang.String","java.lang.String"] }]
-},
-{
-  "name":"java.security.AllPermission"
-},
-{
-  "name":"java.security.SecureRandomParameters"
-},
-{
-  "name":"java.security.SecurityPermission"
-},
-{
-  "name":"java.sql.CallableStatement",
-  "allDeclaredClasses":true,
-  "queryAllPublicMethods":true
-},
-{
-  "name":"java.sql.Connection",
-  "allDeclaredClasses":true,
-  "queryAllPublicMethods":true,
-  "methods":[
-    {"name":"clearWarnings","parameterTypes":[] }, 
-    {"name":"createStatement","parameterTypes":[] }, 
-    {"name":"getAutoCommit","parameterTypes":[] }, 
-    {"name":"isReadOnly","parameterTypes":[] }, 
-    {"name":"isValid","parameterTypes":["int"] }, 
-    {"name":"setReadOnly","parameterTypes":["boolean"] }
-  ]
-},
-{
-  "name":"java.sql.DatabaseMetaData",
-  "allDeclaredClasses":true,
-  "queryAllPublicMethods":true
-},
-{
-  "name":"java.sql.Driver",
-  "allDeclaredClasses":true,
-  "queryAllPublicMethods":true
-},
-{
-  "name":"java.sql.PreparedStatement",
-  "allDeclaredClasses":true,
-  "queryAllPublicMethods":true
-},
-{
-  "name":"java.sql.ResultSet",
-  "allDeclaredClasses":true,
-  "queryAllPublicMethods":true
-},
-{
-  "name":"java.sql.Statement",
-  "allDeclaredClasses":true,
-  "queryAllPublicMethods":true
-},
-{
-  "name":"java.sql.Wrapper",
-  "allDeclaredClasses":true,
-  "queryAllPublicMethods":true
-},
-{
-  "name":"java.time.Duration"
-},
-{
-  "name":"java.time.Instant"
-},
-{
-  "name":"java.time.LocalDate"
-},
-{
-  "name":"java.time.LocalDateTime"
-},
-{
-  "name":"java.time.LocalTime"
-},
-{
-  "name":"java.time.OffsetDateTime"
-},
-{
-  "name":"java.time.OffsetTime"
-},
-{
-  "name":"java.time.Period"
-},
-{
-  "name":"java.time.ZonedDateTime"
-},
-{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"java.util.Date"
 },
 {
-  "name":"java.util.EventListener",
-  "allDeclaredClasses":true,
-  "queryAllPublicMethods":true
-},
-{
-  "name":"java.util.HashSet"
-},
-{
-  "name":"java.util.LinkedHashSet"
-},
-{
-  "name":"java.util.PropertyPermission"
-},
-{
-  "name":"java.util.concurrent.ArrayBlockingQueue"
-},
-{
-  "name":"java.util.concurrent.locks.AbstractOwnableSynchronizer"
-},
-{
-  "name":"java.util.concurrent.locks.AbstractQueuedSynchronizer"
-},
-{
-  "name":"java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject"
-},
-{
-  "name":"java.util.concurrent.locks.ReentrantLock"
-},
-{
-  "name":"java.util.concurrent.locks.ReentrantLock$NonfairSync"
-},
-{
-  "name":"java.util.concurrent.locks.ReentrantLock$Sync"
-},
-{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"javax.management.ObjectName"
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"javax.management.openmbean.CompositeData"
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestBasicDataSource"},
+  "name":"javax.management.openmbean.CompositeData"
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"javax.management.openmbean.TabularData"
 },
 {
-  "name":"javax.sql.CommonDataSource",
-  "allDeclaredClasses":true,
-  "queryAllPublicMethods":true
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestBasicDataSourceFactory"},
+  "name":"javax.management.openmbean.TabularData"
 },
 {
-  "name":"javax.sql.ConnectionEventListener",
-  "allDeclaredClasses":true,
-  "queryAllPublicMethods":true
-},
-{
-  "name":"javax.sql.ConnectionPoolDataSource",
-  "allDeclaredClasses":true,
-  "queryAllPublicMethods":true
-},
-{
-  "name":"javax.sql.PooledConnection",
-  "allDeclaredClasses":true,
-  "queryAllPublicMethods":true
-},
-{
-  "name":"javax.sql.XAConnection",
-  "allDeclaredClasses":true,
-  "queryAllPublicMethods":true
-},
-{
-  "name":"javax.transaction.Transaction",
-  "allDeclaredClasses":true,
-  "queryAllPublicMethods":true
-},
-{
-  "name":"javax.transaction.TransactionManager",
-  "allDeclaredClasses":true,
-  "queryAllPublicMethods":true
-},
-{
-  "name":"javax.transaction.TransactionSynchronizationRegistry",
-  "allDeclaredClasses":true,
-  "queryAllPublicMethods":true
-},
-{
-  "name":"javax.xml.stream.XMLInputFactory"
-},
-{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"jdk.management.jfr.ConfigurationInfo",
   "queryAllPublicMethods":true
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"jdk.management.jfr.EventTypeInfo",
   "queryAllPublicMethods":true
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"jdk.management.jfr.FlightRecorderMXBean",
   "queryAllPublicMethods":true
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"jdk.management.jfr.FlightRecorderMXBeanImpl",
   "queryAllPublicConstructors":true
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"jdk.management.jfr.RecordingInfo",
   "queryAllPublicMethods":true
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"jdk.management.jfr.SettingDescriptorInfo",
   "queryAllPublicMethods":true
 },
 {
-  "name":"org.apache.commons.dbcp2.AbandonedTrace",
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.BasicDataSource"},
+  "name":"org.apache.commons.dbcp2.DataSourceMXBean"
 },
 {
-  "name":"org.apache.commons.dbcp2.BasicDataSource",
-  "queryAllPublicConstructors":true
-},
-{
-  "name":"org.apache.commons.dbcp2.ConnectionFactory",
-  "allDeclaredClasses":true,
-  "queryAllPublicMethods":true
-},
-{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestBasicDataSource"},
   "name":"org.apache.commons.dbcp2.DataSourceMXBean",
   "queryAllPublicMethods":true
 },
 {
-  "name":"org.apache.commons.dbcp2.PoolableConnection",
-  "queryAllPublicConstructors":true
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestConnectionPool$TestThread"},
+  "name":"org.apache.commons.dbcp2.DataSourceMXBean",
+  "queryAllPublicMethods":true
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.PoolableConnection"},
+  "name":"org.apache.commons.dbcp2.PoolableConnectionMXBean"
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestBasicDataSource"},
   "name":"org.apache.commons.dbcp2.PoolableConnectionMXBean",
   "queryAllPublicMethods":true
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestConnectionPool$TestThread"},
+  "name":"org.apache.commons.dbcp2.PoolableConnectionMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestPoolingDriver"},
   "name":"org.apache.commons.dbcp2.PoolingDriver"
 },
 {
-  "name":"org.apache.commons.dbcp2.TestAbandonedBasicDataSource",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setUp","parameterTypes":[] }, 
-    {"name":"testAbandoned","parameterTypes":[] }, 
-    {"name":"testAbandonedClose","parameterTypes":[] }, 
-    {"name":"testAbandonedCloseWithExceptions","parameterTypes":[] }, 
-    {"name":"testGarbageCollectorCleanUp01","parameterTypes":[] }, 
-    {"name":"testLastUsed","parameterTypes":[] }, 
-    {"name":"testLastUsedLargePreparedStatementUse","parameterTypes":[] }, 
-    {"name":"testLastUsedPrepareCall","parameterTypes":[] }, 
-    {"name":"testLastUsedPreparedStatementUse","parameterTypes":[] }, 
-    {"name":"testLastUsedUpdate","parameterTypes":[] }
-  ]
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.datasources.TestPerUserPoolDataSource"},
+  "name":"org.apache.commons.dbcp2.PoolingDriver"
 },
 {
-  "name":"org.apache.commons.dbcp2.TestBasicDataSource",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setUp","parameterTypes":[] }, 
-    {"name":"setUpClass","parameterTypes":[] }, 
-    {"name":"tearDown","parameterTypes":[] }, 
-    {"name":"testAccessToUnderlyingConnectionAllowed","parameterTypes":[] }, 
-    {"name":"testClose","parameterTypes":[] }, 
-    {"name":"testConcurrentInitBorrow","parameterTypes":[] }, 
-    {"name":"testConcurrentInvalidateBorrow","parameterTypes":[] }, 
-    {"name":"testCreateConnectionFactory","parameterTypes":[] }, 
-    {"name":"testCreateDataSourceCleanupEvictor","parameterTypes":[] }, 
-    {"name":"testCreateDataSourceCleanupThreads","parameterTypes":[] }, 
-    {"name":"testDefaultCatalog","parameterTypes":[] }, 
-    {"name":"testDisconnectSqlCodes","parameterTypes":[] }, 
-    {"name":"testEmptyInitConnectionSql","parameterTypes":[] }, 
-    {"name":"testEmptyValidationQuery","parameterTypes":[] }, 
-    {"name":"testInitialSize","parameterTypes":[] }, 
-    {"name":"testInstanceNotFoundExceptionLogSuppressed","parameterTypes":[] }, 
-    {"name":"testInvalidConnectionInitSql","parameterTypes":[] }, 
-    {"name":"testInvalidValidationQuery","parameterTypes":[] }, 
-    {"name":"testInvalidateConnection","parameterTypes":[] }, 
-    {"name":"testIsClosedFailure","parameterTypes":[] }, 
-    {"name":"testIsWrapperFor","parameterTypes":[] }, 
-    {"name":"testJmxDisabled","parameterTypes":[] }, 
-    {"name":"testJmxDoesNotExposePassword","parameterTypes":[] }, 
-    {"name":"testManualConnectionEvict","parameterTypes":[] }, 
-    {"name":"testMaxConnLifetimeExceeded","parameterTypes":[] }, 
-    {"name":"testMaxConnLifetimeExceededMutedLog","parameterTypes":[] }, 
-    {"name":"testMaxTotalZero","parameterTypes":[] }, 
-    {"name":"testMutateAbandonedConfig","parameterTypes":[] }, 
-    {"name":"testNoAccessToUnderlyingConnectionAllowed","parameterTypes":[] }, 
-    {"name":"testPoolCloseCheckedException","parameterTypes":[] }, 
-    {"name":"testPoolCloseRTE","parameterTypes":[] }, 
-    {"name":"testPooling","parameterTypes":[] }, 
-    {"name":"testPropertyTestOnReturn","parameterTypes":[] }, 
-    {"name":"testRestart","parameterTypes":[] }, 
-    {"name":"testRollbackReadOnly","parameterTypes":[] }, 
-    {"name":"testSetAutoCommitTrueOnClose","parameterTypes":[] }, 
-    {"name":"testSetProperties","parameterTypes":[] }, 
-    {"name":"testSetValidationTestProperties","parameterTypes":[] }, 
-    {"name":"testStart","parameterTypes":[] }, 
-    {"name":"testStartInitializes","parameterTypes":[] }, 
-    {"name":"testTransactionIsolationBehavior","parameterTypes":[] }, 
-    {"name":"testUnwrap","parameterTypes":[] }, 
-    {"name":"testValidationQueryTimeoutNegative","parameterTypes":[] }, 
-    {"name":"testValidationQueryTimeoutSucceed","parameterTypes":[] }, 
-    {"name":"testValidationQueryTimeoutZero","parameterTypes":[] }, 
-    {"name":"testValidationQueryTimoutFail","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.commons.dbcp2.TestBasicDataSourceFactory",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"testAllProperties","parameterTypes":[] }, 
-    {"name":"testNoProperties","parameterTypes":[] }, 
-    {"name":"testProperties","parameterTypes":[] }, 
-    {"name":"testValidateProperties","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.commons.dbcp2.TestConnectionPool",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "methods":[
-    {"name":"tearDown","parameterTypes":[] }, 
-    {"name":"testAutoCommitBehavior","parameterTypes":[] }, 
-    {"name":"testBackPointers","parameterTypes":[] }, 
-    {"name":"testCanCloseCallableStatementTwice","parameterTypes":[] }, 
-    {"name":"testCanCloseConnectionTwice","parameterTypes":[] }, 
-    {"name":"testCanClosePreparedStatementTwice","parameterTypes":[] }, 
-    {"name":"testCanCloseResultSetTwice","parameterTypes":[] }, 
-    {"name":"testCanCloseStatementTwice","parameterTypes":[] }, 
-    {"name":"testClearWarnings","parameterTypes":[] }, 
-    {"name":"testClosing","parameterTypes":[] }, 
-    {"name":"testConnectionsAreDistinct","parameterTypes":[] }, 
-    {"name":"testHashCode","parameterTypes":[] }, 
-    {"name":"testHashing","parameterTypes":[] }, 
-    {"name":"testIsClosed","parameterTypes":[] }, 
-    {"name":"testMaxTotal","parameterTypes":[] }, 
-    {"name":"testNoRsetClose","parameterTypes":[] }, 
-    {"name":"testOpening","parameterTypes":[] }, 
-    {"name":"testPooling","parameterTypes":[] }, 
-    {"name":"testPrepareStatementOptions","parameterTypes":[] }, 
-    {"name":"testRepeatedBorrowAndReturn","parameterTypes":[] }, 
-    {"name":"testSimple","parameterTypes":[] }, 
-    {"name":"testSimple2","parameterTypes":[] }, 
-    {"name":"testThreaded","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.commons.dbcp2.TestConnectionPool$PoolTest"
-},
-{
-  "name":"org.apache.commons.dbcp2.TestConnectionPool$TestThread"
-},
-{
-  "name":"org.apache.commons.dbcp2.TestDataSourceConnectionFactory",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setUp","parameterTypes":[] }, 
-    {"name":"testCredentials","parameterTypes":[] }, 
-    {"name":"testDefaultValues","parameterTypes":[] }, 
-    {"name":"testEmptyPassword","parameterTypes":[] }, 
-    {"name":"testEmptyUser","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.commons.dbcp2.TestDataSourceConnectionFactory$TestDataSource"
-},
-{
-  "name":"org.apache.commons.dbcp2.TestDelegatingCallableStatement",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setUp","parameterTypes":[] }, 
-    {"name":"testExecuteQueryReturnsNotNull","parameterTypes":[] }, 
-    {"name":"testExecuteQueryReturnsNull","parameterTypes":[] }, 
-    {"name":"testGetArrayInteger","parameterTypes":[] }, 
-    {"name":"testGetArrayString","parameterTypes":[] }, 
-    {"name":"testGetBigDecimalInteger","parameterTypes":[] }, 
-    {"name":"testGetBigDecimalIntegerInteger","parameterTypes":[] }, 
-    {"name":"testGetBigDecimalString","parameterTypes":[] }, 
-    {"name":"testGetBlobInteger","parameterTypes":[] }, 
-    {"name":"testGetBlobString","parameterTypes":[] }, 
-    {"name":"testGetBooleanInteger","parameterTypes":[] }, 
-    {"name":"testGetBooleanString","parameterTypes":[] }, 
-    {"name":"testGetByteInteger","parameterTypes":[] }, 
-    {"name":"testGetByteString","parameterTypes":[] }, 
-    {"name":"testGetBytesInteger","parameterTypes":[] }, 
-    {"name":"testGetBytesString","parameterTypes":[] }, 
-    {"name":"testGetCharacterStreamInteger","parameterTypes":[] }, 
-    {"name":"testGetCharacterStreamString","parameterTypes":[] }, 
-    {"name":"testGetClobInteger","parameterTypes":[] }, 
-    {"name":"testGetClobString","parameterTypes":[] }, 
-    {"name":"testGetDateInteger","parameterTypes":[] }, 
-    {"name":"testGetDateIntegerCalendar","parameterTypes":[] }, 
-    {"name":"testGetDateString","parameterTypes":[] }, 
-    {"name":"testGetDateStringCalendar","parameterTypes":[] }, 
-    {"name":"testGetDelegate","parameterTypes":[] }, 
-    {"name":"testGetDoubleInteger","parameterTypes":[] }, 
-    {"name":"testGetDoubleString","parameterTypes":[] }, 
-    {"name":"testGetFloatInteger","parameterTypes":[] }, 
-    {"name":"testGetFloatString","parameterTypes":[] }, 
-    {"name":"testGetIntInteger","parameterTypes":[] }, 
-    {"name":"testGetIntString","parameterTypes":[] }, 
-    {"name":"testGetLongInteger","parameterTypes":[] }, 
-    {"name":"testGetLongString","parameterTypes":[] }, 
-    {"name":"testGetNCharacterStreamInteger","parameterTypes":[] }, 
-    {"name":"testGetNCharacterStreamString","parameterTypes":[] }, 
-    {"name":"testGetNClobInteger","parameterTypes":[] }, 
-    {"name":"testGetNClobString","parameterTypes":[] }, 
-    {"name":"testGetNStringInteger","parameterTypes":[] }, 
-    {"name":"testGetNStringString","parameterTypes":[] }, 
-    {"name":"testGetObjectInteger","parameterTypes":[] }, 
-    {"name":"testGetObjectIntegerClass","parameterTypes":[] }, 
-    {"name":"testGetObjectIntegerMap","parameterTypes":[] }, 
-    {"name":"testGetObjectString","parameterTypes":[] }, 
-    {"name":"testGetObjectStringClass","parameterTypes":[] }, 
-    {"name":"testGetObjectStringMap","parameterTypes":[] }, 
-    {"name":"testGetRefInteger","parameterTypes":[] }, 
-    {"name":"testGetRefString","parameterTypes":[] }, 
-    {"name":"testGetRowIdInteger","parameterTypes":[] }, 
-    {"name":"testGetRowIdString","parameterTypes":[] }, 
-    {"name":"testGetSQLXMLInteger","parameterTypes":[] }, 
-    {"name":"testGetSQLXMLString","parameterTypes":[] }, 
-    {"name":"testGetShortInteger","parameterTypes":[] }, 
-    {"name":"testGetShortString","parameterTypes":[] }, 
-    {"name":"testGetStringInteger","parameterTypes":[] }, 
-    {"name":"testGetStringString","parameterTypes":[] }, 
-    {"name":"testGetTimeInteger","parameterTypes":[] }, 
-    {"name":"testGetTimeIntegerCalendar","parameterTypes":[] }, 
-    {"name":"testGetTimeString","parameterTypes":[] }, 
-    {"name":"testGetTimeStringCalendar","parameterTypes":[] }, 
-    {"name":"testGetTimestampInteger","parameterTypes":[] }, 
-    {"name":"testGetTimestampIntegerCalendar","parameterTypes":[] }, 
-    {"name":"testGetTimestampString","parameterTypes":[] }, 
-    {"name":"testGetTimestampStringCalendar","parameterTypes":[] }, 
-    {"name":"testGetURLInteger","parameterTypes":[] }, 
-    {"name":"testGetURLString","parameterTypes":[] }, 
-    {"name":"testRegisterOutParameterIntegerInteger","parameterTypes":[] }, 
-    {"name":"testRegisterOutParameterIntegerIntegerInteger","parameterTypes":[] }, 
-    {"name":"testRegisterOutParameterIntegerIntegerString","parameterTypes":[] }, 
-    {"name":"testRegisterOutParameterIntegerSQLType","parameterTypes":[] }, 
-    {"name":"testRegisterOutParameterIntegerSQLTypeInteger","parameterTypes":[] }, 
-    {"name":"testRegisterOutParameterIntegerSQLTypeString","parameterTypes":[] }, 
-    {"name":"testRegisterOutParameterStringInteger","parameterTypes":[] }, 
-    {"name":"testRegisterOutParameterStringIntegerInteger","parameterTypes":[] }, 
-    {"name":"testRegisterOutParameterStringIntegerString","parameterTypes":[] }, 
-    {"name":"testRegisterOutParameterStringSQLType","parameterTypes":[] }, 
-    {"name":"testRegisterOutParameterStringSQLTypeInteger","parameterTypes":[] }, 
-    {"name":"testRegisterOutParameterStringSQLTypeString","parameterTypes":[] }, 
-    {"name":"testSetAsciiStreamStringInputStream","parameterTypes":[] }, 
-    {"name":"testSetAsciiStreamStringInputStreamInteger","parameterTypes":[] }, 
-    {"name":"testSetAsciiStreamStringInputStreamLong","parameterTypes":[] }, 
-    {"name":"testSetBigDecimalStringBigDecimal","parameterTypes":[] }, 
-    {"name":"testSetBinaryStreamStringInputStream","parameterTypes":[] }, 
-    {"name":"testSetBinaryStreamStringInputStreamInteger","parameterTypes":[] }, 
-    {"name":"testSetBinaryStreamStringInputStreamLong","parameterTypes":[] }, 
-    {"name":"testSetBlobStringBlob","parameterTypes":[] }, 
-    {"name":"testSetBlobStringInputStream","parameterTypes":[] }, 
-    {"name":"testSetBlobStringInputStreamLong","parameterTypes":[] }, 
-    {"name":"testSetBooleanStringBoolean","parameterTypes":[] }, 
-    {"name":"testSetByteStringByte","parameterTypes":[] }, 
-    {"name":"testSetBytesStringByteArray","parameterTypes":[] }, 
-    {"name":"testSetCharacterStreamStringReader","parameterTypes":[] }, 
-    {"name":"testSetCharacterStreamStringReaderInteger","parameterTypes":[] }, 
-    {"name":"testSetCharacterStreamStringReaderLong","parameterTypes":[] }, 
-    {"name":"testSetClobStringClob","parameterTypes":[] }, 
-    {"name":"testSetClobStringReader","parameterTypes":[] }, 
-    {"name":"testSetClobStringReaderLong","parameterTypes":[] }, 
-    {"name":"testSetDateStringSqlDate","parameterTypes":[] }, 
-    {"name":"testSetDateStringSqlDateCalendar","parameterTypes":[] }, 
-    {"name":"testSetDoubleStringDouble","parameterTypes":[] }, 
-    {"name":"testSetFloatStringFloat","parameterTypes":[] }, 
-    {"name":"testSetIntStringInteger","parameterTypes":[] }, 
-    {"name":"testSetLongStringLong","parameterTypes":[] }, 
-    {"name":"testSetNCharacterStreamStringReader","parameterTypes":[] }, 
-    {"name":"testSetNCharacterStreamStringReaderLong","parameterTypes":[] }, 
-    {"name":"testSetNClobStringNClob","parameterTypes":[] }, 
-    {"name":"testSetNClobStringReader","parameterTypes":[] }, 
-    {"name":"testSetNClobStringReaderLong","parameterTypes":[] }, 
-    {"name":"testSetNStringStringString","parameterTypes":[] }, 
-    {"name":"testSetNullStringInteger","parameterTypes":[] }, 
-    {"name":"testSetNullStringIntegerString","parameterTypes":[] }, 
-    {"name":"testSetObjectStringObject","parameterTypes":[] }, 
-    {"name":"testSetObjectStringObjectInteger","parameterTypes":[] }, 
-    {"name":"testSetObjectStringObjectIntegerInteger","parameterTypes":[] }, 
-    {"name":"testSetObjectStringObjectSQLType","parameterTypes":[] }, 
-    {"name":"testSetObjectStringObjectSQLTypeInteger","parameterTypes":[] }, 
-    {"name":"testSetRowIdStringRowId","parameterTypes":[] }, 
-    {"name":"testSetSQLXMLStringSQLXML","parameterTypes":[] }, 
-    {"name":"testSetShortStringShort","parameterTypes":[] }, 
-    {"name":"testSetStringStringString","parameterTypes":[] }, 
-    {"name":"testSetTimeStringTime","parameterTypes":[] }, 
-    {"name":"testSetTimeStringTimeCalendar","parameterTypes":[] }, 
-    {"name":"testSetTimestampStringTimestamp","parameterTypes":[] }, 
-    {"name":"testSetTimestampStringTimestampCalendar","parameterTypes":[] }, 
-    {"name":"testSetURLStringUrl","parameterTypes":[] }, 
-    {"name":"testWasNull","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.commons.dbcp2.TestDelegatingConnection",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setUp","parameterTypes":[] }, 
-    {"name":"testAutoCommitCaching","parameterTypes":[] }, 
-    {"name":"testCheckOpen","parameterTypes":[] }, 
-    {"name":"testCheckOpenNull","parameterTypes":[] }, 
-    {"name":"testConnectionToString","parameterTypes":[] }, 
-    {"name":"testGetDelegate","parameterTypes":[] }, 
-    {"name":"testIsClosed","parameterTypes":[] }, 
-    {"name":"testIsClosedNullDelegate","parameterTypes":[] }, 
-    {"name":"testPassivateWithResultSetCloseException","parameterTypes":[] }, 
-    {"name":"testPassivateWithResultSetCloseExceptionAndStatementCloseException","parameterTypes":[] }, 
-    {"name":"testPassivateWithStatementCloseException","parameterTypes":[] }, 
-    {"name":"testReadOnlyCaching","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.commons.dbcp2.TestDelegatingConnection$NoReadOnlyOrAutoCommitConnection",
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true
-},
-{
-  "name":"org.apache.commons.dbcp2.TestDelegatingConnection$RTEGeneratingConnection",
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true
-},
-{
-  "name":"org.apache.commons.dbcp2.TestDelegatingDatabaseMetaData",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setUp","parameterTypes":[] }, 
-    {"name":"testAllProceduresAreCallable","parameterTypes":[] }, 
-    {"name":"testAllTablesAreSelectable","parameterTypes":[] }, 
-    {"name":"testAutoCommitFailureClosesAllResultSets","parameterTypes":[] }, 
-    {"name":"testCheckOpen","parameterTypes":[] }, 
-    {"name":"testDataDefinitionCausesTransactionCommit","parameterTypes":[] }, 
-    {"name":"testDataDefinitionIgnoredInTransactions","parameterTypes":[] }, 
-    {"name":"testDeletesAreDetectedInteger","parameterTypes":[] }, 
-    {"name":"testDoesMaxRowSizeIncludeBlobs","parameterTypes":[] }, 
-    {"name":"testGeneratedKeyAlwaysReturned","parameterTypes":[] }, 
-    {"name":"testGetAttributesStringStringStringString","parameterTypes":[] }, 
-    {"name":"testGetBestRowIdentifierStringStringStringIntegerBoolean","parameterTypes":[] }, 
-    {"name":"testGetCatalogSeparator","parameterTypes":[] }, 
-    {"name":"testGetCatalogTerm","parameterTypes":[] }, 
-    {"name":"testGetCatalogs","parameterTypes":[] }, 
-    {"name":"testGetClientInfoProperties","parameterTypes":[] }, 
-    {"name":"testGetColumnPrivilegesStringStringStringString","parameterTypes":[] }, 
-    {"name":"testGetColumnsStringStringStringString","parameterTypes":[] }, 
-    {"name":"testGetConnection","parameterTypes":[] }, 
-    {"name":"testGetCrossReferenceStringStringStringStringStringString","parameterTypes":[] }, 
-    {"name":"testGetDatabaseMajorVersion","parameterTypes":[] }, 
-    {"name":"testGetDatabaseMinorVersion","parameterTypes":[] }, 
-    {"name":"testGetDatabaseProductName","parameterTypes":[] }, 
-    {"name":"testGetDatabaseProductVersion","parameterTypes":[] }, 
-    {"name":"testGetDefaultTransactionIsolation","parameterTypes":[] }, 
-    {"name":"testGetDelegate","parameterTypes":[] }, 
-    {"name":"testGetDriverMajorVersion","parameterTypes":[] }, 
-    {"name":"testGetDriverMinorVersion","parameterTypes":[] }, 
-    {"name":"testGetDriverName","parameterTypes":[] }, 
-    {"name":"testGetDriverVersion","parameterTypes":[] }, 
-    {"name":"testGetExportedKeysStringStringString","parameterTypes":[] }, 
-    {"name":"testGetExtraNameCharacters","parameterTypes":[] }, 
-    {"name":"testGetFunctionColumnsStringStringStringString","parameterTypes":[] }, 
-    {"name":"testGetFunctionsStringStringString","parameterTypes":[] }, 
-    {"name":"testGetIdentifierQuoteString","parameterTypes":[] }, 
-    {"name":"testGetImportedKeysStringStringString","parameterTypes":[] }, 
-    {"name":"testGetIndexInfoStringStringStringBooleanBoolean","parameterTypes":[] }, 
-    {"name":"testGetJDBCMajorVersion","parameterTypes":[] }, 
-    {"name":"testGetJDBCMinorVersion","parameterTypes":[] }, 
-    {"name":"testGetMaxBinaryLiteralLength","parameterTypes":[] }, 
-    {"name":"testGetMaxCatalogNameLength","parameterTypes":[] }, 
-    {"name":"testGetMaxCharLiteralLength","parameterTypes":[] }, 
-    {"name":"testGetMaxColumnNameLength","parameterTypes":[] }, 
-    {"name":"testGetMaxColumnsInGroupBy","parameterTypes":[] }, 
-    {"name":"testGetMaxColumnsInIndex","parameterTypes":[] }, 
-    {"name":"testGetMaxColumnsInOrderBy","parameterTypes":[] }, 
-    {"name":"testGetMaxColumnsInSelect","parameterTypes":[] }, 
-    {"name":"testGetMaxColumnsInTable","parameterTypes":[] }, 
-    {"name":"testGetMaxConnections","parameterTypes":[] }, 
-    {"name":"testGetMaxCursorNameLength","parameterTypes":[] }, 
-    {"name":"testGetMaxIndexLength","parameterTypes":[] }, 
-    {"name":"testGetMaxLogicalLobSize","parameterTypes":[] }, 
-    {"name":"testGetMaxProcedureNameLength","parameterTypes":[] }, 
-    {"name":"testGetMaxRowSize","parameterTypes":[] }, 
-    {"name":"testGetMaxSchemaNameLength","parameterTypes":[] }, 
-    {"name":"testGetMaxStatementLength","parameterTypes":[] }, 
-    {"name":"testGetMaxStatements","parameterTypes":[] }, 
-    {"name":"testGetMaxTableNameLength","parameterTypes":[] }, 
-    {"name":"testGetMaxTablesInSelect","parameterTypes":[] }, 
-    {"name":"testGetMaxUserNameLength","parameterTypes":[] }, 
-    {"name":"testGetNumericFunctions","parameterTypes":[] }, 
-    {"name":"testGetPrimaryKeysStringStringString","parameterTypes":[] }, 
-    {"name":"testGetProcedureColumnsStringStringStringString","parameterTypes":[] }, 
-    {"name":"testGetProcedureTerm","parameterTypes":[] }, 
-    {"name":"testGetProceduresStringStringString","parameterTypes":[] }, 
-    {"name":"testGetPseudoColumnsStringStringStringString","parameterTypes":[] }, 
-    {"name":"testGetResultSetHoldability","parameterTypes":[] }, 
-    {"name":"testGetRowIdLifetime","parameterTypes":[] }, 
-    {"name":"testGetSQLKeywords","parameterTypes":[] }, 
-    {"name":"testGetSQLStateType","parameterTypes":[] }, 
-    {"name":"testGetSchemaTerm","parameterTypes":[] }, 
-    {"name":"testGetSchemas","parameterTypes":[] }, 
-    {"name":"testGetSchemasStringString","parameterTypes":[] }, 
-    {"name":"testGetSearchStringEscape","parameterTypes":[] }, 
-    {"name":"testGetStringFunctions","parameterTypes":[] }, 
-    {"name":"testGetSuperTablesStringStringString","parameterTypes":[] }, 
-    {"name":"testGetSuperTypesStringStringString","parameterTypes":[] }, 
-    {"name":"testGetSystemFunctions","parameterTypes":[] }, 
-    {"name":"testGetTablePrivilegesStringStringString","parameterTypes":[] }, 
-    {"name":"testGetTableTypes","parameterTypes":[] }, 
-    {"name":"testGetTablesStringStringStringStringArray","parameterTypes":[] }, 
-    {"name":"testGetTimeDateFunctions","parameterTypes":[] }, 
-    {"name":"testGetTypeInfo","parameterTypes":[] }, 
-    {"name":"testGetUDTsStringStringStringIntegerArray","parameterTypes":[] }, 
-    {"name":"testGetURL","parameterTypes":[] }, 
-    {"name":"testGetUserName","parameterTypes":[] }, 
-    {"name":"testGetVersionColumnsStringStringString","parameterTypes":[] }, 
-    {"name":"testInsertsAreDetectedInteger","parameterTypes":[] }, 
-    {"name":"testIsCatalogAtStart","parameterTypes":[] }, 
-    {"name":"testIsReadOnly","parameterTypes":[] }, 
-    {"name":"testLocatorsUpdateCopy","parameterTypes":[] }, 
-    {"name":"testNullPlusNonNullIsNull","parameterTypes":[] }, 
-    {"name":"testNullsAreSortedAtEnd","parameterTypes":[] }, 
-    {"name":"testNullsAreSortedAtStart","parameterTypes":[] }, 
-    {"name":"testNullsAreSortedHigh","parameterTypes":[] }, 
-    {"name":"testNullsAreSortedLow","parameterTypes":[] }, 
-    {"name":"testOthersDeletesAreVisibleInteger","parameterTypes":[] }, 
-    {"name":"testOthersInsertsAreVisibleInteger","parameterTypes":[] }, 
-    {"name":"testOthersUpdatesAreVisibleInteger","parameterTypes":[] }, 
-    {"name":"testOwnDeletesAreVisibleInteger","parameterTypes":[] }, 
-    {"name":"testOwnInsertsAreVisibleInteger","parameterTypes":[] }, 
-    {"name":"testOwnUpdatesAreVisibleInteger","parameterTypes":[] }, 
-    {"name":"testStoresLowerCaseIdentifiers","parameterTypes":[] }, 
-    {"name":"testStoresLowerCaseQuotedIdentifiers","parameterTypes":[] }, 
-    {"name":"testStoresMixedCaseIdentifiers","parameterTypes":[] }, 
-    {"name":"testStoresMixedCaseQuotedIdentifiers","parameterTypes":[] }, 
-    {"name":"testStoresUpperCaseIdentifiers","parameterTypes":[] }, 
-    {"name":"testStoresUpperCaseQuotedIdentifiers","parameterTypes":[] }, 
-    {"name":"testSupportsANSI92EntryLevelSQL","parameterTypes":[] }, 
-    {"name":"testSupportsANSI92FullSQL","parameterTypes":[] }, 
-    {"name":"testSupportsANSI92IntermediateSQL","parameterTypes":[] }, 
-    {"name":"testSupportsAlterTableWithAddColumn","parameterTypes":[] }, 
-    {"name":"testSupportsAlterTableWithDropColumn","parameterTypes":[] }, 
-    {"name":"testSupportsBatchUpdates","parameterTypes":[] }, 
-    {"name":"testSupportsCatalogsInDataManipulation","parameterTypes":[] }, 
-    {"name":"testSupportsCatalogsInIndexDefinitions","parameterTypes":[] }, 
-    {"name":"testSupportsCatalogsInPrivilegeDefinitions","parameterTypes":[] }, 
-    {"name":"testSupportsCatalogsInProcedureCalls","parameterTypes":[] }, 
-    {"name":"testSupportsCatalogsInTableDefinitions","parameterTypes":[] }, 
-    {"name":"testSupportsColumnAliasing","parameterTypes":[] }, 
-    {"name":"testSupportsConvert","parameterTypes":[] }, 
-    {"name":"testSupportsConvertIntegerInteger","parameterTypes":[] }, 
-    {"name":"testSupportsCoreSQLGrammar","parameterTypes":[] }, 
-    {"name":"testSupportsCorrelatedSubqueries","parameterTypes":[] }, 
-    {"name":"testSupportsDataDefinitionAndDataManipulationTransactions","parameterTypes":[] }, 
-    {"name":"testSupportsDataManipulationTransactionsOnly","parameterTypes":[] }, 
-    {"name":"testSupportsDifferentTableCorrelationNames","parameterTypes":[] }, 
-    {"name":"testSupportsExpressionsInOrderBy","parameterTypes":[] }, 
-    {"name":"testSupportsExtendedSQLGrammar","parameterTypes":[] }, 
-    {"name":"testSupportsFullOuterJoins","parameterTypes":[] }, 
-    {"name":"testSupportsGetGeneratedKeys","parameterTypes":[] }, 
-    {"name":"testSupportsGroupBy","parameterTypes":[] }, 
-    {"name":"testSupportsGroupByBeyondSelect","parameterTypes":[] }, 
-    {"name":"testSupportsGroupByUnrelated","parameterTypes":[] }, 
-    {"name":"testSupportsIntegrityEnhancementFacility","parameterTypes":[] }, 
-    {"name":"testSupportsLikeEscapeClause","parameterTypes":[] }, 
-    {"name":"testSupportsLimitedOuterJoins","parameterTypes":[] }, 
-    {"name":"testSupportsMinimumSQLGrammar","parameterTypes":[] }, 
-    {"name":"testSupportsMixedCaseIdentifiers","parameterTypes":[] }, 
-    {"name":"testSupportsMixedCaseQuotedIdentifiers","parameterTypes":[] }, 
-    {"name":"testSupportsMultipleOpenResults","parameterTypes":[] }, 
-    {"name":"testSupportsMultipleResultSets","parameterTypes":[] }, 
-    {"name":"testSupportsMultipleTransactions","parameterTypes":[] }, 
-    {"name":"testSupportsNamedParameters","parameterTypes":[] }, 
-    {"name":"testSupportsNonNullableColumns","parameterTypes":[] }, 
-    {"name":"testSupportsOpenCursorsAcrossCommit","parameterTypes":[] }, 
-    {"name":"testSupportsOpenCursorsAcrossRollback","parameterTypes":[] }, 
-    {"name":"testSupportsOpenStatementsAcrossCommit","parameterTypes":[] }, 
-    {"name":"testSupportsOpenStatementsAcrossRollback","parameterTypes":[] }, 
-    {"name":"testSupportsOrderByUnrelated","parameterTypes":[] }, 
-    {"name":"testSupportsOuterJoins","parameterTypes":[] }, 
-    {"name":"testSupportsPositionedDelete","parameterTypes":[] }, 
-    {"name":"testSupportsPositionedUpdate","parameterTypes":[] }, 
-    {"name":"testSupportsRefCursors","parameterTypes":[] }, 
-    {"name":"testSupportsResultSetConcurrencyIntegerInteger","parameterTypes":[] }, 
-    {"name":"testSupportsResultSetHoldabilityInteger","parameterTypes":[] }, 
-    {"name":"testSupportsResultSetTypeInteger","parameterTypes":[] }, 
-    {"name":"testSupportsSavepoints","parameterTypes":[] }, 
-    {"name":"testSupportsSchemasInDataManipulation","parameterTypes":[] }, 
-    {"name":"testSupportsSchemasInIndexDefinitions","parameterTypes":[] }, 
-    {"name":"testSupportsSchemasInPrivilegeDefinitions","parameterTypes":[] }, 
-    {"name":"testSupportsSchemasInProcedureCalls","parameterTypes":[] }, 
-    {"name":"testSupportsSchemasInTableDefinitions","parameterTypes":[] }, 
-    {"name":"testSupportsSelectForUpdate","parameterTypes":[] }, 
-    {"name":"testSupportsStatementPooling","parameterTypes":[] }, 
-    {"name":"testSupportsStoredFunctionsUsingCallSyntax","parameterTypes":[] }, 
-    {"name":"testSupportsStoredProcedures","parameterTypes":[] }, 
-    {"name":"testSupportsSubqueriesInComparisons","parameterTypes":[] }, 
-    {"name":"testSupportsSubqueriesInExists","parameterTypes":[] }, 
-    {"name":"testSupportsSubqueriesInIns","parameterTypes":[] }, 
-    {"name":"testSupportsSubqueriesInQuantifieds","parameterTypes":[] }, 
-    {"name":"testSupportsTableCorrelationNames","parameterTypes":[] }, 
-    {"name":"testSupportsTransactionIsolationLevelInteger","parameterTypes":[] }, 
-    {"name":"testSupportsTransactions","parameterTypes":[] }, 
-    {"name":"testSupportsUnion","parameterTypes":[] }, 
-    {"name":"testSupportsUnionAll","parameterTypes":[] }, 
-    {"name":"testUpdatesAreDetectedInteger","parameterTypes":[] }, 
-    {"name":"testUsesLocalFilePerTable","parameterTypes":[] }, 
-    {"name":"testUsesLocalFiles","parameterTypes":[] }, 
-    {"name":"testWrap","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.commons.dbcp2.TestDelegatingPreparedStatement",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setUp","parameterTypes":[] }, 
-    {"name":"testAddBatch","parameterTypes":[] }, 
-    {"name":"testClearParameters","parameterTypes":[] }, 
-    {"name":"testExecute","parameterTypes":[] }, 
-    {"name":"testExecuteLargeUpdate","parameterTypes":[] }, 
-    {"name":"testExecuteQuery","parameterTypes":[] }, 
-    {"name":"testExecuteQueryReturnsNotNull","parameterTypes":[] }, 
-    {"name":"testExecuteQueryReturnsNull","parameterTypes":[] }, 
-    {"name":"testExecuteUpdate","parameterTypes":[] }, 
-    {"name":"testGetDelegate","parameterTypes":[] }, 
-    {"name":"testGetMetaData","parameterTypes":[] }, 
-    {"name":"testGetParameterMetaData","parameterTypes":[] }, 
-    {"name":"testSetArrayIntegerArray","parameterTypes":[] }, 
-    {"name":"testSetAsciiStreamIntegerInputStream","parameterTypes":[] }, 
-    {"name":"testSetAsciiStreamIntegerInputStreamInteger","parameterTypes":[] }, 
-    {"name":"testSetAsciiStreamIntegerInputStreamLong","parameterTypes":[] }, 
-    {"name":"testSetBigDecimalIntegerBigDecimal","parameterTypes":[] }, 
-    {"name":"testSetBinaryStreamIntegerInputStream","parameterTypes":[] }, 
-    {"name":"testSetBinaryStreamIntegerInputStreamInteger","parameterTypes":[] }, 
-    {"name":"testSetBinaryStreamIntegerInputStreamLong","parameterTypes":[] }, 
-    {"name":"testSetBlobIntegerBlob","parameterTypes":[] }, 
-    {"name":"testSetBlobIntegerInputStream","parameterTypes":[] }, 
-    {"name":"testSetBlobIntegerInputStreamLong","parameterTypes":[] }, 
-    {"name":"testSetBooleanIntegerBoolean","parameterTypes":[] }, 
-    {"name":"testSetByteIntegerByte","parameterTypes":[] }, 
-    {"name":"testSetBytesIntegerByteArray","parameterTypes":[] }, 
-    {"name":"testSetCharacterStreamIntegerReader","parameterTypes":[] }, 
-    {"name":"testSetCharacterStreamIntegerReaderInteger","parameterTypes":[] }, 
-    {"name":"testSetCharacterStreamIntegerReaderLong","parameterTypes":[] }, 
-    {"name":"testSetClobIntegerClob","parameterTypes":[] }, 
-    {"name":"testSetClobIntegerReader","parameterTypes":[] }, 
-    {"name":"testSetClobIntegerReaderLong","parameterTypes":[] }, 
-    {"name":"testSetDateIntegerSqlDate","parameterTypes":[] }, 
-    {"name":"testSetDateIntegerSqlDateCalendar","parameterTypes":[] }, 
-    {"name":"testSetDoubleIntegerDouble","parameterTypes":[] }, 
-    {"name":"testSetFloatIntegerFloat","parameterTypes":[] }, 
-    {"name":"testSetIntIntegerInteger","parameterTypes":[] }, 
-    {"name":"testSetLongIntegerLong","parameterTypes":[] }, 
-    {"name":"testSetNCharacterStreamIntegerReader","parameterTypes":[] }, 
-    {"name":"testSetNCharacterStreamIntegerReaderLong","parameterTypes":[] }, 
-    {"name":"testSetNClobIntegerNClob","parameterTypes":[] }, 
-    {"name":"testSetNClobIntegerReader","parameterTypes":[] }, 
-    {"name":"testSetNClobIntegerReaderLong","parameterTypes":[] }, 
-    {"name":"testSetNStringIntegerString","parameterTypes":[] }, 
-    {"name":"testSetNullIntegerInteger","parameterTypes":[] }, 
-    {"name":"testSetNullIntegerIntegerString","parameterTypes":[] }, 
-    {"name":"testSetObjectIntegerObject","parameterTypes":[] }, 
-    {"name":"testSetObjectIntegerObjectInteger","parameterTypes":[] }, 
-    {"name":"testSetObjectIntegerObjectIntegerInteger","parameterTypes":[] }, 
-    {"name":"testSetObjectIntegerObjectSQLType","parameterTypes":[] }, 
-    {"name":"testSetObjectIntegerObjectSQLTypeInteger","parameterTypes":[] }, 
-    {"name":"testSetRefIntegerRef","parameterTypes":[] }, 
-    {"name":"testSetRowIdIntegerRowId","parameterTypes":[] }, 
-    {"name":"testSetSQLXMLIntegerSQLXML","parameterTypes":[] }, 
-    {"name":"testSetShortIntegerShort","parameterTypes":[] }, 
-    {"name":"testSetStringIntegerString","parameterTypes":[] }, 
-    {"name":"testSetTimeIntegerTime","parameterTypes":[] }, 
-    {"name":"testSetTimeIntegerTimeCalendar","parameterTypes":[] }, 
-    {"name":"testSetTimestampIntegerTimestamp","parameterTypes":[] }, 
-    {"name":"testSetTimestampIntegerTimestampCalendar","parameterTypes":[] }, 
-    {"name":"testSetURLIntegerUrl","parameterTypes":[] }, 
-    {"name":"testSetUnicodeStreamIntegerInputStreamInteger","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.commons.dbcp2.TestDelegatingResultSet",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setUp","parameterTypes":[] }, 
-    {"name":"testAbsoluteInteger","parameterTypes":[] }, 
-    {"name":"testAbsolutes","parameterTypes":[] }, 
-    {"name":"testAfterLast","parameterTypes":[] }, 
-    {"name":"testBeforeFirst","parameterTypes":[] }, 
-    {"name":"testCancelRowUpdates","parameterTypes":[] }, 
-    {"name":"testClearWarnings","parameterTypes":[] }, 
-    {"name":"testClose","parameterTypes":[] }, 
-    {"name":"testDeleteRow","parameterTypes":[] }, 
-    {"name":"testFindColumnString","parameterTypes":[] }, 
-    {"name":"testFirst","parameterTypes":[] }, 
-    {"name":"testGetArrayInteger","parameterTypes":[] }, 
-    {"name":"testGetArrayString","parameterTypes":[] }, 
-    {"name":"testGetAsciiStreamInteger","parameterTypes":[] }, 
-    {"name":"testGetAsciiStreamString","parameterTypes":[] }, 
-    {"name":"testGetBigDecimalInteger","parameterTypes":[] }, 
-    {"name":"testGetBigDecimalString","parameterTypes":[] }, 
-    {"name":"testGetBinaryStreamInteger","parameterTypes":[] }, 
-    {"name":"testGetBinaryStreamString","parameterTypes":[] }, 
-    {"name":"testGetBlobInteger","parameterTypes":[] }, 
-    {"name":"testGetBlobString","parameterTypes":[] }, 
-    {"name":"testGetBooleanInteger","parameterTypes":[] }, 
-    {"name":"testGetBooleanString","parameterTypes":[] }, 
-    {"name":"testGetByteInteger","parameterTypes":[] }, 
-    {"name":"testGetByteString","parameterTypes":[] }, 
-    {"name":"testGetBytesInteger","parameterTypes":[] }, 
-    {"name":"testGetBytesString","parameterTypes":[] }, 
-    {"name":"testGetCharacterStreamInteger","parameterTypes":[] }, 
-    {"name":"testGetCharacterStreamString","parameterTypes":[] }, 
-    {"name":"testGetClobInteger","parameterTypes":[] }, 
-    {"name":"testGetClobString","parameterTypes":[] }, 
-    {"name":"testGetConcurrency","parameterTypes":[] }, 
-    {"name":"testGetCursorName","parameterTypes":[] }, 
-    {"name":"testGetDateInteger","parameterTypes":[] }, 
-    {"name":"testGetDateIntegerCalendar","parameterTypes":[] }, 
-    {"name":"testGetDateString","parameterTypes":[] }, 
-    {"name":"testGetDateStringCalendar","parameterTypes":[] }, 
-    {"name":"testGetDoubleInteger","parameterTypes":[] }, 
-    {"name":"testGetDoubleString","parameterTypes":[] }, 
-    {"name":"testGetFetchDirection","parameterTypes":[] }, 
-    {"name":"testGetFetchSize","parameterTypes":[] }, 
-    {"name":"testGetFloatInteger","parameterTypes":[] }, 
-    {"name":"testGetFloatString","parameterTypes":[] }, 
-    {"name":"testGetHoldability","parameterTypes":[] }, 
-    {"name":"testGetIntInteger","parameterTypes":[] }, 
-    {"name":"testGetIntString","parameterTypes":[] }, 
-    {"name":"testGetLongInteger","parameterTypes":[] }, 
-    {"name":"testGetLongString","parameterTypes":[] }, 
-    {"name":"testGetMetaData","parameterTypes":[] }, 
-    {"name":"testGetNCharacterStreamInteger","parameterTypes":[] }, 
-    {"name":"testGetNCharacterStreamString","parameterTypes":[] }, 
-    {"name":"testGetNClobInteger","parameterTypes":[] }, 
-    {"name":"testGetNClobString","parameterTypes":[] }, 
-    {"name":"testGetNStringInteger","parameterTypes":[] }, 
-    {"name":"testGetNStringString","parameterTypes":[] }, 
-    {"name":"testGetObjectInteger","parameterTypes":[] }, 
-    {"name":"testGetObjectIntegerClass","parameterTypes":[] }, 
-    {"name":"testGetObjectIntegerMap","parameterTypes":[] }, 
-    {"name":"testGetObjectString","parameterTypes":[] }, 
-    {"name":"testGetObjectStringClass","parameterTypes":[] }, 
-    {"name":"testGetObjectStringMap","parameterTypes":[] }, 
-    {"name":"testGetRefInteger","parameterTypes":[] }, 
-    {"name":"testGetRefString","parameterTypes":[] }, 
-    {"name":"testGetRow","parameterTypes":[] }, 
-    {"name":"testGetRowIdInteger","parameterTypes":[] }, 
-    {"name":"testGetRowIdString","parameterTypes":[] }, 
-    {"name":"testGetSQLXMLInteger","parameterTypes":[] }, 
-    {"name":"testGetSQLXMLString","parameterTypes":[] }, 
-    {"name":"testGetShortInteger","parameterTypes":[] }, 
-    {"name":"testGetShortString","parameterTypes":[] }, 
-    {"name":"testGetStatement","parameterTypes":[] }, 
-    {"name":"testGetStringInteger","parameterTypes":[] }, 
-    {"name":"testGetStringString","parameterTypes":[] }, 
-    {"name":"testGetTimeInteger","parameterTypes":[] }, 
-    {"name":"testGetTimeIntegerCalendar","parameterTypes":[] }, 
-    {"name":"testGetTimeString","parameterTypes":[] }, 
-    {"name":"testGetTimeStringCalendar","parameterTypes":[] }, 
-    {"name":"testGetTimestampInteger","parameterTypes":[] }, 
-    {"name":"testGetTimestampIntegerCalendar","parameterTypes":[] }, 
-    {"name":"testGetTimestampString","parameterTypes":[] }, 
-    {"name":"testGetTimestampStringCalendar","parameterTypes":[] }, 
-    {"name":"testGetType","parameterTypes":[] }, 
-    {"name":"testGetURLInteger","parameterTypes":[] }, 
-    {"name":"testGetURLString","parameterTypes":[] }, 
-    {"name":"testGetUnicodeStreamInteger","parameterTypes":[] }, 
-    {"name":"testGetUnicodeStreamString","parameterTypes":[] }, 
-    {"name":"testGetWarnings","parameterTypes":[] }, 
-    {"name":"testInsertRow","parameterTypes":[] }, 
-    {"name":"testIsAfterLast","parameterTypes":[] }, 
-    {"name":"testIsBeforeFirst","parameterTypes":[] }, 
-    {"name":"testIsClosed","parameterTypes":[] }, 
-    {"name":"testIsFirst","parameterTypes":[] }, 
-    {"name":"testIsLast","parameterTypes":[] }, 
-    {"name":"testLast","parameterTypes":[] }, 
-    {"name":"testMoveToCurrentRow","parameterTypes":[] }, 
-    {"name":"testMoveToInsertRow","parameterTypes":[] }, 
-    {"name":"testNext","parameterTypes":[] }, 
-    {"name":"testPrevious","parameterTypes":[] }, 
-    {"name":"testRefreshRow","parameterTypes":[] }, 
-    {"name":"testRelativeInteger","parameterTypes":[] }, 
-    {"name":"testRowDeleted","parameterTypes":[] }, 
-    {"name":"testRowInserted","parameterTypes":[] }, 
-    {"name":"testRowUpdated","parameterTypes":[] }, 
-    {"name":"testSetFetchDirectionInteger","parameterTypes":[] }, 
-    {"name":"testSetFetchSizeInteger","parameterTypes":[] }, 
-    {"name":"testToString","parameterTypes":[] }, 
-    {"name":"testUpdateArrayIntegerArray","parameterTypes":[] }, 
-    {"name":"testUpdateArrayStringArray","parameterTypes":[] }, 
-    {"name":"testUpdateAsciiStreamIntegerInputStream","parameterTypes":[] }, 
-    {"name":"testUpdateAsciiStreamIntegerInputStreamInteger","parameterTypes":[] }, 
-    {"name":"testUpdateAsciiStreamIntegerInputStreamLong","parameterTypes":[] }, 
-    {"name":"testUpdateAsciiStreamStringInputStream","parameterTypes":[] }, 
-    {"name":"testUpdateAsciiStreamStringInputStreamInteger","parameterTypes":[] }, 
-    {"name":"testUpdateAsciiStreamStringInputStreamLong","parameterTypes":[] }, 
-    {"name":"testUpdateBigDecimalIntegerBigDecimal","parameterTypes":[] }, 
-    {"name":"testUpdateBigDecimalStringBigDecimal","parameterTypes":[] }, 
-    {"name":"testUpdateBinaryStreamIntegerInputStream","parameterTypes":[] }, 
-    {"name":"testUpdateBinaryStreamIntegerInputStreamInteger","parameterTypes":[] }, 
-    {"name":"testUpdateBinaryStreamIntegerInputStreamLong","parameterTypes":[] }, 
-    {"name":"testUpdateBinaryStreamStringInputStream","parameterTypes":[] }, 
-    {"name":"testUpdateBinaryStreamStringInputStreamInteger","parameterTypes":[] }, 
-    {"name":"testUpdateBinaryStreamStringInputStreamLong","parameterTypes":[] }, 
-    {"name":"testUpdateBlobIntegerBlob","parameterTypes":[] }, 
-    {"name":"testUpdateBlobIntegerInputStream","parameterTypes":[] }, 
-    {"name":"testUpdateBlobIntegerInputStreamLong","parameterTypes":[] }, 
-    {"name":"testUpdateBlobStringBlob","parameterTypes":[] }, 
-    {"name":"testUpdateBlobStringInputStream","parameterTypes":[] }, 
-    {"name":"testUpdateBlobStringInputStreamLong","parameterTypes":[] }, 
-    {"name":"testUpdateBooleanIntegerBoolean","parameterTypes":[] }, 
-    {"name":"testUpdateBooleanStringBoolean","parameterTypes":[] }, 
-    {"name":"testUpdateByteIntegerByte","parameterTypes":[] }, 
-    {"name":"testUpdateByteStringByte","parameterTypes":[] }, 
-    {"name":"testUpdateBytesIntegerByteArray","parameterTypes":[] }, 
-    {"name":"testUpdateBytesStringByteArray","parameterTypes":[] }, 
-    {"name":"testUpdateCharacterStreamIntegerReader","parameterTypes":[] }, 
-    {"name":"testUpdateCharacterStreamIntegerReaderInteger","parameterTypes":[] }, 
-    {"name":"testUpdateCharacterStreamIntegerReaderLong","parameterTypes":[] }, 
-    {"name":"testUpdateCharacterStreamStringReader","parameterTypes":[] }, 
-    {"name":"testUpdateCharacterStreamStringReaderInteger","parameterTypes":[] }, 
-    {"name":"testUpdateCharacterStreamStringReaderLong","parameterTypes":[] }, 
-    {"name":"testUpdateClobIntegerClob","parameterTypes":[] }, 
-    {"name":"testUpdateClobIntegerReader","parameterTypes":[] }, 
-    {"name":"testUpdateClobIntegerReaderLong","parameterTypes":[] }, 
-    {"name":"testUpdateClobStringClob","parameterTypes":[] }, 
-    {"name":"testUpdateClobStringReader","parameterTypes":[] }, 
-    {"name":"testUpdateClobStringReaderLong","parameterTypes":[] }, 
-    {"name":"testUpdateDateIntegerSqlDate","parameterTypes":[] }, 
-    {"name":"testUpdateDateStringSqlDate","parameterTypes":[] }, 
-    {"name":"testUpdateDoubleIntegerDouble","parameterTypes":[] }, 
-    {"name":"testUpdateDoubleStringDouble","parameterTypes":[] }, 
-    {"name":"testUpdateFloatIntegerFloat","parameterTypes":[] }, 
-    {"name":"testUpdateFloatStringFloat","parameterTypes":[] }, 
-    {"name":"testUpdateIntIntegerInteger","parameterTypes":[] }, 
-    {"name":"testUpdateIntStringInteger","parameterTypes":[] }, 
-    {"name":"testUpdateLongIntegerLong","parameterTypes":[] }, 
-    {"name":"testUpdateLongStringLong","parameterTypes":[] }, 
-    {"name":"testUpdateNCharacterStreamIntegerReader","parameterTypes":[] }, 
-    {"name":"testUpdateNCharacterStreamIntegerReaderLong","parameterTypes":[] }, 
-    {"name":"testUpdateNCharacterStreamStringReader","parameterTypes":[] }, 
-    {"name":"testUpdateNCharacterStreamStringReaderLong","parameterTypes":[] }, 
-    {"name":"testUpdateNClobIntegerNClob","parameterTypes":[] }, 
-    {"name":"testUpdateNClobIntegerReader","parameterTypes":[] }, 
-    {"name":"testUpdateNClobIntegerReaderLong","parameterTypes":[] }, 
-    {"name":"testUpdateNClobStringNClob","parameterTypes":[] }, 
-    {"name":"testUpdateNClobStringReader","parameterTypes":[] }, 
-    {"name":"testUpdateNClobStringReaderLong","parameterTypes":[] }, 
-    {"name":"testUpdateNStringIntegerString","parameterTypes":[] }, 
-    {"name":"testUpdateNStringStringString","parameterTypes":[] }, 
-    {"name":"testUpdateNullInteger","parameterTypes":[] }, 
-    {"name":"testUpdateNullString","parameterTypes":[] }, 
-    {"name":"testUpdateObjectIntegerObject","parameterTypes":[] }, 
-    {"name":"testUpdateObjectIntegerObjectSQLType","parameterTypes":[] }, 
-    {"name":"testUpdateObjectIntegerObjectSQLTypeInteger","parameterTypes":[] }, 
-    {"name":"testUpdateObjectStringObject","parameterTypes":[] }, 
-    {"name":"testUpdateObjectStringObjectSQLType","parameterTypes":[] }, 
-    {"name":"testUpdateObjectStringObjectSQLTypeInteger","parameterTypes":[] }, 
-    {"name":"testUpdateRefIntegerRef","parameterTypes":[] }, 
-    {"name":"testUpdateRefStringRef","parameterTypes":[] }, 
-    {"name":"testUpdateRow","parameterTypes":[] }, 
-    {"name":"testUpdateRowIdIntegerRowId","parameterTypes":[] }, 
-    {"name":"testUpdateRowIdStringRowId","parameterTypes":[] }, 
-    {"name":"testUpdateSQLXMLIntegerSQLXML","parameterTypes":[] }, 
-    {"name":"testUpdateSQLXMLStringSQLXML","parameterTypes":[] }, 
-    {"name":"testUpdateShortIntegerShort","parameterTypes":[] }, 
-    {"name":"testUpdateShortStringShort","parameterTypes":[] }, 
-    {"name":"testUpdateStringIntegerString","parameterTypes":[] }, 
-    {"name":"testUpdateStringStringString","parameterTypes":[] }, 
-    {"name":"testUpdateTimeIntegerTime","parameterTypes":[] }, 
-    {"name":"testUpdateTimeStringTime","parameterTypes":[] }, 
-    {"name":"testUpdateTimestampIntegerTimestamp","parameterTypes":[] }, 
-    {"name":"testUpdateTimestampStringTimestamp","parameterTypes":[] }, 
-    {"name":"testWasNull","parameterTypes":[] }, 
-    {"name":"testWrap","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.commons.dbcp2.TestDelegatingStatement",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setUp","parameterTypes":[] }, 
-    {"name":"testAddBatchString","parameterTypes":[] }, 
-    {"name":"testCancel","parameterTypes":[] }, 
-    {"name":"testCheckOpen","parameterTypes":[] }, 
-    {"name":"testClearBatch","parameterTypes":[] }, 
-    {"name":"testClearWarnings","parameterTypes":[] }, 
-    {"name":"testClose","parameterTypes":[] }, 
-    {"name":"testCloseOnCompletion","parameterTypes":[] }, 
-    {"name":"testCloseWithResultSetCloseException","parameterTypes":[] }, 
-    {"name":"testCloseWithStatementCloseException","parameterTypes":[] }, 
-    {"name":"testExecuteBatch","parameterTypes":[] }, 
-    {"name":"testExecuteLargeBatch","parameterTypes":[] }, 
-    {"name":"testExecuteLargeUpdateString","parameterTypes":[] }, 
-    {"name":"testExecuteLargeUpdateStringInteger","parameterTypes":[] }, 
-    {"name":"testExecuteLargeUpdateStringIntegerArray","parameterTypes":[] }, 
-    {"name":"testExecuteLargeUpdateStringStringArray","parameterTypes":[] }, 
-    {"name":"testExecuteQueryReturnsNull","parameterTypes":[] }, 
-    {"name":"testExecuteQueryString","parameterTypes":[] }, 
-    {"name":"testExecuteString","parameterTypes":[] }, 
-    {"name":"testExecuteStringInteger","parameterTypes":[] }, 
-    {"name":"testExecuteStringIntegerArray","parameterTypes":[] }, 
-    {"name":"testExecuteStringStringArray","parameterTypes":[] }, 
-    {"name":"testExecuteUpdateString","parameterTypes":[] }, 
-    {"name":"testExecuteUpdateStringInteger","parameterTypes":[] }, 
-    {"name":"testExecuteUpdateStringIntegerArray","parameterTypes":[] }, 
-    {"name":"testExecuteUpdateStringStringArray","parameterTypes":[] }, 
-    {"name":"testGetConnection","parameterTypes":[] }, 
-    {"name":"testGetDelegate","parameterTypes":[] }, 
-    {"name":"testGetFetchDirection","parameterTypes":[] }, 
-    {"name":"testGetFetchSize","parameterTypes":[] }, 
-    {"name":"testGetGeneratedKeys","parameterTypes":[] }, 
-    {"name":"testGetLargeMaxRows","parameterTypes":[] }, 
-    {"name":"testGetLargeUpdateCount","parameterTypes":[] }, 
-    {"name":"testGetMaxFieldSize","parameterTypes":[] }, 
-    {"name":"testGetMaxRows","parameterTypes":[] }, 
-    {"name":"testGetMoreResults","parameterTypes":[] }, 
-    {"name":"testGetMoreResultsInteger","parameterTypes":[] }, 
-    {"name":"testGetQueryTimeout","parameterTypes":[] }, 
-    {"name":"testGetResultSet","parameterTypes":[] }, 
-    {"name":"testGetResultSetConcurrency","parameterTypes":[] }, 
-    {"name":"testGetResultSetHoldability","parameterTypes":[] }, 
-    {"name":"testGetResultSetType","parameterTypes":[] }, 
-    {"name":"testGetUpdateCount","parameterTypes":[] }, 
-    {"name":"testGetWarnings","parameterTypes":[] }, 
-    {"name":"testIsCloseOnCompletion","parameterTypes":[] }, 
-    {"name":"testIsClosed","parameterTypes":[] }, 
-    {"name":"testIsPoolable","parameterTypes":[] }, 
-    {"name":"testIsWrapperFor","parameterTypes":[] }, 
-    {"name":"testSetCursorNameString","parameterTypes":[] }, 
-    {"name":"testSetEscapeProcessingBoolean","parameterTypes":[] }, 
-    {"name":"testSetFetchDirectionInteger","parameterTypes":[] }, 
-    {"name":"testSetFetchSizeInteger","parameterTypes":[] }, 
-    {"name":"testSetLargeMaxRowsLong","parameterTypes":[] }, 
-    {"name":"testSetMaxFieldSizeInteger","parameterTypes":[] }, 
-    {"name":"testSetMaxRowsInteger","parameterTypes":[] }, 
-    {"name":"testSetPoolableBoolean","parameterTypes":[] }, 
-    {"name":"testSetQueryTimeoutInteger","parameterTypes":[] }, 
-    {"name":"testWrap","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.commons.dbcp2.TestDelegatingStatement$TesterStatementNonWrapping"
-},
-{
-  "name":"org.apache.commons.dbcp2.TestDriverManagerConnectionFactory",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"afterClass","parameterTypes":[] }, 
-    {"name":"beforeClass","parameterTypes":[] }, 
-    {"name":"testDriverManagerCredentialsInUrl","parameterTypes":[] }, 
-    {"name":"testDriverManagerInitWithCredentials","parameterTypes":[] }, 
-    {"name":"testDriverManagerInitWithEmptyProperties","parameterTypes":[] }, 
-    {"name":"testDriverManagerInitWithProperties","parameterTypes":[] }, 
-    {"name":"testDriverManagerWithoutCredentials","parameterTypes":[] }, 
-    {"name":"testDriverManagerWithoutPassword","parameterTypes":[] }, 
-    {"name":"testDriverManagerWithoutUser","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.commons.dbcp2.TestDriverManagerConnectionFactory$ConnectionThread"
-},
-{
-  "name":"org.apache.commons.dbcp2.TestJndi",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setUp","parameterTypes":[] }, 
-    {"name":"tearDown","parameterTypes":[] }, 
-    {"name":"testBasicDataSourceBind","parameterTypes":[] }, 
-    {"name":"testPerUserPoolDataSourceBind","parameterTypes":[] }, 
-    {"name":"testSharedPoolDataSourceBind","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.commons.dbcp2.TestLifetimeExceededException",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"testLifetimeExceededException","parameterTypes":[] }, 
-    {"name":"testLifetimeExceededExceptionNoMessage","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.commons.dbcp2.TestPStmtPooling",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"testBatchUpdate","parameterTypes":[] }, 
-    {"name":"testCallableStatementPooling","parameterTypes":[] }, 
-    {"name":"testClosePool","parameterTypes":[] }, 
-    {"name":"testMultipleClose","parameterTypes":[] }, 
-    {"name":"testStmtPool","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.commons.dbcp2.TestPStmtPoolingBasicDataSource",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setUp","parameterTypes":[] }, 
-    {"name":"testLRUBehavior","parameterTypes":[] }, 
-    {"name":"testMultipleThreads1","parameterTypes":[] }, 
-    {"name":"testPStmtCatalog","parameterTypes":[] }, 
-    {"name":"testPStmtPoolingAcrossClose","parameterTypes":[] }, 
-    {"name":"testPStmtPoolingAcrossCloseWithClearOnReturn","parameterTypes":[] }, 
-    {"name":"testPStmtPoolingWithNoClose","parameterTypes":[] }, 
-    {"name":"testPreparedStatementPooling","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.commons.dbcp2.TestPoolingConnection",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setUp","parameterTypes":[] }, 
-    {"name":"tearDown","parameterTypes":[] }, 
-    {"name":"testPrepareCall","parameterTypes":[] }, 
-    {"name":"testPrepareCallWithResultSetConcurrency","parameterTypes":[] }, 
-    {"name":"testPrepareCallWithResultSetHoldability","parameterTypes":[] }, 
-    {"name":"testPrepareStatement","parameterTypes":[] }, 
-    {"name":"testPrepareStatementWithAutoGeneratedKeys","parameterTypes":[] }, 
-    {"name":"testPrepareStatementWithColumnIndexes","parameterTypes":[] }, 
-    {"name":"testPrepareStatementWithColumnNames","parameterTypes":[] }, 
-    {"name":"testPrepareStatementWithResultSetConcurrency","parameterTypes":[] }, 
-    {"name":"testPrepareStatementWithResultSetHoldability","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.commons.dbcp2.TestPoolingDriver",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setUp","parameterTypes":[] }, 
-    {"name":"tearDown","parameterTypes":[] }, 
-    {"name":"test1","parameterTypes":[] }, 
-    {"name":"test2","parameterTypes":[] }, 
-    {"name":"testClosePool","parameterTypes":[] }, 
-    {"name":"testInvalidateConnection","parameterTypes":[] }, 
-    {"name":"testLogWriter","parameterTypes":[] }, 
-    {"name":"testReportedBug12400","parameterTypes":[] }, 
-    {"name":"testReportedBug28912","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.commons.dbcp2.TesterCallableStatement",
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true
-},
-{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestBasicDataSource"},
   "name":"org.apache.commons.dbcp2.TesterConnRequestCountDriver",
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "name":"org.apache.commons.dbcp2.TesterConnection",
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestConnectionPool$TestThread"},
+  "name":"org.apache.commons.dbcp2.TesterConnRequestCountDriver",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestConnectionPool$TestThread"},
   "name":"org.apache.commons.dbcp2.TesterConnectionDelayDriver",
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ConnectionFactoryFactory"},
   "name":"org.apache.commons.dbcp2.TesterConnectionFactory",
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
   "methods":[{"name":"<init>","parameterTypes":["java.sql.Driver","java.lang.String","java.util.Properties"] }]
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.BasicDataSource"},
   "name":"org.apache.commons.dbcp2.TesterDriver",
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "name":"org.apache.commons.dbcp2.TesterResultSet",
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.DriverManagerConnectionFactory"},
+  "name":"org.apache.commons.dbcp2.TesterDriver"
 },
 {
-  "name":"org.apache.commons.dbcp2.TesterStatement",
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestAbandonedBasicDataSource"},
+  "name":"org.apache.commons.dbcp2.TesterDriver",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "name":"org.apache.commons.dbcp2.datasources.CharArrayTest",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"testAsString","parameterTypes":[] }, 
-    {"name":"testEquals","parameterTypes":[] }, 
-    {"name":"testGet","parameterTypes":[] }, 
-    {"name":"testHashCode","parameterTypes":[] }, 
-    {"name":"testToString","parameterTypes":[] }
-  ]
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestBasicDataSource"},
+  "name":"org.apache.commons.dbcp2.TesterDriver",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestPoolingDriver"},
+  "name":"org.apache.commons.dbcp2.TesterDriver"
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.cpdsadapter.DriverAdapterCPDS"},
+  "name":"org.apache.commons.dbcp2.TesterDriver"
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.managed.TestBasicManagedDataSource"},
+  "name":"org.apache.commons.dbcp2.TesterDriver",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.managed.TestTransactionContext"},
+  "name":"org.apache.commons.dbcp2.TesterDriver",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestJndi"},
   "name":"org.apache.commons.dbcp2.datasources.PerUserPoolDataSourceFactory",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestJndi"},
   "name":"org.apache.commons.dbcp2.datasources.SharedPoolDataSourceFactory",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "name":"org.apache.commons.dbcp2.datasources.TestCPDSConnectionFactory",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setUp","parameterTypes":[] }, 
-    {"name":"testConnectionErrorCleanup","parameterTypes":[] }, 
-    {"name":"testNullValidationQuery","parameterTypes":[] }, 
-    {"name":"testSetPasswordThenModCharArray","parameterTypes":[] }, 
-    {"name":"testSharedPoolDSDestroyOnReturn","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.commons.dbcp2.datasources.TestInstanceKeyDataSource",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setUp","parameterTypes":[] }, 
-    {"name":"tearDown","parameterTypes":[] }, 
-    {"name":"testConnection","parameterTypes":[] }, 
-    {"name":"testConnectionPoolDataSource","parameterTypes":[] }, 
-    {"name":"testConnectionPoolDataSourceAlreadySet","parameterTypes":[] }, 
-    {"name":"testConnectionPoolDataSourceAlreadySetUsingJndi","parameterTypes":[] }, 
-    {"name":"testDataSourceName","parameterTypes":[] }, 
-    {"name":"testDataSourceNameAlreadySet","parameterTypes":[] }, 
-    {"name":"testDataSourceNameAlreadySetUsingJndi","parameterTypes":[] }, 
-    {"name":"testDefaultBlockWhenExhausted","parameterTypes":[] }, 
-    {"name":"testDefaultEvictionPolicyClassName","parameterTypes":[] }, 
-    {"name":"testDefaultLifo","parameterTypes":[] }, 
-    {"name":"testDefaultMinIdle","parameterTypes":[] }, 
-    {"name":"testDefaultReadOnly","parameterTypes":[] }, 
-    {"name":"testDefaultSoftMinEvictableIdleTimeMillis","parameterTypes":[] }, 
-    {"name":"testDefaultTestOnCreate","parameterTypes":[] }, 
-    {"name":"testDefaultTransactionIsolation","parameterTypes":[] }, 
-    {"name":"testDefaultTransactionIsolationInvalid","parameterTypes":[] }, 
-    {"name":"testDescription","parameterTypes":[] }, 
-    {"name":"testExceptionOnSetupDefaults","parameterTypes":[] }, 
-    {"name":"testIsWrapperFor","parameterTypes":[] }, 
-    {"name":"testJndiEnvironment","parameterTypes":[] }, 
-    {"name":"testJndiNullProperties","parameterTypes":[] }, 
-    {"name":"testJndiPropertiesCleared","parameterTypes":[] }, 
-    {"name":"testJndiPropertiesNotInitialized","parameterTypes":[] }, 
-    {"name":"testLogWriter","parameterTypes":[] }, 
-    {"name":"testLogWriterAutoInitialized","parameterTypes":[] }, 
-    {"name":"testLoginTimeout","parameterTypes":[] }, 
-    {"name":"testMaxConnLifetimeMillis","parameterTypes":[] }, 
-    {"name":"testRollbackAfterValidation","parameterTypes":[] }, 
-    {"name":"testRollbackAfterValidationWithConnectionCalled","parameterTypes":[] }, 
-    {"name":"testUnwrap","parameterTypes":[] }, 
-    {"name":"testValidationQuery","parameterTypes":[] }, 
-    {"name":"testValidationQueryTimeout","parameterTypes":[] }, 
-    {"name":"testValidationQueryWithConnectionCalled","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.commons.dbcp2.datasources.TestInstanceKeyDataSource$ThrowOnSetupDefaultsDataSource"
-},
-{
-  "name":"org.apache.commons.dbcp2.datasources.TestKeyedCPDSConnectionFactory",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setUp","parameterTypes":[] }, 
-    {"name":"testConnectionErrorCleanup","parameterTypes":[] }, 
-    {"name":"testNullValidationQuery","parameterTypes":[] }, 
-    {"name":"testSharedPoolDSDestroyOnReturn","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.commons.dbcp2.datasources.TestPerUserPoolDataSource",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setUp","parameterTypes":[] }, 
-    {"name":"tearDown","parameterTypes":[] }, 
-    {"name":"testChangePassword","parameterTypes":[] }, 
-    {"name":"testClosing","parameterTypes":[] }, 
-    {"name":"testClosingWithUserName","parameterTypes":[] }, 
-    {"name":"testDefaultUser1","parameterTypes":[] }, 
-    {"name":"testDefaultUser2","parameterTypes":[] }, 
-    {"name":"testIncorrectPassword","parameterTypes":[] }, 
-    {"name":"testMaxTotal","parameterTypes":[] }, 
-    {"name":"testMaxWaitMillisZero","parameterTypes":[] }, 
-    {"name":"testMultipleThreads1","parameterTypes":[] }, 
-    {"name":"testMultipleThreads2","parameterTypes":[] }, 
-    {"name":"testOpening","parameterTypes":[] }, 
-    {"name":"testPerUserBlockWhenExhaustedMapInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserBlockWhenExhaustedMapNotInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserBlockWhenExhaustedMapNotInitializedMissingKey","parameterTypes":[] }, 
-    {"name":"testPerUserBlockWhenExhaustedWithUserMapInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserBlockWhenExhaustedWithUserMapNotInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserBlockWhenExhaustedWithUserMapNotInitializedMissingKey","parameterTypes":[] }, 
-    {"name":"testPerUserDefaultAutoCommitMapInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserDefaultAutoCommitMapNotInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserDefaultAutoCommitMapNotInitializedMissingKey","parameterTypes":[] }, 
-    {"name":"testPerUserDefaultAutoCommitWithUserMapInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserDefaultAutoCommitWithUserMapNotInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserDefaultAutoCommitWithUserMapNotInitializedMissingKey","parameterTypes":[] }, 
-    {"name":"testPerUserDefaultReadOnlyMapInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserDefaultReadOnlyMapNotInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserDefaultReadOnlyMapNotInitializedMissingKey","parameterTypes":[] }, 
-    {"name":"testPerUserDefaultReadOnlyWithUserMapInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserDefaultReadOnlyWithUserMapNotInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserDefaultReadOnlyWithUserMapNotInitializedMissingKey","parameterTypes":[] }, 
-    {"name":"testPerUserDefaultTransactionIsolationMapInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserDefaultTransactionIsolationMapNotInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserDefaultTransactionIsolationMapNotInitializedMissingKey","parameterTypes":[] }, 
-    {"name":"testPerUserDefaultTransactionIsolationWithUserMapInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserDefaultTransactionIsolationWithUserMapNotInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserDefaultTransactionIsolationWithUserMapNotInitializedMissingKey","parameterTypes":[] }, 
-    {"name":"testPerUserEvictionPolicyClassNameMapInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserEvictionPolicyClassNameMapNotInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserEvictionPolicyClassNameMapNotInitializedMissingKey","parameterTypes":[] }, 
-    {"name":"testPerUserEvictionPolicyClassNameWithUserMapInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserEvictionPolicyClassNameWithUserMapNotInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserEvictionPolicyClassNameWithUserMapNotInitializedMissingKey","parameterTypes":[] }, 
-    {"name":"testPerUserLifoMapInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserLifoMapNotInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserLifoMapNotInitializedMissingKey","parameterTypes":[] }, 
-    {"name":"testPerUserLifoWithUserMapInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserLifoWithUserMapNotInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserLifoWithUserMapNotInitializedMissingKey","parameterTypes":[] }, 
-    {"name":"testPerUserMaxIdleMapInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserMaxIdleMapNotInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserMaxIdleMapNotInitializedMissingKey","parameterTypes":[] }, 
-    {"name":"testPerUserMaxIdleWithUserMapInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserMaxIdleWithUserMapNotInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserMaxIdleWithUserMapNotInitializedMissingKey","parameterTypes":[] }, 
-    {"name":"testPerUserMaxTotalMapInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserMaxTotalMapNotInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserMaxTotalMapNotInitializedMissingKey","parameterTypes":[] }, 
-    {"name":"testPerUserMaxTotalWithUserMapInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserMaxTotalWithUserMapNotInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserMaxTotalWithUserMapNotInitializedMissingKey","parameterTypes":[] }, 
-    {"name":"testPerUserMaxWaitMillisMapInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserMaxWaitMillisMapNotInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserMaxWaitMillisMapNotInitializedMissingKey","parameterTypes":[] }, 
-    {"name":"testPerUserMaxWaitMillisWithUserMapInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserMaxWaitMillisWithUserMapNotInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserMaxWaitMillisWithUserMapNotInitializedMissingKey","parameterTypes":[] }, 
-    {"name":"testPerUserMethods","parameterTypes":[] }, 
-    {"name":"testPerUserMinEvictableIdleTimeMillisMapInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserMinEvictableIdleTimeMillisMapNotInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserMinEvictableIdleTimeMillisMapNotInitializedMissingKey","parameterTypes":[] }, 
-    {"name":"testPerUserMinEvictableIdleTimeMillisWithUserMapInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserMinEvictableIdleTimeMillisWithUserMapNotInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserMinEvictableIdleTimeMillisWithUserMapNotInitializedMissingKey","parameterTypes":[] }, 
-    {"name":"testPerUserMinIdleMapInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserMinIdleMapNotInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserMinIdleMapNotInitializedMissingKey","parameterTypes":[] }, 
-    {"name":"testPerUserMinIdleWithUserMapInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserMinIdleWithUserMapNotInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserMinIdleWithUserMapNotInitializedMissingKey","parameterTypes":[] }, 
-    {"name":"testPerUserNumTestsPerEvictionRunMapInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserNumTestsPerEvictionRunMapNotInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserNumTestsPerEvictionRunMapNotInitializedMissingKey","parameterTypes":[] }, 
-    {"name":"testPerUserNumTestsPerEvictionRunWithUserMapInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserNumTestsPerEvictionRunWithUserMapNotInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserNumTestsPerEvictionRunWithUserMapNotInitializedMissingKey","parameterTypes":[] }, 
-    {"name":"testPerUserSoftMinEvictableIdleTimeMillisMapInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserSoftMinEvictableIdleTimeMillisMapNotInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserSoftMinEvictableIdleTimeMillisMapNotInitializedMissingKey","parameterTypes":[] }, 
-    {"name":"testPerUserSoftMinEvictableIdleTimeMillisWithUserMapInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserSoftMinEvictableIdleTimeMillisWithUserMapNotInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserSoftMinEvictableIdleTimeMillisWithUserMapNotInitializedMissingKey","parameterTypes":[] }, 
-    {"name":"testPerUserTestOnBorrowMapInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserTestOnBorrowMapNotInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserTestOnBorrowMapNotInitializedMissingKey","parameterTypes":[] }, 
-    {"name":"testPerUserTestOnBorrowWithUserMapInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserTestOnBorrowWithUserMapNotInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserTestOnBorrowWithUserMapNotInitializedMissingKey","parameterTypes":[] }, 
-    {"name":"testPerUserTestOnCreateMapInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserTestOnCreateMapNotInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserTestOnCreateMapNotInitializedMissingKey","parameterTypes":[] }, 
-    {"name":"testPerUserTestOnCreateWithUserMapInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserTestOnCreateWithUserMapNotInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserTestOnCreateWithUserMapNotInitializedMissingKey","parameterTypes":[] }, 
-    {"name":"testPerUserTestOnReturnMapInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserTestOnReturnMapNotInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserTestOnReturnMapNotInitializedMissingKey","parameterTypes":[] }, 
-    {"name":"testPerUserTestOnReturnWithUserMapInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserTestOnReturnWithUserMapNotInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserTestOnReturnWithUserMapNotInitializedMissingKey","parameterTypes":[] }, 
-    {"name":"testPerUserTestWhileIdleMapInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserTestWhileIdleMapNotInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserTestWhileIdleMapNotInitializedMissingKey","parameterTypes":[] }, 
-    {"name":"testPerUserTestWhileIdleWithUserMapInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserTestWhileIdleWithUserMapNotInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserTestWhileIdleWithUserMapNotInitializedMissingKey","parameterTypes":[] }, 
-    {"name":"testPerUserTimeBetweenEvictionRunsMillisMapInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserTimeBetweenEvictionRunsMillisMapNotInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserTimeBetweenEvictionRunsMillisMapNotInitializedMissingKey","parameterTypes":[] }, 
-    {"name":"testPerUserTimeBetweenEvictionRunsMillisWithUserMapInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserTimeBetweenEvictionRunsMillisWithUserMapNotInitialized","parameterTypes":[] }, 
-    {"name":"testPerUserTimeBetweenEvictionRunsMillisWithUserMapNotInitializedMissingKey","parameterTypes":[] }, 
-    {"name":"testSerialization","parameterTypes":[] }, 
-    {"name":"testSimple","parameterTypes":[] }, 
-    {"name":"testSimple2","parameterTypes":[] }, 
-    {"name":"testSimpleWithUsername","parameterTypes":[] }, 
-    {"name":"testTransactionIsolationBehavior","parameterTypes":[] }, 
-    {"name":"testUnregisteredUser","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.commons.dbcp2.datasources.TestPoolKey",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setUp","parameterTypes":[] }, 
-    {"name":"testEquals","parameterTypes":[] }, 
-    {"name":"testHashcode","parameterTypes":[] }, 
-    {"name":"testToString","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.commons.dbcp2.datasources.TestUserPassKey",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setUp","parameterTypes":[] }, 
-    {"name":"testEquals","parameterTypes":[] }, 
-    {"name":"testGettersAndSetters","parameterTypes":[] }, 
-    {"name":"testHashcode","parameterTypes":[] }, 
-    {"name":"testToString","parameterTypes":[] }
-  ]
-},
-{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestConnectionPool$TestThread"},
   "name":"org.apache.commons.dbcp2.managed.BasicManagedDataSource",
   "queryAllPublicConstructors":true
 },
 {
-  "name":"org.apache.commons.dbcp2.managed.LocalXAConnectionFactory",
-  "fields":[{"name":"transactionRegistry"}]
-},
-{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.managed.TransactionRegistry"},
   "name":"org.apache.commons.dbcp2.managed.LocalXAConnectionFactory$LocalXAResource"
 },
 {
-  "name":"org.apache.commons.dbcp2.managed.TestBasicManagedDataSource",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"testCreateXaDataSourceNewInstance","parameterTypes":[] }, 
-    {"name":"testCreateXaDataSourceNoInstanceSetAndNoDataSource","parameterTypes":[] }, 
-    {"name":"testReallyClose","parameterTypes":[] }, 
-    {"name":"testRuntimeExceptionsAreRethrown","parameterTypes":[] }, 
-    {"name":"testSetDriverName","parameterTypes":[] }, 
-    {"name":"testSetNullXaDataSourceInstance","parameterTypes":[] }, 
-    {"name":"testSetRollbackOnlyBeforeGetConnectionDoesNotLeak","parameterTypes":[] }, 
-    {"name":"testSetXaDataSourceInstance","parameterTypes":[] }, 
-    {"name":"testTransactionManagerNotSet","parameterTypes":[] }, 
-    {"name":"testTransactionSynchronizationRegistry","parameterTypes":[] }, 
-    {"name":"testXADataSource","parameterTypes":[] }, 
-    {"name":"testXaDataSourceInstance","parameterTypes":[] }
-  ]
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.BasicDataSource"},
+  "name":"org.apache.commons.logging.impl.LogFactoryImpl"
 },
 {
-  "name":"org.apache.commons.dbcp2.managed.TestLocalXaResource",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setUp","parameterTypes":[] }, 
-    {"name":"testCommit","parameterTypes":[] }, 
-    {"name":"testCommitConnectionClosed","parameterTypes":[] }, 
-    {"name":"testCommitConnectionNotReadOnly","parameterTypes":[] }, 
-    {"name":"testCommitInvalidXid","parameterTypes":[] }, 
-    {"name":"testCommitMissingXid","parameterTypes":[] }, 
-    {"name":"testCommitNoTransaction","parameterTypes":[] }, 
-    {"name":"testConstructor","parameterTypes":[] }, 
-    {"name":"testForget","parameterTypes":[] }, 
-    {"name":"testForgetDifferentXid","parameterTypes":[] }, 
-    {"name":"testForgetMissingXid","parameterTypes":[] }, 
-    {"name":"testIsSame","parameterTypes":[] }, 
-    {"name":"testRollback","parameterTypes":[] }, 
-    {"name":"testRollbackInvalidXid","parameterTypes":[] }, 
-    {"name":"testRollbackMissingXid","parameterTypes":[] }, 
-    {"name":"testStartExceptionOnGetAutoCommit","parameterTypes":[] }, 
-    {"name":"testStartFailsWhenCannotSetAutoCommit","parameterTypes":[] }, 
-    {"name":"testStartInvalidFlag","parameterTypes":[] }, 
-    {"name":"testStartNoFlagButAlreadyEnlisted","parameterTypes":[] }, 
-    {"name":"testStartNoFlagResume","parameterTypes":[] }, 
-    {"name":"testStartNoFlagResumeButDifferentXid","parameterTypes":[] }, 
-    {"name":"testStartNoFlagResumeEnd","parameterTypes":[] }, 
-    {"name":"testStartNoFlagResumeEndDifferentXid","parameterTypes":[] }, 
-    {"name":"testStartNoFlagResumeEndMissingXid","parameterTypes":[] }, 
-    {"name":"testStartReadOnlyConnectionExceptionOnGetAutoCommit","parameterTypes":[] }, 
-    {"name":"testStartReadOnlyConnectionPrepare","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.commons.dbcp2.managed.TestLocalXaResource$TestConnection"
-},
-{
-  "name":"org.apache.commons.dbcp2.managed.TestLocalXaResource$TestXid"
-},
-{
-  "name":"org.apache.commons.dbcp2.managed.TestManagedDataSourceInTx",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setUp","parameterTypes":[] }, 
-    {"name":"tearDown","parameterTypes":[] }, 
-    {"name":"testAutoCommitBehavior","parameterTypes":[] }, 
-    {"name":"testClearWarnings","parameterTypes":[] }, 
-    {"name":"testCloseInTransaction","parameterTypes":[] }, 
-    {"name":"testCommit","parameterTypes":[] }, 
-    {"name":"testConnectionReturnOnCommit","parameterTypes":[] }, 
-    {"name":"testConnectionsAreDistinct","parameterTypes":[] }, 
-    {"name":"testDoubleReturn","parameterTypes":[] }, 
-    {"name":"testGetConnectionInAfterCompletion","parameterTypes":[] }, 
-    {"name":"testHashCode","parameterTypes":[] }, 
-    {"name":"testManagedConnectionEqualsFail","parameterTypes":[] }, 
-    {"name":"testMaxTotal","parameterTypes":[] }, 
-    {"name":"testNestedConnections","parameterTypes":[] }, 
-    {"name":"testReadOnly","parameterTypes":[] }, 
-    {"name":"testSharedConnection","parameterTypes":[] }, 
-    {"name":"testSharedTransactionConversion","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.commons.dbcp2.managed.TestTransactionContext",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"testSetSharedConnectionEnlistFailure","parameterTypes":[] }
-  ]
-},
-{
-  "name":"org.apache.commons.dbcp2.managed.TestTransactionContext$UncooperativeTransaction"
-},
-{
-  "name":"org.apache.commons.dbcp2.managed.TesterBasicXAConnection",
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true
-},
-{
-  "name":"org.apache.commons.dbcp2.managed.TesterBasicXAConnection$ConnectionHandle",
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true
-},
-{
-  "name":"org.apache.commons.logging.Log",
-  "allDeclaredClasses":true,
-  "queryAllPublicMethods":true
-},
-{
-  "name":"org.apache.commons.logging.LogFactory"
-},
-{
-  "name":"org.apache.commons.logging.impl.LogFactoryImpl",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"org.apache.commons.logging.impl.SimpleLog",
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true
-},
-{
-  "name":"org.apache.commons.logging.impl.WeakHashtable",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"org.apache.commons.pool2.TrackedUse",
-  "allDeclaredClasses":true,
-  "queryAllPublicMethods":true
-},
-{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.BasicDataSource"},
   "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.BasicDataSourceFactory"},
+  "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestBasicDataSource"},
+  "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestBasicDataSourceFactory"},
+  "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestConnectionPool"},
+  "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestConnectionPool$PoolTest"},
+  "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestConnectionPool$TestThread"},
+  "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingConnection"},
+  "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDriverManagerConnectionFactory"},
+  "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestPStmtPooling"},
+  "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestPStmtPoolingBasicDataSource"},
+  "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestPoolingConnection"},
+  "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestPoolingDriver"},
+  "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.datasources.PerUserPoolDataSource"},
+  "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.datasources.SharedPoolDataSource"},
+  "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.datasources.TestCPDSConnectionFactory"},
+  "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.datasources.TestKeyedCPDSConnectionFactory"},
+  "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.managed.TestManagedDataSourceInTx"},
+  "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestBasicDataSource"},
   "name":"org.apache.commons.pool2.impl.DefaultPooledObjectInfo",
   "queryAllPublicMethods":true
 },
 {
-  "name":"org.apache.commons.pool2.impl.GenericKeyedObjectPool",
-  "queryAllPublicConstructors":true
-},
-{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestBasicDataSourceFactory"},
   "name":"org.apache.commons.pool2.impl.GenericKeyedObjectPoolMXBean",
   "queryAllPublicMethods":true
 },
 {
-  "name":"org.apache.commons.pool2.impl.GenericObjectPool",
-  "queryAllPublicConstructors":true
-},
-{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestBasicDataSource"},
   "name":"org.apache.commons.pool2.impl.GenericObjectPoolMXBean",
   "queryAllPublicMethods":true
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestPoolingDriver"},
+  "name":"org.apache.commons.pool2.impl.GenericObjectPoolMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestJndi"},
   "name":"org.apache.naming.NamingContext"
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestJndi"},
   "name":"org.apache.naming.java.javaURLContextFactory",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "name":"org.h2.Driver",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.BasicDataSource"},
+  "name":"org.h2.Driver"
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.DriverManagerConnectionFactory"},
+  "name":"org.h2.Driver"
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDriverManagerConnectionFactory$$Lambda$520/0x0000000800ea41f8"},
+  "name":"org.h2.Driver"
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestPoolingDriver"},
+  "name":"org.h2.Driver"
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.cpdsadapter.DriverAdapterCPDS"},
+  "name":"org.h2.Driver"
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.datasources.TestPerUserPoolDataSource"},
+  "name":"org.h2.Driver"
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.DriverConnectionFactory"},
   "name":"org.h2.engine.Engine",
   "methods":[{"name":"getInstance","parameterTypes":[] }]
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.managed.TestBasicManagedDataSource"},
   "name":"org.h2.jdbcx.JdbcDataSource",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.DriverConnectionFactory"},
   "name":"org.h2.mvstore.db.MVTableEngine",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.DriverConnectionFactory"},
   "name":"org.h2.store.fs.FilePathAsync",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.DriverConnectionFactory"},
   "name":"org.h2.store.fs.FilePathDisk",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.DriverConnectionFactory"},
   "name":"org.h2.store.fs.FilePathMem",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.DriverConnectionFactory"},
   "name":"org.h2.store.fs.FilePathMemLZF",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.DriverConnectionFactory"},
   "name":"org.h2.store.fs.FilePathNio",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.DriverConnectionFactory"},
   "name":"org.h2.store.fs.FilePathNioMapped",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.DriverConnectionFactory"},
   "name":"org.h2.store.fs.FilePathNioMem",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.DriverConnectionFactory"},
   "name":"org.h2.store.fs.FilePathNioMemLZF",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.DriverConnectionFactory"},
   "name":"org.h2.store.fs.FilePathRetryOnInterrupt",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.DriverConnectionFactory"},
   "name":"org.h2.store.fs.FilePathSplit",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.DriverConnectionFactory"},
   "name":"org.h2.store.fs.FilePathZip",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestBasicDataSource"},
   "name":"org.hamcrest.core.StringContains",
   "queryAllDeclaredMethods":true
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestBasicDataSource"},
   "name":"org.hamcrest.core.SubstringMatcher",
   "queryAllDeclaredMethods":true
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingCallableStatement"},
   "name":"org.mockito.internal.configuration.DefaultDoNotMockEnforcer",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingCallableStatement"},
   "name":"org.mockito.internal.configuration.InjectingAnnotationEngine",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingCallableStatement"},
   "name":"org.mockito.internal.configuration.plugins.DefaultPluginSwitch",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingCallableStatement"},
   "name":"org.mockito.internal.creation.instance.DefaultInstantiatorProvider",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingCallableStatement"},
   "name":"org.mockito.internal.creation.proxy.ProxyMockMaker",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingCallableStatement"},
   "name":"org.mockito.internal.exceptions.stacktrace.DefaultStackTraceCleanerProvider",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingCallableStatement"},
   "name":"org.mockito.internal.matchers.ArrayEquals",
   "queryAllPublicMethods":true
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingCallableStatement"},
   "name":"org.mockito.internal.matchers.Equals",
   "queryAllPublicMethods":true
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingCallableStatement"},
   "name":"org.mockito.internal.util.ConsoleMockitoLogger",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingCallableStatement"},
   "name":"org.mockito.internal.util.reflection.ReflectionMemberAccessor",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "name":"org.slf4j.spi.LocationAwareLogger",
-  "queryAllDeclaredMethods":true,
-  "methods":[{"name":"log","parameterTypes":["org.slf4j.Marker","java.lang.String","int","java.lang.String","java.lang.Object[]","java.lang.Throwable"] }]
-},
-{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"sun.management.ClassLoadingImpl",
   "queryAllPublicConstructors":true
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"sun.management.CompilationImpl",
   "queryAllPublicConstructors":true
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"sun.management.ManagementFactoryHelper$1",
   "queryAllPublicConstructors":true
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"sun.management.ManagementFactoryHelper$PlatformLoggingImpl",
   "queryAllPublicConstructors":true
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"sun.management.MemoryImpl",
   "queryAllPublicConstructors":true
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"sun.management.MemoryManagerImpl",
   "queryAllPublicConstructors":true
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"sun.management.MemoryPoolImpl",
   "queryAllPublicConstructors":true
 },
 {
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"sun.management.RuntimeImpl",
   "queryAllPublicConstructors":true
 },
 {
-  "name":"sun.security.provider.NativePRNG",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.datasources.TestPerUserPoolDataSource"},
   "name":"sun.security.provider.SHA",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 }

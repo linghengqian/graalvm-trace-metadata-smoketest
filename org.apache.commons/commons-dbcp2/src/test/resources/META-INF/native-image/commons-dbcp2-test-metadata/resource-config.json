@@ -1,0 +1,29 @@
+{
+  "resources":{
+  "includes":[
+    {
+      "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+      "pattern":"\\QConfigurationInfo.properties\\E"
+    }, 
+    {
+      "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle"},
+      "pattern":"\\QMETA-INF/services/java.sql.Driver\\E"
+    }, 
+    {
+      "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+      "pattern":"\\Qjbossts-properties.xml\\E"
+    }, 
+    {
+      "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+      "pattern":"\\Qorg/h2/util/data.zip\\E"
+    }, 
+    {
+      "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+      "pattern":"\\Qorg/slf4j/impl/StaticLoggerBinder.class\\E"
+    }
+  ]},
+  "bundles":[{
+      "name":"org.apache.commons.dbcp2.LocalStrings",
+      "locales":["und"]
+    }]
+}

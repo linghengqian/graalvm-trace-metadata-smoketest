@@ -1,0 +1,18 @@
+[
+  {
+    "condition":{"typeReachable":"com.lingh.managed.TestDataSourceXAConnectionFactory"},
+    "interfaces":["java.sql.Connection"]
+  },
+  {
+    "condition":{"typeReachable":"com.lingh.managed.TestSynchronizationOrder"},
+    "interfaces":["java.sql.Connection"]
+  },
+  {
+    "condition":{"typeReachable":"com.lingh.managed.TestDataSourceXAConnectionFactory"},
+    "interfaces":["javax.sql.XADataSource"]
+  },
+  {
+    "condition":{"typeReachable":"com.lingh.managed.TestSynchronizationOrder"},
+    "interfaces":["javax.sql.XADataSource"]
+  }
+]

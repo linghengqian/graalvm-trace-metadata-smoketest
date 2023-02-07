@@ -1,26 +1,26 @@
 [
   {
-    "interfaces":[]
-  },
-  {
+    "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingCallableStatement"},
     "interfaces":["java.sql.CallableStatement"]
   },
   {
+    "condition":{"typeReachable":"org.apache.commons.dbcp2.managed.TesterBasicXAConnection"},
     "interfaces":["java.sql.Connection"]
   },
   {
+    "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingDatabaseMetaData"},
     "interfaces":["java.sql.DatabaseMetaData"]
   },
   {
+    "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingPreparedStatement"},
     "interfaces":["java.sql.PreparedStatement"]
   },
   {
+    "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingResultSet"},
     "interfaces":["java.sql.ResultSet"]
   },
   {
+    "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingStatement"},
     "interfaces":["java.sql.Statement"]
-  },
-  {
-    "interfaces":["javax.sql.XADataSource"]
   }
 ]

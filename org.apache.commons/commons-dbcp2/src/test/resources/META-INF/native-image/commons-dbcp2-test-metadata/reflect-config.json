@@ -1,0 +1,1026 @@
+[
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"[B"
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"[C"
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"[D"
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"[F"
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"[I"
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"[J"
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"[Ljava.lang.String;"
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"[Ljavax.management.openmbean.CompositeData;"
+},
+{
+  "condition":{"typeReachable":"com.lingh.cpdsadapter.TestDriverAdapterCPDS"},
+  "name":"[Ljavax.management.openmbean.CompositeData;"
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"[S"
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"[Z"
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"ch.qos.logback.classic.Logger"
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"com.arjuna.ats.arjuna.common.CoordinatorEnvironmentBean",
+  "allDeclaredFields":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"getCheckedActionFactory","parameterTypes":[] }, 
+    {"name":"getCheckedActionFactoryClassName","parameterTypes":[] }, 
+    {"name":"getCommunicationStore","parameterTypes":[] }, 
+    {"name":"getDefaultTimeout","parameterTypes":[] }, 
+    {"name":"getDynamic1PC","parameterTypes":[] }, 
+    {"name":"getMaxTwoPhaseCommitThreads","parameterTypes":[] }, 
+    {"name":"getTxReaperCancelFailWaitPeriod","parameterTypes":[] }, 
+    {"name":"getTxReaperCancelWaitPeriod","parameterTypes":[] }, 
+    {"name":"getTxReaperMode","parameterTypes":[] }, 
+    {"name":"getTxReaperTimeout","parameterTypes":[] }, 
+    {"name":"getTxReaperTraceGracePeriod","parameterTypes":[] }, 
+    {"name":"getTxReaperTraceInterval","parameterTypes":[] }, 
+    {"name":"getTxReaperZombieMax","parameterTypes":[] }, 
+    {"name":"isAllowCheckedActionFactoryOverride","parameterTypes":[] }, 
+    {"name":"isAlternativeRecordOrdering","parameterTypes":[] }, 
+    {"name":"isAsyncAfterSynchronization","parameterTypes":[] }, 
+    {"name":"isAsyncBeforeSynchronization","parameterTypes":[] }, 
+    {"name":"isAsyncCommit","parameterTypes":[] }, 
+    {"name":"isAsyncPrepare","parameterTypes":[] }, 
+    {"name":"isAsyncRollback","parameterTypes":[] }, 
+    {"name":"isBeforeCompletionWhenRollbackOnly","parameterTypes":[] }, 
+    {"name":"isClassicPrepare","parameterTypes":[] }, 
+    {"name":"isCommitOnePhase","parameterTypes":[] }, 
+    {"name":"isEnableStatistics","parameterTypes":[] }, 
+    {"name":"isFinalizeBasicActions","parameterTypes":[] }, 
+    {"name":"isMaintainHeuristics","parameterTypes":[] }, 
+    {"name":"isReadonlyOptimisation","parameterTypes":[] }, 
+    {"name":"isSharedTransactionLog","parameterTypes":[] }, 
+    {"name":"isStartDisabled","parameterTypes":[] }, 
+    {"name":"isTransactionStatusManagerEnable","parameterTypes":[] }, 
+    {"name":"isWriteOptimisation","parameterTypes":[] }, 
+    {"name":"setAllowCheckedActionFactoryOverride","parameterTypes":["boolean"] }, 
+    {"name":"setAlternativeRecordOrdering","parameterTypes":["boolean"] }, 
+    {"name":"setAsyncAfterSynchronization","parameterTypes":["boolean"] }, 
+    {"name":"setAsyncBeforeSynchronization","parameterTypes":["boolean"] }, 
+    {"name":"setAsyncCommit","parameterTypes":["boolean"] }, 
+    {"name":"setAsyncPrepare","parameterTypes":["boolean"] }, 
+    {"name":"setAsyncRollback","parameterTypes":["boolean"] }, 
+    {"name":"setBeforeCompletionWhenRollbackOnly","parameterTypes":["boolean"] }, 
+    {"name":"setCheckedActionFactory","parameterTypes":["com.arjuna.ats.arjuna.coordinator.CheckedActionFactory"] }, 
+    {"name":"setCheckedActionFactoryClassName","parameterTypes":["java.lang.String"] }, 
+    {"name":"setClassicPrepare","parameterTypes":["boolean"] }, 
+    {"name":"setCommitOnePhase","parameterTypes":["boolean"] }, 
+    {"name":"setCommunicationStore","parameterTypes":["java.lang.String"] }, 
+    {"name":"setDefaultTimeout","parameterTypes":["int"] }, 
+    {"name":"setDynamic1PC","parameterTypes":["boolean"] }, 
+    {"name":"setEnableStatistics","parameterTypes":["boolean"] }, 
+    {"name":"setFinalizeBasicActions","parameterTypes":["boolean"] }, 
+    {"name":"setMaintainHeuristics","parameterTypes":["boolean"] }, 
+    {"name":"setMaxTwoPhaseCommitThreads","parameterTypes":["int"] }, 
+    {"name":"setReadonlyOptimisation","parameterTypes":["boolean"] }, 
+    {"name":"setSharedTransactionLog","parameterTypes":["boolean"] }, 
+    {"name":"setStartDisabled","parameterTypes":["boolean"] }, 
+    {"name":"setTransactionStatusManagerEnable","parameterTypes":["boolean"] }, 
+    {"name":"setTxReaperCancelFailWaitPeriod","parameterTypes":["long"] }, 
+    {"name":"setTxReaperCancelWaitPeriod","parameterTypes":["long"] }, 
+    {"name":"setTxReaperMode","parameterTypes":["java.lang.String"] }, 
+    {"name":"setTxReaperTimeout","parameterTypes":["long"] }, 
+    {"name":"setTxReaperTraceGracePeriod","parameterTypes":["long"] }, 
+    {"name":"setTxReaperTraceInterval","parameterTypes":["long"] }, 
+    {"name":"setTxReaperZombieMax","parameterTypes":["int"] }, 
+    {"name":"setWriteOptimisation","parameterTypes":["boolean"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"com.arjuna.ats.arjuna.common.CoreEnvironmentBean",
+  "allDeclaredFields":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"getNodeIdentifier","parameterTypes":[] }, 
+    {"name":"getPid","parameterTypes":[] }, 
+    {"name":"getProcessImplementation","parameterTypes":[] }, 
+    {"name":"getProcessImplementationClassName","parameterTypes":[] }, 
+    {"name":"getSocketProcessIdMaxPorts","parameterTypes":[] }, 
+    {"name":"getSocketProcessIdPort","parameterTypes":[] }, 
+    {"name":"getTimeoutFactor","parameterTypes":[] }, 
+    {"name":"getVarDir","parameterTypes":[] }, 
+    {"name":"isAllowMultipleLastResources","parameterTypes":[] }, 
+    {"name":"isDisableMultipleLastResourcesWarning","parameterTypes":[] }, 
+    {"name":"setAllowMultipleLastResources","parameterTypes":["boolean"] }, 
+    {"name":"setDisableMultipleLastResourcesWarning","parameterTypes":["boolean"] }, 
+    {"name":"setNodeIdentifier","parameterTypes":["java.lang.String"] }, 
+    {"name":"setPid","parameterTypes":["int"] }, 
+    {"name":"setProcessImplementation","parameterTypes":["com.arjuna.ats.arjuna.utils.Process"] }, 
+    {"name":"setProcessImplementationClassName","parameterTypes":["java.lang.String"] }, 
+    {"name":"setSocketProcessIdMaxPorts","parameterTypes":["int"] }, 
+    {"name":"setSocketProcessIdPort","parameterTypes":["int"] }, 
+    {"name":"setTimeoutFactor","parameterTypes":["int"] }, 
+    {"name":"setVarDir","parameterTypes":["java.lang.String"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"com.arjuna.ats.arjuna.common.MetaObjectStoreEnvironmentBean",
+  "allDeclaredFields":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"com.arjuna.ats.arjuna.common.ObjectStoreEnvironmentBean",
+  "allDeclaredFields":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"getCacheStoreHash","parameterTypes":[] }, 
+    {"name":"getCacheStoreRemovedItems","parameterTypes":[] }, 
+    {"name":"getCacheStoreScanPeriod","parameterTypes":[] }, 
+    {"name":"getCacheStoreSize","parameterTypes":[] }, 
+    {"name":"getCacheStoreWorkItems","parameterTypes":[] }, 
+    {"name":"getCreateTable","parameterTypes":[] }, 
+    {"name":"getDropTable","parameterTypes":[] }, 
+    {"name":"getExposeAllLogRecordsAsMBeans","parameterTypes":[] }, 
+    {"name":"getHashedDirectories","parameterTypes":[] }, 
+    {"name":"getHierarchyRetry","parameterTypes":[] }, 
+    {"name":"getHierarchyTimeout","parameterTypes":[] }, 
+    {"name":"getJdbcAccess","parameterTypes":[] }, 
+    {"name":"getJmxToolingMBeanName","parameterTypes":[] }, 
+    {"name":"getLocalOSRoot","parameterTypes":[] }, 
+    {"name":"getObjectStoreDir","parameterTypes":[] }, 
+    {"name":"getObjectStoreType","parameterTypes":[] }, 
+    {"name":"getPurgeTime","parameterTypes":[] }, 
+    {"name":"getShare","parameterTypes":[] }, 
+    {"name":"getTablePrefix","parameterTypes":[] }, 
+    {"name":"getTxLogSize","parameterTypes":[] }, 
+    {"name":"isCacheStoreSync","parameterTypes":[] }, 
+    {"name":"isIgnoreMBeanHeuristics","parameterTypes":[] }, 
+    {"name":"isObjectStoreSync","parameterTypes":[] }, 
+    {"name":"isScanZeroLengthFiles","parameterTypes":[] }, 
+    {"name":"isSynchronousRemoval","parameterTypes":[] }, 
+    {"name":"isTransactionSync","parameterTypes":[] }, 
+    {"name":"isVolatileStoreSupportAllObjUids","parameterTypes":[] }, 
+    {"name":"setCacheStoreHash","parameterTypes":["int"] }, 
+    {"name":"setCacheStoreRemovedItems","parameterTypes":["int"] }, 
+    {"name":"setCacheStoreScanPeriod","parameterTypes":["int"] }, 
+    {"name":"setCacheStoreSize","parameterTypes":["int"] }, 
+    {"name":"setCacheStoreSync","parameterTypes":["boolean"] }, 
+    {"name":"setCacheStoreWorkItems","parameterTypes":["int"] }, 
+    {"name":"setCreateTable","parameterTypes":["boolean"] }, 
+    {"name":"setDropTable","parameterTypes":["boolean"] }, 
+    {"name":"setExposeAllLogRecordsAsMBeans","parameterTypes":["boolean"] }, 
+    {"name":"setHashedDirectories","parameterTypes":["int"] }, 
+    {"name":"setHierarchyRetry","parameterTypes":["int"] }, 
+    {"name":"setHierarchyTimeout","parameterTypes":["int"] }, 
+    {"name":"setIgnoreMBeanHeuristics","parameterTypes":["boolean"] }, 
+    {"name":"setJdbcAccess","parameterTypes":["java.lang.String"] }, 
+    {"name":"setJmxToolingMBeanName","parameterTypes":["java.lang.String"] }, 
+    {"name":"setLocalOSRoot","parameterTypes":["java.lang.String"] }, 
+    {"name":"setObjectStoreDir","parameterTypes":["java.lang.String"] }, 
+    {"name":"setObjectStoreSync","parameterTypes":["boolean"] }, 
+    {"name":"setObjectStoreType","parameterTypes":["java.lang.String"] }, 
+    {"name":"setPurgeTime","parameterTypes":["long"] }, 
+    {"name":"setScanZeroLengthFiles","parameterTypes":["boolean"] }, 
+    {"name":"setShare","parameterTypes":["int"] }, 
+    {"name":"setSynchronousRemoval","parameterTypes":["boolean"] }, 
+    {"name":"setTablePrefix","parameterTypes":["java.lang.String"] }, 
+    {"name":"setTransactionSync","parameterTypes":["boolean"] }, 
+    {"name":"setTxLogSize","parameterTypes":["long"] }, 
+    {"name":"setVolatileStoreSupportAllObjUids","parameterTypes":["boolean"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"com.arjuna.ats.arjuna.common.RecoveryEnvironmentBean",
+  "allDeclaredFields":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"getExpiryScanInterval","parameterTypes":[] }, 
+    {"name":"getExpiryScannerClassNames","parameterTypes":[] }, 
+    {"name":"getExpiryScanners","parameterTypes":[] }, 
+    {"name":"getPeriodicRecoveryInitilizationOffset","parameterTypes":[] }, 
+    {"name":"getPeriodicRecoveryPeriod","parameterTypes":[] }, 
+    {"name":"getRecoveryActivatorClassNames","parameterTypes":[] }, 
+    {"name":"getRecoveryActivators","parameterTypes":[] }, 
+    {"name":"getRecoveryAddress","parameterTypes":[] }, 
+    {"name":"getRecoveryBackoffPeriod","parameterTypes":[] }, 
+    {"name":"getRecoveryModuleClassNames","parameterTypes":[] }, 
+    {"name":"getRecoveryModules","parameterTypes":[] }, 
+    {"name":"getRecoveryPort","parameterTypes":[] }, 
+    {"name":"getTransactionStatusManagerAddress","parameterTypes":[] }, 
+    {"name":"getTransactionStatusManagerExpiryTime","parameterTypes":[] }, 
+    {"name":"getTransactionStatusManagerPort","parameterTypes":[] }, 
+    {"name":"isRecoveryListener","parameterTypes":[] }, 
+    {"name":"isTimeoutSocket","parameterTypes":[] }, 
+    {"name":"setExpiryScanInterval","parameterTypes":["int"] }, 
+    {"name":"setExpiryScannerClassNames","parameterTypes":["java.util.List"] }, 
+    {"name":"setExpiryScanners","parameterTypes":["java.util.List"] }, 
+    {"name":"setPeriodicRecoveryInitilizationOffset","parameterTypes":["int"] }, 
+    {"name":"setPeriodicRecoveryPeriod","parameterTypes":["int"] }, 
+    {"name":"setRecoveryActivatorClassNames","parameterTypes":["java.util.List"] }, 
+    {"name":"setRecoveryActivators","parameterTypes":["java.util.List"] }, 
+    {"name":"setRecoveryAddress","parameterTypes":["java.lang.String"] }, 
+    {"name":"setRecoveryBackoffPeriod","parameterTypes":["int"] }, 
+    {"name":"setRecoveryListener","parameterTypes":["boolean"] }, 
+    {"name":"setRecoveryModuleClassNames","parameterTypes":["java.util.List"] }, 
+    {"name":"setRecoveryModules","parameterTypes":["java.util.List"] }, 
+    {"name":"setRecoveryPort","parameterTypes":["int"] }, 
+    {"name":"setTimeoutSocket","parameterTypes":["boolean"] }, 
+    {"name":"setTransactionStatusManagerAddress","parameterTypes":["java.lang.String"] }, 
+    {"name":"setTransactionStatusManagerExpiryTime","parameterTypes":["int"] }, 
+    {"name":"setTransactionStatusManagerPort","parameterTypes":["int"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"com.arjuna.ats.arjuna.logging.arjunaI18NLogger_$logger",
+  "methods":[{"name":"<init>","parameterTypes":["org.jboss.logging.Logger"] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"com.arjuna.ats.arjuna.recovery.ActionStatusService",
+  "queryAllPublicConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"com.arjuna.ats.internal.arjuna.coordinator.CheckedActionFactoryImple",
+  "queryAllPublicConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"com.arjuna.ats.internal.arjuna.objectstore.ShadowNoFileLockStore",
+  "queryAllPublicConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":["com.arjuna.ats.arjuna.common.ObjectStoreEnvironmentBean"] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"com.arjuna.ats.internal.arjuna.utils.SocketProcessId",
+  "queryAllPublicConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"com.arjuna.ats.jta.common.JTAEnvironmentBean",
+  "allDeclaredFields":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"getAsyncCommitPoolSize","parameterTypes":[] }, 
+    {"name":"getCommitMarkableResourceJNDINames","parameterTypes":[] }, 
+    {"name":"getCommitMarkableResourceRecordDeleteBatchSize","parameterTypes":[] }, 
+    {"name":"getCommitMarkableResourceRecordDeleteBatchSizeMap","parameterTypes":[] }, 
+    {"name":"getCommitMarkableResourceTableNameMap","parameterTypes":[] }, 
+    {"name":"getLastResourceOptimisationInterface","parameterTypes":[] }, 
+    {"name":"getLastResourceOptimisationInterfaceClassName","parameterTypes":[] }, 
+    {"name":"getOrphanSafetyInterval","parameterTypes":[] }, 
+    {"name":"getPerformImmediateCleanupOfCommitMarkableResourceBranchesMap","parameterTypes":[] }, 
+    {"name":"getTransactionManager","parameterTypes":[] }, 
+    {"name":"getTransactionManagerClassName","parameterTypes":[] }, 
+    {"name":"getTransactionManagerJNDIContext","parameterTypes":[] }, 
+    {"name":"getTransactionSynchronizationRegistry","parameterTypes":[] }, 
+    {"name":"getTransactionSynchronizationRegistryClassName","parameterTypes":[] }, 
+    {"name":"getTransactionSynchronizationRegistryJNDIContext","parameterTypes":[] }, 
+    {"name":"getUserTransaction","parameterTypes":[] }, 
+    {"name":"getUserTransactionClassName","parameterTypes":[] }, 
+    {"name":"getUserTransactionJNDIContext","parameterTypes":[] }, 
+    {"name":"getUserTransactionOperationsProviderClassName","parameterTypes":[] }, 
+    {"name":"getXaRecoveryNodes","parameterTypes":[] }, 
+    {"name":"getXaResourceIsSameRMClassNames","parameterTypes":[] }, 
+    {"name":"getXaResourceMapClassNames","parameterTypes":[] }, 
+    {"name":"getXaResourceMaps","parameterTypes":[] }, 
+    {"name":"getXaResourceOrphanFilterClassNames","parameterTypes":[] }, 
+    {"name":"getXaResourceOrphanFilters","parameterTypes":[] }, 
+    {"name":"getXaResourceRecordWrappingPluginClassName","parameterTypes":[] }, 
+    {"name":"getXaResourceRecoveries","parameterTypes":[] }, 
+    {"name":"getXaResourceRecoveryClassNames","parameterTypes":[] }, 
+    {"name":"isNotifyCommitMarkableResourceRecoveryModuleOfCompleteBranches","parameterTypes":[] }, 
+    {"name":"isPerformImmediateCleanupOfCommitMarkableResourceBranches","parameterTypes":[] }, 
+    {"name":"isStrictJTA12DuplicateXAENDPROTOErr","parameterTypes":[] }, 
+    {"name":"isSupportSubtransactions","parameterTypes":[] }, 
+    {"name":"isTransactionToThreadListenersEnabled","parameterTypes":[] }, 
+    {"name":"isXaAssumeRecoveryComplete","parameterTypes":[] }, 
+    {"name":"isXaRollbackOptimization","parameterTypes":[] }, 
+    {"name":"isXaTransactionTimeoutEnabled","parameterTypes":[] }, 
+    {"name":"setAsyncCommitPoolSize","parameterTypes":["int"] }, 
+    {"name":"setCommitMarkableResourceJNDINames","parameterTypes":["java.util.List"] }, 
+    {"name":"setCommitMarkableResourceRecordDeleteBatchSize","parameterTypes":["int"] }, 
+    {"name":"setCommitMarkableResourceRecordDeleteBatchSizeMap","parameterTypes":["java.util.Map"] }, 
+    {"name":"setCommitMarkableResourceTableNameMap","parameterTypes":["java.util.Map"] }, 
+    {"name":"setLastResourceOptimisationInterface","parameterTypes":["java.lang.Class"] }, 
+    {"name":"setLastResourceOptimisationInterfaceClassName","parameterTypes":["java.lang.String"] }, 
+    {"name":"setNotifyCommitMarkableResourceRecoveryModuleOfCompleteBranches","parameterTypes":["boolean"] }, 
+    {"name":"setOrphanSafetyInterval","parameterTypes":["int"] }, 
+    {"name":"setPerformImmediateCleanupOfCommitMarkableResourceBranches","parameterTypes":["boolean"] }, 
+    {"name":"setPerformImmediateCleanupOfCommitMarkableResourceBranchesMap","parameterTypes":["java.util.Map"] }, 
+    {"name":"setStrictJTA12DuplicateXAENDPROTOErr","parameterTypes":["boolean"] }, 
+    {"name":"setSupportSubtransactions","parameterTypes":["boolean"] }, 
+    {"name":"setTransactionManager","parameterTypes":["javax.transaction.TransactionManager"] }, 
+    {"name":"setTransactionManagerClassName","parameterTypes":["java.lang.String"] }, 
+    {"name":"setTransactionManagerJNDIContext","parameterTypes":["java.lang.String"] }, 
+    {"name":"setTransactionSynchronizationRegistry","parameterTypes":["javax.transaction.TransactionSynchronizationRegistry"] }, 
+    {"name":"setTransactionSynchronizationRegistryClassName","parameterTypes":["java.lang.String"] }, 
+    {"name":"setTransactionSynchronizationRegistryJNDIContext","parameterTypes":["java.lang.String"] }, 
+    {"name":"setTransactionToThreadListenersEnabled","parameterTypes":["boolean"] }, 
+    {"name":"setUserTransaction","parameterTypes":["javax.transaction.UserTransaction"] }, 
+    {"name":"setUserTransactionClassName","parameterTypes":["java.lang.String"] }, 
+    {"name":"setUserTransactionJNDIContext","parameterTypes":["java.lang.String"] }, 
+    {"name":"setUserTransactionOperationsProviderClassName","parameterTypes":["java.lang.String"] }, 
+    {"name":"setXaAssumeRecoveryComplete","parameterTypes":["boolean"] }, 
+    {"name":"setXaRecoveryNodes","parameterTypes":["java.util.List"] }, 
+    {"name":"setXaResourceIsSameRMClassNames","parameterTypes":["java.util.List"] }, 
+    {"name":"setXaResourceMapClassNames","parameterTypes":["java.util.List"] }, 
+    {"name":"setXaResourceMaps","parameterTypes":["java.util.List"] }, 
+    {"name":"setXaResourceOrphanFilterClassNames","parameterTypes":["java.util.List"] }, 
+    {"name":"setXaResourceOrphanFilters","parameterTypes":["java.util.List"] }, 
+    {"name":"setXaResourceRecordWrappingPluginClassName","parameterTypes":["java.lang.String"] }, 
+    {"name":"setXaResourceRecoveries","parameterTypes":["java.util.List"] }, 
+    {"name":"setXaResourceRecoveryClassNames","parameterTypes":["java.util.List"] }, 
+    {"name":"setXaRollbackOptimization","parameterTypes":["boolean"] }, 
+    {"name":"setXaTransactionTimeoutEnabled","parameterTypes":["boolean"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"com.arjuna.ats.jta.logging.jtaI18NLogger_$logger",
+  "methods":[{"name":"<init>","parameterTypes":["org.jboss.logging.Logger"] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"com.arjuna.common.logging.commonI18NLogger_$logger",
+  "methods":[{"name":"<init>","parameterTypes":["org.jboss.logging.Logger"] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle"},
+  "name":"com.lingh.StackMessageLog",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.String"] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"com.lingh.StackMessageLog",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.String"] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"com.sun.management.GarbageCollectorMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"com.sun.management.GcInfo",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"com.sun.management.HotSpotDiagnosticMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"com.sun.management.ThreadMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"com.sun.management.UnixOperatingSystemMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"com.sun.management.VMOption",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"com.sun.management.internal.GarbageCollectorExtImpl",
+  "queryAllPublicConstructors":true
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"com.sun.management.internal.HotSpotDiagnostic",
+  "queryAllPublicConstructors":true
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"com.sun.management.internal.HotSpotThreadImpl",
+  "queryAllPublicConstructors":true
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"com.sun.management.internal.OperatingSystemImpl",
+  "queryAllPublicConstructors":true
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"com.sun.xml.internal.stream.XMLInputFactoryImpl",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"java.io.FilePermission"
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"java.lang.Boolean",
+  "fields":[{"name":"TYPE"}]
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"java.lang.Byte",
+  "fields":[{"name":"TYPE"}]
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"java.lang.Character",
+  "fields":[{"name":"TYPE"}]
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"java.lang.Deprecated",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"java.lang.Double",
+  "fields":[{"name":"TYPE"}]
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"java.lang.Float",
+  "fields":[{"name":"TYPE"}]
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"java.lang.Integer",
+  "fields":[{"name":"TYPE"}]
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"java.lang.Long",
+  "fields":[{"name":"TYPE"}]
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"java.lang.RuntimePermission"
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"java.lang.Short",
+  "fields":[{"name":"TYPE"}]
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"java.lang.StackTraceElement",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle"},
+  "name":"java.lang.String"
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"java.lang.String"
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle"},
+  "name":"java.lang.Thread",
+  "methods":[{"name":"getContextClassLoader","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"java.lang.Void",
+  "fields":[{"name":"TYPE"}]
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"java.lang.management.BufferPoolMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"java.lang.management.ClassLoadingMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"java.lang.management.CompilationMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"java.lang.management.LockInfo",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"java.lang.management.MemoryMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"java.lang.management.MemoryManagerMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"java.lang.management.MemoryPoolMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"java.lang.management.MemoryUsage",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"java.lang.management.MonitorInfo",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"java.lang.management.PlatformLoggingMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"java.lang.management.RuntimeMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"java.lang.management.ThreadInfo",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"java.math.BigDecimal"
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"java.math.BigInteger"
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"java.net.NetPermission"
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"java.net.SocketPermission"
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"java.net.URLPermission",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.String","java.lang.String"] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"java.security.AllPermission"
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"java.security.SecurityPermission"
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestDataSourceXAConnectionFactory"},
+  "name":"java.sql.Connection",
+  "methods":[
+    {"name":"clearWarnings","parameterTypes":[] }, 
+    {"name":"createStatement","parameterTypes":[] }, 
+    {"name":"getAutoCommit","parameterTypes":[] }, 
+    {"name":"isValid","parameterTypes":["int"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestSynchronizationOrder"},
+  "name":"java.sql.Connection",
+  "methods":[
+    {"name":"getAutoCommit","parameterTypes":[] }, 
+    {"name":"isReadOnly","parameterTypes":[] }, 
+    {"name":"setReadOnly","parameterTypes":["boolean"] }
+  ]
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"java.time.Duration"
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"java.time.Instant"
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"java.time.LocalDate"
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"java.time.LocalDateTime"
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"java.time.LocalTime"
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"java.time.OffsetDateTime"
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"java.time.OffsetTime"
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"java.time.Period"
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"java.time.ZonedDateTime"
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"java.util.Date"
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"java.util.PropertyPermission"
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"javax.management.ObjectName"
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"javax.management.openmbean.CompositeData"
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"javax.management.openmbean.TabularData"
+},
+{
+  "condition":{"typeReachable":"com.lingh.cpdsadapter.TestDriverAdapterCPDS"},
+  "name":"javax.management.openmbean.TabularData"
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"javax.xml.stream.XMLInputFactory"
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"jdk.management.jfr.ConfigurationInfo",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"jdk.management.jfr.EventTypeInfo",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"jdk.management.jfr.FlightRecorderMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"jdk.management.jfr.FlightRecorderMXBeanImpl",
+  "queryAllPublicConstructors":true
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"jdk.management.jfr.RecordingInfo",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"jdk.management.jfr.SettingDescriptorInfo",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"org.apache.commons.dbcp2.BasicDataSource",
+  "queryAllPublicConstructors":true
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"org.apache.commons.dbcp2.DataSourceMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"org.apache.commons.dbcp2.PoolableConnection",
+  "queryAllPublicConstructors":true
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"org.apache.commons.dbcp2.PoolableConnectionMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"org.apache.commons.dbcp2.TesterConnectionDelayDriver",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle"},
+  "name":"org.apache.commons.dbcp2.TesterDriver"
+},
+{
+  "condition":{"typeReachable":"com.lingh.cpdsadapter.TestDriverAdapterCPDS"},
+  "name":"org.apache.commons.dbcp2.TesterDriver"
+},
+{
+  "condition":{"typeReachable":"com.lingh.cpdsadapter.TestDriverAdapterCPDS$ThreadDbcp367"},
+  "name":"org.apache.commons.dbcp2.TesterDriver"
+},
+{
+  "condition":{"typeReachable":"com.lingh.datasources.ConnectionPoolDataSourceProxy"},
+  "name":"org.apache.commons.dbcp2.TesterDriver"
+},
+{
+  "condition":{"typeReachable":"com.lingh.datasources.TestSharedPoolDataSource"},
+  "name":"org.apache.commons.dbcp2.TesterDriver"
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestDataSourceXAConnectionFactory$XADataSourceHandle"},
+  "name":"org.apache.commons.dbcp2.TesterDriver",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestSynchronizationOrder$3"},
+  "name":"org.apache.commons.dbcp2.TesterDriver",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestManagedConnection$UncooperativeLocalXAConnectionFactory"},
+  "name":"org.apache.commons.dbcp2.managed.LocalXAConnectionFactory",
+  "fields":[{"name":"transactionRegistry"}]
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"org.apache.commons.dbcp2.managed.LocalXAConnectionFactory$LocalXAResource"
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle"},
+  "name":"org.apache.commons.logging.LogFactory"
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle"},
+  "name":"org.apache.commons.logging.impl.LogFactoryImpl",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle"},
+  "name":"org.apache.commons.logging.impl.WeakHashtable",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestPoolableConnection"},
+  "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestPoolingDataSource"},
+  "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.cpdsadapter.TestDriverAdapterCPDS"},
+  "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.cpdsadapter.TestDriverAdapterCPDS$ThreadDbcp367"},
+  "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.datasources.TestSharedPoolDataSource"},
+  "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestDataSourceXAConnectionFactory"},
+  "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestDataSourceXAConnectionFactory$XADataSourceHandle"},
+  "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestManagedConnection"},
+  "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestManagedConnectionCachedState"},
+  "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestManagedDataSource"},
+  "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestPoolableManagedConnection"},
+  "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestSynchronizationOrder"},
+  "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestSynchronizationOrder$3"},
+  "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"org.apache.commons.pool2.impl.DefaultPooledObjectInfo",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"com.lingh.cpdsadapter.TestDriverAdapterCPDS"},
+  "name":"org.apache.commons.pool2.impl.GenericKeyedObjectPool",
+  "queryAllPublicConstructors":true
+},
+{
+  "condition":{"typeReachable":"com.lingh.cpdsadapter.TestDriverAdapterCPDS"},
+  "name":"org.apache.commons.pool2.impl.GenericKeyedObjectPoolMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"org.apache.commons.pool2.impl.GenericObjectPool",
+  "queryAllPublicConstructors":true
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"org.apache.commons.pool2.impl.GenericObjectPoolMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle"},
+  "name":"org.h2.Driver"
+},
+{
+  "condition":{"typeReachable":"com.lingh.cpdsadapter.TestDriverAdapterCPDS"},
+  "name":"org.h2.Driver"
+},
+{
+  "condition":{"typeReachable":"com.lingh.datasources.TestSharedPoolDataSource"},
+  "name":"org.h2.Driver"
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"org.h2.Driver",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"org.h2.engine.Engine",
+  "methods":[{"name":"getInstance","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"org.h2.mvstore.db.MVTableEngine",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"org.h2.store.fs.FilePathAsync",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"org.h2.store.fs.FilePathDisk",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"org.h2.store.fs.FilePathMem",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"org.h2.store.fs.FilePathMemLZF",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"org.h2.store.fs.FilePathNio",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"org.h2.store.fs.FilePathNioMapped",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"org.h2.store.fs.FilePathNioMem",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"org.h2.store.fs.FilePathNioMemLZF",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"org.h2.store.fs.FilePathRetryOnInterrupt",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"org.h2.store.fs.FilePathSplit",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"org.h2.store.fs.FilePathZip",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
+  "name":"org.slf4j.spi.LocationAwareLogger",
+  "queryAllDeclaredMethods":true,
+  "methods":[{"name":"log","parameterTypes":["org.slf4j.Marker","java.lang.String","int","java.lang.String","java.lang.Object[]","java.lang.Throwable"] }]
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"sun.management.ClassLoadingImpl",
+  "queryAllPublicConstructors":true
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"sun.management.CompilationImpl",
+  "queryAllPublicConstructors":true
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"sun.management.ManagementFactoryHelper$1",
+  "queryAllPublicConstructors":true
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"sun.management.ManagementFactoryHelper$PlatformLoggingImpl",
+  "queryAllPublicConstructors":true
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"sun.management.MemoryImpl",
+  "queryAllPublicConstructors":true
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"sun.management.MemoryManagerImpl",
+  "queryAllPublicConstructors":true
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"sun.management.MemoryPoolImpl",
+  "queryAllPublicConstructors":true
+},
+{
+  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
+  "name":"sun.management.RuntimeImpl",
+  "queryAllPublicConstructors":true
+}
+]
