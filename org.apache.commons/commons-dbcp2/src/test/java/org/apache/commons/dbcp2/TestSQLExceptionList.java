@@ -2,6 +2,7 @@
 
 package org.apache.commons.dbcp2;
 
+import org.apache.commons.dbcp2.SQLExceptionList;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

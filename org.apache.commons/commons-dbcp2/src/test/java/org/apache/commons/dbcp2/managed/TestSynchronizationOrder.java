@@ -18,9 +18,9 @@
 package org.apache.commons.dbcp2.managed;
 
 import org.apache.commons.dbcp2.*;
-import org.apache.commons.dbcp2.transaction.TransactionAdapter;
-import org.apache.commons.dbcp2.transaction.TransactionManagerAdapter;
-import org.apache.commons.dbcp2.transaction.TransactionSynchronizationRegistryAdapter;
+import com.lingh.transaction.TransactionAdapter;
+import com.lingh.transaction.TransactionManagerAdapter;
+import com.lingh.transaction.TransactionSynchronizationRegistryAdapter;
 import org.apache.commons.pool2.impl.GenericObjectPool;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

@@ -1,6 +1,8 @@
 
 package org.apache.commons.dbcp2;
 
+import org.apache.commons.dbcp2.BasicDataSource;
+import org.apache.commons.dbcp2.TesterClassLoader;
 import org.apache.commons.logging.LogFactory;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -72,7 +74,7 @@ public class TestParallelCreationWithNoIdle  {
     @BeforeAll
     public static void setUpClass() {
         // register a custom logger which supports inspection of the log messages
-        LogFactory.getFactory().setAttribute("org.apache.commons.logging.Log", "org.apache.commons.dbcp2.StackMessageLog");
+        LogFactory.getFactory().setAttribute("org.apache.commons.logging.Log", "com.lingh.StackMessageLog");
     }
 
     protected BasicDataSource ds;
