@@ -11,11 +11,7 @@ import java.sql.SQLException;
 import java.sql.SQLFeatureNotSupportedException;
 import java.util.logging.Logger;
 
-/**
- * ConnectionPoolDataSource implementation that proxies another ConnectionPoolDataSource.
- */
 public class ConnectionPoolDataSourceProxy implements ConnectionPoolDataSource {
-
     protected ConnectionPoolDataSource delegate;
 
     public ConnectionPoolDataSourceProxy(final ConnectionPoolDataSource cpds) {
@@ -41,20 +37,13 @@ public class ConnectionPoolDataSourceProxy implements ConnectionPoolDataSource {
         return Jdbc41Bridge.getParentLogger(delegate);
     }
 
-    /**
-     * Gets a TesterPooledConnection with notifyOnClose turned on
-     */
     @Override
     public PooledConnection getPooledConnection() throws SQLException {
         return wrapPooledConnection(delegate.getPooledConnection());
     }
 
-    /**
-     * Gets a TesterPooledConnection with notifyOnClose turned on
-     */
     @Override
-    public PooledConnection getPooledConnection(final String user, final String password)
-            throws SQLException {
+    public PooledConnection getPooledConnection(final String user, final String password) throws SQLException {
         return wrapPooledConnection(delegate.getPooledConnection(user, password));
     }
 
@@ -68,9 +57,6 @@ public class ConnectionPoolDataSourceProxy implements ConnectionPoolDataSource {
         delegate.setLogWriter(out);
     }
 
-    /**
-     * Creates a TesterPooledConnection with notifyOnClose turned on
-     */
     protected PooledConnection wrapPooledConnection(final PooledConnection pc) {
         final PooledConnectionProxy tpc = new PooledConnectionProxy(pc);
         tpc.setNotifyOnClose(true);

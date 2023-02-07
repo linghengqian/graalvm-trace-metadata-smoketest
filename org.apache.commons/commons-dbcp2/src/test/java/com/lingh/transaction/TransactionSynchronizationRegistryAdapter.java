@@ -5,9 +5,7 @@ package com.lingh.transaction;
 import javax.transaction.Synchronization;
 import javax.transaction.TransactionSynchronizationRegistry;
 
-/**
- * A TransactionSynchronizationRegistry adapter.
- */
+
 public class TransactionSynchronizationRegistryAdapter implements TransactionSynchronizationRegistry {
 
     @Override
@@ -32,17 +30,13 @@ public class TransactionSynchronizationRegistryAdapter implements TransactionSyn
 
     @Override
     public void putResource(final Object arg0, final Object arg1) {
-        // Noop
     }
 
     @Override
     public void registerInterposedSynchronization(final Synchronization arg0) {
-        // Noop
     }
 
     @Override
     public void setRollbackOnly() {
-        // Noop
     }
-
 }

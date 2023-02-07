@@ -5,19 +5,25 @@ import com.arjuna.ats.internal.jta.transaction.arjunacore.TransactionManagerImpl
 import com.arjuna.ats.jta.common.jtaPropertyManager;
 import org.apache.commons.dbcp2.managed.BasicManagedDataSource;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import javax.transaction.RollbackException;
 import javax.transaction.Status;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.stream.IntStream;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
 /**
  * Requires Java 8.
  */
+@SuppressWarnings({"SqlDialectInspection", "SqlNoDataSourceInspection", "TryFinallyCanBeTryWithResources", "BusyWait", "unused"})
 public class TestConnectionWithNarayana {
     private static final String CREATE_STMT = "CREATE TABLE TEST_DATA (KEY VARCHAR(100), ID BIGINT, VALUE DOUBLE PRECISION, INFO TEXT, TS TIMESTAMP)";
     private static final String INSERT_STMT = "INSERT INTO TEST_DATA   (KEY, ID, VALUE, INFO, TS) VALUES (?,?,?,?,?)";
@@ -29,10 +35,10 @@ public class TestConnectionWithNarayana {
         final StringBuilder sb = new StringBuilder();
         sb.append("Start");
         sb.append("payload");
-        for (int i = 0; i < 10000; i++) {
+        IntStream.range(0, 10000).forEach(i -> {
             sb.append("...");
             sb.append(i);
-        }
+        });
         sb.append("End");
         sb.append("payload");
 
@@ -49,7 +55,6 @@ public class TestConnectionWithNarayana {
         mds.setTransactionManager(new TransactionManagerImple());
         mds.setDriverClassName("org.h2.Driver");
         mds.setUrl("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1");
-
         mds.setMaxTotal(80);
         mds.setMinIdle(0);
         mds.setMaxIdle(80);
@@ -59,11 +64,9 @@ public class TestConnectionWithNarayana {
         mds.setMaxWaitMillis(2000);
         mds.setRemoveAbandonedOnMaintenance(true);
         mds.setRemoveAbandonedOnBorrow(true);
-
         mds.setRemoveAbandonedTimeout(10);
         mds.setLogExpiredConnections(true);
         mds.setLifo(false);
-
         try (final Connection conn = mds.getConnection()) {
             try (final PreparedStatement ps = conn.prepareStatement(CREATE_STMT)) {
                 ps.execute();
@@ -91,19 +94,16 @@ public class TestConnectionWithNarayana {
             do {
                 Thread.sleep(1000);
             } while (mds.getTransactionManager().getTransaction().getStatus() != Status.STATUS_ROLLEDBACK);
-            // Let the reaper do it's thing
             Thread.sleep(1000);
             try {
                 conn.commit();
                 fail("Should not work after timeout");
             } catch (final SQLException e) {
-                // Expected
-                Assertions.assertEquals("Commit can not be set while enrolled in a transaction", e.getMessage());
+                assertEquals("Commit can not be set while enrolled in a transaction", e.getMessage());
             }
             mds.getTransactionManager().rollback();
         }
-
-        Assertions.assertEquals(0, mds.getNumActive());
+        assertEquals(0, mds.getNumActive());
     }
 
     @Test
@@ -114,7 +114,6 @@ public class TestConnectionWithNarayana {
             try {
                 mds.getTransactionManager().setTransactionTimeout(1);
                 mds.getTransactionManager().begin();
-
                 conn = mds.getConnection();
                 ps = conn.prepareStatement(INSERT_STMT);
                 ps.setString(1, Thread.currentThread().getName());
@@ -123,13 +122,11 @@ public class TestConnectionWithNarayana {
                 ps.setString(4, PAYLOAD);
                 ps.setTimestamp(5, new Timestamp(System.currentTimeMillis()));
                 ps.execute();
-
                 int n = 0;
                 do {
                     if (mds.getTransactionManager().getTransaction().getStatus() != Status.STATUS_ACTIVE) {
                         n++;
                     }
-
                     Connection c = null;
                     PreparedStatement ps2 = null;
                     ResultSet rs = null;
@@ -149,25 +146,20 @@ public class TestConnectionWithNarayana {
                         }
                     }
                 } while (n < 2);
-
                 ps.close();
                 ps = null;
                 conn.close();
                 conn = null;
-
                 try {
                     mds.getTransactionManager().commit();
                     fail("Should not have been able to commit");
                 } catch (final RollbackException e) {
-                    // this is expected
                     if (mds.getTransactionManager().getTransaction() != null) {
-                        // Need to pop it off the thread if a background thread rolled the transaction back
                         mds.getTransactionManager().rollback();
                     }
                 }
             } catch (final Exception e) {
                 if (mds.getTransactionManager().getTransaction() != null) {
-                    // Need to pop it off the thread if a background thread rolled the transaction back
                     mds.getTransactionManager().rollback();
                 }
             } finally {
@@ -178,7 +170,7 @@ public class TestConnectionWithNarayana {
                     conn.close();
                 }
             }
-            Assertions.assertEquals(0, mds.getNumActive());
+            assertEquals(0, mds.getNumActive());
         }
     }
 
@@ -186,12 +178,10 @@ public class TestConnectionWithNarayana {
     public void testRepeatedGetConnectionInTimeout() throws Exception {
         mds.getTransactionManager().setTransactionTimeout(1);
         mds.getTransactionManager().begin();
-
         try {
             do {
                 Thread.sleep(1000);
             } while (mds.getTransactionManager().getTransaction().getStatus() != Status.STATUS_ROLLEDBACK);
-            // Let the reaper do it's thing
             Thread.sleep(1000);
             try (Connection conn = mds.getConnection()) {
                 fail("Should not get the connection 1");
@@ -210,6 +200,6 @@ public class TestConnectionWithNarayana {
         } finally {
             mds.getTransactionManager().rollback();
         }
-        Assertions.assertEquals(0, mds.getNumActive());
+        assertEquals(0, mds.getNumActive());
     }
 }

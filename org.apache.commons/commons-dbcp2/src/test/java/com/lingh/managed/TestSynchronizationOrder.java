@@ -20,7 +20,10 @@ import org.junit.jupiter.api.Test;
 
 import javax.sql.XAConnection;
 import javax.sql.XADataSource;
-import javax.transaction.*;
+import javax.transaction.Synchronization;
+import javax.transaction.Transaction;
+import javax.transaction.TransactionManager;
+import javax.transaction.TransactionSynchronizationRegistry;
 import javax.transaction.xa.XAResource;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
@@ -34,6 +37,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@SuppressWarnings({"ProtectedMemberInFinalClass", "EmptyTryBlock", "unused"})
 public class TestSynchronizationOrder {
 
     private boolean transactionManagerRegistered;
@@ -51,24 +55,22 @@ public class TestSynchronizationOrder {
             private Transaction transaction;
 
             @Override
-            public void begin() throws NotSupportedException, SystemException {
+            public void begin() {
                 transaction = new TransactionAdapter() {
-
                     @Override
-                    public boolean enlistResource(final XAResource xaResource) throws IllegalStateException, RollbackException, SystemException {
-                        // Called and used
+                    public boolean enlistResource(final XAResource xaResource) throws IllegalStateException {
                         return true;
                     }
 
                     @Override
-                    public void registerSynchronization(final Synchronization synchronization) throws IllegalStateException, RollbackException, SystemException {
+                    public void registerSynchronization(final Synchronization synchronization) throws IllegalStateException {
                         transactionManagerRegistered = true;
                     }
                 };
             }
 
             @Override
-            public Transaction getTransaction() throws SystemException {
+            public Transaction getTransaction() {
                 return transaction;
             }
 
@@ -109,8 +111,7 @@ public class TestSynchronizationOrder {
             }
 
             @Override
-            public Object invoke(final Object proxy, final Method method, final Object[] args)
-                    throws Throwable {
+            public Object invoke(final Object proxy, final Method method, final Object[] args) throws Throwable {
                 final String methodName = method.getName();
                 if (methodName.equals("hashCode")) {
                     return System.identityHashCode(proxy);
@@ -119,7 +120,6 @@ public class TestSynchronizationOrder {
                     return proxy == args[0];
                 }
                 if (methodName.equals("getXAConnection")) {
-                    // both zero and 2-arg signatures
                     return getXAConnection();
                 }
                 try {
@@ -144,28 +144,20 @@ public class TestSynchronizationOrder {
 
     @Test
     public void testInterposedSynchronization() throws Exception {
-        final DataSourceXAConnectionFactory xaConnectionFactory = new DataSourceXAConnectionFactory(transactionManager,
-            xads, transactionSynchronizationRegistry);
-
+        final DataSourceXAConnectionFactory xaConnectionFactory = new DataSourceXAConnectionFactory(transactionManager, xads, transactionSynchronizationRegistry);
         final PoolableConnectionFactory factory = new PoolableConnectionFactory(xaConnectionFactory, null);
         factory.setValidationQuery("SELECT DUMMY FROM DUAL");
         factory.setDefaultReadOnly(Boolean.TRUE);
         factory.setDefaultAutoCommit(Boolean.TRUE);
-
-        // create the pool
         try (final GenericObjectPool<PoolableConnection> pool = new GenericObjectPool<>(factory)) {
             factory.setPool(pool);
             pool.setMaxTotal(10);
             pool.setMaxWaitMillis(1000);
-
-            // finally create the datasource
             try (final ManagedDataSource<PoolableConnection> ds = new ManagedDataSource<>(pool,
-                xaConnectionFactory.getTransactionRegistry())) {
+                    xaConnectionFactory.getTransactionRegistry())) {
                 ds.setAccessToUnderlyingConnectionAllowed(true);
-
                 transactionManager.begin();
                 try (final DelegatingConnection<?> connectionA = (DelegatingConnection<?>) ds.getConnection()) {
-                    // Close right away.
                 }
                 transactionManager.commit();
                 assertFalse(transactionManagerRegistered);
@@ -176,28 +168,19 @@ public class TestSynchronizationOrder {
 
     @Test
     public void testSessionSynchronization() throws Exception {
-        final DataSourceXAConnectionFactory xaConnectionFactory = new DataSourceXAConnectionFactory(transactionManager,
-            xads);
-
+        final DataSourceXAConnectionFactory xaConnectionFactory = new DataSourceXAConnectionFactory(transactionManager, xads);
         final PoolableConnectionFactory factory = new PoolableConnectionFactory(xaConnectionFactory, null);
         factory.setValidationQuery("SELECT DUMMY FROM DUAL");
         factory.setDefaultReadOnly(Boolean.TRUE);
         factory.setDefaultAutoCommit(Boolean.TRUE);
-
-        // create the pool
         try (final GenericObjectPool<PoolableConnection> pool = new GenericObjectPool<>(factory)) {
             factory.setPool(pool);
             pool.setMaxTotal(10);
             pool.setMaxWaitMillis(1000);
-
-            // finally create the datasource
-            try (final ManagedDataSource<PoolableConnection> ds = new ManagedDataSource<>(pool,
-                xaConnectionFactory.getTransactionRegistry())) {
+            try (final ManagedDataSource<PoolableConnection> ds = new ManagedDataSource<>(pool, xaConnectionFactory.getTransactionRegistry())) {
                 ds.setAccessToUnderlyingConnectionAllowed(true);
-
                 transactionManager.begin();
                 try (final DelegatingConnection<?> connectionA = (DelegatingConnection<?>) ds.getConnection()) {
-                    // close right away.
                 }
                 transactionManager.commit();
                 assertTrue(transactionManagerRegistered);

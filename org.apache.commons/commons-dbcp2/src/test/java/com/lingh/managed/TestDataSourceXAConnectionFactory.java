@@ -20,18 +20,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-/**
- * TestSuite for BasicManagedDataSource when using a
- * DataSourceXAConnectionFactory (configured from a XADataSource)
- */
 public class TestDataSourceXAConnectionFactory extends TestBasicDataSource {
-
-    /**
-     * Delegates everything to the BasicDataSource (ds field), except for
-     * getXAConnection which creates a BasicXAConnection.
-     */
     public class XADataSourceHandle implements InvocationHandler {
-
         protected XAConnection getXAConnection() throws SQLException {
             return new TesterBasicXAConnection(ds.getConnection(), closeCounter);
         }
@@ -47,7 +37,6 @@ public class TestDataSourceXAConnectionFactory extends TestBasicDataSource {
                 return proxy == args[0];
             }
             if (methodName.equals("getXAConnection")) {
-                // both zero and 2-arg signatures
                 return getXAConnection();
             }
             try {
@@ -70,15 +59,11 @@ public class TestDataSourceXAConnectionFactory extends TestBasicDataSource {
         bmds.setTransactionManager(new TransactionManagerImpl());
         bmds.setXADataSource("notnull");
         final XADataSourceHandle handle = new XADataSourceHandle();
-        final XADataSource xads = (XADataSource) Proxy.newProxyInstance(
-                XADataSourceHandle.class.getClassLoader(),
-                new Class[] { XADataSource.class }, handle);
+        final XADataSource xads = (XADataSource) Proxy.newProxyInstance(XADataSourceHandle.class.getClassLoader(),
+                new Class[]{XADataSource.class}, handle);
         bmds.setXaDataSourceInstance(xads);
     }
 
-    /**
-     * JIRA: DBCP-355
-     */
     @Test
     public void testPhysicalClose() throws Exception {
         bmds.setMaxIdle(1);
@@ -86,12 +71,10 @@ public class TestDataSourceXAConnectionFactory extends TestBasicDataSource {
         final Connection conn2 = bmds.getConnection();
         closeCounter.set(0);
         conn1.close();
-        assertEquals(0, closeCounter.get()); // stays idle in the pool
+        assertEquals(0, closeCounter.get());
         conn2.close();
-        assertEquals(1, closeCounter.get()); // can't have 2 idle ones
+        assertEquals(1, closeCounter.get());
         bmds.close();
         assertEquals(2, closeCounter.get());
     }
-
 }
-

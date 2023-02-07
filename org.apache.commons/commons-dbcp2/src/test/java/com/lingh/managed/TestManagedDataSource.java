@@ -1,8 +1,20 @@
 
 package com.lingh.managed;
 
-import org.apache.commons.dbcp2.*;
-import org.apache.commons.dbcp2.managed.*;
+import org.apache.commons.dbcp2.ConnectionFactory;
+import org.apache.commons.dbcp2.Constants;
+import org.apache.commons.dbcp2.DelegatingConnection;
+import org.apache.commons.dbcp2.DriverConnectionFactory;
+import org.apache.commons.dbcp2.PoolableConnection;
+import org.apache.commons.dbcp2.PoolableConnectionFactory;
+import org.apache.commons.dbcp2.PoolingDataSource;
+import org.apache.commons.dbcp2.TestConnectionPool;
+import org.apache.commons.dbcp2.TesterDriver;
+import org.apache.commons.dbcp2.managed.LocalXAConnectionFactory;
+import org.apache.commons.dbcp2.managed.ManagedConnection;
+import org.apache.commons.dbcp2.managed.ManagedDataSource;
+import org.apache.commons.dbcp2.managed.TransactionRegistry;
+import org.apache.commons.dbcp2.managed.XAConnectionFactory;
 import org.apache.commons.pool2.impl.GenericObjectPool;
 import org.apache.geronimo.transaction.manager.TransactionManagerImpl;
 import org.junit.jupiter.api.AfterEach;
@@ -14,17 +26,20 @@ import javax.transaction.TransactionManager;
 import java.sql.Connection;
 import java.util.Properties;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-/**
- * TestSuite for ManagedDataSource without a transaction in progress.
- */
+@SuppressWarnings({"resource", "ConstantValue", "AssertBetweenInconvertibleTypes", "UnnecessaryLocalVariable"})
 public class TestManagedDataSource extends TestConnectionPool {
-
     protected PoolingDataSource<PoolableConnection> ds;
-
     protected GenericObjectPool<PoolableConnection> pool;
     protected TransactionManager transactionManager;
+
     @Override
     protected Connection getConnection() throws Exception {
         return ds.getConnection();
@@ -32,32 +47,20 @@ public class TestManagedDataSource extends TestConnectionPool {
 
     @BeforeEach
     public void setUp() throws Exception {
-        // create a GeronimoTransactionManager for testing
         transactionManager = new TransactionManagerImpl();
-
-        // create a driver connection factory
         final Properties properties = new Properties();
         properties.setProperty(Constants.KEY_USER, "userName");
         properties.setProperty(Constants.KEY_PASSWORD, "password");
         final ConnectionFactory connectionFactory = new DriverConnectionFactory(new TesterDriver(), "jdbc:apache:commons:testdriver", properties);
-
-        // wrap it with a LocalXAConnectionFactory
         final XAConnectionFactory xaConnectionFactory = new LocalXAConnectionFactory(transactionManager, connectionFactory);
-
-        // create the pool object factory
-        final PoolableConnectionFactory factory =
-            new PoolableConnectionFactory(xaConnectionFactory, null);
+        final PoolableConnectionFactory factory = new PoolableConnectionFactory(xaConnectionFactory, null);
         factory.setValidationQuery("SELECT DUMMY FROM DUAL");
         factory.setDefaultReadOnly(Boolean.TRUE);
         factory.setDefaultAutoCommit(Boolean.TRUE);
-
-        // create the pool
         pool = new GenericObjectPool<>(factory);
         factory.setPool(pool);
         pool.setMaxTotal(getMaxTotal());
         pool.setMaxWaitMillis(getMaxWaitMillis());
-
-        // finally create the datasource
         ds = new ManagedDataSource<>(pool, xaConnectionFactory.getTransactionRegistry());
         ds.setAccessToUnderlyingConnectionAllowed(true);
     }
@@ -69,9 +72,6 @@ public class TestManagedDataSource extends TestConnectionPool {
         super.tearDown();
     }
 
-    /**
-     * Verify the accessToUnderlyingConnectionAllowed properly limits access to the physical connection.
-     */
     @Test
     public void testAccessToUnderlyingConnectionAllowed() throws Exception {
         ds.setAccessToUnderlyingConnectionAllowed(true);
@@ -80,7 +80,6 @@ public class TestManagedDataSource extends TestConnectionPool {
         assertNotNull(connection.getDelegate());
         assertNotNull(connection.getInnermostDelegate());
         connection.close();
-
         ds.setAccessToUnderlyingConnectionAllowed(false);
         connection = (ManagedConnection<?>) newConnection();
         assertFalse(connection.isAccessToUnderlyingConnectionAllowed());
@@ -130,9 +129,6 @@ public class TestManagedDataSource extends TestConnectionPool {
         con1.close();
     }
 
-    /*
-    * JIRA: DBCP-198
-    */
     @Test
     public void testManagedConnectionEqualsReflexive() throws Exception {
         final Connection con = ds.getConnection();
@@ -144,16 +140,11 @@ public class TestManagedDataSource extends TestConnectionPool {
 
     @Test
     public void testManagedConnectionEqualsSameDelegate() throws Exception {
-        // Get a maximal set of connections from the pool
         final Connection[] c = new Connection[getMaxTotal()];
         for (int i = 0; i < c.length; i++) {
             c[i] = newConnection();
         }
-        // Close the delegate of one wrapper in the pool
         ((DelegatingConnection<?>) c[0]).getDelegate().close();
-
-        // Grab a new connection - should get c[0]'s closed connection
-        // so should be delegate-equivalent
         final Connection con = newConnection();
         Assertions.assertNotEquals(c[0], con);
         Assertions.assertEquals(
@@ -166,22 +157,15 @@ public class TestManagedDataSource extends TestConnectionPool {
 
     @Test
     public void testManagedConnectionEqualsSameDelegateNoUnderlyingAccess() throws Exception {
-        // Get a maximal set of connections from the pool
         final Connection[] c = new Connection[getMaxTotal()];
         for (int i = 0; i < c.length; i++) {
             c[i] = newConnection();
         }
-        // Close the delegate of one wrapper in the pool
         ((DelegatingConnection<?>) c[0]).getDelegate().close();
-
-        // Disable access for the new connection
         ds.setAccessToUnderlyingConnectionAllowed(false);
-        // Grab a new connection - should get c[0]'s closed connection
-        // so should be delegate-equivalent
         final Connection con = newConnection();
         Assertions.assertNotEquals(c[0], con);
-        Assertions.assertEquals(
-                ((DelegatingConnection<?>) c[0]).getInnermostDelegateInternal(),
+        Assertions.assertEquals(((DelegatingConnection<?>) c[0]).getInnermostDelegateInternal(),
                 ((DelegatingConnection<?>) con).getInnermostDelegateInternal());
         for (final Connection element : c) {
             element.close();
@@ -200,12 +184,9 @@ public class TestManagedDataSource extends TestConnectionPool {
     @Test
     public void testNestedConnections() throws Exception {
         transactionManager.begin();
-
         final Connection c1 = newConnection();
         final Connection c2 = newConnection();
-
         transactionManager.commit();
-
         c1.close();
         c2.close();
     }
@@ -230,19 +211,14 @@ public class TestManagedDataSource extends TestConnectionPool {
         assertThrows(IllegalStateException.class, () -> managed.setTransactionRegistry(null));
     }
 
-    /**
-     * Verify that connection sharing is working (or not working) as expected.
-     */
     @Test
     public void testSharedConnection() throws Exception {
         final DelegatingConnection<?> connectionA = (DelegatingConnection<?>) newConnection();
         final DelegatingConnection<?> connectionB = (DelegatingConnection<?>) newConnection();
-
         assertNotEquals(connectionA, connectionB);
         assertNotEquals(connectionB, connectionA);
         assertFalse(connectionA.innermostDelegateEquals(connectionB.getInnermostDelegate()));
         assertFalse(connectionB.innermostDelegateEquals(connectionA.getInnermostDelegate()));
-
         connectionA.close();
         connectionB.close();
     }

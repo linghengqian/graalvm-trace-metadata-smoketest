@@ -8,28 +8,16 @@ import javax.sql.PooledConnection;
 import javax.sql.StatementEventListener;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.EventListener;
+import java.util.List;
 
-/**
- * PooledConnection implementation that wraps a driver-supplied
- * PooledConnection and proxies events, allowing behavior to be
- * modified to simulate behavior of different implementations.
- */
-public class PooledConnectionProxy implements PooledConnection,
-    ConnectionEventListener {
-
+public class PooledConnectionProxy implements PooledConnection, ConnectionEventListener {
     protected PooledConnection delegate;
-
-    /**
-     * ConnectionEventListeners
-     */
     private final List<EventListener> eventListeners = Collections.synchronizedList(new ArrayList<>());
-
-    /**
-     * True means we will (dubiously) notify listeners with a
-     * ConnectionClosed event when this (i.e. the PooledConnection itself)
-     * is closed
-     */
     private boolean notifyOnClose;
 
     public PooledConnectionProxy(final PooledConnection pooledConnection) {
@@ -37,9 +25,6 @@ public class PooledConnectionProxy implements PooledConnection,
         pooledConnection.addConnectionEventListener(this);
     }
 
-    /**
-     * Add event listeners.
-     */
     @Override
     public void addConnectionEventListener(final ConnectionEventListener listener) {
         if (!eventListeners.contains(listener)) {
@@ -53,36 +38,24 @@ public class PooledConnectionProxy implements PooledConnection,
             eventListeners.add(listener);
         }
     }
-    /* JDBC_4_ANT_KEY_END */
 
-    /**
-     * If notifyOnClose is on, notify listeners
-     */
     @Override
     public void close() throws SQLException {
         delegate.close();
         if (isNotifyOnClose()) {
-           notifyListeners();
+            notifyListeners();
         }
     }
 
-    /**
-     * Pass closed events on to listeners
-     */
     @Override
     public void connectionClosed(final ConnectionEvent event) {
         notifyListeners();
     }
 
-    /**
-     * Pass error events on to listeners
-     */
     @Override
     public void connectionErrorOccurred(final ConnectionEvent event) {
         final Object[] listeners = eventListeners.toArray();
-        for (final Object listener : listeners) {
-            ((ConnectionEventListener) listener).connectionErrorOccurred(event);
-        }
+        Arrays.stream(listeners).forEach(listener -> ((ConnectionEventListener) listener).connectionErrorOccurred(event));
     }
 
     @Override
@@ -90,9 +63,6 @@ public class PooledConnectionProxy implements PooledConnection,
         return delegate.getConnection();
     }
 
-    /**
-     * Expose listeners
-     */
     public Collection<EventListener> getListeners() {
         return eventListeners;
     }
@@ -101,20 +71,12 @@ public class PooledConnectionProxy implements PooledConnection,
         return notifyOnClose;
     }
 
-    /**
-     * sends a connectionClosed event to listeners.
-     */
     void notifyListeners() {
         final ConnectionEvent event = new ConnectionEvent(this);
         final Object[] listeners = eventListeners.toArray();
-        for (final Object listener : listeners) {
-            ((ConnectionEventListener) listener).connectionClosed(event);
-        }
+        Arrays.stream(listeners).forEach(listener -> ((ConnectionEventListener) listener).connectionClosed(event));
     }
 
-    /**
-     * Remove event listeners.
-     */
     @Override
     public void removeConnectionEventListener(final ConnectionEventListener listener) {
         eventListeners.remove(listener);
@@ -124,18 +86,13 @@ public class PooledConnectionProxy implements PooledConnection,
     public void removeStatementEventListener(final StatementEventListener listener) {
         eventListeners.remove(listener);
     }
-    /* JDBC_4_ANT_KEY_END */
 
     public void setNotifyOnClose(final boolean notifyOnClose) {
         this.notifyOnClose = notifyOnClose;
     }
 
-    /**
-     * Generate a connection error event
-     */
     public void throwConnectionError() {
         final ConnectionEvent event = new ConnectionEvent(this);
         connectionErrorOccurred(event);
     }
-
 }
