@@ -6,6 +6,7 @@ import com.lingh.TesterUtils;
 import org.apache.commons.pool2.impl.GenericKeyedObjectPool;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -156,6 +157,7 @@ public class TestAbandonedBasicDataSource extends TestBasicDataSource {
     }
 
     @Test
+    @Disabled("https://github.com/oracle/graal/issues/5913")
     public void testGarbageCollectorCleanUp02() throws Exception {
         ds.setPoolPreparedStatements(true);
         ds.setAccessToUnderlyingConnectionAllowed(true);

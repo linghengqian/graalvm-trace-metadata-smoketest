@@ -1254,10 +1254,6 @@
   "queryAllPublicMethods":true
 },
 {
-  "name":"org.apache.commons.dbcp2.PoolingConnection",
-  "fields":[{"name":"pstmtPool"}]
-},
-{
   "name":"org.apache.commons.dbcp2.PoolingDriver"
 },
 {
@@ -1274,7 +1270,6 @@
     {"name":"testAbandonedClose","parameterTypes":[] }, 
     {"name":"testAbandonedCloseWithExceptions","parameterTypes":[] }, 
     {"name":"testGarbageCollectorCleanUp01","parameterTypes":[] }, 
-    {"name":"testGarbageCollectorCleanUp02","parameterTypes":[] }, 
     {"name":"testLastUsed","parameterTypes":[] }, 
     {"name":"testLastUsedLargePreparedStatementUse","parameterTypes":[] }, 
     {"name":"testLastUsedPrepareCall","parameterTypes":[] }, 
@@ -1303,7 +1298,6 @@
     {"name":"testCreateDataSourceCleanupThreads","parameterTypes":[] }, 
     {"name":"testDefaultCatalog","parameterTypes":[] }, 
     {"name":"testDisconnectSqlCodes","parameterTypes":[] }, 
-    {"name":"testDriverClassLoader","parameterTypes":[] }, 
     {"name":"testEmptyInitConnectionSql","parameterTypes":[] }, 
     {"name":"testEmptyValidationQuery","parameterTypes":[] }, 
     {"name":"testInitialSize","parameterTypes":[] }, 

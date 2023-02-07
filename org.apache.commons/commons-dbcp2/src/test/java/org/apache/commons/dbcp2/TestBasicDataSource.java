@@ -6,11 +6,7 @@ import com.lingh.StackMessageLog;
 import com.lingh.TesterClassLoader;
 import org.apache.commons.logging.LogFactory;
 import org.hamcrest.CoreMatchers;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import javax.management.AttributeNotFoundException;
 import javax.management.MBeanAttributeInfo;
@@ -286,6 +282,7 @@ public class TestBasicDataSource extends TestConnectionPool {
     }
 
     @Test
+    @Disabled("https://github.com/oracle/graal/issues/5913")
     public void testDriverClassLoader() throws Exception {
         getConnection();
         final ClassLoader cl = ds.getDriverClassLoader();
