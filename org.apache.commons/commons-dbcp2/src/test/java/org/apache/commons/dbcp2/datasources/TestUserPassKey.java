@@ -6,12 +6,10 @@ import org.apache.commons.dbcp2.Utils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-/**
- * Tests for UserPassKey.
- * @since 2.5.0
- */
 public class TestUserPassKey {
 
     private UserPassKey userPassKey;

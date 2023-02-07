@@ -7,18 +7,33 @@ import org.junit.jupiter.api.Test;
 import javax.transaction.xa.XAException;
 import javax.transaction.xa.XAResource;
 import javax.transaction.xa.Xid;
-import java.sql.*;
+import java.sql.Array;
+import java.sql.Blob;
+import java.sql.CallableStatement;
+import java.sql.Clob;
+import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.NClob;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.SQLWarning;
+import java.sql.SQLXML;
+import java.sql.Savepoint;
+import java.sql.Statement;
+import java.sql.Struct;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.Executor;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-/**
- * Tests for LocalXAConnectionFactory$LocalXAResource
- */
 public class TestLocalXaResource {
 
+    @SuppressWarnings("MagicConstant")
     private static class TestConnection implements Connection {
 
         public boolean throwWhenGetAutoCommit;
@@ -30,66 +45,65 @@ public class TestLocalXaResource {
         public boolean closed;
 
         @Override
-        public void abort(final Executor executor) throws SQLException {
+        public void abort(final Executor executor) {
         }
 
         @Override
-        public void clearWarnings() throws SQLException {
+        public void clearWarnings() {
         }
 
         @Override
-        public void close() throws SQLException {
+        public void close() {
             closed = true;
         }
 
         @Override
-        public void commit() throws SQLException {
+        public void commit() {
             committed = true;
         }
 
         @Override
-        public Array createArrayOf(final String typeName, final Object[] elements) throws SQLException {
+        public Array createArrayOf(final String typeName, final Object[] elements) {
             return null;
         }
 
         @Override
-        public Blob createBlob() throws SQLException {
+        public Blob createBlob() {
             return null;
         }
 
         @Override
-        public Clob createClob() throws SQLException {
+        public Clob createClob() {
             return null;
         }
 
         @Override
-        public NClob createNClob() throws SQLException {
+        public NClob createNClob() {
             return null;
         }
 
         @Override
-        public SQLXML createSQLXML() throws SQLException {
+        public SQLXML createSQLXML() {
             return null;
         }
 
         @Override
-        public Statement createStatement() throws SQLException {
+        public Statement createStatement() {
             return null;
         }
 
         @Override
-        public Statement createStatement(final int resultSetType, final int resultSetConcurrency) throws SQLException {
+        public Statement createStatement(final int resultSetType, final int resultSetConcurrency) {
             return null;
         }
 
         @Override
-        public Statement createStatement(final int resultSetType, final int resultSetConcurrency, final int resultSetHoldability)
-                throws SQLException {
+        public Statement createStatement(final int resultSetType, final int resultSetConcurrency, final int resultSetHoldability) {
             return null;
         }
 
         @Override
-        public Struct createStruct(final String typeName, final Object[] attributes) throws SQLException {
+        public Struct createStruct(final String typeName, final Object[] attributes) {
             return null;
         }
 
@@ -102,140 +116,138 @@ public class TestLocalXaResource {
         }
 
         @Override
-        public String getCatalog() throws SQLException {
+        public String getCatalog() {
             return null;
         }
 
         @Override
-        public Properties getClientInfo() throws SQLException {
+        public Properties getClientInfo() {
             return null;
         }
 
         @Override
-        public String getClientInfo(final String name) throws SQLException {
+        public String getClientInfo(final String name) {
             return null;
         }
 
         @Override
-        public int getHoldability() throws SQLException {
+        public int getHoldability() {
             return 0;
         }
 
         @Override
-        public DatabaseMetaData getMetaData() throws SQLException {
+        public DatabaseMetaData getMetaData() {
             return null;
         }
 
         @Override
-        public int getNetworkTimeout() throws SQLException {
+        public int getNetworkTimeout() {
             return 0;
         }
 
         @Override
-        public String getSchema() throws SQLException {
+        public String getSchema() {
             return null;
         }
 
         @Override
-        public int getTransactionIsolation() throws SQLException {
+        public int getTransactionIsolation() {
             return 0;
         }
 
         @Override
-        public Map<String, Class<?>> getTypeMap() throws SQLException {
+        public Map<String, Class<?>> getTypeMap() {
             return null;
         }
 
         @Override
-        public SQLWarning getWarnings() throws SQLException {
+        public SQLWarning getWarnings() {
             return null;
         }
 
         @Override
-        public boolean isClosed() throws SQLException {
+        public boolean isClosed() {
             return closed;
         }
 
         @Override
-        public boolean isReadOnly() throws SQLException {
+        public boolean isReadOnly() {
             return readOnly;
         }
 
         @Override
-        public boolean isValid(final int timeout) throws SQLException {
+        public boolean isValid(final int timeout) {
             return false;
         }
 
         @Override
-        public boolean isWrapperFor(final Class<?> iface) throws SQLException {
+        public boolean isWrapperFor(final Class<?> iface) {
             return false;
         }
 
         @Override
-        public String nativeSQL(final String sql) throws SQLException {
+        public String nativeSQL(final String sql) {
             return null;
         }
 
         @Override
-        public CallableStatement prepareCall(final String sql) throws SQLException {
+        public CallableStatement prepareCall(final String sql) {
             return null;
         }
 
         @Override
-        public CallableStatement prepareCall(final String sql, final int resultSetType, final int resultSetConcurrency)
-                throws SQLException {
+        public CallableStatement prepareCall(final String sql, final int resultSetType, final int resultSetConcurrency) {
             return null;
         }
 
         @Override
         public CallableStatement prepareCall(final String sql, final int resultSetType, final int resultSetConcurrency,
-                final int resultSetHoldability) throws SQLException {
+                final int resultSetHoldability) {
             return null;
         }
 
         @Override
-        public PreparedStatement prepareStatement(final String sql) throws SQLException {
+        public PreparedStatement prepareStatement(final String sql) {
             return null;
         }
 
         @Override
-        public PreparedStatement prepareStatement(final String sql, final int autoGeneratedKeys) throws SQLException {
+        public PreparedStatement prepareStatement(final String sql, final int autoGeneratedKeys) {
             return null;
         }
 
         @Override
-        public PreparedStatement prepareStatement(final String sql, final int resultSetType, final int resultSetConcurrency)
-                throws SQLException {
+        public PreparedStatement prepareStatement(final String sql, final int resultSetType, final int resultSetConcurrency) {
             return null;
         }
 
         @Override
         public PreparedStatement prepareStatement(final String sql, final int resultSetType, final int resultSetConcurrency,
-                final int resultSetHoldability) throws SQLException {
+                final int resultSetHoldability) {
             return null;
         }
 
         @Override
-        public PreparedStatement prepareStatement(final String sql, final int[] columnIndexes) throws SQLException {
+        public PreparedStatement prepareStatement(final String sql, final int[] columnIndexes) {
             return null;
         }
 
         @Override
-        public PreparedStatement prepareStatement(final String sql, final String[] columnNames) throws SQLException {
+        public PreparedStatement prepareStatement(final String sql, final String[] columnNames) {
             return null;
         }
 
         @Override
-        public void releaseSavepoint(final Savepoint savepoint) throws SQLException {
+        public void releaseSavepoint(final Savepoint savepoint) {
         }
 
         @Override
-        public void rollback() throws SQLException {
+        public void rollback() {
             rolledback = true;
         }
 
         @Override
-        public void rollback(final Savepoint savepoint) throws SQLException {
+        public void rollback(final Savepoint savepoint) {
         }
 
         @Override
@@ -247,54 +259,54 @@ public class TestLocalXaResource {
         }
 
         @Override
-        public void setCatalog(final String catalog) throws SQLException {
+        public void setCatalog(final String catalog) {
         }
 
         @Override
-        public void setClientInfo(final Properties properties) throws SQLClientInfoException {
+        public void setClientInfo(final Properties properties) {
         }
 
         @Override
-        public void setClientInfo(final String name, final String value) throws SQLClientInfoException {
+        public void setClientInfo(final String name, final String value) {
         }
 
         @Override
-        public void setHoldability(final int holdability) throws SQLException {
+        public void setHoldability(final int holdability) {
         }
 
         @Override
-        public void setNetworkTimeout(final Executor executor, final int milliseconds) throws SQLException {
+        public void setNetworkTimeout(final Executor executor, final int milliseconds) {
         }
 
         @Override
-        public void setReadOnly(final boolean readOnly) throws SQLException {
+        public void setReadOnly(final boolean readOnly) {
             this.readOnly = readOnly;
         }
 
         @Override
-        public Savepoint setSavepoint() throws SQLException {
+        public Savepoint setSavepoint() {
             return null;
         }
 
         @Override
-        public Savepoint setSavepoint(final String name) throws SQLException {
+        public Savepoint setSavepoint(final String name) {
             return null;
         }
 
         @Override
-        public void setSchema(final String schema) throws SQLException {
+        public void setSchema(final String schema) {
         }
 
         @Override
-        public void setTransactionIsolation(final int level) throws SQLException {
+        public void setTransactionIsolation(final int level) {
         }
 
         @Override
-        public void setTypeMap(final Map<String, Class<?>> map) throws SQLException {
+        public void setTypeMap(final Map<String, Class<?>> map) {
         }
 
         @Override
-        public <T> T unwrap(final Class<T> iface) throws SQLException {
+        public <T> T unwrap(final Class<T> iface) {
             return null;
         }
     }

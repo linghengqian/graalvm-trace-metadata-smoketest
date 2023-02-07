@@ -20,9 +20,6 @@ import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * TestSuite for BasicManagedDataSource
- */
 public class TestBasicManagedDataSource extends TestBasicDataSource {
 
     @Override
@@ -54,11 +51,6 @@ public class TestBasicManagedDataSource extends TestBasicDataSource {
         }
     }
 
-    /**
-     * JIRA: DBCP-294
-     * Verify that PoolableConnections created by BasicManagedDataSource unregister themselves
-     * when reallyClosed.
-     */
     @Test
     public void testReallyClose() throws Exception {
         try (final BasicManagedDataSource basicManagedDataSource = new BasicManagedDataSource()) {
@@ -119,7 +111,9 @@ public class TestBasicManagedDataSource extends TestBasicDataSource {
         }
     }
 
-    /** DBCP-564 */
+    /**
+     * DBCP-564
+     */
     @Test
     public void testSetRollbackOnlyBeforeGetConnectionDoesNotLeak() throws Exception {
         final TransactionManager transactionManager = ((BasicManagedDataSource) ds).getTransactionManager();
@@ -176,7 +170,6 @@ public class TestBasicManagedDataSource extends TestBasicDataSource {
             tsr.registerInterposedSynchronization(new Synchronization() {
                 @Override
                 public void afterCompletion(final int i) {
-
                 }
 
                 @Override

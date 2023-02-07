@@ -8,10 +8,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-/**
- * Tests for PoolKey.
- * @since 2.5.0
- */
 public class TestPoolKey {
 
     private PoolKey poolKey;

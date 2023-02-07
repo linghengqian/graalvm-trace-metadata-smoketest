@@ -17,22 +17,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
-/**
- * Basic XAConnection. getConnection() returns a handle on a physical
- * Connection. Closing the handle does not close the physical connection, you
- * have to close the XAConnection for that (PooledConnection behavior).
- * XA behavior is implemented through a LocalXAResource.
- */
+@SuppressWarnings("unused")
 public class TesterBasicXAConnection implements XAConnection {
-
-    /**
-     * Delegates everything to a Connection, except for close() which just
-     * notifies the parent XAConnection.
-     */
     public static class ConnectionHandle implements InvocationHandler {
-
         public Connection conn;
-
         public final TesterBasicXAConnection xaconn;
 
         public ConnectionHandle(final Connection conn, final TesterBasicXAConnection xaconn) {
@@ -55,8 +43,7 @@ public class TesterBasicXAConnection implements XAConnection {
         }
 
         @Override
-        public Object invoke(final Object proxy, final Method method, final Object[] args)
-                throws Throwable {
+        public Object invoke(final Object proxy, final Method method, final Object[] args) throws Throwable {
             final String methodName = method.getName();
             if (methodName.equals("hashCode")) {
                 return System.identityHashCode(proxy);
@@ -158,37 +145,28 @@ public class TesterBasicXAConnection implements XAConnection {
             throw e;
         }
         handle = new ConnectionHandle(conn, this);
-        return (Connection) Proxy.newProxyInstance(
-                getClass().getClassLoader(), new Class[] { Connection.class },
-                handle);
+        return (Connection) Proxy.newProxyInstance(getClass().getClassLoader(), new Class[]{Connection.class}, handle);
     }
 
     @Override
-    public XAResource getXAResource() throws SQLException {
+    public XAResource getXAResource() {
         return new LocalXAConnectionFactory.LocalXAResource(conn);
     }
 
     protected void notifyConnectionClosed() {
         final ConnectionEvent event = new ConnectionEvent(this);
-        final List<ConnectionEventListener> copy = new ArrayList<>(
-                listeners);
-        for (final ConnectionEventListener listener : copy) {
-            listener.connectionClosed(event);
-        }
+        final List<ConnectionEventListener> copy = new ArrayList<>(listeners);
+        copy.forEach(listener -> listener.connectionClosed(event));
     }
 
     protected void notifyConnectionErrorOccurred(final SQLException e) {
         final ConnectionEvent event = new ConnectionEvent(this, e);
-        final List<ConnectionEventListener> copy = new ArrayList<>(
-                listeners);
-        for (final ConnectionEventListener listener : copy) {
-            listener.connectionErrorOccurred(event);
-        }
+        final List<ConnectionEventListener> copy = new ArrayList<>(listeners);
+        copy.forEach(listener -> listener.connectionErrorOccurred(event));
     }
 
     @Override
-    public void removeConnectionEventListener(
-            final ConnectionEventListener connectionEventListener) {
+    public void removeConnectionEventListener(final ConnectionEventListener connectionEventListener) {
         listeners.remove(connectionEventListener);
     }
 

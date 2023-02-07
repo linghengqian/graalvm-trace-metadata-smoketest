@@ -14,15 +14,22 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
-/**
- *
- */
+@SuppressWarnings({"deprecation", "SqlDialectInspection", "SqlNoDataSourceInspection", "UnusedAssignment"})
 public class TestPerUserPoolDataSource extends TestConnectionPool {
 
     private String user;
@@ -50,8 +57,7 @@ public class TestPerUserPoolDataSource extends TestConnectionPool {
         tds.setDefaultMaxWaitMillis((int) getMaxWaitMillis());
         tds.setPerUserMaxTotal(user, getMaxTotal());
         tds.setPerUserMaxWaitMillis(user, getMaxWaitMillis());
-        tds.setDefaultTransactionIsolation(
-                Connection.TRANSACTION_READ_COMMITTED);
+        tds.setDefaultTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
         tds.setDefaultAutoCommit(Boolean.TRUE);
         ds = tds;
     }
@@ -65,7 +71,7 @@ public class TestPerUserPoolDataSource extends TestConnectionPool {
 
     @Test
     public void testChangePassword() throws Exception {
-        try (Connection c = ds.getConnection(user, "bay")) {
+        try (Connection ignored1 = ds.getConnection(user, "bay")) {
             fail("Should have generated SQLException");
         } catch (final SQLException expected) {
         }
@@ -80,7 +86,7 @@ public class TestPerUserPoolDataSource extends TestConnectionPool {
             assertEquals(0, ((PerUserPoolDataSource) ds).getNumIdle(user), "Should be no idle connections in the pool");
             con4.close();
             assertEquals(1, ((PerUserPoolDataSource) ds).getNumIdle(user), "Should be one idle connection in the pool");
-            try (Connection c = ds.getConnection(user, "bar")) { // old password
+            try (Connection ignored = ds.getConnection(user, "bar")) { // old password
                 fail("Should have generated SQLException");
             } catch (final SQLException expected) {
             }
@@ -168,14 +174,15 @@ public class TestPerUserPoolDataSource extends TestConnectionPool {
             c[i].close();
         }
     }
+
     @Test
     public void testIncorrectPassword() throws Exception {
-        try (Connection c = ds.getConnection("u1", "zlsafjk")) {
+        try (Connection ignored = ds.getConnection("u1", "zlsafjk")) {
             fail("Able to retrieve connection with incorrect password");
         } catch (final SQLException e1) {
         }
         ds.getConnection("u1", "p1").close();
-        try (Connection c = ds.getConnection("u1", "x")) {
+        try (Connection ignored1 = ds.getConnection("u1", "x")) {
             fail("Able to retrieve connection with incorrect password");
         } catch (final SQLException e) {
             if (!e.getMessage().startsWith("Given password did not match")) {
@@ -184,11 +191,11 @@ public class TestPerUserPoolDataSource extends TestConnectionPool {
         }
         ds.getConnection("u1", "p1").close();
         ds.getConnection(user, "bar").close();
-        try (Connection c = ds.getConnection("foob", "ar")) {
+        try (Connection ignored = ds.getConnection("foob", "ar")) {
             fail("Should have caused an SQLException");
         } catch (final SQLException expected) {
         }
-        try (Connection c = ds.getConnection(user, "baz")) {
+        try (Connection ignored = ds.getConnection(user, "baz")) {
             fail("Should have generated SQLException");
         } catch (final SQLException expected) {
         }
@@ -202,7 +209,7 @@ public class TestPerUserPoolDataSource extends TestConnectionPool {
             c[i] = ds.getConnection();
             assertNotNull(c[i]);
         }
-        try (Connection conn = ds.getConnection()) {
+        try (Connection ignored = ds.getConnection()) {
             fail("Allowed to open more than DefaultMaxTotal connections.");
         } catch (final SQLException e) {
         }
@@ -217,7 +224,7 @@ public class TestPerUserPoolDataSource extends TestConnectionPool {
         tds.setDefaultMaxWaitMillis(0);
         tds.setPerUserMaxTotal("u1", 1);
         final Connection conn = tds.getConnection("u1", "p1");
-        try (Connection c2 = tds.getConnection("u1", "p1")) {
+        try (Connection ignored = tds.getConnection("u1", "p1")) {
             fail("Expecting Pool Exhausted exception");
         } catch (final SQLException ex) {
         }
@@ -606,6 +613,7 @@ public class TestPerUserPoolDataSource extends TestConnectionPool {
         assertEquals((Integer) ds.getDefaultMaxIdle(), (Integer) ds.getPerUserMaxIdle("key"));
         assertEquals((Integer) 0, (Integer) ds.getPerUserMaxIdle("anonymous"));
     }
+
     @Test
     public void testPerUserMaxIdleMapNotInitialized() {
         final PerUserPoolDataSource ds = (PerUserPoolDataSource) this.ds;
@@ -717,6 +725,7 @@ public class TestPerUserPoolDataSource extends TestConnectionPool {
         assertEquals(ds.getDefaultMaxWaitMillis(), ds.getPerUserMaxWaitMillis("key"));
         assertEquals(0L, ds.getPerUserMaxWaitMillis("anonymous"));
     }
+
     @Test
     public void testPerUserMaxWaitMillisMapNotInitialized() {
         final PerUserPoolDataSource ds = (PerUserPoolDataSource) this.ds;
@@ -1193,6 +1202,7 @@ public class TestPerUserPoolDataSource extends TestConnectionPool {
         ds.setPerUserTestOnReturn("whatismyuseragain?", Boolean.FALSE);
         assertEquals(ds.getDefaultTestOnReturn(), ds.getPerUserTestOnReturn("missingkey"));
     }
+
     @Test
     public void testPerUserTestWhileIdleMapInitialized() {
         final PerUserPoolDataSource ds = (PerUserPoolDataSource) this.ds;
@@ -1357,7 +1367,7 @@ public class TestPerUserPoolDataSource extends TestConnectionPool {
         rset.close();
         stmt.close();
         conn.close();
-        try (Statement s = conn.createStatement()) {
+        try (Statement ignored = conn.createStatement()) {
             fail("Can't use closed connections");
         } catch (final SQLException e) {
         }

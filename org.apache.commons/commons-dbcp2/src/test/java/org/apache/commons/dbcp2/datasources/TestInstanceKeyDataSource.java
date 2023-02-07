@@ -8,28 +8,38 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.PrintWriter;
+import java.io.Serial;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Properties;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
-/**
- */
+@SuppressWarnings("deprecation")
 public class TestInstanceKeyDataSource {
 
     private static class ThrowOnSetupDefaultsDataSource
-    extends SharedPoolDataSource {
+            extends SharedPoolDataSource {
+        @Serial
         private static final long serialVersionUID = -448025812063133259L;
 
         ThrowOnSetupDefaultsDataSource() {
         }
+
         @Override
         protected void setupDefaults(final Connection connection, final String userName)
-        throws  SQLException {
+                throws SQLException {
             throw new SQLException("bang!");
         }
     }
+
     private final static String DRIVER = "org.apache.commons.dbcp2.TesterDriver";
 
     private final static String URL = "jdbc:apache:commons:testdriver";
@@ -175,12 +185,6 @@ public class TestInstanceKeyDataSource {
         assertEquals("anything", spds.getDescription());
     }
 
-    /**
-     * Verify that exception on setupDefaults does not leak PooledConnection
-     *
-     * JIRA: DBCP-237
-     * @throws Exception
-     */
     @Test
     public void testExceptionOnSetupDefaults() throws Exception {
         final ThrowOnSetupDefaultsDataSource tds = new ThrowOnSetupDefaultsDataSource();
@@ -190,7 +194,7 @@ public class TestInstanceKeyDataSource {
             fail("Expecting SQLException");
         } catch (final SQLException ex) {
         }
-        assertEquals(numConnections,tds.getNumActive());
+        assertEquals(numConnections, tds.getNumActive());
         tds.close();
     }
 

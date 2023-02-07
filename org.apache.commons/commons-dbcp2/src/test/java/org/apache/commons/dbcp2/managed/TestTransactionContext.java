@@ -10,27 +10,18 @@ import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-/**
- * TestSuite for TransactionContext
- */
 public class TestTransactionContext {
-
-    /**
-     * Transaction that always fails enlistResource.
-     */
     private static class UncooperativeTransaction extends TransactionImpl {
         public UncooperativeTransaction() {
             super(null, null);
         }
+
         @Override
         public synchronized boolean enlistResource(final XAResource xaRes) {
             return false;
         }
     }
 
-    /**
-     * JIRA: DBCP-428
-     */
     @Test
     public void testSetSharedConnectionEnlistFailure() throws Exception {
         try (final BasicManagedDataSource basicManagedDataSource = new BasicManagedDataSource()) {
