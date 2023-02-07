@@ -63,8 +63,8 @@ public class TestCPDSConnectionFactory {
         assertEquals(2, pool.getNumIdle());
         assertEquals(0, pool.getNumActive());
         try {
-           pc.getConnection();
-           fail("Expecting SQLException using closed PooledConnection");
+            pc.getConnection();
+            fail("Expecting SQLException using closed PooledConnection");
         } catch (final SQLException ex) {
         }
         con1.close();
@@ -89,7 +89,7 @@ public class TestCPDSConnectionFactory {
     @Test
     public void testSetPasswordThenModCharArray() {
         final CPDSConnectionFactory factory = new CPDSConnectionFactory(cpds, null, -1, false, "userName", "password");
-        final char[] pwd = {'a' };
+        final char[] pwd = {'a'};
         factory.setPassword(pwd);
         assertEquals("a", String.valueOf(factory.getPasswordCharArray()));
         pwd[0] = 'b';
@@ -98,22 +98,22 @@ public class TestCPDSConnectionFactory {
 
     @Test
     public void testSharedPoolDSDestroyOnReturn() throws Exception {
-       final PerUserPoolDataSource ds = new PerUserPoolDataSource();
-       ds.setConnectionPoolDataSource(cpds);
-       ds.setPerUserMaxTotal("userName", 10);
-       ds.setPerUserMaxWaitMillis("userName", 50L);
-       ds.setPerUserMaxIdle("userName", 2);
-       final Connection conn1 = ds.getConnection("userName", "password");
-       final Connection conn2 = ds.getConnection("userName", "password");
-       final Connection conn3 = ds.getConnection("userName", "password");
-       assertEquals(3, ds.getNumActive("userName"));
-       conn1.close();
-       assertEquals(1, ds.getNumIdle("userName"));
-       conn2.close();
-       assertEquals(2, ds.getNumIdle("userName"));
-       conn3.close();
-       assertEquals(2, ds.getNumIdle("userName"));
-       ds.close();
+        final PerUserPoolDataSource ds = new PerUserPoolDataSource();
+        ds.setConnectionPoolDataSource(cpds);
+        ds.setPerUserMaxTotal("userName", 10);
+        ds.setPerUserMaxWaitMillis("userName", 50L);
+        ds.setPerUserMaxIdle("userName", 2);
+        final Connection conn1 = ds.getConnection("userName", "password");
+        final Connection conn2 = ds.getConnection("userName", "password");
+        final Connection conn3 = ds.getConnection("userName", "password");
+        assertEquals(3, ds.getNumActive("userName"));
+        conn1.close();
+        assertEquals(1, ds.getNumIdle("userName"));
+        conn2.close();
+        assertEquals(2, ds.getNumIdle("userName"));
+        conn3.close();
+        assertEquals(2, ds.getNumIdle("userName"));
+        ds.close();
     }
 
 }

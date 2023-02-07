@@ -285,7 +285,6 @@ public class TestSharedPoolDataSource extends TestConnectionPool {
         ds = tds;
     }
 
-    // See DBCP-8
     @Test
     public void testChangePassword() throws Exception {
         try (Connection c = ds.getConnection("foo", "bay")) {

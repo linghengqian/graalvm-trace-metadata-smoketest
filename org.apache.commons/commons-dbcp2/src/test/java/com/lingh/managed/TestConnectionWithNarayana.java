@@ -20,9 +20,6 @@ import java.util.stream.IntStream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
-/**
- * Requires Java 8.
- */
 @SuppressWarnings({"SqlDialectInspection", "SqlNoDataSourceInspection", "TryFinallyCanBeTryWithResources", "BusyWait", "unused"})
 public class TestConnectionWithNarayana {
     private static final String CREATE_STMT = "CREATE TABLE TEST_DATA (KEY VARCHAR(100), ID BIGINT, VALUE DOUBLE PRECISION, INFO TEXT, TS TIMESTAMP)";

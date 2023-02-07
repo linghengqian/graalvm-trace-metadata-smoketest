@@ -202,7 +202,7 @@ public class TestLocalXaResource {
 
         @Override
         public CallableStatement prepareCall(final String sql, final int resultSetType, final int resultSetConcurrency,
-                final int resultSetHoldability) {
+                                             final int resultSetHoldability) {
             return null;
         }
 
@@ -223,7 +223,7 @@ public class TestLocalXaResource {
 
         @Override
         public PreparedStatement prepareStatement(final String sql, final int resultSetType, final int resultSetConcurrency,
-                final int resultSetHoldability) {
+                                                  final int resultSetHoldability) {
             return null;
         }
 
@@ -310,6 +310,7 @@ public class TestLocalXaResource {
             return null;
         }
     }
+
     private static class TestXid implements Xid {
 
         @Override

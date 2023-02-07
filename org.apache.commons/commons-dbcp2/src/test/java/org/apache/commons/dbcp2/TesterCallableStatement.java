@@ -40,7 +40,7 @@ public class TesterCallableStatement extends TesterPreparedStatement implements 
     }
 
     public TesterCallableStatement(final Connection conn, final String sql, final int resultSetType, final int resultSetConcurrency,
-            final int resultSetHoldability) {
+                                   final int resultSetHoldability) {
         super(conn, sql, resultSetType, resultSetConcurrency, resultSetHoldability);
     }
 
@@ -59,9 +59,6 @@ public class TesterCallableStatement extends TesterPreparedStatement implements 
         return null;
     }
 
-    /**
-     * @deprecated See {@link CallableStatement#getBigDecimal(int,int)}.
-     */
     @Deprecated
     @Override
     public BigDecimal getBigDecimal(final int parameterIndex, final int scale) {
@@ -249,7 +246,7 @@ public class TesterCallableStatement extends TesterPreparedStatement implements 
     }
 
     @Override
-    public Object getObject(final String parameterName, final Map<String,Class<?>> map) {
+    public Object getObject(final String parameterName, final Map<String, Class<?>> map) {
         return null;
     }
 
@@ -547,12 +544,12 @@ public class TesterCallableStatement extends TesterPreparedStatement implements 
 
     @Override
     public void setObject(final String parameterName, final Object x, final SQLType targetSqlType) {
-        
+
     }
 
     @Override
     public void setObject(final String parameterName, final Object x, final SQLType targetSqlType, final int scaleOrLength) {
-        
+
     }
 
     @Override

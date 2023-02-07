@@ -69,7 +69,7 @@ public class TesterPreparedStatement extends TesterStatement implements Prepared
     }
 
     public TesterPreparedStatement(final Connection conn, final String sql, final int resultSetType, final int resultSetConcurrency,
-            final int resultSetHoldability) {
+                                   final int resultSetHoldability) {
         super(conn, resultSetType, resultSetConcurrency, resultSetHoldability);
         _sql = sql;
         try {
@@ -110,7 +110,8 @@ public class TesterPreparedStatement extends TesterStatement implements Prepared
 
     @Override
     public boolean execute() throws SQLException {
-        checkOpen(); return true;
+        checkOpen();
+        return true;
     }
 
     @Override
@@ -164,7 +165,7 @@ public class TesterPreparedStatement extends TesterStatement implements Prepared
     @Override
     public ResultSet executeQuery() throws SQLException {
         checkOpen();
-        if("null".equals(_sql)) {
+        if ("null".equals(_sql)) {
             return null;
         }
         if (_queryTimeout > 0 && _queryTimeout < 5) {
@@ -176,7 +177,7 @@ public class TesterPreparedStatement extends TesterStatement implements Prepared
     @Override
     public ResultSet executeQuery(final String sql) throws SQLException {
         checkOpen();
-        if("null".equals(sql)) {
+        if ("null".equals(sql)) {
             return null;
         }
         return new TesterResultSet(this, _resultSetType, _resultSetConcurrency);
@@ -254,7 +255,7 @@ public class TesterPreparedStatement extends TesterStatement implements Prepared
     }
 
     @Override
-    public void setArray (final int i, final Array x) throws SQLException {
+    public void setArray(final int i, final Array x) throws SQLException {
         checkOpen();
     }
 
@@ -295,7 +296,7 @@ public class TesterPreparedStatement extends TesterStatement implements Prepared
 
 
     @Override
-    public void setBlob (final int i, final Blob x) throws SQLException {
+    public void setBlob(final int i, final Blob x) throws SQLException {
         checkOpen();
     }
 
@@ -340,7 +341,7 @@ public class TesterPreparedStatement extends TesterStatement implements Prepared
     }
 
     @Override
-    public void setClob (final int i, final Clob x) throws SQLException {
+    public void setClob(final int i, final Clob x) throws SQLException {
         checkOpen();
     }
 
@@ -421,7 +422,7 @@ public class TesterPreparedStatement extends TesterStatement implements Prepared
     }
 
     @Override
-    public void setNull (final int paramIndex, final int sqlType, final String typeName) throws SQLException {
+    public void setNull(final int paramIndex, final int sqlType, final String typeName) throws SQLException {
         checkOpen();
     }
 
@@ -451,7 +452,7 @@ public class TesterPreparedStatement extends TesterStatement implements Prepared
     }
 
     @Override
-    public void setRef (final int i, final Ref x) throws SQLException {
+    public void setRef(final int i, final Ref x) throws SQLException {
         checkOpen();
     }
 
@@ -495,7 +496,6 @@ public class TesterPreparedStatement extends TesterStatement implements Prepared
         checkOpen();
     }
 
-    /** @deprecated */
     @Deprecated
     @Override
     public void setUnicodeStream(final int parameterIndex, final InputStream x, final int length) throws SQLException {

@@ -24,7 +24,7 @@ public class TestDelegatingConnection {
         private final boolean autoCommit = false;
 
         public NoReadOnlyOrAutoCommitConnection() {
-            super("","");
+            super("", "");
         }
 
         @Override
@@ -48,7 +48,7 @@ public class TestDelegatingConnection {
 
     static class RTEGeneratingConnection extends TesterConnection {
         public RTEGeneratingConnection() {
-            super("","");
+            super("", "");
         }
 
         @Override
@@ -116,7 +116,8 @@ public class TestDelegatingConnection {
             delegatingConnection = new DelegatingConnection<>(pc);
             pc.close();
             delegatingConnection.close();
-            try (PreparedStatement ignored = delegatingConnection.prepareStatement("")){}
+            try (PreparedStatement ignored = delegatingConnection.prepareStatement("")) {
+            }
             fail("Expecting SQLException");
         } catch (final SQLException ex) {
             assertTrue(ex.getMessage().endsWith("is closed."));
@@ -140,7 +141,7 @@ public class TestDelegatingConnection {
 
     @Test
     public void testGetDelegate() {
-        assertEquals(connection,delegatingConnection.getDelegate());
+        assertEquals(connection, delegatingConnection.getDelegate());
     }
 
     @Test
@@ -188,7 +189,7 @@ public class TestDelegatingConnection {
             Assertions.assertEquals(2, ((SQLExceptionList) e).getCauseList().size());
         } finally {
             testerStatement.setSqlExceptionOnClose(false);
-        testerResultSet.setSqlExceptionOnClose(false);
+            testerResultSet.setSqlExceptionOnClose(false);
         }
     }
 

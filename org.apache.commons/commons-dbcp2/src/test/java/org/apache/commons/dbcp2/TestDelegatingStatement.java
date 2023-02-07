@@ -80,7 +80,6 @@ public class TestDelegatingStatement {
             delegatingStatement.checkOpen();
             fail("Expecting SQLException");
         } catch (final SQLException ex) {
-            // expected
         }
     }
 
@@ -287,6 +286,7 @@ public class TestDelegatingStatement {
         }
         verify(mockedStatement, times(1)).executeUpdate("foo", (String[]) null);
     }
+
     @Test
     public void testGetConnection() throws Exception {
         try {
@@ -298,7 +298,7 @@ public class TestDelegatingStatement {
 
     @Test
     public void testGetDelegate() {
-        assertEquals(mockedStatement,delegatingStatement.getDelegate());
+        assertEquals(mockedStatement, delegatingStatement.getDelegate());
     }
 
     @Test

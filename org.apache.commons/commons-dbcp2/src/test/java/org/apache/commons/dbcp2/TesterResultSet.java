@@ -25,19 +25,21 @@ public class TesterResultSet extends AbandonedTrace implements ResultSet {
     public TesterResultSet(final Statement stmt) {
         _statement = stmt;
     }
+
     public TesterResultSet(final Statement stmt, final int type, final int concurrency) {
         _statement = stmt;
         _data = null;
         _type = type;
         _concurrency = concurrency;
     }
+
     public TesterResultSet(final Statement stmt, final Object[][] data) {
         _statement = stmt;
         _data = data;
     }
 
     @Override
-    public boolean absolute( final int row ) throws SQLException {
+    public boolean absolute(final int row) throws SQLException {
         checkOpen();
         return false;
     }
@@ -58,7 +60,7 @@ public class TesterResultSet extends AbandonedTrace implements ResultSet {
     }
 
     protected void checkOpen() throws SQLException {
-        if(!_open) {
+        if (!_open) {
             throw new SQLException("ResultSet is closed.");
         }
     }
@@ -73,14 +75,11 @@ public class TesterResultSet extends AbandonedTrace implements ResultSet {
         if (_sqlExceptionOnClose) {
             throw new SQLException("TestSQLExceptionOnClose");
         }
-
         if (!_open) {
             return;
         }
-
-        // Not all result sets are generated from statements eg DatabaseMetaData
         if (_statement != null) {
-            ((TesterStatement)_statement)._resultSet = null;
+            ((TesterStatement) _statement)._resultSet = null;
         }
 
         _open = false;
@@ -133,7 +132,6 @@ public class TesterResultSet extends AbandonedTrace implements ResultSet {
         return new BigDecimal(columnIndex);
     }
 
-    /** @deprecated */
     @Deprecated
     @Override
     public BigDecimal getBigDecimal(final int columnIndex, final int scale) throws SQLException {
@@ -147,7 +145,6 @@ public class TesterResultSet extends AbandonedTrace implements ResultSet {
         return new BigDecimal(columnName.hashCode());
     }
 
-    /** @deprecated */
     @Deprecated
     @Override
     public BigDecimal getBigDecimal(final String columnName, final int scale) throws SQLException {
@@ -194,19 +191,19 @@ public class TesterResultSet extends AbandonedTrace implements ResultSet {
     @Override
     public byte getByte(final int columnIndex) throws SQLException {
         checkOpen();
-        return (byte)columnIndex;
+        return (byte) columnIndex;
     }
 
     @Override
     public byte getByte(final String columnName) throws SQLException {
         checkOpen();
-        return (byte)columnName.hashCode();
+        return (byte) columnName.hashCode();
     }
 
     @Override
     public byte[] getBytes(final int columnIndex) throws SQLException {
         checkOpen();
-        return new byte[] { (byte)columnIndex };
+        return new byte[]{(byte) columnIndex};
     }
 
     @Override
@@ -256,11 +253,11 @@ public class TesterResultSet extends AbandonedTrace implements ResultSet {
         return null;
     }
 
-   @Override
-public java.sql.Date getDate(final int columnIndex, final Calendar cal) throws SQLException {
-    checkOpen();
-    return null;
-}
+    @Override
+    public java.sql.Date getDate(final int columnIndex, final Calendar cal) throws SQLException {
+        checkOpen();
+        return null;
+    }
 
     @Override
     public java.sql.Date getDate(final String columnName) throws SQLException {
@@ -319,7 +316,7 @@ public java.sql.Date getDate(final int columnIndex, final Calendar cal) throws S
     @Override
     public int getInt(final int columnIndex) throws SQLException {
         checkOpen();
-        return (short)columnIndex;
+        return (short) columnIndex;
     }
 
     @Override
@@ -380,7 +377,7 @@ public java.sql.Date getDate(final int columnIndex, final Calendar cal) throws S
     public Object getObject(final int columnIndex) throws SQLException {
         checkOpen();
         if (_data != null) {
-            return _data[_currentRow][columnIndex-1];
+            return _data[_currentRow][columnIndex - 1];
         }
         return new Object();
     }
@@ -391,7 +388,7 @@ public java.sql.Date getDate(final int columnIndex, final Calendar cal) throws S
     }
 
     @Override
-    public Object getObject(final int i, final Map<String,Class<?>> map) throws SQLException {
+    public Object getObject(final int i, final Map<String, Class<?>> map) throws SQLException {
         checkOpen();
         return new Object();
     }
@@ -409,7 +406,7 @@ public java.sql.Date getDate(final int columnIndex, final Calendar cal) throws S
     }
 
     @Override
-    public Object getObject(final String colName, final Map<String,Class<?>> map) throws SQLException {
+    public Object getObject(final String colName, final Map<String, Class<?>> map) throws SQLException {
         checkOpen();
         return colName;
     }
@@ -445,13 +442,13 @@ public java.sql.Date getDate(final int columnIndex, final Calendar cal) throws S
     @Override
     public short getShort(final int columnIndex) throws SQLException {
         checkOpen();
-        return (short)columnIndex;
+        return (short) columnIndex;
     }
 
     @Override
     public short getShort(final String columnName) throws SQLException {
         checkOpen();
-        return (short)columnName.hashCode();
+        return (short) columnName.hashCode();
     }
 
     @Override
@@ -533,7 +530,7 @@ public java.sql.Date getDate(final int columnIndex, final Calendar cal) throws S
 
     @Override
     public java.sql.Timestamp getTimestamp(final String columnName, final Calendar cal)
-      throws SQLException {
+            throws SQLException {
         checkOpen();
         return null;
     }
@@ -543,7 +540,6 @@ public java.sql.Date getDate(final int columnIndex, final Calendar cal) throws S
         return this._type;
     }
 
-    /** @deprecated */
     @Deprecated
     @Override
     public InputStream getUnicodeStream(final int columnIndex) throws SQLException {
@@ -551,7 +547,6 @@ public java.sql.Date getDate(final int columnIndex, final Calendar cal) throws S
         return null;
     }
 
-    /** @deprecated */
     @Deprecated
     @Override
     public InputStream getUnicodeStream(final String columnName) throws SQLException {
@@ -571,9 +566,9 @@ public java.sql.Date getDate(final int columnIndex, final Calendar cal) throws S
 
     @Override
     public SQLWarning getWarnings() throws SQLException {
-           checkOpen();
-           return null;
-       }
+        checkOpen();
+        return null;
+    }
 
     @Override
     public void insertRow() throws SQLException {
@@ -656,7 +651,7 @@ public java.sql.Date getDate(final int columnIndex, final Calendar cal) throws S
     }
 
     @Override
-    public boolean relative( final int rows ) throws SQLException {
+    public boolean relative(final int rows) throws SQLException {
         checkOpen();
         return false;
     }
@@ -700,13 +695,13 @@ public java.sql.Date getDate(final int columnIndex, final Calendar cal) throws S
 
     @Override
     public void updateArray(final int columnIndex, final Array x)
-        throws SQLException {
+            throws SQLException {
         throw new SQLException("Not implemented.");
     }
 
     @Override
     public void updateArray(final String columnName, final Array x)
-        throws SQLException {
+            throws SQLException {
         throw new SQLException("Not implemented.");
     }
 
@@ -723,8 +718,8 @@ public java.sql.Date getDate(final int columnIndex, final Calendar cal) throws S
 
     @Override
     public void updateAsciiStream(final int columnIndex,
-               final InputStream x,
-               final int length) throws SQLException {
+                                  final InputStream x,
+                                  final int length) throws SQLException {
         checkOpen();
     }
 
@@ -740,8 +735,8 @@ public java.sql.Date getDate(final int columnIndex, final Calendar cal) throws S
 
     @Override
     public void updateAsciiStream(final String columnName,
-               final InputStream x,
-               final int length) throws SQLException {
+                                  final InputStream x,
+                                  final int length) throws SQLException {
         checkOpen();
     }
 
@@ -767,8 +762,8 @@ public java.sql.Date getDate(final int columnIndex, final Calendar cal) throws S
 
     @Override
     public void updateBinaryStream(final int columnIndex,
-                final InputStream x,
-                final int length) throws SQLException {
+                                   final InputStream x,
+                                   final int length) throws SQLException {
         checkOpen();
     }
 
@@ -784,8 +779,8 @@ public java.sql.Date getDate(final int columnIndex, final Calendar cal) throws S
 
     @Override
     public void updateBinaryStream(final String columnName,
-                final InputStream x,
-                final int length) throws SQLException {
+                                   final InputStream x,
+                                   final int length) throws SQLException {
         checkOpen();
     }
 
@@ -801,7 +796,7 @@ public java.sql.Date getDate(final int columnIndex, final Calendar cal) throws S
 
     @Override
     public void updateBlob(final int columnIndex, final Blob x)
-        throws SQLException {
+            throws SQLException {
         throw new SQLException("Not implemented.");
     }
 
@@ -817,7 +812,7 @@ public java.sql.Date getDate(final int columnIndex, final Calendar cal) throws S
 
     @Override
     public void updateBlob(final String columnName, final Blob x)
-        throws SQLException {
+            throws SQLException {
         throw new SQLException("Not implemented.");
     }
 
@@ -853,8 +848,8 @@ public java.sql.Date getDate(final int columnIndex, final Calendar cal) throws S
 
     @Override
     public void updateCharacterStream(final int columnIndex,
-                 final Reader x,
-                 final int length) throws SQLException {
+                                      final Reader x,
+                                      final int length) throws SQLException {
         checkOpen();
     }
 
@@ -871,8 +866,8 @@ public java.sql.Date getDate(final int columnIndex, final Calendar cal) throws S
 
     @Override
     public void updateCharacterStream(final String columnName,
-                 final Reader reader,
-                 final int length) throws SQLException {
+                                      final Reader reader,
+                                      final int length) throws SQLException {
         checkOpen();
     }
 
@@ -888,7 +883,7 @@ public java.sql.Date getDate(final int columnIndex, final Calendar cal) throws S
 
     @Override
     public void updateClob(final int columnIndex, final Clob x)
-        throws SQLException {
+            throws SQLException {
         throw new SQLException("Not implemented.");
     }
 
@@ -904,7 +899,7 @@ public java.sql.Date getDate(final int columnIndex, final Calendar cal) throws S
 
     @Override
     public void updateClob(final String columnName, final Clob x)
-        throws SQLException {
+            throws SQLException {
         throw new SQLException("Not implemented.");
     }
 
@@ -1151,7 +1146,7 @@ public java.sql.Date getDate(final int columnIndex, final Calendar cal) throws S
 
     @Override
     public void updateTimestamp(final String columnName, final java.sql.Timestamp x)
-      throws SQLException {
+            throws SQLException {
         checkOpen();
     }
 

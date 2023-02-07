@@ -62,6 +62,7 @@ public class TestDataSourceConnectionFactory {
             return null;
         }
     }
+
     private DataSource datasource;
 
     private DataSourceConnectionFactory factory;
@@ -94,7 +95,7 @@ public class TestDataSourceConnectionFactory {
 
     @Test
     public void testEmptyUser() throws SQLException {
-        final DataSourceConnectionFactory factory = new DataSourceConnectionFactory(datasource, null, new char[] {'a'});
+        final DataSourceConnectionFactory factory = new DataSourceConnectionFactory(datasource, null, new char[]{'a'});
         final Connection conn = factory.createConnection();
         assertNull(((TesterConnection) conn).getUserName());
     }

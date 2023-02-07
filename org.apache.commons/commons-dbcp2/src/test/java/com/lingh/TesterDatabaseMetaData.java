@@ -52,13 +52,13 @@ public class TesterDatabaseMetaData implements DatabaseMetaData {
 
     @Override
     public ResultSet getAttributes(final String catalog, final String schemaPattern,
-            final String typeNamePattern, final String attributeNamePattern) {
+                                   final String typeNamePattern, final String attributeNamePattern) {
         return null;
     }
 
     @Override
     public ResultSet getBestRowIdentifier(final String catalog, final String schema,
-            final String table, final int scope, final boolean nullable) {
+                                          final String table, final int scope, final boolean nullable) {
         return null;
     }
 
@@ -84,13 +84,13 @@ public class TesterDatabaseMetaData implements DatabaseMetaData {
 
     @Override
     public ResultSet getColumnPrivileges(final String catalog, final String schema,
-            final String table, final String columnNamePattern) {
+                                         final String table, final String columnNamePattern) {
         return null;
     }
 
     @Override
     public ResultSet getColumns(final String catalog, final String schemaPattern,
-            final String tableNamePattern, final String columnNamePattern) {
+                                final String tableNamePattern, final String columnNamePattern) {
         return null;
     }
 
@@ -101,8 +101,8 @@ public class TesterDatabaseMetaData implements DatabaseMetaData {
 
     @Override
     public ResultSet getCrossReference(final String parentCatalog,
-            final String parentSchema, final String parentTable, final String foreignCatalog,
-            final String foreignSchema, final String foreignTable) {
+                                       final String parentSchema, final String parentTable, final String foreignCatalog,
+                                       final String foreignSchema, final String foreignTable) {
         return null;
     }
 
@@ -163,13 +163,13 @@ public class TesterDatabaseMetaData implements DatabaseMetaData {
 
     @Override
     public ResultSet getFunctionColumns(final String catalog, final String schemaPattern,
-            final String functionNamePattern, final String columnNamePattern) {
+                                        final String functionNamePattern, final String columnNamePattern) {
         return null;
     }
 
     @Override
     public ResultSet getFunctions(final String catalog, final String schemaPattern,
-            final String functionNamePattern) {
+                                  final String functionNamePattern) {
         return null;
     }
 
@@ -185,7 +185,7 @@ public class TesterDatabaseMetaData implements DatabaseMetaData {
 
     @Override
     public ResultSet getIndexInfo(final String catalog, final String schema, final String table,
-            final boolean unique, final boolean approximate) {
+                                  final boolean unique, final boolean approximate) {
         return null;
     }
 
@@ -311,13 +311,13 @@ public class TesterDatabaseMetaData implements DatabaseMetaData {
 
     @Override
     public ResultSet getProcedureColumns(final String catalog, final String schemaPattern,
-            final String procedureNamePattern, final String columnNamePattern) {
+                                         final String procedureNamePattern, final String columnNamePattern) {
         return null;
     }
 
     @Override
     public ResultSet getProcedures(final String catalog, final String schemaPattern,
-            final String procedureNamePattern) {
+                                   final String procedureNamePattern) {
         return null;
     }
 
@@ -328,7 +328,7 @@ public class TesterDatabaseMetaData implements DatabaseMetaData {
 
     @Override
     public ResultSet getPseudoColumns(final String catalog, final String schemaPattern,
-            final String tableNamePattern, final String columnNamePattern) {
+                                      final String tableNamePattern, final String columnNamePattern) {
         return null;
     }
 
@@ -379,13 +379,13 @@ public class TesterDatabaseMetaData implements DatabaseMetaData {
 
     @Override
     public ResultSet getSuperTables(final String catalog, final String schemaPattern,
-            final String tableNamePattern) {
+                                    final String tableNamePattern) {
         return null;
     }
 
     @Override
     public ResultSet getSuperTypes(final String catalog, final String schemaPattern,
-            final String typeNamePattern) {
+                                   final String typeNamePattern) {
         return null;
     }
 
@@ -396,13 +396,13 @@ public class TesterDatabaseMetaData implements DatabaseMetaData {
 
     @Override
     public ResultSet getTablePrivileges(final String catalog, final String schemaPattern,
-            final String tableNamePattern) {
+                                        final String tableNamePattern) {
         return null;
     }
 
     @Override
     public ResultSet getTables(final String catalog, final String schemaPattern,
-            final String tableNamePattern, final String[] types) {
+                               final String tableNamePattern, final String[] types) {
         return null;
     }
 
@@ -423,7 +423,7 @@ public class TesterDatabaseMetaData implements DatabaseMetaData {
 
     @Override
     public ResultSet getUDTs(final String catalog, final String schemaPattern,
-            final String typeNamePattern, final int[] types) {
+                             final String typeNamePattern, final int[] types) {
         return null;
     }
 
@@ -439,7 +439,7 @@ public class TesterDatabaseMetaData implements DatabaseMetaData {
 
     @Override
     public ResultSet getVersionColumns(final String catalog, final String schema,
-            final String table) {
+                                       final String table) {
         return null;
     }
 
@@ -898,7 +898,6 @@ public class TesterDatabaseMetaData implements DatabaseMetaData {
         return false;
     }
 
-    /* JDBC_4_ANT_KEY_END */
 
     @Override
     public boolean usesLocalFilePerTable() {

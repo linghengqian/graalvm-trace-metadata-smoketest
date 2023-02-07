@@ -97,7 +97,7 @@ public class TestPStmtPooling {
             final Statement ucstmt1 = ((DelegatingStatement) cstmt1).getInnermostDelegate();
             stmt1.close();
             cstmt1.close();
-            final Statement stmt2 = conn.prepareStatement("select 1 from dual"); // Check out from pool
+            final Statement stmt2 = conn.prepareStatement("select 1 from dual");
             final Statement ustmt2 = ((DelegatingStatement) stmt2).getInnermostDelegate();
             final Statement cstmt2 = conn.prepareCall("{call home}");
             final Statement ucstmt2 = ((DelegatingStatement) cstmt2).getInnermostDelegate();

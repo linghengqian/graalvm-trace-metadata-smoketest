@@ -6,7 +6,12 @@ import com.lingh.StackMessageLog;
 import com.lingh.TesterClassLoader;
 import org.apache.commons.logging.LogFactory;
 import org.hamcrest.CoreMatchers;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import javax.management.AttributeNotFoundException;
 import javax.management.MBeanAttributeInfo;
@@ -559,7 +564,7 @@ public class TestBasicDataSource extends TestConnectionPool {
             Assertions.assertNotNull(message);
             assertTrue(message.indexOf("boom") > 0);
         } catch (final IllegalStateException ex) {
-            assertTrue(ex.getMessage().indexOf("boom") > 0); // RTE is not wrapped by BDS#close
+            assertTrue(ex.getMessage().indexOf("boom") > 0);
         } finally {
             StackMessageLog.unLock();
         }
@@ -600,7 +605,7 @@ public class TestBasicDataSource extends TestConnectionPool {
         ds.restart();
         assertEquals("bar", ds.getDefaultCatalog());
         assertEquals(1, ds.getInitialSize());
-        ds.getLogWriter();  // side effect is to init
+        ds.getLogWriter();
         assertEquals(0, ds.getNumActive());
         assertEquals(1, ds.getNumIdle());
         conn1.close();
@@ -718,11 +723,8 @@ public class TestBasicDataSource extends TestConnectionPool {
     @Test
     public void testStartInitializes() throws Exception {
         ds.setInitialSize(2);
-        // Note: if we ever move away from lazy init, next two will fail
         assertEquals(0, ds.getNumIdle());
         assertNull(ds.getRegisteredJmxName());
-
-        // Start forces init
         ds.start();
         assertEquals(2, ds.getNumIdle());
         assertNotNull(ds.getRegisteredJmxName());

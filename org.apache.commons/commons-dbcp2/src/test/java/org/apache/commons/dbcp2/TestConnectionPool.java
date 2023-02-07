@@ -323,7 +323,7 @@ public abstract class TestConnectionPool {
         );
         if (expectError) {
             if (DISPLAY_THREAD_DETAILS || pts.length / 2 != failed) {
-                final long offset = pts[0].createdMillis - 1000; // To reduce size of output numbers, but ensure they have 4 digits
+                final long offset = pts[0].createdMillis - 1000;
                 println("Offset: " + offset);
                 for (int i = 0; i < pts.length; i++) {
                     final PoolTest pt = pts[i];

@@ -111,9 +111,6 @@ public class TestBasicManagedDataSource extends TestBasicDataSource {
         }
     }
 
-    /**
-     * DBCP-564
-     */
     @Test
     public void testSetRollbackOnlyBeforeGetConnectionDoesNotLeak() throws Exception {
         final TransactionManager transactionManager = ((BasicManagedDataSource) ds).getTransactionManager();
