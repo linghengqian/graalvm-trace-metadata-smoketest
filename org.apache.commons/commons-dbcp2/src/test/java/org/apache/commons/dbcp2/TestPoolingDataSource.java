@@ -2,7 +2,6 @@
 
 package org.apache.commons.dbcp2;
 
-import org.apache.commons.dbcp2.*;
 import org.apache.commons.pool2.impl.GenericObjectPool;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;

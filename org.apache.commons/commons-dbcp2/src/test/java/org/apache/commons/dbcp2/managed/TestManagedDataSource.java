@@ -17,6 +17,7 @@
  */
 package org.apache.commons.dbcp2.managed;
 
+import org.apache.commons.dbcp2.TestConnectionPool;
 import org.apache.commons.dbcp2.*;
 import org.apache.commons.pool2.impl.GenericObjectPool;
 import org.apache.geronimo.transaction.manager.TransactionManagerImpl;
