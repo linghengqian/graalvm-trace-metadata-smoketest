@@ -1,8 +1,7 @@
 
 package org.apache.commons.dbcp2;
 
-import org.apache.commons.dbcp2.BasicDataSource;
-import org.apache.commons.dbcp2.TesterClassLoader;
+import com.lingh.TesterClassLoader;
 import org.apache.commons.logging.LogFactory;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;

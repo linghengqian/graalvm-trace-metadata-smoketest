@@ -17,6 +17,7 @@
  */
 package org.apache.commons.dbcp2.managed;
 
+import com.lingh.TesterClassLoader;
 import org.apache.commons.dbcp2.*;
 import com.lingh.transaction.TransactionAdapter;
 import com.lingh.transaction.TransactionManagerAdapter;

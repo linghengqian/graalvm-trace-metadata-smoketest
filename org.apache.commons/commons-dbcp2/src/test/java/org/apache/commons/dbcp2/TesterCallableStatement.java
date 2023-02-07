@@ -17,6 +17,8 @@
  */
 package org.apache.commons.dbcp2;
 
+import org.apache.commons.dbcp2.TesterPreparedStatement;
+
 import java.io.InputStream;
 import java.io.Reader;
 import java.math.BigDecimal;

@@ -1,7 +1,6 @@
 
 package org.apache.commons.dbcp2;
 
-import org.apache.commons.dbcp2.*;
 import org.apache.commons.pool2.KeyedObjectPool;
 import org.apache.commons.pool2.impl.GenericKeyedObjectPool;
 import org.apache.commons.pool2.impl.GenericKeyedObjectPoolConfig;
