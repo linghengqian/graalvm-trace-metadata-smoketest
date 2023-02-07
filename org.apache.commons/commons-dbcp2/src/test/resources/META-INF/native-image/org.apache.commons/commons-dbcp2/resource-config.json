@@ -17,6 +17,9 @@
       "pattern":"\\Qjbossts-properties.xml\\E"
     }, 
     {
+      "pattern":"\\Qmockito-extensions/org.mockito.plugins.MockMaker\\E"
+    }, 
+    {
       "pattern":"\\Qorg/h2/util/data.zip\\E"
     }, 
     {

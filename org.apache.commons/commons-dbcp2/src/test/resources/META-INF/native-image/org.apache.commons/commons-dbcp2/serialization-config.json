@@ -68,26 +68,6 @@
     },
     {
       "name":"org.apache.commons.dbcp2.datasources.PerUserPoolDataSource"
-    },
-    {
-      "name":"org.mockito.codegen.CallableStatement$MockitoMock$b4v5372op99200N",
-      "customTargetConstructorClass":"java.lang.Object"
-    },
-    {
-      "name":"org.mockito.codegen.DatabaseMetaData$MockitoMock$mjdo3d0op99200N",
-      "customTargetConstructorClass":"java.lang.Object"
-    },
-    {
-      "name":"org.mockito.codegen.PreparedStatement$MockitoMock$6lfk8k0op99200N",
-      "customTargetConstructorClass":"java.lang.Object"
-    },
-    {
-      "name":"org.mockito.codegen.ResultSet$MockitoMock$pvsved3op99200N",
-      "customTargetConstructorClass":"java.lang.Object"
-    },
-    {
-      "name":"org.mockito.codegen.Statement$MockitoMock$3jsmh53op99200N",
-      "customTargetConstructorClass":"java.lang.Object"
     }
   ],
   "lambdaCapturingTypes":[

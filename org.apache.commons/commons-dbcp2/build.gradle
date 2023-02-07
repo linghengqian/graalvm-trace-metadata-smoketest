@@ -43,6 +43,7 @@ graalvmNative {
             inputTaskNames.add("test")
             outputDirectories.add("src/test/resources/META-INF/native-image/org.apache.commons/commons-dbcp2")
         }
+        callerFilterFiles.from("filter.json")
     }
     metadataRepository {
         enabled = true

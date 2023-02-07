@@ -862,16 +862,12 @@
 {
   "name":"java.io.Serializable",
   "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true
+  "queryAllPublicMethods":true
 },
 {
   "name":"java.lang.AutoCloseable",
   "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true
+  "queryAllPublicMethods":true
 },
 {
   "name":"java.lang.Boolean",
@@ -886,43 +882,14 @@
   "fields":[{"name":"TYPE"}]
 },
 {
-  "name":"java.lang.Class",
-  "methods":[
-    {"name":"forName","parameterTypes":["java.lang.String"] }, 
-    {"name":"getAnnotatedInterfaces","parameterTypes":[] }, 
-    {"name":"getAnnotatedSuperclass","parameterTypes":[] }, 
-    {"name":"getDeclaredMethod","parameterTypes":["java.lang.String","java.lang.Class[]"] }, 
-    {"name":"getMethod","parameterTypes":["java.lang.String","java.lang.Class[]"] }, 
-    {"name":"getModule","parameterTypes":[] }, 
-    {"name":"getNestHost","parameterTypes":[] }, 
-    {"name":"getNestMembers","parameterTypes":[] }, 
-    {"name":"getPermittedSubclasses","parameterTypes":[] }, 
-    {"name":"getRecordComponents","parameterTypes":[] }, 
-    {"name":"isNestmateOf","parameterTypes":["java.lang.Class"] }, 
-    {"name":"isRecord","parameterTypes":[] }, 
-    {"name":"isSealed","parameterTypes":[] }
-  ]
-},
-{
   "name":"java.lang.ClassLoader",
   "allDeclaredClasses":true,
   "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "methods":[
-    {"name":"getDefinedPackage","parameterTypes":["java.lang.String"] }, 
-    {"name":"getUnnamedModule","parameterTypes":[] }, 
-    {"name":"registerAsParallelCapable","parameterTypes":[] }
-  ]
+  "queryAllPublicMethods":true
 },
 {
   "name":"java.lang.Deprecated",
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"forRemoval","parameterTypes":[] }, 
-    {"name":"since","parameterTypes":[] }
-  ]
+  "queryAllPublicMethods":true
 },
 {
   "name":"java.lang.Double",
@@ -944,37 +911,8 @@
   "fields":[{"name":"TYPE"}]
 },
 {
-  "name":"java.lang.Module",
-  "methods":[
-    {"name":"addExports","parameterTypes":["java.lang.String","java.lang.Module"] }, 
-    {"name":"addReads","parameterTypes":["java.lang.Module"] }, 
-    {"name":"canRead","parameterTypes":["java.lang.Module"] }, 
-    {"name":"getClassLoader","parameterTypes":[] }, 
-    {"name":"getName","parameterTypes":[] }, 
-    {"name":"getResourceAsStream","parameterTypes":["java.lang.String"] }, 
-    {"name":"isExported","parameterTypes":["java.lang.String"] }, 
-    {"name":"isExported","parameterTypes":["java.lang.String","java.lang.Module"] }, 
-    {"name":"isNamed","parameterTypes":[] }, 
-    {"name":"isOpen","parameterTypes":["java.lang.String","java.lang.Module"] }
-  ]
-},
-{
   "name":"java.lang.Object",
-  "queryAllDeclaredMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"clone","parameterTypes":[] }, 
-    {"name":"toString","parameterTypes":[] }
-  ]
-},
-{
-  "name":"java.lang.Runtime",
-  "methods":[{"name":"version","parameterTypes":[] }]
-},
-{
-  "name":"java.lang.Runtime$Version",
-  "methods":[{"name":"feature","parameterTypes":[] }]
+  "methods":[{"name":"toString","parameterTypes":[] }]
 },
 {
   "name":"java.lang.RuntimePermission"
@@ -1010,10 +948,6 @@
   "name":"java.lang.String"
 },
 {
-  "name":"java.lang.System",
-  "methods":[{"name":"getSecurityManager","parameterTypes":[] }]
-},
-{
   "name":"java.lang.Thread",
   "methods":[{"name":"getContextClassLoader","parameterTypes":[] }]
 },
@@ -1022,37 +956,7 @@
   "fields":[{"name":"TYPE"}]
 },
 {
-  "name":"java.lang.annotation.Retention",
-  "queryAllDeclaredMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[{"name":"value","parameterTypes":[] }]
-},
-{
-  "name":"java.lang.annotation.RetentionPolicy"
-},
-{
-  "name":"java.lang.annotation.Target",
-  "queryAllDeclaredMethods":true,
-  "queryAllDeclaredConstructors":true
-},
-{
-  "name":"java.lang.invoke.MethodHandle",
-  "methods":[
-    {"name":"bindTo","parameterTypes":["java.lang.Object"] }, 
-    {"name":"invokeWithArguments","parameterTypes":["java.lang.Object[]"] }
-  ]
-},
-{
-  "name":"java.lang.invoke.MethodHandles",
-  "methods":[{"name":"lookup","parameterTypes":[] }]
-},
-{
-  "name":"java.lang.invoke.MethodHandles$Lookup",
-  "methods":[{"name":"findVirtual","parameterTypes":["java.lang.Class","java.lang.String","java.lang.invoke.MethodType"] }]
-},
-{
-  "name":"java.lang.invoke.MethodType",
-  "methods":[{"name":"methodType","parameterTypes":["java.lang.Class","java.lang.Class[]"] }]
+  "name":"java.lang.invoke.MethodHandle"
 },
 {
   "name":"java.lang.management.BufferPoolMXBean",
@@ -1069,10 +973,6 @@
 {
   "name":"java.lang.management.LockInfo",
   "queryAllPublicMethods":true
-},
-{
-  "name":"java.lang.management.ManagementPermission",
-  "methods":[{"name":"<init>","parameterTypes":["java.lang.String"] }]
 },
 {
   "name":"java.lang.management.MemoryMXBean",
@@ -1096,13 +996,7 @@
 },
 {
   "name":"java.lang.management.PlatformLoggingMXBean",
-  "queryAllPublicMethods":true,
-  "methods":[
-    {"name":"getLoggerLevel","parameterTypes":["java.lang.String"] }, 
-    {"name":"getLoggerNames","parameterTypes":[] }, 
-    {"name":"getParentLoggerName","parameterTypes":["java.lang.String"] }, 
-    {"name":"setLoggerLevel","parameterTypes":["java.lang.String","java.lang.String"] }
-  ]
+  "queryAllPublicMethods":true
 },
 {
   "name":"java.lang.management.RuntimeMXBean",
@@ -1113,55 +1007,10 @@
   "queryAllPublicMethods":true
 },
 {
-  "name":"java.lang.reflect.AnnotatedArrayType",
-  "methods":[{"name":"getAnnotatedGenericComponentType","parameterTypes":[] }]
-},
-{
-  "name":"java.lang.reflect.AnnotatedParameterizedType",
-  "methods":[{"name":"getAnnotatedActualTypeArguments","parameterTypes":[] }]
-},
-{
-  "name":"java.lang.reflect.AnnotatedType",
-  "methods":[{"name":"getType","parameterTypes":[] }]
-},
-{
-  "name":"java.lang.reflect.AnnotatedTypeVariable",
-  "methods":[{"name":"getAnnotatedBounds","parameterTypes":[] }]
-},
-{
-  "name":"java.lang.reflect.AnnotatedWildcardType",
-  "methods":[{"name":"getAnnotatedUpperBounds","parameterTypes":[] }]
-},
-{
-  "name":"java.lang.reflect.Executable",
-  "methods":[
-    {"name":"getAnnotatedExceptionTypes","parameterTypes":[] }, 
-    {"name":"getAnnotatedParameterTypes","parameterTypes":[] }, 
-    {"name":"getAnnotatedReceiverType","parameterTypes":[] }, 
-    {"name":"getParameterCount","parameterTypes":[] }, 
-    {"name":"getParameters","parameterTypes":[] }
-  ]
-},
-{
   "name":"java.lang.reflect.InvocationHandler",
   "allDeclaredClasses":true,
-  "queryAllPublicMethods":true
-},
-{
-  "name":"java.lang.reflect.Method",
-  "methods":[{"name":"getAnnotatedReturnType","parameterTypes":[] }]
-},
-{
-  "name":"java.lang.reflect.Parameter",
-  "methods":[
-    {"name":"getModifiers","parameterTypes":[] }, 
-    {"name":"getName","parameterTypes":[] }, 
-    {"name":"isNamePresent","parameterTypes":[] }
-  ]
-},
-{
-  "name":"java.lang.reflect.TypeVariable",
-  "methods":[{"name":"getAnnotatedBounds","parameterTypes":[] }]
+  "queryAllPublicMethods":true,
+  "methods":[{"name":"invokeDefault","parameterTypes":["java.lang.Object","java.lang.reflect.Method","java.lang.Object[]"] }]
 },
 {
   "name":"java.math.BigDecimal"
@@ -1180,10 +1029,6 @@
   "methods":[{"name":"<init>","parameterTypes":["java.lang.String","java.lang.String"] }]
 },
 {
-  "name":"java.security.AccessController",
-  "methods":[{"name":"doPrivileged","parameterTypes":["java.security.PrivilegedExceptionAction"] }]
-},
-{
   "name":"java.security.AllPermission"
 },
 {
@@ -1195,132 +1040,7 @@
 {
   "name":"java.sql.CallableStatement",
   "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"getArray","parameterTypes":["int"] }, 
-    {"name":"getArray","parameterTypes":["java.lang.String"] }, 
-    {"name":"getBigDecimal","parameterTypes":["int"] }, 
-    {"name":"getBigDecimal","parameterTypes":["int","int"] }, 
-    {"name":"getBigDecimal","parameterTypes":["java.lang.String"] }, 
-    {"name":"getBlob","parameterTypes":["int"] }, 
-    {"name":"getBlob","parameterTypes":["java.lang.String"] }, 
-    {"name":"getBoolean","parameterTypes":["int"] }, 
-    {"name":"getBoolean","parameterTypes":["java.lang.String"] }, 
-    {"name":"getByte","parameterTypes":["int"] }, 
-    {"name":"getByte","parameterTypes":["java.lang.String"] }, 
-    {"name":"getBytes","parameterTypes":["int"] }, 
-    {"name":"getBytes","parameterTypes":["java.lang.String"] }, 
-    {"name":"getCharacterStream","parameterTypes":["int"] }, 
-    {"name":"getCharacterStream","parameterTypes":["java.lang.String"] }, 
-    {"name":"getClob","parameterTypes":["int"] }, 
-    {"name":"getClob","parameterTypes":["java.lang.String"] }, 
-    {"name":"getDate","parameterTypes":["int"] }, 
-    {"name":"getDate","parameterTypes":["int","java.util.Calendar"] }, 
-    {"name":"getDate","parameterTypes":["java.lang.String"] }, 
-    {"name":"getDate","parameterTypes":["java.lang.String","java.util.Calendar"] }, 
-    {"name":"getDouble","parameterTypes":["int"] }, 
-    {"name":"getDouble","parameterTypes":["java.lang.String"] }, 
-    {"name":"getFloat","parameterTypes":["int"] }, 
-    {"name":"getFloat","parameterTypes":["java.lang.String"] }, 
-    {"name":"getInt","parameterTypes":["int"] }, 
-    {"name":"getInt","parameterTypes":["java.lang.String"] }, 
-    {"name":"getLong","parameterTypes":["int"] }, 
-    {"name":"getLong","parameterTypes":["java.lang.String"] }, 
-    {"name":"getNCharacterStream","parameterTypes":["int"] }, 
-    {"name":"getNCharacterStream","parameterTypes":["java.lang.String"] }, 
-    {"name":"getNClob","parameterTypes":["int"] }, 
-    {"name":"getNClob","parameterTypes":["java.lang.String"] }, 
-    {"name":"getNString","parameterTypes":["int"] }, 
-    {"name":"getNString","parameterTypes":["java.lang.String"] }, 
-    {"name":"getObject","parameterTypes":["int"] }, 
-    {"name":"getObject","parameterTypes":["int","java.lang.Class"] }, 
-    {"name":"getObject","parameterTypes":["int","java.util.Map"] }, 
-    {"name":"getObject","parameterTypes":["java.lang.String"] }, 
-    {"name":"getObject","parameterTypes":["java.lang.String","java.lang.Class"] }, 
-    {"name":"getObject","parameterTypes":["java.lang.String","java.util.Map"] }, 
-    {"name":"getRef","parameterTypes":["int"] }, 
-    {"name":"getRef","parameterTypes":["java.lang.String"] }, 
-    {"name":"getRowId","parameterTypes":["int"] }, 
-    {"name":"getRowId","parameterTypes":["java.lang.String"] }, 
-    {"name":"getSQLXML","parameterTypes":["int"] }, 
-    {"name":"getSQLXML","parameterTypes":["java.lang.String"] }, 
-    {"name":"getShort","parameterTypes":["int"] }, 
-    {"name":"getShort","parameterTypes":["java.lang.String"] }, 
-    {"name":"getString","parameterTypes":["int"] }, 
-    {"name":"getString","parameterTypes":["java.lang.String"] }, 
-    {"name":"getTime","parameterTypes":["int"] }, 
-    {"name":"getTime","parameterTypes":["int","java.util.Calendar"] }, 
-    {"name":"getTime","parameterTypes":["java.lang.String"] }, 
-    {"name":"getTime","parameterTypes":["java.lang.String","java.util.Calendar"] }, 
-    {"name":"getTimestamp","parameterTypes":["int"] }, 
-    {"name":"getTimestamp","parameterTypes":["int","java.util.Calendar"] }, 
-    {"name":"getTimestamp","parameterTypes":["java.lang.String"] }, 
-    {"name":"getTimestamp","parameterTypes":["java.lang.String","java.util.Calendar"] }, 
-    {"name":"getURL","parameterTypes":["int"] }, 
-    {"name":"getURL","parameterTypes":["java.lang.String"] }, 
-    {"name":"registerOutParameter","parameterTypes":["int","int"] }, 
-    {"name":"registerOutParameter","parameterTypes":["int","int","int"] }, 
-    {"name":"registerOutParameter","parameterTypes":["int","int","java.lang.String"] }, 
-    {"name":"registerOutParameter","parameterTypes":["int","java.sql.SQLType"] }, 
-    {"name":"registerOutParameter","parameterTypes":["int","java.sql.SQLType","int"] }, 
-    {"name":"registerOutParameter","parameterTypes":["int","java.sql.SQLType","java.lang.String"] }, 
-    {"name":"registerOutParameter","parameterTypes":["java.lang.String","int"] }, 
-    {"name":"registerOutParameter","parameterTypes":["java.lang.String","int","int"] }, 
-    {"name":"registerOutParameter","parameterTypes":["java.lang.String","int","java.lang.String"] }, 
-    {"name":"registerOutParameter","parameterTypes":["java.lang.String","java.sql.SQLType"] }, 
-    {"name":"registerOutParameter","parameterTypes":["java.lang.String","java.sql.SQLType","int"] }, 
-    {"name":"registerOutParameter","parameterTypes":["java.lang.String","java.sql.SQLType","java.lang.String"] }, 
-    {"name":"setAsciiStream","parameterTypes":["java.lang.String","java.io.InputStream"] }, 
-    {"name":"setAsciiStream","parameterTypes":["java.lang.String","java.io.InputStream","int"] }, 
-    {"name":"setAsciiStream","parameterTypes":["java.lang.String","java.io.InputStream","long"] }, 
-    {"name":"setBigDecimal","parameterTypes":["java.lang.String","java.math.BigDecimal"] }, 
-    {"name":"setBinaryStream","parameterTypes":["java.lang.String","java.io.InputStream"] }, 
-    {"name":"setBinaryStream","parameterTypes":["java.lang.String","java.io.InputStream","int"] }, 
-    {"name":"setBinaryStream","parameterTypes":["java.lang.String","java.io.InputStream","long"] }, 
-    {"name":"setBlob","parameterTypes":["java.lang.String","java.io.InputStream"] }, 
-    {"name":"setBlob","parameterTypes":["java.lang.String","java.io.InputStream","long"] }, 
-    {"name":"setBlob","parameterTypes":["java.lang.String","java.sql.Blob"] }, 
-    {"name":"setBoolean","parameterTypes":["java.lang.String","boolean"] }, 
-    {"name":"setByte","parameterTypes":["java.lang.String","byte"] }, 
-    {"name":"setBytes","parameterTypes":["java.lang.String","byte[]"] }, 
-    {"name":"setCharacterStream","parameterTypes":["java.lang.String","java.io.Reader"] }, 
-    {"name":"setCharacterStream","parameterTypes":["java.lang.String","java.io.Reader","int"] }, 
-    {"name":"setCharacterStream","parameterTypes":["java.lang.String","java.io.Reader","long"] }, 
-    {"name":"setClob","parameterTypes":["java.lang.String","java.io.Reader"] }, 
-    {"name":"setClob","parameterTypes":["java.lang.String","java.io.Reader","long"] }, 
-    {"name":"setClob","parameterTypes":["java.lang.String","java.sql.Clob"] }, 
-    {"name":"setDate","parameterTypes":["java.lang.String","java.sql.Date"] }, 
-    {"name":"setDate","parameterTypes":["java.lang.String","java.sql.Date","java.util.Calendar"] }, 
-    {"name":"setDouble","parameterTypes":["java.lang.String","double"] }, 
-    {"name":"setFloat","parameterTypes":["java.lang.String","float"] }, 
-    {"name":"setInt","parameterTypes":["java.lang.String","int"] }, 
-    {"name":"setLong","parameterTypes":["java.lang.String","long"] }, 
-    {"name":"setNCharacterStream","parameterTypes":["java.lang.String","java.io.Reader"] }, 
-    {"name":"setNCharacterStream","parameterTypes":["java.lang.String","java.io.Reader","long"] }, 
-    {"name":"setNClob","parameterTypes":["java.lang.String","java.io.Reader"] }, 
-    {"name":"setNClob","parameterTypes":["java.lang.String","java.io.Reader","long"] }, 
-    {"name":"setNClob","parameterTypes":["java.lang.String","java.sql.NClob"] }, 
-    {"name":"setNString","parameterTypes":["java.lang.String","java.lang.String"] }, 
-    {"name":"setNull","parameterTypes":["java.lang.String","int"] }, 
-    {"name":"setNull","parameterTypes":["java.lang.String","int","java.lang.String"] }, 
-    {"name":"setObject","parameterTypes":["java.lang.String","java.lang.Object"] }, 
-    {"name":"setObject","parameterTypes":["java.lang.String","java.lang.Object","int"] }, 
-    {"name":"setObject","parameterTypes":["java.lang.String","java.lang.Object","int","int"] }, 
-    {"name":"setObject","parameterTypes":["java.lang.String","java.lang.Object","java.sql.SQLType"] }, 
-    {"name":"setObject","parameterTypes":["java.lang.String","java.lang.Object","java.sql.SQLType","int"] }, 
-    {"name":"setRowId","parameterTypes":["java.lang.String","java.sql.RowId"] }, 
-    {"name":"setSQLXML","parameterTypes":["java.lang.String","java.sql.SQLXML"] }, 
-    {"name":"setShort","parameterTypes":["java.lang.String","short"] }, 
-    {"name":"setString","parameterTypes":["java.lang.String","java.lang.String"] }, 
-    {"name":"setTime","parameterTypes":["java.lang.String","java.sql.Time"] }, 
-    {"name":"setTime","parameterTypes":["java.lang.String","java.sql.Time","java.util.Calendar"] }, 
-    {"name":"setTimestamp","parameterTypes":["java.lang.String","java.sql.Timestamp"] }, 
-    {"name":"setTimestamp","parameterTypes":["java.lang.String","java.sql.Timestamp","java.util.Calendar"] }, 
-    {"name":"setURL","parameterTypes":["java.lang.String","java.net.URL"] }, 
-    {"name":"wasNull","parameterTypes":[] }
-  ]
+  "queryAllPublicMethods":true
 },
 {
   "name":"java.sql.Connection",
@@ -1338,188 +1058,7 @@
 {
   "name":"java.sql.DatabaseMetaData",
   "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"allProceduresAreCallable","parameterTypes":[] }, 
-    {"name":"allTablesAreSelectable","parameterTypes":[] }, 
-    {"name":"autoCommitFailureClosesAllResultSets","parameterTypes":[] }, 
-    {"name":"dataDefinitionCausesTransactionCommit","parameterTypes":[] }, 
-    {"name":"dataDefinitionIgnoredInTransactions","parameterTypes":[] }, 
-    {"name":"deletesAreDetected","parameterTypes":["int"] }, 
-    {"name":"doesMaxRowSizeIncludeBlobs","parameterTypes":[] }, 
-    {"name":"generatedKeyAlwaysReturned","parameterTypes":[] }, 
-    {"name":"getAttributes","parameterTypes":["java.lang.String","java.lang.String","java.lang.String","java.lang.String"] }, 
-    {"name":"getBestRowIdentifier","parameterTypes":["java.lang.String","java.lang.String","java.lang.String","int","boolean"] }, 
-    {"name":"getCatalogSeparator","parameterTypes":[] }, 
-    {"name":"getCatalogTerm","parameterTypes":[] }, 
-    {"name":"getCatalogs","parameterTypes":[] }, 
-    {"name":"getClientInfoProperties","parameterTypes":[] }, 
-    {"name":"getColumnPrivileges","parameterTypes":["java.lang.String","java.lang.String","java.lang.String","java.lang.String"] }, 
-    {"name":"getColumns","parameterTypes":["java.lang.String","java.lang.String","java.lang.String","java.lang.String"] }, 
-    {"name":"getConnection","parameterTypes":[] }, 
-    {"name":"getCrossReference","parameterTypes":["java.lang.String","java.lang.String","java.lang.String","java.lang.String","java.lang.String","java.lang.String"] }, 
-    {"name":"getDatabaseMajorVersion","parameterTypes":[] }, 
-    {"name":"getDatabaseMinorVersion","parameterTypes":[] }, 
-    {"name":"getDatabaseProductName","parameterTypes":[] }, 
-    {"name":"getDatabaseProductVersion","parameterTypes":[] }, 
-    {"name":"getDefaultTransactionIsolation","parameterTypes":[] }, 
-    {"name":"getDriverMajorVersion","parameterTypes":[] }, 
-    {"name":"getDriverMinorVersion","parameterTypes":[] }, 
-    {"name":"getDriverName","parameterTypes":[] }, 
-    {"name":"getDriverVersion","parameterTypes":[] }, 
-    {"name":"getExportedKeys","parameterTypes":["java.lang.String","java.lang.String","java.lang.String"] }, 
-    {"name":"getExtraNameCharacters","parameterTypes":[] }, 
-    {"name":"getFunctionColumns","parameterTypes":["java.lang.String","java.lang.String","java.lang.String","java.lang.String"] }, 
-    {"name":"getFunctions","parameterTypes":["java.lang.String","java.lang.String","java.lang.String"] }, 
-    {"name":"getIdentifierQuoteString","parameterTypes":[] }, 
-    {"name":"getImportedKeys","parameterTypes":["java.lang.String","java.lang.String","java.lang.String"] }, 
-    {"name":"getIndexInfo","parameterTypes":["java.lang.String","java.lang.String","java.lang.String","boolean","boolean"] }, 
-    {"name":"getJDBCMajorVersion","parameterTypes":[] }, 
-    {"name":"getJDBCMinorVersion","parameterTypes":[] }, 
-    {"name":"getMaxBinaryLiteralLength","parameterTypes":[] }, 
-    {"name":"getMaxCatalogNameLength","parameterTypes":[] }, 
-    {"name":"getMaxCharLiteralLength","parameterTypes":[] }, 
-    {"name":"getMaxColumnNameLength","parameterTypes":[] }, 
-    {"name":"getMaxColumnsInGroupBy","parameterTypes":[] }, 
-    {"name":"getMaxColumnsInIndex","parameterTypes":[] }, 
-    {"name":"getMaxColumnsInOrderBy","parameterTypes":[] }, 
-    {"name":"getMaxColumnsInSelect","parameterTypes":[] }, 
-    {"name":"getMaxColumnsInTable","parameterTypes":[] }, 
-    {"name":"getMaxConnections","parameterTypes":[] }, 
-    {"name":"getMaxCursorNameLength","parameterTypes":[] }, 
-    {"name":"getMaxIndexLength","parameterTypes":[] }, 
-    {"name":"getMaxLogicalLobSize","parameterTypes":[] }, 
-    {"name":"getMaxProcedureNameLength","parameterTypes":[] }, 
-    {"name":"getMaxRowSize","parameterTypes":[] }, 
-    {"name":"getMaxSchemaNameLength","parameterTypes":[] }, 
-    {"name":"getMaxStatementLength","parameterTypes":[] }, 
-    {"name":"getMaxStatements","parameterTypes":[] }, 
-    {"name":"getMaxTableNameLength","parameterTypes":[] }, 
-    {"name":"getMaxTablesInSelect","parameterTypes":[] }, 
-    {"name":"getMaxUserNameLength","parameterTypes":[] }, 
-    {"name":"getNumericFunctions","parameterTypes":[] }, 
-    {"name":"getPrimaryKeys","parameterTypes":["java.lang.String","java.lang.String","java.lang.String"] }, 
-    {"name":"getProcedureColumns","parameterTypes":["java.lang.String","java.lang.String","java.lang.String","java.lang.String"] }, 
-    {"name":"getProcedureTerm","parameterTypes":[] }, 
-    {"name":"getProcedures","parameterTypes":["java.lang.String","java.lang.String","java.lang.String"] }, 
-    {"name":"getPseudoColumns","parameterTypes":["java.lang.String","java.lang.String","java.lang.String","java.lang.String"] }, 
-    {"name":"getResultSetHoldability","parameterTypes":[] }, 
-    {"name":"getRowIdLifetime","parameterTypes":[] }, 
-    {"name":"getSQLKeywords","parameterTypes":[] }, 
-    {"name":"getSQLStateType","parameterTypes":[] }, 
-    {"name":"getSchemaTerm","parameterTypes":[] }, 
-    {"name":"getSchemas","parameterTypes":[] }, 
-    {"name":"getSchemas","parameterTypes":["java.lang.String","java.lang.String"] }, 
-    {"name":"getSearchStringEscape","parameterTypes":[] }, 
-    {"name":"getStringFunctions","parameterTypes":[] }, 
-    {"name":"getSuperTables","parameterTypes":["java.lang.String","java.lang.String","java.lang.String"] }, 
-    {"name":"getSuperTypes","parameterTypes":["java.lang.String","java.lang.String","java.lang.String"] }, 
-    {"name":"getSystemFunctions","parameterTypes":[] }, 
-    {"name":"getTablePrivileges","parameterTypes":["java.lang.String","java.lang.String","java.lang.String"] }, 
-    {"name":"getTableTypes","parameterTypes":[] }, 
-    {"name":"getTables","parameterTypes":["java.lang.String","java.lang.String","java.lang.String","java.lang.String[]"] }, 
-    {"name":"getTimeDateFunctions","parameterTypes":[] }, 
-    {"name":"getTypeInfo","parameterTypes":[] }, 
-    {"name":"getUDTs","parameterTypes":["java.lang.String","java.lang.String","java.lang.String","int[]"] }, 
-    {"name":"getURL","parameterTypes":[] }, 
-    {"name":"getUserName","parameterTypes":[] }, 
-    {"name":"getVersionColumns","parameterTypes":["java.lang.String","java.lang.String","java.lang.String"] }, 
-    {"name":"insertsAreDetected","parameterTypes":["int"] }, 
-    {"name":"isCatalogAtStart","parameterTypes":[] }, 
-    {"name":"isReadOnly","parameterTypes":[] }, 
-    {"name":"locatorsUpdateCopy","parameterTypes":[] }, 
-    {"name":"nullPlusNonNullIsNull","parameterTypes":[] }, 
-    {"name":"nullsAreSortedAtEnd","parameterTypes":[] }, 
-    {"name":"nullsAreSortedAtStart","parameterTypes":[] }, 
-    {"name":"nullsAreSortedHigh","parameterTypes":[] }, 
-    {"name":"nullsAreSortedLow","parameterTypes":[] }, 
-    {"name":"othersDeletesAreVisible","parameterTypes":["int"] }, 
-    {"name":"othersInsertsAreVisible","parameterTypes":["int"] }, 
-    {"name":"othersUpdatesAreVisible","parameterTypes":["int"] }, 
-    {"name":"ownDeletesAreVisible","parameterTypes":["int"] }, 
-    {"name":"ownInsertsAreVisible","parameterTypes":["int"] }, 
-    {"name":"ownUpdatesAreVisible","parameterTypes":["int"] }, 
-    {"name":"storesLowerCaseIdentifiers","parameterTypes":[] }, 
-    {"name":"storesLowerCaseQuotedIdentifiers","parameterTypes":[] }, 
-    {"name":"storesMixedCaseIdentifiers","parameterTypes":[] }, 
-    {"name":"storesMixedCaseQuotedIdentifiers","parameterTypes":[] }, 
-    {"name":"storesUpperCaseIdentifiers","parameterTypes":[] }, 
-    {"name":"storesUpperCaseQuotedIdentifiers","parameterTypes":[] }, 
-    {"name":"supportsANSI92EntryLevelSQL","parameterTypes":[] }, 
-    {"name":"supportsANSI92FullSQL","parameterTypes":[] }, 
-    {"name":"supportsANSI92IntermediateSQL","parameterTypes":[] }, 
-    {"name":"supportsAlterTableWithAddColumn","parameterTypes":[] }, 
-    {"name":"supportsAlterTableWithDropColumn","parameterTypes":[] }, 
-    {"name":"supportsBatchUpdates","parameterTypes":[] }, 
-    {"name":"supportsCatalogsInDataManipulation","parameterTypes":[] }, 
-    {"name":"supportsCatalogsInIndexDefinitions","parameterTypes":[] }, 
-    {"name":"supportsCatalogsInPrivilegeDefinitions","parameterTypes":[] }, 
-    {"name":"supportsCatalogsInProcedureCalls","parameterTypes":[] }, 
-    {"name":"supportsCatalogsInTableDefinitions","parameterTypes":[] }, 
-    {"name":"supportsColumnAliasing","parameterTypes":[] }, 
-    {"name":"supportsConvert","parameterTypes":[] }, 
-    {"name":"supportsConvert","parameterTypes":["int","int"] }, 
-    {"name":"supportsCoreSQLGrammar","parameterTypes":[] }, 
-    {"name":"supportsCorrelatedSubqueries","parameterTypes":[] }, 
-    {"name":"supportsDataDefinitionAndDataManipulationTransactions","parameterTypes":[] }, 
-    {"name":"supportsDataManipulationTransactionsOnly","parameterTypes":[] }, 
-    {"name":"supportsDifferentTableCorrelationNames","parameterTypes":[] }, 
-    {"name":"supportsExpressionsInOrderBy","parameterTypes":[] }, 
-    {"name":"supportsExtendedSQLGrammar","parameterTypes":[] }, 
-    {"name":"supportsFullOuterJoins","parameterTypes":[] }, 
-    {"name":"supportsGetGeneratedKeys","parameterTypes":[] }, 
-    {"name":"supportsGroupBy","parameterTypes":[] }, 
-    {"name":"supportsGroupByBeyondSelect","parameterTypes":[] }, 
-    {"name":"supportsGroupByUnrelated","parameterTypes":[] }, 
-    {"name":"supportsIntegrityEnhancementFacility","parameterTypes":[] }, 
-    {"name":"supportsLikeEscapeClause","parameterTypes":[] }, 
-    {"name":"supportsLimitedOuterJoins","parameterTypes":[] }, 
-    {"name":"supportsMinimumSQLGrammar","parameterTypes":[] }, 
-    {"name":"supportsMixedCaseIdentifiers","parameterTypes":[] }, 
-    {"name":"supportsMixedCaseQuotedIdentifiers","parameterTypes":[] }, 
-    {"name":"supportsMultipleOpenResults","parameterTypes":[] }, 
-    {"name":"supportsMultipleResultSets","parameterTypes":[] }, 
-    {"name":"supportsMultipleTransactions","parameterTypes":[] }, 
-    {"name":"supportsNamedParameters","parameterTypes":[] }, 
-    {"name":"supportsNonNullableColumns","parameterTypes":[] }, 
-    {"name":"supportsOpenCursorsAcrossCommit","parameterTypes":[] }, 
-    {"name":"supportsOpenCursorsAcrossRollback","parameterTypes":[] }, 
-    {"name":"supportsOpenStatementsAcrossCommit","parameterTypes":[] }, 
-    {"name":"supportsOpenStatementsAcrossRollback","parameterTypes":[] }, 
-    {"name":"supportsOrderByUnrelated","parameterTypes":[] }, 
-    {"name":"supportsOuterJoins","parameterTypes":[] }, 
-    {"name":"supportsPositionedDelete","parameterTypes":[] }, 
-    {"name":"supportsPositionedUpdate","parameterTypes":[] }, 
-    {"name":"supportsRefCursors","parameterTypes":[] }, 
-    {"name":"supportsResultSetConcurrency","parameterTypes":["int","int"] }, 
-    {"name":"supportsResultSetHoldability","parameterTypes":["int"] }, 
-    {"name":"supportsResultSetType","parameterTypes":["int"] }, 
-    {"name":"supportsSavepoints","parameterTypes":[] }, 
-    {"name":"supportsSchemasInDataManipulation","parameterTypes":[] }, 
-    {"name":"supportsSchemasInIndexDefinitions","parameterTypes":[] }, 
-    {"name":"supportsSchemasInPrivilegeDefinitions","parameterTypes":[] }, 
-    {"name":"supportsSchemasInProcedureCalls","parameterTypes":[] }, 
-    {"name":"supportsSchemasInTableDefinitions","parameterTypes":[] }, 
-    {"name":"supportsSelectForUpdate","parameterTypes":[] }, 
-    {"name":"supportsSharding","parameterTypes":[] }, 
-    {"name":"supportsStatementPooling","parameterTypes":[] }, 
-    {"name":"supportsStoredFunctionsUsingCallSyntax","parameterTypes":[] }, 
-    {"name":"supportsStoredProcedures","parameterTypes":[] }, 
-    {"name":"supportsSubqueriesInComparisons","parameterTypes":[] }, 
-    {"name":"supportsSubqueriesInExists","parameterTypes":[] }, 
-    {"name":"supportsSubqueriesInIns","parameterTypes":[] }, 
-    {"name":"supportsSubqueriesInQuantifieds","parameterTypes":[] }, 
-    {"name":"supportsTableCorrelationNames","parameterTypes":[] }, 
-    {"name":"supportsTransactionIsolationLevel","parameterTypes":["int"] }, 
-    {"name":"supportsTransactions","parameterTypes":[] }, 
-    {"name":"supportsUnion","parameterTypes":[] }, 
-    {"name":"supportsUnionAll","parameterTypes":[] }, 
-    {"name":"updatesAreDetected","parameterTypes":["int"] }, 
-    {"name":"usesLocalFilePerTable","parameterTypes":[] }, 
-    {"name":"usesLocalFiles","parameterTypes":[] }
-  ]
+  "queryAllPublicMethods":true
 },
 {
   "name":"java.sql.Driver",
@@ -1529,345 +1068,22 @@
 {
   "name":"java.sql.PreparedStatement",
   "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"addBatch","parameterTypes":[] }, 
-    {"name":"clearParameters","parameterTypes":[] }, 
-    {"name":"execute","parameterTypes":[] }, 
-    {"name":"executeLargeUpdate","parameterTypes":[] }, 
-    {"name":"executeQuery","parameterTypes":[] }, 
-    {"name":"executeUpdate","parameterTypes":[] }, 
-    {"name":"getMetaData","parameterTypes":[] }, 
-    {"name":"getParameterMetaData","parameterTypes":[] }, 
-    {"name":"setArray","parameterTypes":["int","java.sql.Array"] }, 
-    {"name":"setAsciiStream","parameterTypes":["int","java.io.InputStream"] }, 
-    {"name":"setAsciiStream","parameterTypes":["int","java.io.InputStream","int"] }, 
-    {"name":"setAsciiStream","parameterTypes":["int","java.io.InputStream","long"] }, 
-    {"name":"setBigDecimal","parameterTypes":["int","java.math.BigDecimal"] }, 
-    {"name":"setBinaryStream","parameterTypes":["int","java.io.InputStream"] }, 
-    {"name":"setBinaryStream","parameterTypes":["int","java.io.InputStream","int"] }, 
-    {"name":"setBinaryStream","parameterTypes":["int","java.io.InputStream","long"] }, 
-    {"name":"setBlob","parameterTypes":["int","java.io.InputStream"] }, 
-    {"name":"setBlob","parameterTypes":["int","java.io.InputStream","long"] }, 
-    {"name":"setBlob","parameterTypes":["int","java.sql.Blob"] }, 
-    {"name":"setBoolean","parameterTypes":["int","boolean"] }, 
-    {"name":"setByte","parameterTypes":["int","byte"] }, 
-    {"name":"setBytes","parameterTypes":["int","byte[]"] }, 
-    {"name":"setCharacterStream","parameterTypes":["int","java.io.Reader"] }, 
-    {"name":"setCharacterStream","parameterTypes":["int","java.io.Reader","int"] }, 
-    {"name":"setCharacterStream","parameterTypes":["int","java.io.Reader","long"] }, 
-    {"name":"setClob","parameterTypes":["int","java.io.Reader"] }, 
-    {"name":"setClob","parameterTypes":["int","java.io.Reader","long"] }, 
-    {"name":"setClob","parameterTypes":["int","java.sql.Clob"] }, 
-    {"name":"setDate","parameterTypes":["int","java.sql.Date"] }, 
-    {"name":"setDate","parameterTypes":["int","java.sql.Date","java.util.Calendar"] }, 
-    {"name":"setDouble","parameterTypes":["int","double"] }, 
-    {"name":"setFloat","parameterTypes":["int","float"] }, 
-    {"name":"setInt","parameterTypes":["int","int"] }, 
-    {"name":"setLong","parameterTypes":["int","long"] }, 
-    {"name":"setNCharacterStream","parameterTypes":["int","java.io.Reader"] }, 
-    {"name":"setNCharacterStream","parameterTypes":["int","java.io.Reader","long"] }, 
-    {"name":"setNClob","parameterTypes":["int","java.io.Reader"] }, 
-    {"name":"setNClob","parameterTypes":["int","java.io.Reader","long"] }, 
-    {"name":"setNClob","parameterTypes":["int","java.sql.NClob"] }, 
-    {"name":"setNString","parameterTypes":["int","java.lang.String"] }, 
-    {"name":"setNull","parameterTypes":["int","int"] }, 
-    {"name":"setNull","parameterTypes":["int","int","java.lang.String"] }, 
-    {"name":"setObject","parameterTypes":["int","java.lang.Object"] }, 
-    {"name":"setObject","parameterTypes":["int","java.lang.Object","int"] }, 
-    {"name":"setObject","parameterTypes":["int","java.lang.Object","int","int"] }, 
-    {"name":"setObject","parameterTypes":["int","java.lang.Object","java.sql.SQLType"] }, 
-    {"name":"setObject","parameterTypes":["int","java.lang.Object","java.sql.SQLType","int"] }, 
-    {"name":"setRef","parameterTypes":["int","java.sql.Ref"] }, 
-    {"name":"setRowId","parameterTypes":["int","java.sql.RowId"] }, 
-    {"name":"setSQLXML","parameterTypes":["int","java.sql.SQLXML"] }, 
-    {"name":"setShort","parameterTypes":["int","short"] }, 
-    {"name":"setString","parameterTypes":["int","java.lang.String"] }, 
-    {"name":"setTime","parameterTypes":["int","java.sql.Time"] }, 
-    {"name":"setTime","parameterTypes":["int","java.sql.Time","java.util.Calendar"] }, 
-    {"name":"setTimestamp","parameterTypes":["int","java.sql.Timestamp"] }, 
-    {"name":"setTimestamp","parameterTypes":["int","java.sql.Timestamp","java.util.Calendar"] }, 
-    {"name":"setURL","parameterTypes":["int","java.net.URL"] }, 
-    {"name":"setUnicodeStream","parameterTypes":["int","java.io.InputStream","int"] }
-  ]
+  "queryAllPublicMethods":true
 },
 {
   "name":"java.sql.ResultSet",
   "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"absolute","parameterTypes":["int"] }, 
-    {"name":"afterLast","parameterTypes":[] }, 
-    {"name":"beforeFirst","parameterTypes":[] }, 
-    {"name":"cancelRowUpdates","parameterTypes":[] }, 
-    {"name":"clearWarnings","parameterTypes":[] }, 
-    {"name":"close","parameterTypes":[] }, 
-    {"name":"deleteRow","parameterTypes":[] }, 
-    {"name":"findColumn","parameterTypes":["java.lang.String"] }, 
-    {"name":"first","parameterTypes":[] }, 
-    {"name":"getArray","parameterTypes":["int"] }, 
-    {"name":"getArray","parameterTypes":["java.lang.String"] }, 
-    {"name":"getAsciiStream","parameterTypes":["int"] }, 
-    {"name":"getAsciiStream","parameterTypes":["java.lang.String"] }, 
-    {"name":"getBigDecimal","parameterTypes":["int"] }, 
-    {"name":"getBigDecimal","parameterTypes":["int","int"] }, 
-    {"name":"getBigDecimal","parameterTypes":["java.lang.String"] }, 
-    {"name":"getBigDecimal","parameterTypes":["java.lang.String","int"] }, 
-    {"name":"getBinaryStream","parameterTypes":["int"] }, 
-    {"name":"getBinaryStream","parameterTypes":["java.lang.String"] }, 
-    {"name":"getBlob","parameterTypes":["int"] }, 
-    {"name":"getBlob","parameterTypes":["java.lang.String"] }, 
-    {"name":"getBoolean","parameterTypes":["int"] }, 
-    {"name":"getBoolean","parameterTypes":["java.lang.String"] }, 
-    {"name":"getByte","parameterTypes":["int"] }, 
-    {"name":"getByte","parameterTypes":["java.lang.String"] }, 
-    {"name":"getBytes","parameterTypes":["int"] }, 
-    {"name":"getBytes","parameterTypes":["java.lang.String"] }, 
-    {"name":"getCharacterStream","parameterTypes":["int"] }, 
-    {"name":"getCharacterStream","parameterTypes":["java.lang.String"] }, 
-    {"name":"getClob","parameterTypes":["int"] }, 
-    {"name":"getClob","parameterTypes":["java.lang.String"] }, 
-    {"name":"getConcurrency","parameterTypes":[] }, 
-    {"name":"getCursorName","parameterTypes":[] }, 
-    {"name":"getDate","parameterTypes":["int"] }, 
-    {"name":"getDate","parameterTypes":["int","java.util.Calendar"] }, 
-    {"name":"getDate","parameterTypes":["java.lang.String"] }, 
-    {"name":"getDate","parameterTypes":["java.lang.String","java.util.Calendar"] }, 
-    {"name":"getDouble","parameterTypes":["int"] }, 
-    {"name":"getDouble","parameterTypes":["java.lang.String"] }, 
-    {"name":"getFetchDirection","parameterTypes":[] }, 
-    {"name":"getFetchSize","parameterTypes":[] }, 
-    {"name":"getFloat","parameterTypes":["int"] }, 
-    {"name":"getFloat","parameterTypes":["java.lang.String"] }, 
-    {"name":"getHoldability","parameterTypes":[] }, 
-    {"name":"getInt","parameterTypes":["int"] }, 
-    {"name":"getInt","parameterTypes":["java.lang.String"] }, 
-    {"name":"getLong","parameterTypes":["int"] }, 
-    {"name":"getLong","parameterTypes":["java.lang.String"] }, 
-    {"name":"getMetaData","parameterTypes":[] }, 
-    {"name":"getNCharacterStream","parameterTypes":["int"] }, 
-    {"name":"getNCharacterStream","parameterTypes":["java.lang.String"] }, 
-    {"name":"getNClob","parameterTypes":["int"] }, 
-    {"name":"getNClob","parameterTypes":["java.lang.String"] }, 
-    {"name":"getNString","parameterTypes":["int"] }, 
-    {"name":"getNString","parameterTypes":["java.lang.String"] }, 
-    {"name":"getObject","parameterTypes":["int"] }, 
-    {"name":"getObject","parameterTypes":["int","java.lang.Class"] }, 
-    {"name":"getObject","parameterTypes":["int","java.util.Map"] }, 
-    {"name":"getObject","parameterTypes":["java.lang.String"] }, 
-    {"name":"getObject","parameterTypes":["java.lang.String","java.lang.Class"] }, 
-    {"name":"getObject","parameterTypes":["java.lang.String","java.util.Map"] }, 
-    {"name":"getRef","parameterTypes":["int"] }, 
-    {"name":"getRef","parameterTypes":["java.lang.String"] }, 
-    {"name":"getRow","parameterTypes":[] }, 
-    {"name":"getRowId","parameterTypes":["int"] }, 
-    {"name":"getRowId","parameterTypes":["java.lang.String"] }, 
-    {"name":"getSQLXML","parameterTypes":["int"] }, 
-    {"name":"getSQLXML","parameterTypes":["java.lang.String"] }, 
-    {"name":"getShort","parameterTypes":["int"] }, 
-    {"name":"getShort","parameterTypes":["java.lang.String"] }, 
-    {"name":"getStatement","parameterTypes":[] }, 
-    {"name":"getString","parameterTypes":["int"] }, 
-    {"name":"getString","parameterTypes":["java.lang.String"] }, 
-    {"name":"getTime","parameterTypes":["int"] }, 
-    {"name":"getTime","parameterTypes":["int","java.util.Calendar"] }, 
-    {"name":"getTime","parameterTypes":["java.lang.String"] }, 
-    {"name":"getTime","parameterTypes":["java.lang.String","java.util.Calendar"] }, 
-    {"name":"getTimestamp","parameterTypes":["int"] }, 
-    {"name":"getTimestamp","parameterTypes":["int","java.util.Calendar"] }, 
-    {"name":"getTimestamp","parameterTypes":["java.lang.String"] }, 
-    {"name":"getTimestamp","parameterTypes":["java.lang.String","java.util.Calendar"] }, 
-    {"name":"getType","parameterTypes":[] }, 
-    {"name":"getURL","parameterTypes":["int"] }, 
-    {"name":"getURL","parameterTypes":["java.lang.String"] }, 
-    {"name":"getUnicodeStream","parameterTypes":["int"] }, 
-    {"name":"getUnicodeStream","parameterTypes":["java.lang.String"] }, 
-    {"name":"getWarnings","parameterTypes":[] }, 
-    {"name":"insertRow","parameterTypes":[] }, 
-    {"name":"isAfterLast","parameterTypes":[] }, 
-    {"name":"isBeforeFirst","parameterTypes":[] }, 
-    {"name":"isClosed","parameterTypes":[] }, 
-    {"name":"isFirst","parameterTypes":[] }, 
-    {"name":"isLast","parameterTypes":[] }, 
-    {"name":"last","parameterTypes":[] }, 
-    {"name":"moveToCurrentRow","parameterTypes":[] }, 
-    {"name":"moveToInsertRow","parameterTypes":[] }, 
-    {"name":"next","parameterTypes":[] }, 
-    {"name":"previous","parameterTypes":[] }, 
-    {"name":"refreshRow","parameterTypes":[] }, 
-    {"name":"relative","parameterTypes":["int"] }, 
-    {"name":"rowDeleted","parameterTypes":[] }, 
-    {"name":"rowInserted","parameterTypes":[] }, 
-    {"name":"rowUpdated","parameterTypes":[] }, 
-    {"name":"setFetchDirection","parameterTypes":["int"] }, 
-    {"name":"setFetchSize","parameterTypes":["int"] }, 
-    {"name":"updateArray","parameterTypes":["int","java.sql.Array"] }, 
-    {"name":"updateArray","parameterTypes":["java.lang.String","java.sql.Array"] }, 
-    {"name":"updateAsciiStream","parameterTypes":["int","java.io.InputStream"] }, 
-    {"name":"updateAsciiStream","parameterTypes":["int","java.io.InputStream","int"] }, 
-    {"name":"updateAsciiStream","parameterTypes":["int","java.io.InputStream","long"] }, 
-    {"name":"updateAsciiStream","parameterTypes":["java.lang.String","java.io.InputStream"] }, 
-    {"name":"updateAsciiStream","parameterTypes":["java.lang.String","java.io.InputStream","int"] }, 
-    {"name":"updateAsciiStream","parameterTypes":["java.lang.String","java.io.InputStream","long"] }, 
-    {"name":"updateBigDecimal","parameterTypes":["int","java.math.BigDecimal"] }, 
-    {"name":"updateBigDecimal","parameterTypes":["java.lang.String","java.math.BigDecimal"] }, 
-    {"name":"updateBinaryStream","parameterTypes":["int","java.io.InputStream"] }, 
-    {"name":"updateBinaryStream","parameterTypes":["int","java.io.InputStream","int"] }, 
-    {"name":"updateBinaryStream","parameterTypes":["int","java.io.InputStream","long"] }, 
-    {"name":"updateBinaryStream","parameterTypes":["java.lang.String","java.io.InputStream"] }, 
-    {"name":"updateBinaryStream","parameterTypes":["java.lang.String","java.io.InputStream","int"] }, 
-    {"name":"updateBinaryStream","parameterTypes":["java.lang.String","java.io.InputStream","long"] }, 
-    {"name":"updateBlob","parameterTypes":["int","java.io.InputStream"] }, 
-    {"name":"updateBlob","parameterTypes":["int","java.io.InputStream","long"] }, 
-    {"name":"updateBlob","parameterTypes":["int","java.sql.Blob"] }, 
-    {"name":"updateBlob","parameterTypes":["java.lang.String","java.io.InputStream"] }, 
-    {"name":"updateBlob","parameterTypes":["java.lang.String","java.io.InputStream","long"] }, 
-    {"name":"updateBlob","parameterTypes":["java.lang.String","java.sql.Blob"] }, 
-    {"name":"updateBoolean","parameterTypes":["int","boolean"] }, 
-    {"name":"updateBoolean","parameterTypes":["java.lang.String","boolean"] }, 
-    {"name":"updateByte","parameterTypes":["int","byte"] }, 
-    {"name":"updateByte","parameterTypes":["java.lang.String","byte"] }, 
-    {"name":"updateBytes","parameterTypes":["int","byte[]"] }, 
-    {"name":"updateBytes","parameterTypes":["java.lang.String","byte[]"] }, 
-    {"name":"updateCharacterStream","parameterTypes":["int","java.io.Reader"] }, 
-    {"name":"updateCharacterStream","parameterTypes":["int","java.io.Reader","int"] }, 
-    {"name":"updateCharacterStream","parameterTypes":["int","java.io.Reader","long"] }, 
-    {"name":"updateCharacterStream","parameterTypes":["java.lang.String","java.io.Reader"] }, 
-    {"name":"updateCharacterStream","parameterTypes":["java.lang.String","java.io.Reader","int"] }, 
-    {"name":"updateCharacterStream","parameterTypes":["java.lang.String","java.io.Reader","long"] }, 
-    {"name":"updateClob","parameterTypes":["int","java.io.Reader"] }, 
-    {"name":"updateClob","parameterTypes":["int","java.io.Reader","long"] }, 
-    {"name":"updateClob","parameterTypes":["int","java.sql.Clob"] }, 
-    {"name":"updateClob","parameterTypes":["java.lang.String","java.io.Reader"] }, 
-    {"name":"updateClob","parameterTypes":["java.lang.String","java.io.Reader","long"] }, 
-    {"name":"updateClob","parameterTypes":["java.lang.String","java.sql.Clob"] }, 
-    {"name":"updateDate","parameterTypes":["int","java.sql.Date"] }, 
-    {"name":"updateDate","parameterTypes":["java.lang.String","java.sql.Date"] }, 
-    {"name":"updateDouble","parameterTypes":["int","double"] }, 
-    {"name":"updateDouble","parameterTypes":["java.lang.String","double"] }, 
-    {"name":"updateFloat","parameterTypes":["int","float"] }, 
-    {"name":"updateFloat","parameterTypes":["java.lang.String","float"] }, 
-    {"name":"updateInt","parameterTypes":["int","int"] }, 
-    {"name":"updateInt","parameterTypes":["java.lang.String","int"] }, 
-    {"name":"updateLong","parameterTypes":["int","long"] }, 
-    {"name":"updateLong","parameterTypes":["java.lang.String","long"] }, 
-    {"name":"updateNCharacterStream","parameterTypes":["int","java.io.Reader"] }, 
-    {"name":"updateNCharacterStream","parameterTypes":["int","java.io.Reader","long"] }, 
-    {"name":"updateNCharacterStream","parameterTypes":["java.lang.String","java.io.Reader"] }, 
-    {"name":"updateNCharacterStream","parameterTypes":["java.lang.String","java.io.Reader","long"] }, 
-    {"name":"updateNClob","parameterTypes":["int","java.io.Reader"] }, 
-    {"name":"updateNClob","parameterTypes":["int","java.io.Reader","long"] }, 
-    {"name":"updateNClob","parameterTypes":["int","java.sql.NClob"] }, 
-    {"name":"updateNClob","parameterTypes":["java.lang.String","java.io.Reader"] }, 
-    {"name":"updateNClob","parameterTypes":["java.lang.String","java.io.Reader","long"] }, 
-    {"name":"updateNClob","parameterTypes":["java.lang.String","java.sql.NClob"] }, 
-    {"name":"updateNString","parameterTypes":["int","java.lang.String"] }, 
-    {"name":"updateNString","parameterTypes":["java.lang.String","java.lang.String"] }, 
-    {"name":"updateNull","parameterTypes":["int"] }, 
-    {"name":"updateNull","parameterTypes":["java.lang.String"] }, 
-    {"name":"updateObject","parameterTypes":["int","java.lang.Object"] }, 
-    {"name":"updateObject","parameterTypes":["int","java.lang.Object","int"] }, 
-    {"name":"updateObject","parameterTypes":["int","java.lang.Object","java.sql.SQLType"] }, 
-    {"name":"updateObject","parameterTypes":["int","java.lang.Object","java.sql.SQLType","int"] }, 
-    {"name":"updateObject","parameterTypes":["java.lang.String","java.lang.Object"] }, 
-    {"name":"updateObject","parameterTypes":["java.lang.String","java.lang.Object","int"] }, 
-    {"name":"updateObject","parameterTypes":["java.lang.String","java.lang.Object","java.sql.SQLType"] }, 
-    {"name":"updateObject","parameterTypes":["java.lang.String","java.lang.Object","java.sql.SQLType","int"] }, 
-    {"name":"updateRef","parameterTypes":["int","java.sql.Ref"] }, 
-    {"name":"updateRef","parameterTypes":["java.lang.String","java.sql.Ref"] }, 
-    {"name":"updateRow","parameterTypes":[] }, 
-    {"name":"updateRowId","parameterTypes":["int","java.sql.RowId"] }, 
-    {"name":"updateRowId","parameterTypes":["java.lang.String","java.sql.RowId"] }, 
-    {"name":"updateSQLXML","parameterTypes":["int","java.sql.SQLXML"] }, 
-    {"name":"updateSQLXML","parameterTypes":["java.lang.String","java.sql.SQLXML"] }, 
-    {"name":"updateShort","parameterTypes":["int","short"] }, 
-    {"name":"updateShort","parameterTypes":["java.lang.String","short"] }, 
-    {"name":"updateString","parameterTypes":["int","java.lang.String"] }, 
-    {"name":"updateString","parameterTypes":["java.lang.String","java.lang.String"] }, 
-    {"name":"updateTime","parameterTypes":["int","java.sql.Time"] }, 
-    {"name":"updateTime","parameterTypes":["java.lang.String","java.sql.Time"] }, 
-    {"name":"updateTimestamp","parameterTypes":["int","java.sql.Timestamp"] }, 
-    {"name":"updateTimestamp","parameterTypes":["java.lang.String","java.sql.Timestamp"] }, 
-    {"name":"wasNull","parameterTypes":[] }
-  ]
+  "queryAllPublicMethods":true
 },
 {
   "name":"java.sql.Statement",
   "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"addBatch","parameterTypes":["java.lang.String"] }, 
-    {"name":"cancel","parameterTypes":[] }, 
-    {"name":"clearBatch","parameterTypes":[] }, 
-    {"name":"clearWarnings","parameterTypes":[] }, 
-    {"name":"close","parameterTypes":[] }, 
-    {"name":"closeOnCompletion","parameterTypes":[] }, 
-    {"name":"enquoteIdentifier","parameterTypes":["java.lang.String","boolean"] }, 
-    {"name":"enquoteLiteral","parameterTypes":["java.lang.String"] }, 
-    {"name":"enquoteNCharLiteral","parameterTypes":["java.lang.String"] }, 
-    {"name":"execute","parameterTypes":["java.lang.String"] }, 
-    {"name":"execute","parameterTypes":["java.lang.String","int"] }, 
-    {"name":"execute","parameterTypes":["java.lang.String","int[]"] }, 
-    {"name":"execute","parameterTypes":["java.lang.String","java.lang.String[]"] }, 
-    {"name":"executeBatch","parameterTypes":[] }, 
-    {"name":"executeLargeBatch","parameterTypes":[] }, 
-    {"name":"executeLargeUpdate","parameterTypes":["java.lang.String"] }, 
-    {"name":"executeLargeUpdate","parameterTypes":["java.lang.String","int"] }, 
-    {"name":"executeLargeUpdate","parameterTypes":["java.lang.String","int[]"] }, 
-    {"name":"executeLargeUpdate","parameterTypes":["java.lang.String","java.lang.String[]"] }, 
-    {"name":"executeQuery","parameterTypes":["java.lang.String"] }, 
-    {"name":"executeUpdate","parameterTypes":["java.lang.String"] }, 
-    {"name":"executeUpdate","parameterTypes":["java.lang.String","int"] }, 
-    {"name":"executeUpdate","parameterTypes":["java.lang.String","int[]"] }, 
-    {"name":"executeUpdate","parameterTypes":["java.lang.String","java.lang.String[]"] }, 
-    {"name":"getConnection","parameterTypes":[] }, 
-    {"name":"getFetchDirection","parameterTypes":[] }, 
-    {"name":"getFetchSize","parameterTypes":[] }, 
-    {"name":"getGeneratedKeys","parameterTypes":[] }, 
-    {"name":"getLargeMaxRows","parameterTypes":[] }, 
-    {"name":"getLargeUpdateCount","parameterTypes":[] }, 
-    {"name":"getMaxFieldSize","parameterTypes":[] }, 
-    {"name":"getMaxRows","parameterTypes":[] }, 
-    {"name":"getMoreResults","parameterTypes":[] }, 
-    {"name":"getMoreResults","parameterTypes":["int"] }, 
-    {"name":"getQueryTimeout","parameterTypes":[] }, 
-    {"name":"getResultSet","parameterTypes":[] }, 
-    {"name":"getResultSetConcurrency","parameterTypes":[] }, 
-    {"name":"getResultSetHoldability","parameterTypes":[] }, 
-    {"name":"getResultSetType","parameterTypes":[] }, 
-    {"name":"getUpdateCount","parameterTypes":[] }, 
-    {"name":"getWarnings","parameterTypes":[] }, 
-    {"name":"isCloseOnCompletion","parameterTypes":[] }, 
-    {"name":"isClosed","parameterTypes":[] }, 
-    {"name":"isPoolable","parameterTypes":[] }, 
-    {"name":"isSimpleIdentifier","parameterTypes":["java.lang.String"] }, 
-    {"name":"setCursorName","parameterTypes":["java.lang.String"] }, 
-    {"name":"setEscapeProcessing","parameterTypes":["boolean"] }, 
-    {"name":"setFetchDirection","parameterTypes":["int"] }, 
-    {"name":"setFetchSize","parameterTypes":["int"] }, 
-    {"name":"setLargeMaxRows","parameterTypes":["long"] }, 
-    {"name":"setMaxFieldSize","parameterTypes":["int"] }, 
-    {"name":"setMaxRows","parameterTypes":["int"] }, 
-    {"name":"setPoolable","parameterTypes":["boolean"] }, 
-    {"name":"setQueryTimeout","parameterTypes":["int"] }
-  ]
+  "queryAllPublicMethods":true
 },
 {
   "name":"java.sql.Wrapper",
   "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllPublicMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"isWrapperFor","parameterTypes":["java.lang.Class"] }, 
-    {"name":"unwrap","parameterTypes":["java.lang.Class"] }
-  ]
+  "queryAllPublicMethods":true
 },
 {
   "name":"java.time.Duration"
@@ -1911,8 +1127,7 @@
   "name":"java.util.LinkedHashSet"
 },
 {
-  "name":"java.util.PropertyPermission",
-  "methods":[{"name":"<init>","parameterTypes":["java.lang.String","java.lang.String"] }]
+  "name":"java.util.PropertyPermission"
 },
 {
   "name":"java.util.concurrent.ArrayBlockingQueue"
@@ -1936,30 +1151,10 @@
   "name":"java.util.concurrent.locks.ReentrantLock$Sync"
 },
 {
-  "name":"java.util.logging.LogManager",
-  "methods":[{"name":"getLoggingMXBean","parameterTypes":[] }]
-},
-{
-  "name":"java.util.logging.LoggingMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"javax.management.MBeanOperationInfo",
-  "queryAllPublicMethods":true,
-  "methods":[{"name":"getSignature","parameterTypes":[] }]
-},
-{
-  "name":"javax.management.MBeanServerBuilder",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
   "name":"javax.management.ObjectName"
 },
 {
   "name":"javax.management.openmbean.CompositeData"
-},
-{
-  "name":"javax.management.openmbean.OpenMBeanOperationInfoSupport"
 },
 {
   "name":"javax.management.openmbean.TabularData"
@@ -2029,166 +1224,6 @@
 },
 {
   "name":"jdk.management.jfr.SettingDescriptorInfo",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"net.bytebuddy.description.method.MethodDescription$InDefinedShape$AbstractBase$Executable",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"net.bytebuddy.description.method.ParameterDescription$ForLoadedParameter$Parameter",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"net.bytebuddy.description.method.ParameterList$ForLoadedExecutable$Executable",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"net.bytebuddy.description.type.TypeDefinition$Sort$AnnotatedType",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"net.bytebuddy.description.type.TypeDescription$ForLoadedType$Dispatcher",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"net.bytebuddy.description.type.TypeDescription$Generic$AnnotationReader$Delegator$ForLoadedExecutableExceptionType$Dispatcher",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"net.bytebuddy.description.type.TypeDescription$Generic$AnnotationReader$Delegator$ForLoadedExecutableParameterType$Dispatcher",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"net.bytebuddy.description.type.TypeDescription$Generic$AnnotationReader$Delegator$ForLoadedMethodReturnType$Dispatcher",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"net.bytebuddy.description.type.TypeDescription$Generic$AnnotationReader$ForComponentType$AnnotatedParameterizedType",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"net.bytebuddy.description.type.TypeDescription$Generic$AnnotationReader$ForTypeArgument$AnnotatedParameterizedType",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"net.bytebuddy.description.type.TypeDescription$Generic$AnnotationReader$ForTypeVariableBoundType$AnnotatedTypeVariable",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"net.bytebuddy.description.type.TypeDescription$Generic$AnnotationReader$ForTypeVariableBoundType$OfFormalTypeVariable$FormalTypeVariable",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"net.bytebuddy.description.type.TypeDescription$Generic$AnnotationReader$ForWildcardUpperBoundType$AnnotatedWildcardType",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"net.bytebuddy.implementation.bind.annotation.AllArguments",
-  "queryAllDeclaredMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"includeSelf","parameterTypes":[] }, 
-    {"name":"nullIfEmpty","parameterTypes":[] }, 
-    {"name":"value","parameterTypes":[] }
-  ]
-},
-{
-  "name":"net.bytebuddy.implementation.bind.annotation.Argument",
-  "queryAllDeclaredMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"bindingMechanic","parameterTypes":[] }, 
-    {"name":"value","parameterTypes":[] }
-  ]
-},
-{
-  "name":"net.bytebuddy.implementation.bind.annotation.Argument$BindingMechanic"
-},
-{
-  "name":"net.bytebuddy.implementation.bind.annotation.BindingPriority",
-  "queryAllDeclaredMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[{"name":"value","parameterTypes":[] }]
-},
-{
-  "name":"net.bytebuddy.implementation.bind.annotation.Default",
-  "queryAllDeclaredMethods":true,
-  "queryAllDeclaredConstructors":true
-},
-{
-  "name":"net.bytebuddy.implementation.bind.annotation.DefaultCall",
-  "queryAllDeclaredMethods":true,
-  "queryAllDeclaredConstructors":true
-},
-{
-  "name":"net.bytebuddy.implementation.bind.annotation.DefaultMethod",
-  "queryAllDeclaredMethods":true,
-  "queryAllDeclaredConstructors":true
-},
-{
-  "name":"net.bytebuddy.implementation.bind.annotation.FieldValue",
-  "queryAllDeclaredMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"declaringType","parameterTypes":[] }, 
-    {"name":"value","parameterTypes":[] }
-  ]
-},
-{
-  "name":"net.bytebuddy.implementation.bind.annotation.Origin",
-  "queryAllDeclaredMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"cache","parameterTypes":[] }, 
-    {"name":"privileged","parameterTypes":[] }
-  ]
-},
-{
-  "name":"net.bytebuddy.implementation.bind.annotation.StubValue",
-  "queryAllDeclaredMethods":true,
-  "queryAllDeclaredConstructors":true
-},
-{
-  "name":"net.bytebuddy.implementation.bind.annotation.Super",
-  "queryAllDeclaredMethods":true,
-  "queryAllDeclaredConstructors":true
-},
-{
-  "name":"net.bytebuddy.implementation.bind.annotation.SuperCall",
-  "queryAllDeclaredMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[
-    {"name":"fallbackToDefault","parameterTypes":[] }, 
-    {"name":"nullIfImpossible","parameterTypes":[] }, 
-    {"name":"serializableProxy","parameterTypes":[] }
-  ]
-},
-{
-  "name":"net.bytebuddy.implementation.bind.annotation.SuperMethod",
-  "queryAllDeclaredMethods":true,
-  "queryAllDeclaredConstructors":true
-},
-{
-  "name":"net.bytebuddy.implementation.bind.annotation.This",
-  "queryAllDeclaredMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[{"name":"optional","parameterTypes":[] }]
-},
-{
-  "name":"net.bytebuddy.utility.Invoker",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"net.bytebuddy.utility.Invoker$Dispatcher",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"net.bytebuddy.utility.JavaModule$Module",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"net.bytebuddy.utility.JavaModule$Resolver",
   "queryAllPublicMethods":true
 },
 {
@@ -3802,222 +2837,6 @@
   "queryAllDeclaredMethods":true
 },
 {
-  "name":"org.mockito.codegen.CallableStatement$MockitoMock$b4v5372op99200N"
-},
-{
-  "name":"org.mockito.codegen.CallableStatement$MockitoMock$b4v5372op99200N$auxiliary$06gjfi0S"
-},
-{
-  "name":"org.mockito.codegen.CallableStatement$MockitoMock$b4v5372op99200N$auxiliary$3gpd4q2S"
-},
-{
-  "name":"org.mockito.codegen.CallableStatement$MockitoMock$b4v5372op99200N$auxiliary$4cscpe1S"
-},
-{
-  "name":"org.mockito.codegen.CallableStatement$MockitoMock$b4v5372op99200N$auxiliary$5jv6u80S"
-},
-{
-  "name":"org.mockito.codegen.CallableStatement$MockitoMock$b4v5372op99200N$auxiliary$5vg29n3S"
-},
-{
-  "name":"org.mockito.codegen.CallableStatement$MockitoMock$b4v5372op99200N$auxiliary$6t3hik2S"
-},
-{
-  "name":"org.mockito.codegen.CallableStatement$MockitoMock$b4v5372op99200N$auxiliary$749qtv1S"
-},
-{
-  "name":"org.mockito.codegen.CallableStatement$MockitoMock$b4v5372op99200N$auxiliary$7m9oaq0S"
-},
-{
-  "name":"org.mockito.codegen.CallableStatement$MockitoMock$b4v5372op99200N$auxiliary$7nfarp2S"
-},
-{
-  "name":"org.mockito.codegen.CallableStatement$MockitoMock$b4v5372op99200N$auxiliary$917s2r1S"
-},
-{
-  "name":"org.mockito.codegen.CallableStatement$MockitoMock$b4v5372op99200N$auxiliary$94gkha1S"
-},
-{
-  "name":"org.mockito.codegen.CallableStatement$MockitoMock$b4v5372op99200N$auxiliary$96l2p60S"
-},
-{
-  "name":"org.mockito.codegen.CallableStatement$MockitoMock$b4v5372op99200N$auxiliary$abo5p60S"
-},
-{
-  "name":"org.mockito.codegen.CallableStatement$MockitoMock$b4v5372op99200N$auxiliary$d37fvl1S"
-},
-{
-  "name":"org.mockito.codegen.CallableStatement$MockitoMock$b4v5372op99200N$auxiliary$di8k2d3S"
-},
-{
-  "name":"org.mockito.codegen.CallableStatement$MockitoMock$b4v5372op99200N$auxiliary$eh91p12S"
-},
-{
-  "name":"org.mockito.codegen.CallableStatement$MockitoMock$b4v5372op99200N$auxiliary$fb99lj2S"
-},
-{
-  "name":"org.mockito.codegen.CallableStatement$MockitoMock$b4v5372op99200N$auxiliary$i5sh7c0S"
-},
-{
-  "name":"org.mockito.codegen.CallableStatement$MockitoMock$b4v5372op99200N$auxiliary$i690cm0S"
-},
-{
-  "name":"org.mockito.codegen.CallableStatement$MockitoMock$b4v5372op99200N$auxiliary$jv9e8d2S"
-},
-{
-  "name":"org.mockito.codegen.CallableStatement$MockitoMock$b4v5372op99200N$auxiliary$nl88ev0S"
-},
-{
-  "name":"org.mockito.codegen.CallableStatement$MockitoMock$b4v5372op99200N$auxiliary$r670ic1S"
-},
-{
-  "name":"org.mockito.codegen.CallableStatement$MockitoMock$b4v5372op99200N$auxiliary$sqn2d40S"
-},
-{
-  "name":"org.mockito.codegen.CallableStatement$MockitoMock$b4v5372op99200N$auxiliary$t2m9r61S"
-},
-{
-  "name":"org.mockito.codegen.CallableStatement$MockitoMock$b4v5372op99200N$auxiliary$upd66q1S"
-},
-{
-  "name":"org.mockito.codegen.DatabaseMetaData$MockitoMock$mjdo3d0op99200N"
-},
-{
-  "name":"org.mockito.codegen.DatabaseMetaData$MockitoMock$mjdo3d0op99200N$auxiliary$0nm3v61S"
-},
-{
-  "name":"org.mockito.codegen.DatabaseMetaData$MockitoMock$mjdo3d0op99200N$auxiliary$3advkr0S"
-},
-{
-  "name":"org.mockito.codegen.DatabaseMetaData$MockitoMock$mjdo3d0op99200N$auxiliary$4cscpe1S"
-},
-{
-  "name":"org.mockito.codegen.DatabaseMetaData$MockitoMock$mjdo3d0op99200N$auxiliary$7m9oaq0S"
-},
-{
-  "name":"org.mockito.codegen.DatabaseMetaData$MockitoMock$mjdo3d0op99200N$auxiliary$q65rmr0S"
-},
-{
-  "name":"org.mockito.codegen.PreparedStatement$MockitoMock$6lfk8k0op99200N"
-},
-{
-  "name":"org.mockito.codegen.PreparedStatement$MockitoMock$6lfk8k0op99200N$auxiliary$06gjfi0S"
-},
-{
-  "name":"org.mockito.codegen.PreparedStatement$MockitoMock$6lfk8k0op99200N$auxiliary$3gpd4q2S"
-},
-{
-  "name":"org.mockito.codegen.PreparedStatement$MockitoMock$6lfk8k0op99200N$auxiliary$4cscpe1S"
-},
-{
-  "name":"org.mockito.codegen.PreparedStatement$MockitoMock$6lfk8k0op99200N$auxiliary$749qtv1S"
-},
-{
-  "name":"org.mockito.codegen.PreparedStatement$MockitoMock$6lfk8k0op99200N$auxiliary$7m9oaq0S"
-},
-{
-  "name":"org.mockito.codegen.PreparedStatement$MockitoMock$6lfk8k0op99200N$auxiliary$7nfarp2S"
-},
-{
-  "name":"org.mockito.codegen.PreparedStatement$MockitoMock$6lfk8k0op99200N$auxiliary$917s2r1S"
-},
-{
-  "name":"org.mockito.codegen.PreparedStatement$MockitoMock$6lfk8k0op99200N$auxiliary$94gkha1S"
-},
-{
-  "name":"org.mockito.codegen.PreparedStatement$MockitoMock$6lfk8k0op99200N$auxiliary$96l2p60S"
-},
-{
-  "name":"org.mockito.codegen.PreparedStatement$MockitoMock$6lfk8k0op99200N$auxiliary$abo5p60S"
-},
-{
-  "name":"org.mockito.codegen.PreparedStatement$MockitoMock$6lfk8k0op99200N$auxiliary$d37fvl1S"
-},
-{
-  "name":"org.mockito.codegen.PreparedStatement$MockitoMock$6lfk8k0op99200N$auxiliary$di8k2d3S"
-},
-{
-  "name":"org.mockito.codegen.PreparedStatement$MockitoMock$6lfk8k0op99200N$auxiliary$eh91p12S"
-},
-{
-  "name":"org.mockito.codegen.PreparedStatement$MockitoMock$6lfk8k0op99200N$auxiliary$i5sh7c0S"
-},
-{
-  "name":"org.mockito.codegen.PreparedStatement$MockitoMock$6lfk8k0op99200N$auxiliary$i690cm0S"
-},
-{
-  "name":"org.mockito.codegen.PreparedStatement$MockitoMock$6lfk8k0op99200N$auxiliary$nl88ev0S"
-},
-{
-  "name":"org.mockito.codegen.PreparedStatement$MockitoMock$6lfk8k0op99200N$auxiliary$t2m9r61S"
-},
-{
-  "name":"org.mockito.codegen.ResultSet$MockitoMock$pvsved3op99200N"
-},
-{
-  "name":"org.mockito.codegen.ResultSet$MockitoMock$pvsved3op99200N$auxiliary$1cbqlg3S"
-},
-{
-  "name":"org.mockito.codegen.ResultSet$MockitoMock$pvsved3op99200N$auxiliary$2bc7c52S"
-},
-{
-  "name":"org.mockito.codegen.ResultSet$MockitoMock$pvsved3op99200N$auxiliary$4cscpe1S"
-},
-{
-  "name":"org.mockito.codegen.ResultSet$MockitoMock$pvsved3op99200N$auxiliary$7m9oaq0S"
-},
-{
-  "name":"org.mockito.codegen.ResultSet$MockitoMock$pvsved3op99200N$auxiliary$cptv0p1S"
-},
-{
-  "name":"org.mockito.codegen.ResultSet$MockitoMock$pvsved3op99200N$auxiliary$nj1ou51S"
-},
-{
-  "name":"org.mockito.codegen.Statement$MockitoMock$3jsmh53op99200N"
-},
-{
-  "name":"org.mockito.codegen.Statement$MockitoMock$3jsmh53op99200N$auxiliary$06gjfi0S"
-},
-{
-  "name":"org.mockito.codegen.Statement$MockitoMock$3jsmh53op99200N$auxiliary$3gpd4q2S"
-},
-{
-  "name":"org.mockito.codegen.Statement$MockitoMock$3jsmh53op99200N$auxiliary$4cscpe1S"
-},
-{
-  "name":"org.mockito.codegen.Statement$MockitoMock$3jsmh53op99200N$auxiliary$749qtv1S"
-},
-{
-  "name":"org.mockito.codegen.Statement$MockitoMock$3jsmh53op99200N$auxiliary$7m9oaq0S"
-},
-{
-  "name":"org.mockito.codegen.Statement$MockitoMock$3jsmh53op99200N$auxiliary$7nfarp2S"
-},
-{
-  "name":"org.mockito.codegen.Statement$MockitoMock$3jsmh53op99200N$auxiliary$917s2r1S"
-},
-{
-  "name":"org.mockito.codegen.Statement$MockitoMock$3jsmh53op99200N$auxiliary$94gkha1S"
-},
-{
-  "name":"org.mockito.codegen.Statement$MockitoMock$3jsmh53op99200N$auxiliary$96l2p60S"
-},
-{
-  "name":"org.mockito.codegen.Statement$MockitoMock$3jsmh53op99200N$auxiliary$abo5p60S"
-},
-{
-  "name":"org.mockito.codegen.Statement$MockitoMock$3jsmh53op99200N$auxiliary$d37fvl1S"
-},
-{
-  "name":"org.mockito.codegen.Statement$MockitoMock$3jsmh53op99200N$auxiliary$i5sh7c0S"
-},
-{
-  "name":"org.mockito.codegen.Statement$MockitoMock$3jsmh53op99200N$auxiliary$i690cm0S"
-},
-{
-  "name":"org.mockito.codegen.Statement$MockitoMock$3jsmh53op99200N$auxiliary$nl88ev0S"
-},
-{
   "name":"org.mockito.internal.configuration.DefaultDoNotMockEnforcer",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
@@ -4030,36 +2849,11 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "name":"org.mockito.internal.creation.bytebuddy.ByteBuddyMockMaker",
+  "name":"org.mockito.internal.creation.instance.DefaultInstantiatorProvider",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "name":"org.mockito.internal.creation.bytebuddy.MockAccess",
-  "queryAllDeclaredMethods":true,
-  "queryAllDeclaredConstructors":true
-},
-{
-  "name":"org.mockito.internal.creation.bytebuddy.MockMethodInterceptor$DispatcherDefaultingToRealMethod",
-  "queryAllDeclaredMethods":true,
-  "queryAllDeclaredConstructors":true
-},
-{
-  "name":"org.mockito.internal.creation.bytebuddy.MockMethodInterceptor$ForEquals",
-  "queryAllDeclaredMethods":true,
-  "queryAllDeclaredConstructors":true
-},
-{
-  "name":"org.mockito.internal.creation.bytebuddy.MockMethodInterceptor$ForHashCode",
-  "queryAllDeclaredMethods":true,
-  "queryAllDeclaredConstructors":true
-},
-{
-  "name":"org.mockito.internal.creation.bytebuddy.MockMethodInterceptor$ForWriteReplace",
-  "queryAllDeclaredMethods":true,
-  "queryAllDeclaredConstructors":true
-},
-{
-  "name":"org.mockito.internal.creation.instance.DefaultInstantiatorProvider",
+  "name":"org.mockito.internal.creation.proxy.ProxyMockMaker",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
@@ -4118,13 +2912,6 @@
 {
   "name":"sun.management.RuntimeImpl",
   "queryAllPublicConstructors":true
-},
-{
-  "name":"sun.reflect.ReflectionFactory",
-  "methods":[
-    {"name":"getReflectionFactory","parameterTypes":[] }, 
-    {"name":"newConstructorForSerialization","parameterTypes":["java.lang.Class","java.lang.reflect.Constructor"] }
-  ]
 },
 {
   "name":"sun.security.provider.NativePRNG",
