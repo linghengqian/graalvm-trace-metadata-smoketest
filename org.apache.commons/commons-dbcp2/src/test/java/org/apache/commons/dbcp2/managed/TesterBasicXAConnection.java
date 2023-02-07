@@ -149,7 +149,7 @@ public class TesterBasicXAConnection implements XAConnection {
         }
         try {
             if (handle != null) {
-                // only one handle at a time on the XAConnection
+
                 closeHandle();
                 conn.clearWarnings();
             }

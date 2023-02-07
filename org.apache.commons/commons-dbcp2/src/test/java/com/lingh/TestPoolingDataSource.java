@@ -2,7 +2,14 @@
 
 package com.lingh;
 
-import org.apache.commons.dbcp2.*;
+import org.apache.commons.dbcp2.Constants;
+import org.apache.commons.dbcp2.DelegatingConnection;
+import org.apache.commons.dbcp2.DriverConnectionFactory;
+import org.apache.commons.dbcp2.PoolableConnection;
+import org.apache.commons.dbcp2.PoolableConnectionFactory;
+import org.apache.commons.dbcp2.PoolingDataSource;
+import org.apache.commons.dbcp2.TestConnectionPool;
+import org.apache.commons.dbcp2.TesterDriver;
 import org.apache.commons.pool2.impl.GenericObjectPool;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
@@ -13,16 +20,21 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Properties;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-/**
- * TestSuite for PoolingDataSource
- */
+@SuppressWarnings({"FieldCanBeLocal", "resource", "UnnecessaryLocalVariable", "AssertBetweenInconvertibleTypes"})
 public class TestPoolingDataSource extends TestConnectionPool {
 
     protected PoolingDataSource<PoolableConnection> ds;
 
     private GenericObjectPool<PoolableConnection> pool;
+
     @Override
     protected Connection getConnection() throws Exception {
         return ds.getConnection();
@@ -34,10 +46,8 @@ public class TestPoolingDataSource extends TestConnectionPool {
         properties.setProperty(Constants.KEY_USER, "userName");
         properties.setProperty(Constants.KEY_PASSWORD, "password");
         final PoolableConnectionFactory factory =
-            new PoolableConnectionFactory(
-                    new DriverConnectionFactory(new TesterDriver(),
-                            "jdbc:apache:commons:testdriver", properties),
-                    null);
+                new PoolableConnectionFactory(
+                        new DriverConnectionFactory(new TesterDriver(), "jdbc:apache:commons:testdriver", properties), null);
         factory.setValidationQuery("SELECT DUMMY FROM DUAL");
         factory.setDefaultReadOnly(Boolean.TRUE);
         factory.setDefaultAutoCommit(Boolean.TRUE);
@@ -63,43 +73,31 @@ public class TestPoolingDataSource extends TestConnectionPool {
         properties.setProperty(Constants.KEY_USER, "userName");
         properties.setProperty(Constants.KEY_PASSWORD, "password");
         final PoolableConnectionFactory f =
-            new PoolableConnectionFactory(
-                    new DriverConnectionFactory(new TesterDriver(),
-                            "jdbc:apache:commons:testdriver", properties),
-                    null);
+                new PoolableConnectionFactory(new DriverConnectionFactory(new TesterDriver(), "jdbc:apache:commons:testdriver", properties),
+                        null);
         f.setValidationQuery("SELECT DUMMY FROM DUAL");
         f.setDefaultReadOnly(Boolean.TRUE);
         f.setDefaultAutoCommit(Boolean.TRUE);
         final GenericObjectPool<PoolableConnection> p = new GenericObjectPool<>(f);
         p.setMaxTotal(getMaxTotal());
         p.setMaxWaitMillis(getMaxWaitMillis());
-
-        try ( PoolingDataSource<PoolableConnection> dataSource = new PoolingDataSource<>(p) ) {
+        try (PoolingDataSource<PoolableConnection> dataSource = new PoolingDataSource<>(p)) {
             final Connection connection = dataSource.getConnection();
             assertNotNull(connection);
             connection.close();
         }
-
         assertTrue(p.isClosed());
         assertEquals(0, p.getNumIdle());
         assertEquals(0, p.getNumActive());
     }
 
-    /**
-     * DBCP-412
-     * Verify that omitting factory.setPool(pool) when setting up PDS does not
-     * result in NPE.
-     */
     @Test
     public void testFixFactoryConfig() throws Exception {
         final Properties properties = new Properties();
         properties.setProperty(Constants.KEY_USER, "userName");
         properties.setProperty(Constants.KEY_PASSWORD, "password");
-        final PoolableConnectionFactory f =
-            new PoolableConnectionFactory(
-                    new DriverConnectionFactory(new TesterDriver(),
-                            "jdbc:apache:commons:testdriver", properties),
-                    null);
+        final PoolableConnectionFactory f = new PoolableConnectionFactory(new DriverConnectionFactory(new TesterDriver(),
+                "jdbc:apache:commons:testdriver", properties), null);
         f.setValidationQuery("SELECT DUMMY FROM DUAL");
         f.setDefaultReadOnly(Boolean.TRUE);
         f.setDefaultAutoCommit(Boolean.TRUE);
@@ -149,12 +147,8 @@ public class TestPoolingDataSource extends TestConnectionPool {
         con1.close();
     }
 
-    /*
-     * JIRA: DBCP-198
-     */
     @Test
-    public void testPoolGuardConnectionWrapperEqualsReflexive()
-        throws Exception {
+    public void testPoolGuardConnectionWrapperEqualsReflexive() throws Exception {
         final Connection con = ds.getConnection();
         final Connection con2 = con;
         assertEquals(con2, con);
@@ -164,16 +158,11 @@ public class TestPoolingDataSource extends TestConnectionPool {
 
     @Test
     public void testPoolGuardConnectionWrapperEqualsSameDelegate() throws Exception {
-        // Get a maximal set of connections from the pool
         final Connection[] c = new Connection[getMaxTotal()];
         for (int i = 0; i < c.length; i++) {
             c[i] = newConnection();
         }
-        // Close the delegate of one wrapper in the pool
         ((DelegatingConnection<?>) c[0]).getDelegate().close();
-
-        // Grab a new connection - should get c[0]'s closed connection
-        // so should be delegate-equivalent
         final Connection con = newConnection();
         Assertions.assertNotEquals(c[0], con);
         Assertions.assertEquals(

@@ -8,14 +8,23 @@ import org.apache.commons.dbcp2.TesterStatement;
 import java.io.InputStream;
 import java.io.Reader;
 import java.math.BigDecimal;
-import java.sql.*;
+import java.sql.Array;
+import java.sql.Blob;
+import java.sql.Clob;
+import java.sql.Connection;
+import java.sql.NClob;
+import java.sql.PreparedStatement;
+import java.sql.Ref;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.RowId;
+import java.sql.SQLException;
+import java.sql.SQLType;
+import java.sql.SQLXML;
 import java.util.Calendar;
 
-/**
- * A dummy {@link PreparedStatement}, for testing purposes.
- */
+@SuppressWarnings("ConstantValue")
 public class TesterPreparedStatement extends TesterStatement implements PreparedStatement {
-
     private final ResultSetMetaData _resultSetMetaData = null;
     private String _sql;
     private String _catalog;
@@ -28,7 +37,6 @@ public class TesterPreparedStatement extends TesterStatement implements Prepared
         try {
             _catalog = conn.getCatalog();
         } catch (final SQLException e) {
-            // Ignored
         }
     }
 
@@ -38,7 +46,6 @@ public class TesterPreparedStatement extends TesterStatement implements Prepared
         try {
             _catalog = conn.getCatalog();
         } catch (final SQLException e) {
-            // Ignored
         }
     }
 
@@ -49,7 +56,6 @@ public class TesterPreparedStatement extends TesterStatement implements Prepared
         try {
             _catalog = conn.getCatalog();
         } catch (final SQLException e) {
-            // Ignored
         }
     }
 
@@ -58,8 +64,7 @@ public class TesterPreparedStatement extends TesterStatement implements Prepared
         _sql = sql;
         try {
             _catalog = conn.getCatalog();
-        } catch (final SQLException e) {
-            // Ignored
+        } catch (final SQLException ignored) {
         }
     }
 
@@ -70,7 +75,6 @@ public class TesterPreparedStatement extends TesterStatement implements Prepared
         try {
             _catalog = conn.getCatalog();
         } catch (final SQLException e) {
-            // Ignored
         }
     }
 
@@ -81,7 +85,6 @@ public class TesterPreparedStatement extends TesterStatement implements Prepared
         try {
             _catalog = conn.getCatalog();
         } catch (final SQLException e) {
-            // Ignored
         }
     }
 
@@ -92,7 +95,6 @@ public class TesterPreparedStatement extends TesterStatement implements Prepared
         try {
             _catalog = conn.getCatalog();
         } catch (final SQLException e) {
-            // Ignored
         }
     }
 
@@ -166,7 +168,6 @@ public class TesterPreparedStatement extends TesterStatement implements Prepared
             return null;
         }
         if (_queryTimeout > 0 && _queryTimeout < 5) {
-            // Simulate timeout if queryTimout is set to less than 5 seconds
             throw new SQLException("query timeout");
         }
         return new TesterResultSet(this, _resultSetType, _resultSetConcurrency);
@@ -228,7 +229,7 @@ public class TesterPreparedStatement extends TesterStatement implements Prepared
     }
 
     @Override
-    public ResultSet getGeneratedKeys() throws SQLException {
+    public ResultSet getGeneratedKeys() {
         return new TesterResultSet(this, _resultSetType, _resultSetConcurrency);
     }
 
@@ -248,7 +249,6 @@ public class TesterPreparedStatement extends TesterStatement implements Prepared
         throw new SQLException("Not implemented.");
     }
 
-    /** for junit test only */
     public String getSql() {
         return _sql;
     }

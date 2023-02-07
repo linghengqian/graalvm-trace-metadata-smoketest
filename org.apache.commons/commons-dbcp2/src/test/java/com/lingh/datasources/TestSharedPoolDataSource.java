@@ -229,8 +229,6 @@ public class TestSharedPoolDataSource extends TestConnectionPool {
         assertTrue(rset.next());
         rset.close();
         stmt.close();
-
-        // statement pooling is not enabled, we should get different statements
         assertTrue(l1HashCode != l2HashCode);
         conn.close();
         conn = null;
@@ -255,8 +253,6 @@ public class TestSharedPoolDataSource extends TestConnectionPool {
         assertTrue(rset.next());
         rset.close();
         stmt.close();
-
-        // prepared statement pooling is working
         assertEquals(l3HashCode, l4HashCode);
         conn.close();
         conn = null;

@@ -380,9 +380,7 @@ public class TestLocalXaResource {
     public void testConstructor() {
         assertEquals(0, resource.getTransactionTimeout());
         assertNull(resource.getXid());
-        // the current implementation always return false, regardless of the input value
         assertFalse(resource.setTransactionTimeout(100));
-        // the current implementation always return an empty/zero'd array, regardless of the input value
         assertEquals(0, resource.recover(100).length);
     }
 
@@ -440,22 +438,13 @@ public class TestLocalXaResource {
         assertThrows(NullPointerException.class, () -> resource.rollback(null));
     }
 
-    /**
-     * When an exception is thrown on the {@link Connection#getAutoCommit()}, then the
-     * value is set to {@code true} by default.
-     * @throws XAException when there are errors with the transaction
-     * @throws SQLException when there are errors with other SQL/DB parts
-     */
     @Test
     public void testStartExceptionOnGetAutoCommit() throws XAException, SQLException {
         final Xid xid = new TestXid();
         ((TestConnection) conn).throwWhenGetAutoCommit = true;
         conn.setAutoCommit(false);
         conn.setReadOnly(true);
-        // the start method with no flag will call getAutoCommit, the exception will be thrown, and it will be set
-        // to true
         resource.start(xid, XAResource.TMNOFLAGS);
-        // and prepare sets the value computed in start in the connection
         resource.prepare(xid);
         ((TestConnection) conn).throwWhenGetAutoCommit = false;
         assertTrue(conn.getAutoCommit());
@@ -470,7 +459,6 @@ public class TestLocalXaResource {
 
     @Test
     public void testStartInvalidFlag() {
-        // currently, valid values are TMNOFLAGS and TMRESUME
         assertThrows(XAException.class, () -> resource.start(null, XAResource.TMENDRSCAN));
     }
 
@@ -499,7 +487,6 @@ public class TestLocalXaResource {
         final Xid xid = new TestXid();
         resource.start(xid, XAResource.TMNOFLAGS);
         resource.start(xid, XAResource.TMRESUME);
-        // flag is never used in the end
         resource.end(xid, 0);
         assertEquals(xid, resource.getXid());
     }
@@ -509,7 +496,6 @@ public class TestLocalXaResource {
         final Xid xid = new TestXid();
         resource.start(xid, XAResource.TMNOFLAGS);
         resource.start(xid, XAResource.TMRESUME);
-        // flag is never used in the end
         assertThrows(XAException.class, () -> resource.end(new TestXid(), 0));
     }
 
@@ -518,27 +504,16 @@ public class TestLocalXaResource {
         final Xid xid = new TestXid();
         resource.start(xid, XAResource.TMNOFLAGS);
         resource.start(xid, XAResource.TMRESUME);
-        // flag is never used in the end
         assertThrows(NullPointerException.class, () -> resource.end(null, 0));
     }
 
-    /**
-     * When an exception is thrown on the {@link Connection#getAutoCommit()}, then the
-     * value is set to {@code true} by default. However, if the connection is not read-only,
-     * then the value set by the user in the original connection will be kept.
-     * @throws XAException when there are errors with the transaction
-     * @throws SQLException when there are errors with other SQL/DB parts
-     */
     @Test
     public void testStartReadOnlyConnectionExceptionOnGetAutoCommit() throws XAException, SQLException {
         final Xid xid = new TestXid();
         ((TestConnection) conn).throwWhenGetAutoCommit = true;
         conn.setAutoCommit(false);
         conn.setReadOnly(false);
-        // the start method with no flag will call getAutoCommit, the exception will be thrown, and it will be set
-        // to true
         resource.start(xid, XAResource.TMNOFLAGS);
-        // and prepare sets the value computed in start in the connection
         resource.prepare(xid);
         ((TestConnection) conn).throwWhenGetAutoCommit = false;
         assertFalse(conn.getAutoCommit());

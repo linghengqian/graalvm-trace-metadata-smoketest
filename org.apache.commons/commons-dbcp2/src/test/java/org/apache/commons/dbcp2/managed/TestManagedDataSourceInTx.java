@@ -255,7 +255,6 @@ public class TestManagedDataSourceInTx extends TestManagedDataSource {
 
             @Override
             public void beforeCompletion() {
-                // empty
             }
         });
         connection.close();
@@ -269,20 +268,11 @@ public class TestManagedDataSourceInTx extends TestManagedDataSource {
         assertNotNull(conn1);
         final Connection conn2 = newConnection();
         assertNotNull(conn2);
-
-        // shared connections should not have the same hashcode
         Assertions.assertNotEquals(conn1.hashCode(), conn2.hashCode());
     }
-
-    /**
-     * @see #testSharedConnection()
-     */
     @Override
     @Test
-    public void testManagedConnectionEqualsFail() throws Exception {
-        // this test is invalid for managed connections since because
-        // two connections to the same datasource are supposed to share
-        // a single connection
+    public void testManagedConnectionEqualsFail() {
     }
 
     @Override
@@ -291,11 +281,8 @@ public class TestManagedDataSourceInTx extends TestManagedDataSource {
         final Transaction[] transactions = new Transaction[getMaxTotal()];
         final Connection[] c = new Connection[getMaxTotal()];
         for (int i = 0; i < c.length; i++) {
-            // create a new connection in the current transaction
             c[i] = newConnection();
             assertNotNull(c[i]);
-
-            // suspend the current transaction and start a new one
             transactions[i] = transactionManager.suspend();
             assertNotNull(transactions[i]);
             transactionManager.begin();
@@ -305,8 +292,6 @@ public class TestManagedDataSourceInTx extends TestManagedDataSource {
             newConnection();
             fail("Allowed to open more than DefaultMaxTotal connections.");
         } catch (final SQLException e) {
-            // should only be able to open 10 connections, so this test should
-            // throw an exception
         } finally {
             transactionManager.commit();
             for (int i = 0; i < c.length; i++) {
@@ -320,41 +305,24 @@ public class TestManagedDataSourceInTx extends TestManagedDataSource {
     @Override
     @Test
     public void testNestedConnections() {
-        // Not supported
     }
 
     @Test
     public void testReadOnly() throws Exception {
         final Connection connection = newConnection();
-
-        // NOTE: This test class uses connections that are read-only by default
-
-        // connection should be read only
         assertTrue(connection.isReadOnly(), "Connection be read-only");
-
-        // attempt to setReadOnly
         try {
             connection.setReadOnly(true);
             fail("setReadOnly method should be disabled while enlisted in a transaction");
         } catch (final SQLException e) {
-            // expected
         }
-
-        // make sure it is still read-only
         assertTrue(connection.isReadOnly(), "Connection be read-only");
-
-        // attempt to setReadonly
         try {
             connection.setReadOnly(false);
             fail("setReadOnly method should be disabled while enlisted in a transaction");
         } catch (final SQLException e) {
-            // expected
         }
-
-        // make sure it is still read-only
         assertTrue(connection.isReadOnly(), "Connection be read-only");
-
-        // close connection
         connection.close();
     }
 
@@ -363,12 +331,10 @@ public class TestManagedDataSourceInTx extends TestManagedDataSource {
     public void testSharedConnection() throws Exception {
         final DelegatingConnection<?> connectionA = (DelegatingConnection<?>) newConnection();
         final DelegatingConnection<?> connectionB = (DelegatingConnection<?>) newConnection();
-
         assertNotEquals(connectionA, connectionB);
         assertNotEquals(connectionB, connectionA);
         assertTrue(connectionA.innermostDelegateEquals(connectionB.getInnermostDelegate()));
         assertTrue(connectionB.innermostDelegateEquals(connectionA.getInnermostDelegate()));
-
         connectionA.close();
         connectionB.close();
     }
@@ -377,28 +343,18 @@ public class TestManagedDataSourceInTx extends TestManagedDataSource {
     public void testSharedTransactionConversion() throws Exception {
         final DelegatingConnection<?> connectionA = (DelegatingConnection<?>) newConnection();
         final DelegatingConnection<?> connectionB = (DelegatingConnection<?>) newConnection();
-
-        // in a transaction the inner connections should be equal
         assertNotEquals(connectionA, connectionB);
         assertNotEquals(connectionB, connectionA);
         assertTrue(connectionA.innermostDelegateEquals(connectionB.getInnermostDelegate()));
         assertTrue(connectionB.innermostDelegateEquals(connectionA.getInnermostDelegate()));
-
         transactionManager.commit();
-
-        // use the connection so it adjusts to the completed transaction
         connectionA.getAutoCommit();
         connectionB.getAutoCommit();
-
-        // no there is no transaction so inner connections should not be equal
         assertNotEquals(connectionA, connectionB);
         assertNotEquals(connectionB, connectionA);
         assertFalse(connectionA.innermostDelegateEquals(connectionB.getInnermostDelegate()));
         assertFalse(connectionB.innermostDelegateEquals(connectionA.getInnermostDelegate()));
-
         transactionManager.begin();
-
-        // use the connection so it adjusts to the new transaction
         connectionA.getAutoCommit();
         connectionB.getAutoCommit();
 

@@ -189,7 +189,6 @@ public class TestInstanceKeyDataSource {
             tds.getConnection(USER, PASS);
             fail("Expecting SQLException");
         } catch (final SQLException ex) {
-           //Expected
         }
         assertEquals(numConnections,tds.getNumActive());
         tds.close();

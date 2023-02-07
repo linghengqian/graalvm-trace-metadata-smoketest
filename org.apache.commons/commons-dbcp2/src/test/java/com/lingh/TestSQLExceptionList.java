@@ -11,7 +11,6 @@ import java.util.Collections;
 import java.util.List;
 
 public class TestSQLExceptionList {
-
     @Test
     public void testCause() {
         final SQLTransientException cause = new SQLTransientException();

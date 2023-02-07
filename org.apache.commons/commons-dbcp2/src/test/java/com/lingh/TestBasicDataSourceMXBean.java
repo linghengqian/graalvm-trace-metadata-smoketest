@@ -7,13 +7,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-/**
- * Tests for BasicDataSourceMXBean.
- */
 public class TestBasicDataSourceMXBean {
-
     private final BasicDataSourceMXBean bean = new BasicDataSourceMXBean() {
-
         @Override
         public boolean getAbandonedUsageTracking() {
             return false;
@@ -220,9 +215,6 @@ public class TestBasicDataSourceMXBean {
         }
     };
 
-    /**
-     * Tests the interface defined default method.
-     */
     @Test
     public void testDefaultSchema() {
         assertNull(bean.getDefaultSchema());

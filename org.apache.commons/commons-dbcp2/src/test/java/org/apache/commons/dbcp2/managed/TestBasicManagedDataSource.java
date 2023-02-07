@@ -68,17 +68,15 @@ public class TestBasicManagedDataSource extends TestBasicDataSource {
             basicManagedDataSource.setUsername("userName");
             basicManagedDataSource.setPassword("password");
             basicManagedDataSource.setMaxIdle(1);
-            // Create two connections
             final ManagedConnection<?> conn = (ManagedConnection<?>) basicManagedDataSource.getConnection();
             assertNotNull(basicManagedDataSource.getTransactionRegistry().getXAResource(conn));
             final ManagedConnection<?> conn2 = (ManagedConnection<?>) basicManagedDataSource.getConnection();
-            conn2.close(); // Return one connection to the pool
-            conn.close(); // No room at the inn - this will trigger reallyClose(), which should unregister
+            conn2.close();
+            conn.close();
             try {
                 basicManagedDataSource.getTransactionRegistry().getXAResource(conn);
                 fail("Expecting SQLException - XAResources orphaned");
             } catch (final SQLException ex) {
-                // expected
             }
             conn2.close();
         }
@@ -93,7 +91,6 @@ public class TestBasicManagedDataSource extends TestBasicDataSource {
             basicManagedDataSource.setUsername("userName");
             basicManagedDataSource.setPassword("password");
             basicManagedDataSource.setMaxIdle(1);
-            // results in a NPE
             assertThrows(NullPointerException.class, () -> basicManagedDataSource.createPoolableConnectionFactory(null));
         }
     }
@@ -129,8 +126,7 @@ public class TestBasicManagedDataSource extends TestBasicDataSource {
         final int n = 3;
         ds.setMaxIdle(n);
         ds.setMaxTotal(n);
-
-        for (int i = 0; i <= n; i++) { // loop n+1 times
+        for (int i = 0; i <= n; i++) {
             transactionManager.begin();
             transactionManager.setRollbackOnly();
             final Connection conn = getConnection();

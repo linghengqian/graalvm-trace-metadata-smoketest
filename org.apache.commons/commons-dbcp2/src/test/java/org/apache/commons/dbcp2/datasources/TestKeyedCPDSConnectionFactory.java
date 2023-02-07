@@ -32,50 +32,33 @@ public class TestKeyedCPDSConnectionFactory {
         delegate.setPassword("password");
     }
 
-    /**
-     * JIRA DBCP-216
-     *
-     * Verify that pool counters are maintained properly and listeners are
-     * cleaned up when a PooledConnection throws a connectionError event.
-     */
     @Test
     public void testConnectionErrorCleanup() throws Exception {
-        // Setup factory
         final UserPassKey key = new UserPassKey("userName", "password");
         final KeyedCPDSConnectionFactory factory =
             new KeyedCPDSConnectionFactory(cpds, null, -1, false);
         final KeyedObjectPool<UserPassKey, PooledConnectionAndInfo> pool = new GenericKeyedObjectPool<>(factory);
         factory.setPool(pool);
-
-        // Checkout a pair of connections
         final PooledConnection pcon1 =
             pool.borrowObject(key)
                 .getPooledConnection();
         final Connection con1 = pcon1.getConnection();
-        final PooledConnection pcon2 =
-            pool.borrowObject(key)
-                .getPooledConnection();
+        final PooledConnection pcon2 = pool.borrowObject(key).getPooledConnection();
         assertEquals(2, pool.getNumActive(key));
         assertEquals(0, pool.getNumIdle(key));
 
-        // Verify listening
         final PooledConnectionProxy pc = (PooledConnectionProxy) pcon1;
         assertTrue(pc.getListeners().contains(factory));
 
-        // Throw connectionError event
         pc.throwConnectionError();
 
-        // Active count should be reduced by 1 and no idle increase
         assertEquals(1, pool.getNumActive(key));
         assertEquals(0, pool.getNumIdle(key));
 
-        // Throw another one - we should be on cleanup list, so ignored
         pc.throwConnectionError();
         assertEquals(1, pool.getNumActive(key));
         assertEquals(0, pool.getNumIdle(key));
 
-        // Ask for another connection - should trigger makeObject, which causes
-        // cleanup, removing listeners.
         final PooledConnection pcon3 =
             pool.borrowObject(key)
                 .getPooledConnection();
@@ -84,26 +67,21 @@ public class TestKeyedCPDSConnectionFactory {
         assertEquals(2, pool.getNumActive(key));
         assertEquals(0, pool.getNumIdle(key));
 
-        // Return good connections back to pool
         pcon2.getConnection().close();
         pcon3.getConnection().close();
         assertEquals(2, pool.getNumIdle(key));
         assertEquals(0, pool.getNumActive(key));
 
-        // Verify pc is closed
         try {
            pc.getConnection();
            fail("Expecting SQLException using closed PooledConnection");
         } catch (final SQLException ex) {
-            // expected
         }
 
-        // Back from the dead - ignore the ghost!
         con1.close();
         assertEquals(2, pool.getNumIdle(key));
         assertEquals(0, pool.getNumActive(key));
 
-        // Clear pool
         factory.getPool().clear();
         assertEquals(0, pool.getNumIdle(key));
     }

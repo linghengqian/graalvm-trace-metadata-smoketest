@@ -14,21 +14,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-/**
- * Test if the pooling if no idle objects are used
- */
-public class TestParallelCreationWithNoIdle  {
-
-
+public class TestParallelCreationWithNoIdle {
+    @SuppressWarnings({"SqlDialectInspection", "SqlNoDataSourceInspection"})
     class TestThread extends Thread {
         final java.util.Random _random = new java.util.Random();
         final int iter;
         final int delay;
         final int delayAfter;
-
 
         public TestThread(final int iter, final int delay, final int delayAfter) {
             this.iter = iter;
@@ -36,15 +32,11 @@ public class TestParallelCreationWithNoIdle  {
             this.delayAfter = delayAfter;
         }
 
-
         @Override
         public void run() {
-            // System.out.println("Thread started " + Thread.currentThread().toString());
-            for (int i = 0; i < iter; i++) {
+            IntStream.range(0, iter).forEach(i -> {
                 sleepMax(delay);
-                try (Connection conn = ds.getConnection();
-                        PreparedStatement stmt = conn.prepareStatement("select 'literal', SYSDATE from dual")) {
-                    // System.out.println("Got Connection " + Thread.currentThread().toString());
+                try (Connection conn = ds.getConnection(); PreparedStatement stmt = conn.prepareStatement("select 'literal', SYSDATE from dual")) {
                     final ResultSet rset = stmt.executeQuery();
                     rset.next();
                     sleepMax(delayAfter);
@@ -53,8 +45,7 @@ public class TestParallelCreationWithNoIdle  {
                     e.printStackTrace();
                     throw new RuntimeException(e);
                 }
-            }
-            // System.out.println("Thread done " + Thread.currentThread().toString());
+            });
         }
 
         private void sleepMax(final int timeMax) {
@@ -63,16 +54,15 @@ public class TestParallelCreationWithNoIdle  {
             }
             try {
                 Thread.sleep(_random.nextInt(timeMax));
-            } catch(final Exception e) {
-                // ignored
+            } catch (final Exception e) {
             }
         }
     }
+
     private static final String CATALOG = "test catalog";
 
     @BeforeAll
     public static void setUpClass() {
-        // register a custom logger which supports inspection of the log messages
         LogFactory.getFactory().setAttribute("org.apache.commons.logging.Log", "com.lingh.StackMessageLog");
     }
 
@@ -84,16 +74,8 @@ public class TestParallelCreationWithNoIdle  {
         ds.setDriverClassName("org.apache.commons.dbcp2.TesterConnectionDelayDriver");
         ds.setUrl("jdbc:apache:commons:testerConnectionDelayDriver:50");
         ds.setMaxTotal(10);
-
-        // this one is actually very important.
-        // see DBCP-513
         ds.setMaxIdle(0);
-
-        // wait a minute. Usually the test runs in ~ 1 second
-        // but often it's getting stuck ^^
-        // you have one second to get a thread dump ;)
         ds.setMaxWaitMillis(60000);
-
         ds.setDefaultAutoCommit(Boolean.TRUE);
         ds.setDefaultReadOnly(Boolean.FALSE);
         ds.setDefaultTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
@@ -106,13 +88,6 @@ public class TestParallelCreationWithNoIdle  {
         ds.setJmxName("org.apache.commons.dbcp2:name=test");
     }
 
-
-
-    /**
-     * Fire up 100 Threads but only have 10 maxActive and forcedBlock.
-     * See
-     * @throws Exception
-     */
     @Test
     public void testMassiveConcurrentInitBorrow() throws Exception {
         final int numThreads = 200;
@@ -120,25 +95,20 @@ public class TestParallelCreationWithNoIdle  {
         ds.setUrl("jdbc:apache:commons:testerConnectionDelayDriver:20");
         ds.setInitialSize(8);
         final List<Throwable> errors = Collections.synchronizedList(new ArrayList<>());
-
         final Thread[] threads = new Thread[numThreads];
-        for (int i = 0; i < numThreads; i++) {
+        IntStream.range(0, numThreads).forEach(i -> {
             threads[i] = new TestThread(2, 0, 50);
             threads[i].setUncaughtExceptionHandler((t, e) -> errors.add(e));
-        }
-
+        });
         for (int i = 0; i < numThreads; i++) {
             threads[i].start();
-
-            if (i%4 == 0) {
+            if (i % 4 == 0) {
                 Thread.sleep(20);
             }
         }
-
         for (int i = 0; i < numThreads; i++) {
             threads[i].join();
         }
-
         assertEquals(0, errors.size());
         ds.close();
     }
