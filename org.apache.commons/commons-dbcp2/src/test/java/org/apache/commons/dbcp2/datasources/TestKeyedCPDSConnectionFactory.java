@@ -2,6 +2,8 @@
 
 package org.apache.commons.dbcp2.datasources;
 
+import com.lingh.datasources.ConnectionPoolDataSourceProxy;
+import com.lingh.datasources.PooledConnectionProxy;
 import org.apache.commons.dbcp2.cpdsadapter.DriverAdapterCPDS;
 import org.apache.commons.pool2.KeyedObjectPool;
 import org.apache.commons.pool2.impl.GenericKeyedObjectPool;

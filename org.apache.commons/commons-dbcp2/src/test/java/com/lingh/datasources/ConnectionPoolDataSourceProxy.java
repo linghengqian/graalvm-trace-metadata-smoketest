@@ -1,6 +1,6 @@
 
 
-package org.apache.commons.dbcp2.datasources;
+package com.lingh.datasources;
 
 import org.apache.commons.dbcp2.Jdbc41Bridge;
 
