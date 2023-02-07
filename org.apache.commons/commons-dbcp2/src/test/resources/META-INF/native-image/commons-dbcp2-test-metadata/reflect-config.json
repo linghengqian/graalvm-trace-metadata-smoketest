@@ -29,14 +29,6 @@
 },
 {
   "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
-  "name":"[Ljavax.management.openmbean.CompositeData;"
-},
-{
-  "condition":{"typeReachable":"com.lingh.cpdsadapter.TestDriverAdapterCPDS"},
-  "name":"[Ljavax.management.openmbean.CompositeData;"
-},
-{
-  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
   "name":"[S"
 },
 {
@@ -385,56 +377,6 @@
   "methods":[{"name":"<init>","parameterTypes":["java.lang.String"] }]
 },
 {
-  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
-  "name":"com.sun.management.GarbageCollectorMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
-  "name":"com.sun.management.GcInfo",
-  "queryAllPublicMethods":true
-},
-{
-  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
-  "name":"com.sun.management.HotSpotDiagnosticMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
-  "name":"com.sun.management.ThreadMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
-  "name":"com.sun.management.UnixOperatingSystemMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
-  "name":"com.sun.management.VMOption",
-  "queryAllPublicMethods":true
-},
-{
-  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
-  "name":"com.sun.management.internal.GarbageCollectorExtImpl",
-  "queryAllPublicConstructors":true
-},
-{
-  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
-  "name":"com.sun.management.internal.HotSpotDiagnostic",
-  "queryAllPublicConstructors":true
-},
-{
-  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
-  "name":"com.sun.management.internal.HotSpotThreadImpl",
-  "queryAllPublicConstructors":true
-},
-{
-  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
-  "name":"com.sun.management.internal.OperatingSystemImpl",
-  "queryAllPublicConstructors":true
-},
-{
   "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
   "name":"com.sun.xml.internal.stream.XMLInputFactoryImpl",
   "methods":[{"name":"<init>","parameterTypes":[] }]
@@ -514,66 +456,6 @@
   "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
   "name":"java.lang.Void",
   "fields":[{"name":"TYPE"}]
-},
-{
-  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
-  "name":"java.lang.management.BufferPoolMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
-  "name":"java.lang.management.ClassLoadingMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
-  "name":"java.lang.management.CompilationMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
-  "name":"java.lang.management.LockInfo",
-  "queryAllPublicMethods":true
-},
-{
-  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
-  "name":"java.lang.management.MemoryMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
-  "name":"java.lang.management.MemoryManagerMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
-  "name":"java.lang.management.MemoryPoolMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
-  "name":"java.lang.management.MemoryUsage",
-  "queryAllPublicMethods":true
-},
-{
-  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
-  "name":"java.lang.management.MonitorInfo",
-  "queryAllPublicMethods":true
-},
-{
-  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
-  "name":"java.lang.management.PlatformLoggingMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
-  "name":"java.lang.management.RuntimeMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
-  "name":"java.lang.management.ThreadInfo",
-  "queryAllPublicMethods":true
 },
 {
   "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
@@ -668,54 +550,8 @@
   "name":"java.util.PropertyPermission"
 },
 {
-  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
-  "name":"javax.management.ObjectName"
-},
-{
-  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
-  "name":"javax.management.openmbean.CompositeData"
-},
-{
-  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
-  "name":"javax.management.openmbean.TabularData"
-},
-{
-  "condition":{"typeReachable":"com.lingh.cpdsadapter.TestDriverAdapterCPDS"},
-  "name":"javax.management.openmbean.TabularData"
-},
-{
   "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
   "name":"javax.xml.stream.XMLInputFactory"
-},
-{
-  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
-  "name":"jdk.management.jfr.ConfigurationInfo",
-  "queryAllPublicMethods":true
-},
-{
-  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
-  "name":"jdk.management.jfr.EventTypeInfo",
-  "queryAllPublicMethods":true
-},
-{
-  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
-  "name":"jdk.management.jfr.FlightRecorderMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
-  "name":"jdk.management.jfr.FlightRecorderMXBeanImpl",
-  "queryAllPublicConstructors":true
-},
-{
-  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
-  "name":"jdk.management.jfr.RecordingInfo",
-  "queryAllPublicMethods":true
-},
-{
-  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
-  "name":"jdk.management.jfr.SettingDescriptorInfo",
-  "queryAllPublicMethods":true
 },
 {
   "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
@@ -982,45 +818,5 @@
   "name":"org.slf4j.spi.LocationAwareLogger",
   "queryAllDeclaredMethods":true,
   "methods":[{"name":"log","parameterTypes":["org.slf4j.Marker","java.lang.String","int","java.lang.String","java.lang.Object[]","java.lang.Throwable"] }]
-},
-{
-  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
-  "name":"sun.management.ClassLoadingImpl",
-  "queryAllPublicConstructors":true
-},
-{
-  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
-  "name":"sun.management.CompilationImpl",
-  "queryAllPublicConstructors":true
-},
-{
-  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
-  "name":"sun.management.ManagementFactoryHelper$1",
-  "queryAllPublicConstructors":true
-},
-{
-  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
-  "name":"sun.management.ManagementFactoryHelper$PlatformLoggingImpl",
-  "queryAllPublicConstructors":true
-},
-{
-  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
-  "name":"sun.management.MemoryImpl",
-  "queryAllPublicConstructors":true
-},
-{
-  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
-  "name":"sun.management.MemoryManagerImpl",
-  "queryAllPublicConstructors":true
-},
-{
-  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
-  "name":"sun.management.MemoryPoolImpl",
-  "queryAllPublicConstructors":true
-},
-{
-  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
-  "name":"sun.management.RuntimeImpl",
-  "queryAllPublicConstructors":true
 }
 ]
