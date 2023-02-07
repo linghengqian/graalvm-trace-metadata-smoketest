@@ -19,8 +19,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 @SuppressWarnings("UnusedReturnValue")
 public class TestJndi {
     protected static final String JNDI_SUBCONTEXT = "jdbc";
-    protected static final String JNDI_PATH = JNDI_SUBCONTEXT + "/"
-            + "jndiTestDataSource";
+    protected static final String JNDI_PATH = JNDI_SUBCONTEXT + "/" + "jndiTestDataSource";
     protected Context context;
 
     protected void bindDataSource(final DataSource dataSource) throws Exception {
@@ -42,7 +41,6 @@ public class TestJndi {
     protected DataSource retrieveDataSource() throws Exception {
         final Context ctx = getInitialContext();
         final DataSource dataSource = (DataSource) ctx.lookup(JNDI_PATH);
-
         if (dataSource == null) {
             fail("DataSource should not be null");
         }
