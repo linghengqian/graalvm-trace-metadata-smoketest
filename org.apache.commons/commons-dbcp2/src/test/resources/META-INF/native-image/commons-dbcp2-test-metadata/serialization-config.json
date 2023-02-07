@@ -1,27 +1,27 @@
 {
   "types":[
     {
-      "condition":{"typeReachable":"java.lang.Object"},
+      "condition":{"typeReachable":"org.apache.commons.dbcp2.datasources.TestPerUserPoolDataSource"},
       "name":"java.lang.Boolean"
     },
     {
-      "condition":{"typeReachable":"java.lang.Object"},
+      "condition":{"typeReachable":"org.apache.commons.dbcp2.datasources.TestPerUserPoolDataSource"},
       "name":"java.lang.Integer"
     },
     {
-      "condition":{"typeReachable":"java.lang.Object"},
+      "condition":{"typeReachable":"org.apache.commons.dbcp2.datasources.TestPerUserPoolDataSource"},
       "name":"java.lang.Long"
     },
     {
-      "condition":{"typeReachable":"java.lang.Object"},
+      "condition":{"typeReachable":"org.apache.commons.dbcp2.datasources.TestPerUserPoolDataSource"},
       "name":"java.lang.Number"
     },
     {
-      "condition":{"typeReachable":"java.lang.Object"},
+      "condition":{"typeReachable":"org.apache.commons.dbcp2.datasources.TestPerUserPoolDataSource"},
       "name":"java.lang.String"
     },
     {
-      "condition":{"typeReachable":"java.lang.Object"},
+      "condition":{"typeReachable":"org.apache.commons.dbcp2.datasources.TestPerUserPoolDataSource"},
       "name":"java.time.Duration"
     },
     {
@@ -33,15 +33,15 @@
       "name":"java.util.HashMap"
     },
     {
-      "condition":{"typeReachable":"java.lang.Object"},
+      "condition":{"typeReachable":"org.apache.commons.dbcp2.datasources.TestPerUserPoolDataSource"},
       "name":"org.apache.commons.dbcp2.cpdsadapter.DriverAdapterCPDS"
     },
     {
-      "condition":{"typeReachable":"java.lang.Object"},
+      "condition":{"typeReachable":"org.apache.commons.dbcp2.datasources.TestPerUserPoolDataSource"},
       "name":"org.apache.commons.dbcp2.datasources.InstanceKeyDataSource"
     },
     {
-      "condition":{"typeReachable":"java.lang.Object"},
+      "condition":{"typeReachable":"org.apache.commons.dbcp2.datasources.TestPerUserPoolDataSource"},
       "name":"org.apache.commons.dbcp2.datasources.PerUserPoolDataSource"
     }
   ],
