@@ -8,10 +8,6 @@
     {
       "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingCallableStatement"},
       "pattern":"\\Qmockito-extensions/org.mockito.plugins.MockMaker\\E"
-    }, 
-    {
-      "condition":{"typeReachable":"org.apache.commons.dbcp2.DriverConnectionFactory"},
-      "pattern":"\\Qorg/h2/util/data.zip\\E"
     }
   ]},
   "bundles":[

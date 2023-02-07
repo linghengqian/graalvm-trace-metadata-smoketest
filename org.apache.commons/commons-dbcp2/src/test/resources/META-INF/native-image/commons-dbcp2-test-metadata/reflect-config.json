@@ -36,16 +36,6 @@
   "name":"[Z"
 },
 {
-  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle"},
-  "name":"com.lingh.StackMessageLog",
-  "methods":[{"name":"<init>","parameterTypes":["java.lang.String"] }]
-},
-{
-  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
-  "name":"com.lingh.StackMessageLog",
-  "methods":[{"name":"<init>","parameterTypes":["java.lang.String"] }]
-},
-{
   "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
   "name":"com.sun.xml.internal.stream.XMLInputFactoryImpl",
   "methods":[{"name":"<init>","parameterTypes":[] }]
@@ -241,11 +231,6 @@
   "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
   "name":"org.apache.commons.dbcp2.PoolableConnectionMXBean",
   "queryAllPublicMethods":true
-},
-{
-  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
-  "name":"org.apache.commons.dbcp2.TesterConnectionDelayDriver",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
   "condition":{"typeReachable":"com.lingh.managed.TestManagedConnection$UncooperativeLocalXAConnectionFactory"},
