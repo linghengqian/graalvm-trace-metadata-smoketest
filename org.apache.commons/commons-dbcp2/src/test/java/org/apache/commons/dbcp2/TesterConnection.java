@@ -2,6 +2,9 @@
 
 package org.apache.commons.dbcp2;
 
+import com.lingh.TesterDatabaseMetaData;
+import com.lingh.TesterPreparedStatement;
+
 import java.sql.*;
 import java.util.Map;
 import java.util.Properties;

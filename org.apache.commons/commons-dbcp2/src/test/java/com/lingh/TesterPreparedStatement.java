@@ -1,6 +1,9 @@
 
 
-package org.apache.commons.dbcp2;
+package com.lingh;
+
+import org.apache.commons.dbcp2.TesterResultSet;
+import org.apache.commons.dbcp2.TesterStatement;
 
 import java.io.InputStream;
 import java.io.Reader;
