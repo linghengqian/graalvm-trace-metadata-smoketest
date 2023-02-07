@@ -36,10 +36,6 @@
   "name":"[Z"
 },
 {
-  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
-  "name":"ch.qos.logback.classic.Logger"
-},
-{
   "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle"},
   "name":"com.lingh.StackMessageLog",
   "methods":[{"name":"<init>","parameterTypes":["java.lang.String"] }]
@@ -403,11 +399,5 @@
   "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
   "name":"org.apache.commons.pool2.impl.GenericObjectPoolMXBean",
   "queryAllPublicMethods":true
-},
-{
-  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
-  "name":"org.slf4j.spi.LocationAwareLogger",
-  "queryAllDeclaredMethods":true,
-  "methods":[{"name":"log","parameterTypes":["org.slf4j.Marker","java.lang.String","int","java.lang.String","java.lang.Object[]","java.lang.Throwable"] }]
 }
 ]

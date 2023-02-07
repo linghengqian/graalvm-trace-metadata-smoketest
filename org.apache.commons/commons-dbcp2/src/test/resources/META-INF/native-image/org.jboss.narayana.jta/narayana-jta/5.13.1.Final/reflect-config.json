@@ -1,9 +1,5 @@
 [
 {
-  "condition":{"typeReachable":"com.arjuna.ats.jta.logging.jtaLogger"},
-  "name":"ch.qos.logback.classic.Logger"
-},
-{
   "condition":{"typeReachable":"com.arjuna.ats.arjuna.common.arjPropertyManager"},
   "name":"com.arjuna.ats.arjuna.common.CoordinatorEnvironmentBean",
   "allDeclaredFields":true,
@@ -386,36 +382,5 @@
   "condition":{"typeReachable":"com.arjuna.ats.internal.jta.resources.arjunacore.SynchronizationImple"},
   "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
   "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"com.arjuna.ats.arjuna.logging.arjunaI18NLogger_$logger"},
-  "name":"org.slf4j.spi.LocationAwareLogger",
-  "methods":[{"name":"log","parameterTypes":["org.slf4j.Marker","java.lang.String","int","java.lang.String","java.lang.Object[]","java.lang.Throwable"] }]
-},
-{
-  "condition":{"typeReachable":"com.arjuna.ats.arjuna.recovery.TransactionStatusManager"},
-  "name":"org.slf4j.spi.LocationAwareLogger",
-  "methods":[{"name":"log","parameterTypes":["org.slf4j.Marker","java.lang.String","int","java.lang.String","java.lang.Object[]","java.lang.Throwable"] }]
-},
-{
-  "condition":{"typeReachable":"com.arjuna.ats.internal.arjuna.recovery.Listener"},
-  "name":"org.slf4j.spi.LocationAwareLogger",
-  "methods":[{"name":"log","parameterTypes":["org.slf4j.Marker","java.lang.String","int","java.lang.String","java.lang.Object[]","java.lang.Throwable"] }]
-},
-{
-  "condition":{"typeReachable":"com.arjuna.ats.internal.arjuna.recovery.TransactionStatusManagerItem"},
-  "name":"org.slf4j.spi.LocationAwareLogger",
-  "methods":[{"name":"log","parameterTypes":["org.slf4j.Marker","java.lang.String","int","java.lang.String","java.lang.Object[]","java.lang.Throwable"] }]
-},
-{
-  "condition":{"typeReachable":"com.arjuna.ats.jta.common.JTAEnvironmentBean"},
-  "name":"org.slf4j.spi.LocationAwareLogger",
-  "methods":[{"name":"log","parameterTypes":["org.slf4j.Marker","java.lang.String","int","java.lang.String","java.lang.Object[]","java.lang.Throwable"] }]
-},
-{
-  "condition":{"typeReachable":"com.arjuna.ats.jta.logging.jtaLogger"},
-  "name":"org.slf4j.spi.LocationAwareLogger",
-  "queryAllDeclaredMethods":true,
-  "methods":[{"name":"log","parameterTypes":["org.slf4j.Marker","java.lang.String","int","java.lang.String","java.lang.Object[]","java.lang.Throwable"] }]
 }
 ]

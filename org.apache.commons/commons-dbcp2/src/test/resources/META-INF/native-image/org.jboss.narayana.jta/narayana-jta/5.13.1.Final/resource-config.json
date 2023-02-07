@@ -8,10 +8,6 @@
     {
       "condition":{"typeReachable":"com.arjuna.common.util.propertyservice.FileLocator"},
       "pattern":"\\Qjbossts-properties.xml\\E"
-    }, 
-    {
-      "condition":{"typeReachable":"com.arjuna.ats.jta.logging.jtaLogger"},
-      "pattern":"\\Qorg/slf4j/impl/StaticLoggerBinder.class\\E"
     }
   ]},
   "bundles":[]
