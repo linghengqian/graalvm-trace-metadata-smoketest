@@ -159,31 +159,6 @@
   "methods":[{"name":"walk","parameterTypes":["java.util.function.Function"] }]
 },
 {
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingCallableStatement"},
-  "name":"java.lang.StackWalker",
-  "methods":[{"name":"walk","parameterTypes":["java.util.function.Function"] }]
-},
-{
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingDatabaseMetaData"},
-  "name":"java.lang.StackWalker",
-  "methods":[{"name":"walk","parameterTypes":["java.util.function.Function"] }]
-},
-{
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingPreparedStatement"},
-  "name":"java.lang.StackWalker",
-  "methods":[{"name":"walk","parameterTypes":["java.util.function.Function"] }]
-},
-{
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingResultSet"},
-  "name":"java.lang.StackWalker",
-  "methods":[{"name":"walk","parameterTypes":["java.util.function.Function"] }]
-},
-{
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingStatement"},
-  "name":"java.lang.StackWalker",
-  "methods":[{"name":"walk","parameterTypes":["java.util.function.Function"] }]
-},
-{
   "condition":{"typeReachable":"org.apache.commons.dbcp2.DelegatingCallableStatement"},
   "name":"java.lang.StackWalker$Option"
 },
@@ -223,31 +198,6 @@
   "methods":[{"name":"getClassName","parameterTypes":[] }]
 },
 {
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingCallableStatement"},
-  "name":"java.lang.StackWalker$StackFrame",
-  "methods":[{"name":"getClassName","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingDatabaseMetaData"},
-  "name":"java.lang.StackWalker$StackFrame",
-  "methods":[{"name":"getClassName","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingPreparedStatement"},
-  "name":"java.lang.StackWalker$StackFrame",
-  "methods":[{"name":"getClassName","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingResultSet"},
-  "name":"java.lang.StackWalker$StackFrame",
-  "methods":[{"name":"getClassName","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingStatement"},
-  "name":"java.lang.StackWalker$StackFrame",
-  "methods":[{"name":"getClassName","parameterTypes":[] }]
-},
-{
   "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"java.lang.String"
 },
@@ -260,11 +210,6 @@
   "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"java.lang.Void",
   "fields":[{"name":"TYPE"}]
-},
-{
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingCallableStatement"},
-  "name":"java.lang.reflect.InvocationHandler",
-  "methods":[{"name":"invokeDefault","parameterTypes":["java.lang.Object","java.lang.reflect.Method","java.lang.Object[]"] }]
 },
 {
   "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
