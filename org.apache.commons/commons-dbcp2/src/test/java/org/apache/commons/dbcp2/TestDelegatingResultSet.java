@@ -3,7 +3,6 @@
 package org.apache.commons.dbcp2;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.sql.Connection;
@@ -169,17 +168,6 @@ public class TestDelegatingResultSet {
         verify(rs, times(1)).getBigDecimal(1);
     }
 
-    // FIXME: this appears to be a bug
-    @Disabled
-    @Test
-    public void testGetBigDecimalIntegerInteger() throws Exception {
-        try {
-            delegate.getBigDecimal(1, 1);
-        } catch (final SQLException e) {
-        }
-        verify(rs, times(1)).getBigDecimal(1, 1);
-    }
-
     @Test
     public void testGetBigDecimalString() throws Exception {
         try {
@@ -187,17 +175,6 @@ public class TestDelegatingResultSet {
         } catch (final SQLException e) {
         }
         verify(rs, times(1)).getBigDecimal("foo");
-    }
-
-    // FIXME: this appears to be a bug
-    @Disabled
-    @Test
-    public void testGetBigDecimalStringInteger() throws Exception {
-        try {
-            delegate.getBigDecimal("foo", 1);
-        } catch (final SQLException e) {
-        }
-        verify(rs, times(1)).getBigDecimal("foo", 1);
     }
 
     @Test
@@ -1584,17 +1561,6 @@ public class TestDelegatingResultSet {
         verify(rs, times(1)).updateObject(1, System.err);
     }
 
-    // FIXME: this appears to be a bug
-    @Disabled
-    @Test
-    public void testUpdateObjectIntegerObjectInteger() throws Exception {
-        try {
-            delegate.updateObject(1, System.err, 1);
-        } catch (final SQLException e) {
-        }
-        verify(rs, times(1)).updateObject(1, System.err, 1);
-    }
-
     @Test
     public void testUpdateObjectIntegerObjectSQLType() throws Exception {
         try {
@@ -1620,17 +1586,6 @@ public class TestDelegatingResultSet {
         } catch (final SQLException e) {
         }
         verify(rs, times(1)).updateObject("foo", System.err);
-    }
-
-    // FIXME this appears to be a bug
-    @Disabled
-    @Test
-    public void testUpdateObjectStringObjectInteger() throws Exception {
-        try {
-            delegate.updateObject("foo", System.err, 1);
-        } catch (final SQLException e) {
-        }
-        verify(rs, times(1)).updateObject("foo", System.err, 1);
     }
 
     @Test

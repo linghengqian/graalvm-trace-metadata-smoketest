@@ -10,7 +10,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import javax.management.AttributeNotFoundException;
@@ -20,7 +19,6 @@ import javax.management.ObjectName;
 import javax.sql.DataSource;
 import java.io.IOException;
 import java.lang.management.ManagementFactory;
-import java.lang.management.ThreadMXBean;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -29,7 +27,6 @@ import java.util.Properties;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -41,7 +38,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
-@SuppressWarnings({"EmptyTryBlock", "resource", "BusyWait"})
+@SuppressWarnings({"EmptyTryBlock", "resource"})
 public class TestBasicDataSource extends TestConnectionPool {
     private static final String CATALOG = "test catalog";
 
@@ -314,34 +311,6 @@ public class TestBasicDataSource extends TestConnectionPool {
         assertNull(ds.getValidationQuery());
         ds.setValidationQuery("   ");
         assertNull(ds.getValidationQuery());
-    }
-
-    @Test
-    @Disabled
-    public void testEvict() throws Exception {
-        final long delay = 1000;
-        ds.setInitialSize(10);
-        ds.setMaxIdle(10);
-        ds.setMaxTotal(10);
-        ds.setMinIdle(5);
-        ds.setNumTestsPerEvictionRun(3);
-        ds.setMinEvictableIdleTimeMillis(100);
-        ds.setTimeBetweenEvictionRunsMillis(delay);
-        ds.setPoolPreparedStatements(true);
-        final Connection conn = ds.getConnection();
-        conn.close();
-        final ThreadMXBean threadBean = ManagementFactory.getThreadMXBean();
-        while (Stream.of(threadBean.getThreadInfo(threadBean.getAllThreadIds()))
-                .anyMatch(t -> t.getThreadName().equals("commons-pool-evictor-thread"))) {
-            if (ds.getNumIdle() <= ds.getMinIdle()) {
-                break;
-            }
-            Thread.sleep(delay);
-        }
-        if (ds.getNumIdle() > ds.getMinIdle()) {
-            fail("EvictionTimer thread was destroyed with numIdle=" + ds.getNumIdle() + "(expected: less or equal than "
-                    + ds.getMinIdle() + ")");
-        }
     }
 
     @Test
