@@ -248,36 +248,6 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle"},
-  "name":"org.apache.commons.dbcp2.TesterDriver"
-},
-{
-  "condition":{"typeReachable":"com.lingh.cpdsadapter.TestDriverAdapterCPDS"},
-  "name":"org.apache.commons.dbcp2.TesterDriver"
-},
-{
-  "condition":{"typeReachable":"com.lingh.cpdsadapter.TestDriverAdapterCPDS$ThreadDbcp367"},
-  "name":"org.apache.commons.dbcp2.TesterDriver"
-},
-{
-  "condition":{"typeReachable":"com.lingh.datasources.ConnectionPoolDataSourceProxy"},
-  "name":"org.apache.commons.dbcp2.TesterDriver"
-},
-{
-  "condition":{"typeReachable":"com.lingh.datasources.TestSharedPoolDataSource"},
-  "name":"org.apache.commons.dbcp2.TesterDriver"
-},
-{
-  "condition":{"typeReachable":"com.lingh.managed.TestDataSourceXAConnectionFactory$XADataSourceHandle"},
-  "name":"org.apache.commons.dbcp2.TesterDriver",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"com.lingh.managed.TestSynchronizationOrder$3"},
-  "name":"org.apache.commons.dbcp2.TesterDriver",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
   "condition":{"typeReachable":"com.lingh.managed.TestManagedConnection$UncooperativeLocalXAConnectionFactory"},
   "name":"org.apache.commons.dbcp2.managed.LocalXAConnectionFactory",
   "fields":[{"name":"transactionRegistry"}]

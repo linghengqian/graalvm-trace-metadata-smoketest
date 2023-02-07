@@ -373,14 +373,5 @@
 {
   "condition":{"typeReachable":"com.arjuna.common.util.propertyservice.PropertiesFactory"},
   "name":"javax.xml.stream.XMLInputFactory"
-},
-{
-  "condition":{"typeReachable":"com.arjuna.ats.jta.common.JTAEnvironmentBean"},
-  "name":"org.apache.commons.dbcp2.managed.LocalXAConnectionFactory$LocalXAResource"
-},
-{
-  "condition":{"typeReachable":"com.arjuna.ats.internal.jta.resources.arjunacore.SynchronizationImple"},
-  "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
 }
 ]
