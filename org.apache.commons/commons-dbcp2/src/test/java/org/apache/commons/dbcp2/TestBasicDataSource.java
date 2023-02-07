@@ -6,7 +6,12 @@ import com.lingh.StackMessageLog;
 import com.lingh.TesterClassLoader;
 import org.apache.commons.logging.LogFactory;
 import org.hamcrest.CoreMatchers;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import javax.management.AttributeNotFoundException;
 import javax.management.MBeanAttributeInfo;
@@ -23,23 +28,28 @@ import java.util.Arrays;
 import java.util.Properties;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
-/**
- * TestSuite for BasicDataSource
- */
+@SuppressWarnings({"EmptyTryBlock", "resource", "BusyWait"})
 public class TestBasicDataSource extends TestConnectionPool {
-
     private static final String CATALOG = "test catalog";
 
     @BeforeAll
     public static void setUpClass() {
-        // register a custom logger which supports inspection of the log messages
         LogFactory.getFactory().setAttribute("org.apache.commons.logging.Log", "com.lingh.StackMessageLog");
     }
+
     protected BasicDataSource ds;
 
     protected BasicDataSource createDataSource() throws Exception {
@@ -82,14 +92,11 @@ public class TestBasicDataSource extends TestConnectionPool {
     public void testAccessToUnderlyingConnectionAllowed() throws Exception {
         ds.setAccessToUnderlyingConnectionAllowed(true);
         assertTrue(ds.isAccessToUnderlyingConnectionAllowed());
-
         try (final Connection conn = getConnection()) {
             Connection dconn = ((DelegatingConnection<?>) conn).getDelegate();
             assertNotNull(dconn);
-
             dconn = ((DelegatingConnection<?>) conn).getInnermostDelegate();
             assertNotNull(dconn);
-
             assertTrue(dconn instanceof TesterConnection);
         }
     }
@@ -97,49 +104,29 @@ public class TestBasicDataSource extends TestConnectionPool {
     @Test
     public void testClose() throws Exception {
         ds.setAccessToUnderlyingConnectionAllowed(true);
-
-        // active connection is held open when ds is closed
         final Connection activeConnection = getConnection();
         final Connection rawActiveConnection = ((DelegatingConnection<?>) activeConnection).getInnermostDelegate();
         assertFalse(activeConnection.isClosed());
         assertFalse(rawActiveConnection.isClosed());
-
-        // idle connection is in pool but closed
         final Connection idleConnection = getConnection();
         final Connection rawIdleConnection = ((DelegatingConnection<?>) idleConnection).getInnermostDelegate();
         assertFalse(idleConnection.isClosed());
         assertFalse(rawIdleConnection.isClosed());
-
-        // idle wrapper should be closed but raw connection should be open
         idleConnection.close();
         assertTrue(idleConnection.isClosed());
         assertFalse(rawIdleConnection.isClosed());
-
         ds.close();
-
-        // raw idle connection should now be closed
         assertTrue(rawIdleConnection.isClosed());
-
-        // active connection should still be open
         assertFalse(activeConnection.isClosed());
         assertFalse(rawActiveConnection.isClosed());
-
-        // now close the active connection
         activeConnection.close();
-
-        // both wrapper and raw active connection should be closed
         assertTrue(activeConnection.isClosed());
         assertTrue(rawActiveConnection.isClosed());
-
-        // Verify SQLException on getConnection after close
         try {
             getConnection();
             fail("Expecting SQLException");
         } catch (final SQLException ex) {
-            // Expected
         }
-
-        // Redundant close is OK
         ds.close();
 
     }
@@ -149,31 +136,17 @@ public class TestBasicDataSource extends TestConnectionPool {
         ds.setDriverClassName("org.apache.commons.dbcp2.TesterConnectionDelayDriver");
         ds.setUrl("jdbc:apache:commons:testerConnectionDelayDriver:50");
         ds.setInitialSize(8);
-
-        // Launch a request to trigger pool initialization
-        final TestThread testThread = new TestThread(1,0);
+        final TestThread testThread = new TestThread(1, 0);
         final Thread t = new Thread(testThread);
         t.start();
-
-        // Get another connection (should wait for pool init)
-        Thread.sleep(100); // Make sure t gets into init first
+        Thread.sleep(100);
         ds.getConnection();
-
-        // Pool should have at least 6 idle connections now
-        // Use underlying pool getNumIdle to avoid waiting for ds lock
         assertTrue(ds.getConnectionPool().getNumIdle() > 5);
-
-        // Make sure t completes successfully
         t.join();
         assertFalse(testThread.failed());
-
         ds.close();
     }
 
-    /**
-     * JIRA: DBCP-444
-     * Verify that invalidate does not return closed connection to the pool.
-     */
     @Test
     public void testConcurrentInvalidateBorrow() throws Exception {
         ds.setDriverClassName("org.apache.commons.dbcp2.TesterConnRequestCountDriver");
@@ -183,39 +156,26 @@ public class TestBasicDataSource extends TestConnectionPool {
         ds.setMaxTotal(8);
         ds.setLifo(true);
         ds.setMaxWaitMillis(-1);
-
-        // Threads just borrow and return - validation will trigger close check
-        final TestThread testThread1 = new TestThread(1000,0);
+        final TestThread testThread1 = new TestThread(1000, 0);
         final Thread t1 = new Thread(testThread1);
         t1.start();
-        final TestThread testThread2 = new TestThread(1000,0);
+        final TestThread testThread2 = new TestThread(1000, 0);
         final Thread t2 = new Thread(testThread1);
         t2.start();
-
-        // Grab and invalidate connections
         for (int i = 0; i < 1000; i++) {
             final Connection conn = ds.getConnection();
             ds.invalidateConnection(conn);
         }
-
-        // Make sure borrow threads complete successfully
         t1.join();
         t2.join();
         assertFalse(testThread1.failed());
         assertFalse(testThread2.failed());
-
         ds.close();
     }
 
-    /**
-     * JIRA: DBCP-547
-     * Verify that ConnectionFactory interface in BasicDataSource.createConnectionFactory().
-     */
     @Test
     public void testCreateConnectionFactory() throws Exception {
-
-        /* not set ConnectionFactoryClassName */
-    	Properties properties = new Properties();
+        Properties properties = new Properties();
         properties.put("initialSize", "1");
         properties.put("driverClassName", "org.apache.commons.dbcp2.TesterDriver");
         properties.put("url", "jdbc:apache:commons:testdriver");
@@ -226,8 +186,6 @@ public class TestBasicDataSource extends TestConnectionPool {
         assertNotNull(conn);
         conn.close();
         ds.close();
-
-        /* set ConnectionFactoryClassName */
         properties = new Properties();
         properties.put("initialSize", "1");
         properties.put("driverClassName", "org.apache.commons.dbcp2.TesterDriver");
@@ -238,16 +196,10 @@ public class TestBasicDataSource extends TestConnectionPool {
         ds = BasicDataSourceFactory.createDataSource(properties);
         conn = ds.getConnection();
         assertNotNull(conn);
-
         conn.close();
         ds.close();
     }
 
-    /**
-     * JIRA: DBCP-342, DBCP-93
-     * Verify that when errors occur during BasicDataSource initialization, GenericObjectPool
-     * Evictors are cleaned up.
-     */
     @Test
     public void testCreateDataSourceCleanupEvictor() throws Exception {
         ds.close();
@@ -257,44 +209,23 @@ public class TestBasicDataSource extends TestConnectionPool {
         ds.setUrl("jdbc:apache:commons:testerConnRequestCountDriver");
         ds.setValidationQuery("SELECT DUMMY FROM DUAL");
         ds.setUsername("userName");
-
-        // Make password incorrect, so createDataSource will throw
         ds.setPassword("wrong");
-        // Set timeBetweenEvictionRuns > 0, so evictor will be created
         ds.setTimeBetweenEvictionRunsMillis(100);
-        // Set min idle > 0, so evictor will try to make connection as many as idle count
         ds.setMinIdle(2);
-
-        // Prevent concurrent execution of threads executing test subclasses
         synchronized (TesterConnRequestCountDriver.class) {
             TesterConnRequestCountDriver.initConnRequestCount();
-
-            // user request 10 times
-            for (int i=0; i<10; i++) {
+            for (int i = 0; i < 10; i++) {
                 try {
-                    @SuppressWarnings("unused")
-                    final
-                    DataSource ds2 = ds.createDataSource();
+                    @SuppressWarnings("unused") final DataSource ds2 = ds.createDataSource();
                 } catch (final SQLException e) {
-                    // Ignore
                 }
             }
-
-            // sleep 1000ms. evictor will be invoked 10 times if running.
             Thread.sleep(1000);
-
-            // Make sure there have been no Evictor-generated requests (count should be 10, from requests above)
             assertEquals(10, TesterConnRequestCountDriver.getConnectionRequestCount());
         }
-
-        // make sure cleanup is complete
         assertNull(ds.getConnectionPool());
     }
 
-    /**
-     * JIRA DBCP-93: If an SQLException occurs after the GenericObjectPool is
-     * initialized in createDataSource, the evictor task is not cleaned up.
-     */
     @Test
     public void testCreateDataSourceCleanupThreads() throws Exception {
         ds.close();
@@ -309,19 +240,15 @@ public class TestBasicDataSource extends TestConnectionPool {
         ds.setDefaultTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
         ds.setDefaultCatalog(CATALOG);
         ds.setUsername("userName");
-        // Set timeBetweenEvictionRuns > 0, so evictor is created
         ds.setTimeBetweenEvictionRunsMillis(100);
-        // Make password incorrect, so createDataSource will throw
         ds.setPassword("wrong");
         ds.setValidationQuery("SELECT DUMMY FROM DUAL");
         final int threadCount = Thread.activeCount();
-        for (int i = 0; i < 10; i++) {
-            try (Connection c = ds.getConnection()){
+        IntStream.range(0, 10).forEach(i -> {
+            try (Connection ignored = ds.getConnection()) {
             } catch (final SQLException ex) {
-                // ignore
             }
-        }
-        // Allow one extra thread for JRockit compatibility
+        });
         assertTrue(Thread.activeCount() <= threadCount + 1);
     }
 
@@ -333,36 +260,27 @@ public class TestBasicDataSource extends TestConnectionPool {
             assertNotNull(c[i]);
             assertEquals(CATALOG, c[i].getCatalog());
         }
-
         for (final Connection element : c) {
             element.setCatalog("error");
             element.close();
         }
-
         for (int i = 0; i < c.length; i++) {
             c[i] = getConnection();
             assertNotNull(c[i]);
             assertEquals(CATALOG, c[i].getCatalog());
         }
-
         for (final Connection element : c) {
             element.close();
         }
     }
 
-    /**
-     * JIRA: DBCP-437
-     * Verify that BasicDataSource sets disconnect codes properties.
-     * Functionality is verified in pcf tests.
-     */
     @Test
     public void testDisconnectSqlCodes() throws Exception {
         final ArrayList<String> disconnectionSqlCodes = new ArrayList<>();
         disconnectionSqlCodes.add("XXX");
         ds.setDisconnectionSqlCodes(disconnectionSqlCodes);
         ds.setFastFailValidation(true);
-        ds.getConnection();  // Triggers initialization - pcf creation
-        // Make sure factory got the properties
+        ds.getConnection();
         final PoolableConnectionFactory pcf =
                 (PoolableConnectionFactory) ds.getConnectionPool().getFactory();
         assertTrue(pcf.isFastFailValidation());
@@ -370,10 +288,6 @@ public class TestBasicDataSource extends TestConnectionPool {
         assertEquals(1, pcf.getDisconnectionSqlCodes().size());
     }
 
-    /**
-     * JIRA DBCP-333: Check that a custom class loader is used.
-     * @throws Exception
-     */
     @Test
     public void testDriverClassLoader() throws Exception {
         getConnection();
@@ -384,23 +298,20 @@ public class TestBasicDataSource extends TestConnectionPool {
     }
 
     @Test
-    public void testEmptyInitConnectionSql() throws Exception {
+    public void testEmptyInitConnectionSql() {
         ds.setConnectionInitSqls(Arrays.asList("", "   "));
         assertNotNull(ds.getConnectionInitSqls());
         assertEquals(0, ds.getConnectionInitSqls().size());
-
         ds.setConnectionInitSqls(null);
         assertNotNull(ds.getConnectionInitSqls());
         assertEquals(0, ds.getConnectionInitSqls().size());
     }
 
     @Test
-    public void testEmptyValidationQuery() throws Exception {
+    public void testEmptyValidationQuery() {
         assertNotNull(ds.getValidationQuery());
-
         ds.setValidationQuery("");
         assertNull(ds.getValidationQuery());
-
         ds.setValidationQuery("   ");
         assertNull(ds.getValidationQuery());
     }
@@ -409,7 +320,6 @@ public class TestBasicDataSource extends TestConnectionPool {
     @Disabled
     public void testEvict() throws Exception {
         final long delay = 1000;
-
         ds.setInitialSize(10);
         ds.setMaxIdle(10);
         ds.setMaxTotal(10);
@@ -418,10 +328,8 @@ public class TestBasicDataSource extends TestConnectionPool {
         ds.setMinEvictableIdleTimeMillis(100);
         ds.setTimeBetweenEvictionRunsMillis(delay);
         ds.setPoolPreparedStatements(true);
-
         final Connection conn = ds.getConnection();
         conn.close();
-
         final ThreadMXBean threadBean = ManagementFactory.getThreadMXBean();
         while (Stream.of(threadBean.getThreadInfo(threadBean.getAllThreadIds()))
                 .anyMatch(t -> t.getThreadName().equals("commons-pool-evictor-thread"))) {
@@ -450,15 +358,10 @@ public class TestBasicDataSource extends TestConnectionPool {
         assertEquals(10, ds.getNumIdle());
     }
 
-    /**
-     * JIRA: DBCP-482
-     * Verify warning not logged if JMX MBean unregistered before close() called.
-     */
     @Test
     public void testInstanceNotFoundExceptionLogSuppressed() throws Exception {
         final MBeanServer mbs = ManagementFactory.getPlatformMBeanServer();
-        try (Connection c = ds.getConnection()) {
-            // nothing
+        try (Connection ignored = ds.getConnection()) {
         }
         final ObjectName objectName = new ObjectName(ds.getJmxName());
         if (mbs.isRegistered(objectName)) {
@@ -480,7 +383,7 @@ public class TestBasicDataSource extends TestConnectionPool {
                 assertTrue(conn1.isClosed());
                 assertEquals(1, ds.getNumActive());
                 assertEquals(0, ds.getNumIdle());
-                try (final Connection conn3 = ds.getConnection()) {
+                try (final Connection ignored = ds.getConnection()) {
                     conn2.close();
                 }
             }
@@ -491,10 +394,10 @@ public class TestBasicDataSource extends TestConnectionPool {
     public void testInvalidConnectionInitSql() {
         try {
             ds.setConnectionInitSqls(Arrays.asList("SELECT 1", "invalid"));
-            try (Connection c = ds.getConnection()) {}
+            try (Connection ignored = ds.getConnection()) {
+            }
             fail("expected SQLException");
-        }
-        catch (final SQLException e) {
+        } catch (final SQLException e) {
             if (!e.toString().contains("invalid")) {
                 fail("expected detailed error message");
             }
@@ -504,7 +407,7 @@ public class TestBasicDataSource extends TestConnectionPool {
     @Test
     public void testInvalidValidationQuery() {
         ds.setValidationQuery("invalid");
-        try (Connection c = ds.getConnection()) {
+        try (Connection ignored = ds.getConnection()) {
             fail("expected SQLException");
         } catch (final SQLException e) {
             if (!e.toString().contains("invalid")) {
@@ -513,25 +416,19 @@ public class TestBasicDataSource extends TestConnectionPool {
         }
     }
 
-    // Bugzilla Bug 28251:  Returning dead database connections to BasicDataSource
-    // isClosed() failure blocks returning a connection to the pool
     @Test
     public void testIsClosedFailure() throws SQLException {
         ds.setAccessToUnderlyingConnectionAllowed(true);
         final Connection conn = ds.getConnection();
         assertNotNull(conn);
         assertEquals(1, ds.getNumActive());
-
-        // set an IO failure causing the isClosed method to fail
-        final TesterConnection tconn = (TesterConnection) ((DelegatingConnection<?>)conn).getInnermostDelegate();
+        final TesterConnection tconn = (TesterConnection) ((DelegatingConnection<?>) conn).getInnermostDelegate();
         tconn.setFailure(new IOException("network error"));
-
         try {
             conn.close();
             fail("Expected SQLException");
+        } catch (final SQLException ex) {
         }
-        catch(final SQLException ex) { }
-
         assertEquals(0, ds.getNumActive());
     }
 
@@ -543,52 +440,30 @@ public class TestBasicDataSource extends TestConnectionPool {
         assertFalse(ds.isWrapperFor(null));
     }
 
-    /**
-     * Make sure setting jmxName to null suppresses JMX registration of connection and statement pools.
-     * JIRA: DBCP-434
-     */
     @Test
     public void testJmxDisabled() throws Exception {
         final MBeanServer mbs = ManagementFactory.getPlatformMBeanServer();
-        // Unregister leftovers from other tests (TODO: worry about concurrent test execution)
         final ObjectName commons = new ObjectName("org.apache.commons.*:*");
         final Set<ObjectName> results = mbs.queryNames(commons, null);
         for (final ObjectName result : results) {
             mbs.unregisterMBean(result);
         }
-        ds.setJmxName(null);  // Should disable JMX for both connection and statement pools
+        ds.setJmxName(null);
         ds.setPoolPreparedStatements(true);
-        ds.getConnection();  // Trigger initialization
-        // Nothing should be registered
+        ds.getConnection();
         assertEquals(0, mbs.queryNames(commons, null).size());
     }
 
-    /**
-     * Tests JIRA <a href="https://issues.apache.org/jira/browse/DBCP-562">DBCP-562</a>.
-     * <p>
-     * Make sure Password Attribute is not exported via JMXBean.
-     * </p>
-     */
     @Test
     public void testJmxDoesNotExposePassword() throws Exception {
         final MBeanServer mbs = ManagementFactory.getPlatformMBeanServer();
-
-        try (Connection c = ds.getConnection()) {
-            // nothing
+        try (Connection ignored = ds.getConnection()) {
         }
         final ObjectName objectName = new ObjectName(ds.getJmxName());
-
         final MBeanAttributeInfo[] attributes = mbs.getMBeanInfo(objectName).getAttributes();
-
         assertTrue(attributes != null && attributes.length > 0);
-
-        Arrays.asList(attributes).forEach(attrInfo -> {
-            assertFalse("password".equalsIgnoreCase(attrInfo.getName()));
-        });
-
-        assertThrows(AttributeNotFoundException.class, () -> {
-            mbs.getAttribute(objectName, "Password");
-        });
+        Arrays.asList(attributes).forEach(attrInfo -> assertFalse("password".equalsIgnoreCase(attrInfo.getName())));
+        assertThrows(AttributeNotFoundException.class, () -> mbs.getAttribute(objectName, "Password"));
     }
 
     @Test
@@ -597,25 +472,14 @@ public class TestBasicDataSource extends TestConnectionPool {
         ds.setMaxIdle(4);
         ds.setMinEvictableIdleTimeMillis(10);
         ds.setNumTestsPerEvictionRun(2);
-
         final Connection ds2 = ds.createDataSource().getConnection();
         final Connection ds3 = ds.createDataSource().getConnection();
-
         assertEquals(0, ds.getNumIdle());
-
         ds2.close();
         ds3.close();
-
-        // Make sure MinEvictableIdleTimeMillis has elapsed
         Thread.sleep(100);
-
-        // Ensure no connections evicted by eviction thread
         assertEquals(2, ds.getNumIdle());
-
-        // Force Eviction
         ds.evict();
-
-        // Ensure all connections evicted
         assertEquals(0, ds.getNumIdle());
     }
 
@@ -645,7 +509,7 @@ public class TestBasicDataSource extends TestConnectionPool {
             StackMessageLog.clear();
             ds.setMaxConnLifetimeMillis(100);
             ds.setLogExpiredConnections(false);
-            try (final Connection conn = ds.getConnection()) {
+            try (final Connection ignored = ds.getConnection()) {
                 assertEquals(1, ds.getNumActive());
                 Thread.sleep(500);
             }
@@ -657,30 +521,17 @@ public class TestBasicDataSource extends TestConnectionPool {
         }
     }
 
-    /**
-     * Bugzilla Bug 29832: Broken behavior for BasicDataSource.setMaxTotal(0)
-     * MaxTotal == 0 should throw SQLException on getConnection.
-     * Results from Bug 29863 in commons-pool.
-     */
     @Test
-    public void testMaxTotalZero() throws Exception {
+    public void testMaxTotalZero() {
         ds.setMaxTotal(0);
-
         try {
             final Connection conn = ds.getConnection();
             assertNotNull(conn);
             fail("SQLException expected");
-
         } catch (final SQLException e) {
-            // test OK
         }
     }
 
-    /**
-     * JIRA: DBCP-457
-     * Verify that changes made to abandoned config are passed to the underlying
-     * pool.
-     */
     @Test
     public void testMutateAbandonedConfig() throws Exception {
         final Properties properties = new Properties();
@@ -697,43 +548,25 @@ public class TestBasicDataSource extends TestConnectionPool {
 
     @Test
     public void testNoAccessToUnderlyingConnectionAllowed() throws Exception {
-        // default: false
         assertFalse(ds.isAccessToUnderlyingConnectionAllowed());
-
         final Connection conn = getConnection();
         Connection dconn = ((DelegatingConnection<?>) conn).getDelegate();
         assertNull(dconn);
-
         dconn = ((DelegatingConnection<?>) conn).getInnermostDelegate();
         assertNull(dconn);
     }
 
-    /**
-     * Verifies correct handling of exceptions generated by the underlying pool as it closes
-     * connections in response to BDS#close. Exceptions have to be either swallowed by the
-     * underlying pool and logged, or propagated and wrapped.
-     */
     @Test
     public void testPoolCloseCheckedException() throws Exception {
-        ds.setAccessToUnderlyingConnectionAllowed(true);  // Allow dirty tricks
-
-        // Get an idle connection into the pool
+        ds.setAccessToUnderlyingConnectionAllowed(true);
         final Connection conn = ds.getConnection();
         final TesterConnection tc = (TesterConnection) ((DelegatingConnection<?>) conn).getInnermostDelegate();
         conn.close();
-
-        // After returning the connection to the pool, bork it.
-        // Don't try this at home - bad violation of pool contract!
         tc.setFailure(new SQLException("bang"));
-
-        // Now close Datasource, which will cause tc to be closed, triggering SQLE
-        // Pool 2.x swallows and logs exceptions on pool close.  Below verifies that
-        // Either exceptions get logged or wrapped appropriately.
         try {
             StackMessageLog.lock();
             StackMessageLog.clear();
             ds.close();
-            // Exception must have been swallowed by the pool - verify it is logged
             final String message = StackMessageLog.popMessage();
             Assertions.assertNotNull(message);
             assertTrue(message.indexOf("bang") > 0);
@@ -747,7 +580,6 @@ public class TestBasicDataSource extends TestConnectionPool {
 
     @Test
     public void testPoolCloseRTE() throws Exception {
-        // RTE version of testPoolCloseCheckedException - see comments there.
         ds.setAccessToUnderlyingConnectionAllowed(true);
         final Connection conn = ds.getConnection();
         final TesterConnection tc = (TesterConnection) ((DelegatingConnection<?>) conn).getInnermostDelegate();
@@ -770,26 +602,18 @@ public class TestBasicDataSource extends TestConnectionPool {
     @Override
     @Test
     public void testPooling() throws Exception {
-        // this also needs access to the underlying connection
         ds.setAccessToUnderlyingConnectionAllowed(true);
         super.testPooling();
     }
 
-    /**
-     * Bugzilla Bug 29054:
-     * The BasicDataSource.setTestOnReturn(boolean) is not carried through to
-     * the GenericObjectPool variable _testOnReturn.
-     */
     @Test
     public void testPropertyTestOnReturn() throws Exception {
         ds.setValidationQuery("select 1 from dual");
         ds.setTestOnBorrow(false);
         ds.setTestWhileIdle(false);
         ds.setTestOnReturn(true);
-
         final Connection conn = ds.getConnection();
         assertNotNull(conn);
-
         assertFalse(ds.getConnectionPool().getTestOnBorrow());
         assertFalse(ds.getConnectionPool().getTestWhileIdle());
         assertTrue(ds.getConnectionPool().getTestOnReturn());
@@ -805,10 +629,8 @@ public class TestBasicDataSource extends TestConnectionPool {
         ds.setDefaultCatalog("foo");
         final Connection conn1 = ds.getConnection();
         Thread.sleep(200);
-        // Now set some property that will not have effect until restart
         ds.setDefaultCatalog("bar");
         ds.setInitialSize(1);
-        // restart will load new properties
         ds.restart();
         assertEquals("bar", ds.getDefaultCatalog());
         assertEquals(1, ds.getInitialSize());
@@ -816,16 +638,10 @@ public class TestBasicDataSource extends TestConnectionPool {
         assertEquals(0, ds.getNumActive());
         assertEquals(1, ds.getNumIdle());
         conn1.close();
-        // verify old pool connection is not returned to pool
         assertEquals(1, ds.getNumIdle());
         ds.close();
     }
 
-    /**
-     * Bugzilla Bug 29055: AutoCommit and ReadOnly
-     * The DaffodilDB driver throws an SQLException if
-     * trying to commit or rollback a readOnly connection.
-     */
     @Test
     public void testRollbackReadOnly() throws Exception {
         ds.setDefaultReadOnly(Boolean.TRUE);
@@ -855,71 +671,52 @@ public class TestBasicDataSource extends TestConnectionPool {
     }
 
     @Test
-    public void testSetProperties() throws Exception {
-        // normal
+    public void testSetProperties() {
         ds.setConnectionProperties("name1=value1;name2=value2;name3=value3");
         assertEquals(3, ds.getConnectionProperties().size());
         assertEquals("value1", ds.getConnectionProperties().getProperty("name1"));
         assertEquals("value2", ds.getConnectionProperties().getProperty("name2"));
         assertEquals("value3", ds.getConnectionProperties().getProperty("name3"));
-
-        // make sure all properties are replaced
         ds.setConnectionProperties("name1=value1;name2=value2");
         assertEquals(2, ds.getConnectionProperties().size());
         assertEquals("value1", ds.getConnectionProperties().getProperty("name1"));
         assertEquals("value2", ds.getConnectionProperties().getProperty("name2"));
         assertFalse(ds.getConnectionProperties().containsKey("name3"));
-
-        // no value is empty string
         ds.setConnectionProperties("name1=value1;name2");
         assertEquals(2, ds.getConnectionProperties().size());
         assertEquals("value1", ds.getConnectionProperties().getProperty("name1"));
         assertEquals("", ds.getConnectionProperties().getProperty("name2"));
-
-        // no value (with equals) is empty string
         ds.setConnectionProperties("name1=value1;name2=");
         assertEquals(2, ds.getConnectionProperties().size());
         assertEquals("value1", ds.getConnectionProperties().getProperty("name1"));
         assertEquals("", ds.getConnectionProperties().getProperty("name2"));
-
-        // single value
         ds.setConnectionProperties("name1=value1");
         assertEquals(1, ds.getConnectionProperties().size());
         assertEquals("value1", ds.getConnectionProperties().getProperty("name1"));
-
-        // single value with trailing ;
         ds.setConnectionProperties("name1=value1;");
         assertEquals(1, ds.getConnectionProperties().size());
         assertEquals("value1", ds.getConnectionProperties().getProperty("name1"));
-
-        // single value wit no value
         ds.setConnectionProperties("name1");
         assertEquals(1, ds.getConnectionProperties().size());
         assertEquals("", ds.getConnectionProperties().getProperty("name1"));
-
-        // null should throw a NullPointerException
         try {
             ds.setConnectionProperties(null);
             fail("Expected NullPointerException");
         } catch (final NullPointerException e) {
-            // expected
         }
     }
 
     @Test
     public void testSetValidationTestProperties() {
-        // defaults
         assertTrue(ds.getTestOnBorrow());
         assertFalse(ds.getTestOnReturn());
         assertFalse(ds.getTestWhileIdle());
-
         ds.setTestOnBorrow(true);
         ds.setTestOnReturn(true);
         ds.setTestWhileIdle(true);
         assertTrue(ds.getTestOnBorrow());
         assertTrue(ds.getTestOnReturn());
         assertTrue(ds.getTestWhileIdle());
-
         ds.setTestOnBorrow(false);
         ds.setTestOnReturn(false);
         ds.setTestWhileIdle(false);
@@ -939,21 +736,15 @@ public class TestBasicDataSource extends TestConnectionPool {
         assertFalse(inner2.isClosed());
         conn2.close();
         assertFalse(inner2.isClosed());
-        // One active, one idle in the pool
         ds.close();
-        // Idle connection should be physically closed, checked out unaffected
         assertFalse(conn1.isClosed());
         assertTrue(inner2.isClosed());
         assertEquals(0, ds.getNumIdle());
-
-        // Reopen creates a new pool, so we can have three out
         ds.start();
         final Connection conn3 = ds.getConnection();
         final Connection conn4 = ds.getConnection();
         conn3.close();
         conn4.close();
-
-        // Old pool's orphan should get physically closed on return
         conn1.close();
         assertTrue(inner1.isClosed());
     }
@@ -1003,8 +794,7 @@ public class TestBasicDataSource extends TestConnectionPool {
         ds.setTestOnBorrow(true);
         ds.setTestOnReturn(true);
         ds.setValidationQueryTimeout(-1);
-        try (final Connection con = ds.getConnection()) {
-            // close right away.
+        try (final Connection ignored = ds.getConnection()) {
         }
     }
 
@@ -1012,9 +802,8 @@ public class TestBasicDataSource extends TestConnectionPool {
     public void testValidationQueryTimeoutSucceed() throws Exception {
         ds.setTestOnBorrow(true);
         ds.setTestOnReturn(true);
-        ds.setValidationQueryTimeout(100); // Works for TesterStatement
-        try (final Connection con = ds.getConnection()) {
-            // close right away.
+        ds.setValidationQueryTimeout(100);
+        try (final Connection ignored = ds.getConnection()) {
         }
     }
 
@@ -1023,16 +812,15 @@ public class TestBasicDataSource extends TestConnectionPool {
         ds.setTestOnBorrow(true);
         ds.setTestOnReturn(true);
         ds.setValidationQueryTimeout(0);
-        try (final Connection con = ds.getConnection()) {
-            // close right away.
+        try (final Connection ignored = ds.getConnection()) {
         }
     }
 
     @Test
     public void testValidationQueryTimoutFail() {
         ds.setTestOnBorrow(true);
-        ds.setValidationQueryTimeout(3); // Too fast for TesterStatement
-        try (Connection c = ds.getConnection()) {
+        ds.setValidationQueryTimeout(3);
+        try (Connection ignored = ds.getConnection()) {
             fail("expected SQLException");
         } catch (final SQLException ex) {
             if (!ex.toString().contains("timeout")) {
@@ -1042,21 +830,15 @@ public class TestBasicDataSource extends TestConnectionPool {
     }
 }
 
-
-
-/**
- * TesterDriver that adds latency to connection requests. Latency (in ms) is the
- * last component of the URL.
- */
+@SuppressWarnings("unused")
 class TesterConnectionDelayDriver extends TesterDriver {
     private static final String CONNECT_STRING = "jdbc:apache:commons:testerConnectionDelayDriver";
 
     public TesterConnectionDelayDriver() {
-        // DBCP expects an explicit no-arg constructor
     }
 
     @Override
-    public boolean acceptsURL(final String url) throws SQLException {
+    public boolean acceptsURL(final String url) {
         return url.startsWith(CONNECT_STRING);
     }
 
@@ -1066,17 +848,13 @@ class TesterConnectionDelayDriver extends TesterDriver {
         final int delay = Integer.parseInt(parsedUrl[parsedUrl.length - 1]);
         try {
             Thread.sleep(delay);
-        } catch(final InterruptedException ex) {
+        } catch (final InterruptedException ex) {
             Thread.currentThread().interrupt();
         }
         return super.connect(url, info);
     }
-
 }
 
-/**
- * TesterDriver that keeps a static count of connection requests.
- */
 class TesterConnRequestCountDriver extends TesterDriver {
     private static final String CONNECT_STRING = "jdbc:apache:commons:testerConnRequestCountDriver";
     private static final AtomicInteger connectionRequestCount = new AtomicInteger(0);
@@ -1090,11 +868,10 @@ class TesterConnRequestCountDriver extends TesterDriver {
     }
 
     public TesterConnRequestCountDriver() {
-        // DBCP expects an explicit no-arg constructor
     }
 
     @Override
-    public boolean acceptsURL(final String url) throws SQLException {
+    public boolean acceptsURL(final String url) {
         return CONNECT_STRING.startsWith(url);
     }
 

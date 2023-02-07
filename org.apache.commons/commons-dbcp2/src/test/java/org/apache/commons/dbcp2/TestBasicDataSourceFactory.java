@@ -12,16 +12,15 @@ import javax.naming.StringRefAddr;
 import java.lang.management.ManagementFactory;
 import java.sql.Connection;
 import java.util.List;
-import java.util.Map.Entry;
 import java.util.Properties;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-/**
- * TestSuite for BasicDataSourceFactory
- */
+@SuppressWarnings("deprecation")
 public class TestBasicDataSourceFactory {
-
     private void checkConnectionPoolProperties(final GenericObjectPool<PoolableConnection> cp) {
         assertEquals(10, cp.getMaxTotal());
         assertEquals(8, cp.getMaxIdle());
@@ -84,8 +83,6 @@ public class TestBasicDataSourceFactory {
         assertTrue(ds.getDisconnectionSqlCodes().contains("XXX"));
         assertTrue(ds.getDisconnectionSqlCodes().contains("YYY"));
         assertEquals("org.apache.commons.dbcp2:name=test", ds.getJmxName());
-
-        // Unregister so subsequent calls to getTestProperties can re-register
         final MBeanServer mbs = ManagementFactory.getPlatformMBeanServer();
         mbs.unregisterMBean(ds.getRegisteredJmxName());
     }
@@ -137,18 +134,15 @@ public class TestBasicDataSourceFactory {
         try {
             StackMessageLog.lock();
             StackMessageLog.clear();
-            final Reference ref = new Reference("javax.sql.DataSource",
-                                          BasicDataSourceFactory.class.getName(), null);
+            final Reference ref = new Reference("javax.sql.DataSource", BasicDataSourceFactory.class.getName(), null);
             final Properties properties = getTestProperties();
-            for (final Entry<Object, Object> entry : properties.entrySet()) {
-                ref.add(new StringRefAddr((String) entry.getKey(), (String) entry.getValue()));
-            }
+            properties.entrySet().stream().map(entry -> new StringRefAddr((String) entry.getKey(), (String) entry.getValue())).forEach(ref::add);
             final BasicDataSourceFactory basicDataSourceFactory = new BasicDataSourceFactory();
             final BasicDataSource ds = (BasicDataSource) basicDataSourceFactory.getObjectInstance(ref, null, null, null);
             checkDataSourceProperties(ds);
             checkConnectionPoolProperties(ds.getConnectionPool());
             final List<String> messages = StackMessageLog.getAll();
-            assertEquals(0,messages.size());
+            assertEquals(0, messages.size());
         } finally {
             StackMessageLog.clear();
             StackMessageLog.unLock();
@@ -159,7 +153,6 @@ public class TestBasicDataSourceFactory {
     public void testNoProperties() throws Exception {
         final Properties properties = new Properties();
         final BasicDataSource ds = BasicDataSourceFactory.createDataSource(properties);
-
         assertNotNull(ds);
     }
 
@@ -175,21 +168,21 @@ public class TestBasicDataSourceFactory {
             StackMessageLog.lock();
             StackMessageLog.clear();
             final Reference ref = new Reference("javax.sql.DataSource", BasicDataSourceFactory.class.getName(), null);
-            ref.add(new StringRefAddr("foo", "bar")); // Unknown
-            ref.add(new StringRefAddr("maxWait", "100")); // Changed
-            ref.add(new StringRefAddr("driverClassName", "org.apache.commons.dbcp2.TesterDriver")); // OK
+            ref.add(new StringRefAddr("foo", "bar"));
+            ref.add(new StringRefAddr("maxWait", "100"));
+            ref.add(new StringRefAddr("driverClassName", "org.apache.commons.dbcp2.TesterDriver"));
             final BasicDataSourceFactory basicDataSourceFactory = new BasicDataSourceFactory();
             basicDataSourceFactory.getObjectInstance(ref, null, null, null);
             final List<String> messages = StackMessageLog.getAll();
             assertEquals(2, messages.size(), messages.toString());
-            for (final String message : messages) {
+            messages.forEach(message -> {
                 if (message.contains("maxWait")) {
                     assertTrue(message.contains("use maxWaitMillis"));
                 } else {
                     assertTrue(message.contains("foo"));
                     assertTrue(message.contains("Ignoring unknown property"));
                 }
-            }
+            });
         } finally {
             StackMessageLog.clear();
             StackMessageLog.unLock();

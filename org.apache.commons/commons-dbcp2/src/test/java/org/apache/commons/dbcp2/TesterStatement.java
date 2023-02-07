@@ -2,11 +2,13 @@
 
 package org.apache.commons.dbcp2;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.SQLWarning;
+import java.sql.Statement;
 
-/**
- * A dummy {@link Statement}, for testing purposes.
- */
+@SuppressWarnings({"MagicConstant", "unused"})
 public class TesterStatement extends AbandonedTrace implements Statement {
 
     protected final Connection _connection;
@@ -217,7 +219,7 @@ public class TesterStatement extends AbandonedTrace implements Statement {
     }
 
     @Override
-    public ResultSet getGeneratedKeys() throws SQLException {
+    public ResultSet getGeneratedKeys() {
         return new TesterResultSet(this);
     }
 

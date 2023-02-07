@@ -9,12 +9,15 @@ import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
-/**
- * Test suite for {@link DelegatingDatabaseMetaData}.
- */
+@SuppressWarnings("FieldCanBeLocal")
 public class TestDelegatingDatabaseMetaData {
 
     private TesterConnection testConn;
@@ -34,7 +37,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testAllProceduresAreCallable() throws Exception {
         try {
             delegate.allProceduresAreCallable();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).allProceduresAreCallable();
     }
 
@@ -42,7 +46,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testAllTablesAreSelectable() throws Exception {
         try {
             delegate.allTablesAreSelectable();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).allTablesAreSelectable();
     }
 
@@ -50,7 +55,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testAutoCommitFailureClosesAllResultSets() throws Exception {
         try {
             delegate.autoCommitFailureClosesAllResultSets();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).autoCommitFailureClosesAllResultSets();
     }
 
@@ -68,7 +74,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testDataDefinitionCausesTransactionCommit() throws Exception {
         try {
             delegate.dataDefinitionCausesTransactionCommit();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).dataDefinitionCausesTransactionCommit();
     }
 
@@ -76,7 +83,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testDataDefinitionIgnoredInTransactions() throws Exception {
         try {
             delegate.dataDefinitionIgnoredInTransactions();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).dataDefinitionIgnoredInTransactions();
     }
 
@@ -84,7 +92,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testDeletesAreDetectedInteger() throws Exception {
         try {
             delegate.deletesAreDetected(1);
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).deletesAreDetected(1);
     }
 
@@ -92,7 +101,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testDoesMaxRowSizeIncludeBlobs() throws Exception {
         try {
             delegate.doesMaxRowSizeIncludeBlobs();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).doesMaxRowSizeIncludeBlobs();
     }
 
@@ -100,31 +110,35 @@ public class TestDelegatingDatabaseMetaData {
     public void testGeneratedKeyAlwaysReturned() throws Exception {
         try {
             delegate.generatedKeyAlwaysReturned();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).generatedKeyAlwaysReturned();
     }
 
     @Test
     public void testGetAttributesStringStringStringString() throws Exception {
         try {
-            delegate.getAttributes("foo","foo","foo","foo");
-        } catch (final SQLException e) {}
-        verify(obj, times(1)).getAttributes("foo","foo","foo","foo");
+            delegate.getAttributes("foo", "foo", "foo", "foo");
+        } catch (final SQLException e) {
+        }
+        verify(obj, times(1)).getAttributes("foo", "foo", "foo", "foo");
     }
 
     @Test
     public void testGetBestRowIdentifierStringStringStringIntegerBoolean() throws Exception {
         try {
-            delegate.getBestRowIdentifier("foo","foo","foo",1,Boolean.TRUE);
-        } catch (final SQLException e) {}
-        verify(obj, times(1)).getBestRowIdentifier("foo","foo","foo",1,Boolean.TRUE);
+            delegate.getBestRowIdentifier("foo", "foo", "foo", 1, Boolean.TRUE);
+        } catch (final SQLException e) {
+        }
+        verify(obj, times(1)).getBestRowIdentifier("foo", "foo", "foo", 1, Boolean.TRUE);
     }
 
     @Test
     public void testGetCatalogs() throws Exception {
         try {
             delegate.getCatalogs();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getCatalogs();
     }
 
@@ -132,7 +146,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testGetCatalogSeparator() throws Exception {
         try {
             delegate.getCatalogSeparator();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getCatalogSeparator();
     }
 
@@ -140,7 +155,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testGetCatalogTerm() throws Exception {
         try {
             delegate.getCatalogTerm();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getCatalogTerm();
     }
 
@@ -148,52 +164,53 @@ public class TestDelegatingDatabaseMetaData {
     public void testGetClientInfoProperties() throws Exception {
         try {
             delegate.getClientInfoProperties();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getClientInfoProperties();
     }
 
     @Test
     public void testGetColumnPrivilegesStringStringStringString() throws Exception {
         try {
-            delegate.getColumnPrivileges("foo","foo","foo","foo");
-        } catch (final SQLException e) {}
-        verify(obj, times(1)).getColumnPrivileges("foo","foo","foo","foo");
+            delegate.getColumnPrivileges("foo", "foo", "foo", "foo");
+        } catch (final SQLException e) {
+        }
+        verify(obj, times(1)).getColumnPrivileges("foo", "foo", "foo", "foo");
     }
 
     @Test
     public void testGetColumnsStringStringStringString() throws Exception {
         try {
-            delegate.getColumns("foo","foo","foo","foo");
-        } catch (final SQLException e) {}
-        verify(obj, times(1)).getColumns("foo","foo","foo","foo");
+            delegate.getColumns("foo", "foo", "foo", "foo");
+        } catch (final SQLException e) {
+        }
+        verify(obj, times(1)).getColumns("foo", "foo", "foo", "foo");
     }
 
-    /**
-     * This method is a bit special, and doesn't call the method on the wrapped object,
-     * instead returning the connection from the delegate object itself.
-     * @throws Exception
-     */
     @Test
     public void testGetConnection() throws Exception {
         try {
             delegate.getConnection();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(0)).getConnection();
     }
 
     @Test
     public void testGetCrossReferenceStringStringStringStringStringString() throws Exception {
         try {
-            delegate.getCrossReference("foo","foo","foo","foo","foo","foo");
-        } catch (final SQLException e) {}
-        verify(obj, times(1)).getCrossReference("foo","foo","foo","foo","foo","foo");
+            delegate.getCrossReference("foo", "foo", "foo", "foo", "foo", "foo");
+        } catch (final SQLException e) {
+        }
+        verify(obj, times(1)).getCrossReference("foo", "foo", "foo", "foo", "foo", "foo");
     }
 
     @Test
     public void testGetDatabaseMajorVersion() throws Exception {
         try {
             delegate.getDatabaseMajorVersion();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getDatabaseMajorVersion();
     }
 
@@ -201,7 +218,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testGetDatabaseMinorVersion() throws Exception {
         try {
             delegate.getDatabaseMinorVersion();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getDatabaseMinorVersion();
     }
 
@@ -209,7 +227,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testGetDatabaseProductName() throws Exception {
         try {
             delegate.getDatabaseProductName();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getDatabaseProductName();
     }
 
@@ -217,7 +236,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testGetDatabaseProductVersion() throws Exception {
         try {
             delegate.getDatabaseProductVersion();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getDatabaseProductVersion();
     }
 
@@ -225,23 +245,24 @@ public class TestDelegatingDatabaseMetaData {
     public void testGetDefaultTransactionIsolation() throws Exception {
         try {
             delegate.getDefaultTransactionIsolation();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getDefaultTransactionIsolation();
     }
 
     @Test
-    public void testGetDelegate() throws Exception {
-        assertEquals(obj ,delegate.getDelegate());
+    public void testGetDelegate() {
+        assertEquals(obj, delegate.getDelegate());
     }
 
     @Test
-    public void testGetDriverMajorVersion() throws Exception {
+    public void testGetDriverMajorVersion() {
         delegate.getDriverMajorVersion();
         verify(obj, times(1)).getDriverMajorVersion();
     }
 
     @Test
-    public void testGetDriverMinorVersion() throws Exception {
+    public void testGetDriverMinorVersion() {
         delegate.getDriverMinorVersion();
         verify(obj, times(1)).getDriverMinorVersion();
     }
@@ -250,7 +271,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testGetDriverName() throws Exception {
         try {
             delegate.getDriverName();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getDriverName();
     }
 
@@ -258,71 +280,80 @@ public class TestDelegatingDatabaseMetaData {
     public void testGetDriverVersion() throws Exception {
         try {
             delegate.getDriverVersion();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getDriverVersion();
     }
 
     @Test
     public void testGetExportedKeysStringStringString() throws Exception {
         try {
-            delegate.getExportedKeys("foo","foo","foo");
-        } catch (final SQLException e) {}
-        verify(obj, times(1)).getExportedKeys("foo","foo","foo");
+            delegate.getExportedKeys("foo", "foo", "foo");
+        } catch (final SQLException e) {
+        }
+        verify(obj, times(1)).getExportedKeys("foo", "foo", "foo");
     }
 
     @Test
     public void testGetExtraNameCharacters() throws Exception {
         try {
             delegate.getExtraNameCharacters();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getExtraNameCharacters();
     }
 
     @Test
     public void testGetFunctionColumnsStringStringStringString() throws Exception {
         try {
-            delegate.getFunctionColumns("foo","foo","foo","foo");
-        } catch (final SQLException e) {}
-        verify(obj, times(1)).getFunctionColumns("foo","foo","foo","foo");
+            delegate.getFunctionColumns("foo", "foo", "foo", "foo");
+        } catch (final SQLException e) {
+        }
+        verify(obj, times(1)).getFunctionColumns("foo", "foo", "foo", "foo");
     }
 
     @Test
     public void testGetFunctionsStringStringString() throws Exception {
         try {
-            delegate.getFunctions("foo","foo","foo");
-        } catch (final SQLException e) {}
-        verify(obj, times(1)).getFunctions("foo","foo","foo");
+            delegate.getFunctions("foo", "foo", "foo");
+        } catch (final SQLException e) {
+        }
+        verify(obj, times(1)).getFunctions("foo", "foo", "foo");
     }
 
     @Test
     public void testGetIdentifierQuoteString() throws Exception {
         try {
             delegate.getIdentifierQuoteString();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getIdentifierQuoteString();
     }
 
     @Test
     public void testGetImportedKeysStringStringString() throws Exception {
         try {
-            delegate.getImportedKeys("foo","foo","foo");
-        } catch (final SQLException e) {}
-        verify(obj, times(1)).getImportedKeys("foo","foo","foo");
+            delegate.getImportedKeys("foo", "foo", "foo");
+        } catch (final SQLException e) {
+        }
+        verify(obj, times(1)).getImportedKeys("foo", "foo", "foo");
     }
 
     @Test
     public void testGetIndexInfoStringStringStringBooleanBoolean() throws Exception {
         try {
-            delegate.getIndexInfo("foo","foo","foo",Boolean.TRUE,Boolean.TRUE);
-        } catch (final SQLException e) {}
-        verify(obj, times(1)).getIndexInfo("foo","foo","foo",Boolean.TRUE,Boolean.TRUE);
+            delegate.getIndexInfo("foo", "foo", "foo", Boolean.TRUE, Boolean.TRUE);
+        } catch (final SQLException e) {
+        }
+        verify(obj, times(1)).getIndexInfo("foo", "foo", "foo", Boolean.TRUE, Boolean.TRUE);
     }
 
     @Test
     public void testGetJDBCMajorVersion() throws Exception {
         try {
             delegate.getJDBCMajorVersion();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getJDBCMajorVersion();
     }
 
@@ -330,7 +361,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testGetJDBCMinorVersion() throws Exception {
         try {
             delegate.getJDBCMinorVersion();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getJDBCMinorVersion();
     }
 
@@ -338,7 +370,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testGetMaxBinaryLiteralLength() throws Exception {
         try {
             delegate.getMaxBinaryLiteralLength();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getMaxBinaryLiteralLength();
     }
 
@@ -346,7 +379,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testGetMaxCatalogNameLength() throws Exception {
         try {
             delegate.getMaxCatalogNameLength();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getMaxCatalogNameLength();
     }
 
@@ -354,7 +388,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testGetMaxCharLiteralLength() throws Exception {
         try {
             delegate.getMaxCharLiteralLength();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getMaxCharLiteralLength();
     }
 
@@ -362,7 +397,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testGetMaxColumnNameLength() throws Exception {
         try {
             delegate.getMaxColumnNameLength();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getMaxColumnNameLength();
     }
 
@@ -370,7 +406,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testGetMaxColumnsInGroupBy() throws Exception {
         try {
             delegate.getMaxColumnsInGroupBy();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getMaxColumnsInGroupBy();
     }
 
@@ -378,7 +415,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testGetMaxColumnsInIndex() throws Exception {
         try {
             delegate.getMaxColumnsInIndex();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getMaxColumnsInIndex();
     }
 
@@ -386,7 +424,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testGetMaxColumnsInOrderBy() throws Exception {
         try {
             delegate.getMaxColumnsInOrderBy();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getMaxColumnsInOrderBy();
     }
 
@@ -394,7 +433,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testGetMaxColumnsInSelect() throws Exception {
         try {
             delegate.getMaxColumnsInSelect();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getMaxColumnsInSelect();
     }
 
@@ -402,7 +442,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testGetMaxColumnsInTable() throws Exception {
         try {
             delegate.getMaxColumnsInTable();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getMaxColumnsInTable();
     }
 
@@ -410,7 +451,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testGetMaxConnections() throws Exception {
         try {
             delegate.getMaxConnections();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getMaxConnections();
     }
 
@@ -418,7 +460,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testGetMaxCursorNameLength() throws Exception {
         try {
             delegate.getMaxCursorNameLength();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getMaxCursorNameLength();
     }
 
@@ -426,7 +469,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testGetMaxIndexLength() throws Exception {
         try {
             delegate.getMaxIndexLength();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getMaxIndexLength();
     }
 
@@ -434,7 +478,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testGetMaxLogicalLobSize() throws Exception {
         try {
             delegate.getMaxLogicalLobSize();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getMaxLogicalLobSize();
     }
 
@@ -442,7 +487,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testGetMaxProcedureNameLength() throws Exception {
         try {
             delegate.getMaxProcedureNameLength();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getMaxProcedureNameLength();
     }
 
@@ -450,7 +496,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testGetMaxRowSize() throws Exception {
         try {
             delegate.getMaxRowSize();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getMaxRowSize();
     }
 
@@ -458,7 +505,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testGetMaxSchemaNameLength() throws Exception {
         try {
             delegate.getMaxSchemaNameLength();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getMaxSchemaNameLength();
     }
 
@@ -466,7 +514,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testGetMaxStatementLength() throws Exception {
         try {
             delegate.getMaxStatementLength();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getMaxStatementLength();
     }
 
@@ -474,7 +523,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testGetMaxStatements() throws Exception {
         try {
             delegate.getMaxStatements();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getMaxStatements();
     }
 
@@ -482,7 +532,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testGetMaxTableNameLength() throws Exception {
         try {
             delegate.getMaxTableNameLength();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getMaxTableNameLength();
     }
 
@@ -490,7 +541,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testGetMaxTablesInSelect() throws Exception {
         try {
             delegate.getMaxTablesInSelect();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getMaxTablesInSelect();
     }
 
@@ -498,7 +550,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testGetMaxUserNameLength() throws Exception {
         try {
             delegate.getMaxUserNameLength();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getMaxUserNameLength();
     }
 
@@ -506,55 +559,62 @@ public class TestDelegatingDatabaseMetaData {
     public void testGetNumericFunctions() throws Exception {
         try {
             delegate.getNumericFunctions();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getNumericFunctions();
     }
 
     @Test
     public void testGetPrimaryKeysStringStringString() throws Exception {
         try {
-            delegate.getPrimaryKeys("foo","foo","foo");
-        } catch (final SQLException e) {}
-        verify(obj, times(1)).getPrimaryKeys("foo","foo","foo");
+            delegate.getPrimaryKeys("foo", "foo", "foo");
+        } catch (final SQLException e) {
+        }
+        verify(obj, times(1)).getPrimaryKeys("foo", "foo", "foo");
     }
 
     @Test
     public void testGetProcedureColumnsStringStringStringString() throws Exception {
         try {
-            delegate.getProcedureColumns("foo","foo","foo","foo");
-        } catch (final SQLException e) {}
-        verify(obj, times(1)).getProcedureColumns("foo","foo","foo","foo");
+            delegate.getProcedureColumns("foo", "foo", "foo", "foo");
+        } catch (final SQLException e) {
+        }
+        verify(obj, times(1)).getProcedureColumns("foo", "foo", "foo", "foo");
     }
 
     @Test
     public void testGetProceduresStringStringString() throws Exception {
         try {
-            delegate.getProcedures("foo","foo","foo");
-        } catch (final SQLException e) {}
-        verify(obj, times(1)).getProcedures("foo","foo","foo");
+            delegate.getProcedures("foo", "foo", "foo");
+        } catch (final SQLException e) {
+        }
+        verify(obj, times(1)).getProcedures("foo", "foo", "foo");
     }
 
     @Test
     public void testGetProcedureTerm() throws Exception {
         try {
             delegate.getProcedureTerm();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getProcedureTerm();
     }
 
     @Test
     public void testGetPseudoColumnsStringStringStringString() throws Exception {
         try {
-            delegate.getPseudoColumns("foo","foo","foo","foo");
-        } catch (final SQLException e) {}
-        verify(obj, times(1)).getPseudoColumns("foo","foo","foo","foo");
+            delegate.getPseudoColumns("foo", "foo", "foo", "foo");
+        } catch (final SQLException e) {
+        }
+        verify(obj, times(1)).getPseudoColumns("foo", "foo", "foo", "foo");
     }
 
     @Test
     public void testGetResultSetHoldability() throws Exception {
         try {
             delegate.getResultSetHoldability();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getResultSetHoldability();
     }
 
@@ -562,7 +622,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testGetRowIdLifetime() throws Exception {
         try {
             delegate.getRowIdLifetime();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getRowIdLifetime();
     }
 
@@ -570,23 +631,26 @@ public class TestDelegatingDatabaseMetaData {
     public void testGetSchemas() throws Exception {
         try {
             delegate.getSchemas();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getSchemas();
     }
 
     @Test
     public void testGetSchemasStringString() throws Exception {
         try {
-            delegate.getSchemas("foo","foo");
-        } catch (final SQLException e) {}
-        verify(obj, times(1)).getSchemas("foo","foo");
+            delegate.getSchemas("foo", "foo");
+        } catch (final SQLException e) {
+        }
+        verify(obj, times(1)).getSchemas("foo", "foo");
     }
 
     @Test
     public void testGetSchemaTerm() throws Exception {
         try {
             delegate.getSchemaTerm();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getSchemaTerm();
     }
 
@@ -594,7 +658,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testGetSearchStringEscape() throws Exception {
         try {
             delegate.getSearchStringEscape();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getSearchStringEscape();
     }
 
@@ -602,7 +667,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testGetSQLKeywords() throws Exception {
         try {
             delegate.getSQLKeywords();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getSQLKeywords();
     }
 
@@ -610,7 +676,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testGetSQLStateType() throws Exception {
         try {
             delegate.getSQLStateType();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getSQLStateType();
     }
 
@@ -618,55 +685,62 @@ public class TestDelegatingDatabaseMetaData {
     public void testGetStringFunctions() throws Exception {
         try {
             delegate.getStringFunctions();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getStringFunctions();
     }
 
     @Test
     public void testGetSuperTablesStringStringString() throws Exception {
         try {
-            delegate.getSuperTables("foo","foo","foo");
-        } catch (final SQLException e) {}
-        verify(obj, times(1)).getSuperTables("foo","foo","foo");
+            delegate.getSuperTables("foo", "foo", "foo");
+        } catch (final SQLException e) {
+        }
+        verify(obj, times(1)).getSuperTables("foo", "foo", "foo");
     }
 
     @Test
     public void testGetSuperTypesStringStringString() throws Exception {
         try {
-            delegate.getSuperTypes("foo","foo","foo");
-        } catch (final SQLException e) {}
-        verify(obj, times(1)).getSuperTypes("foo","foo","foo");
+            delegate.getSuperTypes("foo", "foo", "foo");
+        } catch (final SQLException e) {
+        }
+        verify(obj, times(1)).getSuperTypes("foo", "foo", "foo");
     }
 
     @Test
     public void testGetSystemFunctions() throws Exception {
         try {
             delegate.getSystemFunctions();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getSystemFunctions();
     }
 
     @Test
     public void testGetTablePrivilegesStringStringString() throws Exception {
         try {
-            delegate.getTablePrivileges("foo","foo","foo");
-        } catch (final SQLException e) {}
-        verify(obj, times(1)).getTablePrivileges("foo","foo","foo");
+            delegate.getTablePrivileges("foo", "foo", "foo");
+        } catch (final SQLException e) {
+        }
+        verify(obj, times(1)).getTablePrivileges("foo", "foo", "foo");
     }
 
     @Test
     public void testGetTablesStringStringStringStringArray() throws Exception {
         try {
-            delegate.getTables("foo","foo","foo",(String[]) null);
-        } catch (final SQLException e) {}
-        verify(obj, times(1)).getTables("foo","foo","foo",(String[]) null);
+            delegate.getTables("foo", "foo", "foo", null);
+        } catch (final SQLException e) {
+        }
+        verify(obj, times(1)).getTables("foo", "foo", "foo", null);
     }
 
     @Test
     public void testGetTableTypes() throws Exception {
         try {
             delegate.getTableTypes();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getTableTypes();
     }
 
@@ -674,7 +748,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testGetTimeDateFunctions() throws Exception {
         try {
             delegate.getTimeDateFunctions();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getTimeDateFunctions();
     }
 
@@ -682,23 +757,26 @@ public class TestDelegatingDatabaseMetaData {
     public void testGetTypeInfo() throws Exception {
         try {
             delegate.getTypeInfo();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getTypeInfo();
     }
 
     @Test
     public void testGetUDTsStringStringStringIntegerArray() throws Exception {
         try {
-            delegate.getUDTs("foo","foo","foo",(int[]) null);
-        } catch (final SQLException e) {}
-        verify(obj, times(1)).getUDTs("foo","foo","foo",(int[]) null);
+            delegate.getUDTs("foo", "foo", "foo", null);
+        } catch (final SQLException e) {
+        }
+        verify(obj, times(1)).getUDTs("foo", "foo", "foo", null);
     }
 
     @Test
     public void testGetURL() throws Exception {
         try {
             delegate.getURL();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getURL();
     }
 
@@ -706,23 +784,26 @@ public class TestDelegatingDatabaseMetaData {
     public void testGetUserName() throws Exception {
         try {
             delegate.getUserName();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).getUserName();
     }
 
     @Test
     public void testGetVersionColumnsStringStringString() throws Exception {
         try {
-            delegate.getVersionColumns("foo","foo","foo");
-        } catch (final SQLException e) {}
-        verify(obj, times(1)).getVersionColumns("foo","foo","foo");
+            delegate.getVersionColumns("foo", "foo", "foo");
+        } catch (final SQLException e) {
+        }
+        verify(obj, times(1)).getVersionColumns("foo", "foo", "foo");
     }
 
     @Test
     public void testInsertsAreDetectedInteger() throws Exception {
         try {
             delegate.insertsAreDetected(1);
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).insertsAreDetected(1);
     }
 
@@ -730,7 +811,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testIsCatalogAtStart() throws Exception {
         try {
             delegate.isCatalogAtStart();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).isCatalogAtStart();
     }
 
@@ -738,7 +820,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testIsReadOnly() throws Exception {
         try {
             delegate.isReadOnly();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).isReadOnly();
     }
 
@@ -746,7 +829,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testLocatorsUpdateCopy() throws Exception {
         try {
             delegate.locatorsUpdateCopy();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).locatorsUpdateCopy();
     }
 
@@ -754,7 +838,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testNullPlusNonNullIsNull() throws Exception {
         try {
             delegate.nullPlusNonNullIsNull();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).nullPlusNonNullIsNull();
     }
 
@@ -762,7 +847,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testNullsAreSortedAtEnd() throws Exception {
         try {
             delegate.nullsAreSortedAtEnd();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).nullsAreSortedAtEnd();
     }
 
@@ -770,7 +856,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testNullsAreSortedAtStart() throws Exception {
         try {
             delegate.nullsAreSortedAtStart();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).nullsAreSortedAtStart();
     }
 
@@ -778,7 +865,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testNullsAreSortedHigh() throws Exception {
         try {
             delegate.nullsAreSortedHigh();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).nullsAreSortedHigh();
     }
 
@@ -786,7 +874,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testNullsAreSortedLow() throws Exception {
         try {
             delegate.nullsAreSortedLow();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).nullsAreSortedLow();
     }
 
@@ -794,7 +883,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testOthersDeletesAreVisibleInteger() throws Exception {
         try {
             delegate.othersDeletesAreVisible(1);
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).othersDeletesAreVisible(1);
     }
 
@@ -802,7 +892,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testOthersInsertsAreVisibleInteger() throws Exception {
         try {
             delegate.othersInsertsAreVisible(1);
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).othersInsertsAreVisible(1);
     }
 
@@ -810,7 +901,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testOthersUpdatesAreVisibleInteger() throws Exception {
         try {
             delegate.othersUpdatesAreVisible(1);
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).othersUpdatesAreVisible(1);
     }
 
@@ -818,7 +910,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testOwnDeletesAreVisibleInteger() throws Exception {
         try {
             delegate.ownDeletesAreVisible(1);
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).ownDeletesAreVisible(1);
     }
 
@@ -826,7 +919,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testOwnInsertsAreVisibleInteger() throws Exception {
         try {
             delegate.ownInsertsAreVisible(1);
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).ownInsertsAreVisible(1);
     }
 
@@ -834,7 +928,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testOwnUpdatesAreVisibleInteger() throws Exception {
         try {
             delegate.ownUpdatesAreVisible(1);
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).ownUpdatesAreVisible(1);
     }
 
@@ -842,7 +937,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testStoresLowerCaseIdentifiers() throws Exception {
         try {
             delegate.storesLowerCaseIdentifiers();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).storesLowerCaseIdentifiers();
     }
 
@@ -850,7 +946,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testStoresLowerCaseQuotedIdentifiers() throws Exception {
         try {
             delegate.storesLowerCaseQuotedIdentifiers();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).storesLowerCaseQuotedIdentifiers();
     }
 
@@ -858,7 +955,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testStoresMixedCaseIdentifiers() throws Exception {
         try {
             delegate.storesMixedCaseIdentifiers();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).storesMixedCaseIdentifiers();
     }
 
@@ -866,7 +964,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testStoresMixedCaseQuotedIdentifiers() throws Exception {
         try {
             delegate.storesMixedCaseQuotedIdentifiers();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).storesMixedCaseQuotedIdentifiers();
     }
 
@@ -874,7 +973,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testStoresUpperCaseIdentifiers() throws Exception {
         try {
             delegate.storesUpperCaseIdentifiers();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).storesUpperCaseIdentifiers();
     }
 
@@ -882,7 +982,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testStoresUpperCaseQuotedIdentifiers() throws Exception {
         try {
             delegate.storesUpperCaseQuotedIdentifiers();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).storesUpperCaseQuotedIdentifiers();
     }
 
@@ -890,7 +991,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsAlterTableWithAddColumn() throws Exception {
         try {
             delegate.supportsAlterTableWithAddColumn();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsAlterTableWithAddColumn();
     }
 
@@ -898,7 +1000,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsAlterTableWithDropColumn() throws Exception {
         try {
             delegate.supportsAlterTableWithDropColumn();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsAlterTableWithDropColumn();
     }
 
@@ -906,7 +1009,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsANSI92EntryLevelSQL() throws Exception {
         try {
             delegate.supportsANSI92EntryLevelSQL();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsANSI92EntryLevelSQL();
     }
 
@@ -914,7 +1018,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsANSI92FullSQL() throws Exception {
         try {
             delegate.supportsANSI92FullSQL();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsANSI92FullSQL();
     }
 
@@ -922,7 +1027,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsANSI92IntermediateSQL() throws Exception {
         try {
             delegate.supportsANSI92IntermediateSQL();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsANSI92IntermediateSQL();
     }
 
@@ -930,7 +1036,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsBatchUpdates() throws Exception {
         try {
             delegate.supportsBatchUpdates();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsBatchUpdates();
     }
 
@@ -938,7 +1045,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsCatalogsInDataManipulation() throws Exception {
         try {
             delegate.supportsCatalogsInDataManipulation();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsCatalogsInDataManipulation();
     }
 
@@ -946,7 +1054,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsCatalogsInIndexDefinitions() throws Exception {
         try {
             delegate.supportsCatalogsInIndexDefinitions();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsCatalogsInIndexDefinitions();
     }
 
@@ -954,7 +1063,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsCatalogsInPrivilegeDefinitions() throws Exception {
         try {
             delegate.supportsCatalogsInPrivilegeDefinitions();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsCatalogsInPrivilegeDefinitions();
     }
 
@@ -962,7 +1072,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsCatalogsInProcedureCalls() throws Exception {
         try {
             delegate.supportsCatalogsInProcedureCalls();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsCatalogsInProcedureCalls();
     }
 
@@ -970,7 +1081,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsCatalogsInTableDefinitions() throws Exception {
         try {
             delegate.supportsCatalogsInTableDefinitions();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsCatalogsInTableDefinitions();
     }
 
@@ -978,7 +1090,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsColumnAliasing() throws Exception {
         try {
             delegate.supportsColumnAliasing();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsColumnAliasing();
     }
 
@@ -986,23 +1099,26 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsConvert() throws Exception {
         try {
             delegate.supportsConvert();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsConvert();
     }
 
     @Test
     public void testSupportsConvertIntegerInteger() throws Exception {
         try {
-            delegate.supportsConvert(1,1);
-        } catch (final SQLException e) {}
-        verify(obj, times(1)).supportsConvert(1,1);
+            delegate.supportsConvert(1, 1);
+        } catch (final SQLException e) {
+        }
+        verify(obj, times(1)).supportsConvert(1, 1);
     }
 
     @Test
     public void testSupportsCoreSQLGrammar() throws Exception {
         try {
             delegate.supportsCoreSQLGrammar();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsCoreSQLGrammar();
     }
 
@@ -1010,7 +1126,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsCorrelatedSubqueries() throws Exception {
         try {
             delegate.supportsCorrelatedSubqueries();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsCorrelatedSubqueries();
     }
 
@@ -1018,7 +1135,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsDataDefinitionAndDataManipulationTransactions() throws Exception {
         try {
             delegate.supportsDataDefinitionAndDataManipulationTransactions();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsDataDefinitionAndDataManipulationTransactions();
     }
 
@@ -1026,7 +1144,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsDataManipulationTransactionsOnly() throws Exception {
         try {
             delegate.supportsDataManipulationTransactionsOnly();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsDataManipulationTransactionsOnly();
     }
 
@@ -1034,7 +1153,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsDifferentTableCorrelationNames() throws Exception {
         try {
             delegate.supportsDifferentTableCorrelationNames();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsDifferentTableCorrelationNames();
     }
 
@@ -1042,7 +1162,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsExpressionsInOrderBy() throws Exception {
         try {
             delegate.supportsExpressionsInOrderBy();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsExpressionsInOrderBy();
     }
 
@@ -1050,7 +1171,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsExtendedSQLGrammar() throws Exception {
         try {
             delegate.supportsExtendedSQLGrammar();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsExtendedSQLGrammar();
     }
 
@@ -1058,7 +1180,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsFullOuterJoins() throws Exception {
         try {
             delegate.supportsFullOuterJoins();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsFullOuterJoins();
     }
 
@@ -1066,7 +1189,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsGetGeneratedKeys() throws Exception {
         try {
             delegate.supportsGetGeneratedKeys();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsGetGeneratedKeys();
     }
 
@@ -1074,7 +1198,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsGroupBy() throws Exception {
         try {
             delegate.supportsGroupBy();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsGroupBy();
     }
 
@@ -1082,7 +1207,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsGroupByBeyondSelect() throws Exception {
         try {
             delegate.supportsGroupByBeyondSelect();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsGroupByBeyondSelect();
     }
 
@@ -1090,7 +1216,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsGroupByUnrelated() throws Exception {
         try {
             delegate.supportsGroupByUnrelated();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsGroupByUnrelated();
     }
 
@@ -1098,7 +1225,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsIntegrityEnhancementFacility() throws Exception {
         try {
             delegate.supportsIntegrityEnhancementFacility();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsIntegrityEnhancementFacility();
     }
 
@@ -1106,7 +1234,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsLikeEscapeClause() throws Exception {
         try {
             delegate.supportsLikeEscapeClause();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsLikeEscapeClause();
     }
 
@@ -1114,7 +1243,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsLimitedOuterJoins() throws Exception {
         try {
             delegate.supportsLimitedOuterJoins();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsLimitedOuterJoins();
     }
 
@@ -1122,7 +1252,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsMinimumSQLGrammar() throws Exception {
         try {
             delegate.supportsMinimumSQLGrammar();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsMinimumSQLGrammar();
     }
 
@@ -1130,7 +1261,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsMixedCaseIdentifiers() throws Exception {
         try {
             delegate.supportsMixedCaseIdentifiers();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsMixedCaseIdentifiers();
     }
 
@@ -1138,7 +1270,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsMixedCaseQuotedIdentifiers() throws Exception {
         try {
             delegate.supportsMixedCaseQuotedIdentifiers();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsMixedCaseQuotedIdentifiers();
     }
 
@@ -1146,7 +1279,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsMultipleOpenResults() throws Exception {
         try {
             delegate.supportsMultipleOpenResults();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsMultipleOpenResults();
     }
 
@@ -1154,7 +1288,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsMultipleResultSets() throws Exception {
         try {
             delegate.supportsMultipleResultSets();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsMultipleResultSets();
     }
 
@@ -1162,7 +1297,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsMultipleTransactions() throws Exception {
         try {
             delegate.supportsMultipleTransactions();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsMultipleTransactions();
     }
 
@@ -1170,7 +1306,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsNamedParameters() throws Exception {
         try {
             delegate.supportsNamedParameters();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsNamedParameters();
     }
 
@@ -1178,7 +1315,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsNonNullableColumns() throws Exception {
         try {
             delegate.supportsNonNullableColumns();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsNonNullableColumns();
     }
 
@@ -1186,7 +1324,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsOpenCursorsAcrossCommit() throws Exception {
         try {
             delegate.supportsOpenCursorsAcrossCommit();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsOpenCursorsAcrossCommit();
     }
 
@@ -1194,7 +1333,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsOpenCursorsAcrossRollback() throws Exception {
         try {
             delegate.supportsOpenCursorsAcrossRollback();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsOpenCursorsAcrossRollback();
     }
 
@@ -1202,7 +1342,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsOpenStatementsAcrossCommit() throws Exception {
         try {
             delegate.supportsOpenStatementsAcrossCommit();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsOpenStatementsAcrossCommit();
     }
 
@@ -1210,7 +1351,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsOpenStatementsAcrossRollback() throws Exception {
         try {
             delegate.supportsOpenStatementsAcrossRollback();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsOpenStatementsAcrossRollback();
     }
 
@@ -1218,7 +1360,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsOrderByUnrelated() throws Exception {
         try {
             delegate.supportsOrderByUnrelated();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsOrderByUnrelated();
     }
 
@@ -1226,7 +1369,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsOuterJoins() throws Exception {
         try {
             delegate.supportsOuterJoins();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsOuterJoins();
     }
 
@@ -1234,7 +1378,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsPositionedDelete() throws Exception {
         try {
             delegate.supportsPositionedDelete();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsPositionedDelete();
     }
 
@@ -1242,7 +1387,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsPositionedUpdate() throws Exception {
         try {
             delegate.supportsPositionedUpdate();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsPositionedUpdate();
     }
 
@@ -1250,23 +1396,26 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsRefCursors() throws Exception {
         try {
             delegate.supportsRefCursors();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsRefCursors();
     }
 
     @Test
     public void testSupportsResultSetConcurrencyIntegerInteger() throws Exception {
         try {
-            delegate.supportsResultSetConcurrency(1,1);
-        } catch (final SQLException e) {}
-        verify(obj, times(1)).supportsResultSetConcurrency(1,1);
+            delegate.supportsResultSetConcurrency(1, 1);
+        } catch (final SQLException e) {
+        }
+        verify(obj, times(1)).supportsResultSetConcurrency(1, 1);
     }
 
     @Test
     public void testSupportsResultSetHoldabilityInteger() throws Exception {
         try {
             delegate.supportsResultSetHoldability(1);
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsResultSetHoldability(1);
     }
 
@@ -1274,7 +1423,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsResultSetTypeInteger() throws Exception {
         try {
             delegate.supportsResultSetType(1);
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsResultSetType(1);
     }
 
@@ -1282,7 +1432,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsSavepoints() throws Exception {
         try {
             delegate.supportsSavepoints();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsSavepoints();
     }
 
@@ -1290,7 +1441,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsSchemasInDataManipulation() throws Exception {
         try {
             delegate.supportsSchemasInDataManipulation();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsSchemasInDataManipulation();
     }
 
@@ -1298,7 +1450,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsSchemasInIndexDefinitions() throws Exception {
         try {
             delegate.supportsSchemasInIndexDefinitions();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsSchemasInIndexDefinitions();
     }
 
@@ -1306,7 +1459,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsSchemasInPrivilegeDefinitions() throws Exception {
         try {
             delegate.supportsSchemasInPrivilegeDefinitions();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsSchemasInPrivilegeDefinitions();
     }
 
@@ -1314,7 +1468,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsSchemasInProcedureCalls() throws Exception {
         try {
             delegate.supportsSchemasInProcedureCalls();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsSchemasInProcedureCalls();
     }
 
@@ -1322,7 +1477,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsSchemasInTableDefinitions() throws Exception {
         try {
             delegate.supportsSchemasInTableDefinitions();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsSchemasInTableDefinitions();
     }
 
@@ -1330,7 +1486,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsSelectForUpdate() throws Exception {
         try {
             delegate.supportsSelectForUpdate();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsSelectForUpdate();
     }
 
@@ -1338,7 +1495,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsStatementPooling() throws Exception {
         try {
             delegate.supportsStatementPooling();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsStatementPooling();
     }
 
@@ -1346,7 +1504,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsStoredFunctionsUsingCallSyntax() throws Exception {
         try {
             delegate.supportsStoredFunctionsUsingCallSyntax();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsStoredFunctionsUsingCallSyntax();
     }
 
@@ -1354,7 +1513,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsStoredProcedures() throws Exception {
         try {
             delegate.supportsStoredProcedures();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsStoredProcedures();
     }
 
@@ -1362,7 +1522,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsSubqueriesInComparisons() throws Exception {
         try {
             delegate.supportsSubqueriesInComparisons();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsSubqueriesInComparisons();
     }
 
@@ -1370,7 +1531,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsSubqueriesInExists() throws Exception {
         try {
             delegate.supportsSubqueriesInExists();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsSubqueriesInExists();
     }
 
@@ -1378,7 +1540,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsSubqueriesInIns() throws Exception {
         try {
             delegate.supportsSubqueriesInIns();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsSubqueriesInIns();
     }
 
@@ -1386,7 +1549,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsSubqueriesInQuantifieds() throws Exception {
         try {
             delegate.supportsSubqueriesInQuantifieds();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsSubqueriesInQuantifieds();
     }
 
@@ -1394,7 +1558,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsTableCorrelationNames() throws Exception {
         try {
             delegate.supportsTableCorrelationNames();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsTableCorrelationNames();
     }
 
@@ -1402,7 +1567,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsTransactionIsolationLevelInteger() throws Exception {
         try {
             delegate.supportsTransactionIsolationLevel(1);
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsTransactionIsolationLevel(1);
     }
 
@@ -1410,7 +1576,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsTransactions() throws Exception {
         try {
             delegate.supportsTransactions();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsTransactions();
     }
 
@@ -1418,7 +1585,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsUnion() throws Exception {
         try {
             delegate.supportsUnion();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsUnion();
     }
 
@@ -1426,7 +1594,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testSupportsUnionAll() throws Exception {
         try {
             delegate.supportsUnionAll();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).supportsUnionAll();
     }
 
@@ -1434,7 +1603,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testUpdatesAreDetectedInteger() throws Exception {
         try {
             delegate.updatesAreDetected(1);
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).updatesAreDetected(1);
     }
 
@@ -1442,7 +1612,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testUsesLocalFilePerTable() throws Exception {
         try {
             delegate.usesLocalFilePerTable();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).usesLocalFilePerTable();
     }
 
@@ -1450,7 +1621,8 @@ public class TestDelegatingDatabaseMetaData {
     public void testUsesLocalFiles() throws Exception {
         try {
             delegate.usesLocalFiles();
-        } catch (final SQLException e) {}
+        } catch (final SQLException e) {
+        }
         verify(obj, times(1)).usesLocalFiles();
     }
 

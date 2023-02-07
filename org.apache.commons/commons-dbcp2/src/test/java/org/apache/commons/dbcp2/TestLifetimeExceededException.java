@@ -7,9 +7,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-/**
- * Tests for LifetimeExceededException.
- */
 public class TestLifetimeExceededException {
 
     @Test

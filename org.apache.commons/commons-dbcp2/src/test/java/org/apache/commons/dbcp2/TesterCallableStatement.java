@@ -7,13 +7,24 @@ import java.io.InputStream;
 import java.io.Reader;
 import java.math.BigDecimal;
 import java.net.URL;
-import java.sql.*;
+import java.sql.Array;
+import java.sql.Blob;
+import java.sql.CallableStatement;
+import java.sql.Clob;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.NClob;
+import java.sql.Ref;
+import java.sql.RowId;
+import java.sql.SQLType;
+import java.sql.SQLXML;
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Map;
 
-/**
- * Trivial implementation of a CallableStatement to avoid null pointer exceptions in tests.
- */
+
+@SuppressWarnings("unused")
 public class TesterCallableStatement extends TesterPreparedStatement implements CallableStatement {
 
     public TesterCallableStatement(final Connection conn) {
@@ -34,17 +45,17 @@ public class TesterCallableStatement extends TesterPreparedStatement implements 
     }
 
     @Override
-    public Array getArray(final int i) throws SQLException {
+    public Array getArray(final int i) {
         return null;
     }
 
     @Override
-    public Array getArray(final String parameterName) throws SQLException {
+    public Array getArray(final String parameterName) {
         return null;
     }
 
     @Override
-    public BigDecimal getBigDecimal(final int parameterIndex) throws SQLException {
+    public BigDecimal getBigDecimal(final int parameterIndex) {
         return null;
     }
 
@@ -53,542 +64,535 @@ public class TesterCallableStatement extends TesterPreparedStatement implements 
      */
     @Deprecated
     @Override
-    public BigDecimal getBigDecimal(final int parameterIndex, final int scale) throws SQLException {
+    public BigDecimal getBigDecimal(final int parameterIndex, final int scale) {
         return null;
     }
 
     @Override
-    public BigDecimal getBigDecimal(final String parameterName) throws SQLException {
+    public BigDecimal getBigDecimal(final String parameterName) {
         return null;
     }
 
     @Override
-    public Blob getBlob(final int i) throws SQLException {
+    public Blob getBlob(final int i) {
         return null;
     }
 
     @Override
-    public Blob getBlob(final String parameterName) throws SQLException {
+    public Blob getBlob(final String parameterName) {
         return null;
     }
 
     @Override
-    public boolean getBoolean(final int parameterIndex) throws SQLException {
+    public boolean getBoolean(final int parameterIndex) {
         return false;
     }
 
     @Override
-    public boolean getBoolean(final String parameterName) throws SQLException {
+    public boolean getBoolean(final String parameterName) {
         return false;
     }
 
     @Override
-    public byte getByte(final int parameterIndex) throws SQLException {
+    public byte getByte(final int parameterIndex) {
         return 0;
     }
 
     @Override
-    public byte getByte(final String parameterName) throws SQLException {
+    public byte getByte(final String parameterName) {
         return 0;
     }
 
     @Override
-    public byte[] getBytes(final int parameterIndex) throws SQLException {
+    public byte[] getBytes(final int parameterIndex) {
         return new byte[0];
     }
 
     @Override
-    public byte[] getBytes(final String parameterName) throws SQLException {
+    public byte[] getBytes(final String parameterName) {
         return new byte[0];
     }
 
     @Override
-    public Reader getCharacterStream(final int parameterIndex) throws SQLException {
+    public Reader getCharacterStream(final int parameterIndex) {
         return null;
     }
 
     @Override
-    public Reader getCharacterStream(final String parameterName) throws SQLException {
+    public Reader getCharacterStream(final String parameterName) {
         return null;
     }
 
     @Override
-    public Clob getClob(final int i) throws SQLException {
+    public Clob getClob(final int i) {
         return null;
     }
 
     @Override
-    public Clob getClob(final String parameterName) throws SQLException {
+    public Clob getClob(final String parameterName) {
         return null;
     }
 
     @Override
-    public Date getDate(final int parameterIndex) throws SQLException {
+    public Date getDate(final int parameterIndex) {
         return null;
     }
 
     @Override
-    public Date getDate(final int parameterIndex, final Calendar cal) throws SQLException {
+    public Date getDate(final int parameterIndex, final Calendar cal) {
         return null;
     }
 
     @Override
-    public Date getDate(final String parameterName) throws SQLException {
+    public Date getDate(final String parameterName) {
         return null;
     }
 
     @Override
-    public Date getDate(final String parameterName, final Calendar cal) throws SQLException {
+    public Date getDate(final String parameterName, final Calendar cal) {
         return null;
     }
 
     @Override
-    public double getDouble(final int parameterIndex) throws SQLException {
+    public double getDouble(final int parameterIndex) {
         return 0;
     }
 
     @Override
-    public double getDouble(final String parameterName) throws SQLException {
+    public double getDouble(final String parameterName) {
         return 0;
     }
 
     @Override
-    public float getFloat(final int parameterIndex) throws SQLException {
+    public float getFloat(final int parameterIndex) {
         return 0;
     }
 
     @Override
-    public float getFloat(final String parameterName) throws SQLException {
+    public float getFloat(final String parameterName) {
         return 0;
     }
 
     @Override
-    public int getInt(final int parameterIndex) throws SQLException {
+    public int getInt(final int parameterIndex) {
         return 0;
     }
 
     @Override
-    public int getInt(final String parameterName) throws SQLException {
+    public int getInt(final String parameterName) {
         return 0;
     }
 
     @Override
-    public long getLong(final int parameterIndex) throws SQLException {
+    public long getLong(final int parameterIndex) {
         return 0;
     }
 
     @Override
-    public long getLong(final String parameterName) throws SQLException {
+    public long getLong(final String parameterName) {
         return 0;
     }
 
     @Override
-    public Reader getNCharacterStream(final int parameterIndex) throws SQLException {
+    public Reader getNCharacterStream(final int parameterIndex) {
         return null;
     }
 
     @Override
-    public Reader getNCharacterStream(final String parameterName) throws SQLException {
+    public Reader getNCharacterStream(final String parameterName) {
         return null;
     }
 
     @Override
-    public NClob getNClob(final int parameterIndex) throws SQLException {
+    public NClob getNClob(final int parameterIndex) {
         return null;
     }
 
     @Override
-    public NClob getNClob(final String parameterName) throws SQLException {
+    public NClob getNClob(final String parameterName) {
         return null;
     }
 
     @Override
-    public String getNString(final int parameterIndex) throws SQLException {
+    public String getNString(final int parameterIndex) {
         return null;
     }
 
     @Override
-    public String getNString(final String parameterName) throws SQLException {
+    public String getNString(final String parameterName) {
         return null;
     }
 
     @Override
-    public Object getObject(final int parameterIndex) throws SQLException {
+    public Object getObject(final int parameterIndex) {
         return null;
     }
 
     @Override
-    public <T> T getObject(final int parameterIndex, final Class<T> type) throws SQLException {
+    public <T> T getObject(final int parameterIndex, final Class<T> type) {
         return null;
     }
 
     @Override
-    public Object getObject(final int i, final Map<String, Class<?>> map) throws SQLException {
+    public Object getObject(final int i, final Map<String, Class<?>> map) {
         return null;
     }
 
     @Override
-    public Object getObject(final String parameterName) throws SQLException {
+    public Object getObject(final String parameterName) {
         return null;
     }
 
     @Override
-    public <T> T getObject(final String parameterName, final Class<T> type) throws SQLException {
+    public <T> T getObject(final String parameterName, final Class<T> type) {
         return null;
     }
 
     @Override
-    public Object getObject(final String parameterName, final Map<String,Class<?>> map) throws SQLException {
+    public Object getObject(final String parameterName, final Map<String,Class<?>> map) {
         return null;
     }
 
     @Override
-    public Ref getRef(final int i) throws SQLException {
+    public Ref getRef(final int i) {
         return null;
     }
 
     @Override
-    public Ref getRef(final String parameterName) throws SQLException {
+    public Ref getRef(final String parameterName) {
         return null;
     }
 
     @Override
-    public RowId getRowId(final int parameterIndex) throws SQLException {
+    public RowId getRowId(final int parameterIndex) {
         return null;
     }
 
     @Override
-    public RowId getRowId(final String parameterName) throws SQLException {
+    public RowId getRowId(final String parameterName) {
         return null;
     }
 
     @Override
-    public short getShort(final int parameterIndex) throws SQLException {
+    public short getShort(final int parameterIndex) {
         return 0;
     }
 
     @Override
-    public short getShort(final String parameterName) throws SQLException {
+    public short getShort(final String parameterName) {
         return 0;
     }
 
     @Override
-    public SQLXML getSQLXML(final int parameterIndex) throws SQLException {
+    public SQLXML getSQLXML(final int parameterIndex) {
         return null;
     }
 
     @Override
-    public SQLXML getSQLXML(final String parameterName) throws SQLException {
+    public SQLXML getSQLXML(final String parameterName) {
         return null;
     }
 
     @Override
-    public String getString(final int parameterIndex) throws SQLException {
+    public String getString(final int parameterIndex) {
         return null;
     }
 
     @Override
-    public String getString(final String parameterName) throws SQLException {
+    public String getString(final String parameterName) {
         return null;
     }
 
     @Override
-    public Time getTime(final int parameterIndex) throws SQLException {
+    public Time getTime(final int parameterIndex) {
         return null;
     }
 
     @Override
-    public Time getTime(final int parameterIndex, final Calendar cal) throws SQLException {
+    public Time getTime(final int parameterIndex, final Calendar cal) {
         return null;
     }
 
     @Override
-    public Time getTime(final String parameterName) throws SQLException {
+    public Time getTime(final String parameterName) {
         return null;
     }
 
     @Override
-    public Time getTime(final String parameterName, final Calendar cal) throws SQLException {
+    public Time getTime(final String parameterName, final Calendar cal) {
         return null;
     }
 
     @Override
-    public Timestamp getTimestamp(final int parameterIndex) throws SQLException {
+    public Timestamp getTimestamp(final int parameterIndex) {
         return null;
     }
 
     @Override
-    public Timestamp getTimestamp(final int parameterIndex, final Calendar cal) throws SQLException {
+    public Timestamp getTimestamp(final int parameterIndex, final Calendar cal) {
         return null;
     }
 
     @Override
-    public Timestamp getTimestamp(final String parameterName) throws SQLException {
+    public Timestamp getTimestamp(final String parameterName) {
         return null;
     }
 
     @Override
-    public Timestamp getTimestamp(final String parameterName, final Calendar cal) throws SQLException {
+    public Timestamp getTimestamp(final String parameterName, final Calendar cal) {
         return null;
     }
 
     @Override
-    public URL getURL(final int parameterIndex) throws SQLException {
+    public URL getURL(final int parameterIndex) {
         return null;
     }
 
     @Override
-    public URL getURL(final String parameterName) throws SQLException {
+    public URL getURL(final String parameterName) {
         return null;
     }
 
     @Override
-    public void registerOutParameter(final int parameterIndex, final int sqlType) throws SQLException {
+    public void registerOutParameter(final int parameterIndex, final int sqlType) {
     }
 
     @Override
-    public void registerOutParameter(final int parameterIndex, final int sqlType, final int scale) throws SQLException {
+    public void registerOutParameter(final int parameterIndex, final int sqlType, final int scale) {
     }
 
     @Override
-    public void registerOutParameter(final int paramIndex, final int sqlType, final String typeName) throws SQLException {
+    public void registerOutParameter(final int paramIndex, final int sqlType, final String typeName) {
     }
 
     @Override
-    public void registerOutParameter(final int parameterIndex, final SQLType sqlType) throws SQLException {
-        // Do nothing
+    public void registerOutParameter(final int parameterIndex, final SQLType sqlType) {
     }
 
     @Override
-    public void registerOutParameter(final int parameterIndex, final SQLType sqlType, final int scale) throws SQLException {
-        // Do nothing
+    public void registerOutParameter(final int parameterIndex, final SQLType sqlType, final int scale) {
     }
 
     @Override
-    public void registerOutParameter(final int parameterIndex, final SQLType sqlType, final String typeName) throws SQLException {
-        // Do nothing
+    public void registerOutParameter(final int parameterIndex, final SQLType sqlType, final String typeName) {
     }
 
     @Override
-    public void registerOutParameter(final String parameterName, final int sqlType) throws SQLException {
+    public void registerOutParameter(final String parameterName, final int sqlType) {
     }
 
     @Override
-    public void registerOutParameter(final String parameterName, final int sqlType, final int scale) throws SQLException {
+    public void registerOutParameter(final String parameterName, final int sqlType, final int scale) {
     }
 
     @Override
-    public void registerOutParameter(final String parameterName, final int sqlType, final String typeName) throws SQLException {
+    public void registerOutParameter(final String parameterName, final int sqlType, final String typeName) {
     }
 
     @Override
-    public void registerOutParameter(final String parameterName, final SQLType sqlType) throws SQLException {
-        // Do nothing
+    public void registerOutParameter(final String parameterName, final SQLType sqlType) {
     }
 
     @Override
-    public void registerOutParameter(final String parameterName, final SQLType sqlType, final int scale) throws SQLException {
-        // Do nothing
+    public void registerOutParameter(final String parameterName, final SQLType sqlType, final int scale) {
     }
 
     @Override
-    public void registerOutParameter(final String parameterName, final SQLType sqlType, final String typeName) throws SQLException {
-        // Do nothing
+    public void registerOutParameter(final String parameterName, final SQLType sqlType, final String typeName) {
     }
 
     @Override
-    public void setAsciiStream(final String parameterName, final InputStream inputStream) throws SQLException {
+    public void setAsciiStream(final String parameterName, final InputStream inputStream) {
     }
 
     @Override
-    public void setAsciiStream(final String parameterName, final InputStream x, final int length) throws SQLException {
+    public void setAsciiStream(final String parameterName, final InputStream x, final int length) {
     }
 
     @Override
-    public void setAsciiStream(final String parameterName, final InputStream inputStream, final long length) throws SQLException {
+    public void setAsciiStream(final String parameterName, final InputStream inputStream, final long length) {
     }
 
     @Override
-    public void setBigDecimal(final String parameterName, final BigDecimal x) throws SQLException {
+    public void setBigDecimal(final String parameterName, final BigDecimal x) {
     }
 
     @Override
-    public void setBinaryStream(final String parameterName, final InputStream inputStream) throws SQLException {
+    public void setBinaryStream(final String parameterName, final InputStream inputStream) {
     }
 
     @Override
-    public void setBinaryStream(final String parameterName, final InputStream x, final int length) throws SQLException {
+    public void setBinaryStream(final String parameterName, final InputStream x, final int length) {
     }
 
     @Override
-    public void setBinaryStream(final String parameterName, final InputStream inputStream, final long length) throws SQLException {
+    public void setBinaryStream(final String parameterName, final InputStream inputStream, final long length) {
     }
 
     @Override
-    public void setBlob(final String parameterName, final Blob blob) throws SQLException {
+    public void setBlob(final String parameterName, final Blob blob) {
     }
 
     @Override
-    public void setBlob(final String parameterName, final InputStream inputStream) throws SQLException {
+    public void setBlob(final String parameterName, final InputStream inputStream) {
     }
 
     @Override
-    public void setBlob(final String parameterName, final InputStream inputStream, final long length) throws SQLException {
+    public void setBlob(final String parameterName, final InputStream inputStream, final long length) {
     }
 
     @Override
-    public void setBoolean(final String parameterName, final boolean x) throws SQLException {
+    public void setBoolean(final String parameterName, final boolean x) {
     }
 
     @Override
-    public void setByte(final String parameterName, final byte x) throws SQLException {
+    public void setByte(final String parameterName, final byte x) {
     }
 
     @Override
-    public void setBytes(final String parameterName, final byte[] x) throws SQLException {
+    public void setBytes(final String parameterName, final byte[] x) {
     }
 
     @Override
-    public void setCharacterStream(final String parameterName, final Reader reader) throws SQLException {
+    public void setCharacterStream(final String parameterName, final Reader reader) {
     }
 
     @Override
-    public void setCharacterStream(final String parameterName, final Reader reader, final int length) throws SQLException {
+    public void setCharacterStream(final String parameterName, final Reader reader, final int length) {
     }
 
     @Override
-    public void setCharacterStream(final String parameterName, final Reader reader, final long length) throws SQLException {
+    public void setCharacterStream(final String parameterName, final Reader reader, final long length) {
     }
 
     @Override
-    public void setClob(final String parameterName, final Clob clob) throws SQLException {
+    public void setClob(final String parameterName, final Clob clob) {
     }
 
     @Override
-    public void setClob(final String parameterName, final Reader reader) throws SQLException {
+    public void setClob(final String parameterName, final Reader reader) {
     }
 
     @Override
-    public void setClob(final String parameterName, final Reader reader, final long length) throws SQLException {
+    public void setClob(final String parameterName, final Reader reader, final long length) {
     }
 
     @Override
-    public void setDate(final String parameterName, final Date x) throws SQLException {
+    public void setDate(final String parameterName, final Date x) {
     }
 
     @Override
-    public void setDate(final String parameterName, final Date x, final Calendar cal) throws SQLException {
+    public void setDate(final String parameterName, final Date x, final Calendar cal) {
     }
 
     @Override
-    public void setDouble(final String parameterName, final double x) throws SQLException {
+    public void setDouble(final String parameterName, final double x) {
     }
 
     @Override
-    public void setFloat(final String parameterName, final float x) throws SQLException {
+    public void setFloat(final String parameterName, final float x) {
     }
 
     @Override
-    public void setInt(final String parameterName, final int x) throws SQLException {
+    public void setInt(final String parameterName, final int x) {
     }
 
     @Override
-    public void setLong(final String parameterName, final long x) throws SQLException {
+    public void setLong(final String parameterName, final long x) {
     }
 
     @Override
-    public void setNCharacterStream(final String parameterName, final Reader reader) throws SQLException {
+    public void setNCharacterStream(final String parameterName, final Reader reader) {
     }
 
     @Override
-    public void setNCharacterStream(final String parameterName, final Reader reader, final long length) throws SQLException {
+    public void setNCharacterStream(final String parameterName, final Reader reader, final long length) {
     }
 
     @Override
-    public void setNClob(final String parameterName, final NClob value) throws SQLException {
+    public void setNClob(final String parameterName, final NClob value) {
     }
 
     @Override
-    public void setNClob(final String parameterName, final Reader reader) throws SQLException {
+    public void setNClob(final String parameterName, final Reader reader) {
     }
 
     @Override
-    public void setNClob(final String parameterName, final Reader reader, final long length) throws SQLException {
+    public void setNClob(final String parameterName, final Reader reader, final long length) {
     }
 
     @Override
-    public void setNString(final String parameterName, final String value) throws SQLException {
+    public void setNString(final String parameterName, final String value) {
     }
 
     @Override
-    public void setNull(final String parameterName, final int sqlType) throws SQLException {
+    public void setNull(final String parameterName, final int sqlType) {
     }
 
     @Override
-    public void setNull(final String parameterName, final int sqlType, final String typeName) throws SQLException {
+    public void setNull(final String parameterName, final int sqlType, final String typeName) {
     }
 
     @Override
-    public void setObject(final String parameterName, final Object x) throws SQLException {
+    public void setObject(final String parameterName, final Object x) {
     }
 
     @Override
-    public void setObject(final String parameterName, final Object x, final int targetSqlType) throws SQLException {
+    public void setObject(final String parameterName, final Object x, final int targetSqlType) {
     }
 
     @Override
-    public void setObject(final String parameterName, final Object x, final int targetSqlType, final int scale) throws SQLException {
+    public void setObject(final String parameterName, final Object x, final int targetSqlType, final int scale) {
     }
 
     @Override
-    public void setObject(final String parameterName, final Object x, final SQLType targetSqlType) throws SQLException {
-        // Do nothing
+    public void setObject(final String parameterName, final Object x, final SQLType targetSqlType) {
+        
     }
 
     @Override
-    public void setObject(final String parameterName, final Object x, final SQLType targetSqlType, final int scaleOrLength)
-            throws SQLException {
-        // Do nothing
+    public void setObject(final String parameterName, final Object x, final SQLType targetSqlType, final int scaleOrLength) {
+        
     }
 
     @Override
-    public void setRowId(final String parameterName, final RowId value) throws SQLException {
+    public void setRowId(final String parameterName, final RowId value) {
     }
 
     @Override
-    public void setShort(final String parameterName, final short x) throws SQLException {
+    public void setShort(final String parameterName, final short x) {
     }
 
     @Override
-    public void setSQLXML(final String parameterName, final SQLXML value) throws SQLException {
+    public void setSQLXML(final String parameterName, final SQLXML value) {
     }
 
     @Override
-    public void setString(final String parameterName, final String x) throws SQLException {
+    public void setString(final String parameterName, final String x) {
     }
 
     @Override
-    public void setTime(final String parameterName, final Time x) throws SQLException {
+    public void setTime(final String parameterName, final Time x) {
     }
 
     @Override
-    public void setTime(final String parameterName, final Time x, final Calendar cal) throws SQLException {
+    public void setTime(final String parameterName, final Time x, final Calendar cal) {
     }
 
     @Override
-    public void setTimestamp(final String parameterName, final Timestamp x) throws SQLException {
+    public void setTimestamp(final String parameterName, final Timestamp x) {
     }
 
     @Override
-    public void setTimestamp(final String parameterName, final Timestamp x, final Calendar cal) throws SQLException {
+    public void setTimestamp(final String parameterName, final Timestamp x, final Calendar cal) {
     }
 
     @Override
-    public void setURL(final String parameterName, final URL val) throws SQLException {
+    public void setURL(final String parameterName, final URL val) {
     }
 
     @Override
-    public boolean wasNull() throws SQLException {
+    public boolean wasNull() {
         return false;
     }
 }

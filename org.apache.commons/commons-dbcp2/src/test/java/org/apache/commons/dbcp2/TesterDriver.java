@@ -2,30 +2,22 @@
 
 package org.apache.commons.dbcp2;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.Driver;
+import java.sql.DriverManager;
+import java.sql.DriverPropertyInfo;
+import java.sql.SQLException;
+import java.sql.SQLFeatureNotSupportedException;
 import java.util.Properties;
 import java.util.logging.Logger;
 
-/**
- * Mock object implementing the <code>java.sql.Driver</code> interface.
- * Returns <code>TestConnection</code>'s from getConnection methods.
- * Valid user name, password combinations are:
- *
- * <table summary="valid credentials">
- * <tr><th>user</th><th>password</th></tr>
- * <tr><td>foo</td><td>bar</td></tr>
- * <tr><td>u1</td><td>p1</td></tr>
- * <tr><td>u2</td><td>p2</td></tr>
- * <tr><td>username</td><td>password</td></tr>
- * </table>
- */
 public class TesterDriver implements Driver {
     private static final Properties validUserPasswords = new Properties();
+
     static {
         try {
             DriverManager.registerDriver(new TesterDriver());
-        } catch(final Exception e) {
-            // ignore
+        } catch (final Exception e) {
         }
         validUserPasswords.put("foo", "bar");
         validUserPasswords.put("u1", "p1");
@@ -35,14 +27,10 @@ public class TesterDriver implements Driver {
 
     private static final String CONNECT_STRING = "jdbc:apache:commons:testdriver";
 
-    // version numbers
     private static final int MAJOR_VERSION = 1;
 
     private static final int MINOR_VERSION = 0;
 
-    /**
-     * TesterDriver specific method to add users to the list of valid users
-     */
     public static void addUser(final String userName, final String password) {
         synchronized (validUserPasswords) {
             validUserPasswords.put(userName, password);
@@ -50,13 +38,13 @@ public class TesterDriver implements Driver {
     }
 
     @Override
-    public boolean acceptsURL(final String url) throws SQLException {
+    public boolean acceptsURL(final String url) {
         return url != null && url.startsWith(CONNECT_STRING);
     }
 
     private void assertValidUserPassword(final String userName, final String password)
-        throws SQLException {
-        if (userName == null){
+            throws SQLException {
+        if (userName == null) {
             throw new SQLException("user name cannot be null.");
         }
         synchronized (validUserPasswords) {
@@ -73,14 +61,11 @@ public class TesterDriver implements Driver {
 
     @Override
     public Connection connect(final String url, final Properties info) throws SQLException {
-        //return (acceptsURL(url) ? new TesterConnection() : null);
         Connection conn = null;
-        if (acceptsURL(url))
-        {
+        if (acceptsURL(url)) {
             String userName = "test";
             String password = "test";
-            if (info != null)
-            {
+            if (info != null) {
                 userName = info.getProperty(Constants.KEY_USER);
                 password = info.getProperty(Constants.KEY_PASSWORD);
                 if (userName == null) {
@@ -117,6 +102,7 @@ public class TesterDriver implements Driver {
     public DriverPropertyInfo[] getPropertyInfo(final String url, final Properties info) {
         return new DriverPropertyInfo[0];
     }
+
     @Override
     public boolean jdbcCompliant() {
         return true;

@@ -10,34 +10,35 @@ import org.junit.jupiter.api.Test;
 
 import javax.management.ObjectName;
 import javax.sql.DataSource;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
-/**
- * TestSuite for BasicDataSource with prepared statement pooling enabled
- */
+@SuppressWarnings({"SqlDialectInspection", "SqlNoDataSourceInspection", "EmptyTryBlock"})
 public class TestPStmtPooling {
-
     private DataSource createPoolingDataSource() throws Exception {
         DriverManager.registerDriver(new TesterDriver());
-        final ConnectionFactory connFactory = new DriverManagerConnectionFactory(
-                "jdbc:apache:commons:testdriver","u1","p1");
-
+        final ConnectionFactory connFactory = new DriverManagerConnectionFactory("jdbc:apache:commons:testdriver", "u1", "p1");
         final PoolableConnectionFactory pcf =
-            new PoolableConnectionFactory(connFactory, null);
+                new PoolableConnectionFactory(connFactory, null);
         pcf.setPoolStatements(true);
         pcf.setDefaultReadOnly(Boolean.FALSE);
         pcf.setDefaultAutoCommit(Boolean.TRUE);
         final ObjectPool<PoolableConnection> connPool = new GenericObjectPool<>(pcf);
         pcf.setPool(connPool);
-
         return new PoolingDataSource<>(connPool);
 
     }
 
     private PoolablePreparedStatement<?> getPoolablePreparedStatement(Statement s) {
-
         while (s != null) {
             if (s instanceof PoolablePreparedStatement) {
                 return (PoolablePreparedStatement<?>) s;
@@ -54,23 +55,17 @@ public class TestPStmtPooling {
     @Test
     public void testBatchUpdate() throws Exception {
         DriverManager.registerDriver(new TesterDriver());
-        final ConnectionFactory connFactory = new DriverManagerConnectionFactory(
-                "jdbc:apache:commons:testdriver","u1","p1");
-
-        final PoolableConnectionFactory pcf =
-            new PoolableConnectionFactory(connFactory, null);
+        final ConnectionFactory connFactory = new DriverManagerConnectionFactory("jdbc:apache:commons:testdriver", "u1", "p1");
+        final PoolableConnectionFactory pcf = new PoolableConnectionFactory(connFactory, null);
         pcf.setPoolStatements(true);
         pcf.setDefaultReadOnly(Boolean.FALSE);
         pcf.setDefaultAutoCommit(Boolean.TRUE);
         final ObjectPool<PoolableConnection> connPool = new GenericObjectPool<>(pcf);
         pcf.setPool(connPool);
-
         final PoolingDataSource<?> ds = new PoolingDataSource<>(connPool);
-
         final Connection conn = ds.getConnection();
         final PreparedStatement ps = conn.prepareStatement("select 1 from dual");
         final Statement inner = ((DelegatingPreparedStatement) ps).getInnermostDelegate();
-        // Check DBCP-372
         ps.addBatch();
         ps.close();
         conn.close();
@@ -83,39 +78,33 @@ public class TestPStmtPooling {
     public void testCallableStatementPooling() throws Exception {
         DriverManager.registerDriver(new TesterDriver());
         final ConnectionFactory connFactory = new DriverManagerConnectionFactory(
-                "jdbc:apache:commons:testdriver","u1","p1");
-
+                "jdbc:apache:commons:testdriver", "u1", "p1");
         final ObjectName oName = new ObjectName("UnitTests:DataSource=test");
-        final PoolableConnectionFactory pcf =
-            new PoolableConnectionFactory(connFactory, oName);
+        final PoolableConnectionFactory pcf = new PoolableConnectionFactory(connFactory, oName);
         pcf.setPoolStatements(true);
         pcf.setDefaultReadOnly(Boolean.FALSE);
         pcf.setDefaultAutoCommit(Boolean.TRUE);
-
         final GenericObjectPoolConfig<PoolableConnection> config = new GenericObjectPoolConfig<>();
         config.setJmxNameBase("UnitTests:DataSource=test,connectionpool=connections");
         config.setJmxNamePrefix("");
         final ObjectPool<PoolableConnection> connPool = new GenericObjectPool<>(pcf, config);
         pcf.setPool(connPool);
-
         final PoolingDataSource<?> ds = new PoolingDataSource<>(connPool);
-
         try (Connection conn = ds.getConnection()) {
             final Statement stmt1 = conn.prepareStatement("select 1 from dual");
             final Statement ustmt1 = ((DelegatingStatement) stmt1).getInnermostDelegate();
             final Statement cstmt1 = conn.prepareCall("{call home}");
             final Statement ucstmt1 = ((DelegatingStatement) cstmt1).getInnermostDelegate();
-            stmt1.close();  // Return to pool
-            cstmt1.close(); // ""
+            stmt1.close();
+            cstmt1.close();
             final Statement stmt2 = conn.prepareStatement("select 1 from dual"); // Check out from pool
             final Statement ustmt2 = ((DelegatingStatement) stmt2).getInnermostDelegate();
             final Statement cstmt2 = conn.prepareCall("{call home}");
             final Statement ucstmt2 = ((DelegatingStatement) cstmt2).getInnermostDelegate();
-            stmt2.close();  // Return to pool
-            cstmt2.close(); // ""
+            stmt2.close();
+            cstmt2.close();
             assertSame(ustmt1, ustmt2);
             assertSame(ucstmt1, ucstmt2);
-            // Verify key distinguishes Callable from Prepared Statements in the pool
             final Statement stmt3 = conn.prepareCall("select 1 from dual");
             final Statement ustmt3 = ((DelegatingStatement) stmt3).getInnermostDelegate();
             stmt3.close();
@@ -128,29 +117,22 @@ public class TestPStmtPooling {
     @Test
     public void testClosePool() throws Exception {
         DriverManager.registerDriver(new TesterDriver());
-        final ConnectionFactory connFactory = new DriverManagerConnectionFactory(
-                "jdbc:apache:commons:testdriver","u1","p1");
-
-        final PoolableConnectionFactory pcf =
-            new PoolableConnectionFactory(connFactory, null);
+        final ConnectionFactory connFactory = new DriverManagerConnectionFactory("jdbc:apache:commons:testdriver", "u1", "p1");
+        final PoolableConnectionFactory pcf = new PoolableConnectionFactory(connFactory, null);
         pcf.setPoolStatements(true);
         pcf.setDefaultReadOnly(Boolean.FALSE);
         pcf.setDefaultAutoCommit(Boolean.TRUE);
-
         final ObjectPool<PoolableConnection> connPool = new GenericObjectPool<>(pcf);
         pcf.setPool(connPool);
-
         final PoolingDataSource<?> ds = new PoolingDataSource<>(connPool);
-        ((PoolingDataSource<?>) ds).setAccessToUnderlyingConnectionAllowed(true);
-
+        ds.setAccessToUnderlyingConnectionAllowed(true);
         final Connection conn = ds.getConnection();
-        try (Statement s = conn.prepareStatement("select 1 from dual")) {}
-
+        try (Statement ignored = conn.prepareStatement("select 1 from dual")) {
+        }
         final Connection poolableConnection = ((DelegatingConnection<?>) conn).getDelegate();
-        final Connection poolingConnection =
-            ((DelegatingConnection<?>) poolableConnection).getDelegate();
+        final Connection poolingConnection = ((DelegatingConnection<?>) poolableConnection).getDelegate();
         poolingConnection.close();
-        try (PreparedStatement ps = conn.prepareStatement("select 1 from dual")) {
+        try (PreparedStatement ignored = conn.prepareStatement("select 1 from dual")) {
             fail("Expecting SQLException");
         } catch (final SQLException ex) {
             assertTrue(ex.getMessage().endsWith("invalid PoolingConnection."));
@@ -158,31 +140,25 @@ public class TestPStmtPooling {
         ds.close();
     }
 
-    /**
-     * Verifies that executing close() on an already closed DelegatingStatement
-     * that wraps a PoolablePreparedStatement does not "re-close" the PPS
-     * (which could be in use by another client - see DBCP-414).
-     */
     @Test
     public void testMultipleClose() throws Exception {
-       final DataSource ds = createPoolingDataSource();
-       final Connection conn = ds.getConnection();
-       final PreparedStatement stmt1 = conn.prepareStatement("select 1 from dual");
-       final PoolablePreparedStatement<?> pps1 = getPoolablePreparedStatement(stmt1);
-       conn.close();
-       assertTrue(stmt1.isClosed());  // Closing conn should close stmt
-       stmt1.close(); // Should already be closed - no-op
-       assertTrue(stmt1.isClosed());
-       final Connection conn2 = ds.getConnection();
-       final PreparedStatement stmt2 = conn2.prepareStatement("select 1 from dual");
-       // Confirm stmt2 now wraps the same PPS wrapped by stmt1
-       Assertions.assertSame(pps1, getPoolablePreparedStatement(stmt2));
-       stmt1.close(); // close should not cascade to PPS that stmt1 used to wrap
+        final DataSource ds = createPoolingDataSource();
+        final Connection conn = ds.getConnection();
+        final PreparedStatement stmt1 = conn.prepareStatement("select 1 from dual");
+        final PoolablePreparedStatement<?> pps1 = getPoolablePreparedStatement(stmt1);
+        conn.close();
+        assertTrue(stmt1.isClosed());
+        stmt1.close();
+        assertTrue(stmt1.isClosed());
+        final Connection conn2 = ds.getConnection();
+        final PreparedStatement stmt2 = conn2.prepareStatement("select 1 from dual");
+        Assertions.assertSame(pps1, getPoolablePreparedStatement(stmt2));
+        stmt1.close();
         assertFalse(stmt2.isClosed());
-       stmt2.executeQuery();  // wrapped PPS needs to work here - pre DBCP-414 fix this throws
-       conn2.close();
-       assertTrue(stmt1.isClosed());
-       assertTrue(stmt2.isClosed());
+        stmt2.executeQuery();
+        conn2.close();
+        assertTrue(stmt1.isClosed());
+        assertTrue(stmt2.isClosed());
     }
 
     @Test

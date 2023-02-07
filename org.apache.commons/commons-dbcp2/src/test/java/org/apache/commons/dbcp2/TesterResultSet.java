@@ -10,9 +10,7 @@ import java.sql.*;
 import java.util.Calendar;
 import java.util.Map;
 
-/**
- * A dummy {@link ResultSet}, for testing purposes.
- */
+@SuppressWarnings({"unused", "MagicConstant"})
 public class TesterResultSet extends AbandonedTrace implements ResultSet {
 
     protected int _type = ResultSet.TYPE_FORWARD_ONLY;
@@ -242,7 +240,7 @@ public class TesterResultSet extends AbandonedTrace implements ResultSet {
     }
 
     @Override
-    public int getConcurrency() throws SQLException {
+    public int getConcurrency() {
         return this._concurrency;
     }
 
@@ -541,7 +539,7 @@ public java.sql.Date getDate(final int columnIndex, final Calendar cal) throws S
     }
 
     @Override
-    public int getType() throws SQLException {
+    public int getType() {
         return this._type;
     }
 

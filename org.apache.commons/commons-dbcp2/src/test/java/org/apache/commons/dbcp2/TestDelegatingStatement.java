@@ -11,9 +11,16 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
+@SuppressWarnings({"FieldCanBeLocal", "deprecation", "MagicConstant", "ResultOfMethodCallIgnored", "ThrowableNotThrown", "SqlDialectInspection", "SqlNoDataSourceInspection"})
 public class TestDelegatingStatement {
 
     private static class TesterStatementNonWrapping extends TesterStatement {
@@ -23,7 +30,7 @@ public class TestDelegatingStatement {
         }
 
         @Override
-        public boolean isWrapperFor(final Class<?> iface) throws SQLException {
+        public boolean isWrapperFor(final Class<?> iface) {
             return false;
         }
     }
@@ -37,7 +44,7 @@ public class TestDelegatingStatement {
     private TesterStatement testerStatement;
 
     @BeforeEach
-    public void setUp() throws Exception {
+    public void setUp() {
         testerConnection = new TesterConnection("test", "test");
         delegatingConnection = new DelegatingConnection<>(testerConnection);
         mockedStatement = mock(Statement.class);
@@ -129,7 +136,7 @@ public class TestDelegatingStatement {
     }
 
     @Test
-    public void testCloseWithStatementCloseException() throws Exception {
+    public void testCloseWithStatementCloseException() {
         try {
             testerStatement.setSqlExceptionOnClose(true);
             delegatingTesterStatement.close();
@@ -280,13 +287,6 @@ public class TestDelegatingStatement {
         }
         verify(mockedStatement, times(1)).executeUpdate("foo", (String[]) null);
     }
-
-    /**
-     * This method is a bit special, and return the delegate connection, not the
-     * wrapped statement's connection.
-     *
-     * @throws Exception
-     */
     @Test
     public void testGetConnection() throws Exception {
         try {
@@ -297,7 +297,7 @@ public class TestDelegatingStatement {
     }
 
     @Test
-    public void testGetDelegate() throws Exception {
+    public void testGetDelegate() {
         assertEquals(mockedStatement,delegatingStatement.getDelegate());
     }
 
@@ -445,12 +445,6 @@ public class TestDelegatingStatement {
         verify(mockedStatement, times(1)).getWarnings();
     }
 
-    /**
-     * This method is a bit special, and call isClosed in the delegate object
-     * itself, not in the wrapped statement.
-     *
-     * @throws Exception
-     */
     @Test
     public void testIsClosed() throws Exception {
         try {
@@ -484,11 +478,7 @@ public class TestDelegatingStatement {
         final TesterStatement tstStmt = new TesterStatementNonWrapping(tstConn);
         final DelegatingConnection<TesterConnection> dconn = new DelegatingConnection<>(tstConn);
         final DelegatingStatement stamt = new DelegatingStatement(dconn, tstStmt);
-
-        final Class<?> stmtProxyClass = Proxy.getProxyClass(
-                this.getClass().getClassLoader(),
-                Statement.class);
-
+        final Class<?> stmtProxyClass = Proxy.getProxyClass(this.getClass().getClassLoader(), Statement.class);
         assertTrue(stamt.isWrapperFor(DelegatingStatement.class));
         assertTrue(stamt.isWrapperFor(TesterStatement.class));
         assertFalse(stamt.isWrapperFor(stmtProxyClass));

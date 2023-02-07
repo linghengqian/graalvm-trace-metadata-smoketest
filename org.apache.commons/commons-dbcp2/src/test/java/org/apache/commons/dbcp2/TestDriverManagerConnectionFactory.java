@@ -16,11 +16,7 @@ import java.util.Properties;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.fail;
 
-/**
- * This test *must* execute before all other tests to be effective as it tests
- * the initialisation of DriverManager.
- * Based on the test case for DBCP-212 written by Marcos Sanz
- */
+@SuppressWarnings({"BusyWait", "resource"})
 public class TestDriverManagerConnectionFactory {
 
     private static final class ConnectionThread implements Runnable {
@@ -75,7 +71,7 @@ public class TestDriverManagerConnectionFactory {
 
     @Test
     public void testDriverManagerCredentialsInUrl() throws SQLException {
-        final DriverManagerConnectionFactory cf = new DriverManagerConnectionFactory("jdbc:apache:commons:testdriver;user=foo;password=bar", null,  (char[]) null);
+        final DriverManagerConnectionFactory cf = new DriverManagerConnectionFactory("jdbc:apache:commons:testdriver;user=foo;password=bar", null, (char[]) null);
         cf.createConnection();
     }
 
@@ -84,26 +80,20 @@ public class TestDriverManagerConnectionFactory {
         config.setMaxTotal(10);
         config.setMaxIdle(0);
         final Properties properties = new Properties();
-        // The names "user" and "password" are specified in java.sql.DriverManager.getConnection(String, String, String)
         properties.setProperty(Constants.KEY_USER, "foo");
         properties.setProperty(Constants.KEY_PASSWORD, "bar");
         final ConnectionFactory connectionFactory = withProperties ?
                 new DriverManagerConnectionFactory("jdbc:apache:commons:testdriver", properties) :
                 new DriverManagerConnectionFactory("jdbc:apache:commons:testdriver", "foo", "bar");
         final PoolableConnectionFactory poolableConnectionFactory =
-            new PoolableConnectionFactory(connectionFactory, null);
+                new PoolableConnectionFactory(connectionFactory, null);
         poolableConnectionFactory.setDefaultReadOnly(Boolean.FALSE);
         poolableConnectionFactory.setDefaultAutoCommit(Boolean.TRUE);
-
-        final GenericObjectPool<PoolableConnection> connectionPool =
-                new GenericObjectPool<>(poolableConnectionFactory, config);
+        final GenericObjectPool<PoolableConnection> connectionPool = new GenericObjectPool<>(poolableConnectionFactory, config);
         poolableConnectionFactory.setPool(connectionPool);
-        final PoolingDataSource<PoolableConnection> dataSource =
-                new PoolingDataSource<>(connectionPool);
-
+        final PoolingDataSource<PoolableConnection> dataSource = new PoolingDataSource<>(connectionPool);
         final ConnectionThread[] connectionThreads = new ConnectionThread[10];
         final Thread[] threads = new Thread[10];
-
         for (int i = 0; i < 10; i++) {
             connectionThreads[i] = new ConnectionThread(dataSource);
             threads[i] = new Thread(connectionThreads[i]);
@@ -112,7 +102,7 @@ public class TestDriverManagerConnectionFactory {
             threads[i].start();
         }
         for (int i = 0; i < 10; i++) {
-            while (threads[i].isAlive()){//JDK1.5: getState() != Thread.State.TERMINATED) {
+            while (threads[i].isAlive()) {
                 Thread.sleep(100);
             }
             if (!connectionThreads[i].getResult()) {
@@ -128,8 +118,7 @@ public class TestDriverManagerConnectionFactory {
 
     @Test
     public void testDriverManagerInitWithEmptyProperties() throws Exception {
-        final ConnectionFactory connectionFactory = new DriverManagerConnectionFactory(
-                "jdbc:apache:commons:testdriver;user=foo;password=bar");
+        final ConnectionFactory connectionFactory = new DriverManagerConnectionFactory("jdbc:apache:commons:testdriver;user=foo;password=bar");
         connectionFactory.createConnection();
     }
 
@@ -140,20 +129,20 @@ public class TestDriverManagerConnectionFactory {
 
     @Test
     public void testDriverManagerWithoutCredentials() {
-        final DriverManagerConnectionFactory cf = new DriverManagerConnectionFactory("jdbc:apache:commons:testdriver", null,  (char[]) null);
-        assertThrows(ArrayIndexOutOfBoundsException.class, cf::createConnection); // thrown by TestDriver due to missing user
+        final DriverManagerConnectionFactory cf = new DriverManagerConnectionFactory("jdbc:apache:commons:testdriver", null, (char[]) null);
+        assertThrows(ArrayIndexOutOfBoundsException.class, cf::createConnection);
     }
 
     @Test
     public void testDriverManagerWithoutPassword() {
         final DriverManagerConnectionFactory cf = new DriverManagerConnectionFactory("jdbc:apache:commons:testdriver", "user", (char[]) null);
-        assertThrows(SQLException.class, cf::createConnection); // thrown by TestDriver due to invalid password
+        assertThrows(SQLException.class, cf::createConnection);
     }
 
     @Test
     public void testDriverManagerWithoutUser() {
         final DriverManagerConnectionFactory cf = new DriverManagerConnectionFactory("jdbc:apache:commons:testdriver", null, "pass");
-        assertThrows(IndexOutOfBoundsException.class, cf::createConnection); // thrown by TestDriver due to missing user
+        assertThrows(IndexOutOfBoundsException.class, cf::createConnection);
     }
 
 }

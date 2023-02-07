@@ -5,14 +5,25 @@ package org.apache.commons.dbcp2;
 import com.lingh.TesterDatabaseMetaData;
 import com.lingh.TesterPreparedStatement;
 
-import java.sql.*;
+import java.sql.Array;
+import java.sql.Blob;
+import java.sql.CallableStatement;
+import java.sql.Clob;
+import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.NClob;
+import java.sql.PreparedStatement;
+import java.sql.SQLClientInfoException;
+import java.sql.SQLException;
+import java.sql.SQLWarning;
+import java.sql.SQLXML;
+import java.sql.Statement;
+import java.sql.Struct;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.Executor;
 
-/**
- * A dummy {@link Connection}, for testing purposes.
- */
+@SuppressWarnings({"unused", "MagicConstant"})
 public class TesterConnection extends AbandonedTrace implements Connection {
 
     protected boolean _open = true;
@@ -215,7 +226,7 @@ public class TesterConnection extends AbandonedTrace implements Connection {
     }
 
     @Override
-    public boolean isValid(final int timeout) throws SQLException {
+    public boolean isValid(final int timeout) {
         return _open;
     }
 

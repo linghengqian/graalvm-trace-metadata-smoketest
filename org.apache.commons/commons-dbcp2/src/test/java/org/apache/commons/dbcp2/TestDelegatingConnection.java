@@ -1,5 +1,4 @@
 
-
 package org.apache.commons.dbcp2;
 
 import org.apache.commons.pool2.impl.GenericKeyedObjectPool;
@@ -11,17 +10,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
-/**
- */
+@SuppressWarnings({"SqlDialectInspection", "SqlNoDataSourceInspection", "EmptyTryBlock"})
 public class TestDelegatingConnection {
-
-    /**
-     * Delegate that doesn't support read-only or auto-commit.
-     * It will merely take the input value of setReadOnly and
-     * setAutoCommit and discard it, to keep false.
-     */
+    @SuppressWarnings("FieldCanBeLocal")
     static class NoReadOnlyOrAutoCommitConnection extends TesterConnection {
         private final boolean readOnly = false;
         private final boolean autoCommit = false;
@@ -36,27 +33,20 @@ public class TestDelegatingConnection {
         }
 
         @Override
-        public boolean isReadOnly() throws SQLException {
+        public boolean isReadOnly() {
             return readOnly;
         }
 
         @Override
         public void setAutoCommit(final boolean autoCommit) {
-            // Do nothing
         }
 
         @Override
         public void setReadOnly(final boolean readOnly) {
-            // Do nothing
         }
     }
 
-    /**
-     * Delegate that will throw RTE on toString
-     * Used to validate fix for DBCP-241
-     */
     static class RTEGeneratingConnection extends TesterConnection {
-
         public RTEGeneratingConnection() {
             super("","");
         }
@@ -87,9 +77,7 @@ public class TestDelegatingConnection {
     public void testAutoCommitCaching() throws SQLException {
         final Connection con = new NoReadOnlyOrAutoCommitConnection();
         final DelegatingConnection<Connection> delCon = new DelegatingConnection<>(con);
-
         delCon.setAutoCommit(true);
-
         assertFalse(con.getAutoCommit());
         assertFalse(delCon.getAutoCommit());
     }
@@ -102,15 +90,11 @@ public class TestDelegatingConnection {
             delegatingConnection.checkOpen();
             fail("Expecting SQLException");
         } catch (final SQLException ex) {
-            // expected
         }
     }
 
-    /**
-     * Verify fix for DBCP-241
-     */
     @Test
-    public void testCheckOpenNull() throws Exception {
+    public void testCheckOpenNull() {
         try {
             delegatingConnection.close();
             delegatingConnection.checkOpen();
@@ -118,7 +102,6 @@ public class TestDelegatingConnection {
         } catch (final SQLException ex) {
             assertTrue(ex.getMessage().endsWith("is closed."));
         }
-
         try {
             delegatingConnection = new DelegatingConnection<>(null);
             delegatingConnection.setClosedInternal(true);
@@ -127,19 +110,17 @@ public class TestDelegatingConnection {
         } catch (final SQLException ex) {
             assertTrue(ex.getMessage().endsWith("is null."));
         }
-
         try {
             final PoolingConnection pc = new PoolingConnection(connection2);
             pc.setStatementPool(new GenericKeyedObjectPool<>(pc));
             delegatingConnection = new DelegatingConnection<>(pc);
             pc.close();
             delegatingConnection.close();
-            try (PreparedStatement ps = delegatingConnection.prepareStatement("")){}
+            try (PreparedStatement ignored = delegatingConnection.prepareStatement("")){}
             fail("Expecting SQLException");
         } catch (final SQLException ex) {
             assertTrue(ex.getMessage().endsWith("is closed."));
         }
-
         try {
             delegatingConnection = new DelegatingConnection<>(new RTEGeneratingConnection());
             delegatingConnection.close();
@@ -151,14 +132,14 @@ public class TestDelegatingConnection {
     }
 
     @Test
-    public void testConnectionToString() throws Exception {
+    public void testConnectionToString() {
         final String s = delegatingConnection.toString();
         assertNotNull(s);
         assertFalse(s.isEmpty());
     }
 
     @Test
-    public void testGetDelegate() throws Exception {
+    public void testGetDelegate() {
         assertEquals(connection,delegatingConnection.getDelegate());
     }
 
