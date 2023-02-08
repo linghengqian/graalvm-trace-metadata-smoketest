@@ -228,7 +228,7 @@
   "name":"org.apache.commons.dbcp2.DataSourceMXBean"
 },
 {
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestBasicDataSource"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.BasicDataSource"},
   "name":"org.apache.commons.dbcp2.DataSourceMXBean",
   "queryAllPublicMethods":true
 },
@@ -242,7 +242,7 @@
   "name":"org.apache.commons.dbcp2.PoolableConnectionMXBean"
 },
 {
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestBasicDataSource"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.BasicDataSource"},
   "name":"org.apache.commons.dbcp2.PoolableConnectionMXBean",
   "queryAllPublicMethods":true
 },
@@ -252,15 +252,15 @@
   "queryAllPublicMethods":true
 },
 {
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestPoolingDriver"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.PoolingDriver"},
   "name":"org.apache.commons.dbcp2.PoolingDriver"
 },
 {
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.datasources.TestPerUserPoolDataSource"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.datasources.PerUserPoolDataSource"},
   "name":"org.apache.commons.dbcp2.PoolingDriver"
 },
 {
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestBasicDataSource"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.BasicDataSource"},
   "name":"org.apache.commons.dbcp2.TesterConnRequestCountDriver",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
@@ -289,17 +289,17 @@
   "name":"org.apache.commons.dbcp2.TesterDriver"
 },
 {
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestAbandonedBasicDataSource"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.AbandonedBasicDataSource"},
   "name":"org.apache.commons.dbcp2.TesterDriver",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestBasicDataSource"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.BasicDataSource"},
   "name":"org.apache.commons.dbcp2.TesterDriver",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestPoolingDriver"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.PoolingDriver"},
   "name":"org.apache.commons.dbcp2.TesterDriver"
 },
 {
@@ -307,12 +307,12 @@
   "name":"org.apache.commons.dbcp2.TesterDriver"
 },
 {
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.managed.TestBasicManagedDataSource"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.managed.BasicManagedDataSource"},
   "name":"org.apache.commons.dbcp2.TesterDriver",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.managed.TestTransactionContext"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.managed.TransactionContext"},
   "name":"org.apache.commons.dbcp2.TesterDriver",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
@@ -350,17 +350,17 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestBasicDataSource"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.BasicDataSource"},
   "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestBasicDataSourceFactory"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.BasicDataSourceFactory"},
   "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestConnectionPool"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.ConnectionPool"},
   "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
@@ -375,32 +375,32 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingConnection"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.DelegatingConnection"},
   "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDriverManagerConnectionFactory"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.DriverManagerConnectionFactory"},
   "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestPStmtPooling"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.PStmtPooling"},
   "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestPStmtPoolingBasicDataSource"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.PStmtPoolingBasicDataSource"},
   "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestPoolingConnection"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.PoolingConnection"},
   "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestPoolingDriver"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.PoolingDriver"},
   "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
@@ -415,37 +415,37 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.datasources.TestCPDSConnectionFactory"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.datasources.CPDSConnectionFactory"},
   "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.datasources.TestKeyedCPDSConnectionFactory"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.datasources.KeyedCPDSConnectionFactory"},
   "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.managed.TestManagedDataSourceInTx"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.managed.ManagedDataSourceInTx"},
   "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestBasicDataSource"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.BasicDataSource"},
   "name":"org.apache.commons.pool2.impl.DefaultPooledObjectInfo",
   "queryAllPublicMethods":true
 },
 {
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestBasicDataSourceFactory"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.BasicDataSourceFactory"},
   "name":"org.apache.commons.pool2.impl.GenericKeyedObjectPoolMXBean",
   "queryAllPublicMethods":true
 },
 {
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestBasicDataSource"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.BasicDataSource"},
   "name":"org.apache.commons.pool2.impl.GenericObjectPoolMXBean",
   "queryAllPublicMethods":true
 },
 {
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestPoolingDriver"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.PoolingDriver"},
   "name":"org.apache.commons.pool2.impl.GenericObjectPoolMXBean",
   "queryAllPublicMethods":true
 },
@@ -455,67 +455,67 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestBasicDataSource"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.BasicDataSource"},
   "name":"org.hamcrest.core.StringContains",
   "queryAllDeclaredMethods":true
 },
 {
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestBasicDataSource"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.BasicDataSource"},
   "name":"org.hamcrest.core.SubstringMatcher",
   "queryAllDeclaredMethods":true
 },
 {
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingCallableStatement"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.DelegatingCallableStatement"},
   "name":"org.mockito.internal.configuration.DefaultDoNotMockEnforcer",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingCallableStatement"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.DelegatingCallableStatement"},
   "name":"org.mockito.internal.configuration.InjectingAnnotationEngine",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingCallableStatement"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.DelegatingCallableStatement"},
   "name":"org.mockito.internal.configuration.plugins.DefaultPluginSwitch",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingCallableStatement"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.DelegatingCallableStatement"},
   "name":"org.mockito.internal.creation.instance.DefaultInstantiatorProvider",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingCallableStatement"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.DelegatingCallableStatement"},
   "name":"org.mockito.internal.creation.proxy.ProxyMockMaker",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingCallableStatement"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.DelegatingCallableStatement"},
   "name":"org.mockito.internal.exceptions.stacktrace.DefaultStackTraceCleanerProvider",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingCallableStatement"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.DelegatingCallableStatement"},
   "name":"org.mockito.internal.matchers.ArrayEquals",
   "queryAllPublicMethods":true
 },
 {
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingCallableStatement"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.DelegatingCallableStatement"},
   "name":"org.mockito.internal.matchers.Equals",
   "queryAllPublicMethods":true
 },
 {
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingCallableStatement"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.DelegatingCallableStatement"},
   "name":"org.mockito.internal.util.ConsoleMockitoLogger",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingCallableStatement"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.DelegatingCallableStatement"},
   "name":"org.mockito.internal.util.reflection.ReflectionMemberAccessor",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.datasources.TestPerUserPoolDataSource"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.datasources.PerUserPoolDataSource"},
   "name":"sun.security.provider.SHA",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 }
