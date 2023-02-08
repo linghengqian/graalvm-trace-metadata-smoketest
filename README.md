@@ -33,25 +33,25 @@ cd ./io.jsonwebtoken/jjwt-gson/
 cd ./io.jsonwebtoken/jjwt-orgjson/
 cd ./zstd-jni/
 cd ./vertx-core/
-cd ./groovy/
+cd ./org.apache/groovy/
 cd ./hazelcast/
 cd ./ehcache/
-cd ./org.apache.shardingsphere/shardingsphere-jdbc-core/
+cd ./org.apache/shardingsphere-jdbc-core/
 cd ./nashorn-core/
-cd ./org.graalvm.js/js/
+cd ./org.graalvm/js/
 cd ./dynamic-datasource-spring-boot-starter/
-cd ./org.apache.curator/curator-client/
-cd ./org.apache.curator/curator-framework/
-cd ./org.apache.curator/curator-recipes/
+cd ./org.apache/curator-client/
+cd ./org.apache/curator-framework/
+cd ./org.apache/curator-recipes/
 cd ./jetcd-core/
 cd ./protobuf-java-util/
 cd ./opengauss-jdbc/
 cd ./cache-api/
-cd ./org.apache.shardingsphere/elasticjob-lite-core/
+cd ./org.apache/elasticjob-lite-core/
 cd ./caffeine/
 cd ./transmittable-thread-local/
-cd ./org.graalvm.espresso/polyglot/
-cd ./org.apache.commons/commons-dbcp2/
+cd ./org.graalvm/polyglot/
+cd ./org.apache/commons-dbcp2/
 ```
 
 - exec.
