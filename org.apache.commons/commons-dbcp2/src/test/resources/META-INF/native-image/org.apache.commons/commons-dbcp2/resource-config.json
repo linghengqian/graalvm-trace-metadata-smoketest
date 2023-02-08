@@ -6,7 +6,7 @@
       "pattern":"\\QMETA-INF/services/java.sql.Driver\\E"
     }, 
     {
-      "condition":{"typeReachable":"org.apache.commons.dbcp2.TestDelegatingCallableStatement"},
+      "condition":{"typeReachable":"org.apache.commons.dbcp2.DelegatingCallableStatement"},
       "pattern":"\\Qmockito-extensions/org.mockito.plugins.MockMaker\\E"
     }
   ]},
