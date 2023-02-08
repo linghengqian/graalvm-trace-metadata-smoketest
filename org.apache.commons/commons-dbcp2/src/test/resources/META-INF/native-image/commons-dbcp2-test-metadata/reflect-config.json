@@ -1,9 +1,5 @@
 [
 {
-  "condition":{"typeReachable":"com.lingh.managed.TestConnectionWithNarayana"},
-  "name":"javax.xml.stream.XMLInputFactory"
-},
-{
   "condition":{"typeReachable":"com.lingh.TestParallelCreationWithNoIdle$TestThread"},
   "name":"org.apache.commons.dbcp2.BasicDataSource",
   "queryAllPublicConstructors":true
@@ -52,12 +48,12 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "condition":{"typeReachable":"com.lingh.TestPoolableConnection"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.PoolableConnection"},
   "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "condition":{"typeReachable":"com.lingh.TestPoolingDataSource"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.PoolingDataSource"},
   "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
@@ -72,7 +68,7 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "condition":{"typeReachable":"com.lingh.datasources.TestSharedPoolDataSource"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.datasources.SharedPoolDataSource"},
   "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
@@ -82,7 +78,7 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "condition":{"typeReachable":"com.lingh.managed.TestDataSourceXAConnectionFactory"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.managed.DataSourceXAConnectionFactory"},
   "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
@@ -92,7 +88,7 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "condition":{"typeReachable":"com.lingh.managed.TestManagedConnection"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.managed.ManagedConnection"},
   "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
@@ -102,12 +98,12 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "condition":{"typeReachable":"com.lingh.managed.TestManagedDataSource"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.managed.ManagedDataSource"},
   "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "condition":{"typeReachable":"com.lingh.managed.TestPoolableManagedConnection"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.managed.PoolableManagedConnection"},
   "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
@@ -127,12 +123,12 @@
   "queryAllPublicMethods":true
 },
 {
-  "condition":{"typeReachable":"com.lingh.cpdsadapter.TestDriverAdapterCPDS"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.cpdsadapter.DriverAdapterCPDS"},
   "name":"org.apache.commons.pool2.impl.GenericKeyedObjectPool",
   "queryAllPublicConstructors":true
 },
 {
-  "condition":{"typeReachable":"com.lingh.cpdsadapter.TestDriverAdapterCPDS"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.cpdsadapter.DriverAdapterCPDS"},
   "name":"org.apache.commons.pool2.impl.GenericKeyedObjectPoolMXBean",
   "queryAllPublicMethods":true
 },
