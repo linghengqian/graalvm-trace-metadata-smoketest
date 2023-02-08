@@ -47,7 +47,7 @@ cd ./jetcd-core/
 cd ./protobuf-java-util/
 cd ./opengauss-jdbc/
 cd ./cache-api/
-cd ./elasticjob-lite-core/
+cd ./org.apache.shardingsphere/elasticjob-lite-core/
 cd ./caffeine/
 cd ./transmittable-thread-local/
 cd ./org.graalvm.espresso/polyglot/
