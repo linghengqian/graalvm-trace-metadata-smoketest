@@ -36,41 +36,6 @@
   "name":"[Z"
 },
 {
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.BasicDataSource"},
-  "name":"com.lingh.StackMessageLog",
-  "methods":[{"name":"<init>","parameterTypes":["java.lang.String"] }]
-},
-{
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.BasicDataSourceFactory"},
-  "name":"com.lingh.StackMessageLog",
-  "methods":[{"name":"<init>","parameterTypes":["java.lang.String"] }]
-},
-{
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
-  "name":"com.lingh.StackMessageLog",
-  "methods":[{"name":"<init>","parameterTypes":["java.lang.String"] }]
-},
-{
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.PoolableConnectionFactory"},
-  "name":"com.lingh.StackMessageLog",
-  "methods":[{"name":"<init>","parameterTypes":["java.lang.String"] }]
-},
-{
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.PoolingDataSource"},
-  "name":"com.lingh.StackMessageLog",
-  "methods":[{"name":"<init>","parameterTypes":["java.lang.String"] }]
-},
-{
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestJndi"},
-  "name":"com.lingh.StackMessageLog",
-  "methods":[{"name":"<init>","parameterTypes":["java.lang.String"] }]
-},
-{
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.datasources.PerUserPoolDataSource"},
-  "name":"com.lingh.StackMessageLog",
-  "methods":[{"name":"<init>","parameterTypes":["java.lang.String"] }]
-},
-{
   "condition":{"typeReachable":"org.apache.commons.dbcp2.ObjectNameWrapper"},
   "name":"java.lang.Boolean",
   "fields":[{"name":"TYPE"}]
@@ -233,21 +198,11 @@
   "queryAllPublicMethods":true
 },
 {
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestConnectionPool$TestThread"},
-  "name":"org.apache.commons.dbcp2.DataSourceMXBean",
-  "queryAllPublicMethods":true
-},
-{
   "condition":{"typeReachable":"org.apache.commons.dbcp2.PoolableConnection"},
   "name":"org.apache.commons.dbcp2.PoolableConnectionMXBean"
 },
 {
   "condition":{"typeReachable":"org.apache.commons.dbcp2.BasicDataSource"},
-  "name":"org.apache.commons.dbcp2.PoolableConnectionMXBean",
-  "queryAllPublicMethods":true
-},
-{
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestConnectionPool$TestThread"},
   "name":"org.apache.commons.dbcp2.PoolableConnectionMXBean",
   "queryAllPublicMethods":true
 },
@@ -258,78 +213,6 @@
 {
   "condition":{"typeReachable":"org.apache.commons.dbcp2.datasources.PerUserPoolDataSource"},
   "name":"org.apache.commons.dbcp2.PoolingDriver"
-},
-{
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.BasicDataSource"},
-  "name":"org.apache.commons.dbcp2.TesterConnRequestCountDriver",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestConnectionPool$TestThread"},
-  "name":"org.apache.commons.dbcp2.TesterConnRequestCountDriver",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestConnectionPool$TestThread"},
-  "name":"org.apache.commons.dbcp2.TesterConnectionDelayDriver",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.ConnectionFactoryFactory"},
-  "name":"org.apache.commons.dbcp2.TesterConnectionFactory",
-  "methods":[{"name":"<init>","parameterTypes":["java.sql.Driver","java.lang.String","java.util.Properties"] }]
-},
-{
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.BasicDataSource"},
-  "name":"org.apache.commons.dbcp2.TesterDriver",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.DriverManagerConnectionFactory"},
-  "name":"org.apache.commons.dbcp2.TesterDriver"
-},
-{
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.AbandonedBasicDataSource"},
-  "name":"org.apache.commons.dbcp2.TesterDriver",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.BasicDataSource"},
-  "name":"org.apache.commons.dbcp2.TesterDriver",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.PoolingDriver"},
-  "name":"org.apache.commons.dbcp2.TesterDriver"
-},
-{
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.cpdsadapter.DriverAdapterCPDS"},
-  "name":"org.apache.commons.dbcp2.TesterDriver"
-},
-{
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.managed.BasicManagedDataSource"},
-  "name":"org.apache.commons.dbcp2.TesterDriver",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.managed.TransactionContext"},
-  "name":"org.apache.commons.dbcp2.TesterDriver",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestJndi"},
-  "name":"org.apache.commons.dbcp2.datasources.PerUserPoolDataSourceFactory",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestJndi"},
-  "name":"org.apache.commons.dbcp2.datasources.SharedPoolDataSourceFactory",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestConnectionPool$TestThread"},
-  "name":"org.apache.commons.dbcp2.managed.BasicManagedDataSource",
-  "queryAllPublicConstructors":true
 },
 {
   "condition":{"typeReachable":"org.apache.commons.dbcp2.managed.TransactionRegistry"},
@@ -361,16 +244,6 @@
 },
 {
   "condition":{"typeReachable":"org.apache.commons.dbcp2.ConnectionPool"},
-  "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestConnectionPool$PoolTest"},
-  "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestConnectionPool$TestThread"},
   "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
