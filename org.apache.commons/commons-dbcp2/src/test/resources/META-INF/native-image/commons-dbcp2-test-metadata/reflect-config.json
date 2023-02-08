@@ -58,7 +58,7 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "condition":{"typeReachable":"com.lingh.cpdsadapter.TestDriverAdapterCPDS"},
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.cpdsadapter.DriverAdapterCPDS"},
   "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
