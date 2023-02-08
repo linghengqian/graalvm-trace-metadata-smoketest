@@ -450,73 +450,58 @@
   "queryAllPublicMethods":true
 },
 {
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.managed.BasicManagedDataSource"},
-  "name":"org.h2.jdbcx.JdbcDataSource",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.BasicDataSource"},
-  "name":"org.hamcrest.core.StringContains",
-  "queryAllDeclaredMethods":true
-},
-{
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.BasicDataSource"},
-  "name":"org.hamcrest.core.SubstringMatcher",
-  "queryAllDeclaredMethods":true
-},
-{
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.DelegatingCallableStatement"},
-  "name":"org.mockito.internal.configuration.DefaultDoNotMockEnforcer",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.DelegatingCallableStatement"},
-  "name":"org.mockito.internal.configuration.InjectingAnnotationEngine",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.DelegatingCallableStatement"},
-  "name":"org.mockito.internal.configuration.plugins.DefaultPluginSwitch",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.DelegatingCallableStatement"},
-  "name":"org.mockito.internal.creation.instance.DefaultInstantiatorProvider",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.DelegatingCallableStatement"},
-  "name":"org.mockito.internal.creation.proxy.ProxyMockMaker",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.DelegatingCallableStatement"},
-  "name":"org.mockito.internal.exceptions.stacktrace.DefaultStackTraceCleanerProvider",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.DelegatingCallableStatement"},
-  "name":"org.mockito.internal.matchers.ArrayEquals",
-  "queryAllPublicMethods":true
-},
-{
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.DelegatingCallableStatement"},
-  "name":"org.mockito.internal.matchers.Equals",
-  "queryAllPublicMethods":true
-},
-{
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.DelegatingCallableStatement"},
-  "name":"org.mockito.internal.util.ConsoleMockitoLogger",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.DelegatingCallableStatement"},
-  "name":"org.mockito.internal.util.reflection.ReflectionMemberAccessor",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
   "condition":{"typeReachable":"org.apache.commons.dbcp2.datasources.PerUserPoolDataSource"},
   "name":"sun.security.provider.SHA",
   "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.managed.LocalXAConnectionFactory"},
+  "name":"org.apache.commons.dbcp2.managed.LocalXAConnectionFactory",
+  "fields":[{"name":"transactionRegistry"}]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.PoolableConnection"},
+  "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.PoolingDataSource"},
+  "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.cpdsadapter.DriverAdapterCPDS"},
+  "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.managed.DataSourceXAConnectionFactory"},
+  "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.managed.ManagedConnection"},
+  "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.managed.ManagedDataSource"},
+  "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.managed.PoolableManagedConnection"},
+  "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.cpdsadapter.DriverAdapterCPDS"},
+  "name":"org.apache.commons.pool2.impl.GenericKeyedObjectPool",
+  "queryAllPublicConstructors":true
+},
+{
+  "condition":{"typeReachable":"org.apache.commons.dbcp2.cpdsadapter.DriverAdapterCPDS"},
+  "name":"org.apache.commons.pool2.impl.GenericKeyedObjectPoolMXBean",
+  "queryAllPublicMethods":true
 }
 ]
