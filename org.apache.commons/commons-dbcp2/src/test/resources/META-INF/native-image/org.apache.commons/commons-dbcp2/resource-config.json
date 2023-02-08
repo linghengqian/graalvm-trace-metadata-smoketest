@@ -14,10 +14,6 @@
     {
       "name":"org.apache.commons.dbcp2.LocalStrings",
       "locales":["und"]
-    }, 
-    {
-      "name":"org.apache.naming.LocalStrings",
-      "locales":["und"]
     }
   ]
 }

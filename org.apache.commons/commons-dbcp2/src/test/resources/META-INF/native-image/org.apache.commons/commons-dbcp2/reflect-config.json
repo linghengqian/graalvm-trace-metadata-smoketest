@@ -450,15 +450,6 @@
   "queryAllPublicMethods":true
 },
 {
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestJndi"},
-  "name":"org.apache.naming.NamingContext"
-},
-{
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.TestJndi"},
-  "name":"org.apache.naming.java.javaURLContextFactory",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
   "condition":{"typeReachable":"org.apache.commons.dbcp2.managed.BasicManagedDataSource"},
   "name":"org.h2.jdbcx.JdbcDataSource",
   "methods":[{"name":"<init>","parameterTypes":[] }]

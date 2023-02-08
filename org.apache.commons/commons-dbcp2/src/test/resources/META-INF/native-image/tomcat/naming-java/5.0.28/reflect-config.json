@@ -1,0 +1,26 @@
+[
+{
+  "condition":{"typeReachable":"org.apache.naming.NamingContext"},
+  "name":"com.lingh.StackMessageLog",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.String"] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.naming.NamingContext"},
+  "name":"org.apache.commons.dbcp2.datasources.PerUserPoolDataSourceFactory",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.naming.NamingContext"},
+  "name":"org.apache.commons.dbcp2.datasources.SharedPoolDataSourceFactory",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.naming.NamingContext"},
+  "name":"org.apache.naming.NamingContext"
+},
+{
+  "condition":{"typeReachable":"javax.naming.spi.NamingManager"},
+  "name":"org.apache.naming.java.javaURLContextFactory",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+}
+]
