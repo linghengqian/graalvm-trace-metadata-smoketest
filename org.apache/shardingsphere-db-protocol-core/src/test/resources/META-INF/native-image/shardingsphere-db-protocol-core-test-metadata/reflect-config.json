@@ -1,0 +1,42 @@
+[
+  {
+    "name":"org.mockito.internal.configuration.DefaultDoNotMockEnforcer",
+    "methods":[{"name":"<init>","parameterTypes":[] }]
+  },
+  {
+    "name":"org.mockito.internal.configuration.InjectingAnnotationEngine",
+    "methods":[{"name":"<init>","parameterTypes":[] }]
+  },
+  {
+    "name":"org.mockito.internal.configuration.plugins.DefaultPluginSwitch",
+    "methods":[{"name":"<init>","parameterTypes":[] }]
+  },
+  {
+    "name":"org.mockito.internal.creation.instance.DefaultInstantiatorProvider",
+    "methods":[{"name":"<init>","parameterTypes":[] }]
+  },
+  {
+    "name":"org.mockito.internal.creation.proxy.ProxyMockMaker",
+    "methods":[{"name":"<init>","parameterTypes":[] }]
+  },
+  {
+    "name":"org.mockito.internal.exceptions.stacktrace.DefaultStackTraceCleanerProvider",
+    "methods":[{"name":"<init>","parameterTypes":[] }]
+  },
+  {
+    "name":"org.mockito.internal.matchers.Equals",
+    "queryAllPublicMethods":true
+  },
+  {
+    "name":"org.mockito.internal.matchers.InstanceOf$VarArgAware",
+    "queryAllPublicMethods":true
+  },
+  {
+    "name":"org.mockito.internal.util.ConsoleMockitoLogger",
+    "methods":[{"name":"<init>","parameterTypes":[] }]
+  },
+  {
+    "name":"org.mockito.internal.util.reflection.ReflectionMemberAccessor",
+    "methods":[{"name":"<init>","parameterTypes":[] }]
+  }
+]

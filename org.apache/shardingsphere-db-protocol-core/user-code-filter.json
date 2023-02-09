@@ -1,6 +1,6 @@
 {
   "rules": [
     {"excludeClasses": "**"},
-    {"includeClasses": "org.apache.shardingsphere.db.protocol.**"}
+    {"includeClasses": "org.mockito.**"}
   ]
 }
