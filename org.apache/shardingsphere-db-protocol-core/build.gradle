@@ -33,7 +33,7 @@ graalvmNative {
         metadataCopy {
             mergeWithExisting = true
             inputTaskNames.add("test")
-            outputDirectories.add("src/test/resources/META-INF/native-image/org.apache.shardingsphere/shardingsphere-db-protocol-core")
+            outputDirectories.add("src/test/resources/META-INF/native-image/org.apache.shardingsphere/shardingsphere-db-protocol-core/5.3.2")
         }
     }
     metadataRepository {
