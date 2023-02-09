@@ -52,6 +52,10 @@ cd ./caffeine/
 cd ./transmittable-thread-local/
 cd ./org.graalvm/polyglot/
 cd ./org.apache/commons-dbcp2/
+cd ./org.apache/shardingsphere-db-protocol-core/
+cd ./org.apache/shardingsphere-mysql-protocol/
+cd ./org.apache/shardingsphere-postgresql-protocol/
+cd ./org.apache/shardingsphere-opengauss-protocol/
 ```
 
 - exec.
