@@ -1,0 +1,14 @@
+[
+  {
+    "interfaces":[]
+  },
+  {
+    "interfaces":["io.netty.channel.Channel"]
+  },
+  {
+    "interfaces":["io.netty.channel.ChannelHandlerContext"]
+  },
+  {
+    "interfaces":["io.netty.util.Attribute"]
+  }
+]

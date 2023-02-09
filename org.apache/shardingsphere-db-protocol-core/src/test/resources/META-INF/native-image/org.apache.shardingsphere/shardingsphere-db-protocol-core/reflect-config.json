@@ -1,0 +1,130 @@
+[
+{
+  "name":"[Ljava.lang.Object;"
+},
+{
+  "name":"com.lingh.netty.ChannelAttrInitializerTest",
+  "allDeclaredFields":true,
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllPublicConstructors":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"assertChannelActive","parameterTypes":[] }
+  ]
+},
+{
+  "name":"java.lang.Enum"
+},
+{
+  "name":"java.lang.Object",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "methods":[{"name":"toString","parameterTypes":[] }]
+},
+{
+  "name":"java.lang.StackWalker",
+  "methods":[
+    {"name":"getInstance","parameterTypes":["java.util.Set","int"] }, 
+    {"name":"walk","parameterTypes":["java.util.function.Function"] }
+  ]
+},
+{
+  "name":"java.lang.StackWalker$Option"
+},
+{
+  "name":"java.lang.StackWalker$StackFrame",
+  "methods":[
+    {"name":"getClassName","parameterTypes":[] }, 
+    {"name":"getFileName","parameterTypes":[] }, 
+    {"name":"getLineNumber","parameterTypes":[] }, 
+    {"name":"getMethodName","parameterTypes":[] }
+  ]
+},
+{
+  "name":"java.lang.invoke.MethodHandle"
+},
+{
+  "name":"java.lang.reflect.InvocationHandler",
+  "methods":[{"name":"invokeDefault","parameterTypes":["java.lang.Object","java.lang.reflect.Method","java.lang.Object[]"] }]
+},
+{
+  "name":"java.security.SecureRandomParameters"
+},
+{
+  "name":"java.util.HashSet"
+},
+{
+  "name":"java.util.LinkedHashSet"
+},
+{
+  "name":"java.util.concurrent.ArrayBlockingQueue"
+},
+{
+  "name":"java.util.concurrent.locks.AbstractOwnableSynchronizer"
+},
+{
+  "name":"java.util.concurrent.locks.AbstractQueuedSynchronizer"
+},
+{
+  "name":"java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject"
+},
+{
+  "name":"java.util.concurrent.locks.ReentrantLock"
+},
+{
+  "name":"java.util.concurrent.locks.ReentrantLock$NonfairSync"
+},
+{
+  "name":"java.util.concurrent.locks.ReentrantLock$Sync"
+},
+{
+  "name":"org.mockito.internal.configuration.DefaultDoNotMockEnforcer",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.mockito.internal.configuration.InjectingAnnotationEngine",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.mockito.internal.configuration.plugins.DefaultPluginSwitch",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.mockito.internal.creation.instance.DefaultInstantiatorProvider",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.mockito.internal.creation.proxy.ProxyMockMaker",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.mockito.internal.exceptions.stacktrace.DefaultStackTraceCleanerProvider",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.mockito.internal.matchers.Equals",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"org.mockito.internal.matchers.InstanceOf$VarArgAware",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"org.mockito.internal.util.ConsoleMockitoLogger",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.mockito.internal.util.reflection.ReflectionMemberAccessor",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.provider.NativePRNG",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.provider.SHA",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+}
+]
