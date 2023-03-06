@@ -85,7 +85,7 @@ sun.management.**
 javax.management.**
 ```
 
-- The main three commands submitted upstream.
+- The main three commands submitted upstream in https://github.com/oracle/graalvm-reachability-metadata.
 
 ```shell
 ./gradlew scaffold --coordinates io.jsonwebtoken:jjwt-jackson:0.11.5
