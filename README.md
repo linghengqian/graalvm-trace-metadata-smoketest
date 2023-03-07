@@ -18,10 +18,9 @@ source "$HOME/.sdkman/bin/sdkman-init.sh"
 sdk install java 22.3.1.r17-grl
 sdk install java 17.0.6-ms
 sdk use java 22.3.1.r17-grl
-gu install native-image
+gu install native-image js espresso
 sudo apt-get install build-essential libz-dev zlib1g-dev -y
 sdk install gradle
-gu install js espresso
 
 ```
 
