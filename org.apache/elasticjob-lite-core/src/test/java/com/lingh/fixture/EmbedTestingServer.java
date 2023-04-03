@@ -26,7 +26,7 @@ public final class EmbedTestingServer {
         }
         try {
             System.out.println("Starting Zookeeper ...");
-            process = new ProcessBuilder("docker", "run", "--rm", "-p", PORT + ":2181", "-e", "JVMFLAGS=-Xmx1024m", "zookeeper:3.8.0")
+            process = new ProcessBuilder("docker", "run", "--rm", "-p", PORT + ":2181", "-e", "JVMFLAGS=-Xmx1024m", "zookeeper:3.8.1")
                     .redirectOutput(new File("zookeeper-stdout.txt"))
                     .redirectError(new File("zookeeper-stderr.txt"))
                     .start();

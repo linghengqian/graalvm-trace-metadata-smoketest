@@ -22,6 +22,7 @@ gu install native-image js espresso
 sudo apt-get install build-essential libz-dev zlib1g-dev -y
 sdk install gradle
 
+curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
 ```
 
 - select one.
