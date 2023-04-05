@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+    id 'org.graalvm.buildtools.native' version '0.9.20'
+}
+
+group = 'com.lingh'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation 'org.assertj:assertj-core:3.22.0'
+    testImplementation 'org.apache.zookeeper:zookeeper:3.8.1'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+graalvmNative {
+    agent {
+        defaultMode = "conditional"
+        modes {
+            conditional {
+                userCodeFilterPath = "user-code-filter.json"
+            }
+        }
+        metadataCopy {
+            mergeWithExisting = true
+            inputTaskNames.add("test")
+            outputDirectories.add("src/test/resources/META-INF/native-image/org.apache.zookeeper/zookeeper")
+        }
+    }
+}
