@@ -3,7 +3,7 @@
 - This warehouse is my personal temporary warehouse so that I can record the dynamics of a series of issues in time. All
   unit test designs should be submitted to https://github.com/oracle/graalvm-reachability-metadata as much as possible.
 
-- Refer to https://github.com/linghengqian/graalvm-trace-metadata-smoketest/issues/1.
+- Refer to https://github.com/linghengqian/graalvm-trace-metadata-smoketest/issues/1 .
 
 # Start nativeTest
 
