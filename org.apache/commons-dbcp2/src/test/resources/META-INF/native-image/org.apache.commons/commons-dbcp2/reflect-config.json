@@ -233,11 +233,6 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "condition":{"typeReachable":"org.apache.commons.dbcp2.BasicDataSource"},
-  "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
   "condition":{"typeReachable":"org.apache.commons.dbcp2.BasicDataSourceFactory"},
   "name":"org.apache.commons.pool2.impl.DefaultEvictionPolicy",
   "methods":[{"name":"<init>","parameterTypes":[] }]
