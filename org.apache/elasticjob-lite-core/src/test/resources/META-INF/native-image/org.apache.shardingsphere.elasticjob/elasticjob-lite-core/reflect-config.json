@@ -931,7 +931,7 @@
   "allDeclaredFields":true
 },
 {
-  "condition":{"typeReachable":"org.quartz.simpl.SimpleJobFactory"},
+  "condition":{"typeReachable":"org.apache.shardingsphere.elasticjob.lite.internal.schedule.LiteJob"},
   "name":"org.apache.shardingsphere.elasticjob.lite.internal.schedule.LiteJob",
   "queryAllPublicMethods":true,
   "methods":[
