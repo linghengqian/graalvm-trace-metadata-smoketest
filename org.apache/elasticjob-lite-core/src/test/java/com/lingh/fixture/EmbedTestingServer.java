@@ -3,33 +3,38 @@ package com.lingh.fixture;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.retry.ExponentialBackoffRetry;
+import org.apache.curator.test.TestingServer;
 import org.apache.shardingsphere.elasticjob.reg.exception.RegExceptionHandler;
 import org.awaitility.Awaitility;
 
-import java.io.File;
+import java.io.IOException;
 import java.time.Duration;
 
 public final class EmbedTestingServer {
     private static final int PORT = 7181;
-    private static Process process;
+    private static volatile TestingServer testingServer;
 
     private EmbedTestingServer() {
     }
 
+    /**
+     * Get the connection string.
+     *
+     * @return connection string
+     */
     public static String getConnectionString() {
         return "localhost:" + PORT;
     }
 
+    /**
+     * Start the server.
+     */
     public static void start() {
-        if (process != null && process.isAlive()) {
+        if (null != testingServer) {
             return;
         }
         try {
-            System.out.println("Starting Zookeeper ...");
-            process = new ProcessBuilder("docker", "run", "--rm", "-p", PORT + ":2181", "-e", "JVMFLAGS=-Xmx1024m", "zookeeper:3.8.1")
-                    .redirectOutput(new File("zookeeper-stdout.txt"))
-                    .redirectError(new File("zookeeper-stderr.txt"))
-                    .start();
+            testingServer = new TestingServer(PORT, true);
             Awaitility.await().atMost(Duration.ofMinutes(1)).ignoreExceptions().until(() -> {
                 CuratorFramework client = CuratorFrameworkFactory.builder()
                         .connectString(getConnectionString())
@@ -44,11 +49,8 @@ public final class EmbedTestingServer {
         } finally {
             Runtime.getRuntime().addShutdownHook(new Thread(() -> {
                 try {
-                    if (process != null && process.isAlive()) {
-                        System.out.println("Shutting down Zookeeper");
-                        process.destroy();
-                    }
-                } catch (final Exception ex) {
+                    testingServer.close();
+                } catch (final IOException ex) {
                     RegExceptionHandler.handleException(ex);
                 }
             }));

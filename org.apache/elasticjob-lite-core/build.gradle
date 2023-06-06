@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'org.graalvm.buildtools.native' version '0.9.19'
+    id 'org.graalvm.buildtools.native' version '0.9.21'
     id "io.freefair.lombok" version "6.6-rc1"
 }
 
@@ -14,12 +14,14 @@ repositories {
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
-    testImplementation 'org.apache.shardingsphere.elasticjob:elasticjob-lite-core:3.0.2'
+    testImplementation 'org.apache.shardingsphere.elasticjob:elasticjob-lite-core:3.0.3'
     testImplementation 'org.mockito:mockito-core:4.11.0'
     testImplementation 'org.mockito:mockito-junit-jupiter:4.11.0'
     testImplementation 'org.hamcrest:hamcrest:2.2'
     testImplementation 'org.awaitility:awaitility:4.2.0'
     testImplementation 'ch.qos.logback:logback-classic:1.2.11'
+    testImplementation 'org.apache.curator:curator-test:5.5.0'
+    testImplementation 'org.apache.zookeeper:zookeeper:3.8.1'
 }
 
 test {
@@ -38,6 +40,7 @@ graalvmNative {
             mergeWithExisting = true
             inputTaskNames.add("test")
             outputDirectories.add("src/test/resources/META-INF/native-image/org.apache.shardingsphere.elasticjob/elasticjob-lite-core")
+//            outputDirectories.add("src/test/resources/META-INF/native-image/org.apache.zookeeper/zookeeper/3.8.1")
         }
     }
     metadataRepository {
