@@ -1,33 +1,34 @@
 plugins {
     id 'java'
-    id 'org.graalvm.buildtools.native' version '0.9.18'
-    id 'org.springframework.boot' version '3.0.2'
+    id 'org.springframework.boot' version '3.1.0'
     id 'io.spring.dependency-management' version '1.1.0'
+    id 'org.graalvm.buildtools.native' version '0.9.21'
 }
 
 group 'com.lingh'
-version '1.0-SNAPSHOT'
-
-springBoot {
-    mainClass = 'com.lingh.AddRemoveDatasourceApplication'
-}
+version '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
     testImplementation 'org.assertj:assertj-core:3.22.0'
     testImplementation 'com.baomidou:dynamic-datasource-spring-boot-starter:3.6.1'
     testImplementation 'org.springframework.boot:spring-boot-starter-web'
-    testRuntimeOnly 'com.h2database:h2:2.1.214'
+    testRuntimeOnly 'com.h2database:h2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
-test {
+tasks.named('test') {
     useJUnitPlatform()
+}
+
+springBoot {
+    mainClass = 'com.lingh.AddRemoveDatasourceApplication'
 }
 
 graalvmNative {
@@ -43,5 +44,8 @@ graalvmNative {
             inputTaskNames.add("test")
             outputDirectories.add("src/test/resources/META-INF/native-image/com.baomidou/dynamic-datasource-spring-boot-starter")
         }
+    }
+    metadataRepository {
+        enabled = true
     }
 }
