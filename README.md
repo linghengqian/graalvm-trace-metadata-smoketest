@@ -8,7 +8,7 @@
 # Start nativeTest
 
 - In Windows 11, Jetbrains IntelliJ IDEA Ultimate installed by Jetbrains Toolbox AppImage under WSLg.
-- Note, when executing unit tests implemented by GraalVM Truffle, be sure to additionally use `sdk use java 17.0.6-ms`
+- Note, when executing unit tests implemented by GraalVM Truffle, be sure to additionally use `sdk use java 17.0.7-ms`
 - Maybe you need to execute `su root` to switch to the root user to install grape, because it needs to write files
   to `/usr/local/bin`.
 
