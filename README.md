@@ -17,9 +17,9 @@ cd /tmp
 sudo apt install unzip zip curl sed -y
 curl -s "https://get.sdkman.io" | bash
 source "$HOME/.sdkman/bin/sdkman-init.sh"
-sdk install java 17.0.7-graalce
-sdk install java 17.0.7-ms
-sdk use java 17.0.7-graalce
+sdk install java 17.0.8-graalce
+sdk install java 17.0.8-ms
+sdk use java 17.0.8-graalce
 gu install js espresso
 sudo apt-get install build-essential libz-dev zlib1g-dev -y
 sdk install gradle
