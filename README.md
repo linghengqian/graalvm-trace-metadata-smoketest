@@ -33,11 +33,11 @@ curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh 
 cd ./io.jsonwebtoken/jjwt-jackson/
 cd ./io.jsonwebtoken/jjwt-gson/
 cd ./io.jsonwebtoken/jjwt-orgjson/
-cd ./zstd-jni/
+cd ./com.github/zstd-jni/
 cd ./vertx-core/
 cd ./org.apache/groovy/
-cd ./hazelcast/
-cd ./ehcache/
+cd ./com.hazelcast/hazelcast/
+cd ./org.ehcache/ehcache/
 cd ./org.apache/shardingsphere-jdbc-core/
 cd ./nashorn-core/
 cd ./org.graalvm/js/
@@ -48,7 +48,7 @@ cd ./org.apache/curator-recipes/
 cd ./jetcd-core/
 cd ./protobuf-java-util/
 cd ./opengauss-jdbc/
-cd ./cache-api/
+cd ./javax.cache/cache-api/
 cd ./org.apache/elasticjob-lite-core/
 cd ./caffeine/
 cd ./transmittable-thread-local/
