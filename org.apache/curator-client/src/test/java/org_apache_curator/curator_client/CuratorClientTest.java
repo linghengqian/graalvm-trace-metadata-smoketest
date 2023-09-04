@@ -3,10 +3,12 @@ package org_apache_curator.curator_client;
 import org.apache.curator.CuratorZookeeperClient;
 import org.apache.curator.RetryLoop;
 import org.apache.curator.RetryPolicy;
+import org.apache.curator.ensemble.fixed.FixedEnsembleProvider;
 import org.apache.curator.retry.ExponentialBackoffRetry;
 import org.apache.curator.retry.RetryNTimes;
 import org.apache.curator.retry.RetryOneTime;
 import org.apache.curator.retry.RetryUntilElapsed;
+import org.apache.curator.utils.DefaultZookeeperFactory;
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.ZooDefs;
 import org.awaitility.Awaitility;
@@ -116,7 +118,8 @@ public class CuratorClientTest {
     }
 
     private CuratorZookeeperClient getCuratorZookeeperClient() {
-        return new CuratorZookeeperClient(EmbedTestingServer.getConnectString(),
-                10000, 10000, null, new RetryOneTime(1));
+        return new CuratorZookeeperClient(new DefaultZookeeperFactory(),
+                new FixedEnsembleProvider(EmbedTestingServer.getConnectString()),
+                10000, 10000, null, new RetryOneTime(1), false);
     }
 }
