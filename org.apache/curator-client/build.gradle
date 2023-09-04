@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'org.graalvm.buildtools.native' version '0.9.19'
+    id 'org.graalvm.buildtools.native' version '0.9.25'
 }
 
 group 'com.lingh'
@@ -11,15 +11,15 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.1'
-    // Use https://github.com/apache/curator/commit/9b3a145372d9a8bc9a71adb630a1ad9b71fd2889
-    testImplementation 'org.apache.curator:curator-client:5.4.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.10.0'
+    testImplementation 'org.apache.curator:curator-client:5.5.0'
     testImplementation 'org.awaitility:awaitility:4.2.0'
     testImplementation 'org.mockito:mockito-core:4.11.0'
-    testImplementation 'org.apache.curator:curator-test:5.4.0'
-    testImplementation 'org.assertj:assertj-core:3.23.1'
+    testImplementation 'org.apache.curator:curator-test:5.5.0'
+    testImplementation 'org.assertj:assertj-core:3.24.2'
     testImplementation 'org.apache.zookeeper:zookeeper:3.8.1'
+    testImplementation 'org.apache.curator:curator-framework:5.5.0'
 }
 
 test {
