@@ -1,18 +1,20 @@
 package org_apache_curator.curator_client;
 
-import org.apache.curator.framework.CuratorFramework;
-import org.apache.curator.framework.CuratorFrameworkFactory;
+import org.apache.curator.CuratorZookeeperClient;
 import org.apache.curator.retry.ExponentialBackoffRetry;
 import org.apache.curator.test.TestingServer;
 import org.apache.zookeeper.KeeperException.ConnectionLossException;
 import org.apache.zookeeper.KeeperException.NoNodeException;
 import org.apache.zookeeper.KeeperException.NodeExistsException;
+import org.awaitility.Awaitility;
 
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
+import java.time.Duration;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public final class EmbedTestingServer {
-    private static final int PORT = 3181;
+    private static final int PORT = 3191;
     private static volatile TestingServer testingServer;
     private static final Object INIT_LOCK = new Object();
 
@@ -41,26 +43,15 @@ public final class EmbedTestingServer {
                     }
                 }));
             }
-            try (CuratorFramework client = CuratorFrameworkFactory.builder().connectString(getConnectString())
-                    .retryPolicy(new ExponentialBackoffRetry(500, 3, 500 * 3))
-                    .namespace("test")
-                    .sessionTimeoutMs(60 * 1000)
-                    .connectionTimeoutMs(500)
-                    .build()) {
+            try (CuratorZookeeperClient client = new CuratorZookeeperClient(getConnectString(),
+                    60 * 1000, 500, null,
+                    new ExponentialBackoffRetry(500, 3, 500 * 3))) {
                 client.start();
-                int round = 0;
-                while (round < 60) {
-                    try {
-                        if (client.getZookeeperClient().isConnected()) {
-                            break;
-                        }
-                        if (client.blockUntilConnected(500, TimeUnit.MILLISECONDS)) {
-                            break;
-                        }
-                    } catch (final Exception ignored) {
-                    }
-                    ++round;
-                }
+                Awaitility.await()
+                        .atMost(Duration.ofMillis(500 * 60))
+                        .untilAsserted(() -> assertTrue(client.isConnected()));
+            } catch (Exception e) {
+                throw new RuntimeException(e);
             }
         }
     }
