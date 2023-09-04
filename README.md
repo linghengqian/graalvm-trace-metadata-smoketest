@@ -91,7 +91,8 @@ javax.management.**
 - The main three commands submitted upstream in https://github.com/oracle/graalvm-reachability-metadata.
 
 ```shell
-./gradlew scaffold --coordinates io.jsonwebtoken:jjwt-jackson:0.11.5
-./gradlew :spotlessApply
-./gradlew clean test -Pcoordinates=io.jsonwebtoken:jjwt-jackson:0.11.5
+./gradlew scaffold --coordinates org.apache.commons:commons-dbcp2:2.9.0
+# `./gradlew check` too slow? use `./gradlew :spotlessApply`.
+./gradlew check
+./gradlew clean test -Pcoordinates=org.apache.commons:commons-dbcp2:2.9.0
 ```
