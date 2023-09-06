@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'org.graalvm.buildtools.native' version '0.9.19'
+    id 'org.graalvm.buildtools.native' version '0.9.25'
 }
 
 group 'com.lingh'
@@ -11,17 +11,13 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
-    // Use https://github.com/apache/curator/commit/9b3a145372d9a8bc9a71adb630a1ad9b71fd2889
-    testImplementation 'org.apache.curator:curator-framework:5.4.0'
-    testImplementation 'org.apache.curator:curator-test:5.4.0'
-    testImplementation 'com.fasterxml.jackson.core:jackson-databind:2.14.2'
-    testImplementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.14.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.10.0'
+    testImplementation 'org.apache.curator:curator-framework:5.5.0'
+    testImplementation 'org.apache.curator:curator-test:5.5.0'
     testImplementation 'org.awaitility:awaitility:4.2.0'
     testImplementation 'org.assertj:assertj-core:3.22.0'
-    testImplementation 'org.mockito:mockito-core:4.11.0'
-    testImplementation 'org.apache.zookeeper:zookeeper:3.8.1'
+    testImplementation 'org.apache.zookeeper:zookeeper:3.9.0'
 }
 
 test {
@@ -29,11 +25,6 @@ test {
 }
 
 graalvmNative {
-    binaries {
-        test {
-            buildArgs.add('--initialize-at-build-time=org.junit.platform.engine.TestTag')
-        }
-    }
     agent {
         defaultMode = "conditional"
         modes {
@@ -49,6 +40,5 @@ graalvmNative {
     }
     metadataRepository {
         enabled = true
-        version = "0.2.6"
     }
 }
