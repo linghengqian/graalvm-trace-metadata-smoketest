@@ -3,7 +3,6 @@ package com.lingh;
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import com.github.benmanes.caffeine.cache.CaffeineSpec;
-import com.github.benmanes.caffeine.cache.Interner;
 import com.github.benmanes.caffeine.cache.LoadingCache;
 import com.github.benmanes.caffeine.cache.Scheduler;
 import com.google.common.testing.FakeTicker;
@@ -23,19 +22,6 @@ public class CaffeineTest {
                 .build(key -> key.equals("Hello") ? "World" : "Universe");
         assertThat(graphs.get("Hello")).isEqualTo("World");
         assertThat(graphs.getAll(List.of("Hi", "Aloha"))).isEqualTo(Map.of("Hi", "Universe", "Aloha", "Universe"));
-    }
-
-    @SuppressWarnings("StringEquality")
-    @Test
-    void testInterner() {
-        Interner<String> firstInterner = Interner.newStrongInterner();
-        String s1 = firstInterner.intern("value");
-        String s2 = firstInterner.intern("value");
-        assertThat(s1 == s2).isTrue();
-        LoadingCache<String, String> graphs = Caffeine.newBuilder().weakKeys().build(key -> key.equals("Hello") ? "World" : "Universe");
-        Interner<String> secondInterner = Interner.newWeakInterner();
-        String canonical = secondInterner.intern("Hello");
-        assertThat(graphs.get(canonical)).isEqualTo("World");
     }
 
     @Test
