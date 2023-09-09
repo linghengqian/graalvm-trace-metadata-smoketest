@@ -38,7 +38,4 @@ graalvmNative {
             outputDirectories.add("src/test/resources/META-INF/native-image/com.github.ben-manes.caffeine/caffeine")
         }
     }
-    metadataRepository {
-        enabled = true
-    }
 }
