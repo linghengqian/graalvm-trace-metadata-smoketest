@@ -1,4 +1,0 @@
-com.lingh.api.listener.fixture.TestDistributeOnceElasticJobListener
-com.lingh.api.listener.fixture.TestElasticJobListener
-com.lingh.integrate.listener.TestDistributeOnceElasticJobListener
-com.lingh.integrate.listener.TestElasticJobListener

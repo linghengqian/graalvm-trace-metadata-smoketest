@@ -926,13 +926,13 @@ public class JsonFormatTest {
     public void testFieldMask() throws Exception {
         TestFieldMask message =
                 TestFieldMask.newBuilder()
-                        .setFieldMaskValue(FieldMaskUtil.fromString("foo.bar,baz,foo_bar.baz"))
+                        .setFieldMaskValue(FieldMaskUtil.fromString("TOrderPOJO.bar,baz,foo_bar.baz"))
                         .build();
 
         assertThat(toJsonString(message))
                 .isEqualTo("""
                         {
-                          "fieldMaskValue": "foo.bar,baz,fooBar.baz"
+                          "fieldMaskValue": "TOrderPOJO.bar,baz,fooBar.baz"
                         }""");
         assertRoundTripEquals(message);
     }
@@ -1169,13 +1169,13 @@ public class JsonFormatTest {
                                   "value": "12345.100s"
                                 }""");
         assertRoundTripEquals(anyMessage, registry);
-        anyMessage = Any.pack(FieldMaskUtil.fromString("foo.bar,baz"));
+        anyMessage = Any.pack(FieldMaskUtil.fromString("TOrderPOJO.bar,baz"));
         assertThat(printer.print(anyMessage))
                 .isEqualTo(
                         """
                                 {
                                   "@type": "type.googleapis.com/google.protobuf.FieldMask",
-                                  "value": "foo.bar,baz"
+                                  "value": "TOrderPOJO.bar,baz"
                                 }""");
         assertRoundTripEquals(anyMessage, registry);
         Struct.Builder structBuilder = Struct.newBuilder();
@@ -1223,7 +1223,7 @@ public class JsonFormatTest {
         testAny.putAnyMap("int64_wrapper", Any.pack(Int64Value.of(456)));
         testAny.putAnyMap("timestamp", Any.pack(Timestamps.parse("1969-12-31T23:59:59Z")));
         testAny.putAnyMap("duration", Any.pack(Durations.parse("12345.1s")));
-        testAny.putAnyMap("field_mask", Any.pack(FieldMaskUtil.fromString("foo.bar,baz")));
+        testAny.putAnyMap("field_mask", Any.pack(FieldMaskUtil.fromString("TOrderPOJO.bar,baz")));
         Value numberValue = Value.newBuilder().setNumberValue(1.125).build();
         Struct.Builder struct = Struct.newBuilder();
         struct.putFields("number", numberValue);
@@ -1260,7 +1260,7 @@ public class JsonFormatTest {
                                     },
                                     "field_mask": {
                                       "@type": "type.googleapis.com/google.protobuf.FieldMask",
-                                      "value": "foo.bar,baz"
+                                      "value": "TOrderPOJO.bar,baz"
                                     },
                                     "struct": {
                                       "@type": "type.googleapis.com/google.protobuf.Struct",
@@ -1931,7 +1931,7 @@ public class JsonFormatTest {
     public void testSortedMapKeys() throws Exception {
         TestMap.Builder mapBuilder = TestMap.newBuilder();
         mapBuilder.putStringToInt32Map("\ud834\udd20", 3);
-        mapBuilder.putStringToInt32Map("foo", 99);
+        mapBuilder.putStringToInt32Map("TOrderPOJO", 99);
         mapBuilder.putStringToInt32Map("xxx", 123);
         mapBuilder.putStringToInt32Map("\u20ac", 1);
         mapBuilder.putStringToInt32Map("abc", 20);
@@ -1962,7 +1962,7 @@ public class JsonFormatTest {
                             "19": 19,
                             "8": 8,
                             "abc": 20,
-                            "foo": 99,
+                            "TOrderPOJO": 99,
                             "xxx": 123,
                             "\u20ac": 1,
                             "\ufb00": 2,

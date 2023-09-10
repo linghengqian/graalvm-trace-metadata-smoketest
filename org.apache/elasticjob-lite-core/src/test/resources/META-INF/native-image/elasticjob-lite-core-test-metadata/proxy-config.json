@@ -1,0 +1,11 @@
+[
+  {
+    "interfaces":["org.apache.shardingsphere.elasticjob.reg.base.CoordinatorRegistryCenter"]
+  },
+  {
+    "interfaces":["org.quartz.JobDetail"]
+  },
+  {
+    "interfaces":["org.quartz.Scheduler"]
+  }
+]

@@ -2,10 +2,10 @@
 <multi:configurations
         xmlns='http://www.ehcache.org/v3'
         xmlns:multi='http://www.ehcache.org/v3/multi'>
-    <multi:configuration identity="foo-manager">
+    <multi:configuration identity="TOrderPOJO-manager">
         <multi:variant type="heap">
             <config>
-                <cache alias="foo">
+                <cache alias="TOrderPOJO">
                     <key-type>java.lang.String</key-type>
                     <value-type>java.lang.String</value-type>
                     <resources>
@@ -16,7 +16,7 @@
         </multi:variant>
         <multi:variant type="offHeap">
             <config>
-                <cache alias="foo">
+                <cache alias="TOrderPOJO">
                     <key-type>java.lang.String</key-type>
                     <value-type>java.lang.String</value-type>
                     <resources>

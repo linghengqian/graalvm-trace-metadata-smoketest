@@ -1,0 +1,13 @@
+[
+{
+  "name":"org.apache.shardingsphere.elasticjob.lite.internal.schedule.JobScheduleController",
+  "fields":[
+    {"name":"jobDetail"},
+    {"name":"scheduler"}
+  ]
+},
+{
+  "name":"org.apache.shardingsphere.elasticjob.lite.internal.schedule.JobRegistry",
+  "fields":[{"name":"instance"}]
+}
+]

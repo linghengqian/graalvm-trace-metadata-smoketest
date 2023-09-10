@@ -860,11 +860,6 @@
   "fields":[{"name":"addr"}]
 },
 {
-  "condition":{"typeReachable":"org.apache.shardingsphere.elasticjob.lite.internal.schedule.JobScheduleController"},
-  "name":"org.mockito.internal.matchers.InstanceOf",
-  "queryAllPublicMethods":true
-},
-{
   "condition":{"typeReachable":"org.apache.shardingsphere.elasticjob.lite.internal.schedule.JobScheduler"},
   "name":"org.quartz.simpl.CascadingClassLoadHelper",
   "methods":[{"name":"<init>","parameterTypes":[] }]
