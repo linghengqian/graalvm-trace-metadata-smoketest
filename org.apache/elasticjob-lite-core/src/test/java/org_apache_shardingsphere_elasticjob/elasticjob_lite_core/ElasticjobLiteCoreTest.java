@@ -18,8 +18,6 @@ import org.awaitility.Awaitility;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.condition.EnabledOnOs;
-import org.junit.jupiter.api.condition.OS;
 import org_apache_shardingsphere_elasticjob.elasticjob_lite_core.entity.TOrderPOJO;
 import org_apache_shardingsphere_elasticjob.elasticjob_lite_core.repository.TOrderRepository;
 
@@ -33,6 +31,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class ElasticjobLiteCoreTest {
     private static final int PORT = 4181;
     private static volatile TestingServer testingServer;
+    private static CoordinatorRegistryCenter regCenter;
     private static final TOrderRepository tOrderRepository = new TOrderRepository();
 
     @BeforeAll
@@ -48,17 +47,18 @@ class ElasticjobLiteCoreTest {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+        regCenter = new ZookeeperRegistryCenter(new ZookeeperConfiguration(testingServer.getConnectString(), "elasticjob-example-lite-java"));
+        regCenter.init();
     }
 
     @AfterAll
     static void afterAll() throws IOException {
+        regCenter.close();
         testingServer.close();
     }
 
     @Test
-    @EnabledOnOs({OS.LINUX, OS.WINDOWS})
-    void testCreateJob() {
-        CoordinatorRegistryCenter regCenter = createCoordinatorRegistryCenter();
+    void testJavaHttpJob() {
         ScheduleJobBootstrap scheduleJobBootstrapFirst = new ScheduleJobBootstrap(regCenter, "HTTP",
                 JobConfiguration.newBuilder("javaHttpJob", 3)
                         .setProperty(HttpJobProperties.URI_KEY, "https://github.com")
@@ -68,6 +68,12 @@ class ElasticjobLiteCoreTest {
                         .build()
         );
         scheduleJobBootstrapFirst.schedule();
+        scheduleJobBootstrapFirst.shutdown();
+
+    }
+
+    @Test
+    void testJavaSimpleJob() {
         ScheduleJobBootstrap scheduleJobBootstrapSecond = new ScheduleJobBootstrap(regCenter,
                 (SimpleJob) shardingContext -> {
                     assertThat(shardingContext.getShardingItem()).isEqualTo(3);
@@ -79,6 +85,11 @@ class ElasticjobLiteCoreTest {
                         .build()
         );
         scheduleJobBootstrapSecond.schedule();
+        scheduleJobBootstrapSecond.shutdown();
+    }
+
+    @Test
+    void testJavaDataflowElasticJob() {
         ScheduleJobBootstrap scheduleJobBootstrapThird = new ScheduleJobBootstrap(regCenter, new DataflowJob<TOrderPOJO>() {
             @Override
             public List<TOrderPOJO> fetchData(ShardingContext shardingContext) {
@@ -99,6 +110,11 @@ class ElasticjobLiteCoreTest {
                         .build()
         );
         scheduleJobBootstrapThird.schedule();
+        scheduleJobBootstrapThird.shutdown();
+    }
+
+    @Test
+    void testJavaOneOffSimpleJob() {
         OneOffJobBootstrap javaOneOffSimpleJob = new OneOffJobBootstrap(regCenter,
                 (SimpleJob) shardingContext -> {
                     assertThat(shardingContext.getShardingItem()).isEqualTo(3);
@@ -109,18 +125,6 @@ class ElasticjobLiteCoreTest {
                         .build()
         );
         javaOneOffSimpleJob.execute();
-        scheduleJobBootstrapFirst.shutdown();
-        scheduleJobBootstrapSecond.shutdown();
-        scheduleJobBootstrapThird.shutdown();
         javaOneOffSimpleJob.shutdown();
-        regCenter.close();
-    }
-
-    private CoordinatorRegistryCenter createCoordinatorRegistryCenter() {
-        CoordinatorRegistryCenter result = new ZookeeperRegistryCenter(
-                new ZookeeperConfiguration(testingServer.getConnectString(), "elasticjob-example-lite-java")
-        );
-        result.init();
-        return result;
     }
 }
