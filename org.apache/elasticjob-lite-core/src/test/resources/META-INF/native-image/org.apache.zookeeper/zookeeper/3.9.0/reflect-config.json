@@ -87,7 +87,8 @@
 },
 {
   "condition":{"typeReachable":"org.apache.zookeeper.jmx.MBeanRegistry"},
-  "name":"java.lang.String"
+  "name":"java.lang.String",
+  "fields":[{"name":"TYPE"}]
 },
 {
   "condition":{"typeReachable":"org.apache.zookeeper.ClientCnxn$SendThread"},
@@ -120,6 +121,11 @@
   "condition":{"typeReachable":"org.apache.zookeeper.jmx.MBeanRegistry"},
   "name":"java.util.PropertyPermission",
   "methods":[{"name":"<init>","parameterTypes":["java.lang.String","java.lang.String"] }]
+},
+{
+  "condition":{"typeReachable":"org.apache.zookeeper.server.embedded.ZooKeeperServerEmbeddedImpl"},
+  "name":"java.util.concurrent.ForkJoinTask",
+  "fields":[{"name":"aux"}, {"name":"status"}]
 },
 {
   "condition":{"typeReachable":"org.apache.zookeeper.jmx.MBeanRegistry"},

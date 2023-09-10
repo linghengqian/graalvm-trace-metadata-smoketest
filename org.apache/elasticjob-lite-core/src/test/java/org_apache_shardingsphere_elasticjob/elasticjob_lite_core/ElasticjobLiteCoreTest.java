@@ -4,7 +4,12 @@ import org.apache.curator.CuratorZookeeperClient;
 import org.apache.curator.retry.ExponentialBackoffRetry;
 import org.apache.curator.test.TestingServer;
 import org.apache.shardingsphere.elasticjob.api.JobConfiguration;
+import org.apache.shardingsphere.elasticjob.api.ShardingContext;
+import org.apache.shardingsphere.elasticjob.dataflow.job.DataflowJob;
+import org.apache.shardingsphere.elasticjob.dataflow.props.DataflowJobProperties;
+import org.apache.shardingsphere.elasticjob.http.props.HttpJobProperties;
 import org.apache.shardingsphere.elasticjob.lite.api.bootstrap.impl.OneOffJobBootstrap;
+import org.apache.shardingsphere.elasticjob.lite.api.bootstrap.impl.ScheduleJobBootstrap;
 import org.apache.shardingsphere.elasticjob.reg.base.CoordinatorRegistryCenter;
 import org.apache.shardingsphere.elasticjob.reg.zookeeper.ZookeeperConfiguration;
 import org.apache.shardingsphere.elasticjob.reg.zookeeper.ZookeeperRegistryCenter;
@@ -15,10 +20,12 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.EnabledOnOs;
 import org.junit.jupiter.api.condition.OS;
+import org_apache_shardingsphere_elasticjob.elasticjob_lite_core.entity.TOrderPOJO;
 import org_apache_shardingsphere_elasticjob.elasticjob_lite_core.repository.TOrderRepository;
 
 import java.io.IOException;
 import java.time.Duration;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -50,15 +57,48 @@ class ElasticjobLiteCoreTest {
 
     @Test
     @EnabledOnOs({OS.LINUX, OS.WINDOWS})
-    void testCreateJob() throws IOException {
+    void testCreateJob() {
         CoordinatorRegistryCenter regCenter = createCoordinatorRegistryCenter();
-//        HikariConfig hikariConfig = new HikariConfig();
-//        hikariConfig.setDriverClassName("org.h2.Driver");
-//        hikariConfig.setJdbcUrl("jdbc:h2:mem:job_event_storage");
-//        hikariConfig.setUsername("sa");
-//        hikariConfig.setPassword("");
-//        TracingConfiguration<DataSource> dataSourceTracingConfiguration = new TracingConfiguration<>("RDB", new HikariDataSource(hikariConfig));
+        ScheduleJobBootstrap scheduleJobBootstrapFirst = new ScheduleJobBootstrap(regCenter, "HTTP",
+                JobConfiguration.newBuilder("javaHttpJob", 3)
+                        .setProperty(HttpJobProperties.URI_KEY, "https://github.com")
+                        .setProperty(HttpJobProperties.METHOD_KEY, "GET")
+                        .cron("0/5 * * * * ?")
+                        .shardingItemParameters("0=Beijing,1=Shanghai,2=Guangzhou")
+                        .build()
+        );
+        scheduleJobBootstrapFirst.schedule();
+        ScheduleJobBootstrap scheduleJobBootstrapSecond = new ScheduleJobBootstrap(regCenter,
+                (SimpleJob) shardingContext -> {
+                    assertThat(shardingContext.getShardingItem()).isEqualTo(3);
+                    tOrderRepository.findTodoData(shardingContext.getShardingParameter(), 10).forEach(each -> tOrderRepository.setCompleted(each.id()));
+                },
+                JobConfiguration.newBuilder("javaSimpleJob", 3)
+                        .cron("0/5 * * * * ?")
+                        .shardingItemParameters("0=Beijing,1=Shanghai,2=Guangzhou")
+                        .build()
+        );
+        scheduleJobBootstrapSecond.schedule();
+        ScheduleJobBootstrap scheduleJobBootstrapThird = new ScheduleJobBootstrap(regCenter, new DataflowJob<TOrderPOJO>() {
+            @Override
+            public List<TOrderPOJO> fetchData(ShardingContext shardingContext) {
+                assertThat(shardingContext.getShardingItem()).isEqualTo(3);
+                return tOrderRepository.findTodoData(shardingContext.getShardingParameter(), 10);
+            }
 
+            @Override
+            public void processData(ShardingContext shardingContext, List<TOrderPOJO> data) {
+                assertThat(shardingContext.getShardingItem()).isEqualTo(3);
+                data.stream().mapToLong(TOrderPOJO::id).forEach(tOrderRepository::setCompleted);
+            }
+        },
+                JobConfiguration.newBuilder("javaDataflowElasticJob", 3)
+                        .cron("0/5 * * * * ?")
+                        .shardingItemParameters("0=Beijing,1=Shanghai,2=Guangzhou")
+                        .setProperty(DataflowJobProperties.STREAM_PROCESS_KEY, Boolean.TRUE.toString())
+                        .build()
+        );
+        scheduleJobBootstrapThird.schedule();
         OneOffJobBootstrap javaOneOffSimpleJob = new OneOffJobBootstrap(regCenter,
                 (SimpleJob) shardingContext -> {
                     assertThat(shardingContext.getShardingItem()).isEqualTo(3);
@@ -66,10 +106,12 @@ class ElasticjobLiteCoreTest {
                 },
                 JobConfiguration.newBuilder("javaOneOffSimpleJob", 3)
                         .shardingItemParameters("0=Beijing,1=Shanghai,2=Guangzhou")
-//                        .addExtraConfigurations(dataSourceTracingConfiguration)
                         .build()
         );
         javaOneOffSimpleJob.execute();
+        scheduleJobBootstrapFirst.shutdown();
+        scheduleJobBootstrapSecond.shutdown();
+        scheduleJobBootstrapThird.shutdown();
         javaOneOffSimpleJob.shutdown();
         regCenter.close();
     }
