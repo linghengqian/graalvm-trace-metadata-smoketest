@@ -13,17 +13,28 @@ import org.apache.shardingsphere.elasticjob.lite.api.bootstrap.impl.ScheduleJobB
 import org.apache.shardingsphere.elasticjob.reg.base.CoordinatorRegistryCenter;
 import org.apache.shardingsphere.elasticjob.reg.zookeeper.ZookeeperConfiguration;
 import org.apache.shardingsphere.elasticjob.reg.zookeeper.ZookeeperRegistryCenter;
+import org.apache.shardingsphere.elasticjob.script.props.ScriptJobProperties;
 import org.apache.shardingsphere.elasticjob.simple.job.SimpleJob;
 import org.awaitility.Awaitility;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.EnabledOnOs;
+import org.junit.jupiter.api.condition.OS;
 import org_apache_shardingsphere_elasticjob.elasticjob_lite_core.entity.TOrderPOJO;
 import org_apache_shardingsphere_elasticjob.elasticjob_lite_core.repository.TOrderRepository;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.attribute.PosixFilePermission;
 import java.time.Duration;
 import java.util.List;
+import java.util.Locale;
+import java.util.Objects;
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -31,7 +42,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class ElasticjobLiteCoreTest {
     private static final int PORT = 4181;
     private static volatile TestingServer testingServer;
-    private static CoordinatorRegistryCenter regCenter;
+    private static CoordinatorRegistryCenter registryCenter;
     private static final TOrderRepository tOrderRepository = new TOrderRepository();
 
     @BeforeAll
@@ -47,19 +58,19 @@ class ElasticjobLiteCoreTest {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        regCenter = new ZookeeperRegistryCenter(new ZookeeperConfiguration(testingServer.getConnectString(), "elasticjob-example-lite-java"));
-        regCenter.init();
+        registryCenter = new ZookeeperRegistryCenter(new ZookeeperConfiguration(testingServer.getConnectString(), "elasticjob-example-lite-java"));
+        registryCenter.init();
     }
 
     @AfterAll
     static void afterAll() throws IOException {
-        regCenter.close();
+        registryCenter.close();
         testingServer.close();
     }
 
     @Test
     void testJavaHttpJob() {
-        ScheduleJobBootstrap scheduleJobBootstrapFirst = new ScheduleJobBootstrap(regCenter, "HTTP",
+        ScheduleJobBootstrap jobBootstrap = new ScheduleJobBootstrap(registryCenter, "HTTP",
                 JobConfiguration.newBuilder("javaHttpJob", 3)
                         .setProperty(HttpJobProperties.URI_KEY, "https://github.com")
                         .setProperty(HttpJobProperties.METHOD_KEY, "GET")
@@ -67,14 +78,14 @@ class ElasticjobLiteCoreTest {
                         .shardingItemParameters("0=Beijing,1=Shanghai,2=Guangzhou")
                         .build()
         );
-        scheduleJobBootstrapFirst.schedule();
-        scheduleJobBootstrapFirst.shutdown();
+        jobBootstrap.schedule();
+        jobBootstrap.shutdown();
 
     }
 
     @Test
     void testJavaSimpleJob() {
-        ScheduleJobBootstrap scheduleJobBootstrapSecond = new ScheduleJobBootstrap(regCenter,
+        ScheduleJobBootstrap jobBootstrap = new ScheduleJobBootstrap(registryCenter,
                 (SimpleJob) shardingContext -> {
                     assertThat(shardingContext.getShardingItem()).isEqualTo(3);
                     tOrderRepository.findTodoData(shardingContext.getShardingParameter(), 10).forEach(each -> tOrderRepository.setCompleted(each.id()));
@@ -84,13 +95,13 @@ class ElasticjobLiteCoreTest {
                         .shardingItemParameters("0=Beijing,1=Shanghai,2=Guangzhou")
                         .build()
         );
-        scheduleJobBootstrapSecond.schedule();
-        scheduleJobBootstrapSecond.shutdown();
+        jobBootstrap.schedule();
+        jobBootstrap.shutdown();
     }
 
     @Test
     void testJavaDataflowElasticJob() {
-        ScheduleJobBootstrap scheduleJobBootstrapThird = new ScheduleJobBootstrap(regCenter, new DataflowJob<TOrderPOJO>() {
+        ScheduleJobBootstrap jobBootstrap = new ScheduleJobBootstrap(registryCenter, new DataflowJob<TOrderPOJO>() {
             @Override
             public List<TOrderPOJO> fetchData(ShardingContext shardingContext) {
                 assertThat(shardingContext.getShardingItem()).isEqualTo(3);
@@ -109,13 +120,27 @@ class ElasticjobLiteCoreTest {
                         .setProperty(DataflowJobProperties.STREAM_PROCESS_KEY, Boolean.TRUE.toString())
                         .build()
         );
-        scheduleJobBootstrapThird.schedule();
-        scheduleJobBootstrapThird.shutdown();
+        jobBootstrap.schedule();
+        jobBootstrap.shutdown();
+    }
+
+    // TODO
+    @Test
+    @EnabledOnOs({OS.LINUX, OS.WINDOWS})
+    @Disabled("It looks like `Files.setPosixFilePermissions` cannot be used under Native Image.")
+    void testScriptElasticJob() throws IOException {
+        ScheduleJobBootstrap jobBootstrap = new ScheduleJobBootstrap(registryCenter, "SCRIPT",
+                JobConfiguration.newBuilder("scriptElasticJob", 3)
+                        .cron("0/5 * * * * ?")
+                        .setProperty(ScriptJobProperties.SCRIPT_KEY, buildScriptCommandLine())
+                        .build());
+        jobBootstrap.schedule();
+        jobBootstrap.shutdown();
     }
 
     @Test
     void testJavaOneOffSimpleJob() {
-        OneOffJobBootstrap javaOneOffSimpleJob = new OneOffJobBootstrap(regCenter,
+        OneOffJobBootstrap jobBootstrap = new OneOffJobBootstrap(registryCenter,
                 (SimpleJob) shardingContext -> {
                     assertThat(shardingContext.getShardingItem()).isEqualTo(3);
                     tOrderRepository.findTodoData(shardingContext.getShardingParameter(), 10).forEach(each -> tOrderRepository.setCompleted(each.id()));
@@ -124,7 +149,19 @@ class ElasticjobLiteCoreTest {
                         .shardingItemParameters("0=Beijing,1=Shanghai,2=Guangzhou")
                         .build()
         );
-        javaOneOffSimpleJob.execute();
-        javaOneOffSimpleJob.shutdown();
+        jobBootstrap.execute();
+        jobBootstrap.shutdown();
+    }
+
+    private String buildScriptCommandLine() throws IOException {
+        if (System.getProperties().getProperty("os.name").toLowerCase(Locale.ENGLISH).contains("win")) {
+            return Paths.get(getClass().getResource("/script/demo.bat").getPath().substring(1)).toString();
+        }
+        Path result = Paths.get(getClass().getResource("/script/demo.sh").getPath());
+        Files.setPosixFilePermissions(result, Set.of(PosixFilePermission.OWNER_READ, PosixFilePermission.OWNER_WRITE, PosixFilePermission.OWNER_EXECUTE,
+                PosixFilePermission.GROUP_READ, PosixFilePermission.GROUP_EXECUTE,
+                PosixFilePermission.OTHERS_READ, PosixFilePermission.OTHERS_EXECUTE
+        ));
+        return result.toString();
     }
 }
