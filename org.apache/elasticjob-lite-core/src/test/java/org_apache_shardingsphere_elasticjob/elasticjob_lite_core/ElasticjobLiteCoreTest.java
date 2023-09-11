@@ -13,28 +13,17 @@ import org.apache.shardingsphere.elasticjob.lite.api.bootstrap.impl.ScheduleJobB
 import org.apache.shardingsphere.elasticjob.reg.base.CoordinatorRegistryCenter;
 import org.apache.shardingsphere.elasticjob.reg.zookeeper.ZookeeperConfiguration;
 import org.apache.shardingsphere.elasticjob.reg.zookeeper.ZookeeperRegistryCenter;
-import org.apache.shardingsphere.elasticjob.script.props.ScriptJobProperties;
 import org.apache.shardingsphere.elasticjob.simple.job.SimpleJob;
 import org.awaitility.Awaitility;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.condition.EnabledOnOs;
-import org.junit.jupiter.api.condition.OS;
 import org_apache_shardingsphere_elasticjob.elasticjob_lite_core.entity.TOrderPOJO;
 import org_apache_shardingsphere_elasticjob.elasticjob_lite_core.repository.TOrderRepository;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.attribute.PosixFilePermission;
 import java.time.Duration;
 import java.util.List;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -124,20 +113,6 @@ class ElasticjobLiteCoreTest {
         jobBootstrap.shutdown();
     }
 
-    // TODO
-    @Test
-    @EnabledOnOs({OS.LINUX, OS.WINDOWS})
-    @Disabled("It looks like `Files.setPosixFilePermissions` cannot be used under Native Image.")
-    void testScriptElasticJob() throws IOException {
-        ScheduleJobBootstrap jobBootstrap = new ScheduleJobBootstrap(registryCenter, "SCRIPT",
-                JobConfiguration.newBuilder("scriptElasticJob", 3)
-                        .cron("0/5 * * * * ?")
-                        .setProperty(ScriptJobProperties.SCRIPT_KEY, buildScriptCommandLine())
-                        .build());
-        jobBootstrap.schedule();
-        jobBootstrap.shutdown();
-    }
-
     @Test
     void testJavaOneOffSimpleJob() {
         OneOffJobBootstrap jobBootstrap = new OneOffJobBootstrap(registryCenter,
@@ -151,17 +126,5 @@ class ElasticjobLiteCoreTest {
         );
         jobBootstrap.execute();
         jobBootstrap.shutdown();
-    }
-
-    private String buildScriptCommandLine() throws IOException {
-        if (System.getProperties().getProperty("os.name").toLowerCase(Locale.ENGLISH).contains("win")) {
-            return Paths.get(getClass().getResource("/script/demo.bat").getPath().substring(1)).toString();
-        }
-        Path result = Paths.get(getClass().getResource("/script/demo.sh").getPath());
-        Files.setPosixFilePermissions(result, Set.of(PosixFilePermission.OWNER_READ, PosixFilePermission.OWNER_WRITE, PosixFilePermission.OWNER_EXECUTE,
-                PosixFilePermission.GROUP_READ, PosixFilePermission.GROUP_EXECUTE,
-                PosixFilePermission.OTHERS_READ, PosixFilePermission.OTHERS_EXECUTE
-        ));
-        return result.toString();
     }
 }
