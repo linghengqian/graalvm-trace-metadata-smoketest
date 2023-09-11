@@ -45,7 +45,7 @@ graalvmNative {
             mergeWithExisting = true
             inputTaskNames.add("test")
 //            outputDirectories.add("src/test/resources/META-INF/native-image/org.apache.shardingsphere.elasticjob/elasticjob-lite-core")
-            outputDirectories.add("src/test/resources/META-INF/native-image/org.apache.zookeeper/org.apache.curator/curator-client/5.5.0")
+            outputDirectories.add("src/test/resources/META-INF/native-image/org.apache.curator/curator-client/5.5.0")
         }
     }
     metadataRepository {
