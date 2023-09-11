@@ -1,10 +1,5 @@
 [
 {
-  "condition":{"typeReachable":"org.apache.curator.framework.schema.SchemaSetLoader"},
-  "name":"com.fasterxml.jackson.databind.ext.Java7SupportImpl",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
   "condition":{"typeReachable":"org.apache.curator.framework.imps.NamespaceWatcher"},
   "name":"java.lang.Object",
   "methods":[{"name":"toString","parameterTypes":[] }]
@@ -13,7 +8,7 @@
   "condition":{"typeReachable":"org.apache.curator.framework.imps.NamespaceWatcher"},
   "name":"java.lang.StackWalker",
   "methods":[
-    {"name":"getInstance","parameterTypes":["java.util.Set","int"] }, 
+    {"name":"getInstance","parameterTypes":["java.util.Set","int"] },
     {"name":"walk","parameterTypes":["java.util.function.Function"] }
   ]
 },
@@ -25,9 +20,9 @@
   "condition":{"typeReachable":"org.apache.curator.framework.imps.NamespaceWatcher"},
   "name":"java.lang.StackWalker$StackFrame",
   "methods":[
-    {"name":"getClassName","parameterTypes":[] }, 
-    {"name":"getFileName","parameterTypes":[] }, 
-    {"name":"getLineNumber","parameterTypes":[] }, 
+    {"name":"getClassName","parameterTypes":[] },
+    {"name":"getFileName","parameterTypes":[] },
+    {"name":"getLineNumber","parameterTypes":[] },
     {"name":"getMethodName","parameterTypes":[] }
   ]
 },
@@ -44,8 +39,8 @@
   "condition":{"typeReachable":"org.apache.curator.framework.imps.NamespaceFacadeCache"},
   "name":"org.apache.curator.shaded.com.google.common.util.concurrent.AbstractFuture",
   "fields":[
-    {"name":"listeners"}, 
-    {"name":"value"}, 
+    {"name":"listeners"},
+    {"name":"value"},
     {"name":"waiters"}
   ]
 },
@@ -53,23 +48,9 @@
   "condition":{"typeReachable":"org.apache.curator.framework.imps.NamespaceFacadeCache"},
   "name":"org.apache.curator.shaded.com.google.common.util.concurrent.AbstractFuture$Waiter",
   "fields":[
-    {"name":"next"}, 
+    {"name":"next"},
     {"name":"thread"}
   ]
-},
-{
-  "condition":{"typeReachable":"org.apache.curator.framework.imps.EnsembleTracker"},
-  "name":"org.apache.zookeeper.AddWatchMode"
-},
-{
-  "condition":{"typeReachable":"org.apache.curator.framework.imps.EnsembleTracker"},
-  "name":"org.apache.zookeeper.server.quorum.MultipleAddresses",
-  "methods":[{"name":"getReachableOrOne","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"org.apache.curator.framework.imps.EnsembleTracker"},
-  "name":"org.apache.zookeeper.server.quorum.QuorumPeer$QuorumServer",
-  "fields":[{"name":"addr"}]
 },
 {
   "condition":{"typeReachable":"org.apache.curator.framework.imps.NamespaceFacadeCache"},
