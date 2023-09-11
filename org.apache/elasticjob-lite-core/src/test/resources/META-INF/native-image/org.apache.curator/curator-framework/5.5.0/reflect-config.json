@@ -5,11 +5,6 @@
   "methods":[{"name":"toString","parameterTypes":[] }]
 },
 {
-  "condition":{"typeReachable":"org.apache.curator.framework.recipes.cache.CuratorCacheImpl"},
-  "name":"java.lang.Object",
-  "allDeclaredFields":true
-},
-{
   "condition":{"typeReachable":"org.apache.curator.framework.imps.NamespaceWatcher"},
   "name":"java.lang.StackWalker",
   "methods":[{"name":"getInstance","parameterTypes":["java.util.Set","int"] }, {"name":"walk","parameterTypes":["java.util.function.Function"] }]
@@ -31,11 +26,6 @@
 {
   "condition":{"typeReachable":"org.apache.curator.framework.imps.ProtectedMode"},
   "name":"java.security.SecureRandomParameters"
-},
-{
-  "condition":{"typeReachable":"org.apache.curator.framework.recipes.cache.CuratorCacheImpl"},
-  "name":"java.util.Properties",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
   "condition":{"typeReachable":"org.apache.curator.framework.imps.NamespaceFacadeCache"},
