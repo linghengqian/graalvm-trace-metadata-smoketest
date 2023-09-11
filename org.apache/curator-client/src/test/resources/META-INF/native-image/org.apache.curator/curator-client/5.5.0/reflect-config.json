@@ -25,10 +25,5 @@
     {"name":"getLineNumber","parameterTypes":[] }, 
     {"name":"getMethodName","parameterTypes":[] }
   ]
-},
-{
-  "condition":{"typeReachable":"org.apache.curator.utils.DefaultZookeeperFactory"},
-  "name":"org.apache.zookeeper.ClientCnxnSocketNIO",
-  "methods":[{"name":"<init>","parameterTypes":["org.apache.zookeeper.client.ZKClientConfig"] }]
 }
 ]
