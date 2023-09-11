@@ -18,8 +18,6 @@ dependencies {
     testImplementation 'org.awaitility:awaitility:4.2.0'
     testImplementation 'org.apache.curator:curator-test:5.5.0'
     testImplementation 'org.apache.zookeeper:zookeeper:3.8.1'
-    testRuntimeOnly 'com.h2database:h2:2.2.222'
-    testImplementation 'com.zaxxer:HikariCP:5.0.1'
 }
 
 test {
@@ -27,25 +25,19 @@ test {
 }
 
 graalvmNative {
-    binaries {
-        test {
-            buildArgs.add("--initialize-at-build-time=org.junit.jupiter.api.condition.OS")
-        }
-    }
     agent {
         defaultMode = "conditional"
         modes {
             conditional {
-//                userCodeFilterPath = "user-code-filter.json"
-                userCodeFilterPath = "user-code-filter-curator-client.json"
+                userCodeFilterPath = "user-code-filter.json"
                 extraFilterPath = "extra-filter.json"
             }
         }
         metadataCopy {
             mergeWithExisting = true
             inputTaskNames.add("test")
-//            outputDirectories.add("src/test/resources/META-INF/native-image/org.apache.shardingsphere.elasticjob/elasticjob-lite-core")
-            outputDirectories.add("src/test/resources/META-INF/native-image/org.apache.curator/curator-client/5.5.0")
+            outputDirectories.add("src/test/resources/META-INF/native-image/org.apache.shardingsphere.elasticjob/elasticjob-lite-core")
+//            outputDirectories.add("src/test/resources/META-INF/native-image/org.apache.curator/curator-client/5.5.0")
         }
     }
     metadataRepository {

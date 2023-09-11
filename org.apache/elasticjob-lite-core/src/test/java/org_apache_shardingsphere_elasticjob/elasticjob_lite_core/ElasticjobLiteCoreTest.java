@@ -19,20 +19,25 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org_apache_shardingsphere_elasticjob.elasticjob_lite_core.entity.TOrderPOJO;
-import org_apache_shardingsphere_elasticjob.elasticjob_lite_core.repository.TOrderRepository;
+import org_apache_shardingsphere_elasticjob.elasticjob_lite_core.repository.VirtualTOrderRepository;
 
 import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ElasticjobLiteCoreTest {
-    private static final int PORT = 4181;
+    private static final int PORT = 6891;
+
+    private static final VirtualTOrderRepository VIRTUAL_T_ORDER_REPOSITORY = new VirtualTOrderRepository();
+
     private static volatile TestingServer testingServer;
+
     private static CoordinatorRegistryCenter registryCenter;
-    private static final TOrderRepository tOrderRepository = new TOrderRepository();
+
 
     @BeforeAll
     static void beforeAll() throws Exception {
@@ -47,7 +52,7 @@ class ElasticjobLiteCoreTest {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        registryCenter = new ZookeeperRegistryCenter(new ZookeeperConfiguration(testingServer.getConnectString(), "elasticjob-example-lite-java"));
+        registryCenter = new ZookeeperRegistryCenter(new ZookeeperConfiguration(testingServer.getConnectString(), "elasticjob-lite-core-java-test"));
         registryCenter.init();
     }
 
@@ -60,16 +65,17 @@ class ElasticjobLiteCoreTest {
     @Test
     void testJavaHttpJob() {
         ScheduleJobBootstrap jobBootstrap = new ScheduleJobBootstrap(registryCenter, "HTTP",
-                JobConfiguration.newBuilder("javaHttpJob", 3)
-                        .setProperty(HttpJobProperties.URI_KEY, "https://github.com")
+                JobConfiguration.newBuilder("testJavaHttpJob", 3)
+                        .setProperty(HttpJobProperties.URI_KEY, "https://google.com")
                         .setProperty(HttpJobProperties.METHOD_KEY, "GET")
                         .cron("0/5 * * * * ?")
-                        .shardingItemParameters("0=Beijing,1=Shanghai,2=Guangzhou")
+                        .shardingItemParameters("0=Norddorf,1=Bordeaux,2=Somerset")
                         .build()
         );
-        jobBootstrap.schedule();
-        jobBootstrap.shutdown();
-
+        assertDoesNotThrow(() -> {
+            jobBootstrap.schedule();
+            jobBootstrap.shutdown();
+        });
     }
 
     @Test
@@ -77,15 +83,18 @@ class ElasticjobLiteCoreTest {
         ScheduleJobBootstrap jobBootstrap = new ScheduleJobBootstrap(registryCenter,
                 (SimpleJob) shardingContext -> {
                     assertThat(shardingContext.getShardingItem()).isEqualTo(3);
-                    tOrderRepository.findTodoData(shardingContext.getShardingParameter(), 10).forEach(each -> tOrderRepository.setCompleted(each.id()));
+                    VIRTUAL_T_ORDER_REPOSITORY.findTodoData(shardingContext.getShardingParameter(), 10)
+                            .forEach(each -> VIRTUAL_T_ORDER_REPOSITORY.setCompleted(each.id()));
                 },
-                JobConfiguration.newBuilder("javaSimpleJob", 3)
+                JobConfiguration.newBuilder("testJavaSimpleJob", 3)
                         .cron("0/5 * * * * ?")
-                        .shardingItemParameters("0=Beijing,1=Shanghai,2=Guangzhou")
+                        .shardingItemParameters("0=Norddorf,1=Bordeaux,2=Somerset")
                         .build()
         );
-        jobBootstrap.schedule();
-        jobBootstrap.shutdown();
+        assertDoesNotThrow(() -> {
+            jobBootstrap.schedule();
+            jobBootstrap.shutdown();
+        });
     }
 
     @Test
@@ -94,23 +103,25 @@ class ElasticjobLiteCoreTest {
             @Override
             public List<TOrderPOJO> fetchData(ShardingContext shardingContext) {
                 assertThat(shardingContext.getShardingItem()).isEqualTo(3);
-                return tOrderRepository.findTodoData(shardingContext.getShardingParameter(), 10);
+                return VIRTUAL_T_ORDER_REPOSITORY.findTodoData(shardingContext.getShardingParameter(), 10);
             }
 
             @Override
             public void processData(ShardingContext shardingContext, List<TOrderPOJO> data) {
                 assertThat(shardingContext.getShardingItem()).isEqualTo(3);
-                data.stream().mapToLong(TOrderPOJO::id).forEach(tOrderRepository::setCompleted);
+                data.stream().mapToLong(TOrderPOJO::id).forEach(VIRTUAL_T_ORDER_REPOSITORY::setCompleted);
             }
         },
-                JobConfiguration.newBuilder("javaDataflowElasticJob", 3)
+                JobConfiguration.newBuilder("testJavaDataflowElasticJob", 3)
                         .cron("0/5 * * * * ?")
-                        .shardingItemParameters("0=Beijing,1=Shanghai,2=Guangzhou")
+                        .shardingItemParameters("0=Norddorf,1=Bordeaux,2=Somerset")
                         .setProperty(DataflowJobProperties.STREAM_PROCESS_KEY, Boolean.TRUE.toString())
                         .build()
         );
-        jobBootstrap.schedule();
-        jobBootstrap.shutdown();
+        assertDoesNotThrow(() -> {
+            jobBootstrap.schedule();
+            jobBootstrap.shutdown();
+        });
     }
 
     @Test
@@ -118,13 +129,16 @@ class ElasticjobLiteCoreTest {
         OneOffJobBootstrap jobBootstrap = new OneOffJobBootstrap(registryCenter,
                 (SimpleJob) shardingContext -> {
                     assertThat(shardingContext.getShardingItem()).isEqualTo(3);
-                    tOrderRepository.findTodoData(shardingContext.getShardingParameter(), 10).forEach(each -> tOrderRepository.setCompleted(each.id()));
+                    VIRTUAL_T_ORDER_REPOSITORY.findTodoData(shardingContext.getShardingParameter(), 10)
+                            .forEach(each -> VIRTUAL_T_ORDER_REPOSITORY.setCompleted(each.id()));
                 },
-                JobConfiguration.newBuilder("javaOneOffSimpleJob", 3)
-                        .shardingItemParameters("0=Beijing,1=Shanghai,2=Guangzhou")
+                JobConfiguration.newBuilder("testJavaOneOffSimpleJob", 3)
+                        .shardingItemParameters("0=Norddorf,1=Bordeaux,2=Somerset")
                         .build()
         );
-        jobBootstrap.execute();
-        jobBootstrap.shutdown();
+        assertDoesNotThrow(() -> {
+            jobBootstrap.execute();
+            jobBootstrap.shutdown();
+        });
     }
 }

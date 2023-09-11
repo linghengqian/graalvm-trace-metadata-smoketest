@@ -1,9 +1,0 @@
-{
-  "resources":{
-  "includes":[{
-    "pattern":"\\Qscript/demo.sh\\E"
-  }, {
-    "pattern":"\\Qscript/demo.bat\\E"
-  }]},
-  "bundles":[]
-}

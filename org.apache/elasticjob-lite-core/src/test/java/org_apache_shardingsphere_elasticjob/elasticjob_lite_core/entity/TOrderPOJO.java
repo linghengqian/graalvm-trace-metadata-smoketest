@@ -5,7 +5,7 @@ import java.io.Serializable;
 public record TOrderPOJO(
         long id,
         String location,
-        Status status
+        TableStatus tableStatus
 
 ) implements Serializable {
 }
