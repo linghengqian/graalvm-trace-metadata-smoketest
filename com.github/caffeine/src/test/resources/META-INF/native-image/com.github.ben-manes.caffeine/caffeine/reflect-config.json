@@ -175,11 +175,6 @@
   "fields":[{"name":"threadLocalRandomProbe"}]
 },
 {
-  "condition":{"typeReachable":"com.github.benmanes.caffeine.cache.SystemScheduler"},
-  "name":"java.util.concurrent.CompletableFuture",
-  "methods":[{"name":"delayedExecutor","parameterTypes":["long","java.util.concurrent.TimeUnit","java.util.concurrent.Executor"] }]
-},
-{
   "condition":{"typeReachable":"com.github.benmanes.caffeine.cache.UnsafeAccess"},
   "name":"sun.misc.Unsafe",
   "fields":[{"name":"theUnsafe"}]
