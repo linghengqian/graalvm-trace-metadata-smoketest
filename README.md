@@ -88,6 +88,25 @@ sun.management.**
 javax.management.**
 ```
 
+- Except `java.util.properties`, most JSON entries for `java.**`, `sun.misc.**` and `sun.security.**` can be deleted.
+
+- In `extra-filter.json` it is shown as follows.
+```json
+{
+  "rules": [
+    {"includeClasses": "**"},
+    {"excludeClasses": "java.lang.management.**"},
+    {"excludeClasses": "jdk.management.**"},
+    {"excludeClasses": "com.sun.management.**"},
+    {"excludeClasses": "sun.management.**"},
+    {"excludeClasses": "javax.management.**"},
+    {"excludeClasses": "java.**"},
+    {"includeClasses": "java.util.Properties"}
+  ],
+  "regexRules": []
+}
+```
+
 - The main three commands submitted upstream in https://github.com/oracle/graalvm-reachability-metadata.
 
 ```shell
