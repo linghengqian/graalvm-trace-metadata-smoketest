@@ -88,7 +88,7 @@ sun.management.**
 javax.management.**
 ```
 
-- Except `java.util.properties`, most JSON entries for `java.**`, `sun.misc.**` and `sun.security.**` can be deleted.
+- Except `java.util.properties` and `java.lang.Thread`, most JSON entries for `java.**`, `sun.misc.**` and `sun.security.**` can be deleted.
 
 - In `extra-filter.json` it is shown as follows.
 ```json
@@ -101,7 +101,8 @@ javax.management.**
     {"excludeClasses": "sun.management.**"},
     {"excludeClasses": "javax.management.**"},
     {"excludeClasses": "java.**"},
-    {"includeClasses": "java.util.Properties"}
+    {"includeClasses": "java.util.Properties"},
+    {"includeClasses": "java.lang.Thread"}
   ],
   "regexRules": []
 }
