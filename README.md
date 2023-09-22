@@ -102,7 +102,9 @@ javax.management.**
     {"excludeClasses": "javax.management.**"},
     {"excludeClasses": "java.**"},
     {"includeClasses": "java.util.Properties"},
-    {"includeClasses": "java.lang.Thread"}
+    {"includeClasses": "java.lang.Thread"},
+    {"excludeClasses": "sun.misc.**"},
+    {"excludeClasses": "sun.security.**"}
   ],
   "regexRules": []
 }
