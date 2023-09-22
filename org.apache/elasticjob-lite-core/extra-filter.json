@@ -5,9 +5,15 @@
     {"excludeClasses": "jdk.management.**"},
     {"excludeClasses": "com.sun.management.**"},
     {"excludeClasses": "sun.management.**"},
-    {"excludeClasses": "javax.management.**"}
+    {"excludeClasses": "javax.management.**"},
+    {"excludeClasses": "java.**"},
+    {"includeClasses": "java.util.Properties"},
+    {"excludeClasses": "org.apache.zookeeper.**"},
+    {"excludeClasses": "org.quartz.**"}
 
   ],
   "regexRules": [
+    {"excludeClasses": ".*fixture*.*"},
+    {"excludeClasses": ".*Test*.*"}
   ]
 }

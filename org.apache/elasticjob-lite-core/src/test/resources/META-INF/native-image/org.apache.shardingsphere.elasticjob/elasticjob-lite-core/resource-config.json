@@ -1,6 +1,9 @@
 {
   "resources":{
   "includes":[{
+    "condition":{"typeReachable":"org.apache.shardingsphere.elasticjob.lite.internal.schedule.JobScheduler"},
+    "pattern":"\\QMETA-INF/services/org.apache.shardingsphere.elasticjob.error.handler.JobErrorHandlerPropertiesValidator\\E"
+  }, {
     "condition":{"typeReachable":"org.apache.shardingsphere.elasticjob.error.handler.JobErrorHandlerFactory"},
     "pattern":"\\QMETA-INF/services/org.apache.shardingsphere.elasticjob.error.handler.JobErrorHandler\\E"
   }, {
@@ -13,17 +16,17 @@
     "condition":{"typeReachable":"org.apache.shardingsphere.elasticjob.executor.context.ExecutorContext"},
     "pattern":"\\QMETA-INF/services/org.apache.shardingsphere.elasticjob.infra.context.Reloadable\\E"
   }, {
-    "condition":{"typeReachable":"org.apache.shardingsphere.elasticjob.infra.handler.sharding.JobShardingStrategyFactory"},
-    "pattern":"\\QMETA-INF/services/org.apache.shardingsphere.elasticjob.infra.handler.sharding.JobShardingStrategy\\E"
-  }, {
     "condition":{"typeReachable":"org.apache.shardingsphere.elasticjob.infra.handler.threadpool.JobExecutorServiceHandlerFactory"},
     "pattern":"\\QMETA-INF/services/org.apache.shardingsphere.elasticjob.infra.handler.threadpool.JobExecutorServiceHandler\\E"
   }, {
-    "condition":{"typeReachable":"org.apache.shardingsphere.elasticjob.infra.listener.ElasticJobListenerFactory"},
-    "pattern":"\\QMETA-INF/services/org.apache.shardingsphere.elasticjob.infra.listener.ElasticJobListener\\E"
+    "condition":{"typeReachable":"org.apache.shardingsphere.elasticjob.lite.internal.setup.JobClassNameProviderFactory"},
+    "pattern":"\\QMETA-INF/services/org.apache.shardingsphere.elasticjob.lite.internal.setup.JobClassNameProvider\\E"
   }, {
     "condition":{"typeReachable":"org.apache.shardingsphere.elasticjob.reg.exception.RegExceptionHandler"},
     "pattern":"\\QMETA-INF/services/org.apache.shardingsphere.elasticjob.reg.exception.IgnoredExceptionProvider\\E"
+  }, {
+    "condition":{"typeReachable":"org.apache.shardingsphere.elasticjob.lite.api.bootstrap.impl.ScheduleJobBootstrap"},
+    "pattern":"\\Qorg/quartz/core/quartz-build.properties\\E"
   }]},
   "bundles":[]
 }
