@@ -1,0 +1,19 @@
+{
+  "rules": [
+    {"includeClasses": "**"},
+    {"excludeClasses": "java.lang.management.**"},
+    {"excludeClasses": "jdk.management.**"},
+    {"excludeClasses": "com.sun.management.**"},
+    {"excludeClasses": "sun.management.**"},
+    {"excludeClasses": "javax.management.**"},
+    {"excludeClasses": "java.**"},
+    {"includeClasses": "java.util.Properties"},
+    {"includeClasses": "java.lang.Thread"},
+    {"excludeClasses": "sun.misc.**"},
+    {"excludeClasses": "sun.security.**"}
+
+  ],
+  "regexRules": [
+    {"excludeClasses": ".*Test*.*"}
+  ]
+}
