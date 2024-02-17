@@ -8,7 +8,7 @@
 # Start nativeTest
 
 - In Windows 11, Jetbrains IntelliJ IDEA Ultimate installed by Jetbrains Toolbox AppImage under WSLg.
-- Note, when executing unit tests implemented by GraalVM Truffle, be sure to additionally use `sdk use java 17.0.7-ms`
+- ~~Note, when executing unit tests implemented by GraalVM Truffle, be sure to additionally use `sdk use java 21.0.2-ms`~~ Complete the survey on the ShardingSphere side
 - Maybe you need to execute `su root` to switch to the root user to install grape, because it needs to write files
   to `/usr/local/bin`.
 
@@ -17,10 +17,9 @@ cd /tmp
 sudo apt install unzip zip curl sed -y
 curl -s "https://get.sdkman.io" | bash
 source "$HOME/.sdkman/bin/sdkman-init.sh"
-sdk install java 17.0.8-graalce
-sdk install java 17.0.8-ms
-sdk use java 17.0.8-graalce
-gu install js espresso
+sdk install java 21.0.2-graalce
+sdk install java 21.0.2-ms
+sdk use java 21.0.2-graalce
 sudo apt-get install build-essential libz-dev zlib1g-dev -y
 sdk install gradle
 
